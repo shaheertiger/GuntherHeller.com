@@ -70,6 +70,26 @@ for (const file of pages) {
   }
 }
 
+// Sitemaps: every listed URL is a built, indexable page; every indexable page is listed.
+const listed = new Set();
+const idx = readFileSync(join(DIST, "sitemap.xml"), "utf8");
+for (const [, loc] of idx.matchAll(/<loc>https:\/\/guntherheller\.com(\/[^<]+)<\/loc>/g)) {
+  const xml = readFileSync(join(DIST, loc), "utf8");
+  const n = (xml.match(/<url>/g) ?? []).length;
+  if (n > 50000 || xml.length > 50 * 1024 * 1024) errors.push(`${loc}: over sitemap limits`);
+  for (const [, p] of xml.matchAll(/<loc>https:\/\/guntherheller\.com([^<]+)<\/loc>/g)) {
+    listed.add(p);
+    if (!exists(p)) errors.push(`${loc}: lists missing page ${p}`);
+  }
+}
+for (const file of pages) {
+  const rel = "/" + relative(DIST, file).replace(/index\.html$/, "");
+  const html = readFileSync(file, "utf8");
+  if (rel === "/404.html" || /name="robots" content="noindex/.test(html)) continue;
+  if (!listed.has(rel)) errors.push(`${rel}: indexable page missing from sitemaps`);
+}
+for (const f of ["favicon.ico", "favicon.svg", "favicon-96x96.png", "apple-touch-icon.png", "site.webmanifest", "web-app-manifest-512x512.png"]) if (!existsSync(join(DIST, f))) errors.push(`missing ${f}`);
+
 // Acceptance test (handoff §3): cooked rice.
 const rice = readFileSync(join(DIST, "how-long-does-cooked-rice-last/index.html"), "utf8");
 const expectTitle = "How Long Does Cooked Rice Last? 4–6 Days in the Fridge [Freezer 6 Months]";
@@ -80,7 +100,7 @@ for (const f of ["robots.txt", "sitemap.xml", "og.png", "404.html", "search-inde
 
 const css = files.filter((f) => f.endsWith(".css")).reduce((n, f) => n + statSync(f).size, 0);
 const inlineCss = (rice.match(/<style[^>]*>([\s\S]*?)<\/style>/g) ?? []).join("").length;
-console.log(`check-build: ${pages.length} pages, ${titles.size} unique titles, ${clusters} hreflang pages, CSS ${(Math.max(css, inlineCss) / 1024).toFixed(1)} KB`);
+console.log(`check-build: ${pages.length} pages, ${titles.size} unique titles, ${clusters} hreflang pages, ${listed.size} sitemap URLs, CSS ${(Math.max(css, inlineCss) / 1024).toFixed(1)} KB`);
 if (Math.max(css, inlineCss) > 60 * 1024) errors.push("CSS over the 60 KB budget");
 warn.slice(0, 10).forEach((w) => console.warn("warn:", w));
 if (warn.length > 10) console.warn(`warn: …and ${warn.length - 10} more`);

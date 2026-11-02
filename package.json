@@ -13,7 +13,9 @@
     "preview": "astro preview",
     "check:html": "node scripts/check-build.mjs",
     "disavow": "node scripts/build-disavow.mjs",
-    "og": "node scripts/make-og.mjs"
+    "og": "node scripts/make-og.mjs",
+    "indexnow": "node scripts/indexnow.mjs",
+    "favicons": "node scripts/make-favicons.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "4.3.3",

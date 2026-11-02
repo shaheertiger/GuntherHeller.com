@@ -7,7 +7,7 @@ export const ORG = {
   name: SITE.name,
   url: `${SITE.url}/`,
   email: SITE.email,
-  logo: { "@type": "ImageObject", url: abs("/favicon.svg") },
+  logo: { "@type": "ImageObject", url: abs("/web-app-manifest-512x512.png"), width: 512, height: 512 },
 };
 
 export const breadcrumbLd = (items: { name: string; href?: string }[], path: string) => ({

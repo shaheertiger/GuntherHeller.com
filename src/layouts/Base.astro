@@ -20,6 +20,8 @@ interface Props {
 const { title, description, path, jsonld, noindex = false, ogType = "website", alternates, L } = Astro.props;
 const htmlLang = L?.s.htmlLang ?? "en";
 const alts = alternates && alternates.length > 1 ? alternates : [{ lang: "en", href: path }];
+const gsv = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
+const bsv = import.meta.env.PUBLIC_BING_SITE_VERIFICATION;
 const xDefault = alts.find((a) => a.lang === "en")?.href ?? path;
 const canonical = abs(path);
 const og = abs(SITE.ogImage);
@@ -37,8 +39,14 @@ const ld = jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [];
     {!noindex && alts.map((a) => <link rel="alternate" hreflang={a.lang} href={abs(a.href)} />)}
     {!noindex && <link rel="alternate" hreflang="x-default" href={abs(xDefault)} />}
     <link rel="preload" href="/fonts/dm-sans-latin-opsz.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#ffffff" />
+    {gsv && path === "/" && <meta name="google-site-verification" content={gsv} />}
+    {bsv && path === "/" && <meta name="msvalidate.01" content={bsv} />}
     <meta property="og:site_name" content={SITE.name} />
     <meta property="og:locale" content={(L?.s.locale ?? "en-US").replace("-", "_")} />
     <meta property="og:type" content={ogType} />
