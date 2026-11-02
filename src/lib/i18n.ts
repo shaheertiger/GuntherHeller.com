@@ -35,6 +35,10 @@ export const LOCALES: Locale[] = LOCALE_DEFS.filter((d) => file(d.code) && file(
   foods: file(`foods.${def.code}`),
 }));
 export const getLocale = (code: string) => LOCALES.find((l) => l.code === code)!;
+/** A locale publishes a food only once that food has a translation (new foods start English-only). */
+export const hasT = (L: Locale, f: Food) => Boolean(L.foods[f.slug]);
+export const foodsL = (L: Locale) => FOODS.filter((f) => hasT(L, f));
+export const countL = (L: Locale, cat: string) => FOODS.filter((f) => f.category === cat && hasT(L, f)).length;
 
 /* ---------------------------------------------------------------- URLs */
 export const slugify = (s: string) =>
@@ -49,7 +53,7 @@ export const lurl = {
 };
 export type Alt = { lang: string; href: string };
 /** hreflang cluster for a food entity: English + every published locale. */
-export const foodAlternates = (f: Food): Alt[] => [{ lang: "en", href: enUrl.food(f) }, ...LOCALES.map((L) => ({ lang: L.s.htmlLang, href: lurl.food(L, f) }))];
+export const foodAlternates = (f: Food): Alt[] => [{ lang: "en", href: enUrl.food(f) }, ...LOCALES.filter((L) => hasT(L, f)).map((L) => ({ lang: L.s.htmlLang, href: lurl.food(L, f) }))];
 export const homeAlternates = (): Alt[] => [{ lang: "en", href: "/" }, ...LOCALES.map((L) => ({ lang: L.s.htmlLang, href: lurl.home(L) }))];
 export const hubAlternates = (cat: string): Alt[] => [{ lang: "en", href: enUrl.category(cat) }, ...LOCALES.map((L) => ({ lang: L.s.htmlLang, href: lurl.hub(L, cat) }))];
 export const methodAlternates = (): Alt[] => [{ lang: "en", href: "/methodology/" }, ...LOCALES.map((L) => ({ lang: L.s.htmlLang, href: lurl.method(L) }))];
@@ -210,6 +214,6 @@ export function faqL(L: Locale, f: Food): [string, string][] {
   return out;
 }
 
-export const similarL = (L: Locale, f: Food) => similarFoods(f, 8).map((x) => ({ f: x, name: ft(L, x).n, href: lurl.food(L, x), fridge: cellsL(L, x, x.states[0], 0).fridge.value }));
+export const similarL = (L: Locale, f: Food) => similarFoods(f, 24).filter((x) => hasT(L, x)).slice(0, 8).map((x) => ({ f: x, name: ft(L, x).n, href: lurl.food(L, x), fridge: cellsL(L, x, x.states[0], 0).fridge.value }));
 export const foodsInCat = (cat: string) => FOODS.filter((f) => f.category === cat);
 export { CATEGORIES, getFood };

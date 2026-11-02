@@ -1,5 +1,5 @@
 import { FOODS, CATEGORIES } from "./data";
-import { LOCALES, lurl } from "./i18n";
+import { LOCALES, lurl, hasT } from "./i18n";
 
 export type LocaleRouteProps =
   | { code: string; kind: "home" | "hubIndex" | "method" }
@@ -16,6 +16,6 @@ export function localePaths(code: string) {
     { params: { path: p(lurl.hubIndex(L)) }, props: { code, kind: "hubIndex" } },
     { params: { path: p(lurl.method(L)) }, props: { code, kind: "method" } },
     ...CATEGORIES.map((c) => ({ params: { path: p(lurl.hub(L, c.slug)) }, props: { code, kind: "hub", cat: c.slug } })),
-    ...FOODS.map((f) => ({ params: { path: p(lurl.food(L, f)) }, props: { code, kind: "food", slug: f.slug } })),
+    ...FOODS.filter((f) => hasT(L, f)).map((f) => ({ params: { path: p(lurl.food(L, f)) }, props: { code, kind: "food", slug: f.slug } })),
   ];
 }

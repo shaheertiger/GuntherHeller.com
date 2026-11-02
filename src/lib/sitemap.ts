@@ -1,7 +1,7 @@
 import { FOODS, CATEGORIES, url, hasFreezePage, hasLeftOutPage } from "./data";
 import { TOOLS } from "./tools";
 import { SITE, abs } from "./site";
-import { LOCALES, lurl, foodAlternates, homeAlternates, hubAlternates, hubIndexAlternates, methodAlternates, type Alt } from "./i18n";
+import { LOCALES, lurl, foodAlternates, homeAlternates, hasT, hubAlternates, hubIndexAlternates, methodAlternates, type Alt } from "./i18n";
 
 /** lastmod is the date the numbers were last verified — it changes only when data changes. */
 const lastmod = SITE.verifiedISO;
@@ -15,7 +15,7 @@ export const SECTIONS: Record<string, () => string[]> = {
     "/methodology/", "/about/", "/privacy/", "/terms/",
   ],
   ...Object.fromEntries(
-    LOCALES.map((L) => [L.code, () => [lurl.home(L), lurl.hubIndex(L), lurl.method(L), ...CATEGORIES.map((c) => lurl.hub(L, c.slug)), ...FOODS.map((f) => lurl.food(L, f))]]),
+    LOCALES.map((L) => [L.code, () => [lurl.home(L), lurl.hubIndex(L), lurl.method(L), ...CATEGORIES.map((c) => lurl.hub(L, c.slug)), ...FOODS.filter((f) => hasT(L, f)).map((f) => lurl.food(L, f))]]),
   ),
 };
 

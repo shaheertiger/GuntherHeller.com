@@ -335,6 +335,28 @@ for (const [id, patch] of Object.entries(overrides.patches ?? {})) {
   if (patch.extraSource) f.extraSource = patch.extraSource;
 }
 
+// Splits: one page per food a FoodKeeper record names explicitly ("Citrus fruit: lemon, lime, orange…").
+for (const [id, names] of Object.entries(overrides.splits ?? {})) {
+  if (id.startsWith("_")) continue;
+  const base = foods.find((x) => x.id === Number(id));
+  if (!base) throw new Error(`split for unknown FoodKeeper id ${id}`);
+  for (const name of names) {
+    const slug = slugify(name);
+    if (seen.has(slug)) { console.warn(`split ${name}: slug ${slug} already exists, skipped`); continue; }
+    addFood({
+      ...base,
+      id: `split:${slug}`,
+      slug,
+      name,
+      plural: isPlural(name),
+      keywords: [name.toLowerCase()],
+      aliases: overrides.aliases[slug] ?? [],
+      derivedFrom: base.slug,
+      derivedNote: `USDA FoodKeeper lists ${name.toLowerCase()} under “${base.fkName}”, so this page uses that entry's storage times.`,
+    });
+  }
+}
+
 for (const d of overrides.derived) {
   const base = foods.find((f) => f.id === d.from);
   addFood({

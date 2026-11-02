@@ -200,6 +200,9 @@ export function quoteFor(f: Food): string {
 /** The headline duration for titles: fridge first, then pantry. */
 export function headline(f: Food): { value: string; where: string } {
   const s = f.states[0];
+  // Canned food: people mean the unopened can, so lead with its pantry time.
+  const un = f.states.find((x) => x.key === "unopened");
+  if (/canned|\bcan\b/i.test(f.name) && un?.pantry && isNum(un.pantry)) return { value: fmt(un.pantry)!, where: "Unopened in the Pantry" };
   // Shelf-stable foods (a month or more in the pantry) answer with the pantry time.
   if (s.pantry && isNum(s.pantry) && (days(s.pantry) ?? 0) >= 30) return { value: fmt(s.pantry)!, where: "in the Pantry" };
   if (s.fridge && isNum(s.fridge)) return { value: fmt(s.fridge)!, where: "in the Fridge" };
@@ -230,7 +233,10 @@ export function foodDescription(f: Food) {
   let d = `${f.name} ${lasts(f)} ${h.value} ${h.where.toLowerCase()}`;
   if (fz && isNum(fz)) d += ` and ${fmt(fz)} frozen`;
   d += ".";
-  if (f.perishable) d += " Discard after 2 hours at room temperature.";
+  if (h.where.startsWith("Unopened")) {
+    const op = f.states.find((x) => x.key === "opened");
+    if (op?.fridge) d += ` Once opened: ${fmt(op.fridge)} in the fridge.`;
+  } else if (f.perishable) d += " Discard after 2 hours at room temperature.";
   else if (f.states.length > 1 && f.states[1].label) {
     const t = f.states[1];
     const v = fmt(t.pantry && isNum(t.pantry) ? t.pantry : t.fridge);
