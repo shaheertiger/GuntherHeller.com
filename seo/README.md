@@ -13,7 +13,7 @@ No disavow file is committed yet because it must be built from the real export.
 
 ## Launch checklist
 - [ ] Vercel: import the repo (framework auto-detected as Astro; `vercel.json` sets build, headers, trailing slashes).
-- [ ] Vercel → Domains: add `guntherheller.com` and `www.guntherheller.com` (www redirects to apex via `vercel.json`).
+- [ ] Vercel → Domains: `guntherheller.com` is the primary domain (no redirect); `www.guntherheller.com` redirects to it (308). Canonicals, hreflang and sitemaps all use the non-www host, so the domain setting must match. Do not add a host redirect in vercel.json as well: it loops.
 - [ ] Google Search Console: add a **Domain** property for `guntherheller.com` and verify with the DNS TXT record
       (or a URL-prefix property: set `PUBLIC_GOOGLE_SITE_VERIFICATION` in Vercel env vars and redeploy — the home page then carries the meta tag).
 - [ ] Search Console → Sitemaps: submit `https://guntherheller.com/sitemap.xml` (an index of foods, questions, hubs, es, de, fr, pt-br).
