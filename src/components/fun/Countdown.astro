@@ -1,0 +1,23 @@
+---
+/** Day-by-day fridge countdown (meal-prep strip). Shown for foods with a fridge window of 2 weeks or less. */
+interface Props { min: number; max: number; startLabel: string; labels: { fresh: string; edge: string; toss: string }; dayWord: string; title: string; note: string }
+const { min, max, startLabel, labels, dayWord, title, note } = Astro.props;
+const n = Math.min(14, Math.max(Math.ceil(max) + 2, 5));
+const days = Array.from({ length: n + 1 }, (_, d) => ({ d, tone: d < min ? "fresh" : d <= max ? "edge" : "toss" }));
+const C = { fresh: ["#1f7048", "var(--color-tint-green)"], edge: ["#8a5a0c", "var(--color-tint-amber)"], toss: ["#a5281b", "var(--color-tint-red)"] } as const;
+---
+<div class="soft border border-line p-4 md:p-5 mt-[18px]">
+  <div class="text-[15px] font-[650]">{title}</div>
+  <ol class="flex gap-1.5 overflow-x-auto list-none p-0 mt-3 pb-1">
+    {days.map(({ d, tone }) => (
+      <li class="shrink-0 w-[52px] md:w-[56px] rounded-[12px] px-1 py-2 text-center" style={`background:${C[tone][1]};color:${C[tone][0]}`}>
+        <div class="text-[10px] font-bold uppercase tracking-[.06em]">{d === 0 ? startLabel : dayWord}</div>
+        <div class="text-[20px] font-[650] leading-tight">{d}</div>
+      </li>
+    ))}
+  </ol>
+  <div class="flex flex-wrap gap-x-4 gap-y-1 mt-3 text-[13px] font-[550]">
+    <span style="color:#1f7048">● {labels.fresh}</span><span style="color:#8a5a0c">● {labels.edge}</span><span style="color:#a5281b">● {labels.toss}</span>
+  </div>
+  <p class="text-[12px] text-[#52525b] mt-2">{note}</p>
+</div>

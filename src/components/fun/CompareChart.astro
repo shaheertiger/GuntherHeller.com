@@ -1,0 +1,22 @@
+---
+/** Fridge (or pantry) life of this food next to similar foods, as horizontal bars (log scale). */
+import { pos } from "../../lib/viz";
+interface Props { rows: { name: string; href?: string; days: number; label: string; me?: boolean }[]; title: string; note: string }
+const { rows, title, note } = Astro.props;
+---
+<div class="soft border border-line p-4 md:p-5 mt-[18px]">
+  <div class="text-[15px] font-[650]">{title}</div>
+  <ul class="grid gap-2.5 list-none p-0 mt-3">
+    {rows.map((r) => (
+      <li class="grid grid-cols-[110px_minmax(0,1fr)] md:grid-cols-[170px_minmax(0,1fr)] items-center gap-3">
+        {r.href ? <a href={r.href} class="text-[13px] md:text-sm truncate hover:text-primary">{r.name}</a> : <span class="text-[13px] md:text-sm font-[650] truncate">{r.name}</span>}
+        <div class="h-6 rounded-full bg-[#f4f4f5]">
+          <div class="h-full rounded-full flex items-center justify-end pr-2.5" style={`width:${Math.max(pos(r.days), 8)}%;min-width:max-content;padding-left:10px;background:${r.me ? "#4a3bd2" : "#63636b"}`}>
+            <span class="text-[11px] font-[650] text-white whitespace-nowrap">{r.label}</span>
+          </div>
+        </div>
+      </li>
+    ))}
+  </ul>
+  <p class="text-[12px] text-[#52525b] mt-3">{note}</p>
+</div>

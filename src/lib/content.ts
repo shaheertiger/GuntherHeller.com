@@ -2,7 +2,7 @@
  * Generated copy. Every number comes from the FoodKeeper record; the prose around it comes
  * from per-kind templates below. Anything in data/overrides.json → content[slug] wins.
  */
-import { type Food, type State, contentFor, fmt, isNum, days, lc, lasts, does, isAre, itThey, titleCase, cap1, freezerFacts, cellsFor } from "./data";
+import { FOODS, type Food, type State, contentFor, fmt, isNum, days, lc, lasts, does, isAre, itThey, titleCase, cap1, freezerFacts, cellsFor } from "./data";
 
 type Sign = { title: string; text: string; icon: string };
 const ICON = {
@@ -255,7 +255,7 @@ export function faqFor(f: Food): [string, string][] {
   else if (s.pantry && isNum(s.pantry)) add(`${does(f)} ${name} need to be refrigerated?`, `Not ${f.states.length > 1 ? "until opened" : "for safety"}. ${f.name} ${lasts(f)} ${fmt(s.pantry)} in a cool, dry pantry.`);
   if (f.states.length > 1) {
     const [a, b] = f.states;
-    add(`How long ${does(f).toLowerCase()} ${b.label!.toLowerCase().split(" /")[0]} ${name} last?`, `${[b.pantry && isNum(b.pantry) ? `${fmt(b.pantry)} in the pantry` : null, b.fridge ? `${fmt(b.fridge)!.toLowerCase()} in the fridge` : null].filter(Boolean).join(", ") || "Follow the package date"}. ${a.label}, the clock is shorter: ${[a.fridge ? `${fmt(a.fridge)!.toLowerCase()} in the fridge` : null, a.pantry ? `${fmt(a.pantry)!.toLowerCase()} in the pantry` : null].filter(Boolean).join(", ") || "see the table above"}.`);
+    add(`How long ${does(f).toLowerCase()} ${stateName(f, b)} last?`, `${[b.pantry && isNum(b.pantry) ? `${fmt(b.pantry)} in the pantry` : null, b.fridge ? `${fmt(b.fridge)!.toLowerCase()} in the fridge` : null].filter(Boolean).join(", ") || "Follow the package date"}. ${a.label}, the clock is shorter: ${[a.fridge ? `${fmt(a.fridge)!.toLowerCase()} in the fridge` : null, a.pantry ? `${fmt(a.pantry)!.toLowerCase()} in the pantry` : null].filter(Boolean).join(", ") || "see the table above"}.`);
   }
   add(`How can you tell if ${name} ${f.plural ? "have" : "has"} gone bad?`, signsFor(f).slice(0, 3).map((x) => `${x.title}: ${x.text.replace(/\.$/, "").toLowerCase()}`).join("; ") + ".");
   const safe = f.cooking.find((x) => x.safeTempF);
@@ -268,3 +268,76 @@ const trimWords = (s: string, n: number) => {
   const w = s.split(/\s+/);
   return w.length <= n ? s : w.slice(0, n).join(" ").replace(/[,;:]$/, "") + "…";
 };
+
+/* ---------------------------------------------------------------- long-form sections */
+/** Natural name for a toggle's second state: "dry rice", "dry pasta", "uncooked quinoa", "unopened mayonnaise". */
+export function stateName(f: Food, st: State): string {
+  const word = (st.label ?? "").split(" /")[0].toLowerCase();
+  const alt = st.fromId ? FOODS.find((x) => x.id === st.fromId) : null;
+  const base = alt ? alt.name.toLowerCase() : lc(f);
+  return base.includes(word) ? base : `${word} ${base}`;
+}
+/** One short answer per search modifier from the keyword plan ("in the fridge", "after opening", …). */
+export function modifierQA(f: Food): [string, string][] {
+  const name = lc(f);
+  const D = does(f).toLowerCase();
+  const s = f.states[0];
+  const c = cellsFor(f, s, 0);
+  const out: [string, string][] = [];
+  const fzi = f.states.findIndex((x) => x.freezer);
+  const cz = fzi >= 0 ? cellsFor(f, f.states[fzi], fzi).freezer : c.freezer;
+  out.push([`How long ${D} ${name} last in the fridge?`, s.fridge ? `${c.fridge.value} at 4°C (40°F) or colder${s.label && f.states.length > 1 ? ` (${s.label.toLowerCase()})` : ""}. ${f.perishable ? "Count from the day it was cooked, opened or bought." : "Keep it sealed so it does not pick up moisture or odours."}` : `FoodKeeper gives no fridge time for ${name}; ${s.pantry ? `it keeps ${fmt(s.pantry)!.toLowerCase()} in the pantry instead.` : "check the package."}`]);
+  out.push([`How long ${D} ${name} last in the freezer?`, isNum(freezerFacts(f)) ? `${cz.value} for best quality at -18°C (0°F). Frozen food stays safe indefinitely; after that, texture and flavour fade.` : `${cz.value}. ${freezeVerdict(f).detail}`]);
+  out.push([`How long ${D} ${name} last at room temperature?`, f.perishable ? `No more than 2 hours, or 1 hour above 32°C (90°F). Perishable food left out longer should be thrown away.` : s.pantry ? `${fmt(s.pantry)} in a cool, dry place.` : `It is not meant to be kept at room temperature. Refrigerate it.`]);
+  const op = f.states.find((x) => x.key === "opened");
+  const un = f.states.find((x) => x.key === "unopened");
+  if (op) { const co = cellsFor(f, op, f.states.indexOf(op)); out.push([`How long ${D} ${name} last after opening?`, `${op.fridge ? `${co.fridge.value} in the fridge` : ""}${op.fridge && op.pantry ? ", or " : ""}${op.pantry ? `${co.pantry.value} in the pantry` : ""} once opened. The printed date stops applying the moment you break the seal.`]); }
+  if (un) { const cu = cellsFor(f, un, f.states.indexOf(un)); out.push([`How long ${D} unopened ${name} last?`, `${[un.pantry && isNum(un.pantry) ? `${cu.pantry.value} in the pantry` : null, un.fridge ? `${cu.fridge.value} in the fridge` : null].filter(Boolean).join(" or ") || "Until the package date"}, if the seal is intact and it is stored as the label says.`]); }
+  if (f.states.length > 1 && !op) { const b = f.states[1]; const cb = cellsFor(f, b, 1); out.push([`How long ${D} ${stateName(f, b)} last?`, `${[b.pantry && isNum(b.pantry) ? `${cb.pantry.value} in the pantry` : null, b.fridge ? `${cb.fridge.value} in the fridge` : null].filter(Boolean).join(" or ") || "See the table above"}.`]); }
+  out.push([`How long is ${name} good for past the expiration date?`, datesFor(f).opened.title === "Past the date" ? datesFor(f).opened.text : datesFor(f).unopened.text]);
+  out.push([`How can you tell if ${name} ${f.plural ? "are" : "is"} bad?`, signsFor(f).slice(0, 3).map((x) => x.text.replace(/\.$/, "")).join(". ") + "."]);
+  if (f.perishable) out.push([`How long can ${name} sit out?`, `2 hours at room temperature, 1 hour on a hot day above 32°C (90°F). Overnight is always too long.`]);
+  return out;
+}
+
+export type Thaw = [string, string];
+export function thawFor(f: Food): Thaw[] {
+  const g = groupOf(f);
+  if (g === "meat" || g === "seafood" || g === "cooked" || g === "cured")
+    return [
+      ["In the fridge", "Safest. About 24 hours per 2.3 kg (5 lb); small packs overnight. Raw meat and seafood then keep 1–2 more days."],
+      ["In cold water", "Seal it in a leak-proof bag, submerge, and change the water every 30 minutes. About 30 minutes per 0.5 kg (1 lb). Cook right away."],
+      ["In the microwave", "Use the defrost setting and cook immediately, because parts of the food may start to cook."],
+    ];
+  return [
+    ["In the fridge", "Move it to the fridge the night before; texture holds best."],
+    ["At room temperature", g === "bakery" ? "Bread and baked goods thaw well on the counter, still wrapped, in 1–3 hours." : "Only for shelf-stable foods; perishable food should not thaw on the counter."],
+    ["From frozen", "Many foods go straight into soups, sauces, smoothies or the oven."],
+  ];
+}
+
+/** Reheating rules apply to cooked food and anything cooked from raw meat or seafood. */
+export function reheatFor(f: Food): [string, string][] | null {
+  const g = groupOf(f);
+  if (!["cooked", "meat", "seafood", "cured"].includes(g)) return null;
+  return [
+    ["Reheat to 74°C (165°F)", "Check the thickest part with a food thermometer; it should be steaming hot all the way through."],
+    ["Only once", "Reheat just the portion you will eat. Each cool-and-reheat cycle gives bacteria another chance."],
+    ["Cover and stir", "In the microwave, cover the dish and stir halfway so there are no cold spots."],
+    ["From the freezer", "Thaw in the fridge first, or reheat straight from frozen and allow extra time."],
+  ];
+}
+
+export type Zone = "door" | "top" | "middle" | "bottom" | "crisper" | "pantry" | "freezer";
+/** Where the food belongs, following FSIS fridge-organisation guidance. */
+export function zoneFor(f: Food): { zone: Zone; why: string } {
+  const g = groupOf(f);
+  const s = f.states[0];
+  if (g === "frozen") return { zone: "freezer", why: "Keep it frozen at -18°C (0°F) until you cook it." };
+  if (!s.fridge && s.pantry) return { zone: "pantry", why: "It is shelf-stable: a cool, dark, dry cupboard is best. The fridge is not needed." };
+  if (g === "meat" || g === "seafood") return { zone: "bottom", why: "Raw meat and seafood go on the bottom shelf, in a dish, so juices can never drip onto ready-to-eat food." };
+  if (g === "produce" || g === "leafy") return { zone: "crisper", why: "The crisper drawer holds humidity, which keeps produce from wilting." };
+  if (g === "condiment" || g === "drink") return { zone: "door", why: "The door is the warmest part of the fridge, fine for condiments and drinks that resist spoilage." };
+  if (g === "dairy" || g === "eggs" || g === "cheese" || g === "fat") return { zone: "middle", why: "Keep it on a middle shelf, not the door: the door warms up every time it opens." };
+  return { zone: "top", why: "Ready-to-eat and cooked food goes on the upper shelves, above anything raw." };
+}

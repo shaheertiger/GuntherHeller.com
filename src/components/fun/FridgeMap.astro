@@ -1,0 +1,26 @@
+---
+import type { Zone } from "../../lib/content";
+interface Props { zone: Zone; why: string; names: Record<Zone, string> }
+const { zone, why, names } = Astro.props;
+const shelf = (z: Zone) => (z === zone ? "fill:#2f8f5b;fill-opacity:.9" : "fill:#f4f4f5");
+const txt = (z: Zone) => (z === zone ? "#ffffff" : "#52525b");
+const inFridge = zone !== "pantry" && zone !== "freezer";
+---
+<div class="soft p-4 md:p-5 mt-[18px] grid sm:grid-cols-[180px_1fr] gap-5 items-center" style="background:var(--color-tint-green)">
+  <svg viewBox="0 0 180 250" class="w-[150px] sm:w-[180px] mx-auto" role="img" aria-label={`${names[zone]}`}>
+    <rect x="6" y="6" width="168" height="238" rx="16" fill="#fff" stroke="#3f3f46" stroke-width="2.5" />
+    <line x1="6" y1="62" x2="174" y2="62" stroke="#3f3f46" stroke-width="2" />
+    <rect x="16" y="16" width="148" height="38" rx="8" style={zone === "freezer" ? "fill:#3c6fd1" : "fill:#e8effb"} />
+    <text x="90" y="40" text-anchor="middle" font-size="11" font-weight="650" fill={zone === "freezer" ? "#fff" : "#2c56a8"}>{names.freezer}</text>
+    <rect x="16" y="72" width="112" height="40" rx="8" style={shelf("top")} /><text x="72" y="96" text-anchor="middle" font-size="11" font-weight="650" fill={txt("top")}>{names.top}</text>
+    <rect x="16" y="118" width="112" height="40" rx="8" style={shelf("middle")} /><text x="72" y="142" text-anchor="middle" font-size="11" font-weight="650" fill={txt("middle")}>{names.middle}</text>
+    <rect x="16" y="164" width="112" height="36" rx="8" style={shelf("bottom")} /><text x="72" y="186" text-anchor="middle" font-size="11" font-weight="650" fill={txt("bottom")}>{names.bottom}</text>
+    <rect x="16" y="206" width="112" height="30" rx="8" style={shelf("crisper")} /><text x="72" y="225" text-anchor="middle" font-size="11" font-weight="650" fill={txt("crisper")}>{names.crisper}</text>
+    <rect x="136" y="72" width="28" height="164" rx="8" style={shelf("door")} /><text x="150" y="154" text-anchor="middle" font-size="11" font-weight="650" fill={txt("door")} transform="rotate(-90 150 154)">{names.door}</text>
+  </svg>
+  <div>
+    <div class="text-[11px] font-bold uppercase tracking-[.08em]" style="color:#1b7a55">{inFridge ? "Best spot" : zone === "pantry" ? names.pantry : names.freezer}</div>
+    <div class="text-[22px] font-[650] tracking-[-0.02em] mt-1">{names[zone]}</div>
+    <p class="text-[15px] text-[#3c4a42] mt-1.5">{why}</p>
+  </div>
+</div>

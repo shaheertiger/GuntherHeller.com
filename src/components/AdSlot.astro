@@ -1,6 +1,11 @@
 ---
-/** Reserved ad space. Fixed dimensions so a late-loading ad never shifts layout. */
+/**
+ * Ad slot. Renders nothing until ads are switched on (PUBLIC_ADS=1 in the environment),
+ * so visitors never see empty placeholders. When enabled it reserves the exact size, so a
+ * late-loading ad never shifts the layout.
+ */
 interface Props { w: number; h: number; class?: string; id?: string; label?: string }
 const { w, h, class: cls = "", id, label = "Advertisement" } = Astro.props;
+const enabled = import.meta.env.PUBLIC_ADS === "1";
 ---
-<aside class:list={["ad-slot", cls]} style={`width:${w}px;height:${h}px`} aria-label={label} data-ad-slot={id ?? `${w}x${h}`}>{label} · {w}×{h}</aside>
+{enabled && <aside class:list={["ad-slot", cls]} style={`width:${w}px;height:${h}px`} aria-label={label} data-ad-slot={id ?? `${w}x${h}`}></aside>}

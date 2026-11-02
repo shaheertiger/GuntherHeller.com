@@ -19,8 +19,16 @@ import PerishScale from "./fun/PerishScale.astro";
 import StillGood from "./fun/StillGood.astro";
 import DangerZone from "./fun/DangerZone.astro";
 import Icon from "./fun/Icon.astro";
+import Countdown from "./fun/Countdown.astro";
+import FridgeMap from "./fun/FridgeMap.astro";
+import CompareChart from "./fun/CompareChart.astro";
+import ToolsCta from "./fun/ToolsCta.astro";
+import { modifierQA, thawFor, reheatFor, zoneFor } from "../lib/content";
+import { range } from "../lib/viz";
+import { primaryFridge, fmt, isNum } from "../lib/data";
 import { timelineBars, perishLevel, checker, VIZ_EN as V } from "../lib/viz";
 import { freezeVerdict } from "../lib/content";
+import { freezerFacts } from "../lib/data";
 import { cellsFor } from "../lib/data";
 import enStrings from "../../data/i18n/en.json";
 import { type Food, url, getCategory, similarFoods, lc, does, titleCase, cap1, hasFreezePage, hasLeftOutPage } from "../lib/data";
@@ -64,9 +72,17 @@ const fzValue = fzi >= 0 ? cellsFor(f, f.states[fzi], fzi).freezer.value : c0.fr
 const checks = checker(f);
 const units = enStrings.units as Record<string, [string, string]>;
 const TIP_ICONS = ["fridge", "box", "thermo", "calendar", "leaf"];
+const fr = range(f.states[0].fridge);
+const qa = modifierQA(f);
+const thaw = isNum(freezerFacts(f)) ? thawFor(f) : null;
+const reheat = reheatFor(f);
+const zone = zoneFor(f);
+const ZONES = { door: "Door", top: "Top shelf", middle: "Middle shelf", bottom: "Bottom shelf", crisper: "Crisper drawer", pantry: "Pantry", freezer: "Freezer" } as const;
+const lifeOf = (x: Food) => { const s0 = x.states[0]; const d = range(s0.fridge) ?? range(s0.pantry); return d ? { days: d[1], label: fmt(s0.fridge && isNum(s0.fridge) ? s0.fridge : s0.pantry)! } : null; };
+const compare = [f, ...similar.slice(0, 6)].map((x) => ({ x, l: lifeOf(x) })).filter((r) => r.l).map(({ x, l }) => ({ name: x.name, href: x === f ? undefined : url.food(x), days: l!.days, label: l!.label, me: x === f })).sort((a, b) => b.days - a.days);
 
 const toc = [
-  ["answer", "Quick answer"], ["glance", "At a glance"], ["methods", "Storage times by method"], ["bad", "Signs it has gone bad"], ["freeze", "Can you freeze it?"],
+  ["answer", "Quick answer"], ["glance", "At a glance"], ["methods", "Storage times by method"], ["where", "Where to store it"], ["qa", "Questions answered"], ["bad", "Signs it has gone bad"], ["freeze", "Can you freeze it?"],
   ["leftout", "Left out overnight"], ["dates", "Date labels"], ["store", "How to store it"], ["similar", "Similar foods"], ["faq", "FAQ"],
 ];
 const related = [
@@ -135,6 +151,13 @@ const tools = [
           </section>
         )}
 
+        {fr && fr[1] <= 14 && fr[1] >= 1 && (
+          <section id="countdown" class="mt-8 md:mt-12">
+            <SectionHead icon="calendar" tint="var(--color-tint-amber)" ink="#8a5a0c" eyebrow="Meal prep">Your {name} fridge countdown</SectionHead>
+            <Countdown min={fr[0]} max={fr[1]} startLabel={f.perishable ? "Made" : "Open"} dayWord="Day" labels={{ fresh: V.fresh, edge: V.edge, toss: V.toss }} title={`Day 0 is the day it was ${f.states[0].key === "opened" ? "opened" : f.kind === "cooked" ? "cooked" : "bought"}.`} note="Based on the USDA FoodKeeper fridge window at 4°C (40°F) or colder." />
+          </section>
+        )}
+
         <section id="methods" class="mt-8 md:mt-14">
           <SectionHead icon="grid" tint="var(--color-tint-green)" ink="#1b7a55" eyebrow="Every method">{cap1(name)} storage times by method</SectionHead>
           <div class="table-wrap mt-[18px] !rounded-[20px]">
@@ -149,7 +172,23 @@ const tools = [
           </div>
         </section>
 
-        <AdSlot w={300} h={250} class="lg:hidden mt-8" id="food-mobile-1" />
+
+        <section id="where" class="mt-8 md:mt-14">
+          <SectionHead icon="fridge" tint="var(--color-tint-green)" ink="#1b7a55" eyebrow="Where to keep it">{`Where to store ${name}`}</SectionHead>
+          <FridgeMap zone={zone.zone} why={zone.why} names={ZONES} />
+        </section>
+
+        <section id="qa" class="mt-8 md:mt-14">
+          <SectionHead icon="question" tint="var(--color-tint-blue)" ink="#2f5fbf" eyebrow="Question by question">{cap1(name)} shelf life, answered</SectionHead>
+          <div class="grid gap-3 mt-[18px]">
+            {qa.map(([q, a]) => (
+              <div class="soft p-4 md:p-5 bg-[#f7f8fb] border border-[#e8ecf5]">
+                <h3 class="!text-[17px] !tracking-[-0.01em]">{q}</h3>
+                <p class="text-[15px] text-[#3f3f46] mt-1.5">{a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
         <section id="bad" class="mt-8 md:mt-14">
           <SectionHead icon="nose" tint="var(--color-tint-pink)" ink="#b83269" eyebrow="Check before you eat">{`Signs ${name} ${f.plural ? "have" : "has"} gone bad`}</SectionHead>
@@ -162,6 +201,31 @@ const tools = [
           <FreezeBlock food={f} />
           {hasFreezePage(f) && <p class="mt-3 text-sm"><a href={url.freeze(f)} class="link">How to freeze and thaw {name} →</a></p>}
         </section>
+
+        {thaw && (
+          <section id="thaw" class="mt-8 md:mt-14">
+            <SectionHead icon="thermo" tint="var(--color-tint-blue)" ink="#2f5fbf" eyebrow="Thawing">How to thaw {name}</SectionHead>
+            <div class="grid sm:grid-cols-3 gap-3 mt-[18px]">
+              {thaw.map(([t, d], i) => (
+                <div class="lift soft p-4" style={`background:${["var(--color-tint-green)", "var(--color-tint-blue)", "var(--color-tint-amber)"][i]}`}>
+                  <span class="icon-chip bg-white" style={`color:${["#1f7048", "#2f5fbf", "#8a5a0c"][i]}`}><Icon name={["fridge", "thermo", "clock"][i]} size={17} /></span>
+                  <h3 class="!text-base !tracking-normal mt-2.5">{t}</h3><p class="text-sm text-[#3f3f46] mt-1">{d}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {reheat && (
+          <section id="reheat" class="mt-8 md:mt-14">
+            <SectionHead icon="spark" tint="var(--color-tint-red)" ink="#a5281b" eyebrow="Reheating">How to reheat {name} safely</SectionHead>
+            <div class="grid sm:grid-cols-2 gap-3 mt-[18px]">
+              {reheat.map(([t, d], i) => (
+                <div class="soft p-4 border border-line flex gap-3"><span class="w-8 h-8 rounded-full grid place-items-center text-[15px] font-[650] text-white shrink-0" style="background:#c0392b">{i + 1}</span><div><h3 class="!text-base !tracking-normal">{t}</h3><p class="text-sm text-[#52525b] mt-0.5">{d}</p></div></div>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section id="leftout" class="mt-8 md:mt-14">
           <SectionHead icon="clock" tint="var(--color-tint-amber)" ink="#8a5a0c" eyebrow="The 2-hour rule">{cap1(name)} left out overnight</SectionHead>
@@ -185,6 +249,15 @@ const tools = [
             <li class="lift soft flex gap-3 p-4 border border-line"><span class="icon-chip" style="background:var(--color-tint-green);color:#1b7a55"><Icon name={TIP_ICONS[i % TIP_ICONS.length]} size={17} /></span><span class="text-[15px] leading-[1.55]">{t}</span></li>
           ))}</ul>
         </section>
+
+        {compare.length >= 3 && (
+          <section id="compare" class="mt-8 md:mt-14">
+            <SectionHead icon="scale" tint="var(--color-tint-lilac)" ink="#4a3bd2" eyebrow="How it compares">{cap1(name)} vs similar foods</SectionHead>
+            <CompareChart rows={compare} title="Longest recommended storage time (fridge, or pantry for shelf-stable foods)" note="Same scale as the timeline above: 1 hour to 2 years." />
+          </section>
+        )}
+
+        <ToolsCta title="Got something else in the fridge?" text="Check any food in seconds: when your leftovers expire, and whether something left out is still safe." links={[{ href: "/tools/leftover-calculator/", label: "Leftover calculator", icon: "calendar" }, { href: "/tools/left-out-checker/", label: "Left-out checker", icon: "clock" }, { href: "/foods/", label: "Browse 663 foods", icon: "grid" }]} />
 
         <section id="similar" class="mt-8 md:mt-14">
           <SectionHead icon="leaf" tint="var(--color-tint-amber)" ink="#8a5a0c" eyebrow="Keep exploring">Similar foods</SectionHead>
