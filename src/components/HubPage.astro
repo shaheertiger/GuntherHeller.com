@@ -89,7 +89,7 @@ const ld = {
         <span class="text-[13px] text-muted"><span data-shown>{foods.length}</span> of {foods.length} foods · <span data-sortlabel>sorted A–Z</span></span>
       </div>
       <div class="table-wrap mt-3.5">
-        <table class="data-table min-w-[760px]">
+        <table class="data-table stack md:min-w-[760px]">
           <thead><tr>
             <th><button type="button" data-sort="name">Food</button></th>
             <th>Counter</th>
@@ -101,12 +101,12 @@ const ld = {
           <tbody>
             {rows.map((r) => (
               <tr data-name={r.f.name.toLowerCase()} data-fridge={r.fridgeDays} data-freezer={r.freezerDays} data-tone={r.tone}>
-                <td><a href={url.food(r.f)} class="font-medium flex items-center gap-3"><FoodImage food={r.f} alt="" variant="thumb" />{r.f.name}</a></td>
-                <td class="text-muted">{r.counter}</td>
-                <td>{r.opened}</td>
-                <td class="text-muted">{r.unopened}</td>
-                <td>{r.freezer}</td>
-                <td><span class:list={["pill !text-[13px] !py-[3px] !px-2.5", r.tone === "yes" ? "pill-yes" : r.tone === "no" ? "pill-no" : "pill-caution"]}>{r.pill}</span></td>
+                <td class="full"><a href={url.food(r.f)} class="font-medium flex items-center gap-3"><FoodImage food={r.f} alt="" variant="thumb" />{r.f.name}</a></td>
+                <td class="text-muted" data-label="Counter">{r.counter}</td>
+                <td data-label="Fridge (opened)">{r.opened}</td>
+                <td class="text-muted" data-label="Fridge (unopened)">{r.unopened}</td>
+                <td data-label="Freezer">{r.freezer}</td>
+                <td data-label="Freezes well?" class="col-span-2"><span class:list={["pill !text-[13px] !py-[3px] !px-2.5", r.tone === "yes" ? "pill-yes" : r.tone === "no" ? "pill-no" : "pill-caution"]}>{r.pill}</span></td>
               </tr>
             ))}
           </tbody>

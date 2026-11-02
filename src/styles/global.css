@@ -121,6 +121,16 @@
   .ac-toggle label { cursor: pointer; padding: 8px 14px; font-size: 14px; font-weight: 500; min-height: 40px; display: inline-flex; align-items: center; color: var(--color-muted); background: #fff; }
   .ac-toggle input:checked + label { background: var(--color-ink); color: #fff; }
   .ac-toggle input:focus-visible + label { outline: 2px solid var(--color-primary); outline-offset: -2px; }
+  /* Tables that turn into stacked cards on phones (labels come from data-label). */
+  @media (max-width: 767px) {
+    .stack { min-width: 0 !important; }
+    .stack thead { display: none; }
+    .stack tbody tr { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 12px; padding: 14px 16px; border-top: 1px solid var(--color-line); }
+    .stack tbody tr:first-child { border-top: 0; }
+    .stack tbody td { display: block; padding: 0; border: 0 !important; min-width: 0; }
+    .stack td[data-label]::before { content: attr(data-label); display: block; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: #52525b; margin-bottom: 2px; }
+    .stack td.full { grid-column: 1 / -1; }
+  }
   /* Playful widgets */
   .soft { border-radius: 20px; }
   .icon-chip { width: 36px; height: 36px; border-radius: 12px; display: grid; place-items: center; flex-shrink: 0; }

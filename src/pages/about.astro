@@ -1,12 +1,13 @@
 ---
 import Prose from "../layouts/Prose.astro";
 import { SITE } from "../lib/site";
+import { FOODS } from "../lib/data";
 ---
 <Prose title="About Gunther Heller | Food Storage Answers" h1="About Gunther Heller" path="/about/"
   description="Gunther Heller publishes free, source-backed answers to how long food lasts in the fridge, freezer and pantry. Who we are and how to contact us."
   lead="Gunther Heller answers one question well: how long does this food last, and is it still safe?">
   <h2>What we do</h2>
-  <p>We publish storage times for more than 660 foods — counter, fridge and freezer, opened and unopened — with the answer at the top of every page. No sign-ups and no app. The site is funded by display advertising, which we keep out of the way of the answer.</p>
+  <p>We publish storage times for {FOODS.length} foods — counter, fridge and freezer, opened and unopened — with the answer at the top of every page. No sign-ups and no app. The site is funded by display advertising, which we keep out of the way of the answer.</p>
   <h2>Where the data comes from</h2>
   <p>USDA FoodKeeper and FSIS food-safety guidance. Read <a href="/methodology/">how we verify our numbers</a>.</p>
   <h2>Contact</h2>

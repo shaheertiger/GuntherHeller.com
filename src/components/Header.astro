@@ -1,5 +1,6 @@
 ---
 import Logo from "./Logo.astro";
+import { FOODS } from "../lib/data";
 import { type Locale, lurl } from "../lib/i18n";
 const { L } = Astro.props as { L?: Locale };
 const nav = L ? [
@@ -27,7 +28,7 @@ const here = Astro.url.pathname;
     <div class="flex-1"></div>
     {!L && <form action="/search/" method="get" role="search" class="hidden sm:block">
       <label for="site-q" class="sr-only-x">Search foods</label>
-      <input id="site-q" name="q" type="search" placeholder="Search 660+ foods…" autocomplete="off"
+      <input id="site-q" name="q" type="search" placeholder={`Search ${FOODS.length} foods…`} autocomplete="off"
         class="text-sm h-9 w-[260px] max-w-full border border-line rounded-lg px-3 outline-none focus:border-primary-soft" />
     </form>}
     {!L && <a href="/search/" aria-label="Search" class="sm:hidden w-11 h-11 border border-line rounded-lg grid place-items-center">

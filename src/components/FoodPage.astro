@@ -25,7 +25,7 @@ import CompareChart from "./fun/CompareChart.astro";
 import ToolsCta from "./fun/ToolsCta.astro";
 import { modifierQA, thawFor, reheatFor, zoneFor } from "../lib/content";
 import { range } from "../lib/viz";
-import { primaryFridge, fmt, isNum } from "../lib/data";
+import { primaryFridge, fmt, isNum, FOODS } from "../lib/data";
 import { timelineBars, perishLevel, checker, VIZ_EN as V } from "../lib/viz";
 import { freezeVerdict } from "../lib/content";
 import { freezerFacts } from "../lib/data";
@@ -120,7 +120,7 @@ const tools = [
         <div class="eyebrow">On this page</div>
         <ul class="list-none mt-3 p-0 grid gap-0.5 text-sm">
           {toc.map(([id, label], i) => (
-            <li><a href={`#${id}`} class:list={["block py-1.5 pl-3 border-l-2", i === 0 ? "border-primary font-medium" : "border-line text-muted"]}>{label}</a></li>
+            <li><a href={`#${id}`} class="block py-1.5 pl-3 border-l-2 border-line text-muted hover:text-primary hover:border-primary">{label}</a></li>
           ))}
         </ul>
       </aside>
@@ -161,11 +161,11 @@ const tools = [
         <section id="methods" class="mt-8 md:mt-14">
           <SectionHead icon="grid" tint="var(--color-tint-green)" ink="#1b7a55" eyebrow="Every method">{cap1(name)} storage times by method</SectionHead>
           <div class="table-wrap mt-[18px] !rounded-[20px]">
-            <table class="data-table min-w-[640px]">
+            <table class="data-table stack">
               <thead><tr><th>Method</th><th>Duration</th><th>Temperature</th><th>Container</th><th>Notes</th></tr></thead>
               <tbody>
                 {methods.map((m) => (
-                  <tr><td class="font-medium">{m.method}</td><td>{m.duration}</td><td class="text-muted">{m.temp}</td><td class="text-muted">{m.container}</td><td class="text-muted">{m.note}</td></tr>
+                  <tr><td class="font-medium full">{m.method}</td><td data-label="Duration">{m.duration}</td><td class="text-muted" data-label="Temperature">{m.temp}</td><td class="text-muted" data-label="Container">{m.container}</td><td class="text-muted full" data-label="Notes">{m.note}</td></tr>
                 ))}
               </tbody>
             </table>
@@ -257,7 +257,7 @@ const tools = [
           </section>
         )}
 
-        <ToolsCta title="Got something else in the fridge?" text="Check any food in seconds: when your leftovers expire, and whether something left out is still safe." links={[{ href: "/tools/leftover-calculator/", label: "Leftover calculator", icon: "calendar" }, { href: "/tools/left-out-checker/", label: "Left-out checker", icon: "clock" }, { href: "/foods/", label: "Browse 663 foods", icon: "grid" }]} />
+        <ToolsCta title="Got something else in the fridge?" text="Check any food in seconds: when your leftovers expire, and whether something left out is still safe." links={[{ href: "/tools/leftover-calculator/", label: "Leftover calculator", icon: "calendar" }, { href: "/tools/left-out-checker/", label: "Left-out checker", icon: "clock" }, { href: "/foods/", label: `Browse ${FOODS.length} foods`, icon: "grid" }]} />
 
         <section id="similar" class="mt-8 md:mt-14">
           <SectionHead icon="leaf" tint="var(--color-tint-amber)" ink="#8a5a0c" eyebrow="Keep exploring">Similar foods</SectionHead>

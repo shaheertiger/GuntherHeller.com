@@ -1,7 +1,8 @@
 ---
 import Base from "../layouts/Base.astro";
+import { FOODS } from "../lib/data";
 ---
-<Base title="Search Foods | Gunther Heller" description="Search storage times for 660+ foods." path="/search/" noindex>
+<Base title="Search Foods | Gunther Heller" description={`Search storage times for ${FOODS.length} foods.`} path="/search/" noindex>
   <div class="container-site pt-8 max-w-[760px]">
     <h1 class="h1-food">Search foods</h1>
     <form action="/search/" method="get" class="mt-6 flex gap-2" role="search">

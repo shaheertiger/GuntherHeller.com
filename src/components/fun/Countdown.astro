@@ -8,9 +8,9 @@ const C = { fresh: ["#1f7048", "var(--color-tint-green)"], edge: ["#8a5a0c", "va
 ---
 <div class="soft border border-line p-4 md:p-5 mt-[18px]">
   <div class="text-[15px] font-[650]">{title}</div>
-  <ol class="flex gap-1.5 overflow-x-auto list-none p-0 mt-3 pb-1">
+  <ol class="grid grid-cols-[repeat(auto-fill,minmax(46px,1fr))] gap-1.5 list-none p-0 mt-3">
     {days.map(({ d, tone }) => (
-      <li class="shrink-0 w-[52px] md:w-[56px] rounded-[12px] px-1 py-2 text-center" style={`background:${C[tone][1]};color:${C[tone][0]}`}>
+      <li class="rounded-[12px] px-1 py-2 text-center" style={`background:${C[tone][1]};color:${C[tone][0]}`}>
         <div class="text-[10px] font-bold uppercase tracking-[.06em]">{d === 0 ? startLabel : dayWord}</div>
         <div class="text-[20px] font-[650] leading-tight">{d}</div>
       </li>

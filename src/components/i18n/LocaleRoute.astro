@@ -93,14 +93,14 @@ const site = { "@type": "WebSite", name: SITE.name, url: `${SITE.url}/`, inLangu
       <h1 class="h1-food mt-3.5 hyphens-auto">{fill(S.hub.h1, { cat: catName })}</h1>
       <p class="lead mt-3 max-w-[680px]">{fill(S.hub.lead, { date })}</p>
       <div class="table-wrap mt-10">
-        <table class="data-table min-w-[640px]">
+        <table class="data-table stack md:min-w-[640px]">
           <thead><tr><th>{S.hub.thFood}</th><th>{U.counter}</th><th>{U.fridge}</th><th>{U.freezer}</th><th>{S.hub.thFreezes}</th></tr></thead>
           <tbody>
             {rows.map((r) => (
               <tr>
-                <td><a href={lurl.food(L, r.f)} class="font-medium flex items-center gap-3"><FoodImage food={r.f} alt="" variant="thumb" />{r.T.n}</a></td>
-                <td class="text-muted">{r.c.pantry.value}</td><td>{r.c.fridge.value}</td><td>{r.c.freezer.value}</td>
-                <td><span class:list={["pill !text-[13px] !py-[3px] !px-2.5", r.z.tone === "yes" ? "pill-yes" : r.z.tone === "no" ? "pill-no" : "pill-caution"]}>{r.z.tone === "yes" ? S.hub.yes : r.z.tone === "no" ? S.hub.no : r.z.steps.length ? S.hub.cooking : "—"}</span></td>
+                <td class="full"><a href={lurl.food(L, r.f)} class="font-medium flex items-center gap-3"><FoodImage food={r.f} alt="" variant="thumb" />{r.T.n}</a></td>
+                <td class="text-muted" data-label={U.counter}>{r.c.pantry.value}</td><td data-label={U.fridge}>{r.c.fridge.value}</td><td data-label={U.freezer}>{r.c.freezer.value}</td>
+                <td class="full" data-label={S.hub.thFreezes}><span class:list={["pill !text-[13px] !py-[3px] !px-2.5", r.z.tone === "yes" ? "pill-yes" : r.z.tone === "no" ? "pill-no" : "pill-caution"]}>{r.z.tone === "yes" ? S.hub.yes : r.z.tone === "no" ? S.hub.no : r.z.steps.length ? S.hub.cooking : "—"}</span></td>
               </tr>
             ))}
           </tbody>

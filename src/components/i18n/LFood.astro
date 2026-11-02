@@ -90,9 +90,9 @@ const ld = { "@context": "https://schema.org", "@graph": [ORG,
         <section id="methods" class="mt-8 md:mt-12">
           <SectionHead icon="grid" tint="var(--color-tint-green)" ink="#1b7a55" eyebrow={E.methods}>{F.hMethods}</SectionHead>
           <div class="table-wrap mt-[18px] !rounded-[20px]">
-            <table class="data-table min-w-[560px]">
+            <table class="data-table stack">
               <thead><tr><th>{F.thMethod}</th><th>{F.thDuration}</th><th>{F.thTemp}</th><th>{F.thNotes}</th></tr></thead>
-              <tbody>{methods.map((m) => <tr><td class="font-medium">{m.method}</td><td>{m.duration}</td><td class="text-muted">{m.temp}</td><td class="text-muted">{m.note}</td></tr>)}</tbody>
+              <tbody>{methods.map((m) => <tr><td class="font-medium full">{m.method}</td><td data-label={F.thDuration}>{m.duration}</td><td class="text-muted" data-label={F.thTemp}>{m.temp}</td><td class="text-muted" data-label={F.thNotes}>{m.note}</td></tr>)}</tbody>
             </table>
           </div>
         </section>
