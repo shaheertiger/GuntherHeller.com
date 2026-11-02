@@ -31,8 +31,8 @@ const cols = [
     <div class="ac-state grid-cols-3" data-i={i}>
       {cols.map((col, j) => (
         <div class:list={["px-3 py-4 md:px-5 md:py-[22px] min-w-0", j < 2 && "border-r border-line"]}>
-          <div class="flex items-center gap-1.5 md:gap-2 text-[10px] md:text-[11px] font-medium tracking-[.1em] md:tracking-[.12em] uppercase text-muted">
-            <span class:list={["dot", col.dot]}></span><span class="hidden md:inline">{col.label}</span><span class="md:hidden">{col.short}</span>
+          <div class="flex items-center gap-1.5 md:gap-2 text-[10px] md:text-[11px] font-medium tracking-[.06em] md:tracking-[.12em] uppercase text-muted items-start leading-tight">
+            <span class:list={["dot", col.dot]}></span><span class="hidden md:inline min-w-0 hyphens-auto [overflow-wrap:anywhere]">{col.label}</span><span class="md:hidden min-w-0 hyphens-auto [overflow-wrap:anywhere]">{col.short}</span>
           </div>
           <div class="mt-2 md:mt-2.5 text-[22px] md:text-[36px] font-[650] tracking-[-0.03em] leading-[1.05] break-words hyphens-auto" lang={L.s.htmlLang}>{c[col.k].value}</div>
           <div class="mt-1.5 text-[12px] md:text-sm text-muted leading-snug">{c[col.k].note}</div>

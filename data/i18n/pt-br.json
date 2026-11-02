@@ -1,0 +1,481 @@
+{
+ "lang": "pt-br",
+ "htmlLang": "pt-BR",
+ "langName": "Português (Brasil)",
+ "locale": "pt-BR",
+ "units": {
+  "hour": ["hora", "horas"],
+  "day": ["dia", "dias"],
+  "week": ["semana", "semanas"],
+  "month": ["mês", "meses"],
+  "year": ["ano", "anos"]
+ },
+ "and": "e",
+ "or": "ou",
+ "ui": {
+  "home": "Início",
+  "foods": "Todos os alimentos",
+  "englishSite": "English",
+  "languages": "Idiomas",
+  "skip": "Pular para o conteúdo",
+  "onCounter": "Em temperatura ambiente",
+  "inFridge": "Na geladeira",
+  "inFreezer": "No freezer",
+  "counter": "Ambiente",
+  "fridge": "Geladeira",
+  "freezer": "Freezer",
+  "showTimesFor": "Mostrar prazos para",
+  "perSource": "Segundo {source}",
+  "opened": "Aberto",
+  "unopened": "Fechado",
+  "cooked": "Cozido",
+  "dry": "Seco / cru",
+  "uncooked": "Cru",
+  "dryShort": "Seco",
+  "fresh": "Recém-extraído",
+  "thawed": "Descongelado",
+  "lastVerified": "verificado em {date}",
+  "subline": "Geladeira, freezer, temperatura ambiente · verificado em {date}",
+  "source": "Fonte",
+  "howWeVerify": "Como verificamos",
+  "howWeVerifyLong": "Como verificamos nossos dados",
+  "report": "Informar um prazo errado",
+  "trust": "Os prazos desta página vêm de {source}. Última verificação em {date}.",
+  "similar": "Alimentos semelhantes",
+  "allIn": "Tudo em {cat}",
+  "onThisPage": "Nesta página",
+  "advert": "Publicidade",
+  "readInEnglish": "Leia o guia completo em inglês",
+  "foodsCount": "{n} alimentos",
+  "disclaimer": "Orientação geral baseada no USDA FoodKeeper, não é aconselhamento médico. Se o alimento estiver com cheiro, aparência ou textura estranhos, jogue fora."
+ },
+ "vals": {
+  "Not recommended": "Não recomendado",
+  "Use-by date": "Até a data de validade",
+  "Indefinitely": "Indefinidamente",
+  "Until ripe": "Até amadurecer",
+  "Not needed": "Não é necessário",
+  "Not listed": "Sem dados",
+  "Refrigerate": "Refrigerar",
+  "Do not refreeze": "Não recongelar",
+  "2 hours": "2 horas"
+ },
+ "notes": {
+  "hot": "1 hora acima de 32 °C (90 °F)",
+  "cool": "local fresco e seco",
+  "ripe": "depois, leve à geladeira",
+  "keepCold": "mantenha refrigerado",
+  "onceOpened": "depois de aberto",
+  "useBy": "siga a data da embalagem",
+  "fridgeTemp": "a 4 °C (40 °F) ou menos",
+  "shelfStable": "não precisa de refrigeração",
+  "noFigure": "sem dado do FoodKeeper",
+  "freezerQuality": "a −18 °C; prazo de qualidade, não de segurança",
+  "notRec": "a textura ou a segurança ficam comprometidas",
+  "noFreeze": "conserva-se sem congelar"
+ },
+ "food": {
+  "h1": [
+   "Quanto tempo dura {Q}?",
+   "Quanto tempo duram {Q}?"
+  ],
+  "inFridge": "na geladeira",
+  "inPantry": "no armário",
+  "inFreezer": "no freezer",
+  "title": "{h1} {d} {where}",
+  "titleFreezer": " [Freezer: {d}]",
+  "desc": [
+   "{Q} dura {d} {where}.",
+   "{Q} duram {d} {where}."
+  ],
+  "descFreezer": " Freezer: {d}.",
+  "descPerishable": " Descarte após 2 horas em temperatura ambiente.",
+  "descTail": " Sinais de que estragou e dicas de congelamento.",
+  "quote": [
+   "{Q} dura {list}.",
+   "{Q} duram {list}."
+  ],
+  "phFridge": "{d} na geladeira",
+  "phFreezer": "{d} no freezer",
+  "phPantry": "{d} no armário",
+  "phRipe": "em temperatura ambiente até amadurecer",
+  "phUseBy": "até a data de validade na geladeira",
+  "ph2h": "no máximo 2 horas em temperatura ambiente",
+  "quote2": "{label}: {list}.",
+  "hMethods": "Prazos por forma de armazenamento",
+  "hSigns": "Sinais de que estragou",
+  "hFreeze": "Dá para congelar {o}?",
+  "hLeftOut": "Esqueceu fora da geladeira durante a noite",
+  "hStore": "Como armazenar",
+  "hFaq": "Perguntas frequentes",
+  "thMethod": "Local",
+  "thDuration": "Prazo",
+  "thTemp": "Temperatura",
+  "thNotes": "Observações",
+  "mPantry": "Armário / temperatura ambiente",
+  "mFridge": "Geladeira",
+  "mFreezer": "Freezer",
+  "mThawed": "Geladeira após descongelar",
+  "mCook": "Cozimento",
+  "tRoom": "20–22 °C",
+  "tFridge": "≤ 4 °C (40 °F)",
+  "tFreezer": "−18 °C (0 °F)",
+  "tCook": "mínimo de {c} °C ({f} °F)",
+  "noteThawed": "Não recongele alimentos crus descongelados fora da geladeira",
+  "noteCook": "Confira com um termômetro culinário"
+ },
+ "freeze": {
+  "yesWell": "Sim — congela bem",
+  "yesShort": "Sim, por pouco tempo",
+  "yesCooking": "Sim, para cozinhar — {d}",
+  "no": "Não recomendado",
+  "noFigure": "Sem dado do FoodKeeper",
+  "dYes": "A qualidade se mantém por cerca de {d} a −18 °C (0 °F). O alimento congelado continua seguro indefinidamente; só a qualidade diminui.",
+  "dCooking": "A qualidade se mantém por cerca de {d} a −18 °C (0 °F). A textura muda, então use em pratos cozidos.",
+  "dNo": "Não é recomendável congelar este alimento; a textura se desfaz ou o resultado não é confiável.",
+  "dNoFigure": "O FoodKeeper não informa prazo no freezer para este alimento.",
+  "afterThaw": "Depois de descongelar na geladeira, consuma em até {d}."
+ },
+ "leftOut": {
+  "keep": "Pode guardar",
+  "check": "Verifique",
+  "discard": "Descarte",
+  "tDiscard": "Alimentos perecíveis deixados em temperatura ambiente por mais de 2 horas (1 hora acima de 32 °C / 90 °F) devem ir para o lixo. As bactérias se multiplicam mais rápido entre 4 °C e 60 °C, e reaquecer não elimina todas as toxinas que elas produzem.",
+  "tKeep": "Este alimento não precisa de refrigeração. Uma noite fora da geladeira não tem problema — mantenha-o em local fresco, seco e longe do sol.",
+  "tRipe": "Ele pode amadurecer em temperatura ambiente. Depois de cortado ou cozido, vale a regra das 2 horas.",
+  "tOpened": "Depois de aberto, o lugar dele é na geladeira. Uma noite em temperatura ambiente acelera a deterioração; se o cheiro, a aparência ou o sabor estiverem estranhos, jogue fora.",
+  "tCaution": "Não é um alimento de alto risco, mas uma noite fora encurta o prazo na geladeira. Refrigere e consuma logo."
+ },
+ "faq": {
+  "qFridge": [
+   "Quanto tempo dura {q} na geladeira?",
+   "Quanto tempo duram {q} na geladeira?"
+  ],
+  "aFridge": "{d} a 4 °C (40 °F) ou menos, segundo o USDA FoodKeeper.",
+  "qFreeze": "Dá para congelar {o}?",
+  "qSitOut": [
+   "Quanto tempo {q} pode ficar fora da geladeira?",
+   "Quanto tempo {q} podem ficar fora da geladeira?"
+  ],
+  "aSitOut": "No máximo 2 horas em temperatura ambiente, ou 1 hora acima de 32 °C (90 °F). Depois disso, jogue fora.",
+  "qPantry": [
+   "É preciso guardar {q} na geladeira?",
+   "É preciso guardar {q} na geladeira?"
+  ],
+  "aPantry": "Não por questão de segurança. Dura {d} em um armário fresco e seco.",
+  "qSigns": [
+   "Como saber se {q} estragou?",
+   "Como saber se {q} estragaram?"
+  ],
+  "qSource": "De onde vêm esses prazos?",
+  "aSource": "Do USDA FoodKeeper, o banco de dados de armazenamento do Serviço de Segurança e Inspeção de Alimentos (FSIS) dos EUA. Conferimos cada página com a versão mais recente."
+ },
+ "home": {
+  "title": "Quanto tempo duram os alimentos? Prazos na geladeira, no freezer e no armário | Gunther Heller",
+  "h1": "Quanto tempo duram os alimentos?",
+  "lead": "Prazos na geladeira, no freezer e no armário para {n} alimentos, abertos e fechados, segundo o USDA FoodKeeper.",
+  "desc": "Prazos de conservação gratuitos para {n} alimentos: em temperatura ambiente, na geladeira e no freezer, abertos e fechados. Dados do USDA FoodKeeper.",
+  "categories": "Navegue por categoria",
+  "popular": "Alimentos mais buscados",
+  "about": "Todos os prazos vêm do FoodKeeper, o banco de dados de armazenamento do Departamento de Agricultura dos EUA. Cada página mostra a fonte e a data da nossa última verificação."
+ },
+ "hub": {
+  "title": "{cat}: prazos de conservação na geladeira, no freezer e no armário ({n} alimentos)",
+  "h1": "{cat}: prazos de conservação",
+  "desc": "Quanto tempo duram {n} alimentos da categoria {cat} em temperatura ambiente, na geladeira e no freezer. Dados do USDA FoodKeeper.",
+  "lead": "Quanto tempo cada alimento dura em temperatura ambiente, na geladeira e no freezer. Fonte: USDA FoodKeeper, verificado em {date}.",
+  "thFood": "Alimento",
+  "thFreezes": "Congela bem?",
+  "yes": "Sim",
+  "no": "Não",
+  "cooking": "Só para cozinhar"
+ },
+ "method": {
+  "title": "Como verificamos nossos prazos | Gunther Heller",
+  "h1": "Como verificamos nossos prazos",
+  "desc": "De onde vêm nossos prazos de conservação (USDA FoodKeeper), como os transformamos em respostas e como informar um prazo errado.",
+  "p1": "Todos os prazos de conservação deste site vêm do FoodKeeper, o banco de dados de armazenamento publicado pelo Serviço de Segurança e Inspeção de Alimentos (FSIS) do Departamento de Agricultura dos EUA. É um conjunto de dados governamental de domínio público.",
+  "p2": "Importamos todos os produtos do FoodKeeper e mantemos seus prazos no armário, na geladeira e no freezer, incluindo os prazos separados depois de aberto. Nunca inventamos um prazo: se o FoodKeeper não tem o dado, a página informa isso.",
+  "p3": "Quando o FoodKeeper não informa prazo em temperatura ambiente para um alimento perecível, aplicamos a regra do FSIS: descarte após 2 horas em temperatura ambiente, ou 1 hora acima de 32 °C (90 °F). Os prazos no freezer se referem à qualidade; alimentos mantidos a −18 °C (0 °F) continuam seguros indefinidamente.",
+  "p4": "As traduções são revisadas; os números são idênticos em todos os idiomas. Para informar um erro, envie um e-mail para {email}."
+ },
+ "categories": {
+  "dairy-eggs": "Laticínios e ovos",
+  "meat": "Carnes",
+  "poultry": "Aves",
+  "seafood": "Peixes e frutos do mar",
+  "leftovers-deli": "Sobras e frios",
+  "fruits": "Frutas",
+  "vegetables": "Legumes e verduras",
+  "grains-beans-pasta": "Grãos, leguminosas e massas",
+  "baked-goods": "Pães e confeitaria",
+  "condiments-sauces": "Condimentos e molhos",
+  "pantry-staples": "Itens de despensa",
+  "beverages": "Bebidas",
+  "frozen-foods": "Congelados",
+  "baby-food": "Alimentação infantil",
+  "vegetarian-proteins": "Proteínas vegetais"
+ },
+ "signs": {
+  "meat": [
+   ["Cheiro", "Cheiro azedo, de enxofre ou de amônia, mesmo que leve."],
+   ["Textura", "Superfície pegajosa ou viscosa que continua depois de enxaguar."],
+   ["Cor", "Manchas cinza-esverdeadas ou marrons se espalhando pela carne."],
+   ["Embalagem", "Embalagem estufada ou vazando, ou data vencida há mais tempo que o prazo na geladeira."]
+  ],
+  "seafood": [
+   ["Cheiro", "Cheiro forte de peixe, azedo ou de amônia. Pescado fresco tem cheiro de mar."],
+   ["Textura", "Carne mole que não volta ao ser pressionada, ou uma gosma leitosa."],
+   ["Cor", "Carne opaca, acinzentada ou amarelada; bordas escuras."],
+   ["Conchas", "Mariscos vivos com a concha aberta que não fecha ao receber uma batidinha."]
+  ],
+  "cooked": [
+   ["Cheiro", "Azedo, de fermento ou 'estranho', diferente de quando foi preparado."],
+   ["Textura", "Película viscosa, ou líquido se separando onde não deveria."],
+   ["Cor", "Partes opacas ou escurecidas, ou qualquer mancha descolorida."],
+   ["Mofo", "Qualquer bolor felpudo — descarte o pote inteiro, não só a parte afetada."]
+  ],
+  "cured": [
+   ["Cheiro", "Cheiro azedo ou rançoso em vez de defumado ou salgado."],
+   ["Textura", "Superfície escorregadia e viscosa nas fatias ou gomos."],
+   ["Cor", "Manchas cinzentas, verdes ou furta-cor que se espalham."],
+   ["Mofo", "Pontos felpudos em produtos fatiados ou cozidos — descarte."]
+  ],
+  "dairy": [
+   ["Cheiro", "Cheiro azedo ou de queijo quando deveria ser limpo e suave."],
+   ["Textura", "Grumos, talhado ou consistência grossa e viscosa."],
+   ["Cor", "Amarelado ou com tom rosado, verde ou cinza."],
+   ["Sabor", "Azedo ou amargo no primeiro gole — pare e descarte."]
+  ],
+  "cheese": [
+   ["Cheiro", "Cheiro de amônia ou azedo forte, além do aroma normal do queijo."],
+   ["Textura", "Superfície viscosa, ou muito seco e rachado por inteiro."],
+   ["Cor", "Bordas escurecidas ou amareladas, ou cores novas que não fazem parte do queijo."],
+   ["Mofo", "Em queijo duro, corte 2,5 cm ao redor da mancha. Em queijo macio ou ralado, descarte."]
+  ],
+  "eggs": [
+   ["Cheiro", "Cheiro de enxofre ao quebrar — inconfundível, descarte."],
+   ["Casca", "Casca viscosa, com pó ou rachada."],
+   ["Interior", "Clara ou gema rosada, esverdeada ou furta-cor."],
+   ["Teste da água", "Mostra só a idade. Um ovo que boia é velho; cheire antes de decidir."]
+  ],
+  "produce": [
+   ["Cheiro", "Cheiro fermentado, azedo ou de mofo."],
+   ["Textura", "Partes moles, desmanchando ou soltando líquido, ou casca enrugada com polpa mole."],
+   ["Cor", "Manchas escuras que se espalham, ou escurecimento por dentro."],
+   ["Mofo", "Bolor branco, cinza ou verde — descarte frutas e legumes macios; nos firmes, corte com boa margem."]
+  ],
+  "leafy": [
+   ["Cheiro", "Cheiro azedo ou de podre no saco ou no maço."],
+   ["Textura", "Folhas viscosas, molhadas ou murchas que não se recuperam em água gelada."],
+   ["Cor", "Folhas verde-escuras quase pretas ou marrons."],
+   ["Mofo", "Qualquer bolor felpudo — descarte o saco."]
+  ],
+  "bakery": [
+   ["Cheiro", "Cheiro de mofo, azedo ou de álcool."],
+   ["Textura", "Duro e seco é amanhecido, mas seguro; úmido ou pegajoso, não."],
+   ["Cor", "Manchas descoloridas na casca ou no miolo."],
+   ["Mofo", "Qualquer mofo visível — descarte o item inteiro; as raízes se espalham sem aparecer."]
+  ],
+  "dry": [
+   ["Cheiro", "Cheiro de mofo, azedo ou rançoso."],
+   ["Textura", "Empelotado pela umidade, ou úmido ao toque."],
+   ["Pragas", "Teias, furos ou pequenos insetos no pacote."],
+   ["Sabor", "Sem gosto, velho ou amargo — perdeu a qualidade, mesmo que seja seguro."]
+  ],
+  "fat": [
+   ["Cheiro", "Rançoso: lembra giz de cera, tinta ou nozes velhas."],
+   ["Sabor", "Gosto residual amargo ou de sabão."],
+   ["Textura", "Resíduo pegajoso ou grudento em volta da tampa."],
+   ["Cor", "Escurecido ou turvo quando deveria ser límpido."]
+  ],
+  "condiment": [
+   ["Cheiro", "Fermentado, de levedura ou azedo além da acidez normal do produto."],
+   ["Textura", "Separação que não volta ao misturar, ou uma camada viscosa."],
+   ["Cor", "Escurecimento ou mudança de cor na parte de cima do pote."],
+   ["Mofo", "Qualquer bolor na superfície ou na tampa — descarte o pote."]
+  ],
+  "drink": [
+   ["Cheiro", "Cheiro de vinagre, azedo ou de mofo em vez de fresco."],
+   ["Sabor", "Sem gosto, azedo ou amargo — perdeu a qualidade."],
+   ["Aparência", "Turvação, sedimento ou película que não existiam antes."],
+   ["Embalagem", "Caixa, tampa ou lata estufada — descarte."]
+  ],
+  "frozen": [
+   ["Queimadura de freezer", "Manchas secas, branco-acinzentadas. É seguro, mas corte essas partes."],
+   ["Cristais de gelo", "Muito gelo dentro da embalagem indica que descongelou e foi recongelado."],
+   ["Cheiro", "Cheiro estranho depois de descongelar — descarte."],
+   ["Embalagem", "Embalagem rasgada deixa o ar entrar e acelera a perda de qualidade."]
+  ],
+  "baby": [
+   ["Cheiro", "Cheiro azedo ou estranho na fórmula ou papinha preparada."],
+   ["Textura", "Separação que não volta ao misturar, ou grumos."],
+   ["Cor", "Cor diferente da habitual."],
+   ["Lacre", "Tampa de pote que não faz 'clique' ao abrir, ou sachês danificados — descarte."]
+  ]
+ },
+ "freezeSteps": {
+  "meat": [
+   "Congele até o último dia do prazo na geladeira; quanto antes, melhor a textura.",
+   "Envolva a embalagem original em papel-alumínio ou num saco para freezer, ou embale a vácuo; tire o ar.",
+   "Descongele na geladeira (cerca de 24 horas para cada 2,3 kg) ou em água fria e cozinhe em seguida."
+  ],
+  "seafood": [
+   "Congele o mais fresco possível, de preferência no dia da compra.",
+   "Embale bem em filme plástico e depois num saco para freezer; tire o ar e anote a data.",
+   "Descongele de um dia para o outro na geladeira ou em água fria, bem fechado; nunca sobre a bancada."
+  ],
+  "cooked": [
+   "Esfrie rápido: use recipientes rasos e leve à geladeira ou ao freezer em até 2 horas.",
+   "Divida em porções em sacos para freezer ou potes herméticos, deixe espaço para líquidos e etiquete com a data.",
+   "Descongele na geladeira e reaqueça a 74 °C (165 °F) até soltar vapor."
+  ],
+  "cured": [
+   "Congele na embalagem a vácuo original se estiver fechada; senão, envolva as fatias em filme plástico e papel-alumínio.",
+   "Congele em porções de uma refeição para descongelar só o necessário.",
+   "Descongele na geladeira; frios fatiados ficam um pouco mais moles depois de congelados."
+  ],
+  "dairy": [
+   "Retire um pouco do conteúdo para dar espaço à expansão e feche bem.",
+   "Congele deitado ou em pé e anote a data.",
+   "Descongele na geladeira e agite ou bata bem; use para cozinhar ou assar."
+  ],
+  "cheese": [
+   "Corte em pedaços de até 230 g, ou congele o queijo ralado no próprio pacote.",
+   "Embale em filme plástico e depois num saco para freezer, tirando o ar.",
+   "Descongele na geladeira; ele fica mais quebradiço, então use derretido ou em preparações cozidas."
+  ],
+  "eggs": [
+   "Nunca congele ovos com casca.",
+   "Bata os ovos inteiros (ou separe claras e gemas) e coloque num pote com tampa ou em forminhas de gelo.",
+   "Descongele na geladeira e use só em pratos cozidos a 71 °C (160 °F)."
+  ],
+  "produce": [
+   "Lave, seque e corte em pedaços; branqueie a maioria dos legumes por 1–3 minutos antes.",
+   "Espalhe numa assadeira para congelar separadamente, depois passe para um saco e tire o ar.",
+   "Use ainda congelado em receitas ou vitaminas; depois de descongelado fica mole."
+  ],
+  "leafy": [
+   "Folhas e ervas perdem a crocância quando congeladas.",
+   "Para cozinhar, branqueie as folhas ou pique as ervas em forminhas de gelo com azeite ou água.",
+   "Coloque direto do freezer em sopas, molhos e refogados."
+  ],
+  "bakery": [
+   "Congele no dia em que comprou ou assou, depois de esfriar totalmente.",
+   "Embale bem em filme plástico e depois num saco para freezer; fatie o pão antes para tirar só o necessário.",
+   "Descongele em temperatura ambiente na embalagem, ou torre ou aqueça direto do freezer."
+  ],
+  "dry": [
+   "Congelar alimentos secos é opcional; serve principalmente para evitar pragas e ranço.",
+   "Use um pote hermético ou um saco para freezer bem fechado.",
+   "Deixe chegar à temperatura ambiente antes de abrir para evitar condensação."
+  ],
+  "fat": [
+   "Congele em pote hermético ou na embalagem original fechada.",
+   "Divida em porções antes (cubos ou potinhos) para descongelar só o necessário.",
+   "Descongele na geladeira; gorduras e castanhas podem ser usadas direto do freezer."
+  ],
+  "condiment": [
+   "A maioria dos condimentos se conserva bem na geladeira e não precisa ser congelada.",
+   "Se for congelar, use forminhas de gelo ou potinhos e etiquete.",
+   "Descongele na geladeira e misture bem; emulsões podem se separar."
+  ],
+  "drink": [
+   "Deixe espaço livre num recipiente próprio para freezer; líquidos se expandem.",
+   "Congele em forminhas de gelo para porções pequenas.",
+   "Descongele na geladeira e agite bem antes de usar."
+  ],
+  "frozen": [
+   "Mantenha a −18 °C (0 °F) ou menos, na embalagem original.",
+   "Feche bem os pacotes abertos ou passe para um saco para freezer.",
+   "Prepare direto do freezer conforme a embalagem, ou descongele na geladeira."
+  ],
+  "baby": [
+   "Congele apenas o que a orientação permite, em recipientes limpos e bem fechados.",
+   "Etiquete com a data e a hora.",
+   "Descongele na geladeira ou em água morna; nunca no micro-ondas, e não recongele."
+  ]
+ },
+ "store": {
+  "meat": [
+   "Leve à geladeira a 4 °C (40 °F) ou menos assim que chegar em casa; na prateleira de baixo, para o líquido não pingar.",
+   "Mantenha na embalagem original até usar, ou envolva de novo para o freezer.",
+   "Cozinhe ou congele dentro do prazo na geladeira; a contagem começa na compra."
+  ],
+  "seafood": [
+   "Mantenha no gelo ou na parte mais fria da geladeira, a 4 °C (40 °F) ou menos.",
+   "Guarde mariscos vivos numa tigela coberta com um pano úmido, nunca na água ou em plástico fechado.",
+   "Cozinhe ou congele dentro do prazo na geladeira."
+  ],
+  "cooked": [
+   "Leve à geladeira em até 2 horas após o preparo (1 hora acima de 32 °C / 90 °F), em potes rasos e herméticos.",
+   "Mantenha a geladeira a 4 °C (40 °F) ou menos; a porta é o lugar mais quente.",
+   "Reaqueça as sobras a 74 °C (165 °F) e só a quantidade que vai comer."
+  ],
+  "cured": [
+   "Mantenha na geladeira a 4 °C (40 °F) ou menos, mesmo sendo curado.",
+   "Depois de aberto, embale bem de novo ou passe para um pote hermético.",
+   "Consuma dentro do prazo após aberto, independentemente da data da embalagem."
+  ],
+  "dairy": [
+   "Guarde numa prateleira interna, não na porta, a 4 °C (40 °F) ou menos.",
+   "Feche bem a embalagem; laticínios absorvem os cheiros da geladeira.",
+   "Sirva o que for usar e devolva à geladeira imediatamente."
+  ],
+  "cheese": [
+   "Embrulhe em papel-manteiga ou encerado e depois, sem apertar, em plástico, para que ele respire.",
+   "Guarde na gaveta de frios ou numa prateleira baixa, a 4 °C (40 °F) ou menos.",
+   "Use uma faca limpa a cada vez para não introduzir mofo."
+  ],
+  "eggs": [
+   "Mantenha os ovos na embalagem, numa prateleira interna, não na porta.",
+   "Guarde a 4 °C (40 °F) ou menos; não lave antes de guardar.",
+   "Leve ovos cozidos à geladeira em até 2 horas após o preparo."
+  ],
+  "produce": [
+   "Guarde sem lavar; lave só na hora de consumir.",
+   "Mantenha os que liberam etileno (maçã, banana, abacate) longe de frutas e legumes que amadurecem demais.",
+   "Depois de cortado, guarde na geladeira em pote tampado."
+  ],
+  "leafy": [
+   "Guarde seco, envolto em papel-toalha dentro de um saco ou pote.",
+   "Mantenha na gaveta de legumes a 4 °C (40 °F) ou menos.",
+   "Coloque ervas como coentro e salsinha num copo com água na geladeira, cobertas sem apertar."
+  ],
+  "bakery": [
+   "Mantenha em temperatura ambiente, numa caixa de pão ou saco fechado, para a melhor textura.",
+   "A geladeira retarda o mofo, mas deixa o pão amanhecido mais rápido.",
+   "Congele o que não for consumir a tempo."
+  ],
+  "dry": [
+   "Guarde em pote hermético, em local fresco, escuro e seco.",
+   "Mantenha longe do fogão e da lava-louças, onde o calor e a umidade aceleram a deterioração.",
+   "Anote a data de abertura na embalagem."
+  ],
+  "fat": [
+   "Mantenha em local fresco e escuro, bem fechado, longe do calor.",
+   "Guardar castanhas, sementes e óleos de castanhas na geladeira aumenta bastante a durabilidade.",
+   "Cheire antes de usar; o ranço é um problema de qualidade que dá para perceber."
+  ],
+  "condiment": [
+   "Leve à geladeira depois de aberto, a menos que o rótulo diga o contrário.",
+   "Use um utensílio limpo a cada vez; migalhas e talheres já usados encurtam a durabilidade.",
+   "Limpe a borda e feche bem a tampa."
+  ],
+  "drink": [
+   "Guarde fechado em local fresco e escuro.",
+   "Leve à geladeira depois de aberto e feche bem.",
+   "Mantenha longe da luz e do calor, que tiram o sabor."
+  ],
+  "frozen": [
+   "Mantenha o freezer a −18 °C (0 °F) ou menos.",
+   "Não deixe descongelar e recongelar no caminho para casa; compre os congelados por último.",
+   "Feche bem os pacotes abertos para evitar queimadura de freezer."
+  ],
+  "baby": [
+   "Siga primeiro o rótulo e as orientações do pediatra.",
+   "Leve produtos preparados ou abertos à geladeira imediatamente.",
+   "Descarte o que sobrar na mamadeira ou no pratinho em que o bebê comeu."
+  ]
+ }
+}

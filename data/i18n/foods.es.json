@@ -1,0 +1,4643 @@
+{
+ "cooked-rice": {
+  "n": "Arroz cocido",
+  "q": "el arroz cocido",
+  "o": "el arroz cocido",
+  "p": false,
+  "s": "arroz-cocido"
+ },
+ "raw-chicken": {
+  "n": "Pollo crudo",
+  "q": "el pollo crudo",
+  "o": "el pollo crudo",
+  "p": false,
+  "s": "pollo-crudo"
+ },
+ "cooked-chicken": {
+  "n": "Pollo cocido",
+  "q": "el pollo cocido",
+  "o": "el pollo cocido",
+  "p": false,
+  "s": "pollo-cocido"
+ },
+ "ground-beef": {
+  "n": "Carne molida de res",
+  "q": "la carne molida de res",
+  "o": "la carne molida de res",
+  "p": false,
+  "s": "carne-molida-res"
+ },
+ "eggs": {
+  "n": "Huevos",
+  "q": "los huevos",
+  "o": "los huevos",
+  "p": true,
+  "s": "huevos"
+ },
+ "hard-boiled-eggs": {
+  "n": "Huevos duros",
+  "q": "los huevos duros",
+  "o": "los huevos duros",
+  "p": true,
+  "s": "huevos-duros"
+ },
+ "milk": {
+  "n": "Leche",
+  "q": "la leche",
+  "o": "la leche",
+  "p": false,
+  "s": "leche"
+ },
+ "hard-cheese": {
+  "n": "Queso duro",
+  "q": "el queso duro",
+  "o": "el queso duro",
+  "p": false,
+  "s": "queso-duro"
+ },
+ "shredded-cheese": {
+  "n": "Queso rallado",
+  "q": "el queso rallado",
+  "o": "el queso rallado",
+  "p": false,
+  "s": "queso-rallado"
+ },
+ "cream-cheese": {
+  "n": "Queso crema",
+  "q": "el queso crema",
+  "o": "el queso crema",
+  "p": false,
+  "s": "queso-crema"
+ },
+ "cottage-cheese": {
+  "n": "Queso cottage",
+  "q": "el queso cottage",
+  "o": "el queso cottage",
+  "p": false,
+  "s": "queso-cottage"
+ },
+ "butter": {
+  "n": "Mantequilla",
+  "q": "la mantequilla",
+  "o": "la mantequilla",
+  "p": false,
+  "s": "mantequilla"
+ },
+ "yogurt": {
+  "n": "Yogur",
+  "q": "el yogur",
+  "o": "el yogur",
+  "p": false,
+  "s": "yogur"
+ },
+ "bread": {
+  "n": "Pan",
+  "q": "el pan",
+  "o": "el pan",
+  "p": false,
+  "s": "pan"
+ },
+ "bacon": {
+  "n": "Tocino",
+  "q": "el tocino",
+  "o": "el tocino",
+  "p": false,
+  "s": "tocino"
+ },
+ "deli-meat": {
+  "n": "Carnes frías rebanadas",
+  "q": "las carnes frías rebanadas",
+  "o": "las carnes frías rebanadas",
+  "p": true,
+  "s": "carnes-frias-rebanadas"
+ },
+ "rotisserie-chicken": {
+  "n": "Pollo rostizado",
+  "q": "el pollo rostizado",
+  "o": "el pollo rostizado",
+  "p": false,
+  "s": "pollo-rostizado"
+ },
+ "salmon": {
+  "n": "Salmón",
+  "q": "el salmón",
+  "o": "el salmón",
+  "p": false,
+  "s": "salmon"
+ },
+ "shrimp": {
+  "n": "Camarones",
+  "q": "los camarones",
+  "o": "los camarones",
+  "p": true,
+  "s": "camarones"
+ },
+ "steak": {
+  "n": "Bistec de res",
+  "q": "el bistec de res",
+  "o": "el bistec de res",
+  "p": false,
+  "s": "bistec-res"
+ },
+ "pork-chops": {
+  "n": "Chuletas de cerdo",
+  "q": "las chuletas de cerdo",
+  "o": "las chuletas de cerdo",
+  "p": true,
+  "s": "chuletas-cerdo"
+ },
+ "raw-sausage": {
+  "n": "Salchicha cruda",
+  "q": "la salchicha cruda",
+  "o": "la salchicha cruda",
+  "p": false,
+  "s": "salchicha-cruda"
+ },
+ "cooked-pasta": {
+  "n": "Pasta cocida",
+  "q": "la pasta cocida",
+  "o": "la pasta cocida",
+  "p": false,
+  "s": "pasta-cocida"
+ },
+ "pizza": {
+  "n": "Pizza",
+  "q": "la pizza",
+  "o": "la pizza",
+  "p": false,
+  "s": "pizza"
+ },
+ "soup": {
+  "n": "Sopa",
+  "q": "la sopa",
+  "o": "la sopa",
+  "p": false,
+  "s": "sopa"
+ },
+ "chicken-broth": {
+  "n": "Caldo de pollo",
+  "q": "el caldo de pollo",
+  "o": "el caldo de pollo",
+  "p": false,
+  "s": "caldo-pollo"
+ },
+ "mashed-potatoes": {
+  "n": "Puré de papas",
+  "q": "el puré de papas",
+  "o": "el puré de papas",
+  "p": false,
+  "s": "pure-papas"
+ },
+ "potatoes": {
+  "n": "Papas",
+  "q": "las papas",
+  "o": "las papas",
+  "p": true,
+  "s": "papas"
+ },
+ "watermelon": {
+  "n": "Sandía",
+  "q": "la sandía",
+  "o": "la sandía",
+  "p": false,
+  "s": "sandia"
+ },
+ "avocado": {
+  "n": "Aguacate",
+  "q": "el aguacate",
+  "o": "el aguacate",
+  "p": false,
+  "s": "aguacate"
+ },
+ "bananas": {
+  "n": "Plátanos",
+  "q": "los plátanos",
+  "o": "los plátanos",
+  "p": true,
+  "s": "platanos"
+ },
+ "strawberries": {
+  "n": "Fresas",
+  "q": "las fresas",
+  "o": "las fresas",
+  "p": true,
+  "s": "fresas"
+ },
+ "grapes": {
+  "n": "Uvas",
+  "q": "las uvas",
+  "o": "las uvas",
+  "p": true,
+  "s": "uvas"
+ },
+ "apples": {
+  "n": "Manzanas",
+  "q": "las manzanas",
+  "o": "las manzanas",
+  "p": true,
+  "s": "manzanas"
+ },
+ "carrots": {
+  "n": "Zanahorias",
+  "q": "las zanahorias",
+  "o": "las zanahorias",
+  "p": true,
+  "s": "zanahorias"
+ },
+ "broccoli": {
+  "n": "Brócoli",
+  "q": "el brócoli",
+  "o": "el brócoli",
+  "p": false,
+  "s": "brocoli"
+ },
+ "lettuce": {
+  "n": "Lechuga",
+  "q": "la lechuga",
+  "o": "la lechuga",
+  "p": false,
+  "s": "lechuga"
+ },
+ "tomatoes": {
+  "n": "Tomates",
+  "q": "los tomates",
+  "o": "los tomates",
+  "p": true,
+  "s": "tomates"
+ },
+ "mushrooms": {
+  "n": "Champiñones",
+  "q": "los champiñones",
+  "o": "los champiñones",
+  "p": true,
+  "s": "champinones"
+ },
+ "cilantro": {
+  "n": "Cilantro",
+  "q": "el cilantro",
+  "o": "el cilantro",
+  "p": false,
+  "s": "cilantro"
+ },
+ "fresh-salsa": {
+  "n": "Salsa fresca",
+  "q": "la salsa fresca",
+  "o": "la salsa fresca",
+  "p": false,
+  "s": "salsa-fresca"
+ },
+ "jarred-salsa": {
+  "n": "Salsa de frasco",
+  "q": "la salsa de frasco",
+  "o": "la salsa de frasco",
+  "p": false,
+  "s": "salsa-frasco"
+ },
+ "mayonnaise": {
+  "n": "Mayonesa",
+  "q": "la mayonesa",
+  "o": "la mayonesa",
+  "p": false,
+  "s": "mayonesa"
+ },
+ "sour-cream": {
+  "n": "Crema agria",
+  "q": "la crema agria",
+  "o": "la crema agria",
+  "p": false,
+  "s": "crema-agria"
+ },
+ "hummus": {
+  "n": "Hummus",
+  "q": "el hummus",
+  "o": "el hummus",
+  "p": false,
+  "s": "hummus"
+ },
+ "honey": {
+  "n": "Miel",
+  "q": "la miel",
+  "o": "la miel",
+  "p": false,
+  "s": "miel"
+ },
+ "peanut-butter": {
+  "n": "Crema de cacahuate",
+  "q": "la crema de cacahuate",
+  "o": "la crema de cacahuate",
+  "p": false,
+  "s": "crema-cacahuate"
+ },
+ "ground-coffee": {
+  "n": "Café molido",
+  "q": "el café molido",
+  "o": "el café molido",
+  "p": false,
+  "s": "cafe-molido"
+ },
+ "coffee-beans": {
+  "n": "Café en grano",
+  "q": "el café en grano",
+  "o": "el café en grano",
+  "p": false,
+  "s": "cafe-grano"
+ },
+ "red-wine": {
+  "n": "Vino tinto",
+  "q": "el vino tinto",
+  "o": "el vino tinto",
+  "p": false,
+  "s": "vino-tinto"
+ },
+ "white-wine": {
+  "n": "Vino blanco",
+  "q": "el vino blanco",
+  "o": "el vino blanco",
+  "p": false,
+  "s": "vino-blanco"
+ },
+ "liquor": {
+  "n": "Licores destilados",
+  "q": "los licores destilados",
+  "o": "los licores destilados",
+  "p": true,
+  "s": "licores"
+ },
+ "liquid-baby-formula": {
+  "n": "Fórmula infantil líquida",
+  "q": "la fórmula infantil líquida",
+  "o": "la fórmula infantil líquida",
+  "p": false,
+  "s": "formula-infantil-liquida"
+ },
+ "prepared-baby-formula": {
+  "n": "Fórmula infantil preparada",
+  "q": "la fórmula infantil preparada",
+  "o": "la fórmula infantil preparada",
+  "p": false,
+  "s": "formula-infantil-preparada"
+ },
+ "breast-milk": {
+  "n": "Leche materna",
+  "q": "la leche materna",
+  "o": "la leche materna",
+  "p": false,
+  "s": "leche-materna"
+ },
+ "heavy-cream": {
+  "n": "Crema para batir espesa",
+  "q": "la crema para batir espesa",
+  "o": "la crema para batir espesa",
+  "p": false,
+  "s": "crema-espesa"
+ },
+ "half-half": {
+  "n": "Media crema (half and half)",
+  "q": "la media crema (half and half)",
+  "o": "la media crema (half and half)",
+  "p": false,
+  "s": "media-crema"
+ },
+ "tofu": {
+  "n": "Tofu",
+  "q": "el tofu",
+  "o": "el tofu",
+  "p": false,
+  "s": "tofu"
+ },
+ "guacamole": {
+  "n": "Guacamole",
+  "q": "el guacamole",
+  "o": "el guacamole",
+  "p": false,
+  "s": "guacamole"
+ },
+ "hot-dogs": {
+  "n": "Salchichas para hot dog",
+  "q": "las salchichas para hot dog",
+  "o": "las salchichas para hot dog",
+  "p": true,
+  "s": "salchichas-hot-dog"
+ },
+ "ham-salad": {
+  "n": "Ensalada de jamón",
+  "q": "la ensalada de jamón",
+  "o": "la ensalada de jamón",
+  "p": false,
+  "s": "ensalada-jamon"
+ },
+ "chicken-salad": {
+  "n": "Ensalada de pollo",
+  "q": "la ensalada de pollo",
+  "o": "la ensalada de pollo",
+  "p": false,
+  "s": "ensalada-pollo"
+ },
+ "tuna-salad": {
+  "n": "Ensalada de atún",
+  "q": "la ensalada de atún",
+  "o": "la ensalada de atún",
+  "p": false,
+  "s": "ensalada-atun"
+ },
+ "egg-salad": {
+  "n": "Ensalada de huevo",
+  "q": "la ensalada de huevo",
+  "o": "la ensalada de huevo",
+  "p": false,
+  "s": "ensalada-huevo"
+ },
+ "potato-salad": {
+  "n": "Ensalada de papa",
+  "q": "la ensalada de papa",
+  "o": "la ensalada de papa",
+  "p": false,
+  "s": "ensalada-papa"
+ },
+ "pasta-salad": {
+  "n": "Ensalada de pasta",
+  "q": "la ensalada de pasta",
+  "o": "la ensalada de pasta",
+  "p": false,
+  "s": "ensalada-pasta"
+ },
+ "coleslaw": {
+  "n": "Ensalada de col",
+  "q": "la ensalada de col",
+  "o": "la ensalada de col",
+  "p": false,
+  "s": "ensalada-col"
+ },
+ "spinach": {
+  "n": "Espinacas",
+  "q": "las espinacas",
+  "o": "las espinacas",
+  "p": true,
+  "s": "espinacas"
+ },
+ "bagged-salad": {
+  "n": "Ensalada en bolsa",
+  "q": "la ensalada en bolsa",
+  "o": "la ensalada en bolsa",
+  "p": false,
+  "s": "ensalada-bolsa"
+ },
+ "onions": {
+  "n": "Cebollas",
+  "q": "las cebollas",
+  "o": "las cebollas",
+  "p": true,
+  "s": "cebollas"
+ },
+ "garlic": {
+  "n": "Ajo",
+  "q": "el ajo",
+  "o": "el ajo",
+  "p": false,
+  "s": "ajo"
+ },
+ "bell-peppers": {
+  "n": "Pimientos morrones",
+  "q": "los pimientos morrones",
+  "o": "los pimientos morrones",
+  "p": true,
+  "s": "pimientos-morrones"
+ },
+ "cucumbers": {
+  "n": "Pepinos",
+  "q": "los pepinos",
+  "o": "los pepinos",
+  "p": true,
+  "s": "pepinos"
+ },
+ "celery": {
+  "n": "Apio",
+  "q": "el apio",
+  "o": "el apio",
+  "p": false,
+  "s": "apio"
+ },
+ "corn-cob": {
+  "n": "Elote",
+  "q": "el elote",
+  "o": "el elote",
+  "p": false,
+  "s": "elote"
+ },
+ "sweet-potatoes": {
+  "n": "Camotes",
+  "q": "los camotes",
+  "o": "los camotes",
+  "p": true,
+  "s": "camotes"
+ },
+ "citrus-fruit": {
+  "n": "Cítricos",
+  "q": "los cítricos",
+  "o": "los cítricos",
+  "p": true,
+  "s": "citricos"
+ },
+ "blueberries": {
+  "n": "Arándanos azules",
+  "q": "los arándanos azules",
+  "o": "los arándanos azules",
+  "p": true,
+  "s": "arandanos-azules"
+ },
+ "raspberries": {
+  "n": "Frambuesas",
+  "q": "las frambuesas",
+  "o": "las frambuesas",
+  "p": true,
+  "s": "frambuesas"
+ },
+ "fresh-cherries": {
+  "n": "Cerezas frescas",
+  "q": "las cerezas frescas",
+  "o": "las cerezas frescas",
+  "p": true,
+  "s": "cerezas-frescas"
+ },
+ "pineapple": {
+  "n": "Piña",
+  "q": "la piña",
+  "o": "la piña",
+  "p": false,
+  "s": "pina"
+ },
+ "cantaloupe": {
+  "n": "Melón cantalupo",
+  "q": "el melón cantalupo",
+  "o": "el melón cantalupo",
+  "p": false,
+  "s": "melon-cantalupo"
+ },
+ "melon": {
+  "n": "Melón",
+  "q": "el melón",
+  "o": "el melón",
+  "p": false,
+  "s": "melon"
+ },
+ "orange-juice": {
+  "n": "Jugo de naranja",
+  "q": "el jugo de naranja",
+  "o": "el jugo de naranja",
+  "p": false,
+  "s": "jugo-naranja"
+ },
+ "ketchup": {
+  "n": "Cátsup",
+  "q": "la cátsup",
+  "o": "la cátsup",
+  "p": false,
+  "s": "catsup"
+ },
+ "mustard": {
+  "n": "Mostaza",
+  "q": "la mostaza",
+  "o": "la mostaza",
+  "p": false,
+  "s": "mostaza"
+ },
+ "soy-sauce": {
+  "n": "Salsa de soya",
+  "q": "la salsa de soya",
+  "o": "la salsa de soya",
+  "p": false,
+  "s": "salsa-soya"
+ },
+ "jam-jelly": {
+  "n": "Mermelada y jalea",
+  "q": "la mermelada y jalea",
+  "o": "la mermelada y jalea",
+  "p": false,
+  "s": "mermelada-jalea"
+ },
+ "maple-syrup": {
+  "n": "Jarabe de maple",
+  "q": "el jarabe de maple",
+  "o": "el jarabe de maple",
+  "p": false,
+  "s": "jarabe-maple"
+ },
+ "olive-oil": {
+  "n": "Aceite de oliva",
+  "q": "el aceite de oliva",
+  "o": "el aceite de oliva",
+  "p": false,
+  "s": "aceite-oliva"
+ },
+ "flour": {
+  "n": "Harina",
+  "q": "la harina",
+  "o": "la harina",
+  "p": false,
+  "s": "harina"
+ },
+ "sugar": {
+  "n": "Azúcar",
+  "q": "el azúcar",
+  "o": "el azúcar",
+  "p": false,
+  "s": "azucar"
+ },
+ "rice": {
+  "n": "Arroz",
+  "q": "el arroz",
+  "o": "el arroz",
+  "p": false,
+  "s": "arroz"
+ },
+ "brown-rice": {
+  "n": "Arroz integral",
+  "q": "el arroz integral",
+  "o": "el arroz integral",
+  "p": false,
+  "s": "arroz-integral"
+ },
+ "dry-pasta": {
+  "n": "Pasta seca",
+  "q": "la pasta seca",
+  "o": "la pasta seca",
+  "p": false,
+  "s": "pasta-seca"
+ },
+ "oatmeal": {
+  "n": "Avena para cocinar",
+  "q": "la avena para cocinar",
+  "o": "la avena para cocinar",
+  "p": false,
+  "s": "avena-cocinar"
+ },
+ "cereal": {
+  "n": "Cereal",
+  "q": "el cereal",
+  "o": "el cereal",
+  "p": false,
+  "s": "cereal"
+ },
+ "flour-tortillas": {
+  "n": "Tortillas de harina",
+  "q": "las tortillas de harina",
+  "o": "las tortillas de harina",
+  "p": true,
+  "s": "tortillas-harina"
+ },
+ "bagels": {
+  "n": "Bagels",
+  "q": "los bagels",
+  "o": "los bagels",
+  "p": true,
+  "s": "bagels"
+ },
+ "muffins": {
+  "n": "Muffins",
+  "q": "los muffins",
+  "o": "los muffins",
+  "p": true,
+  "s": "muffins"
+ },
+ "cake": {
+  "n": "Pastel",
+  "q": "el pastel",
+  "o": "el pastel",
+  "p": false,
+  "s": "pastel"
+ },
+ "cheesecake": {
+  "n": "Pay de queso",
+  "q": "el pay de queso",
+  "o": "el pay de queso",
+  "p": false,
+  "s": "pay-queso"
+ },
+ "pumpkin-pie": {
+  "n": "Pay de calabaza",
+  "q": "el pay de calabaza",
+  "o": "el pay de calabaza",
+  "p": false,
+  "s": "pay-calabaza"
+ },
+ "fruit-pie": {
+  "n": "Pay de frutas",
+  "q": "el pay de frutas",
+  "o": "el pay de frutas",
+  "p": false,
+  "s": "pay-frutas"
+ },
+ "ice-cream": {
+  "n": "Helado",
+  "q": "el helado",
+  "o": "el helado",
+  "p": false,
+  "s": "helado"
+ },
+ "frozen-pizza": {
+  "n": "Pizza congelada",
+  "q": "la pizza congelada",
+  "o": "la pizza congelada",
+  "p": false,
+  "s": "pizza-congelada"
+ },
+ "frozen-vegetables": {
+  "n": "Verduras congeladas",
+  "q": "las verduras congeladas",
+  "o": "las verduras congeladas",
+  "p": true,
+  "s": "verduras-congeladas"
+ },
+ "almond-milk": {
+  "n": "Leche de almendra",
+  "q": "la leche de almendra",
+  "o": "la leche de almendra",
+  "p": false,
+  "s": "leche-almendra"
+ },
+ "buttermilk": {
+  "n": "Suero de leche (buttermilk)",
+  "q": "el suero de leche (buttermilk)",
+  "o": "el suero de leche (buttermilk)",
+  "p": false,
+  "s": "suero-leche-buttermilk"
+ },
+ "cheese-curds": {
+  "n": "Cuajada de queso",
+  "q": "la cuajada de queso",
+  "o": "la cuajada de queso",
+  "p": false,
+  "s": "cuajada-queso"
+ },
+ "cheese-slices-processed": {
+  "n": "Queso amarillo en rebanadas",
+  "q": "el queso amarillo en rebanadas",
+  "o": "el queso amarillo en rebanadas",
+  "p": false,
+  "s": "queso-amarillo-rebanadas"
+ },
+ "coconut-milk": {
+  "n": "Leche de coco",
+  "q": "la leche de coco",
+  "o": "la leche de coco",
+  "p": false,
+  "s": "leche-coco"
+ },
+ "egg-dishes": {
+  "n": "Platillos con huevo",
+  "q": "los platillos con huevo",
+  "o": "los platillos con huevo",
+  "p": true,
+  "s": "platillos-huevo"
+ },
+ "eggnog": {
+  "n": "Rompope",
+  "q": "el rompope",
+  "o": "el rompope",
+  "p": false,
+  "s": "rompope"
+ },
+ "ghee": {
+  "n": "Ghee (mantequilla clarificada)",
+  "q": "el ghee (mantequilla clarificada)",
+  "o": "el ghee (mantequilla clarificada)",
+  "p": false,
+  "s": "ghee"
+ },
+ "kefir": {
+  "n": "Kéfir",
+  "q": "el kéfir",
+  "o": "el kéfir",
+  "p": false,
+  "s": "kefir"
+ },
+ "lactose-free-milk": {
+  "n": "Leche deslactosada",
+  "q": "la leche deslactosada",
+  "o": "la leche deslactosada",
+  "p": false,
+  "s": "leche-deslactosada"
+ },
+ "light-cream": {
+  "n": "Crema ligera",
+  "q": "la crema ligera",
+  "o": "la crema ligera",
+  "p": false,
+  "s": "crema-ligera"
+ },
+ "liquid-coffee-creamer": {
+  "n": "Sustituto de crema líquido para café",
+  "q": "el sustituto de crema líquido para café",
+  "o": "el sustituto de crema líquido para café",
+  "p": false,
+  "s": "sustituto-crema-liquido-cafe"
+ },
+ "liquid-egg-substitute": {
+  "n": "Sustituto de huevo líquido",
+  "q": "el sustituto de huevo líquido",
+  "o": "el sustituto de huevo líquido",
+  "p": false,
+  "s": "sustituto-huevo-liquido"
+ },
+ "margarine": {
+  "n": "Margarina",
+  "q": "la margarina",
+  "o": "la margarina",
+  "p": false,
+  "s": "margarina"
+ },
+ "nacho-cheese": {
+  "n": "Queso para nachos",
+  "q": "el queso para nachos",
+  "o": "el queso para nachos",
+  "p": false,
+  "s": "queso-nachos"
+ },
+ "grated-parmesan": {
+  "n": "Queso parmesano rallado",
+  "q": "el queso parmesano rallado",
+  "o": "el queso parmesano rallado",
+  "p": false,
+  "s": "queso-parmesano-rallado"
+ },
+ "pimento-cheese": {
+  "n": "Queso con pimiento (pimento cheese)",
+  "q": "el queso con pimiento (pimento cheese)",
+  "o": "el queso con pimiento (pimento cheese)",
+  "p": false,
+  "s": "queso-pimiento"
+ },
+ "powdered-coffee-creamer": {
+  "n": "Sustituto de crema en polvo para café",
+  "q": "el sustituto de crema en polvo para café",
+  "o": "el sustituto de crema en polvo para café",
+  "p": false,
+  "s": "sustituto-crema-polvo-cafe"
+ },
+ "powdered-milk": {
+  "n": "Leche en polvo",
+  "q": "la leche en polvo",
+  "o": "la leche en polvo",
+  "p": false,
+  "s": "leche-polvo"
+ },
+ "pudding": {
+  "n": "Pudín",
+  "q": "el pudín",
+  "o": "el pudín",
+  "p": false,
+  "s": "pudin"
+ },
+ "quark": {
+  "n": "Quark (queso fresco batido)",
+  "q": "el quark (queso fresco batido)",
+  "o": "el quark (queso fresco batido)",
+  "p": false,
+  "s": "quark"
+ },
+ "raw-egg-whites-yolks": {
+  "n": "Claras y yemas crudas",
+  "q": "las claras y yemas crudas",
+  "o": "las claras y yemas crudas",
+  "p": true,
+  "s": "claras-yemas-crudas"
+ },
+ "rice-milk": {
+  "n": "Leche de arroz",
+  "q": "la leche de arroz",
+  "o": "la leche de arroz",
+  "p": false,
+  "s": "leche-arroz"
+ },
+ "ricotta": {
+  "n": "Ricota",
+  "q": "la ricota",
+  "o": "la ricota",
+  "p": false,
+  "s": "ricota"
+ },
+ "soft-cheese": {
+  "n": "Queso blando",
+  "q": "el queso blando",
+  "o": "el queso blando",
+  "p": false,
+  "s": "queso-blando"
+ },
+ "sour-cream-dip": {
+  "n": "Dip de crema agria",
+  "q": "el dip de crema agria",
+  "o": "el dip de crema agria",
+  "p": false,
+  "s": "dip-crema-agria"
+ },
+ "soy-milk": {
+  "n": "Leche de soya",
+  "q": "la leche de soya",
+  "o": "la leche de soya",
+  "p": false,
+  "s": "leche-soya"
+ },
+ "string-cheese": {
+  "n": "Queso de hebra en barritas",
+  "q": "el queso de hebra en barritas",
+  "o": "el queso de hebra en barritas",
+  "p": false,
+  "s": "queso-hebra-barritas"
+ },
+ "vegan-cheese": {
+  "n": "Queso vegano",
+  "q": "el queso vegano",
+  "o": "el queso vegano",
+  "p": false,
+  "s": "queso-vegano"
+ },
+ "canned-whipped-cream": {
+  "n": "Crema batida en aerosol",
+  "q": "la crema batida en aerosol",
+  "o": "la crema batida en aerosol",
+  "p": false,
+  "s": "crema-batida-aerosol"
+ },
+ "homemade-whipped-cream": {
+  "n": "Crema batida casera endulzada",
+  "q": "la crema batida casera endulzada",
+  "o": "la crema batida casera endulzada",
+  "p": false,
+  "s": "crema-batida-casera"
+ },
+ "aerosol-whipped-topping": {
+  "n": "Cobertura batida en aerosol",
+  "q": "la cobertura batida en aerosol",
+  "o": "la cobertura batida en aerosol",
+  "p": false,
+  "s": "cobertura-batida-aerosol"
+ },
+ "cool-whip": {
+  "n": "Cobertura batida en bote",
+  "q": "la cobertura batida en bote",
+  "o": "la cobertura batida en bote",
+  "p": false,
+  "s": "cobertura-batida-bote"
+ },
+ "whipping-cream": {
+  "n": "Crema para batir",
+  "q": "la crema para batir",
+  "o": "la crema para batir",
+  "p": false,
+  "s": "crema-batir"
+ },
+ "beef-jerky": {
+  "n": "Carne seca de res",
+  "q": "la carne seca de res",
+  "o": "la carne seca de res",
+  "p": false,
+  "s": "carne-seca-res"
+ },
+ "beef-short-ribs": {
+  "n": "Costillas cortas de res",
+  "q": "las costillas cortas de res",
+  "o": "las costillas cortas de res",
+  "p": true,
+  "s": "costillas-cortas-res"
+ },
+ "beef-stew-meat": {
+  "n": "Carne de res para guisar",
+  "q": "la carne de res para guisar",
+  "o": "la carne de res para guisar",
+  "p": false,
+  "s": "carne-res-guisar"
+ },
+ "bison": {
+  "n": "Bisonte",
+  "q": "el bisonte",
+  "o": "el bisonte",
+  "p": false,
+  "s": "bisonte"
+ },
+ "bone-pork-chops": {
+  "n": "Chuletas de cerdo con hueso",
+  "q": "las chuletas de cerdo con hueso",
+  "o": "las chuletas de cerdo con hueso",
+  "p": true,
+  "s": "chuletas-cerdo-hueso"
+ },
+ "bone-pork-loin-roast": {
+  "n": "Lomo de cerdo con hueso para asar",
+  "q": "el lomo de cerdo con hueso para asar",
+  "o": "el lomo de cerdo con hueso para asar",
+  "p": false,
+  "s": "lomo-cerdo-hueso-asar"
+ },
+ "bone-rib-roast": {
+  "n": "Costillar de res con hueso para asar",
+  "q": "el costillar de res con hueso para asar",
+  "o": "el costillar de res con hueso para asar",
+  "p": false,
+  "s": "costillar-res-hueso"
+ },
+ "bone-veal-loin-roast": {
+  "n": "Lomo de ternera con hueso para asar",
+  "q": "el lomo de ternera con hueso para asar",
+  "o": "el lomo de ternera con hueso para asar",
+  "p": false,
+  "s": "lomo-ternera-hueso"
+ },
+ "boneless-canned-ham-refrigerated": {
+  "n": "Jamón enlatado sin hueso (refrigerado)",
+  "q": "el jamón enlatado sin hueso (refrigerado)",
+  "o": "el jamón enlatado sin hueso (refrigerado)",
+  "p": false,
+  "s": "jamon-enlatado-sin-hueso-refrigerado"
+ },
+ "boneless-leg-lamb": {
+  "n": "Pierna de cordero sin hueso",
+  "q": "la pierna de cordero sin hueso",
+  "o": "la pierna de cordero sin hueso",
+  "p": false,
+  "s": "pierna-cordero-sin-hueso"
+ },
+ "boneless-picnic-ham": {
+  "n": "Jamón de paleta sin hueso",
+  "q": "el jamón de paleta sin hueso",
+  "o": "el jamón de paleta sin hueso",
+  "p": false,
+  "s": "jamon-paleta-sin-hueso"
+ },
+ "boneless-pork-loin-roast": {
+  "n": "Lomo de cerdo sin hueso para asar",
+  "q": "el lomo de cerdo sin hueso para asar",
+  "o": "el lomo de cerdo sin hueso para asar",
+  "p": false,
+  "s": "lomo-cerdo-sin-hueso-asar"
+ },
+ "boneless-rib-roast": {
+  "n": "Costillar de res sin hueso para asar",
+  "q": "el costillar de res sin hueso para asar",
+  "o": "el costillar de res sin hueso para asar",
+  "p": false,
+  "s": "costillar-res-sin-hueso"
+ },
+ "boneless-veal-leg-roast": {
+  "n": "Pierna de ternera sin hueso para asar",
+  "q": "la pierna de ternera sin hueso para asar",
+  "o": "la pierna de ternera sin hueso para asar",
+  "p": false,
+  "s": "pierna-ternera-sin-hueso"
+ },
+ "boneless-veal-shoulder-roast": {
+  "n": "Paleta de ternera sin hueso para asar",
+  "q": "la paleta de ternera sin hueso para asar",
+  "o": "la paleta de ternera sin hueso para asar",
+  "p": false,
+  "s": "paleta-ternera-sin-hueso"
+ },
+ "bratwurst": {
+  "n": "Bratwurst",
+  "q": "la bratwurst",
+  "o": "la bratwurst",
+  "p": false,
+  "s": "bratwurst"
+ },
+ "brisket-chuck-roast": {
+  "n": "Pecho y diezmillo de res",
+  "q": "el pecho y diezmillo de res",
+  "o": "el pecho y diezmillo de res",
+  "p": false,
+  "s": "pecho-diezmillo-res"
+ },
+ "canned-ham-shelf-stable": {
+  "n": "Jamón enlatado (sin refrigerar)",
+  "q": "el jamón enlatado (sin refrigerar)",
+  "o": "el jamón enlatado (sin refrigerar)",
+  "p": false,
+  "s": "jamon-enlatado-sin-refrigerar"
+ },
+ "canned-meat": {
+  "n": "Carne enlatada",
+  "q": "la carne enlatada",
+  "o": "la carne enlatada",
+  "p": false,
+  "s": "carne-enlatada"
+ },
+ "cooked-chorizo": {
+  "n": "Chorizo cocido",
+  "q": "el chorizo cocido",
+  "o": "el chorizo cocido",
+  "p": false,
+  "s": "chorizo-cocido"
+ },
+ "corned-beef": {
+  "n": "Corned beef (carne curada en salmuera)",
+  "q": "el corned beef (carne curada en salmuera)",
+  "o": "el corned beef (carne curada en salmuera)",
+  "p": false,
+  "s": "corned-beef"
+ },
+ "country-ham": {
+  "n": "Jamón curado estilo country",
+  "q": "el jamón curado estilo country",
+  "o": "el jamón curado estilo country",
+  "p": false,
+  "s": "jamon-country"
+ },
+ "fresh-boneless-picnic-ham": {
+  "n": "Paleta de cerdo fresca sin hueso",
+  "q": "la paleta de cerdo fresca sin hueso",
+  "o": "la paleta de cerdo fresca sin hueso",
+  "p": false,
+  "s": "paleta-cerdo-fresca-sin-hueso"
+ },
+ "fresh-chorizo": {
+  "n": "Chorizo fresco",
+  "q": "el chorizo fresco",
+  "o": "el chorizo fresco",
+  "p": false,
+  "s": "chorizo-fresco"
+ },
+ "fresh-half-ham-bone": {
+  "n": "Medio pernil de cerdo fresco con hueso",
+  "q": "el medio pernil de cerdo fresco con hueso",
+  "o": "el medio pernil de cerdo fresco con hueso",
+  "p": false,
+  "s": "medio-pernil-fresco-hueso"
+ },
+ "fresh-ham-shank": {
+  "n": "Chamorro de pernil fresco",
+  "q": "el chamorro de pernil fresco",
+  "o": "el chamorro de pernil fresco",
+  "p": false,
+  "s": "chamorro-pernil-fresco"
+ },
+ "fresh-pork-butt-roll": {
+  "n": "Rollo de espaldilla de cerdo fresca",
+  "q": "el rollo de espaldilla de cerdo fresca",
+  "o": "el rollo de espaldilla de cerdo fresca",
+  "p": false,
+  "s": "rollo-espaldilla-cerdo"
+ },
+ "fresh-whole-ham-bone": {
+  "n": "Pernil de cerdo fresco entero con hueso",
+  "q": "el pernil de cerdo fresco entero con hueso",
+  "o": "el pernil de cerdo fresco entero con hueso",
+  "p": false,
+  "s": "pernil-fresco-entero-hueso"
+ },
+ "fully-cooked-bacon": {
+  "n": "Tocino precocido",
+  "q": "el tocino precocido",
+  "o": "el tocino precocido",
+  "p": false,
+  "s": "tocino-precocido"
+ },
+ "goat-meat-whole-cuts": {
+  "n": "Carne de chivo (cortes enteros)",
+  "q": "la carne de chivo (cortes enteros)",
+  "o": "la carne de chivo (cortes enteros)",
+  "p": false,
+  "s": "carne-chivo-cortes"
+ },
+ "goat-stew-meat": {
+  "n": "Carne de chivo para guisar",
+  "q": "la carne de chivo para guisar",
+  "o": "la carne de chivo para guisar",
+  "p": false,
+  "s": "carne-chivo-guisar"
+ },
+ "ground-bison": {
+  "n": "Carne molida de bisonte",
+  "q": "la carne molida de bisonte",
+  "o": "la carne molida de bisonte",
+  "p": false,
+  "s": "carne-molida-bisonte"
+ },
+ "ground-goat": {
+  "n": "Carne molida de chivo",
+  "q": "la carne molida de chivo",
+  "o": "la carne molida de chivo",
+  "p": false,
+  "s": "carne-molida-chivo"
+ },
+ "ground-lamb": {
+  "n": "Carne molida de cordero",
+  "q": "la carne molida de cordero",
+  "o": "la carne molida de cordero",
+  "p": false,
+  "s": "carne-molida-cordero"
+ },
+ "ground-pork": {
+  "n": "Carne molida de cerdo",
+  "q": "la carne molida de cerdo",
+  "o": "la carne molida de cerdo",
+  "p": false,
+  "s": "carne-molida-cerdo"
+ },
+ "ground-veal": {
+  "n": "Carne molida de ternera",
+  "q": "la carne molida de ternera",
+  "o": "la carne molida de ternera",
+  "p": false,
+  "s": "carne-molida-ternera"
+ },
+ "half-beef-tenderloin": {
+  "n": "Medio filete de res",
+  "q": "el medio filete de res",
+  "o": "el medio filete de res",
+  "p": false,
+  "s": "medio-filete-res"
+ },
+ "half-cooked-ham-bone": {
+  "n": "Medio jamón cocido con hueso",
+  "q": "el medio jamón cocido con hueso",
+  "o": "el medio jamón cocido con hueso",
+  "p": false,
+  "s": "medio-jamon-cocido-hueso"
+ },
+ "homemade-jerky": {
+  "n": "Carne seca casera",
+  "q": "la carne seca casera",
+  "o": "la carne seca casera",
+  "p": false,
+  "s": "carne-seca-casera"
+ },
+ "kielbasa-smoked-sausage": {
+  "n": "Kielbasa y salchicha ahumada",
+  "q": "la kielbasa y salchicha ahumada",
+  "o": "la kielbasa y salchicha ahumada",
+  "p": false,
+  "s": "kielbasa-salchicha-ahumada"
+ },
+ "lamb-chops": {
+  "n": "Chuletas de cordero",
+  "q": "las chuletas de cordero",
+  "o": "las chuletas de cordero",
+  "p": true,
+  "s": "chuletas-cordero"
+ },
+ "lamb-crown-roast": {
+  "n": "Corona de cordero",
+  "q": "la corona de cordero",
+  "o": "la corona de cordero",
+  "p": false,
+  "s": "corona-cordero"
+ },
+ "lamb-kabob-cubes": {
+  "n": "Cubos de cordero para brochetas",
+  "q": "los cubos de cordero para brochetas",
+  "o": "los cubos de cordero para brochetas",
+  "p": true,
+  "s": "cubos-cordero-brochetas"
+ },
+ "lamb-leg-steaks": {
+  "n": "Filetes de pierna de cordero",
+  "q": "los filetes de pierna de cordero",
+  "o": "los filetes de pierna de cordero",
+  "p": true,
+  "s": "filetes-pierna-cordero"
+ },
+ "lamb-shanks": {
+  "n": "Chamorros de cordero",
+  "q": "los chamorros de cordero",
+  "o": "los chamorros de cordero",
+  "p": true,
+  "s": "chamorros-cordero"
+ },
+ "lamb-shoulder-roast": {
+  "n": "Paleta de cordero para asar",
+  "q": "la paleta de cordero para asar",
+  "o": "la paleta de cordero para asar",
+  "p": false,
+  "s": "paleta-cordero"
+ },
+ "lamb-stew-meat": {
+  "n": "Carne de cordero para guisar",
+  "q": "la carne de cordero para guisar",
+  "o": "la carne de cordero para guisar",
+  "p": false,
+  "s": "carne-cordero-guisar"
+ },
+ "large-bone-leg-lamb": {
+  "n": "Pierna de cordero grande con hueso",
+  "q": "la pierna de cordero grande con hueso",
+  "o": "la pierna de cordero grande con hueso",
+  "p": false,
+  "s": "pierna-cordero-grande-hueso"
+ },
+ "large-pork-crown-roast": {
+  "n": "Corona de cerdo grande",
+  "q": "la corona de cerdo grande",
+  "o": "la corona de cerdo grande",
+  "p": false,
+  "s": "corona-cerdo-grande"
+ },
+ "meat-retort-pouches": {
+  "n": "Carne en bolsas esterilizadas (retort)",
+  "q": "la carne en bolsas esterilizadas (retort)",
+  "o": "la carne en bolsas esterilizadas (retort)",
+  "p": false,
+  "s": "carne-bolsa-retort"
+ },
+ "meat-pate": {
+  "n": "Paté de carne",
+  "q": "el paté de carne",
+  "o": "el paté de carne",
+  "p": false,
+  "s": "pate-carne"
+ },
+ "organ-meats": {
+  "n": "Vísceras (hígado, lengua)",
+  "q": "las vísceras (hígado, lengua)",
+  "o": "las vísceras (hígado, lengua)",
+  "p": true,
+  "s": "visceras"
+ },
+ "pastrami": {
+  "n": "Pastrami",
+  "q": "el pastrami",
+  "o": "el pastrami",
+  "p": false,
+  "s": "pastrami"
+ },
+ "pepperoni": {
+  "n": "Pepperoni",
+  "q": "el pepperoni",
+  "o": "el pepperoni",
+  "p": false,
+  "s": "pepperoni"
+ },
+ "pork-loin-cubes": {
+  "n": "Cubos de lomo de cerdo",
+  "q": "los cubos de lomo de cerdo",
+  "o": "los cubos de lomo de cerdo",
+  "p": true,
+  "s": "cubos-lomo-cerdo"
+ },
+ "pork-medallions": {
+  "n": "Medallones de cerdo",
+  "q": "los medallones de cerdo",
+  "o": "los medallones de cerdo",
+  "p": true,
+  "s": "medallones-cerdo"
+ },
+ "pork-ribs": {
+  "n": "Costillas de cerdo",
+  "q": "las costillas de cerdo",
+  "o": "las costillas de cerdo",
+  "p": true,
+  "s": "costillas-cerdo"
+ },
+ "pork-roll": {
+  "n": "Pork roll (rollo de cerdo)",
+  "q": "el pork roll (rollo de cerdo)",
+  "o": "el pork roll (rollo de cerdo)",
+  "p": false,
+  "s": "pork-roll"
+ },
+ "pork-shoulder": {
+  "n": "Paleta de cerdo",
+  "q": "la paleta de cerdo",
+  "o": "la paleta de cerdo",
+  "p": false,
+  "s": "paleta-cerdo"
+ },
+ "pork-tenderloin": {
+  "n": "Filete de cerdo",
+  "q": "el filete de cerdo",
+  "o": "el filete de cerdo",
+  "p": false,
+  "s": "filete-cerdo"
+ },
+ "prosciutto": {
+  "n": "Prosciutto",
+  "q": "el prosciutto",
+  "o": "el prosciutto",
+  "p": false,
+  "s": "prosciutto"
+ },
+ "rabbit": {
+  "n": "Conejo",
+  "q": "el conejo",
+  "o": "el conejo",
+  "p": false,
+  "s": "conejo"
+ },
+ "raw-beef-kabobs": {
+  "n": "Brochetas de res crudas",
+  "q": "las brochetas de res crudas",
+  "o": "las brochetas de res crudas",
+  "p": true,
+  "s": "brochetas-res-crudas"
+ },
+ "refrigerated-canned-ham": {
+  "n": "Jamón enlatado refrigerado",
+  "q": "el jamón enlatado refrigerado",
+  "o": "el jamón enlatado refrigerado",
+  "p": false,
+  "s": "jamon-enlatado-refrigerado"
+ },
+ "rolled-lamb-breast": {
+  "n": "Pecho de cordero enrollado",
+  "q": "el pecho de cordero enrollado",
+  "o": "el pecho de cordero enrollado",
+  "p": false,
+  "s": "pecho-cordero-enrollado"
+ },
+ "round-roast": {
+  "n": "Pulpa de res para asar",
+  "q": "la pulpa de res para asar",
+  "o": "la pulpa de res para asar",
+  "p": false,
+  "s": "pulpa-res-asar"
+ },
+ "small-bone-leg-lamb": {
+  "n": "Pierna de cordero chica con hueso",
+  "q": "la pierna de cordero chica con hueso",
+  "o": "la pierna de cordero chica con hueso",
+  "p": false,
+  "s": "pierna-cordero-chica-hueso"
+ },
+ "small-pork-crown-roast": {
+  "n": "Corona de cerdo chica",
+  "q": "la corona de cerdo chica",
+  "o": "la corona de cerdo chica",
+  "p": false,
+  "s": "corona-cerdo-chica"
+ },
+ "smoked-bratwurst": {
+  "n": "Bratwurst ahumada",
+  "q": "la bratwurst ahumada",
+  "o": "la bratwurst ahumada",
+  "p": false,
+  "s": "bratwurst-ahumada"
+ },
+ "spiral-ham": {
+  "n": "Jamón en espiral",
+  "q": "el jamón en espiral",
+  "o": "el jamón en espiral",
+  "p": false,
+  "s": "jamon-espiral"
+ },
+ "stuffed-pork-chops": {
+  "n": "Chuletas de cerdo rellenas",
+  "q": "las chuletas de cerdo rellenas",
+  "o": "las chuletas de cerdo rellenas",
+  "p": true,
+  "s": "chuletas-cerdo-rellenas"
+ },
+ "uncooked-boneless-leg-ham": {
+  "n": "Pierna de cerdo cruda sin hueso",
+  "q": "la pierna de cerdo cruda sin hueso",
+  "o": "la pierna de cerdo cruda sin hueso",
+  "p": false,
+  "s": "pierna-cerdo-cruda-sin-hueso"
+ },
+ "uncooked-half-leg-ham-bone": {
+  "n": "Media pierna de cerdo cruda con hueso",
+  "q": "la media pierna de cerdo cruda con hueso",
+  "o": "la media pierna de cerdo cruda con hueso",
+  "p": false,
+  "s": "media-pierna-cerdo-cruda-hueso"
+ },
+ "uncooked-smoked-chorizo": {
+  "n": "Chorizo ahumado crudo",
+  "q": "el chorizo ahumado crudo",
+  "o": "el chorizo ahumado crudo",
+  "p": false,
+  "s": "chorizo-ahumado-crudo"
+ },
+ "uncooked-whole-leg-ham-bone": {
+  "n": "Pierna de cerdo cruda entera con hueso",
+  "q": "la pierna de cerdo cruda entera con hueso",
+  "o": "la pierna de cerdo cruda entera con hueso",
+  "p": false,
+  "s": "pierna-cerdo-cruda-entera-hueso"
+ },
+ "uncured-bacon": {
+  "n": "Tocino sin curar",
+  "q": "el tocino sin curar",
+  "o": "el tocino sin curar",
+  "p": false,
+  "s": "tocino-sin-curar"
+ },
+ "uncured-cooked-ham": {
+  "n": "Jamón cocido sin curar",
+  "q": "el jamón cocido sin curar",
+  "o": "el jamón cocido sin curar",
+  "p": false,
+  "s": "jamon-cocido-sin-curar"
+ },
+ "uncured-fresh-ham": {
+  "n": "Jamón fresco sin curar",
+  "q": "el jamón fresco sin curar",
+  "o": "el jamón fresco sin curar",
+  "p": false,
+  "s": "jamon-fresco-sin-curar"
+ },
+ "vacuum-packed-ham": {
+  "n": "Jamón empacado al vacío",
+  "q": "el jamón empacado al vacío",
+  "o": "el jamón empacado al vacío",
+  "p": false,
+  "s": "jamon-empacado-vacio"
+ },
+ "venison-roast": {
+  "n": "Venado para asar",
+  "q": "el venado para asar",
+  "o": "el venado para asar",
+  "p": false,
+  "s": "venado-asar"
+ },
+ "whole-beef-tenderloin": {
+  "n": "Filete de res entero",
+  "q": "el filete de res entero",
+  "o": "el filete de res entero",
+  "p": false,
+  "s": "filete-res-entero"
+ },
+ "whole-cooked-ham-bone": {
+  "n": "Jamón cocido entero con hueso",
+  "q": "el jamón cocido entero con hueso",
+  "o": "el jamón cocido entero con hueso",
+  "p": false,
+  "s": "jamon-cocido-entero-hueso"
+ },
+ "bone-chicken-breast": {
+  "n": "Pechuga de pollo con hueso",
+  "q": "la pechuga de pollo con hueso",
+  "o": "la pechuga de pollo con hueso",
+  "p": false,
+  "s": "pechuga-pollo-hueso"
+ },
+ "bone-turkey-breast": {
+  "n": "Pechuga de pavo con hueso",
+  "q": "la pechuga de pavo con hueso",
+  "o": "la pechuga de pavo con hueso",
+  "p": false,
+  "s": "pechuga-pavo-hueso"
+ },
+ "boneless-turkey-breast": {
+  "n": "Pechuga de pavo sin hueso",
+  "q": "la pechuga de pavo sin hueso",
+  "o": "la pechuga de pavo sin hueso",
+  "p": false,
+  "s": "pechuga-pavo-sin-hueso"
+ },
+ "canned-chicken": {
+  "n": "Pollo enlatado",
+  "q": "el pollo enlatado",
+  "o": "el pollo enlatado",
+  "p": false,
+  "s": "pollo-enlatado"
+ },
+ "capon": {
+  "n": "Capón",
+  "q": "el capón",
+  "o": "el capón",
+  "p": false,
+  "s": "capon"
+ },
+ "chicken-retort-pouches": {
+  "n": "Pollo en bolsas esterilizadas (retort)",
+  "q": "el pollo en bolsas esterilizadas (retort)",
+  "o": "el pollo en bolsas esterilizadas (retort)",
+  "p": false,
+  "s": "pollo-bolsa-retort"
+ },
+ "chicken-liver-pate": {
+  "n": "Paté de hígado de pollo",
+  "q": "el paté de hígado de pollo",
+  "o": "el paté de hígado de pollo",
+  "p": false,
+  "s": "pate-higado-pollo"
+ },
+ "chicken-nuggets": {
+  "n": "Nuggets de pollo",
+  "q": "los nuggets de pollo",
+  "o": "los nuggets de pollo",
+  "p": true,
+  "s": "nuggets-pollo"
+ },
+ "chicken-thighs": {
+  "n": "Muslos de pollo",
+  "q": "los muslos de pollo",
+  "o": "los muslos de pollo",
+  "p": true,
+  "s": "muslos-pollo"
+ },
+ "cornish-hens": {
+  "n": "Gallinitas Cornish",
+  "q": "las gallinitas Cornish",
+  "o": "las gallinitas Cornish",
+  "p": true,
+  "s": "gallinitas-cornish"
+ },
+ "duck": {
+  "n": "Pato",
+  "q": "el pato",
+  "o": "el pato",
+  "p": false,
+  "s": "pato"
+ },
+ "fried-chicken": {
+  "n": "Pollo frito",
+  "q": "el pollo frito",
+  "o": "el pollo frito",
+  "p": false,
+  "s": "pollo-frito"
+ },
+ "giblets": {
+  "n": "Menudencias de ave",
+  "q": "las menudencias de ave",
+  "o": "las menudencias de ave",
+  "p": true,
+  "s": "menudencias-ave"
+ },
+ "goose": {
+  "n": "Ganso",
+  "q": "el ganso",
+  "o": "el ganso",
+  "p": false,
+  "s": "ganso"
+ },
+ "ground-turkey": {
+  "n": "Carne molida de pavo",
+  "q": "la carne molida de pavo",
+  "o": "la carne molida de pavo",
+  "p": false,
+  "s": "carne-molida-pavo"
+ },
+ "pheasant": {
+  "n": "Faisán",
+  "q": "el faisán",
+  "o": "el faisán",
+  "p": false,
+  "s": "faisan"
+ },
+ "quail": {
+  "n": "Codorniz",
+  "q": "la codorniz",
+  "o": "la codorniz",
+  "p": false,
+  "s": "codorniz"
+ },
+ "raw-chicken-kabobs": {
+  "n": "Brochetas de pollo crudas",
+  "q": "las brochetas de pollo crudas",
+  "o": "las brochetas de pollo crudas",
+  "p": true,
+  "s": "brochetas-pollo-crudas"
+ },
+ "stuffed-chicken-breasts": {
+  "n": "Pechugas de pollo rellenas",
+  "q": "las pechugas de pollo rellenas",
+  "o": "las pechugas de pollo rellenas",
+  "p": true,
+  "s": "pechugas-pollo-rellenas"
+ },
+ "turducken": {
+  "n": "Turducken (pavo relleno de pato y pollo)",
+  "q": "el turducken (pavo relleno de pato y pollo)",
+  "o": "el turducken (pavo relleno de pato y pollo)",
+  "p": false,
+  "s": "turducken"
+ },
+ "turkey-bacon": {
+  "n": "Tocino de pavo",
+  "q": "el tocino de pavo",
+  "o": "el tocino de pavo",
+  "p": false,
+  "s": "tocino-pavo"
+ },
+ "turkey-legs": {
+  "n": "Piernas de pavo",
+  "q": "las piernas de pavo",
+  "o": "las piernas de pavo",
+  "p": true,
+  "s": "piernas-pavo"
+ },
+ "whole-raw-chicken": {
+  "n": "Pollo entero crudo",
+  "q": "el pollo entero crudo",
+  "o": "el pollo entero crudo",
+  "p": false,
+  "s": "pollo-entero-crudo"
+ },
+ "whole-turkey": {
+  "n": "Pavo entero",
+  "q": "el pavo entero",
+  "o": "el pavo entero",
+  "p": false,
+  "s": "pavo-entero"
+ },
+ "caviar": {
+  "n": "Caviar",
+  "q": "el caviar",
+  "o": "el caviar",
+  "p": false,
+  "s": "caviar"
+ },
+ "cod-lean-white-fish": {
+  "n": "Bacalao y pescado blanco magro",
+  "q": "el bacalao y pescado blanco magro",
+  "o": "el bacalao y pescado blanco magro",
+  "p": false,
+  "s": "bacalao-pescado-blanco"
+ },
+ "cooked-fish": {
+  "n": "Pescado cocido",
+  "q": "el pescado cocido",
+  "o": "el pescado cocido",
+  "p": false,
+  "s": "pescado-cocido"
+ },
+ "cooked-lobster-tails": {
+  "n": "Colas de langosta cocidas",
+  "q": "las colas de langosta cocidas",
+  "o": "las colas de langosta cocidas",
+  "p": true,
+  "s": "colas-langosta-cocidas"
+ },
+ "cooked-shellfish": {
+  "n": "Mariscos cocidos",
+  "q": "los mariscos cocidos",
+  "o": "los mariscos cocidos",
+  "p": true,
+  "s": "mariscos-cocidos"
+ },
+ "crab-legs": {
+  "n": "Patas de cangrejo",
+  "q": "las patas de cangrejo",
+  "o": "las patas de cangrejo",
+  "p": true,
+  "s": "patas-cangrejo"
+ },
+ "fresh-clams-mussels": {
+  "n": "Almejas y mejillones frescos",
+  "q": "los almejas y mejillones frescos",
+  "o": "los almejas y mejillones frescos",
+  "p": true,
+  "s": "almejas-mejillones-frescos"
+ },
+ "fresh-crab-meat": {
+  "n": "Carne de cangrejo fresca",
+  "q": "la carne de cangrejo fresca",
+  "o": "la carne de cangrejo fresca",
+  "p": false,
+  "s": "carne-cangrejo-fresca"
+ },
+ "frozen-whole-lobster": {
+  "n": "Langosta entera congelada",
+  "q": "la langosta entera congelada",
+  "o": "la langosta entera congelada",
+  "p": false,
+  "s": "langosta-entera-congelada"
+ },
+ "hot-smoked-fish-air-pack": {
+  "n": "Pescado ahumado en caliente (empaque normal)",
+  "q": "el pescado ahumado en caliente (empaque normal)",
+  "o": "el pescado ahumado en caliente (empaque normal)",
+  "p": false,
+  "s": "pescado-ahumado-caliente-empaque-normal"
+ },
+ "hot-smoked-fish-vacuum-pack": {
+  "n": "Pescado ahumado en caliente (al vacío)",
+  "q": "el pescado ahumado en caliente (al vacío)",
+  "o": "el pescado ahumado en caliente (al vacío)",
+  "p": false,
+  "s": "pescado-ahumado-caliente-vacio"
+ },
+ "imitation-crab": {
+  "n": "Surimi (imitación de cangrejo)",
+  "q": "el surimi (imitación de cangrejo)",
+  "o": "el surimi (imitación de cangrejo)",
+  "p": false,
+  "s": "surimi"
+ },
+ "live-clams-mussels-oysters": {
+  "n": "Almejas, mejillones y ostiones vivos",
+  "q": "los almejas, mejillones y ostiones vivos",
+  "o": "los almejas, mejillones y ostiones vivos",
+  "p": true,
+  "s": "almejas-mejillones-ostiones-vivos"
+ },
+ "live-lobster": {
+  "n": "Langosta viva",
+  "q": "la langosta viva",
+  "o": "la langosta viva",
+  "p": false,
+  "s": "langosta-viva"
+ },
+ "pasteurized-crab-meat": {
+  "n": "Carne de cangrejo pasteurizada",
+  "q": "la carne de cangrejo pasteurizada",
+  "o": "la carne de cangrejo pasteurizada",
+  "p": false,
+  "s": "carne-cangrejo-pasteurizada"
+ },
+ "pickled-herring": {
+  "n": "Arenque en escabeche",
+  "q": "el arenque en escabeche",
+  "o": "el arenque en escabeche",
+  "p": false,
+  "s": "arenque-escabeche"
+ },
+ "pollock-rockfish": {
+  "n": "Abadejo y pez roca",
+  "q": "el abadejo y pez roca",
+  "o": "el abadejo y pez roca",
+  "p": false,
+  "s": "abadejo-pez-roca"
+ },
+ "scallops": {
+  "n": "Callo de hacha (vieiras)",
+  "q": "el callo de hacha (vieiras)",
+  "o": "el callo de hacha (vieiras)",
+  "p": false,
+  "s": "callo-hacha"
+ },
+ "shucked-oysters-clams-mussels": {
+  "n": "Ostiones, almejas y mejillones sin concha",
+  "q": "los ostiones, almejas y mejillones sin concha",
+  "o": "los ostiones, almejas y mejillones sin concha",
+  "p": true,
+  "s": "ostiones-almejas-mejillones-sin-concha"
+ },
+ "smoked-salmon": {
+  "n": "Salmón ahumado",
+  "q": "el salmón ahumado",
+  "o": "el salmón ahumado",
+  "p": false,
+  "s": "salmon-ahumado"
+ },
+ "air-packed-smoked-salmon": {
+  "n": "Salmón ahumado (empaque normal)",
+  "q": "el salmón ahumado (empaque normal)",
+  "o": "el salmón ahumado (empaque normal)",
+  "p": false,
+  "s": "salmon-ahumado-empaque-normal"
+ },
+ "squid": {
+  "n": "Calamar",
+  "q": "el calamar",
+  "o": "el calamar",
+  "p": false,
+  "s": "calamar"
+ },
+ "canadian-bacon": {
+  "n": "Tocino canadiense",
+  "q": "el tocino canadiense",
+  "o": "el tocino canadiense",
+  "p": false,
+  "s": "tocino-canadiense"
+ },
+ "canadian-bacon-whole": {
+  "n": "Tocino canadiense (pieza entera)",
+  "q": "el tocino canadiense (pieza entera)",
+  "o": "el tocino canadiense (pieza entera)",
+  "p": false,
+  "s": "tocino-canadiense-entero"
+ },
+ "casseroles": {
+  "n": "Guisos al horno (cacerolas)",
+  "q": "los guisos al horno (cacerolas)",
+  "o": "los guisos al horno (cacerolas)",
+  "p": true,
+  "s": "guisos-horno"
+ },
+ "chicken-gravy": {
+  "n": "Pollo en salsa o caldo",
+  "q": "el pollo en salsa o caldo",
+  "o": "el pollo en salsa o caldo",
+  "p": false,
+  "s": "pollo-salsa"
+ },
+ "cut-fruit": {
+  "n": "Fruta picada",
+  "q": "la fruta picada",
+  "o": "la fruta picada",
+  "p": false,
+  "s": "fruta-picada"
+ },
+ "deli-chicken": {
+  "n": "Pechuga de pollo rebanada empacada",
+  "q": "la pechuga de pollo rebanada empacada",
+  "o": "la pechuga de pollo rebanada empacada",
+  "p": false,
+  "s": "pollo-rebanado-empacado"
+ },
+ "deli-ham": {
+  "n": "Jamón rebanado empacado",
+  "q": "el jamón rebanado empacado",
+  "o": "el jamón rebanado empacado",
+  "p": false,
+  "s": "jamon-rebanado"
+ },
+ "deli-turkey": {
+  "n": "Pechuga de pavo rebanada empacada",
+  "q": "la pechuga de pavo rebanada empacada",
+  "o": "la pechuga de pavo rebanada empacada",
+  "p": false,
+  "s": "pavo-rebanado"
+ },
+ "homemade-hummus": {
+  "n": "Hummus casero",
+  "q": "el hummus casero",
+  "o": "el hummus casero",
+  "p": false,
+  "s": "hummus-casero"
+ },
+ "homemade-kugel": {
+  "n": "Kugel casero",
+  "q": "el kugel casero",
+  "o": "el kugel casero",
+  "p": false,
+  "s": "kugel-casero"
+ },
+ "homemade-salsa": {
+  "n": "Salsa casera",
+  "q": "la salsa casera",
+  "o": "la salsa casera",
+  "p": false,
+  "s": "salsa-casera"
+ },
+ "homemade-vegetable-soup": {
+  "n": "Sopa de verduras casera",
+  "q": "la sopa de verduras casera",
+  "o": "la sopa de verduras casera",
+  "p": false,
+  "s": "sopa-verduras-casera"
+ },
+ "leftovers-meat": {
+  "n": "Sobras con carne",
+  "q": "las sobras con carne",
+  "o": "las sobras con carne",
+  "p": true,
+  "s": "sobras-carne"
+ },
+ "leftovers-without-meat": {
+  "n": "Sobras sin carne",
+  "q": "las sobras sin carne",
+  "o": "las sobras sin carne",
+  "p": true,
+  "s": "sobras-sin-carne"
+ },
+ "meat-gravy": {
+  "n": "Carne en salsa o caldo",
+  "q": "la carne en salsa o caldo",
+  "o": "la carne en salsa o caldo",
+  "p": false,
+  "s": "carne-salsa"
+ },
+ "olive-bar-olives": {
+  "n": "Aceitunas a granel",
+  "q": "las aceitunas a granel",
+  "o": "las aceitunas a granel",
+  "p": true,
+  "s": "aceitunas-granel"
+ },
+ "packaged-lunch-meat": {
+  "n": "Carnes frías empacadas",
+  "q": "las carnes frías empacadas",
+  "o": "las carnes frías empacadas",
+  "p": true,
+  "s": "carnes-frias-empacadas"
+ },
+ "pate": {
+  "n": "Paté",
+  "q": "el paté",
+  "o": "el paté",
+  "p": false,
+  "s": "pate"
+ },
+ "prepared-meals": {
+  "n": "Comidas preparadas",
+  "q": "las comidas preparadas",
+  "o": "las comidas preparadas",
+  "p": true,
+  "s": "comidas-preparadas"
+ },
+ "salami": {
+  "n": "Salami",
+  "q": "el salami",
+  "o": "el salami",
+  "p": false,
+  "s": "salami"
+ },
+ "vacuum-packed-dinners": {
+  "n": "Comidas empacadas al vacío",
+  "q": "las comidas empacadas al vacío",
+  "o": "las comidas empacadas al vacío",
+  "p": true,
+  "s": "comidas-empacadas-vacio"
+ },
+ "apricots": {
+  "n": "Chabacanos",
+  "q": "los chabacanos",
+  "o": "los chabacanos",
+  "p": true,
+  "s": "chabacanos"
+ },
+ "blackberries": {
+  "n": "Zarzamoras",
+  "q": "las zarzamoras",
+  "o": "las zarzamoras",
+  "p": true,
+  "s": "zarzamoras"
+ },
+ "cherimoya": {
+  "n": "Chirimoya",
+  "q": "la chirimoya",
+  "o": "la chirimoya",
+  "p": false,
+  "s": "chirimoya"
+ },
+ "cherries-lychee": {
+  "n": "Cerezas y lichis",
+  "q": "las cerezas y lichis",
+  "o": "las cerezas y lichis",
+  "p": true,
+  "s": "cerezas-lichis"
+ },
+ "cranberries": {
+  "n": "Arándanos rojos",
+  "q": "los arándanos rojos",
+  "o": "los arándanos rojos",
+  "p": true,
+  "s": "arandanos-rojos"
+ },
+ "dates": {
+  "n": "Dátiles",
+  "q": "los dátiles",
+  "o": "los dátiles",
+  "p": true,
+  "s": "datiles"
+ },
+ "dragon-fruit": {
+  "n": "Pitaya",
+  "q": "la pitaya",
+  "o": "la pitaya",
+  "p": false,
+  "s": "pitaya"
+ },
+ "fresh-coconut": {
+  "n": "Coco fresco",
+  "q": "el coco fresco",
+  "o": "el coco fresco",
+  "p": false,
+  "s": "coco-fresco"
+ },
+ "guava": {
+  "n": "Guayaba",
+  "q": "la guayaba",
+  "o": "la guayaba",
+  "p": false,
+  "s": "guayaba"
+ },
+ "homemade-applesauce": {
+  "n": "Puré de manzana casero",
+  "q": "el puré de manzana casero",
+  "o": "el puré de manzana casero",
+  "p": false,
+  "s": "pure-manzana-casero"
+ },
+ "honeydew-melon": {
+  "n": "Melón chino verde (honeydew)",
+  "q": "el melón chino verde (honeydew)",
+  "o": "el melón chino verde (honeydew)",
+  "p": false,
+  "s": "melon-honeydew"
+ },
+ "kiwi": {
+  "n": "Kiwi",
+  "q": "el kiwi",
+  "o": "el kiwi",
+  "p": false,
+  "s": "kiwi"
+ },
+ "kumquats": {
+  "n": "Kumquats",
+  "q": "los kumquats",
+  "o": "los kumquats",
+  "p": true,
+  "s": "kumquats"
+ },
+ "mango-papaya": {
+  "n": "Mango y papaya",
+  "q": "el mango y papaya",
+  "o": "el mango y papaya",
+  "p": false,
+  "s": "mango-papaya"
+ },
+ "peaches-plums-pears": {
+  "n": "Duraznos, ciruelas y peras",
+  "q": "los duraznos, ciruelas y peras",
+  "o": "los duraznos, ciruelas y peras",
+  "p": true,
+  "s": "duraznos-ciruelas-peras"
+ },
+ "plantains": {
+  "n": "Plátanos machos",
+  "q": "los plátanos machos",
+  "o": "los plátanos machos",
+  "p": true,
+  "s": "platanos-machos"
+ },
+ "pomegranate": {
+  "n": "Granada",
+  "q": "la granada",
+  "o": "la granada",
+  "p": false,
+  "s": "granada"
+ },
+ "prickly-pear": {
+  "n": "Tuna (fruta del nopal)",
+  "q": "la tuna (fruta del nopal)",
+  "o": "la tuna (fruta del nopal)",
+  "p": false,
+  "s": "tuna-fruta"
+ },
+ "shredded-coconut": {
+  "n": "Coco rallado",
+  "q": "el coco rallado",
+  "o": "el coco rallado",
+  "p": false,
+  "s": "coco-rallado"
+ },
+ "star-fruit": {
+  "n": "Carambola",
+  "q": "la carambola",
+  "o": "la carambola",
+  "p": false,
+  "s": "carambola"
+ },
+ "artichokes": {
+  "n": "Alcachofas",
+  "q": "las alcachofas",
+  "o": "las alcachofas",
+  "p": true,
+  "s": "alcachofas"
+ },
+ "arugula": {
+  "n": "Arúgula",
+  "q": "la arúgula",
+  "o": "la arúgula",
+  "p": false,
+  "s": "arugula"
+ },
+ "asparagus": {
+  "n": "Espárragos",
+  "q": "los espárragos",
+  "o": "los espárragos",
+  "p": true,
+  "s": "esparragos"
+ },
+ "baby-carrots": {
+  "n": "Zanahorias baby",
+  "q": "las zanahorias baby",
+  "o": "las zanahorias baby",
+  "p": true,
+  "s": "zanahorias-baby"
+ },
+ "bamboo-shoots": {
+  "n": "Brotes de bambú",
+  "q": "los brotes de bambú",
+  "o": "los brotes de bambú",
+  "p": true,
+  "s": "brotes-bambu"
+ },
+ "basil": {
+  "n": "Albahaca fresca",
+  "q": "la albahaca fresca",
+  "o": "la albahaca fresca",
+  "p": false,
+  "s": "albahaca"
+ },
+ "bean-sprouts": {
+  "n": "Germinado de soya",
+  "q": "el germinado de soya",
+  "o": "el germinado de soya",
+  "p": false,
+  "s": "germinado-soya"
+ },
+ "beets": {
+  "n": "Betabeles",
+  "q": "los betabeles",
+  "o": "los betabeles",
+  "p": true,
+  "s": "betabeles"
+ },
+ "bok-choy": {
+  "n": "Bok choy",
+  "q": "el bok choy",
+  "o": "el bok choy",
+  "p": false,
+  "s": "bok-choy"
+ },
+ "brussels-sprouts": {
+  "n": "Coles de Bruselas",
+  "q": "las coles de Bruselas",
+  "o": "las coles de Bruselas",
+  "p": true,
+  "s": "coles-bruselas"
+ },
+ "cabbage": {
+  "n": "Col (repollo)",
+  "q": "la col (repollo)",
+  "o": "la col (repollo)",
+  "p": false,
+  "s": "col-repollo"
+ },
+ "cassava-yuca": {
+  "n": "Yuca",
+  "q": "la yuca",
+  "o": "la yuca",
+  "p": false,
+  "s": "yuca"
+ },
+ "cauliflower": {
+  "n": "Coliflor",
+  "q": "la coliflor",
+  "o": "la coliflor",
+  "p": false,
+  "s": "coliflor"
+ },
+ "celery-root": {
+  "n": "Apio nabo",
+  "q": "el apio nabo",
+  "o": "el apio nabo",
+  "p": false,
+  "s": "apio-nabo"
+ },
+ "cherry-tomatoes": {
+  "n": "Tomates cherry",
+  "q": "los tomates cherry",
+  "o": "los tomates cherry",
+  "p": true,
+  "s": "tomates-cherry"
+ },
+ "chives": {
+  "n": "Cebollín",
+  "q": "el cebollín",
+  "o": "el cebollín",
+  "p": false,
+  "s": "cebollin"
+ },
+ "cooking-greens": {
+  "n": "Verduras de hoja para cocinar",
+  "q": "las verduras de hoja para cocinar",
+  "o": "las verduras de hoja para cocinar",
+  "p": true,
+  "s": "verduras-hoja-cocinar"
+ },
+ "cut-spaghetti-squash": {
+  "n": "Calabaza espagueti cortada",
+  "q": "la calabaza espagueti cortada",
+  "o": "la calabaza espagueti cortada",
+  "p": false,
+  "s": "calabaza-espagueti-cortada"
+ },
+ "dried-basil": {
+  "n": "Albahaca seca",
+  "q": "la albahaca seca",
+  "o": "la albahaca seca",
+  "p": false,
+  "s": "albahaca-seca"
+ },
+ "edamame": {
+  "n": "Edamame",
+  "q": "el edamame",
+  "o": "el edamame",
+  "p": false,
+  "s": "edamame"
+ },
+ "eggplant": {
+  "n": "Berenjena",
+  "q": "la berenjena",
+  "o": "la berenjena",
+  "p": false,
+  "s": "berenjena"
+ },
+ "fresh-herbs": {
+  "n": "Hierbas frescas",
+  "q": "las hierbas frescas",
+  "o": "las hierbas frescas",
+  "p": true,
+  "s": "hierbas-frescas"
+ },
+ "ginger-root": {
+  "n": "Jengibre fresco",
+  "q": "el jengibre fresco",
+  "o": "el jengibre fresco",
+  "p": false,
+  "s": "jengibre"
+ },
+ "green-beans": {
+  "n": "Ejotes",
+  "q": "los ejotes",
+  "o": "los ejotes",
+  "p": true,
+  "s": "ejotes"
+ },
+ "green-onions": {
+  "n": "Cebollitas de cambray",
+  "q": "las cebollitas de cambray",
+  "o": "las cebollitas de cambray",
+  "p": true,
+  "s": "cebollitas-cambray"
+ },
+ "hot-peppers": {
+  "n": "Chiles",
+  "q": "los chiles",
+  "o": "los chiles",
+  "p": true,
+  "s": "chiles"
+ },
+ "jicama": {
+  "n": "Jícama",
+  "q": "la jícama",
+  "o": "la jícama",
+  "p": false,
+  "s": "jicama"
+ },
+ "kale": {
+  "n": "Kale",
+  "q": "el kale",
+  "o": "el kale",
+  "p": false,
+  "s": "kale"
+ },
+ "kimchi": {
+  "n": "Kimchi",
+  "q": "el kimchi",
+  "o": "el kimchi",
+  "p": false,
+  "s": "kimchi"
+ },
+ "kohlrabi": {
+  "n": "Colinabo",
+  "q": "el colinabo",
+  "o": "el colinabo",
+  "p": false,
+  "s": "colinabo"
+ },
+ "leeks": {
+  "n": "Poros (puerros)",
+  "q": "los poros (puerros)",
+  "o": "los poros (puerros)",
+  "p": true,
+  "s": "poros-puerros"
+ },
+ "lemongrass": {
+  "n": "Té limón (hierba limón)",
+  "q": "el té limón (hierba limón)",
+  "o": "el té limón (hierba limón)",
+  "p": false,
+  "s": "te-limon-hierba"
+ },
+ "marinated-vegetables-oil": {
+  "n": "Verduras marinadas en aceite",
+  "q": "las verduras marinadas en aceite",
+  "o": "las verduras marinadas en aceite",
+  "p": true,
+  "s": "verduras-marinadas-aceite"
+ },
+ "mint": {
+  "n": "Hierbabuena (menta)",
+  "q": "la hierbabuena (menta)",
+  "o": "la hierbabuena (menta)",
+  "p": false,
+  "s": "hierbabuena-menta"
+ },
+ "okra": {
+  "n": "Okra",
+  "q": "la okra",
+  "o": "la okra",
+  "p": false,
+  "s": "okra"
+ },
+ "oregano": {
+  "n": "Orégano",
+  "q": "el orégano",
+  "o": "el orégano",
+  "p": false,
+  "s": "oregano"
+ },
+ "parsley": {
+  "n": "Perejil",
+  "q": "el perejil",
+  "o": "el perejil",
+  "p": false,
+  "s": "perejil"
+ },
+ "pumpkins": {
+  "n": "Calabazas de Castilla",
+  "q": "las calabazas de Castilla",
+  "o": "las calabazas de Castilla",
+  "p": true,
+  "s": "calabazas-castilla"
+ },
+ "radicchio": {
+  "n": "Radicchio",
+  "q": "el radicchio",
+  "o": "el radicchio",
+  "p": false,
+  "s": "radicchio"
+ },
+ "radishes": {
+  "n": "Rábanos",
+  "q": "los rábanos",
+  "o": "los rábanos",
+  "p": true,
+  "s": "rabanos"
+ },
+ "rhubarb": {
+  "n": "Ruibarbo",
+  "q": "el ruibarbo",
+  "o": "el ruibarbo",
+  "p": false,
+  "s": "ruibarbo"
+ },
+ "rosemary": {
+  "n": "Romero",
+  "q": "el romero",
+  "o": "el romero",
+  "p": false,
+  "s": "romero"
+ },
+ "rutabagas": {
+  "n": "Colinabos suecos (rutabagas)",
+  "q": "los colinabos suecos (rutabagas)",
+  "o": "los colinabos suecos (rutabagas)",
+  "p": true,
+  "s": "rutabagas"
+ },
+ "spaghetti-squash": {
+  "n": "Calabaza espagueti",
+  "q": "la calabaza espagueti",
+  "o": "la calabaza espagueti",
+  "p": false,
+  "s": "calabaza-espagueti"
+ },
+ "swiss-chard": {
+  "n": "Acelgas",
+  "q": "las acelgas",
+  "o": "las acelgas",
+  "p": true,
+  "s": "acelgas"
+ },
+ "tamarind": {
+  "n": "Tamarindo",
+  "q": "el tamarindo",
+  "o": "el tamarindo",
+  "p": false,
+  "s": "tamarindo"
+ },
+ "taro": {
+  "n": "Malanga (taro)",
+  "q": "la malanga (taro)",
+  "o": "la malanga (taro)",
+  "p": false,
+  "s": "malanga-taro"
+ },
+ "thyme": {
+  "n": "Tomillo",
+  "q": "el tomillo",
+  "o": "el tomillo",
+  "p": false,
+  "s": "tomillo"
+ },
+ "turnips": {
+  "n": "Nabos",
+  "q": "los nabos",
+  "o": "los nabos",
+  "p": true,
+  "s": "nabos"
+ },
+ "whole-zucchini": {
+  "n": "Calabacitas enteras",
+  "q": "las calabacitas enteras",
+  "o": "las calabacitas enteras",
+  "p": true,
+  "s": "calabacitas-enteras"
+ },
+ "winter-squash": {
+  "n": "Calabaza de invierno",
+  "q": "la calabaza de invierno",
+  "o": "la calabaza de invierno",
+  "p": false,
+  "s": "calabaza-invierno"
+ },
+ "zucchini-summer-squash": {
+  "n": "Calabacitas y calabazas de verano",
+  "q": "las calabacitas y calabazas de verano",
+  "o": "las calabacitas y calabazas de verano",
+  "p": true,
+  "s": "calabacitas-calabazas-verano"
+ },
+ "amaranth": {
+  "n": "Amaranto",
+  "q": "el amaranto",
+  "o": "el amaranto",
+  "p": false,
+  "s": "amaranto"
+ },
+ "barley": {
+  "n": "Cebada",
+  "q": "la cebada",
+  "o": "la cebada",
+  "p": false,
+  "s": "cebada"
+ },
+ "boiled-peanuts": {
+  "n": "Cacahuates hervidos",
+  "q": "los cacahuates hervidos",
+  "o": "los cacahuates hervidos",
+  "p": true,
+  "s": "cacahuates-hervidos"
+ },
+ "buckwheat": {
+  "n": "Trigo sarraceno",
+  "q": "el trigo sarraceno",
+  "o": "el trigo sarraceno",
+  "p": false,
+  "s": "trigo-sarraceno"
+ },
+ "bulgur": {
+  "n": "Bulgur",
+  "q": "el bulgur",
+  "o": "el bulgur",
+  "p": false,
+  "s": "bulgur"
+ },
+ "cooked-quinoa": {
+  "n": "Quinoa cocida",
+  "q": "la quinoa cocida",
+  "o": "la quinoa cocida",
+  "p": false,
+  "s": "quinoa-cocida"
+ },
+ "corn-tortillas": {
+  "n": "Tortillas de maíz",
+  "q": "las tortillas de maíz",
+  "o": "las tortillas de maíz",
+  "p": true,
+  "s": "tortillas-maiz"
+ },
+ "dried-beans": {
+  "n": "Frijoles secos",
+  "q": "los frijoles secos",
+  "o": "los frijoles secos",
+  "p": true,
+  "s": "frijoles-secos"
+ },
+ "dried-mung-beans": {
+  "n": "Frijol mungo seco",
+  "q": "el frijol mungo seco",
+  "o": "el frijol mungo seco",
+  "p": false,
+  "s": "frijol-mungo-seco"
+ },
+ "egg-noodles": {
+  "n": "Fideos de huevo",
+  "q": "los fideos de huevo",
+  "o": "los fideos de huevo",
+  "p": true,
+  "s": "fideos-huevo"
+ },
+ "farro": {
+  "n": "Farro",
+  "q": "el farro",
+  "o": "el farro",
+  "p": false,
+  "s": "farro"
+ },
+ "fresh-pasta": {
+  "n": "Pasta fresca",
+  "q": "la pasta fresca",
+  "o": "la pasta fresca",
+  "p": false,
+  "s": "pasta-fresca"
+ },
+ "homemade-whole-wheat-bread": {
+  "n": "Pan integral casero",
+  "q": "el pan integral casero",
+  "o": "el pan integral casero",
+  "p": false,
+  "s": "pan-integral-casero"
+ },
+ "lentils": {
+  "n": "Lentejas",
+  "q": "las lentejas",
+  "o": "las lentejas",
+  "p": true,
+  "s": "lentejas"
+ },
+ "millet": {
+  "n": "Mijo",
+  "q": "el mijo",
+  "o": "el mijo",
+  "p": false,
+  "s": "mijo"
+ },
+ "mung-bean-sprouts": {
+  "n": "Germinado de frijol mungo",
+  "q": "el germinado de frijol mungo",
+  "o": "el germinado de frijol mungo",
+  "p": false,
+  "s": "germinado-frijol-mungo"
+ },
+ "oats": {
+  "n": "Avena en grano",
+  "q": "la avena en grano",
+  "o": "la avena en grano",
+  "p": false,
+  "s": "avena-grano"
+ },
+ "quinoa": {
+  "n": "Quinoa cruda",
+  "q": "la quinoa cruda",
+  "o": "la quinoa cruda",
+  "p": false,
+  "s": "quinoa"
+ },
+ "refried-beans": {
+  "n": "Frijoles refritos",
+  "q": "los frijoles refritos",
+  "o": "los frijoles refritos",
+  "p": true,
+  "s": "frijoles-refritos"
+ },
+ "rye-berries": {
+  "n": "Granos de centeno",
+  "q": "los granos de centeno",
+  "o": "los granos de centeno",
+  "p": true,
+  "s": "granos-centeno"
+ },
+ "sorghum": {
+  "n": "Sorgo",
+  "q": "el sorgo",
+  "o": "el sorgo",
+  "p": false,
+  "s": "sorgo"
+ },
+ "spelt": {
+  "n": "Espelta",
+  "q": "la espelta",
+  "o": "la espelta",
+  "p": false,
+  "s": "espelta"
+ },
+ "split-peas": {
+  "n": "Chícharos secos partidos",
+  "q": "los chícharos secos partidos",
+  "o": "los chícharos secos partidos",
+  "p": true,
+  "s": "chicharos-secos-partidos"
+ },
+ "teff": {
+  "n": "Teff",
+  "q": "el teff",
+  "o": "el teff",
+  "p": false,
+  "s": "teff"
+ },
+ "vacuum-sealed-mung-beans": {
+  "n": "Frijol mungo empacado al vacío",
+  "q": "el frijol mungo empacado al vacío",
+  "o": "el frijol mungo empacado al vacío",
+  "p": false,
+  "s": "frijol-mungo-vacio"
+ },
+ "whole-wheat-bread": {
+  "n": "Pan integral",
+  "q": "el pan integral",
+  "o": "el pan integral",
+  "p": false,
+  "s": "pan-integral"
+ },
+ "almond-extract": {
+  "n": "Extracto de almendra",
+  "q": "el extracto de almendra",
+  "o": "el extracto de almendra",
+  "p": false,
+  "s": "extracto-almendra"
+ },
+ "amaranth-flour": {
+  "n": "Harina de amaranto",
+  "q": "la harina de amaranto",
+  "o": "la harina de amaranto",
+  "p": false,
+  "s": "harina-amaranto"
+ },
+ "baking-chocolate": {
+  "n": "Chocolate para repostería",
+  "q": "el chocolate para repostería",
+  "o": "el chocolate para repostería",
+  "p": false,
+  "s": "chocolate-reposteria"
+ },
+ "baking-powder": {
+  "n": "Polvo para hornear",
+  "q": "el polvo para hornear",
+  "o": "el polvo para hornear",
+  "p": false,
+  "s": "polvo-hornear"
+ },
+ "baking-soda": {
+  "n": "Bicarbonato de sodio",
+  "q": "el bicarbonato de sodio",
+  "o": "el bicarbonato de sodio",
+  "p": false,
+  "s": "bicarbonato-sodio"
+ },
+ "barley-flour": {
+  "n": "Harina de cebada",
+  "q": "la harina de cebada",
+  "o": "la harina de cebada",
+  "p": false,
+  "s": "harina-cebada"
+ },
+ "brown-sugar": {
+  "n": "Azúcar morena",
+  "q": "la azúcar morena",
+  "o": "la azúcar morena",
+  "p": false,
+  "s": "azucar-morena"
+ },
+ "buckwheat-flour": {
+  "n": "Harina de trigo sarraceno",
+  "q": "la harina de trigo sarraceno",
+  "o": "la harina de trigo sarraceno",
+  "p": false,
+  "s": "harina-trigo-sarraceno"
+ },
+ "butter-flavor": {
+  "n": "Saborizante de mantequilla",
+  "q": "el saborizante de mantequilla",
+  "o": "el saborizante de mantequilla",
+  "p": false,
+  "s": "saborizante-mantequilla"
+ },
+ "cake-mix": {
+  "n": "Harina preparada para pastel",
+  "q": "la harina preparada para pastel",
+  "o": "la harina preparada para pastel",
+  "p": false,
+  "s": "harina-preparada-pastel"
+ },
+ "canned-biscuit-pizza-dough": {
+  "n": "Masa refrigerada en tubo para bísquets y pizza",
+  "q": "la masa refrigerada en tubo para bísquets y pizza",
+  "o": "la masa refrigerada en tubo para bísquets y pizza",
+  "p": false,
+  "s": "masa-tubo-bisquets-pizza"
+ },
+ "chiffon-pie": {
+  "n": "Pay chiffon",
+  "q": "el pay chiffon",
+  "o": "el pay chiffon",
+  "p": false,
+  "s": "pay-chiffon"
+ },
+ "chili-powder": {
+  "n": "Chile en polvo",
+  "q": "el chile en polvo",
+  "o": "el chile en polvo",
+  "p": false,
+  "s": "chile-polvo"
+ },
+ "cinnamon-extract": {
+  "n": "Extracto de canela",
+  "q": "el extracto de canela",
+  "o": "el extracto de canela",
+  "p": false,
+  "s": "extracto-canela"
+ },
+ "cinnamon-rolls": {
+  "n": "Roles de canela",
+  "q": "los roles de canela",
+  "o": "los roles de canela",
+  "p": true,
+  "s": "roles-canela"
+ },
+ "cinnamon-rolls-tube": {
+  "n": "Roles de canela en tubo (sin hornear)",
+  "q": "los roles de canela en tubo (sin hornear)",
+  "o": "los roles de canela en tubo (sin hornear)",
+  "p": true,
+  "s": "roles-canela-tubo"
+ },
+ "cocoa-powder": {
+  "n": "Cacao en polvo",
+  "q": "el cacao en polvo",
+  "o": "el cacao en polvo",
+  "p": false,
+  "s": "cacao-polvo"
+ },
+ "coconut-flavor": {
+  "n": "Saborizante de coco",
+  "q": "el saborizante de coco",
+  "o": "el saborizante de coco",
+  "p": false,
+  "s": "saborizante-coco"
+ },
+ "coconut-flour": {
+  "n": "Harina de coco",
+  "q": "la harina de coco",
+  "o": "la harina de coco",
+  "p": false,
+  "s": "harina-coco"
+ },
+ "cookie-dough": {
+  "n": "Masa para galletas",
+  "q": "la masa para galletas",
+  "o": "la masa para galletas",
+  "p": false,
+  "s": "masa-galletas"
+ },
+ "cooking-spray": {
+  "n": "Aceite en aerosol",
+  "q": "el aceite en aerosol",
+  "o": "el aceite en aerosol",
+  "p": false,
+  "s": "aceite-aerosol"
+ },
+ "cornmeal": {
+  "n": "Harina de maíz",
+  "q": "la harina de maíz",
+  "o": "la harina de maíz",
+  "p": false,
+  "s": "harina-maiz"
+ },
+ "cornstarch": {
+  "n": "Fécula de maíz",
+  "q": "la fécula de maíz",
+  "o": "la fécula de maíz",
+  "p": false,
+  "s": "fecula-maiz"
+ },
+ "cream-pie": {
+  "n": "Pay de crema",
+  "q": "el pay de crema",
+  "o": "el pay de crema",
+  "p": false,
+  "s": "pay-crema"
+ },
+ "crispy-cookies": {
+  "n": "Galletas crujientes",
+  "q": "las galletas crujientes",
+  "o": "las galletas crujientes",
+  "p": true,
+  "s": "galletas-crujientes"
+ },
+ "danish-pastries": {
+  "n": "Pan danés",
+  "q": "el pan danés",
+  "o": "el pan danés",
+  "p": false,
+  "s": "pan-danes"
+ },
+ "donuts": {
+  "n": "Donas",
+  "q": "las donas",
+  "o": "las donas",
+  "p": true,
+  "s": "donas"
+ },
+ "dried-herbs": {
+  "n": "Hierbas secas",
+  "q": "las hierbas secas",
+  "o": "las hierbas secas",
+  "p": true,
+  "s": "hierbas-secas"
+ },
+ "eclairs": {
+  "n": "Éclairs rellenos de crema",
+  "q": "los éclairs rellenos de crema",
+  "o": "los éclairs rellenos de crema",
+  "p": true,
+  "s": "eclairs"
+ },
+ "farro-flour": {
+  "n": "Harina de farro",
+  "q": "la harina de farro",
+  "o": "la harina de farro",
+  "p": false,
+  "s": "harina-farro"
+ },
+ "french-macarons": {
+  "n": "Macarons franceses",
+  "q": "los macarons franceses",
+  "o": "los macarons franceses",
+  "p": true,
+  "s": "macarons"
+ },
+ "frosting": {
+  "n": "Betún para pastel",
+  "q": "el betún para pastel",
+  "o": "el betún para pastel",
+  "p": false,
+  "s": "betun-pastel"
+ },
+ "frozen-bagels": {
+  "n": "Bagels congelados",
+  "q": "los bagels congelados",
+  "o": "los bagels congelados",
+  "p": true,
+  "s": "bagels-congelados"
+ },
+ "fruitcake": {
+  "n": "Pastel de frutas",
+  "q": "el pastel de frutas",
+  "o": "el pastel de frutas",
+  "p": false,
+  "s": "pastel-frutas"
+ },
+ "garam-masala": {
+  "n": "Garam masala",
+  "q": "el garam masala",
+  "o": "el garam masala",
+  "p": false,
+  "s": "garam-masala"
+ },
+ "ground-spices": {
+  "n": "Especias molidas",
+  "q": "las especias molidas",
+  "o": "las especias molidas",
+  "p": true,
+  "s": "especias-molidas"
+ },
+ "herb-mixes": {
+  "n": "Mezclas de hierbas",
+  "q": "las mezclas de hierbas",
+  "o": "las mezclas de hierbas",
+  "p": true,
+  "s": "mezclas-hierbas"
+ },
+ "homemade-bread": {
+  "n": "Pan casero",
+  "q": "el pan casero",
+  "o": "el pan casero",
+  "p": false,
+  "s": "pan-casero"
+ },
+ "homemade-muffins": {
+  "n": "Muffins caseros",
+  "q": "los muffins caseros",
+  "o": "los muffins caseros",
+  "p": true,
+  "s": "muffins-caseros"
+ },
+ "jarred-minced-garlic": {
+  "n": "Ajo picado en frasco",
+  "q": "el ajo picado en frasco",
+  "o": "el ajo picado en frasco",
+  "p": false,
+  "s": "ajo-picado-frasco"
+ },
+ "jell-o": {
+  "n": "Gelatina de sabor",
+  "q": "la gelatina de sabor",
+  "o": "la gelatina de sabor",
+  "p": false,
+  "s": "gelatina-sabor"
+ },
+ "lemon-extract": {
+  "n": "Extracto de limón",
+  "q": "el extracto de limón",
+  "o": "el extracto de limón",
+  "p": false,
+  "s": "extracto-limon"
+ },
+ "millet-flour": {
+  "n": "Harina de mijo",
+  "q": "la harina de mijo",
+  "o": "la harina de mijo",
+  "p": false,
+  "s": "harina-mijo"
+ },
+ "mincemeat-pie": {
+  "n": "Pay de mincemeat (frutas secas y especias)",
+  "q": "el pay de mincemeat (frutas secas y especias)",
+  "o": "el pay de mincemeat (frutas secas y especias)",
+  "p": false,
+  "s": "pay-mincemeat"
+ },
+ "muffin-mix": {
+  "n": "Harina preparada para muffins",
+  "q": "la harina preparada para muffins",
+  "o": "la harina preparada para muffins",
+  "p": false,
+  "s": "harina-preparada-muffins"
+ },
+ "nut-oils": {
+  "n": "Aceites de nueces",
+  "q": "los aceites de nueces",
+  "o": "los aceites de nueces",
+  "p": true,
+  "s": "aceites-nueces"
+ },
+ "oat-flour": {
+  "n": "Harina de avena",
+  "q": "la harina de avena",
+  "o": "la harina de avena",
+  "p": false,
+  "s": "harina-avena"
+ },
+ "pancake-mix": {
+  "n": "Harina para hot cakes",
+  "q": "la harina para hot cakes",
+  "o": "la harina para hot cakes",
+  "p": false,
+  "s": "harina-hot-cakes"
+ },
+ "pecan-pie": {
+  "n": "Pay de nuez",
+  "q": "el pay de nuez",
+  "o": "el pay de nuez",
+  "p": false,
+  "s": "pay-nuez"
+ },
+ "pie-crust-ready-bake": {
+  "n": "Base para pay lista para hornear",
+  "q": "la base para pay lista para hornear",
+  "o": "la base para pay lista para hornear",
+  "p": false,
+  "s": "base-pay-lista-hornear"
+ },
+ "powdered-sugar": {
+  "n": "Azúcar glas",
+  "q": "el azúcar glas",
+  "o": "el azúcar glas",
+  "p": false,
+  "s": "azucar-glas"
+ },
+ "puff-pastry": {
+  "n": "Pasta hojaldre",
+  "q": "la pasta hojaldre",
+  "o": "la pasta hojaldre",
+  "p": false,
+  "s": "pasta-hojaldre"
+ },
+ "quiche": {
+  "n": "Quiche",
+  "q": "el quiche",
+  "o": "el quiche",
+  "p": false,
+  "s": "quiche"
+ },
+ "refrigerated-biscuits": {
+  "n": "Bísquets refrigerados",
+  "q": "los bísquets refrigerados",
+  "o": "los bísquets refrigerados",
+  "p": true,
+  "s": "bisquets-refrigerados"
+ },
+ "refrigerated-pie-crust": {
+  "n": "Base para pay refrigerada",
+  "q": "la base para pay refrigerada",
+  "o": "la base para pay refrigerada",
+  "p": false,
+  "s": "base-pay-refrigerada"
+ },
+ "rye-flour": {
+  "n": "Harina de centeno",
+  "q": "la harina de centeno",
+  "o": "la harina de centeno",
+  "p": false,
+  "s": "harina-centeno"
+ },
+ "seasoning-blends": {
+  "n": "Mezclas de sazonadores",
+  "q": "las mezclas de sazonadores",
+  "o": "las mezclas de sazonadores",
+  "p": true,
+  "s": "mezclas-sazonadores"
+ },
+ "shortening": {
+  "n": "Manteca vegetal",
+  "q": "la manteca vegetal",
+  "o": "la manteca vegetal",
+  "p": false,
+  "s": "manteca-vegetal"
+ },
+ "soft-cookies": {
+  "n": "Galletas suaves",
+  "q": "las galletas suaves",
+  "o": "las galletas suaves",
+  "p": true,
+  "s": "galletas-suaves"
+ },
+ "sorghum-flour": {
+  "n": "Harina de sorgo",
+  "q": "la harina de sorgo",
+  "o": "la harina de sorgo",
+  "p": false,
+  "s": "harina-sorgo"
+ },
+ "spelt-flour": {
+  "n": "Harina de espelta",
+  "q": "la harina de espelta",
+  "o": "la harina de espelta",
+  "p": false,
+  "s": "harina-espelta"
+ },
+ "stone-ground-cornmeal": {
+  "n": "Harina de maíz molida a la piedra",
+  "q": "la harina de maíz molida a la piedra",
+  "o": "la harina de maíz molida a la piedra",
+  "p": false,
+  "s": "harina-maiz-molida-piedra"
+ },
+ "sugar-substitutes": {
+  "n": "Sustitutos de azúcar",
+  "q": "los sustitutos de azúcar",
+  "o": "los sustitutos de azúcar",
+  "p": true,
+  "s": "sustitutos-azucar"
+ },
+ "tamarind-paste": {
+  "n": "Pasta de tamarindo",
+  "q": "la pasta de tamarindo",
+  "o": "la pasta de tamarindo",
+  "p": false,
+  "s": "pasta-tamarindo"
+ },
+ "tapioca": {
+  "n": "Tapioca",
+  "q": "la tapioca",
+  "o": "la tapioca",
+  "p": false,
+  "s": "tapioca"
+ },
+ "teff-flour": {
+  "n": "Harina de teff",
+  "q": "la harina de teff",
+  "o": "la harina de teff",
+  "p": false,
+  "s": "harina-teff"
+ },
+ "unflavored-gelatin": {
+  "n": "Grenetina",
+  "q": "la grenetina",
+  "o": "la grenetina",
+  "p": false,
+  "s": "grenetina"
+ },
+ "vanilla-extract": {
+  "n": "Extracto de vainilla",
+  "q": "el extracto de vainilla",
+  "o": "el extracto de vainilla",
+  "p": false,
+  "s": "extracto-vainilla"
+ },
+ "whole-spices": {
+  "n": "Especias enteras",
+  "q": "las especias enteras",
+  "o": "las especias enteras",
+  "p": true,
+  "s": "especias-enteras"
+ },
+ "whole-wheat-flour": {
+  "n": "Harina integral",
+  "q": "la harina integral",
+  "o": "la harina integral",
+  "p": false,
+  "s": "harina-integral"
+ },
+ "whole-wheat-flour-bulk": {
+  "n": "Harina integral (a granel)",
+  "q": "la harina integral (a granel)",
+  "o": "la harina integral (a granel)",
+  "p": false,
+  "s": "harina-integral-granel"
+ },
+ "yeast": {
+  "n": "Levadura",
+  "q": "la levadura",
+  "o": "la levadura",
+  "p": false,
+  "s": "levadura"
+ },
+ "aioli": {
+  "n": "Alioli casero",
+  "q": "el alioli casero",
+  "o": "el alioli casero",
+  "p": false,
+  "s": "alioli"
+ },
+ "alfredo-cream-sauces": {
+  "n": "Salsa Alfredo y salsas de crema",
+  "q": "la salsa Alfredo y salsas de crema",
+  "o": "la salsa Alfredo y salsas de crema",
+  "p": false,
+  "s": "salsa-alfredo-crema"
+ },
+ "anchovies": {
+  "n": "Anchoas enlatadas",
+  "q": "las anchoas enlatadas",
+  "o": "las anchoas enlatadas",
+  "p": true,
+  "s": "anchoas"
+ },
+ "apple-cider-vinegar": {
+  "n": "Vinagre de manzana",
+  "q": "el vinagre de manzana",
+  "o": "el vinagre de manzana",
+  "p": false,
+  "s": "vinagre-manzana"
+ },
+ "bacon-grease": {
+  "n": "Grasa de tocino",
+  "q": "la grasa de tocino",
+  "o": "la grasa de tocino",
+  "p": false,
+  "s": "grasa-tocino"
+ },
+ "balsamic-vinegar": {
+  "n": "Vinagre balsámico",
+  "q": "el vinagre balsámico",
+  "o": "el vinagre balsámico",
+  "p": false,
+  "s": "vinagre-balsamico"
+ },
+ "barbecue-sauce": {
+  "n": "Salsa barbecue",
+  "q": "la salsa barbecue",
+  "o": "la salsa barbecue",
+  "p": false,
+  "s": "salsa-barbecue"
+ },
+ "beef-broth": {
+  "n": "Caldo de res",
+  "q": "el caldo de res",
+  "o": "el caldo de res",
+  "p": false,
+  "s": "caldo-res"
+ },
+ "black-bean-sauce": {
+  "n": "Salsa de frijol negro",
+  "q": "la salsa de frijol negro",
+  "o": "la salsa de frijol negro",
+  "p": false,
+  "s": "salsa-frijol-negro"
+ },
+ "canned-cranberry-sauce": {
+  "n": "Salsa de arándano enlatada",
+  "q": "la salsa de arándano enlatada",
+  "o": "la salsa de arándano enlatada",
+  "p": false,
+  "s": "salsa-arandano-enlatada"
+ },
+ "chutney": {
+  "n": "Chutney",
+  "q": "el chutney",
+  "o": "el chutney",
+  "p": false,
+  "s": "chutney"
+ },
+ "cooking-wine": {
+  "n": "Vino para cocinar",
+  "q": "el vino para cocinar",
+  "o": "el vino para cocinar",
+  "p": false,
+  "s": "vino-cocinar"
+ },
+ "creamy-salad-dressing": {
+  "n": "Aderezo cremoso para ensalada",
+  "q": "el aderezo cremoso para ensalada",
+  "o": "el aderezo cremoso para ensalada",
+  "p": false,
+  "s": "aderezo-cremoso"
+ },
+ "dry-salad-dressing-mix": {
+  "n": "Aderezo para ensalada en polvo",
+  "q": "el aderezo para ensalada en polvo",
+  "o": "el aderezo para ensalada en polvo",
+  "p": false,
+  "s": "aderezo-polvo"
+ },
+ "duck-fat": {
+  "n": "Grasa de pato",
+  "q": "la grasa de pato",
+  "o": "la grasa de pato",
+  "p": false,
+  "s": "grasa-pato"
+ },
+ "gravy-mix": {
+  "n": "Gravy en polvo",
+  "q": "el gravy en polvo",
+  "o": "el gravy en polvo",
+  "p": false,
+  "s": "gravy-polvo"
+ },
+ "hoisin-sauce": {
+  "n": "Salsa hoisin",
+  "q": "la salsa hoisin",
+  "o": "la salsa hoisin",
+  "p": false,
+  "s": "salsa-hoisin"
+ },
+ "home-canned-barbecue-sauce": {
+  "n": "Salsa barbecue envasada en casa",
+  "q": "la salsa barbecue envasada en casa",
+  "o": "la salsa barbecue envasada en casa",
+  "p": false,
+  "s": "salsa-barbecue-envasada-casa"
+ },
+ "home-canned-salsa": {
+  "n": "Salsa envasada en casa",
+  "q": "la salsa envasada en casa",
+  "o": "la salsa envasada en casa",
+  "p": false,
+  "s": "salsa-envasada-casa"
+ },
+ "home-canned-tomato-sauce": {
+  "n": "Salsa de tomate envasada en casa",
+  "q": "la salsa de tomate envasada en casa",
+  "o": "la salsa de tomate envasada en casa",
+  "p": false,
+  "s": "salsa-tomate-envasada-casa"
+ },
+ "homemade-broth": {
+  "n": "Caldo casero",
+  "q": "el caldo casero",
+  "o": "el caldo casero",
+  "p": false,
+  "s": "caldo-casero"
+ },
+ "homemade-cranberry-sauce": {
+  "n": "Salsa de arándano casera",
+  "q": "la salsa de arándano casera",
+  "o": "la salsa de arándano casera",
+  "p": false,
+  "s": "salsa-arandano-casera"
+ },
+ "homemade-salad-dressing": {
+  "n": "Aderezo para ensalada casero",
+  "q": "el aderezo para ensalada casero",
+  "o": "el aderezo para ensalada casero",
+  "p": false,
+  "s": "aderezo-casero"
+ },
+ "homemade-vinaigrette": {
+  "n": "Vinagreta casera",
+  "q": "la vinagreta casera",
+  "o": "la vinagreta casera",
+  "p": false,
+  "s": "vinagreta-casera"
+ },
+ "horseradish": {
+  "n": "Rábano picante en frasco",
+  "q": "el rábano picante en frasco",
+  "o": "el rábano picante en frasco",
+  "p": false,
+  "s": "rabano-picante"
+ },
+ "hot-sauce": {
+  "n": "Salsa picante",
+  "q": "la salsa picante",
+  "o": "la salsa picante",
+  "p": false,
+  "s": "salsa-picante"
+ },
+ "jarred-gravy": {
+  "n": "Gravy en frasco o lata",
+  "q": "el gravy en frasco o lata",
+  "o": "el gravy en frasco o lata",
+  "p": false,
+  "s": "gravy-frasco"
+ },
+ "marinades": {
+  "n": "Marinadas",
+  "q": "las marinadas",
+  "o": "las marinadas",
+  "p": true,
+  "s": "marinadas"
+ },
+ "olives": {
+  "n": "Aceitunas",
+  "q": "las aceitunas",
+  "o": "las aceitunas",
+  "p": true,
+  "s": "aceitunas"
+ },
+ "oyster-sauce": {
+  "n": "Salsa de ostión",
+  "q": "la salsa de ostión",
+  "o": "la salsa de ostión",
+  "p": false,
+  "s": "salsa-ostion"
+ },
+ "pesto": {
+  "n": "Pesto en frasco",
+  "q": "el pesto en frasco",
+  "o": "el pesto en frasco",
+  "p": false,
+  "s": "pesto"
+ },
+ "pickles": {
+  "n": "Pepinillos",
+  "q": "los pepinillos",
+  "o": "los pepinillos",
+  "p": true,
+  "s": "pepinillos"
+ },
+ "relish": {
+  "n": "Relish",
+  "q": "el relish",
+  "o": "el relish",
+  "p": false,
+  "s": "relish"
+ },
+ "reused-frying-oil": {
+  "n": "Aceite de freír reutilizado",
+  "q": "el aceite de freír reutilizado",
+  "o": "el aceite de freír reutilizado",
+  "p": false,
+  "s": "aceite-freir-reutilizado"
+ },
+ "salad-dressing": {
+  "n": "Aderezo para ensalada",
+  "q": "el aderezo para ensalada",
+  "o": "el aderezo para ensalada",
+  "p": false,
+  "s": "aderezo-ensalada"
+ },
+ "spaghetti-sauce": {
+  "n": "Salsa para espagueti en frasco",
+  "q": "la salsa para espagueti en frasco",
+  "o": "la salsa para espagueti en frasco",
+  "p": false,
+  "s": "salsa-espagueti"
+ },
+ "taco-spaghetti-seasoning-mixes": {
+  "n": "Sazonadores en polvo para tacos y espagueti",
+  "q": "los sazonadores en polvo para tacos y espagueti",
+  "o": "los sazonadores en polvo para tacos y espagueti",
+  "p": true,
+  "s": "sazonador-tacos-espagueti"
+ },
+ "tahini": {
+  "n": "Tahini",
+  "q": "el tahini",
+  "o": "el tahini",
+  "p": false,
+  "s": "tahini"
+ },
+ "thai-red-curry-paste": {
+  "n": "Pasta de curry rojo tailandés",
+  "q": "la pasta de curry rojo tailandés",
+  "o": "la pasta de curry rojo tailandés",
+  "p": false,
+  "s": "pasta-curry-rojo"
+ },
+ "tomato-sauce": {
+  "n": "Salsa de tomate",
+  "q": "la salsa de tomate",
+  "o": "la salsa de tomate",
+  "p": false,
+  "s": "salsa-tomate"
+ },
+ "vegetable-broth": {
+  "n": "Caldo de verduras",
+  "q": "el caldo de verduras",
+  "o": "el caldo de verduras",
+  "p": false,
+  "s": "caldo-verduras"
+ },
+ "vinaigrette": {
+  "n": "Vinagreta",
+  "q": "la vinagreta",
+  "o": "la vinagreta",
+  "p": false,
+  "s": "vinagreta"
+ },
+ "vinegar": {
+  "n": "Vinagre",
+  "q": "el vinagre",
+  "o": "el vinagre",
+  "p": false,
+  "s": "vinagre"
+ },
+ "worcestershire-sauce": {
+  "n": "Salsa inglesa",
+  "q": "la salsa inglesa",
+  "o": "la salsa inglesa",
+  "p": false,
+  "s": "salsa-inglesa"
+ },
+ "almond-butter": {
+  "n": "Crema de almendra",
+  "q": "la crema de almendra",
+  "o": "la crema de almendra",
+  "p": false,
+  "s": "crema-almendra"
+ },
+ "almond-oil": {
+  "n": "Aceite de almendra",
+  "q": "el aceite de almendra",
+  "o": "el aceite de almendra",
+  "p": false,
+  "s": "aceite-almendra"
+ },
+ "almonds": {
+  "n": "Almendras sin cáscara",
+  "q": "las almendras sin cáscara",
+  "o": "las almendras sin cáscara",
+  "p": true,
+  "s": "almendras"
+ },
+ "almonds-shell": {
+  "n": "Almendras con cáscara",
+  "q": "las almendras con cáscara",
+  "o": "las almendras con cáscara",
+  "p": true,
+  "s": "almendras-cascara"
+ },
+ "applesauce": {
+  "n": "Puré de manzana",
+  "q": "el puré de manzana",
+  "o": "el puré de manzana",
+  "p": false,
+  "s": "pure-manzana"
+ },
+ "avocado-oil": {
+  "n": "Aceite de aguacate",
+  "q": "el aceite de aguacate",
+  "o": "el aceite de aguacate",
+  "p": false,
+  "s": "aceite-aguacate"
+ },
+ "bagged-popcorn": {
+  "n": "Palomitas en bolsa",
+  "q": "las palomitas en bolsa",
+  "o": "las palomitas en bolsa",
+  "p": true,
+  "s": "palomitas-bolsa"
+ },
+ "black-pepper": {
+  "n": "Pimienta negra molida",
+  "q": "la pimienta negra molida",
+  "o": "la pimienta negra molida",
+  "p": false,
+  "s": "pimienta-negra"
+ },
+ "bottled-nutrition-shakes": {
+  "n": "Batidos nutricionales en botella",
+  "q": "los batidos nutricionales en botella",
+  "o": "los batidos nutricionales en botella",
+  "p": true,
+  "s": "batidos-nutricionales-botella"
+ },
+ "bouillon": {
+  "n": "Consomé en polvo o cubo",
+  "q": "el consomé en polvo o cubo",
+  "o": "el consomé en polvo o cubo",
+  "p": false,
+  "s": "consome-polvo-cubo"
+ },
+ "bouillon-base": {
+  "n": "Base de caldo concentrada",
+  "q": "la base de caldo concentrada",
+  "o": "la base de caldo concentrada",
+  "p": false,
+  "s": "base-caldo"
+ },
+ "breadcrumbs": {
+  "n": "Pan molido",
+  "q": "el pan molido",
+  "o": "el pan molido",
+  "p": false,
+  "s": "pan-molido"
+ },
+ "cajun-seasoning": {
+  "n": "Sazonador cajún",
+  "q": "el sazonador cajún",
+  "o": "el sazonador cajún",
+  "p": false,
+  "s": "sazonador-cajun"
+ },
+ "canned-coconut-cream": {
+  "n": "Crema de coco enlatada",
+  "q": "la crema de coco enlatada",
+  "o": "la crema de coco enlatada",
+  "p": false,
+  "s": "crema-coco-enlatada"
+ },
+ "canned-coconut-milk": {
+  "n": "Leche de coco enlatada",
+  "q": "la leche de coco enlatada",
+  "o": "la leche de coco enlatada",
+  "p": false,
+  "s": "leche-coco-enlatada"
+ },
+ "canned-food-high-acid": {
+  "n": "Enlatados ácidos",
+  "q": "los enlatados ácidos",
+  "o": "los enlatados ácidos",
+  "p": true,
+  "s": "enlatados-acidos"
+ },
+ "canned-food-low-acid": {
+  "n": "Enlatados poco ácidos",
+  "q": "los enlatados poco ácidos",
+  "o": "los enlatados poco ácidos",
+  "p": true,
+  "s": "enlatados-poco-acidos"
+ },
+ "canned-fruit-cocktail": {
+  "n": "Coctel de frutas en lata",
+  "q": "el coctel de frutas en lata",
+  "o": "el coctel de frutas en lata",
+  "p": false,
+  "s": "coctel-frutas-lata"
+ },
+ "canned-nuts": {
+  "n": "Nueces en frasco o lata",
+  "q": "las nueces en frasco o lata",
+  "o": "las nueces en frasco o lata",
+  "p": true,
+  "s": "nueces-frasco-lata"
+ },
+ "canned-seafood": {
+  "n": "Mariscos enlatados",
+  "q": "los mariscos enlatados",
+  "o": "los mariscos enlatados",
+  "p": true,
+  "s": "mariscos-enlatados"
+ },
+ "canned-tuna": {
+  "n": "Atún enlatado",
+  "q": "el atún enlatado",
+  "o": "el atún enlatado",
+  "p": false,
+  "s": "atun-enlatado"
+ },
+ "canola-oil": {
+  "n": "Aceite de canola",
+  "q": "el aceite de canola",
+  "o": "el aceite de canola",
+  "p": false,
+  "s": "aceite-canola"
+ },
+ "capers": {
+  "n": "Alcaparras",
+  "q": "las alcaparras",
+  "o": "las alcaparras",
+  "p": true,
+  "s": "alcaparras"
+ },
+ "cashew-butter": {
+  "n": "Crema de nuez de la India",
+  "q": "la crema de nuez de la India",
+  "o": "la crema de nuez de la India",
+  "p": false,
+  "s": "crema-nuez-india"
+ },
+ "cashews": {
+  "n": "Nueces de la India",
+  "q": "las nueces de la India",
+  "o": "las nueces de la India",
+  "p": true,
+  "s": "nueces-india"
+ },
+ "chia-seeds": {
+  "n": "Semillas de chía",
+  "q": "las semillas de chía",
+  "o": "las semillas de chía",
+  "p": true,
+  "s": "semillas-chia"
+ },
+ "chocolate-syrup": {
+  "n": "Jarabe de chocolate",
+  "q": "el jarabe de chocolate",
+  "o": "el jarabe de chocolate",
+  "p": false,
+  "s": "jarabe-chocolate"
+ },
+ "chopped-pecans": {
+  "n": "Nuez pecana picada",
+  "q": "la nuez pecana picada",
+  "o": "la nuez pecana picada",
+  "p": false,
+  "s": "nuez-pecana-picada"
+ },
+ "cinnamon": {
+  "n": "Canela molida",
+  "q": "la canela molida",
+  "o": "la canela molida",
+  "p": false,
+  "s": "canela-molida"
+ },
+ "coconut-oil": {
+  "n": "Aceite de coco",
+  "q": "el aceite de coco",
+  "o": "el aceite de coco",
+  "p": false,
+  "s": "aceite-coco"
+ },
+ "corn-syrup": {
+  "n": "Jarabe de maíz",
+  "q": "el jarabe de maíz",
+  "o": "el jarabe de maíz",
+  "p": false,
+  "s": "jarabe-maiz"
+ },
+ "cracked-black-pepper": {
+  "n": "Pimienta negra quebrada",
+  "q": "la pimienta negra quebrada",
+  "o": "la pimienta negra quebrada",
+  "p": false,
+  "s": "pimienta-negra-quebrada"
+ },
+ "crackers": {
+  "n": "Galletas saladas",
+  "q": "las galletas saladas",
+  "o": "las galletas saladas",
+  "p": true,
+  "s": "galletas-saladas"
+ },
+ "croutons": {
+  "n": "Crutones",
+  "q": "los crutones",
+  "o": "los crutones",
+  "p": true,
+  "s": "crutones"
+ },
+ "cumin": {
+  "n": "Comino molido",
+  "q": "el comino molido",
+  "o": "el comino molido",
+  "p": false,
+  "s": "comino"
+ },
+ "dried-fruit": {
+  "n": "Fruta deshidratada",
+  "q": "la fruta deshidratada",
+  "o": "la fruta deshidratada",
+  "p": false,
+  "s": "fruta-deshidratada"
+ },
+ "dried-mushrooms": {
+  "n": "Hongos deshidratados",
+  "q": "los hongos deshidratados",
+  "o": "los hongos deshidratados",
+  "p": true,
+  "s": "hongos-deshidratados"
+ },
+ "dry-mustard": {
+  "n": "Mostaza en polvo",
+  "q": "la mostaza en polvo",
+  "o": "la mostaza en polvo",
+  "p": false,
+  "s": "mostaza-polvo"
+ },
+ "evaporated-condensed-milk": {
+  "n": "Leche evaporada y condensada",
+  "q": "la leche evaporada y condensada",
+  "o": "la leche evaporada y condensada",
+  "p": false,
+  "s": "leche-evaporada-condensada"
+ },
+ "flaxseed-ground": {
+  "n": "Linaza molida",
+  "q": "la linaza molida",
+  "o": "la linaza molida",
+  "p": false,
+  "s": "linaza-molida"
+ },
+ "flaxseed-whole-seed": {
+  "n": "Linaza entera",
+  "q": "la linaza entera",
+  "o": "la linaza entera",
+  "p": false,
+  "s": "linaza-entera"
+ },
+ "fruit-snacks": {
+  "n": "Gomitas de fruta",
+  "q": "las gomitas de fruta",
+  "o": "las gomitas de fruta",
+  "p": true,
+  "s": "gomitas-fruta"
+ },
+ "garlic-powder": {
+  "n": "Ajo en polvo",
+  "q": "el ajo en polvo",
+  "o": "el ajo en polvo",
+  "p": false,
+  "s": "ajo-polvo"
+ },
+ "graham-cracker-animal-cracker": {
+  "n": "Galletas Graham y de animalitos",
+  "q": "las galletas Graham y de animalitos",
+  "o": "las galletas Graham y de animalitos",
+  "p": true,
+  "s": "galletas-graham-animalitos"
+ },
+ "granola": {
+  "n": "Granola",
+  "q": "la granola",
+  "o": "la granola",
+  "p": false,
+  "s": "granola"
+ },
+ "granola-bars": {
+  "n": "Barras de granola",
+  "q": "las barras de granola",
+  "o": "las barras de granola",
+  "p": true,
+  "s": "barras-granola"
+ },
+ "grapeseed-oil": {
+  "n": "Aceite de semilla de uva",
+  "q": "el aceite de semilla de uva",
+  "o": "el aceite de semilla de uva",
+  "p": false,
+  "s": "aceite-semilla-uva"
+ },
+ "grits": {
+  "n": "Sémola de maíz (grits)",
+  "q": "la sémola de maíz (grits)",
+  "o": "la sémola de maíz (grits)",
+  "p": false,
+  "s": "semola-maiz-grits"
+ },
+ "imitation-bacon-bits": {
+  "n": "Trocitos de imitación tocino",
+  "q": "los trocitos de imitación tocino",
+  "o": "los trocitos de imitación tocino",
+  "p": true,
+  "s": "trocitos-imitacion-tocino"
+ },
+ "instant-breakfast-drinks": {
+  "n": "Bebidas instantáneas para desayuno",
+  "q": "las bebidas instantáneas para desayuno",
+  "o": "las bebidas instantáneas para desayuno",
+  "p": true,
+  "s": "bebidas-instantaneas-desayuno"
+ },
+ "instant-mashed-potatoes": {
+  "n": "Puré de papa instantáneo",
+  "q": "el puré de papa instantáneo",
+  "o": "el puré de papa instantáneo",
+  "p": false,
+  "s": "pure-papa-instantaneo"
+ },
+ "macadamia-nuts": {
+  "n": "Nueces de macadamia",
+  "q": "las nueces de macadamia",
+  "o": "las nueces de macadamia",
+  "p": true,
+  "s": "nueces-macadamia"
+ },
+ "maple-syrup-plastic-bottle": {
+  "n": "Jarabe de maple (botella de plástico)",
+  "q": "el jarabe de maple (botella de plástico)",
+  "o": "el jarabe de maple (botella de plástico)",
+  "p": false,
+  "s": "jarabe-maple-botella-plastico"
+ },
+ "marshmallow-creme": {
+  "n": "Crema de malvavisco",
+  "q": "la crema de malvavisco",
+  "o": "la crema de malvavisco",
+  "p": false,
+  "s": "crema-malvavisco"
+ },
+ "marshmallows": {
+  "n": "Malvaviscos",
+  "q": "los malvaviscos",
+  "o": "los malvaviscos",
+  "p": true,
+  "s": "malvaviscos"
+ },
+ "microwave-popcorn": {
+  "n": "Palomitas para microondas",
+  "q": "las palomitas para microondas",
+  "o": "las palomitas para microondas",
+  "p": true,
+  "s": "palomitas-microondas"
+ },
+ "molasses": {
+  "n": "Melaza",
+  "q": "la melaza",
+  "o": "la melaza",
+  "p": false,
+  "s": "melaza"
+ },
+ "natural-peanut-butter": {
+  "n": "Crema de cacahuate natural",
+  "q": "la crema de cacahuate natural",
+  "o": "la crema de cacahuate natural",
+  "p": false,
+  "s": "crema-cacahuate-natural"
+ },
+ "nutella": {
+  "n": "Nutella (crema de avellana)",
+  "q": "la Nutella (crema de avellana)",
+  "o": "la Nutella (crema de avellana)",
+  "p": false,
+  "s": "nutella"
+ },
+ "nutmeg": {
+  "n": "Nuez moscada molida",
+  "q": "la nuez moscada molida",
+  "o": "la nuez moscada molida",
+  "p": false,
+  "s": "nuez-moscada"
+ },
+ "onion-powder": {
+  "n": "Cebolla en polvo",
+  "q": "la cebolla en polvo",
+  "o": "la cebolla en polvo",
+  "p": false,
+  "s": "cebolla-polvo"
+ },
+ "pancake-syrup": {
+  "n": "Miel para hot cakes",
+  "q": "la miel para hot cakes",
+  "o": "la miel para hot cakes",
+  "p": false,
+  "s": "miel-hot-cakes"
+ },
+ "peanuts": {
+  "n": "Cacahuates pelados",
+  "q": "los cacahuates pelados",
+  "o": "los cacahuates pelados",
+  "p": true,
+  "s": "cacahuates"
+ },
+ "peanuts-shell": {
+  "n": "Cacahuates con cáscara",
+  "q": "los cacahuates con cáscara",
+  "o": "los cacahuates con cáscara",
+  "p": true,
+  "s": "cacahuates-cascara"
+ },
+ "pecans": {
+  "n": "Nuez pecana sin cáscara",
+  "q": "la nuez pecana sin cáscara",
+  "o": "la nuez pecana sin cáscara",
+  "p": false,
+  "s": "nuez-pecana"
+ },
+ "pecans-shell": {
+  "n": "Nuez pecana con cáscara",
+  "q": "la nuez pecana con cáscara",
+  "o": "la nuez pecana con cáscara",
+  "p": false,
+  "s": "nuez-pecana-cascara"
+ },
+ "pectin": {
+  "n": "Pectina",
+  "q": "la pectina",
+  "o": "la pectina",
+  "p": false,
+  "s": "pectina"
+ },
+ "pickled-beets": {
+  "n": "Betabel en conserva",
+  "q": "el betabel en conserva",
+  "o": "el betabel en conserva",
+  "p": false,
+  "s": "betabel-conserva"
+ },
+ "pine-nuts": {
+  "n": "Piñones",
+  "q": "los piñones",
+  "o": "los piñones",
+  "p": true,
+  "s": "pinones"
+ },
+ "pistachios": {
+  "n": "Pistaches",
+  "q": "los pistaches",
+  "o": "los pistaches",
+  "p": true,
+  "s": "pistaches"
+ },
+ "polenta": {
+  "n": "Polenta",
+  "q": "la polenta",
+  "o": "la polenta",
+  "p": false,
+  "s": "polenta"
+ },
+ "popcorn-kernels": {
+  "n": "Maíz palomero",
+  "q": "el maíz palomero",
+  "o": "el maíz palomero",
+  "p": false,
+  "s": "maiz-palomero"
+ },
+ "pork-rinds": {
+  "n": "Chicharrones de cerdo",
+  "q": "los chicharrones de cerdo",
+  "o": "los chicharrones de cerdo",
+  "p": true,
+  "s": "chicharrones-cerdo"
+ },
+ "potato-chips": {
+  "n": "Papas fritas de bolsa",
+  "q": "las papas fritas de bolsa",
+  "o": "las papas fritas de bolsa",
+  "p": true,
+  "s": "papas-fritas-bolsa"
+ },
+ "pretzels": {
+  "n": "Pretzels",
+  "q": "los pretzels",
+  "o": "los pretzels",
+  "p": true,
+  "s": "pretzels"
+ },
+ "pudding-mix": {
+  "n": "Pudín en polvo",
+  "q": "el pudín en polvo",
+  "o": "el pudín en polvo",
+  "p": false,
+  "s": "pudin-polvo"
+ },
+ "pumpkin-seeds": {
+  "n": "Pepitas de calabaza sin cáscara",
+  "q": "las pepitas de calabaza sin cáscara",
+  "o": "las pepitas de calabaza sin cáscara",
+  "p": true,
+  "s": "pepitas-calabaza"
+ },
+ "pumpkin-seeds-shell": {
+  "n": "Pepitas de calabaza con cáscara",
+  "q": "las pepitas de calabaza con cáscara",
+  "o": "las pepitas de calabaza con cáscara",
+  "p": true,
+  "s": "pepitas-calabaza-cascara"
+ },
+ "roasted-edamame": {
+  "n": "Edamame tostado",
+  "q": "el edamame tostado",
+  "o": "el edamame tostado",
+  "p": false,
+  "s": "edamame-tostado"
+ },
+ "roasted-nuts": {
+  "n": "Nueces tostadas",
+  "q": "las nueces tostadas",
+  "o": "las nueces tostadas",
+  "p": true,
+  "s": "nueces-tostadas"
+ },
+ "roasted-pumpkin-seeds": {
+  "n": "Pepitas de calabaza tostadas",
+  "q": "las pepitas de calabaza tostadas",
+  "o": "las pepitas de calabaza tostadas",
+  "p": true,
+  "s": "pepitas-calabaza-tostadas"
+ },
+ "roasted-pumpkin-seeds-shell": {
+  "n": "Pepitas de calabaza tostadas con cáscara",
+  "q": "las pepitas de calabaza tostadas con cáscara",
+  "o": "las pepitas de calabaza tostadas con cáscara",
+  "p": true,
+  "s": "pepitas-calabaza-tostadas-cascara"
+ },
+ "roasted-red-peppers": {
+  "n": "Pimientos rojos asados en frasco",
+  "q": "los pimientos rojos asados en frasco",
+  "o": "los pimientos rojos asados en frasco",
+  "p": true,
+  "s": "pimientos-rojos-asados"
+ },
+ "roasted-sunflower-seeds": {
+  "n": "Semillas de girasol tostadas",
+  "q": "las semillas de girasol tostadas",
+  "o": "las semillas de girasol tostadas",
+  "p": true,
+  "s": "semillas-girasol-tostadas"
+ },
+ "salt": {
+  "n": "Sal",
+  "q": "la sal",
+  "o": "la sal",
+  "p": false,
+  "s": "sal"
+ },
+ "salted-sunflower-seeds-shell": {
+  "n": "Semillas de girasol saladas con cáscara",
+  "q": "las semillas de girasol saladas con cáscara",
+  "o": "las semillas de girasol saladas con cáscara",
+  "p": true,
+  "s": "semillas-girasol-saladas-cascara"
+ },
+ "sesame-oil": {
+  "n": "Aceite de ajonjolí",
+  "q": "el aceite de ajonjolí",
+  "o": "el aceite de ajonjolí",
+  "p": false,
+  "s": "aceite-ajonjoli"
+ },
+ "sesame-seeds": {
+  "n": "Ajonjolí",
+  "q": "el ajonjolí",
+  "o": "el ajonjolí",
+  "p": false,
+  "s": "ajonjoli"
+ },
+ "shelf-stable-milk": {
+  "n": "Leche de larga vida (en caja)",
+  "q": "la leche de larga vida (en caja)",
+  "o": "la leche de larga vida (en caja)",
+  "p": false,
+  "s": "leche-larga-vida"
+ },
+ "stabilized-peanut-butter": {
+  "n": "Crema de cacahuate estabilizada",
+  "q": "la crema de cacahuate estabilizada",
+  "o": "la crema de cacahuate estabilizada",
+  "p": false,
+  "s": "crema-cacahuate-estabilizada"
+ },
+ "stuffing-mix": {
+  "n": "Mezcla para relleno de pan",
+  "q": "la mezcla para relleno de pan",
+  "o": "la mezcla para relleno de pan",
+  "p": false,
+  "s": "mezcla-relleno-pan"
+ },
+ "sun-dried-tomatoes": {
+  "n": "Tomates deshidratados en frasco",
+  "q": "los tomates deshidratados en frasco",
+  "o": "los tomates deshidratados en frasco",
+  "p": true,
+  "s": "tomates-deshidratados"
+ },
+ "sunflower-oil": {
+  "n": "Aceite de girasol",
+  "q": "el aceite de girasol",
+  "o": "el aceite de girasol",
+  "p": false,
+  "s": "aceite-girasol"
+ },
+ "sunflower-seeds": {
+  "n": "Semillas de girasol crudas",
+  "q": "las semillas de girasol crudas",
+  "o": "las semillas de girasol crudas",
+  "p": true,
+  "s": "semillas-girasol"
+ },
+ "tapenade": {
+  "n": "Tapenade",
+  "q": "la tapenade",
+  "o": "la tapenade",
+  "p": false,
+  "s": "tapenade"
+ },
+ "toaster-pastries": {
+  "n": "Pastelitos para tostador",
+  "q": "los pastelitos para tostador",
+  "o": "los pastelitos para tostador",
+  "p": true,
+  "s": "pastelitos-tostador"
+ },
+ "tomato-paste": {
+  "n": "Pasta de tomate",
+  "q": "la pasta de tomate",
+  "o": "la pasta de tomate",
+  "p": false,
+  "s": "pasta-tomate"
+ },
+ "tuna-pouches": {
+  "n": "Atún en sobre",
+  "q": "el atún en sobre",
+  "o": "el atún en sobre",
+  "p": false,
+  "s": "atun-sobre"
+ },
+ "ultra-pasteurized-milk": {
+  "n": "Leche ultrapasteurizada",
+  "q": "la leche ultrapasteurizada",
+  "o": "la leche ultrapasteurizada",
+  "p": false,
+  "s": "leche-ultrapasteurizada"
+ },
+ "walnuts": {
+  "n": "Nueces de Castilla",
+  "q": "las nueces de Castilla",
+  "o": "las nueces de Castilla",
+  "p": true,
+  "s": "nueces-castilla"
+ },
+ "apple-cider": {
+  "n": "Sidra de manzana sin pasteurizar",
+  "q": "la sidra de manzana sin pasteurizar",
+  "o": "la sidra de manzana sin pasteurizar",
+  "p": false,
+  "s": "sidra-manzana"
+ },
+ "bottled-water": {
+  "n": "Agua embotellada",
+  "q": "el agua embotellada",
+  "o": "el agua embotellada",
+  "p": false,
+  "s": "agua-embotellada"
+ },
+ "canned-nutrition-shakes": {
+  "n": "Batidos nutricionales en lata",
+  "q": "los batidos nutricionales en lata",
+  "o": "los batidos nutricionales en lata",
+  "p": true,
+  "s": "batidos-nutricionales-lata"
+ },
+ "coconut-water": {
+  "n": "Agua de coco",
+  "q": "el agua de coco",
+  "o": "el agua de coco",
+  "p": false,
+  "s": "agua-coco"
+ },
+ "cream-liqueur": {
+  "n": "Licor de crema",
+  "q": "el licor de crema",
+  "o": "el licor de crema",
+  "p": false,
+  "s": "licor-crema"
+ },
+ "drink-mixes": {
+  "n": "Polvos para preparar bebidas",
+  "q": "los polvos para preparar bebidas",
+  "o": "los polvos para preparar bebidas",
+  "p": true,
+  "s": "polvos-bebidas"
+ },
+ "fresh-apple-juice": {
+  "n": "Jugo de manzana recién exprimido",
+  "q": "el jugo de manzana recién exprimido",
+  "o": "el jugo de manzana recién exprimido",
+  "p": false,
+  "s": "jugo-manzana-natural"
+ },
+ "fresh-carrot-juice": {
+  "n": "Jugo de zanahoria natural",
+  "q": "el jugo de zanahoria natural",
+  "o": "el jugo de zanahoria natural",
+  "p": false,
+  "s": "jugo-zanahoria-natural"
+ },
+ "fresh-lemon-juice": {
+  "n": "Jugo de limón amarillo recién exprimido",
+  "q": "el jugo de limón amarillo recién exprimido",
+  "o": "el jugo de limón amarillo recién exprimido",
+  "p": false,
+  "s": "jugo-limon-amarillo-natural"
+ },
+ "fresh-squeezed-orange-juice": {
+  "n": "Jugo de naranja recién exprimido",
+  "q": "el jugo de naranja recién exprimido",
+  "o": "el jugo de naranja recién exprimido",
+  "p": false,
+  "s": "jugo-naranja-natural"
+ },
+ "frozen-orange-juice-concentrate": {
+  "n": "Jugo de naranja concentrado congelado",
+  "q": "el jugo de naranja concentrado congelado",
+  "o": "el jugo de naranja concentrado congelado",
+  "p": false,
+  "s": "jugo-naranja-concentrado-congelado"
+ },
+ "fruit-nectar": {
+  "n": "Néctar de fruta",
+  "q": "el néctar de fruta",
+  "o": "el néctar de fruta",
+  "p": false,
+  "s": "nectar-fruta"
+ },
+ "home-ground-coffee": {
+  "n": "Café molido en casa",
+  "q": "el café molido en casa",
+  "o": "el café molido en casa",
+  "p": false,
+  "s": "cafe-molido-casa"
+ },
+ "homemade-vegetable-juice": {
+  "n": "Jugo de verduras casero",
+  "q": "el jugo de verduras casero",
+  "o": "el jugo de verduras casero",
+  "p": false,
+  "s": "jugo-verduras-casero"
+ },
+ "instant-coffee": {
+  "n": "Café soluble",
+  "q": "el café soluble",
+  "o": "el café soluble",
+  "p": false,
+  "s": "cafe-soluble"
+ },
+ "instant-tea": {
+  "n": "Té instantáneo",
+  "q": "el té instantáneo",
+  "o": "el té instantáneo",
+  "p": false,
+  "s": "te-instantaneo"
+ },
+ "juice-boxes": {
+  "n": "Jugos en cajita",
+  "q": "los jugos en cajita",
+  "o": "los jugos en cajita",
+  "p": true,
+  "s": "jugos-cajita"
+ },
+ "juice-cartons-fruit-punch": {
+  "n": "Jugos en cartón y ponche de frutas",
+  "q": "los jugos en cartón y ponche de frutas",
+  "o": "los jugos en cartón y ponche de frutas",
+  "p": true,
+  "s": "jugos-carton-ponche"
+ },
+ "lemon-juice": {
+  "n": "Jugo de limón amarillo",
+  "q": "el jugo de limón amarillo",
+  "o": "el jugo de limón amarillo",
+  "p": false,
+  "s": "jugo-limon-amarillo"
+ },
+ "lime-juice": {
+  "n": "Jugo de limón",
+  "q": "el jugo de limón",
+  "o": "el jugo de limón",
+  "p": false,
+  "s": "jugo-limon"
+ },
+ "loose-leaf-tea": {
+  "n": "Té a granel",
+  "q": "el té a granel",
+  "o": "el té a granel",
+  "p": false,
+  "s": "te-granel"
+ },
+ "refrigerated-vegetable-juice": {
+  "n": "Jugo de verduras refrigerado",
+  "q": "el jugo de verduras refrigerado",
+  "o": "el jugo de verduras refrigerado",
+  "p": false,
+  "s": "jugo-verduras-refrigerado"
+ },
+ "shelf-stable-soy-rice-milk": {
+  "n": "Bebida de soya y de arroz en caja",
+  "q": "la bebida de soya y de arroz en caja",
+  "o": "la bebida de soya y de arroz en caja",
+  "p": false,
+  "s": "bebida-soya-arroz-caja"
+ },
+ "shelf-stable-vegetable-juice": {
+  "n": "Jugo de verduras en lata o caja",
+  "q": "el jugo de verduras en lata o caja",
+  "o": "el jugo de verduras en lata o caja",
+  "p": false,
+  "s": "jugo-verduras-lata"
+ },
+ "soda": {
+  "n": "Refrescos",
+  "q": "los refrescos",
+  "o": "los refrescos",
+  "p": true,
+  "s": "refrescos"
+ },
+ "tea-bags": {
+  "n": "Té en bolsitas",
+  "q": "el té en bolsitas",
+  "o": "el té en bolsitas",
+  "p": false,
+  "s": "te-bolsitas"
+ },
+ "yuzu": {
+  "n": "Yuzu",
+  "q": "el yuzu",
+  "o": "el yuzu",
+  "p": false,
+  "s": "yuzu"
+ },
+ "yuzu-juice": {
+  "n": "Jugo de yuzu",
+  "q": "el jugo de yuzu",
+  "o": "el jugo de yuzu",
+  "p": false,
+  "s": "jugo-yuzu"
+ },
+ "frozen-breaded-fish": {
+  "n": "Pescado empanizado congelado",
+  "q": "el pescado empanizado congelado",
+  "o": "el pescado empanizado congelado",
+  "p": false,
+  "s": "pescado-empanizado-congelado"
+ },
+ "frozen-dough": {
+  "n": "Masa congelada",
+  "q": "la masa congelada",
+  "o": "la masa congelada",
+  "p": false,
+  "s": "masa-congelada"
+ },
+ "frozen-edamame": {
+  "n": "Edamame congelado",
+  "q": "el edamame congelado",
+  "o": "el edamame congelado",
+  "p": false,
+  "s": "edamame-congelado"
+ },
+ "frozen-egg-substitute": {
+  "n": "Sustituto de huevo congelado",
+  "q": "el sustituto de huevo congelado",
+  "o": "el sustituto de huevo congelado",
+  "p": false,
+  "s": "sustituto-huevo-congelado"
+ },
+ "frozen-fries-hash-browns": {
+  "n": "Papas a la francesa y hash browns congeladas",
+  "q": "las papas a la francesa y hash browns congeladas",
+  "o": "las papas a la francesa y hash browns congeladas",
+  "p": true,
+  "s": "papas-francesa-congeladas"
+ },
+ "frozen-fruit": {
+  "n": "Fruta congelada",
+  "q": "la fruta congelada",
+  "o": "la fruta congelada",
+  "p": false,
+  "s": "fruta-congelada"
+ },
+ "frozen-juice-concentrate": {
+  "n": "Jugo concentrado congelado",
+  "q": "el jugo concentrado congelado",
+  "o": "el jugo concentrado congelado",
+  "p": false,
+  "s": "jugo-concentrado-congelado"
+ },
+ "frozen-lobster-tails": {
+  "n": "Colas de langosta congeladas",
+  "q": "las colas de langosta congeladas",
+  "o": "las colas de langosta congeladas",
+  "p": true,
+  "s": "colas-langosta-congeladas"
+ },
+ "frozen-meals": {
+  "n": "Comidas congeladas",
+  "q": "las comidas congeladas",
+  "o": "las comidas congeladas",
+  "p": true,
+  "s": "comidas-congeladas"
+ },
+ "frozen-pancakes-waffles": {
+  "n": "Hot cakes y waffles congelados",
+  "q": "los hot cakes y waffles congelados",
+  "o": "los hot cakes y waffles congelados",
+  "p": true,
+  "s": "hot-cakes-waffles-congelados"
+ },
+ "frozen-polenta": {
+  "n": "Polenta congelada",
+  "q": "la polenta congelada",
+  "o": "la polenta congelada",
+  "p": false,
+  "s": "polenta-congelada"
+ },
+ "frozen-precooked-sausages": {
+  "n": "Salchichas precocidas congeladas",
+  "q": "las salchichas precocidas congeladas",
+  "o": "las salchichas precocidas congeladas",
+  "p": true,
+  "s": "salchichas-precocidas-congeladas"
+ },
+ "frozen-pretzels": {
+  "n": "Pretzels congelados",
+  "q": "los pretzels congelados",
+  "o": "los pretzels congelados",
+  "p": true,
+  "s": "pretzels-congelados"
+ },
+ "frozen-raw-fish": {
+  "n": "Pescado crudo congelado",
+  "q": "el pescado crudo congelado",
+  "o": "el pescado crudo congelado",
+  "p": false,
+  "s": "pescado-crudo-congelado"
+ },
+ "frozen-raw-sausages": {
+  "n": "Salchichas crudas congeladas",
+  "q": "las salchichas crudas congeladas",
+  "o": "las salchichas crudas congeladas",
+  "p": true,
+  "s": "salchichas-crudas-congeladas"
+ },
+ "frozen-shrimp": {
+  "n": "Camarones congelados",
+  "q": "los camarones congelados",
+  "o": "los camarones congelados",
+  "p": true,
+  "s": "camarones-congelados"
+ },
+ "kugel": {
+  "n": "Kugel comercial",
+  "q": "el kugel comercial",
+  "o": "el kugel comercial",
+  "p": false,
+  "s": "kugel"
+ },
+ "meat-substitutes": {
+  "n": "Sustitutos de carne de soya",
+  "q": "los sustitutos de carne de soya",
+  "o": "los sustitutos de carne de soya",
+  "p": true,
+  "s": "sustitutos-carne"
+ },
+ "popsicles": {
+  "n": "Paletas heladas",
+  "q": "las paletas heladas",
+  "o": "las paletas heladas",
+  "p": true,
+  "s": "paletas-heladas"
+ },
+ "sorbet-sherbet": {
+  "n": "Sorbete y nieve",
+  "q": "el sorbete y nieve",
+  "o": "el sorbete y nieve",
+  "p": false,
+  "s": "sorbete-nieve"
+ },
+ "tempeh": {
+  "n": "Tempeh",
+  "q": "el tempeh",
+  "o": "el tempeh",
+  "p": false,
+  "s": "tempeh"
+ },
+ "veggie-hot-dogs-crumbles": {
+  "n": "Salchichas veganas y carne molida de soya",
+  "q": "las salchichas veganas y carne molida de soya",
+  "o": "las salchichas veganas y carne molida de soya",
+  "p": true,
+  "s": "salchichas-veganas-soya-molida"
+ },
+ "baby-cereal": {
+  "n": "Cereal para bebé",
+  "q": "el cereal para bebé",
+  "o": "el cereal para bebé",
+  "p": false,
+  "s": "cereal-bebe"
+ },
+ "baby-food-dinners": {
+  "n": "Comidas para bebé",
+  "q": "las comidas para bebé",
+  "o": "las comidas para bebé",
+  "p": true,
+  "s": "comidas-bebe"
+ },
+ "baby-food-fruit": {
+  "n": "Papillas de fruta para bebé",
+  "q": "las papillas de fruta para bebé",
+  "o": "las papillas de fruta para bebé",
+  "p": true,
+  "s": "papillas-fruta-bebe"
+ },
+ "baby-food-jars-pouches": {
+  "n": "Papillas en frasco y en bolsita",
+  "q": "las papillas en frasco y en bolsita",
+  "o": "las papillas en frasco y en bolsita",
+  "p": true,
+  "s": "papillas-frasco-bolsita"
+ },
+ "baby-food-vegetables": {
+  "n": "Papillas de verduras para bebé",
+  "q": "las papillas de verduras para bebé",
+  "o": "las papillas de verduras para bebé",
+  "p": true,
+  "s": "papillas-verduras-bebe"
+ },
+ "miso": {
+  "n": "Miso",
+  "q": "el miso",
+  "o": "el miso",
+  "p": false,
+  "s": "miso"
+ },
+ "rehydrated-textured-soy-protein": {
+  "n": "Proteína de soya texturizada rehidratada",
+  "q": "la proteína de soya texturizada rehidratada",
+  "o": "la proteína de soya texturizada rehidratada",
+  "p": false,
+  "s": "soya-texturizada-rehidratada"
+ },
+ "soy-flour": {
+  "n": "Harina de soya",
+  "q": "la harina de soya",
+  "o": "la harina de soya",
+  "p": false,
+  "s": "harina-soya"
+ },
+ "textured-soy-protein-dry": {
+  "n": "Proteína de soya texturizada (seca)",
+  "q": "la proteína de soya texturizada (seca)",
+  "o": "la proteína de soya texturizada (seca)",
+  "p": false,
+  "s": "soya-texturizada-seca"
+ }
+}

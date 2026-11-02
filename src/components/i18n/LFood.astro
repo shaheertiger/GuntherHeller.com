@@ -54,7 +54,7 @@ const ld = { "@context": "https://schema.org", "@graph": [ORG,
           </div>
         </section>
 
-        <AdSlot w={300} h={250} class="lg:hidden mt-8" id="l-food-mobile" />
+        <AdSlot w={300} h={250} class="lg:hidden mt-8" id="l-food-mobile" label={L.s.ui.advert} />
 
         <section id="bad" class="mt-8 md:mt-12">
           <h2 class="h2-food">{F.hSigns}</h2>
@@ -110,7 +110,7 @@ const ld = { "@context": "https://schema.org", "@graph": [ORG,
             {(() => { const c = cellsL(L, f, f.states[0], 0); return [[U.counter, c.pantry.value], [U.fridge, c.fridge.value], [U.freezer, c.freezer.value]].map(([k, v]) => <div class="flex justify-between gap-3"><dt class="text-muted">{k}</dt><dd class="m-0 font-medium text-right">{v}</dd></div>); })()}
           </dl>
         </div>
-        <AdSlot w={300} h={250} id="l-food-rail" />
+        <AdSlot w={300} h={250} id="l-food-rail" label={L.s.ui.advert} />
       </aside>
     </div>
   </div>

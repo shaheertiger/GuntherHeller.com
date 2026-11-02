@@ -1,0 +1,688 @@
+{
+ "lang": "de",
+ "htmlLang": "de",
+ "langName": "Deutsch",
+ "locale": "de-DE",
+ "units": {
+  "hour": [
+   "Stunde",
+   "Stunden"
+  ],
+  "day": [
+   "Tag",
+   "Tage"
+  ],
+  "week": [
+   "Woche",
+   "Wochen"
+  ],
+  "month": [
+   "Monat",
+   "Monate"
+  ],
+  "year": [
+   "Jahr",
+   "Jahre"
+  ]
+ },
+ "and": "und",
+ "or": "oder",
+ "ui": {
+  "home": "Startseite",
+  "foods": "Alle Lebensmittel",
+  "englishSite": "English",
+  "languages": "Sprachen",
+  "skip": "Zum Inhalt springen",
+  "onCounter": "Bei Zimmertemperatur",
+  "inFridge": "Im Kühlschrank",
+  "inFreezer": "Im Gefrierschrank",
+  "counter": "Zimmertemperatur",
+  "fridge": "Kühlschrank",
+  "freezer": "Gefrierschrank",
+  "showTimesFor": "Haltbarkeit anzeigen für",
+  "perSource": "Laut {source}",
+  "opened": "Geöffnet",
+  "unopened": "Ungeöffnet",
+  "cooked": "Gekocht",
+  "dry": "Trocken / ungekocht",
+  "uncooked": "Ungekocht",
+  "dryShort": "Trocken",
+  "fresh": "Frisch abgepumpt",
+  "thawed": "Aufgetaut",
+  "lastVerified": "zuletzt geprüft im {date}",
+  "subline": "Kühlschrank, Gefrierschrank, Zimmertemperatur · zuletzt geprüft im {date}",
+  "source": "Quelle",
+  "howWeVerify": "So prüfen wir",
+  "howWeVerifyLong": "So prüfen wir unsere Daten",
+  "report": "Falsche Angabe melden",
+  "trust": "Die Angaben auf dieser Seite stammen aus {source}. Zuletzt geprüft im {date}.",
+  "similar": "Ähnliche Lebensmittel",
+  "allIn": "Alle Lebensmittel: {cat}",
+  "onThisPage": "Auf dieser Seite",
+  "advert": "Anzeige",
+  "readInEnglish": "Vollständigen Ratgeber auf Englisch lesen",
+  "foodsCount": "{n} Lebensmittel",
+  "disclaimer": "Allgemeine Hinweise auf Grundlage von USDA FoodKeeper, keine medizinische Beratung. Wenn ein Lebensmittel ungewöhnlich riecht, aussieht oder sich anfühlt, entsorgen Sie es."
+ },
+ "vals": {
+  "Not recommended": "Nicht empfohlen",
+  "Use-by date": "Verbrauchsdatum",
+  "Indefinitely": "Unbegrenzt",
+  "Until ripe": "Bis zur Reife",
+  "Not needed": "Nicht nötig",
+  "Not listed": "Keine Angabe",
+  "Refrigerate": "Kühl lagern",
+  "Do not refreeze": "Nicht wieder einfrieren",
+  "2 hours": "2 Stunden"
+ },
+ "notes": {
+  "hot": "1 Stunde über 32 °C (90 °F)",
+  "cool": "kühl und trocken",
+  "ripe": "danach in den Kühlschrank",
+  "keepCold": "gekühlt aufbewahren",
+  "onceOpened": "nach dem Öffnen",
+  "useBy": "Datum auf der Packung beachten",
+  "fridgeTemp": "bei höchstens 4 °C (40 °F)",
+  "shelfStable": "ungekühlt haltbar",
+  "noFigure": "keine FoodKeeper-Angabe",
+  "freezerQuality": "bei −18 °C; Qualität, nicht Sicherheit",
+  "notRec": "Konsistenz oder Sicherheit leiden",
+  "noFreeze": "hält auch ohne Einfrieren"
+ },
+ "food": {
+  "h1": [
+   "Wie lange ist {Q} haltbar?",
+   "Wie lange sind {Q} haltbar?"
+  ],
+  "inFridge": "im Kühlschrank",
+  "inPantry": "im Vorratsschrank",
+  "inFreezer": "im Gefrierschrank",
+  "title": "{h1} {d} {where}",
+  "titleFreezer": " [Gefrierschrank: {d}]",
+  "desc": [
+   "{Q} hält sich {d} {where}.",
+   "{Q} halten sich {d} {where}."
+  ],
+  "descFreezer": " Gefrierschrank: {d}.",
+  "descPerishable": " Nach 2 Stunden bei Zimmertemperatur entsorgen.",
+  "descTail": " Anzeichen für Verderb und Tipps zum Einfrieren.",
+  "quote": [
+   "{Q} hält sich {list}.",
+   "{Q} halten sich {list}."
+  ],
+  "phFridge": "{d} im Kühlschrank",
+  "phFreezer": "{d} im Gefrierschrank",
+  "phPantry": "{d} im Vorratsschrank",
+  "phRipe": "bei Zimmertemperatur bis zur Reife",
+  "phUseBy": "im Kühlschrank bis zum Verbrauchsdatum",
+  "ph2h": "höchstens 2 Stunden bei Zimmertemperatur",
+  "quote2": "{label}: {list}.",
+  "hMethods": "Haltbarkeit nach Lagerart",
+  "hSigns": "Woran man erkennt, dass es verdorben ist",
+  "hFreeze": "Kann man {o} einfrieren?",
+  "hLeftOut": "Über Nacht stehen gelassen",
+  "hStore": "Richtig lagern",
+  "hFaq": "Häufige Fragen",
+  "thMethod": "Lagerart",
+  "thDuration": "Dauer",
+  "thTemp": "Temperatur",
+  "thNotes": "Hinweise",
+  "mPantry": "Vorratsschrank / Zimmertemperatur",
+  "mFridge": "Kühlschrank",
+  "mFreezer": "Gefrierschrank",
+  "mThawed": "Kühlschrank nach dem Auftauen",
+  "mCook": "Garen",
+  "tRoom": "20–22 °C",
+  "tFridge": "≤ 4 °C (40 °F)",
+  "tFreezer": "−18 °C (0 °F)",
+  "tCook": "mindestens {c} °C ({f} °F)",
+  "noteThawed": "Rohe Lebensmittel, die außerhalb des Kühlschranks aufgetaut wurden, nicht wieder einfrieren",
+  "noteCook": "Mit einem Lebensmittelthermometer prüfen"
+ },
+ "freeze": {
+  "yesWell": "Ja – lässt sich gut einfrieren",
+  "yesShort": "Ja, für kurze Zeit",
+  "yesCooking": "Ja, zum Kochen – {d}",
+  "no": "Nicht empfohlen",
+  "noFigure": "Keine FoodKeeper-Angabe",
+  "dYes": "Die Qualität bleibt bei −18 °C (0 °F) etwa {d} erhalten. Tiefgekühlte Lebensmittel bleiben unbegrenzt sicher; nur die Qualität lässt nach.",
+  "dCooking": "Die Qualität bleibt bei −18 °C (0 °F) etwa {d} erhalten. Die Konsistenz verändert sich, daher am besten für gekochte Gerichte verwenden.",
+  "dNo": "Einfrieren wird für dieses Lebensmittel nicht empfohlen; die Konsistenz leidet oder das Ergebnis ist nicht verlässlich.",
+  "dNoFigure": "FoodKeeper nennt für dieses Lebensmittel keine Gefrierzeit.",
+  "afterThaw": "Nach dem Auftauen im Kühlschrank innerhalb von {d} verbrauchen."
+ },
+ "leftOut": {
+  "keep": "Behalten",
+  "check": "Prüfen",
+  "discard": "Entsorgen",
+  "tDiscard": "Leicht verderbliche Lebensmittel, die länger als 2 Stunden bei Zimmertemperatur standen (über 32 °C / 90 °F: 1 Stunde), sollten entsorgt werden. Bakterien vermehren sich zwischen 4 °C und 60 °C am schnellsten, und Erhitzen zerstört nicht alle Giftstoffe, die sie bilden.",
+  "tKeep": "Dieses Lebensmittel ist ungekühlt haltbar. Eine Nacht bei Zimmertemperatur ist kein Problem – kühl, trocken und vor Sonne geschützt lagern.",
+  "tRipe": "Es kann bei Zimmertemperatur nachreifen. Sobald es angeschnitten oder gegart ist, gilt die 2-Stunden-Regel.",
+  "tOpened": "Nach dem Öffnen gehört es in den Kühlschrank. Eine Nacht bei Zimmertemperatur beschleunigt den Verderb; wenn es seltsam riecht, aussieht oder schmeckt, entsorgen.",
+  "tCaution": "Kein Hochrisiko-Lebensmittel, aber eine Nacht ungekühlt verkürzt die Haltbarkeit im Kühlschrank. In den Kühlschrank stellen und bald verbrauchen."
+ },
+ "faq": {
+  "qFridge": [
+   "Wie lange hält sich {q} im Kühlschrank?",
+   "Wie lange halten sich {q} im Kühlschrank?"
+  ],
+  "aFridge": "{d} bei 4 °C (40 °F) oder kälter, laut USDA FoodKeeper.",
+  "qFreeze": "Kann man {o} einfrieren?",
+  "qSitOut": [
+   "Wie lange darf {q} ungekühlt stehen?",
+   "Wie lange dürfen {q} ungekühlt stehen?"
+  ],
+  "aSitOut": "Höchstens 2 Stunden bei Zimmertemperatur oder 1 Stunde über 32 °C (90 °F). Danach entsorgen.",
+  "qPantry": [
+   "Muss {q} gekühlt werden?",
+   "Müssen {q} gekühlt werden?"
+  ],
+  "aPantry": "Aus Sicherheitsgründen nicht. Haltbarkeit im kühlen, trockenen Vorratsschrank: {d}.",
+  "qSigns": [
+   "Woran erkennt man, dass {q} verdorben ist?",
+   "Woran erkennt man, dass {q} verdorben sind?"
+  ],
+  "qSource": "Woher stammen diese Angaben?",
+  "aSource": "Aus USDA FoodKeeper, der Lagerungsdatenbank des US-Lebensmittelsicherheitsdienstes FSIS (Food Safety and Inspection Service). Wir prüfen jede Seite anhand der aktuellen Version."
+ },
+ "home": {
+  "title": "Wie lange sind Lebensmittel haltbar? Kühlschrank, Gefrierschrank und Vorratsschrank | Gunther Heller",
+  "h1": "Wie lange sind Lebensmittel haltbar?",
+  "lead": "Haltbarkeit im Kühlschrank, Gefrierschrank und Vorratsschrank für {n} Lebensmittel, geöffnet und ungeöffnet, nach USDA FoodKeeper.",
+  "desc": "Kostenlose Haltbarkeitsangaben für {n} Lebensmittel: Zimmertemperatur, Kühlschrank und Gefrierschrank, geöffnet und ungeöffnet. Daten aus USDA FoodKeeper.",
+  "categories": "Nach Kategorie stöbern",
+  "popular": "Meistgesuchte Lebensmittel",
+  "about": "Jede Angabe stammt aus FoodKeeper, der Lagerungsdatenbank des US-Landwirtschaftsministeriums (USDA). Jede Seite nennt ihre Quelle und das Datum der letzten Prüfung."
+ },
+ "hub": {
+  "title": "{cat}: Haltbarkeit im Kühlschrank, Gefrierschrank und Vorratsschrank ({n} Lebensmittel)",
+  "h1": "{cat}: Haltbarkeit",
+  "desc": "Wie lange {n} Lebensmittel der Kategorie {cat} bei Zimmertemperatur, im Kühlschrank und im Gefrierschrank halten. Daten aus USDA FoodKeeper.",
+  "lead": "Wie lange jedes Lebensmittel bei Zimmertemperatur, im Kühlschrank und im Gefrierschrank hält. Quelle: USDA FoodKeeper, zuletzt geprüft im {date}.",
+  "thFood": "Lebensmittel",
+  "thFreezes": "Gut einfrierbar?",
+  "yes": "Ja",
+  "no": "Nein",
+  "cooking": "Nur zum Kochen"
+ },
+ "method": {
+  "title": "So prüfen wir unsere Angaben | Gunther Heller",
+  "h1": "So prüfen wir unsere Angaben",
+  "desc": "Woher unsere Haltbarkeitsangaben stammen (USDA FoodKeeper), wie wir daraus Antworten machen und wie Sie eine falsche Angabe melden.",
+  "p1": "Jede Haltbarkeitsangabe auf dieser Website stammt aus FoodKeeper, der Lagerungsdatenbank des Food Safety and Inspection Service (FSIS) des US-Landwirtschaftsministeriums. Es handelt sich um einen gemeinfreien Datensatz der US-Regierung.",
+  "p2": "Wir übernehmen jedes FoodKeeper-Produkt mit seinen Zeiten für Vorratsschrank, Kühlschrank und Gefrierschrank, einschließlich der gesonderten Zeiten nach dem Öffnen. Wir erfinden nie eine Dauer: Fehlt in FoodKeeper eine Angabe, steht das auf der Seite.",
+  "p3": "Nennt FoodKeeper für leicht verderbliche Lebensmittel keine Zeit bei Zimmertemperatur, wenden wir die FSIS-Regel an: nach 2 Stunden bei Zimmertemperatur entsorgen, über 32 °C (90 °F) nach 1 Stunde. Gefrierzeiten beziehen sich auf die Qualität; bei −18 °C (0 °F) gelagerte Lebensmittel bleiben unbegrenzt sicher.",
+  "p4": "Übersetzungen werden auf Richtigkeit geprüft; die Zahlen sind in jeder Sprache identisch. Fehler melden Sie bitte per E-Mail an {email}."
+ },
+ "categories": {
+  "dairy-eggs": "Milchprodukte & Eier",
+  "meat": "Fleisch",
+  "poultry": "Geflügel",
+  "seafood": "Fisch & Meeresfrüchte",
+  "leftovers-deli": "Reste & Feinkost",
+  "fruits": "Obst",
+  "vegetables": "Gemüse",
+  "grains-beans-pasta": "Getreide, Hülsenfrüchte & Nudeln",
+  "baked-goods": "Brot & Backen",
+  "condiments-sauces": "Würzmittel & Soßen",
+  "pantry-staples": "Vorräte",
+  "beverages": "Getränke",
+  "frozen-foods": "Tiefkühlkost",
+  "baby-food": "Babynahrung",
+  "vegetarian-proteins": "Vegetarische Proteine"
+ },
+ "signs": {
+  "meat": [
+   [
+    "Geruch",
+    "Saurer, schwefeliger oder ammoniakartiger Geruch, auch wenn er nur schwach ist."
+   ],
+   [
+    "Konsistenz",
+    "Klebrige oder schmierige Oberfläche, die auch nach dem Abspülen bleibt."
+   ],
+   [
+    "Farbe",
+    "Graugrüne oder braune Flecken, die sich über das Fleisch ausbreiten."
+   ],
+   [
+    "Verpackung",
+    "Aufgeblähte oder undichte Packung, oder das Datum ist um mehr als die Kühlschrankfrist überschritten."
+   ]
+  ],
+  "seafood": [
+   [
+    "Geruch",
+    "Stark fischiger, saurer oder ammoniakartiger Geruch. Frischer Fisch riecht nach Meer."
+   ],
+   [
+    "Konsistenz",
+    "Matschiges Fleisch, das auf Druck nicht zurückfedert, oder milchiger Schleim."
+   ],
+   [
+    "Farbe",
+    "Stumpfes, graues oder gelbliches Fleisch; dunkle Ränder."
+   ],
+   [
+    "Schalen",
+    "Lebende Muscheln mit geöffneter Schale, die sich beim Antippen nicht schließt."
+   ]
+  ],
+  "cooked": [
+   [
+    "Geruch",
+    "Sauer, hefig oder „komisch“ statt wie frisch gekocht."
+   ],
+   [
+    "Konsistenz",
+    "Schmieriger Film oder Flüssigkeit, die sich absetzt, wo sie nicht hingehört."
+   ],
+   [
+    "Farbe",
+    "Stumpfe oder dunkle Stellen oder verfärbte Flecken."
+   ],
+   [
+    "Schimmel",
+    "Jeder pelzige Belag – den ganzen Behälter entsorgen, nicht nur die Stelle."
+   ]
+  ],
+  "cured": [
+   [
+    "Geruch",
+    "Saurer oder ranziger Geruch statt rauchig oder salzig."
+   ],
+   [
+    "Konsistenz",
+    "Glitschige, schmierige Oberfläche an Scheiben oder Würstchen."
+   ],
+   [
+    "Farbe",
+    "Graue, grüne oder schillernde Flecken, die sich ausbreiten."
+   ],
+   [
+    "Schimmel",
+    "Pelzige Stellen auf aufgeschnittenen oder gegarten Produkten – entsorgen."
+   ]
+  ],
+  "dairy": [
+   [
+    "Geruch",
+    "Saurer oder käsiger Geruch, wo es frisch und mild riechen sollte."
+   ],
+   [
+    "Konsistenz",
+    "Klumpen, Gerinnen oder eine dicke, schleimige Masse."
+   ],
+   [
+    "Farbe",
+    "Vergilbung oder ein rosa, grüner oder grauer Schimmer."
+   ],
+   [
+    "Geschmack",
+    "Sauer oder bitter schon beim ersten Schluck – aufhören und entsorgen."
+   ]
+  ],
+  "cheese": [
+   [
+    "Geruch",
+    "Ammoniak oder ein scharf saurer Geruch, der über das übliche Käsearoma hinausgeht."
+   ],
+   [
+    "Konsistenz",
+    "Schmierige Oberfläche oder durch und durch sehr trocken und rissig."
+   ],
+   [
+    "Farbe",
+    "Dunkle oder vergilbte Ränder oder neue Farben, die nicht zum Käse gehören."
+   ],
+   [
+    "Schimmel",
+    "Bei Hartkäse großzügig 2,5 cm um die Stelle herum wegschneiden. Weichkäse oder geriebenen Käse entsorgen."
+   ]
+  ],
+  "eggs": [
+   [
+    "Geruch",
+    "Schwefelgeruch beim Aufschlagen – unverkennbar, entsorgen."
+   ],
+   [
+    "Schale",
+    "Schmierige, pudrige oder gesprungene Schalen."
+   ],
+   [
+    "Inneres",
+    "Rosa, grünes oder schillerndes Eiweiß oder Eigelb."
+   ],
+   [
+    "Schwimmtest",
+    "Zeigt nur das Alter. Ein schwimmendes Ei ist alt; vor der Entscheidung am Geruch prüfen."
+   ]
+  ],
+  "produce": [
+   [
+    "Geruch",
+    "Gäriger, saurer oder muffiger Geruch."
+   ],
+   [
+    "Konsistenz",
+    "Weiche, matschige oder nässende Stellen oder schrumpelige Haut mit weichem Fruchtfleisch."
+   ],
+   [
+    "Farbe",
+    "Dunkle Druckstellen, die sich ausbreiten, oder Braunfärbung im Inneren."
+   ],
+   [
+    "Schimmel",
+    "Weißer, grauer oder grüner Flaum – weiches Obst und Gemüse entsorgen, festes großzügig ausschneiden."
+   ]
+  ],
+  "leafy": [
+   [
+    "Geruch",
+    "Saurer oder fauliger Geruch aus Beutel oder Bund."
+   ],
+   [
+    "Konsistenz",
+    "Schleimige, nasse oder welke Blätter, die sich in kaltem Wasser nicht erholen."
+   ],
+   [
+    "Farbe",
+    "Dunkelgrün-schwarze oder braune Blätter."
+   ],
+   [
+    "Schimmel",
+    "Jeder pelzige Belag – den ganzen Beutel entsorgen."
+   ]
+  ],
+  "bakery": [
+   [
+    "Geruch",
+    "Muffiger, saurer oder alkoholischer Geruch."
+   ],
+   [
+    "Konsistenz",
+    "Hart und trocken ist altbacken, aber unbedenklich; feucht oder klebrig nicht."
+   ],
+   [
+    "Farbe",
+    "Verfärbte Stellen an Kruste oder Krume."
+   ],
+   [
+    "Schimmel",
+    "Bei sichtbarem Schimmel alles entsorgen; das Geflecht breitet sich unsichtbar aus."
+   ]
+  ],
+  "dry": [
+   [
+    "Geruch",
+    "Muffiger, saurer oder ranziger Geruch."
+   ],
+   [
+    "Konsistenz",
+    "Klumpen durch Feuchtigkeit oder ein feuchtes Gefühl."
+   ],
+   [
+    "Schädlinge",
+    "Gespinste, Löcher oder winzige Insekten in der Packung."
+   ],
+   [
+    "Aroma",
+    "Fader, abgestandener oder bitterer Geschmack – die Qualität ist dahin, auch wenn es unbedenklich ist."
+   ]
+  ],
+  "fat": [
+   [
+    "Geruch",
+    "Ranzig: wie Wachsmalstifte, Farbe oder alte Nüsse."
+   ],
+   [
+    "Geschmack",
+    "Bitterer oder seifiger Nachgeschmack."
+   ],
+   [
+    "Konsistenz",
+    "Klebrige oder gummiartige Rückstände am Deckel."
+   ],
+   [
+    "Farbe",
+    "Dunkler oder trüb, wo es klar sein sollte."
+   ]
+  ],
+  "condiment": [
+   [
+    "Geruch",
+    "Gärig, hefig oder sauer über die übliche Säure des Produkts hinaus."
+   ],
+   [
+    "Konsistenz",
+    "Entmischung, die sich nicht wieder verrühren lässt, oder eine schleimige Schicht."
+   ],
+   [
+    "Farbe",
+    "Nachdunkeln oder Farbveränderung oben im Glas."
+   ],
+   [
+    "Schimmel",
+    "Jeder Flaum auf der Oberfläche oder am Deckel – das Glas entsorgen."
+   ]
+  ],
+  "drink": [
+   [
+    "Geruch",
+    "Essigartig, sauer oder muffig statt frisch."
+   ],
+   [
+    "Geschmack",
+    "Schal, sauer oder bitter – die Qualität ist dahin."
+   ],
+   [
+    "Aussehen",
+    "Trübung, Bodensatz oder ein Film, der vorher nicht da war."
+   ],
+   [
+    "Verpackung",
+    "Aufgewölbter Karton, Deckel oder Dose – entsorgen."
+   ]
+  ],
+  "frozen": [
+   [
+    "Gefrierbrand",
+    "Trockene, grauweiße Stellen. Unbedenklich, aber wegschneiden."
+   ],
+   [
+    "Eiskristalle",
+    "Viel Eis in der Packung bedeutet, dass sie angetaut und wieder gefroren ist."
+   ],
+   [
+    "Geruch",
+    "Unangenehmer Geruch nach dem Auftauen – entsorgen."
+   ],
+   [
+    "Verpackung",
+    "Durch eingerissene Verpackung dringt Luft ein, die Qualität lässt schneller nach."
+   ]
+  ],
+  "baby": [
+   [
+    "Geruch",
+    "Saurer oder seltsamer Geruch bei zubereiteter Säuglingsnahrung oder Babykost."
+   ],
+   [
+    "Konsistenz",
+    "Entmischung, die sich nicht wieder verrühren lässt, oder Klumpen."
+   ],
+   [
+    "Farbe",
+    "Veränderung gegenüber der üblichen Farbe."
+   ],
+   [
+    "Verschluss",
+    "Deckel, die beim Öffnen nicht ploppen, oder beschädigte Quetschbeutel – entsorgen."
+   ]
+  ]
+ },
+ "freezeSteps": {
+  "meat": [
+   "Spätestens am letzten Kühlschranktag einfrieren; je früher, desto besser die Konsistenz.",
+   "Die Originalverpackung zusätzlich in Alufolie oder einen Gefrierbeutel packen oder vakuumieren; Luft herausdrücken.",
+   "Im Kühlschrank auftauen (etwa 24 Stunden pro 2–2,5 kg) oder in kaltem Wasser und sofort garen."
+  ],
+  "seafood": [
+   "So frisch wie möglich einfrieren, am besten am Tag des Einkaufs.",
+   "Fest in Frischhaltefolie wickeln, dann in einen Gefrierbeutel; Luft herausdrücken und Datum notieren.",
+   "Über Nacht im Kühlschrank oder luftdicht verpackt in kaltem Wasser auftauen; nie bei Zimmertemperatur."
+  ],
+  "cooked": [
+   "Schnell abkühlen: in flachen Behältern innerhalb von 2 Stunden in Kühl- oder Gefrierschrank.",
+   "In Gefrierbeutel oder luftdichte Dosen portionieren, bei Flüssigkeiten Platz lassen und mit Datum beschriften.",
+   "Im Kühlschrank auftauen und auf 74 °C (165 °F) erhitzen, bis es dampft."
+  ],
+  "cured": [
+   "Ungeöffnet in der Original-Vakuumpackung einfrieren; sonst Scheiben in Frischhalte- und Alufolie wickeln.",
+   "In Portionen für eine Mahlzeit einfrieren, damit Sie nur auftauen, was Sie brauchen.",
+   "Im Kühlschrank auftauen; Aufschnitt wird nach dem Einfrieren etwas weicher."
+  ],
+  "dairy": [
+   "Etwas abgießen, damit Platz zum Ausdehnen bleibt, dann fest verschließen.",
+   "Liegend oder stehend einfrieren und mit Datum versehen.",
+   "Im Kühlschrank auftauen und gut schütteln oder verquirlen; zum Kochen oder Backen verwenden."
+  ],
+  "cheese": [
+   "In Stücke von höchstens 250 g schneiden oder geriebenen Käse in seiner Tüte einfrieren.",
+   "In Frischhaltefolie wickeln, dann in einen Gefrierbeutel; Luft herausdrücken.",
+   "Im Kühlschrank auftauen; er wird bröseliger, daher geschmolzen oder gegart verwenden."
+  ],
+  "eggs": [
+   "Eier nie in der Schale einfrieren.",
+   "Ganze Eier verquirlen (oder Eiweiß und Eigelb trennen) und in eine Dose mit Deckel oder einen Eiswürfelbehälter füllen.",
+   "Im Kühlschrank auftauen und nur in Gerichten verwenden, die auf 71 °C (160 °F) erhitzt werden."
+  ],
+  "produce": [
+   "Waschen, trocknen und klein schneiden; die meisten Gemüse vorher 1–3 Minuten blanchieren.",
+   "Auf einem Blech einzeln vorfrieren, dann in Beutel füllen und Luft herausdrücken.",
+   "Gefroren zum Kochen oder für Smoothies verwenden; aufgetaut ist es weich."
+  ],
+  "leafy": [
+   "Blattgemüse und Kräuter verlieren beim Einfrieren ihre Knackigkeit.",
+   "Zum Kochen Blattgemüse blanchieren oder Kräuter hacken und mit Öl oder Wasser in Eiswürfelbehälter füllen.",
+   "Gefroren direkt in Suppen, Soßen und Pfannengerichte geben."
+  ],
+  "bakery": [
+   "Am Kauf- oder Backtag einfrieren, sobald es vollständig abgekühlt ist.",
+   "Fest in Frischhaltefolie wickeln, dann in einen Gefrierbeutel; Brot vorher in Scheiben schneiden, damit Sie nur entnehmen, was Sie brauchen.",
+   "Verpackt bei Zimmertemperatur auftauen oder gefroren toasten bzw. aufbacken."
+  ],
+  "dry": [
+   "Bei trockenen Lebensmitteln ist Einfrieren optional; es verhindert vor allem Schädlinge und Ranzigwerden.",
+   "Eine luftdichte Dose oder einen gut verschlossenen Gefrierbeutel verwenden.",
+   "Vor dem Öffnen auf Zimmertemperatur kommen lassen, damit sich kein Kondenswasser bildet."
+  ],
+  "fat": [
+   "In einer luftdichten Dose oder der verschlossenen Originalpackung einfrieren.",
+   "Vorher portionieren (Würfel oder kleine Gläser), damit Sie nur auftauen, was Sie brauchen.",
+   "Im Kühlschrank auftauen; Fette und Nüsse lassen sich direkt gefroren verwenden."
+  ],
+  "condiment": [
+   "Die meisten Würzmittel halten sich gut im Kühlschrank und müssen nicht eingefroren werden.",
+   "Zum Einfrieren Eiswürfelbehälter oder kleine Behälter verwenden und beschriften.",
+   "Im Kühlschrank auftauen und gut umrühren; Emulsionen können sich trennen."
+  ],
+  "drink": [
+   "In einem gefriergeeigneten Behälter Platz lassen; Flüssigkeiten dehnen sich aus.",
+   "Für kleine Portionen in Eiswürfelbehältern einfrieren.",
+   "Im Kühlschrank auftauen und vor dem Verwenden gut schütteln."
+  ],
+  "frozen": [
+   "In der Originalverpackung bei −18 °C (0 °F) oder kälter lagern.",
+   "Geöffnete Beutel fest verschließen oder in einen Gefrierbeutel umfüllen.",
+   "Nach Packungsanweisung gefroren zubereiten oder im Kühlschrank auftauen."
+  ],
+  "baby": [
+   "Nur einfrieren, was laut Empfehlung erlaubt ist, in sauberen, verschlossenen Behältern.",
+   "Mit Datum und Uhrzeit beschriften.",
+   "Im Kühlschrank oder in warmem Wasser auftauen; nie in der Mikrowelle und nicht wieder einfrieren."
+  ]
+ },
+ "store": {
+  "meat": [
+   "Sofort nach dem Einkauf bei 4 °C (40 °F) oder kälter kühlen; im untersten Fach, damit kein Fleischsaft heruntertropft.",
+   "Bis zur Verwendung in der Originalverpackung lassen oder für den Gefrierschrank zusätzlich einpacken.",
+   "Innerhalb der Kühlschrankfrist garen oder einfrieren; die Frist beginnt mit dem Kauf."
+  ],
+  "seafood": [
+   "Auf Eis oder im kältesten Bereich des Kühlschranks lagern, bei 4 °C (40 °F) oder kälter.",
+   "Lebende Muscheln in einer Schüssel unter einem feuchten Tuch aufbewahren, nie in Wasser oder luftdicht in Plastik.",
+   "Innerhalb der Kühlschrankfrist garen oder einfrieren."
+  ],
+  "cooked": [
+   "Innerhalb von 2 Stunden nach dem Kochen (über 32 °C / 90 °F: 1 Stunde) in flachen, luftdichten Behältern kühlen.",
+   "Den Kühlschrank auf 4 °C (40 °F) oder kälter halten; das Türfach ist die wärmste Stelle.",
+   "Reste auf 74 °C (165 °F) erhitzen und nur so viel aufwärmen, wie Sie essen."
+  ],
+  "cured": [
+   "Bei 4 °C (40 °F) oder kälter gekühlt lagern, auch wenn es gepökelt ist.",
+   "Nach dem Öffnen fest einwickeln oder in einen luftdichten Behälter umfüllen.",
+   "Unabhängig vom Packungsdatum innerhalb der Frist nach dem Öffnen verbrauchen."
+  ],
+  "dairy": [
+   "Im Innenfach lagern, nicht in der Tür, bei 4 °C (40 °F) oder kälter.",
+   "Die Packung fest verschließen; Milchprodukte nehmen Kühlschrankgerüche an.",
+   "Nur die benötigte Menge entnehmen und sofort zurück in den Kühlschrank stellen."
+  ],
+  "cheese": [
+   "In Wachs- oder Backpapier und dann locker in Folie wickeln, damit er atmen kann.",
+   "Im Käsefach oder einem unteren Fach bei 4 °C (40 °F) oder kälter lagern.",
+   "Jedes Mal ein sauberes Messer verwenden, um keinen Schimmel einzuschleppen."
+  ],
+  "eggs": [
+   "Eier im Karton im Innenfach lagern, nicht in der Tür.",
+   "Bei 4 °C (40 °F) oder kälter lagern; vor dem Lagern nicht waschen.",
+   "Hart gekochte Eier innerhalb von 2 Stunden nach dem Kochen kühlen."
+  ],
+  "produce": [
+   "Ungewaschen lagern; erst kurz vor dem Essen waschen.",
+   "Ethylen-Abgeber (Äpfel, Bananen, Avocados) von Obst und Gemüse fernhalten, das schnell überreif wird.",
+   "Angeschnitten abgedeckt im Kühlschrank aufbewahren."
+  ],
+  "leafy": [
+   "Trocken lagern, in Küchenpapier gewickelt in einem Beutel oder einer Dose.",
+   "Im Gemüsefach bei 4 °C (40 °F) oder kälter aufbewahren.",
+   "Kräuter wie Koriander und Petersilie locker abgedeckt in einem Glas Wasser in den Kühlschrank stellen."
+  ],
+  "bakery": [
+   "Für die beste Konsistenz bei Zimmertemperatur im Brotkasten oder in einer verschlossenen Tüte lagern.",
+   "Im Kühlschrank schimmelt Brot langsamer, wird aber schneller altbacken.",
+   "Was Sie nicht rechtzeitig essen, einfrieren."
+  ],
+  "dry": [
+   "Luftdicht an einem kühlen, dunklen und trockenen Ort lagern.",
+   "Von Herd und Spülmaschine fernhalten, wo Wärme und Feuchtigkeit den Verderb beschleunigen.",
+   "Das Öffnungsdatum auf die Packung schreiben."
+  ],
+  "fat": [
+   "Fest verschlossen an einem kühlen, dunklen Ort fern von Wärme lagern.",
+   "Im Kühlschrank halten Nüsse, Samen und Nussöle deutlich länger.",
+   "Vor der Verwendung daran riechen; Ranzigkeit ist ein Qualitätsmangel, den man bemerkt."
+  ],
+  "condiment": [
+   "Nach dem Öffnen kühlen, sofern auf dem Etikett nichts anderes steht.",
+   "Jedes Mal einen sauberen Löffel verwenden; Krümel und doppeltes Eintauchen verkürzen die Haltbarkeit.",
+   "Den Rand abwischen und den Deckel fest schließen."
+  ],
+  "drink": [
+   "Ungeöffnet kühl und dunkel lagern.",
+   "Nach dem Öffnen kühlen und fest verschließen.",
+   "Vor Licht und Wärme schützen, die das Aroma verflachen."
+  ],
+  "frozen": [
+   "Den Gefrierschrank auf −18 °C (0 °F) oder kälter halten.",
+   "Auf dem Heimweg nicht antauen und wieder einfrieren lassen; Tiefkühlware zuletzt einkaufen.",
+   "Geöffnete Beutel wieder verschließen, um Gefrierbrand zu vermeiden."
+  ],
+  "baby": [
+   "Zuerst den Angaben auf dem Etikett und den Anweisungen Ihrer Kinderärztin oder Ihres Kinderarztes folgen.",
+   "Zubereitete oder geöffnete Produkte sofort kühlen.",
+   "Reste in Flasche oder Schüssel, aus denen das Baby gegessen hat, entsorgen."
+  ]
+ }
+}

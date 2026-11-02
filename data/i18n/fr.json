@@ -1,0 +1,688 @@
+{
+ "lang": "fr",
+ "htmlLang": "fr",
+ "langName": "Français",
+ "locale": "fr-FR",
+ "units": {
+  "hour": [
+   "heure",
+   "heures"
+  ],
+  "day": [
+   "jour",
+   "jours"
+  ],
+  "week": [
+   "semaine",
+   "semaines"
+  ],
+  "month": [
+   "mois",
+   "mois"
+  ],
+  "year": [
+   "an",
+   "ans"
+  ]
+ },
+ "and": "et",
+ "or": "ou",
+ "ui": {
+  "home": "Accueil",
+  "foods": "Tous les aliments",
+  "englishSite": "English",
+  "languages": "Langues",
+  "skip": "Aller au contenu",
+  "onCounter": "À température ambiante",
+  "inFridge": "Au réfrigérateur",
+  "inFreezer": "Au congélateur",
+  "counter": "Ambiante",
+  "fridge": "Réfrigérateur",
+  "freezer": "Congélateur",
+  "showTimesFor": "Afficher les durées pour",
+  "perSource": "Selon {source}",
+  "opened": "Entamé",
+  "unopened": "Non entamé",
+  "cooked": "Cuit",
+  "dry": "Sec / cru",
+  "uncooked": "Cru",
+  "dryShort": "Sec",
+  "fresh": "Fraîchement tiré",
+  "thawed": "Décongelé",
+  "lastVerified": "dernière vérification en {date}",
+  "subline": "Réfrigérateur, congélateur, température ambiante · vérifié en {date}",
+  "source": "Source",
+  "howWeVerify": "Notre méthode",
+  "howWeVerifyLong": "Comment nous vérifions nos données",
+  "report": "Signaler une erreur",
+  "trust": "Les chiffres de cette page proviennent de {source}. Dernière vérification en {date}.",
+  "similar": "Aliments similaires",
+  "allIn": "Toute la catégorie {cat}",
+  "onThisPage": "Sur cette page",
+  "advert": "Publicité",
+  "readInEnglish": "Lire le guide complet en anglais",
+  "foodsCount": "{n} aliments",
+  "disclaimer": "Conseils généraux fondés sur l'USDA FoodKeeper, sans valeur d'avis médical. Si un aliment a une odeur, un aspect ou une texture anormale, jetez-le."
+ },
+ "vals": {
+  "Not recommended": "Déconseillé",
+  "Use-by date": "Date limite de consommation",
+  "Indefinitely": "Indéfiniment",
+  "Until ripe": "Jusqu'à maturité",
+  "Not needed": "Inutile",
+  "Not listed": "Non indiqué",
+  "Refrigerate": "Au réfrigérateur",
+  "Do not refreeze": "Ne pas recongeler",
+  "2 hours": "2 heures"
+ },
+ "notes": {
+  "hot": "1 heure au-delà de 32 °C (90 °F)",
+  "cool": "endroit frais et sec",
+  "ripe": "puis au réfrigérateur",
+  "keepCold": "à garder au froid",
+  "onceOpened": "après ouverture",
+  "useBy": "respectez la date de l'emballage",
+  "fridgeTemp": "à 4 °C (40 °F) maximum",
+  "shelfStable": "se conserve à température ambiante",
+  "noFigure": "pas de donnée FoodKeeper",
+  "freezerQuality": "à −18 °C ; qualité, pas sécurité",
+  "notRec": "texture ou sécurité compromise",
+  "noFreeze": "se conserve sans congélation"
+ },
+ "food": {
+  "h1": [
+   "Combien de temps se conserve {Q} ?",
+   "Combien de temps se conservent {Q} ?"
+  ],
+  "inFridge": "au réfrigérateur",
+  "inPantry": "au placard",
+  "inFreezer": "au congélateur",
+  "title": "{h1} {d} {where}",
+  "titleFreezer": " [Congélateur {d}]",
+  "desc": [
+   "{Q} se conserve {d} {where}.",
+   "{Q} se conservent {d} {where}."
+  ],
+  "descFreezer": " Congélateur : {d}.",
+  "descPerishable": " À jeter après 2 heures à température ambiante.",
+  "descTail": " Signes d'altération et conseils de congélation.",
+  "quote": [
+   "{Q} se conserve {list}.",
+   "{Q} se conservent {list}."
+  ],
+  "phFridge": "{d} au réfrigérateur",
+  "phFreezer": "{d} au congélateur",
+  "phPantry": "{d} au placard",
+  "phRipe": "à température ambiante jusqu'à maturité",
+  "phUseBy": "au réfrigérateur jusqu'à la date limite de consommation",
+  "ph2h": "pas plus de 2 heures à température ambiante",
+  "quote2": "{label} : {list}.",
+  "hMethods": "Durées de conservation par mode",
+  "hSigns": "Signes d'altération",
+  "hFreeze": "Peut-on congeler {o} ?",
+  "hLeftOut": "Resté dehors toute la nuit",
+  "hStore": "Conseils de conservation",
+  "hFaq": "Questions fréquentes",
+  "thMethod": "Mode",
+  "thDuration": "Durée",
+  "thTemp": "Température",
+  "thNotes": "Remarques",
+  "mPantry": "Placard / ambiante",
+  "mFridge": "Réfrigérateur",
+  "mFreezer": "Congélateur",
+  "mThawed": "Réfrigérateur après décongélation",
+  "mCook": "Cuisson",
+  "tRoom": "20–22 °C",
+  "tFridge": "≤ 4 °C (40 °F)",
+  "tFreezer": "−18 °C (0 °F)",
+  "tCook": "{c} °C ({f} °F) minimum",
+  "noteThawed": "Ne recongelez pas un aliment cru décongelé hors du réfrigérateur",
+  "noteCook": "Vérifiez avec un thermomètre de cuisson"
+ },
+ "freeze": {
+  "yesWell": "Oui — se congèle bien",
+  "yesShort": "Oui, à court terme",
+  "yesCooking": "Oui, pour cuisiner — {d}",
+  "no": "Déconseillé",
+  "noFigure": "Pas de donnée FoodKeeper",
+  "dYes": "La qualité se maintient environ {d} à −18 °C (0 °F). Un aliment congelé reste sûr indéfiniment ; seule sa qualité diminue.",
+  "dCooking": "La qualité se maintient environ {d} à −18 °C (0 °F). La texture change : à utiliser dans des plats cuisinés.",
+  "dNo": "La congélation est déconseillée pour cet aliment : la texture se dégrade ou le résultat n'est pas fiable.",
+  "dNoFigure": "FoodKeeper n'indique pas de durée de congélation pour cet aliment.",
+  "afterThaw": "Après décongélation au réfrigérateur, à consommer sous {d}."
+ },
+ "leftOut": {
+  "keep": "À garder",
+  "check": "À vérifier",
+  "discard": "À jeter",
+  "tDiscard": "Un aliment périssable resté plus de 2 heures à température ambiante (1 heure au-delà de 32 °C / 90 °F) doit être jeté. Les bactéries se multiplient le plus vite entre 4 °C et 60 °C, et le réchauffage n'élimine pas toutes les toxines qu'elles produisent.",
+  "tKeep": "Cet aliment se conserve à température ambiante. Une nuit sur le plan de travail ne pose pas de problème : gardez-le au frais, au sec et à l'abri du soleil.",
+  "tRipe": "Cet aliment peut mûrir à température ambiante. Une fois coupé ou cuit, la règle des 2 heures s'applique.",
+  "tOpened": "Une fois ouvert, cet aliment se garde au réfrigérateur. Une nuit à température ambiante accélère l'altération : s'il a une odeur, un aspect ou un goût anormal, jetez-le.",
+  "tCaution": "Ce n'est pas un aliment à haut risque, mais une nuit dehors raccourcit sa conservation au réfrigérateur. Remettez-le au froid et consommez-le rapidement."
+ },
+ "faq": {
+  "qFridge": [
+   "Combien de temps se conserve {q} au réfrigérateur ?",
+   "Combien de temps se conservent {q} au réfrigérateur ?"
+  ],
+  "aFridge": "{d} à 4 °C (40 °F) ou moins, selon l'USDA FoodKeeper.",
+  "qFreeze": "Peut-on congeler {o} ?",
+  "qSitOut": [
+   "Combien de temps peut-on laisser {q} à température ambiante ?",
+   "Combien de temps peut-on laisser {q} à température ambiante ?"
+  ],
+  "aSitOut": "Pas plus de 2 heures à température ambiante, ou 1 heure au-delà de 32 °C (90 °F). Passé ce délai, il faut jeter l'aliment.",
+  "qPantry": [
+   "Faut-il mettre {q} au réfrigérateur ?",
+   "Faut-il mettre {q} au réfrigérateur ?"
+  ],
+  "aPantry": "Pas pour des raisons de sécurité. Ce produit se conserve {d} dans un placard frais et sec.",
+  "qSigns": [
+   "Comment savoir si {q} n'est plus consommable ?",
+   "Comment savoir si {q} ne sont plus consommables ?"
+  ],
+  "qSource": "D'où viennent ces chiffres ?",
+  "aSource": "De l'USDA FoodKeeper, la base de données de conservation du service américain de sécurité sanitaire des aliments (FSIS). Nous vérifions chaque page par rapport à la version en vigueur."
+ },
+ "home": {
+  "title": "Combien de temps se conservent les aliments ? Réfrigérateur, congélateur et placard | Gunther Heller",
+  "h1": "Combien de temps se conservent les aliments ?",
+  "lead": "Durées de conservation au réfrigérateur, au congélateur et au placard pour {n} aliments, entamés ou non, d'après l'USDA FoodKeeper.",
+  "desc": "Durées de conservation gratuites pour {n} aliments : température ambiante, réfrigérateur et congélateur, entamés ou non. Données de l'USDA FoodKeeper.",
+  "categories": "Parcourir par catégorie",
+  "popular": "Aliments les plus recherchés",
+  "about": "Chaque chiffre provient de FoodKeeper, la base de données de conservation du ministère de l'Agriculture des États-Unis (USDA). Chaque page indique sa source et la date de notre dernière vérification."
+ },
+ "hub": {
+  "title": "{cat} : durées de conservation au réfrigérateur, au congélateur et au placard ({n} aliments)",
+  "h1": "{cat} : durées de conservation",
+  "desc": "Combien de temps se conservent {n} aliments de la catégorie {cat} à température ambiante, au réfrigérateur et au congélateur. Données USDA FoodKeeper.",
+  "lead": "Combien de temps chaque aliment se conserve à température ambiante, au réfrigérateur et au congélateur. Source : USDA FoodKeeper, dernière vérification en {date}.",
+  "thFood": "Aliment",
+  "thFreezes": "Se congèle bien ?",
+  "yes": "Oui",
+  "no": "Non",
+  "cooking": "Pour cuisiner uniquement"
+ },
+ "method": {
+  "title": "Comment nous vérifions nos chiffres | Gunther Heller",
+  "h1": "Comment nous vérifions nos chiffres",
+  "desc": "D'où viennent nos durées de conservation (USDA FoodKeeper), comment nous les transformons en réponses et comment signaler une erreur.",
+  "p1": "Chaque durée de conservation de ce site provient de FoodKeeper, la base de données publiée par le Food Safety and Inspection Service (FSIS), le service de sécurité sanitaire des aliments du ministère de l'Agriculture des États-Unis. Il s'agit d'un jeu de données public, libre de droits.",
+  "p2": "Nous importons chaque produit FoodKeeper et conservons ses durées au placard, au réfrigérateur et au congélateur, y compris les durées distinctes après ouverture. Nous n'inventons jamais de durée : si FoodKeeper ne donne aucun chiffre, la page l'indique.",
+  "p3": "Lorsque FoodKeeper n'indique pas de durée à température ambiante pour un aliment périssable, nous appliquons la règle du FSIS : le jeter après 2 heures à température ambiante, ou 1 heure au-delà de 32 °C (90 °F). Les durées de congélation concernent la qualité : un aliment conservé à −18 °C (0 °F) reste sûr indéfiniment.",
+  "p4": "Les traductions sont relues pour garantir leur exactitude ; les chiffres sont identiques dans toutes les langues. Pour signaler une erreur, écrivez à {email}."
+ },
+ "categories": {
+  "dairy-eggs": "Produits laitiers et œufs",
+  "meat": "Viande",
+  "poultry": "Volaille",
+  "seafood": "Poissons et fruits de mer",
+  "leftovers-deli": "Restes et traiteur",
+  "fruits": "Fruits",
+  "vegetables": "Légumes",
+  "grains-beans-pasta": "Céréales, légumineuses et pâtes",
+  "baked-goods": "Pain et pâtisserie",
+  "condiments-sauces": "Condiments et sauces",
+  "pantry-staples": "Épicerie",
+  "beverages": "Boissons",
+  "frozen-foods": "Surgelés",
+  "baby-food": "Alimentation bébé",
+  "vegetarian-proteins": "Protéines végétales"
+ },
+ "signs": {
+  "meat": [
+   [
+    "Odeur",
+    "Odeur aigre, soufrée ou ammoniaquée, même légère."
+   ],
+   [
+    "Texture",
+    "Surface collante ou visqueuse qui persiste après rinçage."
+   ],
+   [
+    "Couleur",
+    "Taches gris-vert ou brunes qui s'étendent sur la viande."
+   ],
+   [
+    "Emballage",
+    "Barquette gonflée ou qui fuit, ou date dépassée de plus que la durée de conservation au réfrigérateur."
+   ]
+  ],
+  "seafood": [
+   [
+    "Odeur",
+    "Forte odeur de poisson, aigre ou ammoniaquée. Les produits de la mer frais sentent la marée."
+   ],
+   [
+    "Texture",
+    "Chair molle qui ne reprend pas sa forme, ou film laiteux et visqueux."
+   ],
+   [
+    "Couleur",
+    "Chair terne, grise ou jaunissante ; bords foncés."
+   ],
+   [
+    "Coquilles",
+    "Coquillages vivants ouverts qui ne se referment pas quand on les tapote."
+   ]
+  ],
+  "cooked": [
+   [
+    "Odeur",
+    "Aigre, de levure ou « bizarre » au lieu de l'odeur d'origine."
+   ],
+   [
+    "Texture",
+    "Film visqueux, ou liquide qui se sépare anormalement."
+   ],
+   [
+    "Couleur",
+    "Zones ternes ou foncées, ou taches décolorées."
+   ],
+   [
+    "Moisissure",
+    "Toute trace duveteuse : jetez tout le récipient, pas seulement la zone touchée."
+   ]
+  ],
+  "cured": [
+   [
+    "Odeur",
+    "Odeur aigre ou rance au lieu d'une odeur fumée ou salée."
+   ],
+   [
+    "Texture",
+    "Surface glissante et visqueuse sur les tranches ou les saucisses."
+   ],
+   [
+    "Couleur",
+    "Taches grises, vertes ou irisées qui s'étendent."
+   ],
+   [
+    "Moisissure",
+    "Taches duveteuses sur les produits tranchés ou cuits : jetez-les."
+   ]
+  ],
+  "dairy": [
+   [
+    "Odeur",
+    "Odeur aigre ou de fromage alors qu'elle devrait être neutre et douce."
+   ],
+   [
+    "Texture",
+    "Grumeaux, caillé, ou consistance épaisse et visqueuse."
+   ],
+   [
+    "Couleur",
+    "Jaunissement ou reflet rose, vert ou gris."
+   ],
+   [
+    "Goût",
+    "Aigre ou amer dès la première gorgée : arrêtez et jetez."
+   ]
+  ],
+  "cheese": [
+   [
+    "Odeur",
+    "Odeur d'ammoniaque ou aigre et piquante, au-delà de l'arôme habituel du fromage."
+   ],
+   [
+    "Texture",
+    "Surface visqueuse, ou fromage très sec et craquelé à cœur."
+   ],
+   [
+    "Couleur",
+    "Bords foncés ou jaunis, ou nouvelles couleurs étrangères au fromage."
+   ],
+   [
+    "Moisissure",
+    "Sur un fromage à pâte dure, retirez 2,5 cm autour de la tache. Sur un fromage à pâte molle ou râpé, jetez-le."
+   ]
+  ],
+  "eggs": [
+   [
+    "Odeur",
+    "Odeur soufrée à l'ouverture : impossible à confondre, jetez."
+   ],
+   [
+    "Coquille",
+    "Coquille visqueuse, poudreuse ou fêlée."
+   ],
+   [
+    "Intérieur",
+    "Blanc ou jaune rose, vert ou irisé."
+   ],
+   [
+    "Test de flottaison",
+    "Indique seulement l'âge. Un œuf qui flotte est vieux ; sentez-le avant de décider."
+   ]
+  ],
+  "produce": [
+   [
+    "Odeur",
+    "Odeur fermentée, aigre ou de moisi."
+   ],
+   [
+    "Texture",
+    "Zones molles, détrempées ou qui suintent, ou peau fripée sur une chair molle."
+   ],
+   [
+    "Couleur",
+    "Meurtrissures foncées qui s'étendent, ou brunissement à l'intérieur."
+   ],
+   [
+    "Moisissure",
+    "Duvet blanc, gris ou vert : jetez les fruits et légumes tendres ; coupez largement autour sur les fermes."
+   ]
+  ],
+  "leafy": [
+   [
+    "Odeur",
+    "Odeur aigre ou de pourriture provenant du sachet ou de la botte."
+   ],
+   [
+    "Texture",
+    "Feuilles visqueuses, mouillées ou flétries qui ne reprennent pas dans l'eau froide."
+   ],
+   [
+    "Couleur",
+    "Feuilles vert-noir ou brunes."
+   ],
+   [
+    "Moisissure",
+    "Toute trace duveteuse : jetez le sachet."
+   ]
+  ],
+  "bakery": [
+   [
+    "Odeur",
+    "Odeur de moisi, aigre ou alcoolisée."
+   ],
+   [
+    "Texture",
+    "Dur et sec, c'est rassis mais sans danger ; humide ou collant, non."
+   ],
+   [
+    "Couleur",
+    "Taches décolorées sur la croûte ou la mie."
+   ],
+   [
+    "Moisissure",
+    "Toute moisissure visible : jetez le produit entier, les filaments s'étendent de façon invisible."
+   ]
+  ],
+  "dry": [
+   [
+    "Odeur",
+    "Odeur de moisi, aigre ou rance."
+   ],
+   [
+    "Texture",
+    "Grumeaux dus à l'humidité, ou toucher humide."
+   ],
+   [
+    "Nuisibles",
+    "Toiles, trous ou petits insectes dans le paquet."
+   ],
+   [
+    "Saveur",
+    "Goût fade, éventé ou amer : la qualité est perdue, même si le produit reste sûr."
+   ]
+  ],
+  "fat": [
+   [
+    "Odeur",
+    "Rance : odeur de crayon gras, de peinture ou de vieilles noix."
+   ],
+   [
+    "Goût",
+    "Arrière-goût amer ou savonneux."
+   ],
+   [
+    "Texture",
+    "Résidu collant ou gommeux autour du couvercle."
+   ],
+   [
+    "Couleur",
+    "Plus foncé ou trouble alors qu'il devrait être limpide."
+   ]
+  ],
+  "condiment": [
+   [
+    "Odeur",
+    "Odeur fermentée, de levure ou aigre, au-delà de l'acidité habituelle du produit."
+   ],
+   [
+    "Texture",
+    "Séparation qui ne se résorbe pas en remuant, ou couche visqueuse."
+   ],
+   [
+    "Couleur",
+    "Assombrissement ou changement de couleur en haut du pot."
+   ],
+   [
+    "Moisissure",
+    "Tout duvet en surface ou sur le couvercle : jetez le pot."
+   ]
+  ],
+  "drink": [
+   [
+    "Odeur",
+    "Odeur vinaigrée, aigre ou de moisi au lieu d'une odeur fraîche."
+   ],
+   [
+    "Goût",
+    "Fade, aigre ou amer : la qualité est perdue."
+   ],
+   [
+    "Aspect",
+    "Trouble, dépôt ou film qui n'étaient pas là avant."
+   ],
+   [
+    "Emballage",
+    "Brique, bouchon ou canette bombés : jetez."
+   ]
+  ],
+  "frozen": [
+   [
+    "Brûlure de congélation",
+    "Zones sèches, blanc grisâtre. Sans danger, mais retirez-les."
+   ],
+   [
+    "Cristaux de glace",
+    "Beaucoup de glace dans l'emballage : le produit a décongelé puis été recongelé."
+   ],
+   [
+    "Odeur",
+    "Odeur anormale après décongélation : jetez."
+   ],
+   [
+    "Emballage",
+    "Un emballage déchiré laisse entrer l'air et accélère la perte de qualité."
+   ]
+  ],
+  "baby": [
+   [
+    "Odeur",
+    "Odeur aigre ou anormale du lait infantile préparé ou du petit pot."
+   ],
+   [
+    "Texture",
+    "Séparation qui ne se mélange plus, ou grumeaux."
+   ],
+   [
+    "Couleur",
+    "Couleur différente de l'habitude."
+   ],
+   [
+    "Fermeture",
+    "Couvercle de pot qui ne fait pas « pop » à l'ouverture, ou gourde abîmée : jetez."
+   ]
+  ]
+ },
+ "freezeSteps": {
+  "meat": [
+   "Congelez au plus tard le dernier jour de conservation au réfrigérateur ; plus tôt, la texture est meilleure.",
+   "Suremballez la barquette dans du papier aluminium ou un sac de congélation, ou mettez sous vide ; chassez l'air.",
+   "Décongelez au réfrigérateur (environ 24 heures par 2,3 kg), ou dans l'eau froide en cuisant aussitôt."
+  ],
+  "seafood": [
+   "Congelez le plus frais possible, idéalement le jour de l'achat.",
+   "Emballez bien serré dans du film alimentaire puis dans un sac de congélation ; chassez l'air et datez.",
+   "Décongelez une nuit au réfrigérateur ou sous emballage étanche dans l'eau froide ; jamais sur le plan de travail."
+  ],
+  "cooked": [
+   "Refroidissez vite : dans des récipients peu profonds, au réfrigérateur ou au congélateur dans les 2 heures.",
+   "Répartissez en portions dans des sacs de congélation ou des boîtes hermétiques, laissez de l'espace pour les liquides et inscrivez la date.",
+   "Décongelez au réfrigérateur et réchauffez à 74 °C (165 °F) jusqu'à ce que ce soit fumant."
+  ],
+  "cured": [
+   "Congelez dans l'emballage sous vide d'origine s'il n'est pas ouvert ; sinon, emballez les tranches dans du film puis de l'aluminium.",
+   "Congelez en portions d'un repas pour ne décongeler que le nécessaire.",
+   "Décongelez au réfrigérateur ; la charcuterie tranchée devient un peu plus molle après congélation."
+  ],
+  "dairy": [
+   "Retirez un peu de liquide pour laisser place à l'expansion, puis fermez hermétiquement.",
+   "Congelez à plat ou debout et datez.",
+   "Décongelez au réfrigérateur et secouez ou fouettez bien ; utilisez pour cuisiner ou pâtisser."
+  ],
+  "cheese": [
+   "Coupez en blocs de 250 g maximum, ou congelez le fromage râpé dans son sachet.",
+   "Emballez dans du film alimentaire, puis dans un sac de congélation en chassant l'air.",
+   "Décongelez au réfrigérateur ; il sera plus friable, utilisez-le fondu ou cuit."
+  ],
+  "eggs": [
+   "Ne congelez jamais les œufs dans leur coquille.",
+   "Battez les œufs entiers (ou séparez blancs et jaunes) et versez-les dans un récipient fermé ou un bac à glaçons.",
+   "Décongelez au réfrigérateur et utilisez uniquement dans des plats cuits à 71 °C (160 °F)."
+  ],
+  "produce": [
+   "Lavez, séchez et coupez en morceaux ; blanchissez d'abord la plupart des légumes 1 à 3 minutes.",
+   "Étalez sur une plaque pour congeler les morceaux séparément, puis mettez en sac en chassant l'air.",
+   "Utilisez encore congelé en cuisine ou dans les smoothies ; décongelés, fruits et légumes sont mous."
+  ],
+  "leafy": [
+   "Les salades et les herbes fraîches perdent leur croquant à la congélation.",
+   "Pour cuisiner, blanchissez les légumes-feuilles ou hachez les herbes dans des bacs à glaçons avec de l'huile ou de l'eau.",
+   "Ajoutez-les directement congelés dans les soupes, sauces et sautés."
+  ],
+  "bakery": [
+   "Congelez le jour de l'achat ou de la cuisson, une fois complètement refroidi.",
+   "Emballez bien serré dans du film puis dans un sac de congélation ; tranchez le pain avant pour prendre seulement ce qu'il faut.",
+   "Décongelez à température ambiante dans l'emballage, ou faites griller ou réchauffer directement congelé."
+  ],
+  "dry": [
+   "La congélation est facultative pour les produits secs ; elle sert surtout à éviter les nuisibles et le rancissement.",
+   "Utilisez un récipient hermétique ou un sac de congélation bien fermé.",
+   "Laissez revenir à température ambiante avant d'ouvrir pour éviter la condensation."
+  ],
+  "fat": [
+   "Congelez dans un récipient hermétique ou dans l'emballage d'origine fermé.",
+   "Portionnez d'abord (cubes ou petits pots) pour ne décongeler que le nécessaire.",
+   "Décongelez au réfrigérateur ; matières grasses et fruits à coque s'utilisent directement congelés."
+  ],
+  "condiment": [
+   "La plupart des condiments se conservent bien au réfrigérateur et n'ont pas besoin d'être congelés.",
+   "Pour congeler, utilisez des bacs à glaçons ou de petits récipients étiquetés.",
+   "Décongelez au réfrigérateur et remuez bien ; les émulsions peuvent se séparer."
+  ],
+  "drink": [
+   "Laissez de l'espace dans un récipient adapté à la congélation : les liquides gonflent.",
+   "Congelez dans des bacs à glaçons pour de petites portions.",
+   "Décongelez au réfrigérateur et secouez bien avant usage."
+  ],
+  "frozen": [
+   "Conservez à −18 °C (0 °F) ou moins, dans l'emballage d'origine.",
+   "Refermez bien les sachets ouverts ou transférez dans un sac de congélation.",
+   "Faites cuire sans décongeler selon les indications de l'emballage, ou décongelez au réfrigérateur."
+  ],
+  "baby": [
+   "Ne congelez que ce que les recommandations autorisent, dans des récipients propres et fermés.",
+   "Indiquez la date et l'heure.",
+   "Décongelez au réfrigérateur ou dans de l'eau tiède ; jamais au micro-ondes, et ne recongelez pas."
+  ]
+ },
+ "store": {
+  "meat": [
+   "Placez au réfrigérateur à 4 °C (40 °F) ou moins dès votre retour ; sur l'étagère du bas, pour que le jus ne coule pas.",
+   "Gardez-la dans son emballage d'origine jusqu'à utilisation, ou suremballez-la pour le congélateur.",
+   "Cuisez ou congelez dans le délai de conservation au réfrigérateur ; il commence à l'achat."
+  ],
+  "seafood": [
+   "Conservez sur de la glace ou dans la zone la plus froide du réfrigérateur, à 4 °C (40 °F) ou moins.",
+   "Gardez les coquillages vivants dans un saladier couvert d'un linge humide, jamais dans l'eau ni dans un plastique fermé.",
+   "Cuisez ou congelez dans le délai de conservation au réfrigérateur."
+  ],
+  "cooked": [
+   "Réfrigérez dans les 2 heures après cuisson (1 heure au-delà de 32 °C / 90 °F), dans des boîtes hermétiques peu profondes.",
+   "Maintenez le réfrigérateur à 4 °C (40 °F) ou moins ; la porte est la zone la plus chaude.",
+   "Réchauffez les restes à 74 °C (165 °F) et ne réchauffez que ce que vous allez manger."
+  ],
+  "cured": [
+   "Conservez au réfrigérateur à 4 °C (40 °F) ou moins, même s'il s'agit d'un produit salé ou fumé.",
+   "Une fois ouvert, remballez bien ou transférez dans une boîte hermétique.",
+   "Consommez dans le délai après ouverture, quelle que soit la date de l'emballage."
+  ],
+  "dairy": [
+   "Rangez sur une étagère intérieure, pas dans la porte, à 4 °C (40 °F) ou moins.",
+   "Fermez bien le récipient : les produits laitiers absorbent les odeurs du réfrigérateur.",
+   "Versez la quantité voulue et remettez aussitôt au réfrigérateur."
+  ],
+  "cheese": [
+   "Emballez dans du papier ciré ou sulfurisé, puis sans serrer dans du film, pour qu'il respire.",
+   "Rangez dans le bac à fromages ou sur une étagère basse, à 4 °C (40 °F) ou moins.",
+   "Utilisez un couteau propre à chaque fois pour ne pas introduire de moisissures."
+  ],
+  "eggs": [
+   "Gardez les œufs dans leur boîte sur une étagère intérieure, pas dans la porte.",
+   "Conservez à 4 °C (40 °F) ou moins ; ne les lavez pas avant de les ranger.",
+   "Réfrigérez les œufs durs dans les 2 heures après cuisson."
+  ],
+  "produce": [
+   "Conservez sans laver ; lavez juste avant de consommer.",
+   "Éloignez les fruits qui dégagent de l'éthylène (pommes, bananes, avocats) des produits qui mûrissent trop vite.",
+   "Une fois coupés, placez-les au réfrigérateur dans un récipient couvert."
+  ],
+  "leafy": [
+   "Conservez au sec, enveloppé d'essuie-tout dans un sac ou une boîte.",
+   "Rangez dans le bac à légumes, à 4 °C (40 °F) ou moins.",
+   "Placez les herbes comme la coriandre et le persil dans un verre d'eau au réfrigérateur, couvertes sans serrer."
+  ],
+  "bakery": [
+   "Conservez à température ambiante dans une boîte à pain ou un sac fermé pour une meilleure texture.",
+   "Le réfrigérateur ralentit les moisissures mais fait rassir le pain plus vite.",
+   "Congelez ce que vous ne mangerez pas à temps."
+  ],
+  "dry": [
+   "Conservez dans un récipient hermétique, dans un endroit frais, sec et sombre.",
+   "Éloignez de la cuisinière et du lave-vaisselle : la chaleur et l'humidité accélèrent l'altération.",
+   "Notez la date d'ouverture sur le paquet."
+  ],
+  "fat": [
+   "Conservez dans un endroit frais et sombre, bien fermé, à l'abri de la chaleur.",
+   "Mettre au réfrigérateur les fruits à coque, les graines et les huiles de noix prolonge nettement leur conservation.",
+   "Sentez avant d'utiliser : le rancissement est un défaut de qualité facile à détecter."
+  ],
+  "condiment": [
+   "Réfrigérez après ouverture, sauf indication contraire sur l'étiquette.",
+   "Utilisez un ustensile propre à chaque fois ; miettes et double trempage raccourcissent la conservation.",
+   "Essuyez le bord et refermez bien le couvercle."
+  ],
+  "drink": [
+   "Conservez fermé dans un endroit frais et sombre.",
+   "Réfrigérez après ouverture et refermez bien.",
+   "Tenez à l'abri de la lumière et de la chaleur, qui affadissent le goût."
+  ],
+  "frozen": [
+   "Réglez votre congélateur à −18 °C (0 °F) ou moins.",
+   "Ne le laissez pas décongeler puis recongeler sur le trajet ; achetez les surgelés en dernier.",
+   "Refermez les sachets ouverts pour éviter les brûlures de congélation."
+  ],
+  "baby": [
+   "Suivez d'abord l'étiquette et les consignes de votre pédiatre.",
+   "Réfrigérez aussitôt les produits préparés ou ouverts.",
+   "Jetez tout reste dans un biberon ou un bol dans lequel bébé a mangé."
+  ]
+ }
+}

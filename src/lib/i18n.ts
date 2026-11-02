@@ -39,11 +39,12 @@ export const getLocale = (code: string) => LOCALES.find((l) => l.code === code)!
 /* ---------------------------------------------------------------- URLs */
 export const slugify = (s: string) =>
   s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/ß/g, "ss").replace(/œ/g, "oe").replace(/æ/g, "ae").replace(/&/g, " ").replace(/['’]/g, "").split(/[^a-z0-9]+/).filter(Boolean).join("-");
+const CAT_STOP = new Set(["y", "e", "et", "und", "de", "del", "la", "el", "les", "des", "do", "da", "dos", "das"]);
 export const lurl = {
   home: (L: Locale) => `/${L.code}/`,
   food: (L: Locale, f: Food) => `/${L.code}/${L.def.food}-${L.foods[f.slug].s}/`,
   hubIndex: (L: Locale) => `/${L.code}/${L.def.hub}/`,
-  hub: (L: Locale, cat: string) => `/${L.code}/${L.def.hub}/${slugify(L.s.categories[cat])}/`,
+  hub: (L: Locale, cat: string) => `/${L.code}/${L.def.hub}/${slugify(L.s.categories[cat]).split("-").filter((w) => !CAT_STOP.has(w)).join("-")}/`,
   method: (L: Locale) => `/${L.code}/${L.def.method}/`,
 };
 export type Alt = { lang: string; href: string };
