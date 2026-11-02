@@ -44,7 +44,7 @@ export function foodGraph(opts: { food: Food; path: string; title: string; headl
         description,
         url,
         mainEntityOfPage: url,
-        image: abs(SITE.ogImage),
+        image: abs(`/images/foods/${f.slug}.webp`),
         datePublished: SITE.verifiedISO,
         dateModified: SITE.verifiedISO,
         author: { "@id": ORG["@id"] },

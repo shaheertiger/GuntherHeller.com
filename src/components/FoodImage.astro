@@ -1,0 +1,24 @@
+---
+import { type Food, foodImage } from "../lib/data";
+interface Props { food: Food; alt: string; variant?: "hero" | "card" | "thumb"; class?: string }
+const { food, alt, variant = "card", class: cls = "" } = Astro.props;
+const img = foodImage(food);
+const hero = variant === "hero";
+const thumb = variant === "thumb";
+---
+{thumb ? (
+  <img src={img.src600} alt="" width="48" height="32" loading="lazy" decoding="async" class:list={["w-12 h-8 rounded-md object-cover shrink-0 bg-[#efe9dd]", cls]} />
+) : (
+  <img
+    src={hero ? img.src : img.src600}
+    srcset={`${img.src600} 600w, ${img.src} 1200w`}
+    sizes={hero ? "(max-width: 767px) 100vw, 360px" : "(max-width: 767px) 50vw, 200px"}
+    alt={alt}
+    width={hero ? img.w : 600}
+    height={hero ? img.h : 400}
+    loading={hero ? "eager" : "lazy"}
+    fetchpriority={hero ? "high" : "low"}
+    decoding={hero ? "sync" : "async"}
+    class:list={["block w-full h-auto aspect-[3/2] object-cover bg-[#efe9dd]", hero ? "rounded-[14px] border border-line" : "rounded-lg", cls]}
+  />
+)}

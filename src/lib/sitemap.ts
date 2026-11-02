@@ -21,6 +21,15 @@ export const SECTIONS: Record<string, () => string[]> = {
 
 /** Every hreflang cluster, indexed by each member's path. */
 let clusters: Map<string, Alt[]> | null = null;
+/** Food page path → image path (EN and localized food pages). */
+let images: Map<string, string> | null = null;
+function imageOf(path: string) {
+  if (!images) {
+    images = new Map();
+    for (const f of FOODS) for (const a of foodAlternates(f)) images.set(a.href, `/images/foods/${f.slug}.webp`);
+  }
+  return images.get(path);
+}
 function clusterOf(path: string): Alt[] | undefined {
   if (!clusters) {
     clusters = new Map();
@@ -34,11 +43,12 @@ function clusterOf(path: string): Alt[] | undefined {
 
 const esc = (s: string) => s.replace(/&/g, "&amp;");
 export const urlset = (paths: string[]) =>
-  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${paths
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${paths
     .map((p) => {
       const alts = clusterOf(p);
       const links = alts ? [...alts.map((a) => `<xhtml:link rel="alternate" hreflang="${a.lang}" href="${esc(abs(a.href))}"/>`), `<xhtml:link rel="alternate" hreflang="x-default" href="${esc(abs(alts[0].href))}"/>`].join("") : "";
-      return `<url><loc>${esc(abs(p))}</loc><lastmod>${lastmod}</lastmod>${links}</url>`;
+      const img = imageOf(p);
+      return `<url><loc>${esc(abs(p))}</loc><lastmod>${lastmod}</lastmod>${links}${img ? `<image:image><image:loc>${esc(abs(img))}</image:loc></image:image>` : ""}</url>`;
     })
     .join("\n")}\n</urlset>\n`;
 

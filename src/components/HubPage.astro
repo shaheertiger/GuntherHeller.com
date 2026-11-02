@@ -4,6 +4,7 @@ import Breadcrumb from "./Breadcrumb.astro";
 import CatIcon from "./CatIcon.astro";
 import TrustBlock from "./TrustBlock.astro";
 import AdSlot from "./AdSlot.astro";
+import FoodImage from "./FoodImage.astro";
 import { type Category, foodsIn, url, cellsFor, days, hasFreezePage, hasLeftOutPage } from "../lib/data";
 import { freezeVerdict } from "../lib/content";
 import { breadcrumbLd, ORG } from "../lib/schema";
@@ -100,7 +101,7 @@ const ld = {
           <tbody>
             {rows.map((r) => (
               <tr data-name={r.f.name.toLowerCase()} data-fridge={r.fridgeDays} data-freezer={r.freezerDays} data-tone={r.tone}>
-                <td><a href={url.food(r.f)} class="font-medium">{r.f.name}</a></td>
+                <td><a href={url.food(r.f)} class="font-medium flex items-center gap-3"><FoodImage food={r.f} alt="" variant="thumb" />{r.f.name}</a></td>
                 <td class="text-muted">{r.counter}</td>
                 <td>{r.opened}</td>
                 <td class="text-muted">{r.unopened}</td>

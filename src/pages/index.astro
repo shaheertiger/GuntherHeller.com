@@ -4,6 +4,7 @@ import Squiggle from "../components/Squiggle.astro";
 import CatIcon from "../components/CatIcon.astro";
 import AdSlot from "../components/AdSlot.astro";
 import Faq from "../components/Faq.astro";
+import FoodImage from "../components/FoodImage.astro";
 import { CATEGORIES, FOODS, getFood, url, type Food } from "../lib/data";
 import { ORG, faqLd } from "../lib/schema";
 import { SITE } from "../lib/site";
@@ -191,7 +192,7 @@ const tabs = [["fridge", "Fridge"], ["freezer", "Freezer"], ["counter", "Counter
         <h2 class="!text-[34px]">Most Popular Foods</h2>
         <p class="lead !text-[15px] max-w-[520px] mt-2.5">The foods people look up most. Jump straight to the storage times.</p>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 mt-9">
-          {popular.map((f) => <a href={url.food(f)} class="flex items-center gap-2 py-3 border-b border-line text-[15px]">{f.name}</a>)}
+          {popular.map((f) => <a href={url.food(f)} class="flex items-center gap-3 py-2.5 border-b border-line text-[15px]"><FoodImage food={f} alt="" variant="thumb" />{f.name}</a>)}
         </div>
       </div>
     </div>

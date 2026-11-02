@@ -5,6 +5,7 @@ import Squiggle from "../Squiggle.astro";
 import CatIcon from "../CatIcon.astro";
 import AdSlot from "../AdSlot.astro";
 import LFood from "./LFood.astro";
+import FoodImage from "../FoodImage.astro";
 import { CATEGORIES, FOODS, getFood, foodsIn, url as enUrl } from "../../lib/data";
 import { getLocale, lurl, ft, cellsL, freezeL, verifiedDate, fill, homeAlternates, hubAlternates, hubIndexAlternates, methodAlternates } from "../../lib/i18n";
 import type { LocaleRouteProps } from "../../lib/i18n-routes";
@@ -53,7 +54,7 @@ const site = { "@type": "WebSite", name: SITE.name, url: `${SITE.url}/`, inLangu
         <div class="bg-panel rounded-[12px] px-6 py-12">
           <h2 class="!text-[34px]">{S.home.popular}</h2>
           <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 mt-8">
-            {popular.map((f) => <a href={lurl.food(L, f!)} class="flex justify-between gap-2 py-3 border-b border-line text-[15px]"><span>{ft(L, f!).n}</span><span class="text-muted text-[13px]">{cellsL(L, f!, f!.states[0], 0).fridge.value}</span></a>)}
+            {popular.map((f) => <a href={lurl.food(L, f!)} class="flex items-center justify-between gap-3 py-2.5 border-b border-line text-[15px]"><span class="flex items-center gap-3"><FoodImage food={f!} alt="" variant="thumb" />{ft(L, f!).n}</span><span class="text-muted text-[13px]">{cellsL(L, f!, f!.states[0], 0).fridge.value}</span></a>)}
           </div>
         </div>
         <p class="mt-10 max-w-[760px] text-muted">{S.home.about} <a class="link" href={lurl.method(L)}>{U.howWeVerifyLong} →</a></p>
@@ -97,7 +98,7 @@ const site = { "@type": "WebSite", name: SITE.name, url: `${SITE.url}/`, inLangu
           <tbody>
             {rows.map((r) => (
               <tr>
-                <td><a href={lurl.food(L, r.f)} class="font-medium">{r.T.n}</a></td>
+                <td><a href={lurl.food(L, r.f)} class="font-medium flex items-center gap-3"><FoodImage food={r.f} alt="" variant="thumb" />{r.T.n}</a></td>
                 <td class="text-muted">{r.c.pantry.value}</td><td>{r.c.fridge.value}</td><td>{r.c.freezer.value}</td>
                 <td><span class:list={["pill !text-[13px] !py-[3px] !px-2.5", r.z.tone === "yes" ? "pill-yes" : r.z.tone === "no" ? "pill-no" : "pill-caution"]}>{r.z.tone === "yes" ? S.hub.yes : r.z.tone === "no" ? S.hub.no : r.z.steps.length ? S.hub.cooking : "—"}</span></td>
               </tr>

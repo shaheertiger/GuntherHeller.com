@@ -10,6 +10,7 @@ import FoodCard from "./FoodCard.astro";
 import Faq from "./Faq.astro";
 import AdSlot from "./AdSlot.astro";
 import TrustBlock from "./TrustBlock.astro";
+import FoodImage from "./FoodImage.astro";
 import { type Food, url, getCategory, similarFoods, lc, does, titleCase, cap1, hasFreezePage, hasLeftOutPage } from "../lib/data";
 import { foodTitle, foodDescription, quoteFor, methodsFor, datesFor, storeTipsFor, faqFor } from "../lib/content";
 import { foodGraph } from "../lib/schema";
@@ -60,15 +61,16 @@ const tools = [
   <div class="container-site pt-4 md:pt-6">
     <Breadcrumb items={crumbs} />
 
-    <div class="mt-3 md:mt-5 flex flex-wrap items-end justify-between gap-x-6 gap-y-2">
+    <div class="mt-3 md:mt-5 grid md:grid-cols-[minmax(0,1fr)_360px] items-center gap-x-10 gap-y-4">
       <div>
         <h1 class="h1-food">{h1}</h1>
         <p class="mt-1.5 md:mt-2 text-sm md:text-[17px] text-muted">Fridge, freezer, counter{f.states.length > 1 && ` · ${f.states.map((s) => s.label!.toLowerCase()).join(" vs ")}`} · last verified {SITE.verifiedLabel}</p>
-      </div>
-      <div class="hidden md:flex items-center gap-2 text-[13px] text-muted pb-1.5">
+      <div class="hidden md:flex items-center gap-2 text-[13px] text-muted mt-3">
         <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2f8f5b" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
         Source: {sourceIsFk ? "USDA FoodKeeper" : f.source.name.split(":")[0]} · <a href="/methodology/" class="link">How we verify →</a>
       </div>
+      </div>
+      <FoodImage food={f} alt={`Illustration of ${name}`} variant="hero" />
     </div>
 
     <div class="grid lg:grid-cols-[200px_minmax(0,1fr)_300px] gap-10 mt-4 md:mt-8 items-start">

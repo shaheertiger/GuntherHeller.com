@@ -1,11 +1,13 @@
 ---
 import { type Food, url, primaryFridge } from "../lib/data";
+import FoodImage from "./FoodImage.astro";
 interface Props { food: Food }
 const { food: f } = Astro.props;
 const v = primaryFridge(f);
 const where = f.states[0].fridge ? "in the fridge" : f.states[0].pantry ? "in the pantry" : "";
 ---
-<a href={url.food(f)} class="block p-3 md:p-3.5 border border-line rounded-[10px] min-h-11 hover:border-[#c9c9cf]">
-  <div class="font-medium text-[15px] leading-snug">{f.name}</div>
-  <div class="text-[13px] text-muted mt-0.5">{v} {where}</div>
+<a href={url.food(f)} class="block p-2 md:p-2.5 border border-line rounded-[10px] min-h-11 hover:border-[#c9c9cf]">
+  <FoodImage food={f} alt="" class="mb-2" />
+  <div class="font-medium text-[15px] leading-snug px-1">{f.name}</div>
+  <div class="text-[13px] text-muted mt-0.5 px-1 pb-1">{v} {where}</div>
 </a>

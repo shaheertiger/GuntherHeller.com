@@ -34,7 +34,7 @@ const cols = [
           <div class="flex items-center gap-1.5 md:gap-2 text-[10px] md:text-[11px] font-medium tracking-[.06em] md:tracking-[.12em] uppercase text-muted items-start leading-tight">
             <span class:list={["dot", col.dot]}></span><span class="hidden md:inline min-w-0 hyphens-auto [overflow-wrap:anywhere]">{col.label}</span><span class="md:hidden min-w-0 hyphens-auto [overflow-wrap:anywhere]">{col.short}</span>
           </div>
-          <div class="mt-2 md:mt-2.5 text-[22px] md:text-[36px] font-[650] tracking-[-0.03em] leading-[1.05] break-words hyphens-auto" lang={L.s.htmlLang}>{c[col.k].value}</div>
+          <div class:list={["mt-2 md:mt-2.5 font-[650] tracking-[-0.03em] leading-[1.05] break-words", /^\d/.test(c[col.k].value) ? "text-[22px] md:text-[36px]" : "text-[17px] md:text-[26px]"]} lang={L.s.htmlLang}>{c[col.k].value}</div>
           <div class="mt-1.5 text-[12px] md:text-sm text-muted leading-snug">{c[col.k].note}</div>
         </div>
       ))}

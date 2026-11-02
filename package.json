@@ -15,7 +15,8 @@
     "disavow": "node scripts/build-disavow.mjs",
     "og": "node scripts/make-og.mjs",
     "indexnow": "node scripts/indexnow.mjs",
-    "favicons": "node scripts/make-favicons.mjs"
+    "favicons": "node scripts/make-favicons.mjs",
+    "images": "node scripts/make-images.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "4.3.3",
