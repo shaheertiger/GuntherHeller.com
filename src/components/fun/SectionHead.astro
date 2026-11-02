@@ -1,0 +1,12 @@
+---
+import Icon from "./Icon.astro";
+interface Props { icon: string; tint?: string; ink?: string; eyebrow?: string; id?: string }
+const { icon, tint = "var(--color-tint-lilac)", ink = "var(--color-primary)", eyebrow } = Astro.props;
+---
+<div class="flex items-center gap-3">
+  <span class="icon-chip" style={`background:${tint};color:${ink}`}><Icon name={icon} size={18} /></span>
+  <div class="min-w-0">
+    {eyebrow && <div class="text-[11px] font-bold uppercase tracking-[.08em]" style={`color:${ink}`}>{eyebrow}</div>}
+    <h2 class="h2-food"><slot /></h2>
+  </div>
+</div>

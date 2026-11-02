@@ -1,16 +1,18 @@
 ---
 import { type Food } from "../lib/data";
 import { signsFor } from "../lib/content";
-interface Props { food: Food }
-const signs = signsFor(Astro.props.food);
+interface Props { food: Food; signs?: { title: string; text: string; icon?: string }[] }
+const ICONS = ["M12 3a7 7 0 017 7c0 5-7 11-7 11S5 15 5 10a7 7 0 017-7z", "M4 12h16M4 7h16M4 17h16", "M12 21a9 9 0 110-18 9 9 0 010 18z", "M12 9v4M12 17h.01M10.3 3.9L2.5 17a2 2 0 001.7 3h15.6a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"];
+const TINTS = [["var(--color-tint-pink)", "#b83269"], ["var(--color-tint-amber)", "#b07514"], ["var(--color-tint-lilac)", "#4a3bd2"], ["var(--color-tint-red)", "#c0392b"]];
+const signs = Astro.props.signs ?? signsFor(Astro.props.food!);
 ---
 <div class="grid sm:grid-cols-2 gap-3 md:gap-4 mt-[18px]">
-  {signs.map((s) => (
-    <div class="flex gap-3.5 p-3 md:p-4 border border-line rounded-[10px]">
-      <div class="paper w-10 h-10 rounded-[10px] grid place-items-center shrink-0">
-        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6b5f4a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d={s.icon}/></svg>
+  {signs.map((s, i) => (
+    <div class="lift soft flex gap-3.5 p-4" style={`background:${TINTS[i % 4][0]}`}>
+      <div class="w-11 h-11 rounded-[14px] bg-white grid place-items-center shrink-0" style={`color:${TINTS[i % 4][1]}`}>
+        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d={ICONS[i % 4]}/></svg>
       </div>
-      <div><h3 class="!text-base !tracking-normal font-[650]">{s.title}</h3><p class="text-sm text-muted mt-0.5">{s.text}</p></div>
+      <div><h3 class="!text-base !tracking-normal font-[650]">{s.title}</h3><p class="text-sm text-[#52525b] mt-0.5">{s.text}</p></div>
     </div>
   ))}
 </div>

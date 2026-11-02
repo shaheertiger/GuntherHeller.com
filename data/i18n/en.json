@@ -685,5 +685,62 @@
    "Refrigerate prepared or opened products right away.",
    "Discard anything left in a bottle or bowl the baby has fed from."
   ]
+ },
+ "viz": {
+  "quick": "Quick answer",
+  "glance": "Shelf life at a glance",
+  "glanceNote": "Bars show the longest recommended time for each place. Scale runs from 1 hour to 2 years.",
+  "ticks": [
+   "1 hr",
+   "1 day",
+   "1 wk",
+   "1 mo",
+   "6 mo",
+   "1 yr",
+   "2 yr"
+  ],
+  "plus": "longer",
+  "perish": "How perishable is it?",
+  "levels": [
+   "Use within days",
+   "Keeps a week or two",
+   "Keeps for months",
+   "Keeps a long time"
+  ],
+  "levelNote": "Based on the longest fridge or pantry time.",
+  "check": "Is it still good?",
+  "checkAsk": "It's been in the fridge for…",
+  "checkHint": "Tap a time to check.",
+  "fresh": "Still good",
+  "edge": "Use it today",
+  "toss": "Throw it out",
+  "freshText": "About {a}–{b} more days in the fridge.",
+  "freshText1": "About {b} more days in the fridge.",
+  "edgeText": "It's inside the safe window but near the end. Eat it today or freeze it now.",
+  "tossText": "Past the recommended fridge time. Even if it looks and smells fine, throw it out.",
+  "checkNote": "Counted from the day it was cooked, opened or bought. Assumes a fridge at 4 °C (40 °F) or colder.",
+  "dangerZone": "Danger zone",
+  "dangerText": "Bacteria multiply fastest between 4 °C and 60 °C (40–140 °F).",
+  "safeCold": "Fridge",
+  "safeHot": "Hot holding",
+  "badges": {
+   "perishable": "Perishable",
+   "shelf": "Shelf-stable",
+   "freezes": "Freezes well",
+   "noFreeze": "Don't freeze",
+   "opened": "Changes once opened"
+  },
+  "steps": "Step",
+  "tips": "Storage tips",
+  "eyebrows": {
+   "glance": "At a glance",
+   "methods": "Every method",
+   "signs": "Check before you eat",
+   "freeze": "Freezing",
+   "leftOut": "The 2-hour rule",
+   "tips": "Storage tips",
+   "similar": "Keep exploring",
+   "faq": "Questions people ask"
+  }
  }
 }

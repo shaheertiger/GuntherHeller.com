@@ -1,0 +1,28 @@
+---
+import Icon from "./Icon.astro";
+import { TICKS, pos, type Bar } from "../../lib/viz";
+interface Props { bars: Bar[]; labels: Record<"pantry" | "fridge" | "freezer", string>; values: Record<"pantry" | "fridge" | "freezer", string>; ticks: string[]; note: string; plus: string }
+const { bars, labels, values, ticks, note, plus } = Astro.props;
+const C = { pantry: ["#94600f", "var(--color-tint-amber)", "counter"], fridge: ["#1f7048", "var(--color-tint-green)", "fridge"], freezer: ["#2f5fbf", "var(--color-tint-blue)", "freezer"] } as const;
+---
+<div class="soft border border-line p-4 md:p-6 mt-[18px]">
+  <div class="grid gap-4">
+    {bars.map((b) => (
+      <div class="grid grid-cols-[28px_minmax(0,1fr)] md:grid-cols-[150px_minmax(0,1fr)] items-center gap-3">
+        <div class="flex items-center gap-2 text-sm font-[550] min-w-0" title={labels[b.key]}><span class="icon-chip !w-7 !h-7 !rounded-lg" style={`background:${C[b.key][1]};color:${C[b.key][0]}`}><Icon name={C[b.key][2]} size={14} /></span><span class="hidden md:inline truncate">{labels[b.key]}</span><span class="sr-only md:hidden">{labels[b.key]}</span></div>
+        <div class="relative h-7 rounded-full bg-[#f4f4f5]">
+          <div class="absolute inset-y-0 left-0 rounded-full flex items-center justify-end pr-2.5" style={`width:${b.to}%;min-width:max-content;padding-left:10px;background:${C[b.key][0]}`}>
+            <span class="text-[12px] font-[650] text-white whitespace-nowrap">{values[b.key]}{b.open ? ` · ${plus}` : ""}</span>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+  <div class="grid grid-cols-[28px_minmax(0,1fr)] md:grid-cols-[150px_minmax(0,1fr)] gap-3 mt-2">
+    <span></span>
+    <div class="relative h-5 text-[11px] text-muted">
+      {TICKS.map((d, i) => <span class:list={["absolute whitespace-nowrap", i === 0 ? "" : i === TICKS.length - 1 ? "-translate-x-full" : "-translate-x-1/2"]} style={`left:${pos(d)}%`} aria-hidden="true">{i === 0 || i === 1 || i === 3 || i === TICKS.length - 1 ? ticks[i] : ""}</span>)}
+    </div>
+  </div>
+  <p class="text-[12px] text-muted mt-2">{note}</p>
+</div>

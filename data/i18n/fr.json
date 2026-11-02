@@ -684,5 +684,62 @@
    "Réfrigérez aussitôt les produits préparés ou ouverts.",
    "Jetez tout reste dans un biberon ou un bol dans lequel bébé a mangé."
   ]
+ },
+ "viz": {
+  "quick": "Réponse rapide",
+  "glance": "La conservation en un coup d'œil",
+  "glanceNote": "Les barres indiquent la durée maximale recommandée pour chaque endroit. L'échelle va de 1 heure à 2 ans.",
+  "ticks": [
+   "1 h",
+   "1 jour",
+   "1 sem.",
+   "1 mois",
+   "6 mois",
+   "1 an",
+   "2 ans"
+  ],
+  "plus": "ou plus",
+  "perish": "Est-ce très périssable ?",
+  "levels": [
+   "À consommer en quelques jours",
+   "Se garde une à deux semaines",
+   "Se garde des mois",
+   "Se garde longtemps"
+  ],
+  "levelNote": "D'après la durée la plus longue au réfrigérateur ou au placard.",
+  "check": "Est-ce encore bon ?",
+  "checkAsk": "C'est au réfrigérateur depuis…",
+  "checkHint": "Touchez une durée pour vérifier.",
+  "fresh": "Encore bon",
+  "edge": "À manger aujourd'hui",
+  "toss": "À jeter",
+  "freshText": "Encore environ {a} à {b} jours au réfrigérateur.",
+  "freshText1": "Encore environ {b} jours au réfrigérateur.",
+  "edgeText": "C'est encore dans la période sûre, mais presque à la fin. Mangez-le aujourd'hui ou congelez-le maintenant.",
+  "tossText": "La durée recommandée au réfrigérateur est dépassée. Même si l'aspect et l'odeur semblent normaux, jetez-le.",
+  "checkNote": "Compté à partir du jour de cuisson, d'ouverture ou d'achat. Réfrigérateur à 4 °C (40 °F) ou moins.",
+  "dangerZone": "Zone de danger",
+  "dangerText": "Les bactéries se multiplient le plus vite entre 4 °C et 60 °C (40–140 °F).",
+  "safeCold": "Réfrigérateur",
+  "safeHot": "Maintien au chaud",
+  "badges": {
+   "perishable": "Périssable",
+   "shelf": "Se conserve à température ambiante",
+   "freezes": "Se congèle bien",
+   "noFreeze": "Ne pas congeler",
+   "opened": "Change après ouverture"
+  },
+  "steps": "Étape",
+  "tips": "Conseils de conservation",
+  "eyebrows": {
+   "glance": "En un coup d'œil",
+   "methods": "Chaque méthode",
+   "signs": "À vérifier avant de manger",
+   "freeze": "Congélation",
+   "leftOut": "La règle des 2 heures",
+   "tips": "Conseils de conservation",
+   "similar": "Continuer à explorer",
+   "faq": "Questions fréquentes"
+  }
  }
 }

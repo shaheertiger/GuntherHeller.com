@@ -1,0 +1,33 @@
+---
+/** "Is it still good?" — CSS-only chips (radio inputs), no client JS. */
+import Icon from "./Icon.astro";
+import type { Check, VizStrings } from "../../lib/viz";
+import { dayLabel } from "../../lib/viz";
+interface Props { checks: Check[]; V: VizStrings; units: Record<string, [string, string]>; id: string }
+const { checks, V, units, id } = Astro.props;
+const TONE = { fresh: ["var(--color-tint-green)", "var(--color-green-ink)", "check", V.fresh], edge: ["var(--color-tint-amber)", "#8a5a0c", "clock", V.edge], toss: ["var(--color-tint-red)", "#9a2f23", "warn", V.toss] } as const;
+const text = (c: Check) => (c.tone === "fresh" ? (c.left[0] === c.left[1] || c.left[0] === 0 ? V.freshText1 : V.freshText).replace("{a}", String(Math.max(1, c.left[0]))).replace("{b}", String(c.left[1])) : c.tone === "edge" ? V.edgeText : V.tossText);
+---
+<div class="sg soft border border-line p-4 md:p-5">
+  <fieldset class="m-0 p-0 border-0">
+    <legend class="text-[15px] font-[650]">{V.checkAsk}</legend>
+    <div class="flex flex-wrap gap-2 mt-3">
+      {checks.map((c, i) => (
+        <>
+          <input class="sr-only" type="radio" name={id} id={`${id}-${i}`} data-i={i} />
+          <label for={`${id}-${i}`} class="sg-chip">{dayLabel(c.days, units)}</label>
+        </>
+      ))}
+    </div>
+  </fieldset>
+  <div class="mt-4" aria-live="polite">
+    <div class="sg-out text-[14px] text-muted" data-i="none">{V.checkHint}</div>
+    {checks.map((c, i) => (
+      <div class="sg-out soft items-start gap-3 p-3.5 !rounded-[14px]" data-i={i} style={`background:${TONE[c.tone][0]}`}>
+        <span class="icon-chip !w-8 !h-8" style={`background:#fff;color:${TONE[c.tone][1]}`}><Icon name={TONE[c.tone][2]} size={16} stroke={2.4} /></span>
+        <div><div class="font-[650]" style={`color:${TONE[c.tone][1]}`}>{TONE[c.tone][3]}</div><p class="text-[14px] text-[#3c4a42] mt-0.5">{text(c)}</p></div>
+      </div>
+    ))}
+  </div>
+  <p class="text-[12px] text-muted mt-3">{V.checkNote}</p>
+</div>

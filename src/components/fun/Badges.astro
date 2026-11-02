@@ -1,0 +1,8 @@
+---
+interface Props { items: { label: string; tone: "red" | "green" | "blue" | "amber" | "lilac" }[] }
+const T = { red: ["var(--color-tint-red)", "#9a2f23"], green: ["var(--color-tint-green)", "var(--color-green-ink)"], blue: ["var(--color-tint-blue)", "#2c56a8"], amber: ["var(--color-tint-amber)", "#8a5a0c"], lilac: ["var(--color-tint-lilac)", "#3f31c0"] };
+const { items } = Astro.props;
+---
+<ul class="flex flex-wrap gap-2 list-none p-0 m-0 mt-3">
+  {items.map((b) => <li class="rounded-full px-3 py-1 text-[13px] font-[550]" style={`background:${T[b.tone][0]};color:${T[b.tone][1]}`}>{b.label}</li>)}
+</ul>

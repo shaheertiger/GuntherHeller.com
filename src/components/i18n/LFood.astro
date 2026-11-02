@@ -5,6 +5,18 @@ import Faq from "../Faq.astro";
 import AdSlot from "../AdSlot.astro";
 import LAnswerCard from "./LAnswerCard.astro";
 import FoodImage from "../FoodImage.astro";
+import SectionHead from "../fun/SectionHead.astro";
+import QuickAnswer from "../fun/QuickAnswer.astro";
+import Badges from "../fun/Badges.astro";
+import Timeline from "../fun/Timeline.astro";
+import PerishScale from "../fun/PerishScale.astro";
+import StillGood from "../fun/StillGood.astro";
+import TrafficLight from "../fun/TrafficLight.astro";
+import DangerZone from "../fun/DangerZone.astro";
+import Signs from "../Signs.astro";
+import Steps from "../Steps.astro";
+import Icon from "../fun/Icon.astro";
+import { timelineBars, perishLevel, checker, type VizStrings } from "../../lib/viz";
 import { type Food, getCategory, url as enUrl, cellsFor } from "../../lib/data";
 import { groupOf } from "../../lib/content";
 import { type Locale, foodCopy, methodsL, freezeL, leftOutL, faqL, similarL, lurl, foodAlternates, verifiedDate, fill, ft, cellsL, stateLabel, fmtL } from "../../lib/i18n";
@@ -28,6 +40,19 @@ const store = S.store[groupOf(f)] as string[];
 const similar = similarL(L, f);
 const pill = (tone: string) => (tone === "yes" || tone === "keep" ? "pill-yes" : tone === "no" || tone === "discard" ? "pill-no" : "pill-caution");
 const ICONS = ["M12 3a7 7 0 017 7c0 5-7 11-7 11S5 15 5 10a7 7 0 017-7z", "M4 12h16M4 7h16M4 17h16", "M12 21a9 9 0 110-18 9 9 0 010 18z", "M12 9v4M12 17h.01M10.3 3.9L2.5 17a2 2 0 001.7 3h15.6a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"];
+const V = S.viz as VizStrings;
+const E = (S.viz as any).eyebrows;
+const c0 = cellsL(L, f, f.states[0], 0);
+const fzi = f.states.findIndex((s) => s.freezer);
+const fzValue = fzi >= 0 ? cellsL(L, f, f.states[fzi], fzi).freezer.value : c0.freezer.value;
+const bars = timelineBars(f);
+const checks = checker(f);
+const badges = [
+  f.perishable ? { label: V.badges.perishable, tone: "red" as const } : f.states[0].pantry ? { label: V.badges.shelf, tone: "green" as const } : null,
+  z.tone === "yes" ? { label: V.badges.freezes, tone: "blue" as const } : z.tone === "no" ? { label: V.badges.noFreeze, tone: "amber" as const } : null,
+  f.states.some((s) => s.key === "opened") ? { label: V.badges.opened, tone: "lilac" as const } : null,
+].filter((b): b is NonNullable<typeof b> => !!b);
+const TIP_ICONS = ["fridge", "box", "thermo", "calendar", "leaf"];
 const values = f.states.flatMap((s, i) => { const c = cellsL(L, f, s, i); const tag = s.label ? ` (${stateLabel(L, s)})` : ""; return [[U.onCounter + tag, c.pantry.value], [U.inFridge + tag, c.fridge.value], [U.inFreezer + tag, c.freezer.value]].map(([name, value]) => ({ "@type": "PropertyValue", name, value })); });
 const ld = { "@context": "https://schema.org", "@graph": [ORG,
   { "@type": "Article", headline: h1, description, url: abs(path), inLanguage: S.htmlLang, image: abs(`/images/foods/${f.slug}.webp`), datePublished: SITE.verifiedISO, dateModified: SITE.verifiedISO, author: { "@id": ORG["@id"] }, publisher: { "@id": ORG["@id"] }, about: { "@type": "Thing", name: T.n }, translationOfWork: { "@id": `${abs(enUrl.food(f))}#article` } },
@@ -41,6 +66,7 @@ const ld = { "@context": "https://schema.org", "@graph": [ORG,
       <div>
         <h1 class="h1-food hyphens-auto">{h1}</h1>
         <p class="mt-1.5 md:mt-2 text-sm md:text-[17px] text-muted">{U.subline.replace("{date}", date)} · <a href={lurl.method(L)} class="link">{U.howWeVerify} →</a></p>
+        <Badges items={badges} />
       </div>
       <FoodImage food={f} alt={T.n} variant="hero" />
     </div>
@@ -48,11 +74,22 @@ const ld = { "@context": "https://schema.org", "@graph": [ORG,
     <div class="grid lg:grid-cols-[minmax(0,1fr)_300px] gap-10 mt-4 md:mt-8 items-start">
       <article class="min-w-0 max-w-[820px]">
         <LAnswerCard L={L} food={f} />
-        {quote && <p class="mt-4 md:mt-5 text-[17px] md:text-[19px] leading-[1.6]">{quote}</p>}
+        {quote && <QuickAnswer label={V.quick} text={quote} />}
+
+        {bars.length > 0 && (
+          <section id="glance" class="mt-8 md:mt-12">
+            <SectionHead icon="scale" tint="var(--color-tint-lilac)" ink="#4a3bd2" eyebrow={E.glance}>{V.glance}</SectionHead>
+            <Timeline bars={bars} labels={{ pantry: U.counter, fridge: U.fridge, freezer: U.freezer }} values={{ pantry: c0.pantry.value, fridge: c0.fridge.value, freezer: fzValue }} ticks={V.ticks} note={V.glanceNote} plus={V.plus} />
+            <div class="grid gap-3 mt-3">
+              <PerishScale level={perishLevel(f)} title={V.perish} levels={V.levels} note={V.levelNote} />
+              {checks && <StillGood checks={checks} V={V} units={S.units} id={`sg-${L.code}-${f.slug}`} />}
+            </div>
+          </section>
+        )}
 
         <section id="methods" class="mt-8 md:mt-12">
-          <h2 class="h2-food">{F.hMethods}</h2>
-          <div class="table-wrap mt-[18px]">
+          <SectionHead icon="grid" tint="var(--color-tint-green)" ink="#1b7a55" eyebrow={E.methods}>{F.hMethods}</SectionHead>
+          <div class="table-wrap mt-[18px] !rounded-[20px]">
             <table class="data-table min-w-[560px]">
               <thead><tr><th>{F.thMethod}</th><th>{F.thDuration}</th><th>{F.thTemp}</th><th>{F.thNotes}</th></tr></thead>
               <tbody>{methods.map((m) => <tr><td class="font-medium">{m.method}</td><td>{m.duration}</td><td class="text-muted">{m.temp}</td><td class="text-muted">{m.note}</td></tr>)}</tbody>
@@ -63,44 +100,40 @@ const ld = { "@context": "https://schema.org", "@graph": [ORG,
         <AdSlot w={300} h={250} class="lg:hidden mt-8" id="l-food-mobile" label={L.s.ui.advert} />
 
         <section id="bad" class="mt-8 md:mt-12">
-          <h2 class="h2-food">{F.hSigns}</h2>
-          <div class="grid sm:grid-cols-2 gap-3 md:gap-4 mt-[18px]">
-            {signs.map(([title, text], i) => (
-              <div class="flex gap-3.5 p-3 md:p-4 border border-line rounded-[10px]">
-                <div class="paper w-10 h-10 rounded-[10px] grid place-items-center shrink-0"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6b5f4a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d={ICONS[i]} /></svg></div>
-                <div><h3 class="!text-base !tracking-normal">{title}</h3><p class="text-sm text-muted mt-0.5">{text}</p></div>
-              </div>
-            ))}
-          </div>
+          <SectionHead icon="nose" tint="var(--color-tint-pink)" ink="#b83269" eyebrow={E.signs}>{F.hSigns}</SectionHead>
+          <Signs signs={signs.map(([title, text]) => ({ title, text }))} />
         </section>
 
         <section id="freeze" class="mt-8 md:mt-12">
-          <h2 class="h2-food">{fill(F.hFreeze, {}, T)}</h2>
-          <div class="flex flex-wrap items-center gap-3 mt-3.5"><span class:list={["pill", pill(z.tone)]}>{z.label}</span><span class="text-[15px] text-muted">{z.detail}</span></div>
-          {z.steps.length > 0 && <ol class="prose-list">{z.steps.map((s) => <li>{s}</li>)}</ol>}
+          <SectionHead icon="freezer" tint="var(--color-tint-blue)" ink="#2f5fbf" eyebrow={E.freeze}>{fill(F.hFreeze, {}, T)}</SectionHead>
+          <div class="soft mt-3.5 p-4 md:p-5 flex flex-wrap items-center gap-3" style={`background:${z.tone === "no" ? "var(--color-tint-red)" : z.tone === "yes" ? "var(--color-tint-blue)" : "var(--color-tint-amber)"}`}><span class="w-10 h-10 rounded-[14px] bg-white grid place-items-center" style={`color:${z.tone === "no" ? "#c0392b" : "#3c6fd1"}`}><Icon name="freezer" size={20} /></span><span class:list={["pill bg-white", z.tone === "no" ? "!text-no" : z.tone === "yes" ? "!text-[#2c56a8]" : "!text-caution"]}>{z.label}</span><span class="text-[15px] text-[#3f3f46] flex-1 min-w-[220px]">{z.detail}</span></div>
+          {z.steps.length > 0 && <Steps steps={z.steps} label={V.steps} />}
           {f.thawedFridge && <p class="mt-3 text-[15px] text-muted">{S.freeze.afterThaw.replace("{d}", fmtL(L, f.thawedFridge)!)}</p>}
         </section>
 
         <section id="leftout" class="mt-8 md:mt-12">
-          <h2 class="h2-food">{F.hLeftOut}</h2>
-          <div class="mt-3.5 border border-line rounded-[10px] px-4 py-4 md:px-5 md:py-[18px] flex gap-4 items-start"><span class:list={["pill", pill(lo.tone)]}>{lo.label}</span><p class="text-base">{lo.text}</p></div>
+          <SectionHead icon="clock" tint="var(--color-tint-amber)" ink="#8a5a0c" eyebrow={E.leftOut}>{F.hLeftOut}</SectionHead>
+          <TrafficLight tone={lo.tone} labels={[S.leftOut.keep, S.leftOut.check, S.leftOut.discard]} text={lo.text} />
+          {f.perishable && <DangerZone title={V.dangerZone} text={V.dangerText} cold={V.safeCold} hot={V.safeHot} />}
         </section>
 
         <section id="store" class="mt-8 md:mt-12">
-          <h2 class="h2-food">{F.hStore}</h2>
-          <ul class="prose-list">{store.map((s) => <li>{s}</li>)}</ul>
+          <SectionHead icon="fridge" tint="var(--color-tint-green)" ink="#1b7a55" eyebrow={E.tips}>{F.hStore}</SectionHead>
+          <ul class="grid sm:grid-cols-2 gap-3 list-none p-0 mt-4">{store.map((t, i) => (
+            <li class="lift soft flex gap-3 p-4 border border-line"><span class="icon-chip" style="background:var(--color-tint-green);color:#1b7a55"><Icon name={TIP_ICONS[i % TIP_ICONS.length]} size={17} /></span><span class="text-[15px] leading-[1.55]">{t}</span></li>
+          ))}</ul>
         </section>
 
         <section id="similar" class="mt-8 md:mt-12">
-          <h2 class="h2-food">{U.similar}</h2>
+          <SectionHead icon="leaf" tint="var(--color-tint-amber)" ink="#8a5a0c" eyebrow={E.similar}>{U.similar}</SectionHead>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5 md:gap-3 mt-[18px]">
-            {similar.map((s) => <a href={s.href} class="block p-2 md:p-2.5 border border-line rounded-[10px] min-h-11 hover:border-[#c9c9cf]"><FoodImage food={s.f} alt="" class="mb-2" /><div class="font-medium text-[15px] leading-snug px-1">{s.name}</div><div class="text-[13px] text-muted mt-0.5 px-1 pb-1">{U.fridge}: {s.fridge}</div></a>)}
+            {similar.map((s) => <a href={s.href} class="lift block p-2 md:p-2.5 border border-line rounded-[18px] min-h-11 hover:border-[#c9c9cf] bg-white"><FoodImage food={s.f} alt="" class="mb-2" /><div class="font-medium text-[15px] leading-snug px-1">{s.name}</div><div class="text-[13px] text-muted mt-0.5 px-1 pb-1">{U.fridge}: {s.fridge}</div></a>)}
           </div>
           <p class="mt-3.5 text-sm"><a href={lurl.hub(L, f.category)} class="link">{U.allIn.replace("{cat}", catName)} →</a> · <a href={enUrl.food(f)} hreflang="en" lang="en" class="link">{U.readInEnglish} →</a></p>
         </section>
 
         <section id="faq" class="mt-8 md:mt-12">
-          <h2 class="h2-food">{F.hFaq}</h2>
+          <SectionHead icon="question" tint="var(--color-tint-lilac)" ink="#4a3bd2" eyebrow={E.faq}>{F.hFaq}</SectionHead>
           <Faq items={faq} />
         </section>
 

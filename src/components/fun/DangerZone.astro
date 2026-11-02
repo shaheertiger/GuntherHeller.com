@@ -1,0 +1,19 @@
+---
+interface Props { title: string; text: string; cold: string; hot: string }
+const { title, text, cold, hot } = Astro.props;
+// 0–80 °C scale; danger band 4–60 °C
+const p = (c: number) => (c / 80) * 100;
+---
+<div class="soft p-4 md:p-5 mt-3" style="background:var(--color-tint-red)">
+  <div class="flex items-center justify-between gap-3 text-[13px] font-[650]"><span style="color:#9a2f23">{title}</span><span class="text-[#5a3a35] font-medium">°C</span></div>
+  <div class="relative h-4 rounded-full mt-3" style={`background:linear-gradient(90deg,#3c6fd1 0%,#3c6fd1 ${p(4)}%,#e0a326 ${p(4)}%,#c0392b ${p(32)}%,#e07a2f ${p(60)}%,#2f8f5b ${p(60)}%,#2f8f5b 100%)`} role="img" aria-label={`${title}: 4–60 °C`}></div>
+  <div class="relative h-5 text-[11px] text-[#5a3a35] mt-1">
+    <span class="absolute" style="left:0">0</span>
+    <span class="absolute -translate-x-1/2 font-[650] text-ink" style={`left:${p(4)}%`}>4</span>
+    <span class="absolute -translate-x-1/2" style={`left:${p(32)}%`}>32</span>
+    <span class="absolute -translate-x-1/2 font-[650] text-ink" style={`left:${p(60)}%`}>60</span>
+    <span class="absolute right-0">80</span>
+  </div>
+  <div class="flex justify-between text-[12px] mt-1"><span style="color:#2c56a8">← {cold}</span><span style="color:#1b7a55">{hot} →</span></div>
+  <p class="text-[14px] text-[#5a3a35] mt-2">{text}</p>
+</div>

@@ -1,0 +1,12 @@
+---
+import Icon from "./Icon.astro";
+interface Props { label: string; text: string }
+const { label, text } = Astro.props;
+const dot = text.indexOf(". ");
+const lead = dot > 0 ? text.slice(0, dot + 1) : text;
+const rest = dot > 0 ? text.slice(dot + 2) : "";
+---
+<section class="soft mt-4 md:mt-5 p-4 md:p-5" style="background:var(--color-tint-green)" aria-label={label}>
+  <div class="flex items-center gap-2"><span class="w-[18px] h-[18px] rounded-full grid place-items-center" style="background:var(--color-green-ink);color:#fff"><Icon name="check" size={11} stroke={3} /></span><span class="text-[11px] font-bold uppercase tracking-[.08em]" style="color:var(--color-green-ink)">{label}</span></div>
+  <p class="mt-2 text-[16px] md:text-[18px] leading-[1.65] text-[#3c4a42]"><strong class="text-ink font-[650]">{lead}</strong>{rest && ` ${rest}`}</p>
+</section>

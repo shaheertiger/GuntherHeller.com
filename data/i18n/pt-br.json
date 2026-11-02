@@ -4,11 +4,26 @@
  "langName": "Português (Brasil)",
  "locale": "pt-BR",
  "units": {
-  "hour": ["hora", "horas"],
-  "day": ["dia", "dias"],
-  "week": ["semana", "semanas"],
-  "month": ["mês", "meses"],
-  "year": ["ano", "anos"]
+  "hour": [
+   "hora",
+   "horas"
+  ],
+  "day": [
+   "dia",
+   "dias"
+  ],
+  "week": [
+   "semana",
+   "semanas"
+  ],
+  "month": [
+   "mês",
+   "meses"
+  ],
+  "year": [
+   "ano",
+   "anos"
+  ]
  },
  "and": "e",
  "or": "ou",
@@ -218,100 +233,292 @@
  },
  "signs": {
   "meat": [
-   ["Cheiro", "Cheiro azedo, de enxofre ou de amônia, mesmo que leve."],
-   ["Textura", "Superfície pegajosa ou viscosa que continua depois de enxaguar."],
-   ["Cor", "Manchas cinza-esverdeadas ou marrons se espalhando pela carne."],
-   ["Embalagem", "Embalagem estufada ou vazando, ou data vencida há mais tempo que o prazo na geladeira."]
+   [
+    "Cheiro",
+    "Cheiro azedo, de enxofre ou de amônia, mesmo que leve."
+   ],
+   [
+    "Textura",
+    "Superfície pegajosa ou viscosa que continua depois de enxaguar."
+   ],
+   [
+    "Cor",
+    "Manchas cinza-esverdeadas ou marrons se espalhando pela carne."
+   ],
+   [
+    "Embalagem",
+    "Embalagem estufada ou vazando, ou data vencida há mais tempo que o prazo na geladeira."
+   ]
   ],
   "seafood": [
-   ["Cheiro", "Cheiro forte de peixe, azedo ou de amônia. Pescado fresco tem cheiro de mar."],
-   ["Textura", "Carne mole que não volta ao ser pressionada, ou uma gosma leitosa."],
-   ["Cor", "Carne opaca, acinzentada ou amarelada; bordas escuras."],
-   ["Conchas", "Mariscos vivos com a concha aberta que não fecha ao receber uma batidinha."]
+   [
+    "Cheiro",
+    "Cheiro forte de peixe, azedo ou de amônia. Pescado fresco tem cheiro de mar."
+   ],
+   [
+    "Textura",
+    "Carne mole que não volta ao ser pressionada, ou uma gosma leitosa."
+   ],
+   [
+    "Cor",
+    "Carne opaca, acinzentada ou amarelada; bordas escuras."
+   ],
+   [
+    "Conchas",
+    "Mariscos vivos com a concha aberta que não fecha ao receber uma batidinha."
+   ]
   ],
   "cooked": [
-   ["Cheiro", "Azedo, de fermento ou 'estranho', diferente de quando foi preparado."],
-   ["Textura", "Película viscosa, ou líquido se separando onde não deveria."],
-   ["Cor", "Partes opacas ou escurecidas, ou qualquer mancha descolorida."],
-   ["Mofo", "Qualquer bolor felpudo — descarte o pote inteiro, não só a parte afetada."]
+   [
+    "Cheiro",
+    "Azedo, de fermento ou 'estranho', diferente de quando foi preparado."
+   ],
+   [
+    "Textura",
+    "Película viscosa, ou líquido se separando onde não deveria."
+   ],
+   [
+    "Cor",
+    "Partes opacas ou escurecidas, ou qualquer mancha descolorida."
+   ],
+   [
+    "Mofo",
+    "Qualquer bolor felpudo — descarte o pote inteiro, não só a parte afetada."
+   ]
   ],
   "cured": [
-   ["Cheiro", "Cheiro azedo ou rançoso em vez de defumado ou salgado."],
-   ["Textura", "Superfície escorregadia e viscosa nas fatias ou gomos."],
-   ["Cor", "Manchas cinzentas, verdes ou furta-cor que se espalham."],
-   ["Mofo", "Pontos felpudos em produtos fatiados ou cozidos — descarte."]
+   [
+    "Cheiro",
+    "Cheiro azedo ou rançoso em vez de defumado ou salgado."
+   ],
+   [
+    "Textura",
+    "Superfície escorregadia e viscosa nas fatias ou gomos."
+   ],
+   [
+    "Cor",
+    "Manchas cinzentas, verdes ou furta-cor que se espalham."
+   ],
+   [
+    "Mofo",
+    "Pontos felpudos em produtos fatiados ou cozidos — descarte."
+   ]
   ],
   "dairy": [
-   ["Cheiro", "Cheiro azedo ou de queijo quando deveria ser limpo e suave."],
-   ["Textura", "Grumos, talhado ou consistência grossa e viscosa."],
-   ["Cor", "Amarelado ou com tom rosado, verde ou cinza."],
-   ["Sabor", "Azedo ou amargo no primeiro gole — pare e descarte."]
+   [
+    "Cheiro",
+    "Cheiro azedo ou de queijo quando deveria ser limpo e suave."
+   ],
+   [
+    "Textura",
+    "Grumos, talhado ou consistência grossa e viscosa."
+   ],
+   [
+    "Cor",
+    "Amarelado ou com tom rosado, verde ou cinza."
+   ],
+   [
+    "Sabor",
+    "Azedo ou amargo no primeiro gole — pare e descarte."
+   ]
   ],
   "cheese": [
-   ["Cheiro", "Cheiro de amônia ou azedo forte, além do aroma normal do queijo."],
-   ["Textura", "Superfície viscosa, ou muito seco e rachado por inteiro."],
-   ["Cor", "Bordas escurecidas ou amareladas, ou cores novas que não fazem parte do queijo."],
-   ["Mofo", "Em queijo duro, corte 2,5 cm ao redor da mancha. Em queijo macio ou ralado, descarte."]
+   [
+    "Cheiro",
+    "Cheiro de amônia ou azedo forte, além do aroma normal do queijo."
+   ],
+   [
+    "Textura",
+    "Superfície viscosa, ou muito seco e rachado por inteiro."
+   ],
+   [
+    "Cor",
+    "Bordas escurecidas ou amareladas, ou cores novas que não fazem parte do queijo."
+   ],
+   [
+    "Mofo",
+    "Em queijo duro, corte 2,5 cm ao redor da mancha. Em queijo macio ou ralado, descarte."
+   ]
   ],
   "eggs": [
-   ["Cheiro", "Cheiro de enxofre ao quebrar — inconfundível, descarte."],
-   ["Casca", "Casca viscosa, com pó ou rachada."],
-   ["Interior", "Clara ou gema rosada, esverdeada ou furta-cor."],
-   ["Teste da água", "Mostra só a idade. Um ovo que boia é velho; cheire antes de decidir."]
+   [
+    "Cheiro",
+    "Cheiro de enxofre ao quebrar — inconfundível, descarte."
+   ],
+   [
+    "Casca",
+    "Casca viscosa, com pó ou rachada."
+   ],
+   [
+    "Interior",
+    "Clara ou gema rosada, esverdeada ou furta-cor."
+   ],
+   [
+    "Teste da água",
+    "Mostra só a idade. Um ovo que boia é velho; cheire antes de decidir."
+   ]
   ],
   "produce": [
-   ["Cheiro", "Cheiro fermentado, azedo ou de mofo."],
-   ["Textura", "Partes moles, desmanchando ou soltando líquido, ou casca enrugada com polpa mole."],
-   ["Cor", "Manchas escuras que se espalham, ou escurecimento por dentro."],
-   ["Mofo", "Bolor branco, cinza ou verde — descarte frutas e legumes macios; nos firmes, corte com boa margem."]
+   [
+    "Cheiro",
+    "Cheiro fermentado, azedo ou de mofo."
+   ],
+   [
+    "Textura",
+    "Partes moles, desmanchando ou soltando líquido, ou casca enrugada com polpa mole."
+   ],
+   [
+    "Cor",
+    "Manchas escuras que se espalham, ou escurecimento por dentro."
+   ],
+   [
+    "Mofo",
+    "Bolor branco, cinza ou verde — descarte frutas e legumes macios; nos firmes, corte com boa margem."
+   ]
   ],
   "leafy": [
-   ["Cheiro", "Cheiro azedo ou de podre no saco ou no maço."],
-   ["Textura", "Folhas viscosas, molhadas ou murchas que não se recuperam em água gelada."],
-   ["Cor", "Folhas verde-escuras quase pretas ou marrons."],
-   ["Mofo", "Qualquer bolor felpudo — descarte o saco."]
+   [
+    "Cheiro",
+    "Cheiro azedo ou de podre no saco ou no maço."
+   ],
+   [
+    "Textura",
+    "Folhas viscosas, molhadas ou murchas que não se recuperam em água gelada."
+   ],
+   [
+    "Cor",
+    "Folhas verde-escuras quase pretas ou marrons."
+   ],
+   [
+    "Mofo",
+    "Qualquer bolor felpudo — descarte o saco."
+   ]
   ],
   "bakery": [
-   ["Cheiro", "Cheiro de mofo, azedo ou de álcool."],
-   ["Textura", "Duro e seco é amanhecido, mas seguro; úmido ou pegajoso, não."],
-   ["Cor", "Manchas descoloridas na casca ou no miolo."],
-   ["Mofo", "Qualquer mofo visível — descarte o item inteiro; as raízes se espalham sem aparecer."]
+   [
+    "Cheiro",
+    "Cheiro de mofo, azedo ou de álcool."
+   ],
+   [
+    "Textura",
+    "Duro e seco é amanhecido, mas seguro; úmido ou pegajoso, não."
+   ],
+   [
+    "Cor",
+    "Manchas descoloridas na casca ou no miolo."
+   ],
+   [
+    "Mofo",
+    "Qualquer mofo visível — descarte o item inteiro; as raízes se espalham sem aparecer."
+   ]
   ],
   "dry": [
-   ["Cheiro", "Cheiro de mofo, azedo ou rançoso."],
-   ["Textura", "Empelotado pela umidade, ou úmido ao toque."],
-   ["Pragas", "Teias, furos ou pequenos insetos no pacote."],
-   ["Sabor", "Sem gosto, velho ou amargo — perdeu a qualidade, mesmo que seja seguro."]
+   [
+    "Cheiro",
+    "Cheiro de mofo, azedo ou rançoso."
+   ],
+   [
+    "Textura",
+    "Empelotado pela umidade, ou úmido ao toque."
+   ],
+   [
+    "Pragas",
+    "Teias, furos ou pequenos insetos no pacote."
+   ],
+   [
+    "Sabor",
+    "Sem gosto, velho ou amargo — perdeu a qualidade, mesmo que seja seguro."
+   ]
   ],
   "fat": [
-   ["Cheiro", "Rançoso: lembra giz de cera, tinta ou nozes velhas."],
-   ["Sabor", "Gosto residual amargo ou de sabão."],
-   ["Textura", "Resíduo pegajoso ou grudento em volta da tampa."],
-   ["Cor", "Escurecido ou turvo quando deveria ser límpido."]
+   [
+    "Cheiro",
+    "Rançoso: lembra giz de cera, tinta ou nozes velhas."
+   ],
+   [
+    "Sabor",
+    "Gosto residual amargo ou de sabão."
+   ],
+   [
+    "Textura",
+    "Resíduo pegajoso ou grudento em volta da tampa."
+   ],
+   [
+    "Cor",
+    "Escurecido ou turvo quando deveria ser límpido."
+   ]
   ],
   "condiment": [
-   ["Cheiro", "Fermentado, de levedura ou azedo além da acidez normal do produto."],
-   ["Textura", "Separação que não volta ao misturar, ou uma camada viscosa."],
-   ["Cor", "Escurecimento ou mudança de cor na parte de cima do pote."],
-   ["Mofo", "Qualquer bolor na superfície ou na tampa — descarte o pote."]
+   [
+    "Cheiro",
+    "Fermentado, de levedura ou azedo além da acidez normal do produto."
+   ],
+   [
+    "Textura",
+    "Separação que não volta ao misturar, ou uma camada viscosa."
+   ],
+   [
+    "Cor",
+    "Escurecimento ou mudança de cor na parte de cima do pote."
+   ],
+   [
+    "Mofo",
+    "Qualquer bolor na superfície ou na tampa — descarte o pote."
+   ]
   ],
   "drink": [
-   ["Cheiro", "Cheiro de vinagre, azedo ou de mofo em vez de fresco."],
-   ["Sabor", "Sem gosto, azedo ou amargo — perdeu a qualidade."],
-   ["Aparência", "Turvação, sedimento ou película que não existiam antes."],
-   ["Embalagem", "Caixa, tampa ou lata estufada — descarte."]
+   [
+    "Cheiro",
+    "Cheiro de vinagre, azedo ou de mofo em vez de fresco."
+   ],
+   [
+    "Sabor",
+    "Sem gosto, azedo ou amargo — perdeu a qualidade."
+   ],
+   [
+    "Aparência",
+    "Turvação, sedimento ou película que não existiam antes."
+   ],
+   [
+    "Embalagem",
+    "Caixa, tampa ou lata estufada — descarte."
+   ]
   ],
   "frozen": [
-   ["Queimadura de freezer", "Manchas secas, branco-acinzentadas. É seguro, mas corte essas partes."],
-   ["Cristais de gelo", "Muito gelo dentro da embalagem indica que descongelou e foi recongelado."],
-   ["Cheiro", "Cheiro estranho depois de descongelar — descarte."],
-   ["Embalagem", "Embalagem rasgada deixa o ar entrar e acelera a perda de qualidade."]
+   [
+    "Queimadura de freezer",
+    "Manchas secas, branco-acinzentadas. É seguro, mas corte essas partes."
+   ],
+   [
+    "Cristais de gelo",
+    "Muito gelo dentro da embalagem indica que descongelou e foi recongelado."
+   ],
+   [
+    "Cheiro",
+    "Cheiro estranho depois de descongelar — descarte."
+   ],
+   [
+    "Embalagem",
+    "Embalagem rasgada deixa o ar entrar e acelera a perda de qualidade."
+   ]
   ],
   "baby": [
-   ["Cheiro", "Cheiro azedo ou estranho na fórmula ou papinha preparada."],
-   ["Textura", "Separação que não volta ao misturar, ou grumos."],
-   ["Cor", "Cor diferente da habitual."],
-   ["Lacre", "Tampa de pote que não faz 'clique' ao abrir, ou sachês danificados — descarte."]
+   [
+    "Cheiro",
+    "Cheiro azedo ou estranho na fórmula ou papinha preparada."
+   ],
+   [
+    "Textura",
+    "Separação que não volta ao misturar, ou grumos."
+   ],
+   [
+    "Cor",
+    "Cor diferente da habitual."
+   ],
+   [
+    "Lacre",
+    "Tampa de pote que não faz 'clique' ao abrir, ou sachês danificados — descarte."
+   ]
   ]
  },
  "freezeSteps": {
@@ -477,5 +684,62 @@
    "Leve produtos preparados ou abertos à geladeira imediatamente.",
    "Descarte o que sobrar na mamadeira ou no pratinho em que o bebê comeu."
   ]
+ },
+ "viz": {
+  "quick": "Resposta rápida",
+  "glance": "Validade num relance",
+  "glanceNote": "As barras mostram o tempo máximo recomendado em cada lugar. A escala vai de 1 hora a 2 anos.",
+  "ticks": [
+   "1 h",
+   "1 dia",
+   "1 sem",
+   "1 mês",
+   "6 meses",
+   "1 ano",
+   "2 anos"
+  ],
+  "plus": "ou mais",
+  "perish": "É muito perecível?",
+  "levels": [
+   "Use em poucos dias",
+   "Dura uma ou duas semanas",
+   "Dura meses",
+   "Dura muito tempo"
+  ],
+  "levelNote": "Com base no maior tempo na geladeira ou no armário.",
+  "check": "Ainda está bom?",
+  "checkAsk": "Está na geladeira há…",
+  "checkHint": "Toque em um tempo para conferir.",
+  "fresh": "Ainda está bom",
+  "edge": "Use hoje",
+  "toss": "Jogue fora",
+  "freshText": "Mais uns {a}–{b} dias na geladeira.",
+  "freshText1": "Mais uns {b} dias na geladeira.",
+  "edgeText": "Ainda está no prazo seguro, mas perto do fim. Coma hoje ou congele agora.",
+  "tossText": "Passou do tempo recomendado na geladeira. Mesmo com boa aparência e cheiro, jogue fora.",
+  "checkNote": "Contado a partir do dia em que foi cozido, aberto ou comprado. Considera uma geladeira a 4 °C (40 °F) ou menos.",
+  "dangerZone": "Zona de perigo",
+  "dangerText": "As bactérias se multiplicam mais rápido entre 4 °C e 60 °C (40–140 °F).",
+  "safeCold": "Geladeira",
+  "safeHot": "Manter quente",
+  "badges": {
+   "perishable": "Perecível",
+   "shelf": "Não precisa de geladeira",
+   "freezes": "Congela bem",
+   "noFreeze": "Não congele",
+   "opened": "Muda depois de aberto"
+  },
+  "steps": "Passo",
+  "tips": "Dicas de armazenamento",
+  "eyebrows": {
+   "glance": "Num relance",
+   "methods": "Cada método",
+   "signs": "Confira antes de comer",
+   "freeze": "Congelamento",
+   "leftOut": "A regra das 2 horas",
+   "tips": "Dicas de armazenamento",
+   "similar": "Continue explorando",
+   "faq": "Perguntas frequentes"
+  }
  }
 }

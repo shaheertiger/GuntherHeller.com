@@ -684,5 +684,62 @@
    "Refrigere de inmediato los productos preparados o abiertos.",
    "Deseche lo que quede en un biberón o plato del que haya comido el bebé."
   ]
+ },
+ "viz": {
+  "quick": "Respuesta rápida",
+  "glance": "Duración de un vistazo",
+  "glanceNote": "Las barras muestran el tiempo máximo recomendado en cada lugar. La escala va de 1 hora a 2 años.",
+  "ticks": [
+   "1 h",
+   "1 día",
+   "1 sem",
+   "1 mes",
+   "6 meses",
+   "1 año",
+   "2 años"
+  ],
+  "plus": "o más",
+  "perish": "¿Qué tan perecedero es?",
+  "levels": [
+   "Úsalo en días",
+   "Dura una o dos semanas",
+   "Dura meses",
+   "Dura mucho tiempo"
+  ],
+  "levelNote": "Según el mayor tiempo en el refrigerador o la despensa.",
+  "check": "¿Todavía está bueno?",
+  "checkAsk": "Lleva en el refrigerador…",
+  "checkHint": "Toca un tiempo para comprobarlo.",
+  "fresh": "Todavía está bueno",
+  "edge": "Úsalo hoy",
+  "toss": "Deséchalo",
+  "freshText": "Le quedan unos {a}–{b} días en el refrigerador.",
+  "freshText1": "Le quedan unos {b} días en el refrigerador.",
+  "edgeText": "Está dentro del margen seguro, pero cerca del final. Cómelo hoy o congélalo ya.",
+  "tossText": "Pasó el tiempo recomendado en el refrigerador. Aunque se vea y huela bien, deséchalo.",
+  "checkNote": "Contado desde el día en que se cocinó, se abrió o se compró. Supone un refrigerador a 4 °C (40 °F) o menos.",
+  "dangerZone": "Zona de peligro",
+  "dangerText": "Las bacterias se multiplican más rápido entre 4 °C y 60 °C (40–140 °F).",
+  "safeCold": "Refrigerador",
+  "safeHot": "Mantener caliente",
+  "badges": {
+   "perishable": "Perecedero",
+   "shelf": "No necesita refrigeración",
+   "freezes": "Se congela bien",
+   "noFreeze": "No congelar",
+   "opened": "Cambia al abrirse"
+  },
+  "steps": "Paso",
+  "tips": "Consejos de conservación",
+  "eyebrows": {
+   "glance": "De un vistazo",
+   "methods": "Cada método",
+   "signs": "Revisa antes de comer",
+   "freeze": "Congelación",
+   "leftOut": "La regla de las 2 horas",
+   "tips": "Consejos de conservación",
+   "similar": "Sigue explorando",
+   "faq": "Preguntas frecuentes"
+  }
  }
 }

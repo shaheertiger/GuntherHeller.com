@@ -1,0 +1,18 @@
+---
+interface Props { level: 1 | 2 | 3 | 4; title: string; levels: string[]; note: string }
+const { level, title, levels, note } = Astro.props;
+const COL = ["#a5281b", "#9c4a0c", "#1b6b45", "#2c56a8"];
+const TINT = ["var(--color-tint-red)", "var(--color-tint-amber)", "var(--color-tint-green)", "var(--color-tint-blue)"];
+---
+<div class="soft p-4 md:p-5" style={`background:${TINT[level - 1]}`}>
+  <div class="text-[11px] font-bold uppercase tracking-[.08em] text-[#3f3f46]">{title}</div>
+  <div class="text-[22px] md:text-[26px] font-[650] tracking-[-0.02em] mt-1" style={`color:${COL[level - 1]}`}>{levels[level - 1]}</div>
+  <ol class="grid grid-cols-4 gap-1.5 list-none p-0 mt-3" aria-label={title}>
+    {levels.map((l, i) => (
+      <li class:list={["rounded-lg px-2 py-2 text-[11px] leading-tight font-[550] text-center", i + 1 === level ? "text-white" : "bg-white/70 text-[#3f3f46]"]} style={i + 1 === level ? `background:${COL[i]}` : ""} aria-current={i + 1 === level ? "true" : undefined}>
+        <span class="block text-[15px] font-[650]">{i + 1}</span><span class="hidden sm:block">{l}</span>
+      </li>
+    ))}
+  </ol>
+  <p class="text-[12px] text-[#3f3f46] mt-2">{note}</p>
+</div>

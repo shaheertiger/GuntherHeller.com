@@ -11,8 +11,11 @@ const cols = [
   { k: "fridge", label: U.inFridge, short: U.fridge, dot: "bg-fridge" },
   { k: "freezer", label: U.inFreezer, short: U.freezer, dot: "bg-freezer" },
 ] as const;
+const TILE = { pantry: "var(--color-tint-amber)", fridge: "var(--color-tint-green)", freezer: "var(--color-tint-blue)" } as const;
+const INK = { pantry: "#b07514", fridge: "#2f8f5b", freezer: "#3c6fd1" } as const;
+const ICO = { pantry: "M10 14V5a2 2 0 114 0v9a4 4 0 11-4 0z", fridge: "M6 2h12v20H6zM6 10h12M9 5v2M9 13v3", freezer: "M12 2v20M4 7l16 10M20 7L4 17" } as const;
 ---
-<section id="answer" class="ac border border-line rounded-[10px] overflow-hidden" aria-label={ft(L, f).n}>
+<section id="answer" class="ac soft border border-line overflow-hidden" aria-label={ft(L, f).n}>
   <div class="flex flex-wrap items-center justify-between gap-3 px-4 md:px-5 py-3 border-b border-line bg-panel">
     {states.length > 1 ? (
       <fieldset class="ac-toggle flex w-full md:w-auto md:inline-flex border border-line rounded-lg overflow-hidden bg-white m-0 p-0">
@@ -28,14 +31,14 @@ const cols = [
     <span class="text-[13px] text-muted">{U.perSource.replace("{source}", f.source.name.startsWith("USDA") ? "USDA FoodKeeper" : f.source.name.split(":")[0])}</span>
   </div>
   {states.map(({ i, c }) => (
-    <div class="ac-state grid-cols-3" data-i={i}>
+    <div class="ac-state grid-cols-3 gap-2 md:gap-3 p-2 md:p-3" data-i={i}>
       {cols.map((col, j) => (
-        <div class:list={["px-3 py-4 md:px-5 md:py-[22px] min-w-0", j < 2 && "border-r border-line"]}>
-          <div class="flex items-center gap-1.5 md:gap-2 text-[10px] md:text-[11px] font-medium tracking-[.06em] md:tracking-[.12em] uppercase text-muted items-start leading-tight">
-            <span class:list={["dot", col.dot]}></span><span class="hidden md:inline min-w-0 hyphens-auto [overflow-wrap:anywhere]">{col.label}</span><span class="md:hidden min-w-0 hyphens-auto [overflow-wrap:anywhere]">{col.short}</span>
+        <div class="px-3 py-3.5 md:px-4 md:py-5 min-w-0 rounded-[14px]" style={`background:${TILE[col.k]}`}>
+          <div class="flex items-center gap-1.5 md:gap-2 text-[10px] md:text-[11px] font-medium tracking-[.06em] md:tracking-[.12em] uppercase text-[#3f3f46] items-start leading-tight">
+            <span class="hidden md:grid icon-chip !w-6 !h-6 !rounded-md bg-white" style={`color:${INK[col.k]}`}><svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d={ICO[col.k]} /></svg></span><span class:list={["dot md:hidden", col.dot]}></span><span class="hidden md:inline min-w-0 hyphens-auto [overflow-wrap:anywhere]">{col.label}</span><span class="md:hidden min-w-0 hyphens-auto [overflow-wrap:anywhere]">{col.short}</span>
           </div>
-          <div class:list={["mt-2 md:mt-2.5 font-[650] tracking-[-0.03em] leading-[1.05] break-words", /^\d/.test(c[col.k].value) ? "text-[22px] md:text-[36px]" : "text-[17px] md:text-[26px]"]} lang={L.s.htmlLang}>{c[col.k].value}</div>
-          <div class="mt-1.5 text-[12px] md:text-sm text-muted leading-snug">{c[col.k].note}</div>
+          <div class:list={["mt-2 md:mt-2.5 font-[650] tracking-[-0.03em] leading-[1.05] [hyphens:manual] break-normal", /^\d/.test(c[col.k].value) ? "text-[19px] sm:text-[22px] md:text-[36px]" : "text-[16px] sm:text-[17px] md:text-[26px]"]}>{c[col.k].value}</div>
+          <div class="mt-1.5 text-[12px] md:text-sm text-[#52525b] leading-snug">{c[col.k].note}</div>
         </div>
       ))}
     </div>

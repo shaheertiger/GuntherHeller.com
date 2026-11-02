@@ -1,12 +1,13 @@
 ---
 import { type Food } from "../lib/data";
 import { freezeVerdict, freezeStepsFor } from "../lib/content";
+import Steps from "./Steps.astro";
 interface Props { food: Food; steps?: boolean }
 const { food: f, steps = true } = Astro.props;
 const v = freezeVerdict(f);
 const pill = v.tone === "yes" ? "pill-yes" : v.tone === "no" ? "pill-no" : "pill-caution";
 const showSteps = steps && v.tone !== "no";
 ---
-<div class="flex flex-wrap items-center gap-3 mt-3.5"><span class:list={["pill", pill]}>{v.label}</span><span class="text-[15px] text-muted">{v.detail}</span></div>
-{showSteps && <ol class="prose-list">{freezeStepsFor(f).map((s) => <li>{s}</li>)}</ol>}
+<div class="soft mt-3.5 p-4 md:p-5 flex flex-wrap items-center gap-3" style={`background:${v.tone === "no" ? "var(--color-tint-red)" : v.tone === "yes" ? "var(--color-tint-blue)" : "var(--color-tint-amber)"}`}><span class="w-10 h-10 rounded-[14px] bg-white grid place-items-center" style={`color:${v.tone === "no" ? "#c0392b" : "#3c6fd1"}`}><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M4 7l16 10M20 7L4 17M9 3l3 3 3-3M9 21l3-3 3 3"/></svg></span><span class:list={["pill bg-white", v.tone === "no" ? "!text-no" : v.tone === "yes" ? "!text-[#2c56a8]" : "!text-caution"]}>{v.label}</span><span class="text-[15px] text-[#3f3f46] flex-1 min-w-[220px]">{v.detail}</span></div>
+{showSteps && <Steps steps={freezeStepsFor(f)} />}
 {f.thawedFridge && <p class="mt-3 text-[15px] text-muted">After thawing in the fridge, use within {f.thawedFridge && ("min" in f.thawedFridge ? `${f.thawedFridge.min === f.thawedFridge.max ? f.thawedFridge.min : `${f.thawedFridge.min}–${f.thawedFridge.max}`} ${f.thawedFridge.unit}` : f.thawedFridge.text)}.</p>}

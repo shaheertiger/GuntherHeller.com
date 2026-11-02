@@ -684,5 +684,62 @@
    "Zubereitete oder geöffnete Produkte sofort kühlen.",
    "Reste in Flasche oder Schüssel, aus denen das Baby gegessen hat, entsorgen."
   ]
+ },
+ "viz": {
+  "quick": "Kurze Antwort",
+  "glance": "Haltbarkeit auf einen Blick",
+  "glanceNote": "Die Balken zeigen die längste empfohlene Zeit je Lagerort. Die Skala reicht von 1 Stunde bis 2 Jahre.",
+  "ticks": [
+   "1 Std.",
+   "1 Tag",
+   "1 Wo.",
+   "1 Mon.",
+   "6 Mon.",
+   "1 Jahr",
+   "2 Jahre"
+  ],
+  "plus": "länger",
+  "perish": "Wie leicht verderblich?",
+  "levels": [
+   "Innerhalb weniger Tage verbrauchen",
+   "Hält ein bis zwei Wochen",
+   "Hält monatelang",
+   "Lange haltbar"
+  ],
+  "levelNote": "Nach der längsten Zeit im Kühlschrank oder Vorratsschrank.",
+  "check": "Noch gut?",
+  "checkAsk": "Es liegt schon im Kühlschrank seit …",
+  "checkHint": "Tippe auf eine Zeit, um es zu prüfen.",
+  "fresh": "Noch gut",
+  "edge": "Heute verbrauchen",
+  "toss": "Wegwerfen",
+  "freshText": "Noch etwa {a}–{b} Tage im Kühlschrank.",
+  "freshText1": "Noch etwa {b} Tage im Kühlschrank.",
+  "edgeText": "Noch im sicheren Zeitraum, aber kurz vor dem Ende. Heute essen oder jetzt einfrieren.",
+  "tossText": "Die empfohlene Kühlschrankzeit ist überschritten. Auch wenn es gut aussieht und riecht: wegwerfen.",
+  "checkNote": "Gezählt ab dem Tag des Kochens, Öffnens oder Kaufs. Kühlschrank bei 4 °C (40 °F) oder kälter.",
+  "dangerZone": "Gefahrenzone",
+  "dangerText": "Bakterien vermehren sich am schnellsten zwischen 4 °C und 60 °C (40–140 °F).",
+  "safeCold": "Kühlschrank",
+  "safeHot": "Heißhalten",
+  "badges": {
+   "perishable": "Leicht verderblich",
+   "shelf": "Ungekühlt haltbar",
+   "freezes": "Gut einfrierbar",
+   "noFreeze": "Nicht einfrieren",
+   "opened": "Ändert sich nach dem Öffnen"
+  },
+  "steps": "Schritt",
+  "tips": "Lagertipps",
+  "eyebrows": {
+   "glance": "Auf einen Blick",
+   "methods": "Jede Lagerart",
+   "signs": "Vor dem Essen prüfen",
+   "freeze": "Einfrieren",
+   "leftOut": "Die 2-Stunden-Regel",
+   "tips": "Lagertipps",
+   "similar": "Weiter entdecken",
+   "faq": "Häufige Fragen"
+  }
  }
 }

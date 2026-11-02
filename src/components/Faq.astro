@@ -2,11 +2,11 @@
 interface Props { items: [string, string][] }
 const { items } = Astro.props;
 ---
-<div class="mt-3.5">
+<div class="mt-4 grid gap-2.5">
   {items.map(([q, a]) => (
-    <details class="faq-item border-b border-line">
-      <summary class="flex justify-between items-center gap-3 py-3.5 text-[15px] font-medium min-h-11">{q}</summary>
-      <div class="pb-4 text-[15px] text-muted">{a}</div>
+    <details class="faq-card soft bg-[#f7f7f8] px-4 md:px-5">
+      <summary class="flex justify-between items-center gap-3 py-4 text-[15px] md:text-base font-[600] min-h-11">{q}</summary>
+      <div class="pb-4 text-[15px] text-[#52525b] -mt-1">{a}</div>
     </details>
   ))}
 </div>

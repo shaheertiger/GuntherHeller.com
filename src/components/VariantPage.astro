@@ -11,6 +11,9 @@ import Faq from "./Faq.astro";
 import AdSlot from "./AdSlot.astro";
 import TrustBlock from "./TrustBlock.astro";
 import FoodImage from "./FoodImage.astro";
+import QuickAnswer from "./fun/QuickAnswer.astro";
+import DangerZone from "./fun/DangerZone.astro";
+import { VIZ_EN } from "../lib/viz";
 import { type Food, type Variant, url, getCategory, similarFoods, lc, does, titleCase, cap1, fmt, isNum, freezerFacts, cellsFor, hasFreezePage, hasLeftOutPage, primaryFridge, isAre, itThey } from "../lib/data";
 import { freezeVerdict, freezeStepsFor, leftOutFor, datesFor, storeTipsFor, signsFor, groupOf, headline } from "../lib/content";
 import { foodGraph } from "../lib/schema";
@@ -132,7 +135,7 @@ const pill = (t: string) => (t === "yes" || t === "keep" ? "pill-yes" : t === "n
         )}
         {variant === "bad" && <AnswerCard food={f} />}
 
-        <p class="mt-4 md:mt-5 text-[17px] md:text-[19px] leading-[1.6]">{quote}</p>
+        <QuickAnswer label={VIZ_EN.quick} text={quote} />
 
         {variant === "freeze" && (
           <>
@@ -180,6 +183,7 @@ const pill = (t: string) => (t === "yes" || t === "keep" ? "pill-yes" : t === "n
             <section class="mt-8 md:mt-12">
               <h2 class="h2-food">The verdict</h2>
               <LeftOutBlock food={f} />
+              <DangerZone title={VIZ_EN.dangerZone} text={VIZ_EN.dangerText} cold={VIZ_EN.safeCold} hot={VIZ_EN.safeHot} />
             </section>
             <section class="mt-8 md:mt-12">
               <h2 class="h2-food">How long {name} can sit out, by temperature</h2>
