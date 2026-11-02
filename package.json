@@ -20,13 +20,14 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "4.3.3",
+    "@vercel/analytics": "^2.0.1",
     "astro": "7.3.8",
     "tailwindcss": "4.3.3"
   },
   "devDependencies": {
-    "satori": "0.62.0",
-    "@resvg/resvg-js": "2.6.2",
+    "@fontsource-variable/dm-sans": "5.2.8",
     "@fontsource/dm-sans": "5.2.8",
-    "@fontsource-variable/dm-sans": "5.2.8"
+    "@resvg/resvg-js": "2.6.2",
+    "satori": "0.62.0"
   }
 }

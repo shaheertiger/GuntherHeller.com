@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE, abs } from "../lib/site";
 import type { Alt, Locale } from "../lib/i18n";
+import Analytics from "@vercel/analytics/astro";
 
 interface Props {
   title: string;
@@ -70,5 +71,6 @@ const ld = jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [];
       <slot />
     </main>
     <Footer L={L} alternates={alternates} />
+    <Analytics />
   </body>
 </html>

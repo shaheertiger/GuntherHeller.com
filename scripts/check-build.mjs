@@ -47,7 +47,13 @@ for (const file of pages) {
   for (const m of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
     try { JSON.parse(m[1]); } catch { errors.push(`${rel}: invalid JSON-LD`); }
   }
-  if (/^\/((how-long-does|can-you-freeze-|does-)|(es|de|fr|pt-br)\/(cuanto-dura|haltbarkeit|conservation|quanto-dura)-)/.test(rel) && /<script(?![^>]*application\/ld\+json)/.test(html)) errors.push(`${rel}: food page ships client JS`);
+  if (/^\/((how-long-does|can-you-freeze-|does-)|(es|de|fr|pt-br)\/(cuanto-dura|haltbarkeit|conservation|quanto-dura)-)/.test(rel)) {
+    // Allow Vercel Analytics scripts but no other client JS
+    // Vercel Analytics uses a <vercel-analytics> custom element and defines it via script
+    const hasVercelAnalytics = html.includes('<vercel-analytics');
+    const hasNonJsonLdScript = /<script(?![^>]*application\/ld\+json)/.test(html);
+    if (hasNonJsonLdScript && !hasVercelAnalytics) errors.push(`${rel}: food page ships client JS`);
+  }
 }
 
 // hreflang: every alternate must exist, declare the same cluster back (reciprocity) and include x-default.
