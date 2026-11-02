@@ -19,13 +19,17 @@ const FSIS_URL = "https://www.fsis.usda.gov/shared/data/EN/foodkeeper.json";
 
 if (process.argv.includes("--fetch")) {
   try {
-    const res = await fetch(FSIS_URL);
+    const res = await fetch(FSIS_URL, { headers: { "user-agent": "guntherheller.com data sync (+https://guntherheller.com/methodology/)" } });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const text = await res.text();
     JSON.parse(text);
     writeFileSync(SRC, text);
     console.log(`fetched ${FSIS_URL}`);
   } catch (e) {
+    if (process.argv.includes("--require-fetch")) {
+      console.error(`could not fetch FSIS file: ${e.message}`);
+      process.exit(1);
+    }
     console.warn(`could not fetch FSIS file (${e.message}); using vendored copy`);
   }
 }

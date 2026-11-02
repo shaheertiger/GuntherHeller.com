@@ -1,0 +1,49 @@
+name: FoodKeeper sync
+
+# Downloads the live USDA FSIS FoodKeeper file, rebuilds data/foods.json, verifies the site
+# still builds, and opens a PR when the data changed. Runs weekly and on demand.
+on:
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Fetch FoodKeeper from fsis.usda.gov (fails if unreachable)
+        run: npm run data -- --fetch --require-fetch
+      - name: Build and check the site with the new data
+        run: npm run build
+      - name: Summarise the change
+        id: diff
+        run: |
+          if git diff --quiet -- data/source/foodkeeper.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "FoodKeeper unchanged." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            node scripts/diff-foods.mjs >> "$GITHUB_STEP_SUMMARY"
+            node scripts/diff-foods.mjs > /tmp/foodkeeper-diff.md
+          fi
+      - name: Open a pull request
+        if: steps.diff.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: data/foodkeeper-sync
+          commit-message: "data: sync USDA FoodKeeper from fsis.usda.gov"
+          title: "Data: USDA FoodKeeper update"
+          body-path: /tmp/foodkeeper-diff.md
+          add-paths: |
+            data/source/foodkeeper.json
+            data/foods.json
