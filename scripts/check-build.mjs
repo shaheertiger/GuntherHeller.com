@@ -47,7 +47,27 @@ for (const file of pages) {
   for (const m of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
     try { JSON.parse(m[1]); } catch { errors.push(`${rel}: invalid JSON-LD`); }
   }
-  if (/^\/(how-long-does|can-you-freeze-|does-)/.test(rel) && /<script(?![^>]*application\/ld\+json)/.test(html)) errors.push(`${rel}: food page ships client JS`);
+  if (/^\/((how-long-does|can-you-freeze-|does-)|(es|de|fr|pt-br)\/(cuanto-dura|haltbarkeit|conservation|quanto-dura)-)/.test(rel) && /<script(?![^>]*application\/ld\+json)/.test(html)) errors.push(`${rel}: food page ships client JS`);
+}
+
+// hreflang: every alternate must exist, declare the same cluster back (reciprocity) and include x-default.
+const altsOf = (html) => [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="https:\/\/guntherheller\.com([^"]+)"/g)].map((m) => [m[1], m[2]]);
+let clusters = 0;
+for (const file of pages) {
+  const html = readFileSync(file, "utf8");
+  const alts = altsOf(html).filter(([l]) => l !== "x-default");
+  if (alts.length < 2) continue;
+  clusters++;
+  const rel = "/" + relative(DIST, file).replace(/index\.html$/, "");
+  if (!altsOf(html).some(([l]) => l === "x-default")) errors.push(`${rel}: hreflang without x-default`);
+  if (!alts.some(([, h]) => h === rel)) errors.push(`${rel}: hreflang cluster does not include itself`);
+  for (const [lang, href] of alts) {
+    if (!exists(href)) { errors.push(`${rel}: hreflang ${lang} → missing ${href}`); continue; }
+    const other = readFileSync(join(DIST, href, "index.html"), "utf8");
+    if (!altsOf(other).some(([, h]) => h === rel)) errors.push(`${rel}: hreflang ${lang} → ${href} does not link back`);
+    const htmlLang = other.match(/<html lang="([^"]+)"/)?.[1];
+    if (htmlLang !== lang) errors.push(`${href}: <html lang="${htmlLang}"> but hreflang says ${lang}`);
+  }
 }
 
 // Acceptance test (handoff §3): cooked rice.
@@ -60,7 +80,7 @@ for (const f of ["robots.txt", "sitemap.xml", "og.png", "404.html", "search-inde
 
 const css = files.filter((f) => f.endsWith(".css")).reduce((n, f) => n + statSync(f).size, 0);
 const inlineCss = (rice.match(/<style[^>]*>([\s\S]*?)<\/style>/g) ?? []).join("").length;
-console.log(`check-build: ${pages.length} pages, ${titles.size} unique titles, CSS ${(Math.max(css, inlineCss) / 1024).toFixed(1)} KB`);
+console.log(`check-build: ${pages.length} pages, ${titles.size} unique titles, ${clusters} hreflang pages, CSS ${(Math.max(css, inlineCss) / 1024).toFixed(1)} KB`);
 if (Math.max(css, inlineCss) > 60 * 1024) errors.push("CSS over the 60 KB budget");
 warn.slice(0, 10).forEach((w) => console.warn("warn:", w));
 if (warn.length > 10) console.warn(`warn: …and ${warn.length - 10} more`);

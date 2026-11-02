@@ -14,6 +14,7 @@ import { type Food, url, getCategory, similarFoods, lc, does, titleCase, cap1, h
 import { foodTitle, foodDescription, quoteFor, methodsFor, datesFor, storeTipsFor, faqFor } from "../lib/content";
 import { foodGraph } from "../lib/schema";
 import { SITE } from "../lib/site";
+import { foodAlternates } from "../lib/i18n";
 
 interface Props { food: Food }
 const { food: f } = Astro.props;
@@ -55,7 +56,7 @@ const tools = [
   { href: "/tools/left-out-checker/", label: "Left-out checker" },
 ];
 ---
-<Base title={title} description={description} path={path} jsonld={ld} ogType="article">
+<Base title={title} description={description} path={path} jsonld={ld} ogType="article" alternates={foodAlternates(f)}>
   <div class="container-site pt-4 md:pt-6">
     <Breadcrumb items={crumbs} />
 

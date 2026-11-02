@@ -1,0 +1,689 @@
+{
+ "_doc": "English source strings for localized pages. Placeholders in {braces} must be kept exactly. Food tokens: {q} = the food as a sentence/question subject (e.g. 'cooked rice'; in ES/PT/FR with article: 'el arroz cocido'); {Q} = same with a capital first letter; {o} = the food as a grammatical object (German accusative, otherwise same as q); {n} = bare display name. Values that are [singular, plural] pairs are chosen by the food's grammatical number. Temperatures on localized pages are Celsius first.",
+ "lang": "en",
+ "htmlLang": "en",
+ "langName": "English",
+ "locale": "en-US",
+ "units": {
+  "hour": [
+   "hour",
+   "hours"
+  ],
+  "day": [
+   "day",
+   "days"
+  ],
+  "week": [
+   "week",
+   "weeks"
+  ],
+  "month": [
+   "month",
+   "months"
+  ],
+  "year": [
+   "year",
+   "years"
+  ]
+ },
+ "and": "and",
+ "or": "or",
+ "ui": {
+  "home": "Home",
+  "foods": "All foods",
+  "englishSite": "English",
+  "languages": "Languages",
+  "skip": "Skip to content",
+  "onCounter": "On the counter",
+  "inFridge": "In the fridge",
+  "inFreezer": "In the freezer",
+  "counter": "Counter",
+  "fridge": "Fridge",
+  "freezer": "Freezer",
+  "showTimesFor": "Show storage times for",
+  "perSource": "Per {source}",
+  "opened": "Opened",
+  "unopened": "Unopened",
+  "cooked": "Cooked",
+  "dry": "Dry / uncooked",
+  "uncooked": "Uncooked",
+  "dryShort": "Dry",
+  "fresh": "Freshly expressed",
+  "thawed": "Thawed",
+  "lastVerified": "last verified {date}",
+  "subline": "Fridge, freezer, counter · last verified {date}",
+  "source": "Source",
+  "howWeVerify": "How we verify",
+  "howWeVerifyLong": "How we verify our data",
+  "report": "Report a wrong number",
+  "trust": "Numbers on this page come from {source}. Last verified {date}.",
+  "similar": "Similar foods",
+  "allIn": "All {cat}",
+  "onThisPage": "On this page",
+  "advert": "Advertisement",
+  "readInEnglish": "Read the full guide in English",
+  "foodsCount": "{n} foods",
+  "disclaimer": "General guidance based on USDA FoodKeeper, not medical advice. If food smells, looks or feels wrong, throw it out."
+ },
+ "vals": {
+  "Not recommended": "Not recommended",
+  "Use-by date": "Use-by date",
+  "Indefinitely": "Indefinitely",
+  "Until ripe": "Until ripe",
+  "Not needed": "Not needed",
+  "Not listed": "Not listed",
+  "Refrigerate": "Refrigerate",
+  "Do not refreeze": "Do not refreeze",
+  "2 hours": "2 hours"
+ },
+ "notes": {
+  "hot": "1 hour above 32 °C (90 °F)",
+  "cool": "cool, dry place",
+  "ripe": "then refrigerate",
+  "keepCold": "keep it cold",
+  "onceOpened": "once opened",
+  "useBy": "follow the package date",
+  "fridgeTemp": "at or below 4 °C (40 °F)",
+  "shelfStable": "shelf-stable",
+  "noFigure": "no FoodKeeper figure",
+  "freezerQuality": "at −18 °C; quality, not safety",
+  "notRec": "texture or safety suffers",
+  "noFreeze": "keeps without freezing"
+ },
+ "food": {
+  "h1": [
+   "How Long Does {Q} Last?",
+   "How Long Do {Q} Last?"
+  ],
+  "inFridge": "in the fridge",
+  "inPantry": "in the pantry",
+  "inFreezer": "in the freezer",
+  "title": "{h1} {d} {where}",
+  "titleFreezer": " [Freezer {d}]",
+  "desc": [
+   "{Q} lasts {d} {where}.",
+   "{Q} last {d} {where}."
+  ],
+  "descFreezer": " Freezer: {d}.",
+  "descPerishable": " Discard after 2 hours at room temperature.",
+  "descTail": " Signs of spoilage and freezing tips.",
+  "quote": [
+   "{Q} lasts {list}.",
+   "{Q} last {list}."
+  ],
+  "phFridge": "{d} in the fridge",
+  "phFreezer": "{d} in the freezer",
+  "phPantry": "{d} in the pantry",
+  "phRipe": "on the counter until ripe",
+  "phUseBy": "until the use-by date in the fridge",
+  "ph2h": "no more than 2 hours at room temperature",
+  "quote2": "{label}: {list}.",
+  "hMethods": "Storage times by method",
+  "hSigns": "Signs it has gone bad",
+  "hFreeze": "Can you freeze {o}?",
+  "hLeftOut": "Left out overnight",
+  "hStore": "How to store it",
+  "hFaq": "Frequently asked questions",
+  "thMethod": "Method",
+  "thDuration": "Duration",
+  "thTemp": "Temperature",
+  "thNotes": "Notes",
+  "mPantry": "Pantry / counter",
+  "mFridge": "Refrigerator",
+  "mFreezer": "Freezer",
+  "mThawed": "Fridge after thawing",
+  "mCook": "Cooking",
+  "tRoom": "20–22 °C",
+  "tFridge": "≤ 4 °C (40 °F)",
+  "tFreezer": "−18 °C (0 °F)",
+  "tCook": "{c} °C ({f} °F) minimum",
+  "noteThawed": "Do not refreeze raw food thawed outside the fridge",
+  "noteCook": "Check with a food thermometer"
+ },
+ "freeze": {
+  "yesWell": "Yes — freezes well",
+  "yesShort": "Yes, short term",
+  "yesCooking": "Yes, for cooking — {d}",
+  "no": "Not recommended",
+  "noFigure": "No FoodKeeper figure",
+  "dYes": "Quality holds for about {d} at −18 °C (0 °F). Frozen food stays safe indefinitely; only quality declines.",
+  "dCooking": "Quality holds for about {d} at −18 °C (0 °F). Texture changes, so use it in cooked dishes.",
+  "dNo": "Freezing is not recommended for this food; texture breaks down or the result is not reliable.",
+  "dNoFigure": "FoodKeeper gives no freezer time for this food.",
+  "afterThaw": "After thawing in the fridge, use within {d}."
+ },
+ "leftOut": {
+  "keep": "Keep",
+  "check": "Check it",
+  "discard": "Discard",
+  "tDiscard": "Perishable food left at room temperature for more than 2 hours (1 hour above 32 °C / 90 °F) should be thrown away. Bacteria multiply fastest between 4 °C and 60 °C, and reheating does not remove every toxin they make.",
+  "tKeep": "This food is shelf-stable. A night on the counter is fine — keep it cool, dry and out of the sun.",
+  "tRipe": "It can ripen on the counter. Once cut or cooked, the 2-hour rule applies.",
+  "tOpened": "Once opened, it belongs in the fridge. A night at room temperature speeds spoilage; if it smells, looks or tastes off, throw it out.",
+  "tCaution": "Not a high-risk food, but a night out shortens its fridge life. Refrigerate it and use it soon."
+ },
+ "faq": {
+  "qFridge": [
+   "How long does {q} last in the fridge?",
+   "How long do {q} last in the fridge?"
+  ],
+  "aFridge": "{d} at 4 °C (40 °F) or below, according to USDA FoodKeeper.",
+  "qFreeze": "Can you freeze {o}?",
+  "qSitOut": [
+   "How long can {q} sit out?",
+   "How long can {q} sit out?"
+  ],
+  "aSitOut": "No more than 2 hours at room temperature, or 1 hour above 32 °C (90 °F). After that, throw it out.",
+  "qPantry": [
+   "Does {q} need to be refrigerated?",
+   "Do {q} need to be refrigerated?"
+  ],
+  "aPantry": "Not for safety. It keeps {d} in a cool, dry pantry.",
+  "qSigns": [
+   "How can you tell if {q} has gone bad?",
+   "How can you tell if {q} have gone bad?"
+  ],
+  "qSource": "Where do these numbers come from?",
+  "aSource": "From USDA FoodKeeper, the storage database of the US Food Safety and Inspection Service. We check every page against the current release."
+ },
+ "home": {
+  "title": "How Long Does Food Last? Fridge, Freezer and Pantry Times | Gunther Heller",
+  "h1": "How long does food last?",
+  "lead": "Fridge, freezer and pantry times for {n} foods, opened and unopened, from USDA FoodKeeper.",
+  "desc": "Free storage times for {n} foods: counter, fridge and freezer, opened and unopened. Data from USDA FoodKeeper.",
+  "categories": "Browse by category",
+  "popular": "Most searched foods",
+  "about": "Every number comes from FoodKeeper, the storage database of the US Department of Agriculture. Each page shows its source and the date we last verified it."
+ },
+ "hub": {
+  "title": "{cat}: Storage Times in the Fridge, Freezer and Pantry ({n} Foods)",
+  "h1": "{cat}: storage times",
+  "desc": "How long {n} {cat} foods last on the counter, in the fridge and in the freezer. USDA FoodKeeper data.",
+  "lead": "How long each food lasts on the counter, in the fridge and in the freezer. Source: USDA FoodKeeper, last verified {date}.",
+  "thFood": "Food",
+  "thFreezes": "Freezes well?",
+  "yes": "Yes",
+  "no": "No",
+  "cooking": "Cooking only"
+ },
+ "method": {
+  "title": "How We Verify Our Numbers | Gunther Heller",
+  "h1": "How we verify our numbers",
+  "desc": "Where our storage times come from (USDA FoodKeeper), how we turn them into answers and how to report a wrong number.",
+  "p1": "Every storage time on this site comes from FoodKeeper, the storage database published by the US Department of Agriculture's Food Safety and Inspection Service (FSIS). It is a public-domain government dataset.",
+  "p2": "We import every FoodKeeper product and keep its pantry, fridge and freezer times, including the separate times after opening. We never invent a duration: if FoodKeeper has no figure, the page says so.",
+  "p3": "Where FoodKeeper gives no room-temperature time for perishable food, we apply the FSIS rule: discard it after 2 hours at room temperature, or 1 hour above 32 °C (90 °F). Freezer times are about quality; food kept at −18 °C (0 °F) stays safe indefinitely.",
+  "p4": "Translations are reviewed for accuracy; the numbers are identical in every language. To report an error, email {email}."
+ },
+ "categories": {
+  "dairy-eggs": "Dairy & Eggs",
+  "meat": "Meat",
+  "poultry": "Poultry",
+  "seafood": "Seafood",
+  "leftovers-deli": "Leftovers & Deli",
+  "fruits": "Fruits",
+  "vegetables": "Vegetables",
+  "grains-beans-pasta": "Grains, Beans & Pasta",
+  "baked-goods": "Bread & Baking",
+  "condiments-sauces": "Condiments & Sauces",
+  "pantry-staples": "Pantry Staples",
+  "beverages": "Drinks",
+  "frozen-foods": "Frozen Foods",
+  "baby-food": "Baby Food",
+  "vegetarian-proteins": "Vegetarian Proteins"
+ },
+ "signs": {
+  "meat": [
+   [
+    "Smell",
+    "A sour, sulphur or ammonia smell, even faint."
+   ],
+   [
+    "Texture",
+    "Sticky or slimy surface that stays after rinsing."
+   ],
+   [
+    "Colour",
+    "Grey-green or brown patches spreading across the meat."
+   ],
+   [
+    "Package",
+    "A bloated or leaking pack, or past the date by more than the fridge window."
+   ]
+  ],
+  "seafood": [
+   [
+    "Smell",
+    "Strong fishy, sour or ammonia odour. Fresh seafood smells of the sea."
+   ],
+   [
+    "Texture",
+    "Mushy flesh that does not spring back, or a milky slime."
+   ],
+   [
+    "Colour",
+    "Dull, grey or yellowing flesh; dark edges."
+   ],
+   [
+    "Shells",
+    "Live shellfish with open shells that do not close when tapped."
+   ]
+  ],
+  "cooked": [
+   [
+    "Smell",
+    "Sour, yeasty or 'off' instead of how it smelled when cooked."
+   ],
+   [
+    "Texture",
+    "Slimy film, or liquid separating where it should not."
+   ],
+   [
+    "Colour",
+    "Dull or darkened patches, or any discoloured spots."
+   ],
+   [
+    "Mould",
+    "Any fuzzy growth — discard the whole container, not just the spot."
+   ]
+  ],
+  "cured": [
+   [
+    "Smell",
+    "Sour or rancid smell instead of smoky or salty."
+   ],
+   [
+    "Texture",
+    "Slick, slimy surface on slices or links."
+   ],
+   [
+    "Colour",
+    "Grey, green or iridescent patches that spread."
+   ],
+   [
+    "Mould",
+    "Fuzzy spots on sliced or cooked products — discard."
+   ]
+  ],
+  "dairy": [
+   [
+    "Smell",
+    "Sour or cheesy smell when it should be clean and mild."
+   ],
+   [
+    "Texture",
+    "Lumps, curdling or a thick, slimy body."
+   ],
+   [
+    "Colour",
+    "Yellowing or a pink, green or grey tinge."
+   ],
+   [
+    "Taste",
+    "Sour or bitter at the first sip — stop and discard."
+   ]
+  ],
+  "cheese": [
+   [
+    "Smell",
+    "Ammonia or a sharp sour smell beyond the cheese's usual aroma."
+   ],
+   [
+    "Texture",
+    "Slimy surface, or very dry and cracked all the way through."
+   ],
+   [
+    "Colour",
+    "Darkened or yellowed edges, or new colours that are not part of the cheese."
+   ],
+   [
+    "Mould",
+    "On hard cheese, cut 1 inch around the spot. On soft or shredded cheese, discard."
+   ]
+  ],
+  "eggs": [
+   [
+    "Smell",
+    "A sulphur smell when cracked — unmistakable, discard."
+   ],
+   [
+    "Shell",
+    "Slimy, powdery or cracked shells."
+   ],
+   [
+    "Inside",
+    "Pink, green or iridescent whites or yolks."
+   ],
+   [
+    "Float test",
+    "Shows age only. A floating egg is old; check the smell before deciding."
+   ]
+  ],
+  "produce": [
+   [
+    "Smell",
+    "Fermented, sour or musty odour."
+   ],
+   [
+    "Texture",
+    "Soft, mushy or leaking spots, or wrinkled skin with soft flesh."
+   ],
+   [
+    "Colour",
+    "Dark bruising that spreads, or browning inside."
+   ],
+   [
+    "Mould",
+    "White, grey or green fuzz — discard soft produce; cut firm produce generously."
+   ]
+  ],
+  "leafy": [
+   [
+    "Smell",
+    "A sour or rotting smell from the bag or bunch."
+   ],
+   [
+    "Texture",
+    "Slimy, wet or wilted leaves that do not perk up in cold water."
+   ],
+   [
+    "Colour",
+    "Dark green-black or brown leaves."
+   ],
+   [
+    "Mould",
+    "Any fuzzy growth — discard the bag."
+   ]
+  ],
+  "bakery": [
+   [
+    "Smell",
+    "Musty, sour or alcoholic smell."
+   ],
+   [
+    "Texture",
+    "Hard and dry is stale but safe; damp or sticky is not."
+   ],
+   [
+    "Colour",
+    "Discoloured spots on the crust or crumb."
+   ],
+   [
+    "Mould",
+    "Any visible mould — discard the whole item; roots spread unseen."
+   ]
+  ],
+  "dry": [
+   [
+    "Smell",
+    "Musty, sour or rancid odour."
+   ],
+   [
+    "Texture",
+    "Clumping from moisture, or a damp feel."
+   ],
+   [
+    "Pests",
+    "Webbing, holes, or tiny insects in the bag."
+   ],
+   [
+    "Flavour",
+    "Flat, stale or bitter taste — quality is gone even if it is safe."
+   ]
+  ],
+  "fat": [
+   [
+    "Smell",
+    "Rancid: like crayons, paint or old nuts."
+   ],
+   [
+    "Taste",
+    "Bitter or soapy aftertaste."
+   ],
+   [
+    "Texture",
+    "Sticky or gummy residue around the lid."
+   ],
+   [
+    "Colour",
+    "Darkened or cloudy where it should be clear."
+   ]
+  ],
+  "condiment": [
+   [
+    "Smell",
+    "Fermented, yeasty or sour beyond the product's usual tang."
+   ],
+   [
+    "Texture",
+    "Separation that does not stir back, or a slimy layer."
+   ],
+   [
+    "Colour",
+    "Darkening or a change in colour at the top of the jar."
+   ],
+   [
+    "Mould",
+    "Any fuzz on the surface or lid — discard the jar."
+   ]
+  ],
+  "drink": [
+   [
+    "Smell",
+    "Vinegary, sour or musty instead of fresh."
+   ],
+   [
+    "Taste",
+    "Flat, sour or bitter — quality is gone."
+   ],
+   [
+    "Look",
+    "Cloudiness, sediment or film that was not there before."
+   ],
+   [
+    "Package",
+    "Bulging carton, cap or can — discard."
+   ]
+  ],
+  "frozen": [
+   [
+    "Freezer burn",
+    "Dry, greyish-white patches. Safe, but trim them off."
+   ],
+   [
+    "Ice crystals",
+    "Heavy ice inside the pack means it has thawed and refrozen."
+   ],
+   [
+    "Smell",
+    "Off smell after thawing — discard."
+   ],
+   [
+    "Package",
+    "Torn packaging lets air in and speeds quality loss."
+   ]
+  ],
+  "baby": [
+   [
+    "Smell",
+    "Sour or off smell in prepared formula or food."
+   ],
+   [
+    "Texture",
+    "Separation that does not mix back, or clumps."
+   ],
+   [
+    "Colour",
+    "Change from the usual colour."
+   ],
+   [
+    "Seal",
+    "Jar lids that do not pop on opening, or damaged pouches — discard."
+   ]
+  ]
+ },
+ "freezeSteps": {
+  "meat": [
+   "Freeze on or before the last fridge day; the earlier, the better the texture.",
+   "Overwrap the store pack in foil or a freezer bag, or vacuum-seal; squeeze out air.",
+   "Thaw in the fridge (about 24 hours per 5 lb), or in cold water and cook right away."
+  ],
+  "seafood": [
+   "Freeze as fresh as possible, ideally the day you buy it.",
+   "Wrap tightly in plastic, then a freezer bag; press out the air and date it.",
+   "Thaw overnight in the fridge or sealed in cold water; never on the counter."
+  ],
+  "cooked": [
+   "Cool quickly: shallow containers, into the fridge or freezer within 2 hours.",
+   "Portion into freezer bags or airtight tubs, leave headspace for liquids, and label with the date.",
+   "Thaw in the fridge and reheat to 165°F (74°C) until steaming."
+  ],
+  "cured": [
+   "Freeze in the original vacuum pack if unopened; otherwise wrap slices in plastic and foil.",
+   "Freeze in meal-size portions so you only thaw what you need.",
+   "Thaw in the fridge; texture of sliced meats softens slightly after freezing."
+  ],
+  "dairy": [
+   "Pour off a little to leave room for expansion, then seal tightly.",
+   "Freeze flat or upright and date it.",
+   "Thaw in the fridge and shake or whisk well; use for cooking or baking."
+  ],
+  "cheese": [
+   "Cut or portion into blocks of ½ lb or less, or freeze shredded cheese in its bag.",
+   "Wrap in plastic, then a freezer bag, pressing out air.",
+   "Thaw in the fridge; it will be crumblier, so use it melted or cooked."
+  ],
+  "eggs": [
+   "Never freeze eggs in the shell.",
+   "Beat whole eggs (or separate whites and yolks) and pour into a lidded container or ice-cube tray.",
+   "Thaw in the fridge and use only in dishes cooked to 160°F (71°C)."
+  ],
+  "produce": [
+   "Wash, dry and cut into pieces; blanch most vegetables for 1–3 minutes first.",
+   "Spread on a tray to freeze individually, then bag and press out air.",
+   "Use from frozen in cooking or smoothies; thawed produce is soft."
+  ],
+  "leafy": [
+   "Leafy greens and herbs lose their crunch when frozen.",
+   "For cooking, blanch greens or chop herbs into ice-cube trays with oil or water.",
+   "Add straight from frozen to soups, sauces and stir-fries."
+  ],
+  "bakery": [
+   "Freeze on the day you buy or bake it, once fully cool.",
+   "Wrap tightly in plastic, then a freezer bag; slice bread first so you can take what you need.",
+   "Thaw at room temperature in the wrap, or toast or warm from frozen."
+  ],
+  "dry": [
+   "Freezing is optional for dry goods; it mainly stops pests and rancidity.",
+   "Use an airtight container or a well-sealed freezer bag.",
+   "Let it come to room temperature before opening to avoid condensation."
+  ],
+  "fat": [
+   "Freeze in an airtight container or the original sealed pack.",
+   "Portion first (cubes or small jars) so you thaw only what you need.",
+   "Thaw in the fridge; fats and nuts can be used straight from frozen."
+  ],
+  "condiment": [
+   "Most condiments keep well in the fridge and do not need freezing.",
+   "If freezing, use ice-cube trays or small containers and label them.",
+   "Thaw in the fridge and stir well; emulsions may separate."
+  ],
+  "drink": [
+   "Leave headspace in a freezer-safe container; liquids expand.",
+   "Freeze in ice-cube trays for small portions.",
+   "Thaw in the fridge and shake well before using."
+  ],
+  "frozen": [
+   "Keep it at 0°F (-18°C) or colder in the original pack.",
+   "Reseal opened bags tightly or move to a freezer bag.",
+   "Cook from frozen as the package directs, or thaw in the fridge."
+  ],
+  "baby": [
+   "Freeze only what the guidance allows, in clean, sealed containers.",
+   "Label with the date and time.",
+   "Thaw in the fridge or in warm water; never microwave, and do not refreeze."
+  ]
+ },
+ "store": {
+  "meat": [
+   "Refrigerate at 40°F (4°C) or below as soon as you get home; bottom shelf, so juices cannot drip.",
+   "Keep it in the store pack until you use it, or overwrap for the freezer.",
+   "Cook or freeze within the fridge window; the clock starts at purchase."
+  ],
+  "seafood": [
+   "Keep on ice or in the coldest part of the fridge, at 40°F (4°C) or below.",
+   "Store live shellfish in a bowl covered with a damp cloth, never in water or sealed plastic.",
+   "Cook or freeze within the fridge window."
+  ],
+  "cooked": [
+   "Refrigerate within 2 hours of cooking (1 hour above 90°F) in shallow, airtight containers.",
+   "Keep the fridge at or below 40°F (4°C); the door shelf is the warmest spot.",
+   "Reheat leftovers to 165°F (74°C) and only reheat what you will eat."
+  ],
+  "cured": [
+   "Keep refrigerated at 40°F (4°C) or below, even though it is cured.",
+   "Once opened, rewrap tightly or move to an airtight container.",
+   "Use within the opened window regardless of the package date."
+  ],
+  "dairy": [
+   "Store on an inside shelf, not the door, at 40°F (4°C) or below.",
+   "Close the container tightly; dairy absorbs fridge odours.",
+   "Pour what you need and return it to the fridge right away."
+  ],
+  "cheese": [
+   "Wrap in wax or parchment paper, then loosely in plastic, so it can breathe.",
+   "Store in the cheese drawer or a lower shelf at 40°F (4°C) or below.",
+   "Use a clean knife each time to avoid introducing mould."
+  ],
+  "eggs": [
+   "Keep eggs in their carton on an inside shelf, not the door.",
+   "Store at 40°F (4°C) or below; do not wash them before storing.",
+   "Refrigerate hard-boiled eggs within 2 hours of cooking."
+  ],
+  "produce": [
+   "Store unwashed; wash just before eating.",
+   "Keep ethylene producers (apples, bananas, avocados) away from produce that over-ripens.",
+   "Refrigerate once cut, in a covered container."
+  ],
+  "leafy": [
+   "Store dry, wrapped in a paper towel inside a bag or container.",
+   "Keep in the crisper drawer at 40°F (4°C) or below.",
+   "Stand herbs like cilantro and parsley in a glass of water in the fridge, loosely covered."
+  ],
+  "bakery": [
+   "Keep at room temperature in a bread box or sealed bag for the best texture.",
+   "Refrigeration slows mould but makes bread stale faster.",
+   "Freeze what you will not eat in time."
+  ],
+  "dry": [
+   "Store in an airtight container in a cool, dark, dry place.",
+   "Keep away from the stove and dishwasher, where heat and humidity speed spoilage.",
+   "Write the opening date on the pack."
+  ],
+  "fat": [
+   "Keep in a cool, dark place, tightly closed, away from heat.",
+   "Refrigerating nuts, seeds and nut oils extends shelf life significantly.",
+   "Smell before using; rancidity is a quality problem you can detect."
+  ],
+  "condiment": [
+   "Refrigerate after opening unless the label says otherwise.",
+   "Use a clean utensil each time; crumbs and double-dipping shorten shelf life.",
+   "Wipe the rim and close the lid tightly."
+  ],
+  "drink": [
+   "Store unopened in a cool, dark place.",
+   "Refrigerate after opening and close tightly.",
+   "Keep away from light and heat, which flatten flavour."
+  ],
+  "frozen": [
+   "Keep your freezer at 0°F (-18°C) or colder.",
+   "Do not let it thaw and refreeze on the way home; shop for frozen food last.",
+   "Reseal opened bags to prevent freezer burn."
+  ],
+  "baby": [
+   "Follow the label and your pediatrician's instructions first.",
+   "Refrigerate prepared or opened products right away.",
+   "Discard anything left in a bottle or bowl the baby has fed from."
+  ]
+ }
+}

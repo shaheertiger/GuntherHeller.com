@@ -26,7 +26,7 @@ const GROUP: Record<string, Group> = {
 };
 export const groupOf = (f: Food): Group => GROUP[f.kind] ?? "dry";
 
-const SIGNS: Record<Group, [string, string][]> = {
+export const SIGNS: Record<Group, [string, string][]> = {
   meat: [["Smell", "A sour, sulphur or ammonia smell, even faint."], ["Texture", "Sticky or slimy surface that stays after rinsing."], ["Colour", "Grey-green or brown patches spreading across the meat."], ["Package", "A bloated or leaking pack, or past the date by more than the fridge window."]],
   seafood: [["Smell", "Strong fishy, sour or ammonia odour. Fresh seafood smells of the sea."], ["Texture", "Mushy flesh that does not spring back, or a milky slime."], ["Colour", "Dull, grey or yellowing flesh; dark edges."], ["Shells", "Live shellfish with open shells that do not close when tapped."]],
   cooked: [["Smell", "Sour, yeasty or 'off' instead of how it smelled when cooked."], ["Texture", "Slimy film, or liquid separating where it should not."], ["Colour", "Dull or darkened patches, or any discoloured spots."], ["Mould", "Any fuzzy growth — discard the whole container, not just the spot."]],
@@ -68,7 +68,7 @@ export function freezeVerdict(f: Food): FreezeVerdict {
   return { tone: "yes", label: (days(d) ?? 0) >= 60 ? `Yes — freezes well` : `Yes, short term`, detail: `Quality holds for about ${t} at 0°F / -18°C. Frozen food stays safe indefinitely; only quality declines.` };
 }
 
-const FREEZE_STEPS: Record<Group, string[]> = {
+export const FREEZE_STEPS: Record<Group, string[]> = {
   meat: ["Freeze on or before the last fridge day; the earlier, the better the texture.", "Overwrap the store pack in foil or a freezer bag, or vacuum-seal; squeeze out air.", "Thaw in the fridge (about 24 hours per 5 lb), or in cold water and cook right away."],
   seafood: ["Freeze as fresh as possible, ideally the day you buy it.", "Wrap tightly in plastic, then a freezer bag; press out the air and date it.", "Thaw overnight in the fridge or sealed in cold water; never on the counter."],
   cooked: ["Cool quickly: shallow containers, into the fridge or freezer within 2 hours.", "Portion into freezer bags or airtight tubs, leave headspace for liquids, and label with the date.", "Thaw in the fridge and reheat to 165°F (74°C) until steaming."],
@@ -125,7 +125,7 @@ export function datesFor(f: Food) {
 }
 
 /* ---------------------------------------------------------------- storage tips */
-const STORE: Record<Group, string[]> = {
+export const STORE: Record<Group, string[]> = {
   meat: ["Refrigerate at 40°F (4°C) or below as soon as you get home; bottom shelf, so juices cannot drip.", "Keep it in the store pack until you use it, or overwrap for the freezer.", "Cook or freeze within the fridge window; the clock starts at purchase."],
   seafood: ["Keep on ice or in the coldest part of the fridge, at 40°F (4°C) or below.", "Store live shellfish in a bowl covered with a damp cloth, never in water or sealed plastic.", "Cook or freeze within the fridge window."],
   cooked: ["Refrigerate within 2 hours of cooking (1 hour above 90°F) in shallow, airtight containers.", "Keep the fridge at or below 40°F (4°C); the door shelf is the warmest spot.", "Reheat leftovers to 165°F (74°C) and only reheat what you will eat."],

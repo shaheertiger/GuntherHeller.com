@@ -2,10 +2,11 @@
 import Prose from "../layouts/Prose.astro";
 import { META } from "../lib/data";
 import { SITE, abs } from "../lib/site";
+import { methodAlternates } from "../lib/i18n";
 const path = "/methodology/";
 const ld = { "@context": "https://schema.org", "@type": "WebPage", name: "How we verify food storage times", url: abs(path), dateModified: SITE.verifiedISO, publisher: { "@type": "Organization", name: SITE.name, url: SITE.url } };
 ---
-<Prose title="How We Verify Food Storage Times | Gunther Heller" h1="How we verify our numbers" path={path} jsonld={ld}
+<Prose title="How We Verify Food Storage Times | Gunther Heller" h1="How we verify our numbers" path={path} jsonld={ld} alternates={methodAlternates()}
   description="Where Gunther Heller's storage times come from (USDA FoodKeeper), how we turn them into answers, what 'last verified' means and how to report a wrong number."
   lead="Every storage time on this site comes from a public food-safety source. This page explains which one, how we process it, and what we do when it changes.">
   <h2>The source: USDA FoodKeeper</h2>

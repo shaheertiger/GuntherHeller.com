@@ -6,11 +6,12 @@ import TrustBlock from "../../components/TrustBlock.astro";
 import { CATEGORIES, FOODS, url, foodsIn } from "../../lib/data";
 import { breadcrumbLd, ORG } from "../../lib/schema";
 import { abs } from "../../lib/site";
+import { hubIndexAlternates } from "../../lib/i18n";
 const path = "/foods/";
 const crumbs = [{ name: "Home", href: "/" }, { name: "Foods" }];
 const ld = { "@context": "https://schema.org", "@graph": [ORG, { "@type": "ItemList", name: "Food categories", itemListElement: CATEGORIES.map((c, i) => ({ "@type": "ListItem", position: i + 1, name: c.name, url: abs(url.category(c.slug)) })) }, breadcrumbLd(crumbs, path)] };
 ---
-<Base title={`Food Storage Times for ${FOODS.length} Foods, by Category | Gunther Heller`} description={`Browse storage times for ${FOODS.length} foods in ${CATEGORIES.length} categories: dairy, meat, poultry, seafood, produce, leftovers, pantry staples and more. USDA FoodKeeper data.`} path={path} jsonld={ld}>
+<Base title={`Food Storage Times for ${FOODS.length} Foods, by Category | Gunther Heller`} description={`Browse storage times for ${FOODS.length} foods in ${CATEGORIES.length} categories: dairy, meat, poultry, seafood, produce, leftovers, pantry staples and more. USDA FoodKeeper data.`} path={path} jsonld={ld} alternates={hubIndexAlternates()}>
   <div class="container-site pt-4 md:pt-6">
     <Breadcrumb items={crumbs} />
     <h1 class="h1-food mt-5">All foods</h1>

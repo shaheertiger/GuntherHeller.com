@@ -1,0 +1,43 @@
+---
+import type { Food } from "../../lib/data";
+import { type Locale, cellsL, stateLabel, ft } from "../../lib/i18n";
+interface Props { L: Locale; food: Food }
+const { L, food: f } = Astro.props;
+const U = L.s.ui;
+const group = `ac-${L.code}-${f.slug}`;
+const states = f.states.map((s, i) => ({ s, i, c: cellsL(L, f, s, i) }));
+const cols = [
+  { k: "pantry", label: U.onCounter, short: U.counter, dot: "bg-counter" },
+  { k: "fridge", label: U.inFridge, short: U.fridge, dot: "bg-fridge" },
+  { k: "freezer", label: U.inFreezer, short: U.freezer, dot: "bg-freezer" },
+] as const;
+---
+<section id="answer" class="ac border border-line rounded-[10px] overflow-hidden" aria-label={ft(L, f).n}>
+  <div class="flex flex-wrap items-center justify-between gap-3 px-4 md:px-5 py-3 border-b border-line bg-panel">
+    {states.length > 1 ? (
+      <fieldset class="ac-toggle flex w-full md:w-auto md:inline-flex border border-line rounded-lg overflow-hidden bg-white m-0 p-0">
+        <legend class="sr-only">{U.showTimesFor}</legend>
+        {states.map(({ s, i }) => (
+          <>
+            <input class="sr-only" type="radio" name={group} id={`${group}-${i}`} data-i={i} checked={i === 0} />
+            <label for={`${group}-${i}`} class="flex-1 md:flex-none justify-center">{stateLabel(L, s)}</label>
+          </>
+        ))}
+      </fieldset>
+    ) : <span class="text-sm font-medium">{ft(L, f).n}</span>}
+    <span class="text-[13px] text-muted">{U.perSource.replace("{source}", f.source.name.startsWith("USDA") ? "USDA FoodKeeper" : f.source.name.split(":")[0])}</span>
+  </div>
+  {states.map(({ i, c }) => (
+    <div class="ac-state grid-cols-3" data-i={i}>
+      {cols.map((col, j) => (
+        <div class:list={["px-3 py-4 md:px-5 md:py-[22px] min-w-0", j < 2 && "border-r border-line"]}>
+          <div class="flex items-center gap-1.5 md:gap-2 text-[10px] md:text-[11px] font-medium tracking-[.1em] md:tracking-[.12em] uppercase text-muted">
+            <span class:list={["dot", col.dot]}></span><span class="hidden md:inline">{col.label}</span><span class="md:hidden">{col.short}</span>
+          </div>
+          <div class="mt-2 md:mt-2.5 text-[22px] md:text-[36px] font-[650] tracking-[-0.03em] leading-[1.05] break-words hyphens-auto" lang={L.s.htmlLang}>{c[col.k].value}</div>
+          <div class="mt-1.5 text-[12px] md:text-sm text-muted leading-snug">{c[col.k].note}</div>
+        </div>
+      ))}
+    </div>
+  ))}
+</section>

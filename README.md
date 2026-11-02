@@ -41,6 +41,34 @@ npm run og       # re-render the single site-wide OG image (public/og.png)
 Variant pages exist only where they have something to say: can-you-freeze needs a FoodKeeper
 freezer figure; left-out-overnight is only for perishable foods. Currently 2,021 HTML pages.
 
+## Translations (phase 3)
+
+| Language | Food URL | Hubs |
+| --- | --- | --- |
+| Spanish | `/es/cuanto-dura-{comida}/` | `/es/alimentos/{categoria}/` |
+| German | `/de/haltbarkeit-{lebensmittel}/` | `/de/lebensmittel/{kategorie}/` |
+| French | `/fr/conservation-{aliment}/` | `/fr/aliments/{categorie}/` |
+| Portuguese (BR) | `/pt-br/quanto-dura-{alimento}/` | `/pt-br/alimentos/{categoria}/` |
+
+Each locale also has a home page (`/es/`) and a methodology page. Every food page, home, category
+hub and methodology page carries a reciprocal hreflang cluster (en, es, de, fr, pt-BR, x-default →
+English), and the build fails if a cluster is broken (`scripts/check-build.mjs`).
+
+- `data/i18n/en.json` is the source for all localized copy; `data/i18n/{lang}.json` are the translations.
+- `data/i18n/foods.{lang}.json` holds each food's localized name (`n`), sentence forms (`q` subject,
+  `o` object — German needs the accusative), plural flag (`p`) and URL slug (`s`).
+- `node scripts/check-i18n.mjs` validates keys, `{placeholders}`, Celsius-first temperatures and slug uniqueness.
+- A locale goes live only when both its files exist. Numbers are identical in every language; only words change.
+- Variant pages (can-you-freeze, does-it-go-bad, left-out) and the tools are English-only for now.
+- When FoodKeeper adds a food, add its translations to each `foods.{lang}.json`, or the validator fails.
+
+## Data sync
+
+This repo's build container cannot reach fsis.usda.gov, so `.github/workflows/foodkeeper-sync.yml`
+does it from GitHub's runners every Monday (or via *Run workflow*): it downloads the live FoodKeeper
+file, rebuilds `data/foods.json`, runs the full build check and opens a PR listing added, removed and
+changed foods. Enable *Settings → Actions → General → Allow GitHub Actions to create pull requests*.
+
 ## Editorial rules
 - Never invent a duration. No FoodKeeper figure → the page says "Not listed".
 - Any number not from FoodKeeper lives in `overrides.json` with `_why` and a named public source.
@@ -53,7 +81,7 @@ CSS ~26 KB, inlined. Lighthouse mobile: 100 / 100 / 100 / 100 on food, home, hub
 Ad slots are fixed-size placeholders (`AdSlot.astro`) so CLS stays 0 when a network is added.
 
 ## Not done yet
-- Phase 3 locales (ES/DE/FR/PT-BR mirrors + hreflang). `Base.astro` already emits `en` + `x-default`.
+- Localized variant pages and tools (phase 3 covers food pages, hubs, home and methodology).
 - Foods from the priority list that FoodKeeper does not cover and that need a citable source
   before publishing: cold brew, beer, protein powder, opened dog food and cat food.
 - Illustrations: hubs and home use paper tiles with stroke icons until the watercolour set exists.

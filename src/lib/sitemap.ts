@@ -1,5 +1,6 @@
 import { FOODS, CATEGORIES, url, hasFreezePage, hasLeftOutPage } from "./data";
 import { TOOLS } from "./tools";
+import { LOCALES, lurl } from "./i18n";
 import { SITE, abs } from "./site";
 
 /** lastmod is the date the numbers were last verified — it changes only when data changes. */
@@ -12,8 +13,15 @@ export const SECTIONS = {
     "/can-you-freeze/", "/does-it-go-bad/", "/left-out-overnight/", "/tools/", ...TOOLS.map((t) => `/tools/${t.slug}/`),
     "/methodology/", "/about/", "/privacy/", "/terms/",
   ],
-};
-export type Section = keyof typeof SECTIONS;
+  // One section per published locale: /es/ … plus its hubs and food pages.
+  ...Object.fromEntries(
+    LOCALES.map((L) => [
+      L.code,
+      () => [lurl.home(L), lurl.hubIndex(L), lurl.method(L), ...CATEGORIES.map((c) => lurl.hub(L, c.slug)), ...FOODS.map((f) => lurl.food(L, f))],
+    ]),
+  ),
+} as Record<string, () => string[]>;
+export type Section = string;
 
 export const urlset = (paths: string[]) =>
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${paths

@@ -1,0 +1,117 @@
+---
+import Base from "../../layouts/Base.astro";
+import Breadcrumb from "../Breadcrumb.astro";
+import Faq from "../Faq.astro";
+import AdSlot from "../AdSlot.astro";
+import LAnswerCard from "./LAnswerCard.astro";
+import { type Food, getCategory, url as enUrl, cellsFor } from "../../lib/data";
+import { groupOf } from "../../lib/content";
+import { type Locale, foodCopy, methodsL, freezeL, leftOutL, faqL, similarL, lurl, foodAlternates, verifiedDate, fill, ft, cellsL, stateLabel, fmtL } from "../../lib/i18n";
+import { ORG, breadcrumbLd, faqLd } from "../../lib/schema";
+import { SITE, abs, reportHref } from "../../lib/site";
+
+interface Props { L: Locale; food: Food }
+const { L, food: f } = Astro.props;
+const S = L.s, U = S.ui, F = S.food;
+const path = lurl.food(L, f);
+const { T, h1, title, description, quote } = foodCopy(L, f);
+const date = verifiedDate(L);
+const catName = S.categories[f.category];
+const crumbs = [{ name: U.home, href: lurl.home(L) }, { name: catName, href: lurl.hub(L, f.category) }, { name: T.n }];
+const methods = methodsL(L, f);
+const z = freezeL(L, f);
+const lo = leftOutL(L, f);
+const faq = faqL(L, f);
+const signs = S.signs[groupOf(f)] as [string, string][];
+const store = S.store[groupOf(f)] as string[];
+const similar = similarL(L, f);
+const pill = (tone: string) => (tone === "yes" || tone === "keep" ? "pill-yes" : tone === "no" || tone === "discard" ? "pill-no" : "pill-caution");
+const ICONS = ["M12 3a7 7 0 017 7c0 5-7 11-7 11S5 15 5 10a7 7 0 017-7z", "M4 12h16M4 7h16M4 17h16", "M12 21a9 9 0 110-18 9 9 0 010 18z", "M12 9v4M12 17h.01M10.3 3.9L2.5 17a2 2 0 001.7 3h15.6a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"];
+const values = f.states.flatMap((s, i) => { const c = cellsL(L, f, s, i); const tag = s.label ? ` (${stateLabel(L, s)})` : ""; return [[U.onCounter + tag, c.pantry.value], [U.inFridge + tag, c.fridge.value], [U.inFreezer + tag, c.freezer.value]].map(([name, value]) => ({ "@type": "PropertyValue", name, value })); });
+const ld = { "@context": "https://schema.org", "@graph": [ORG,
+  { "@type": "Article", headline: h1, description, url: abs(path), inLanguage: S.htmlLang, image: abs(SITE.ogImage), datePublished: SITE.verifiedISO, dateModified: SITE.verifiedISO, author: { "@id": ORG["@id"] }, publisher: { "@id": ORG["@id"] }, about: { "@type": "Thing", name: T.n }, translationOfWork: { "@id": `${abs(enUrl.food(f))}#article` } },
+  { "@type": "Dataset", name: T.n, url: abs(path), inLanguage: S.htmlLang, license: "https://creativecommons.org/publicdomain/zero/1.0/", isAccessibleForFree: true, creator: { "@type": "Organization", name: "USDA Food Safety and Inspection Service" }, isBasedOn: f.source.url, dateModified: SITE.verifiedISO, variableMeasured: values },
+  breadcrumbLd(crumbs, path), faqLd(faq)] };
+---
+<Base title={title} description={description} path={path} jsonld={ld} ogType="article" alternates={foodAlternates(f)} L={L}>
+  <div class="container-site pt-4 md:pt-6">
+    <Breadcrumb items={crumbs} />
+    <h1 class="h1-food mt-3 md:mt-5 hyphens-auto">{h1}</h1>
+    <p class="mt-1.5 md:mt-2 text-sm md:text-[17px] text-muted">{U.subline.replace("{date}", date)} · <a href={lurl.method(L)} class="link">{U.howWeVerify} →</a></p>
+
+    <div class="grid lg:grid-cols-[minmax(0,1fr)_300px] gap-10 mt-4 md:mt-8 items-start">
+      <article class="min-w-0 max-w-[820px]">
+        <LAnswerCard L={L} food={f} />
+        {quote && <p class="mt-4 md:mt-5 text-[17px] md:text-[19px] leading-[1.6]">{quote}</p>}
+
+        <section id="methods" class="mt-8 md:mt-12">
+          <h2 class="h2-food">{F.hMethods}</h2>
+          <div class="table-wrap mt-[18px]">
+            <table class="data-table min-w-[560px]">
+              <thead><tr><th>{F.thMethod}</th><th>{F.thDuration}</th><th>{F.thTemp}</th><th>{F.thNotes}</th></tr></thead>
+              <tbody>{methods.map((m) => <tr><td class="font-medium">{m.method}</td><td>{m.duration}</td><td class="text-muted">{m.temp}</td><td class="text-muted">{m.note}</td></tr>)}</tbody>
+            </table>
+          </div>
+        </section>
+
+        <AdSlot w={300} h={250} class="lg:hidden mt-8" id="l-food-mobile" />
+
+        <section id="bad" class="mt-8 md:mt-12">
+          <h2 class="h2-food">{F.hSigns}</h2>
+          <div class="grid sm:grid-cols-2 gap-3 md:gap-4 mt-[18px]">
+            {signs.map(([title, text], i) => (
+              <div class="flex gap-3.5 p-3 md:p-4 border border-line rounded-[10px]">
+                <div class="paper w-10 h-10 rounded-[10px] grid place-items-center shrink-0"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6b5f4a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d={ICONS[i]} /></svg></div>
+                <div><h3 class="!text-base !tracking-normal">{title}</h3><p class="text-sm text-muted mt-0.5">{text}</p></div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="freeze" class="mt-8 md:mt-12">
+          <h2 class="h2-food">{fill(F.hFreeze, {}, T)}</h2>
+          <div class="flex flex-wrap items-center gap-3 mt-3.5"><span class:list={["pill", pill(z.tone)]}>{z.label}</span><span class="text-[15px] text-muted">{z.detail}</span></div>
+          {z.steps.length > 0 && <ol class="prose-list">{z.steps.map((s) => <li>{s}</li>)}</ol>}
+          {f.thawedFridge && <p class="mt-3 text-[15px] text-muted">{S.freeze.afterThaw.replace("{d}", fmtL(L, f.thawedFridge)!)}</p>}
+        </section>
+
+        <section id="leftout" class="mt-8 md:mt-12">
+          <h2 class="h2-food">{F.hLeftOut}</h2>
+          <div class="mt-3.5 border border-line rounded-[10px] px-4 py-4 md:px-5 md:py-[18px] flex gap-4 items-start"><span class:list={["pill", pill(lo.tone)]}>{lo.label}</span><p class="text-base">{lo.text}</p></div>
+        </section>
+
+        <section id="store" class="mt-8 md:mt-12">
+          <h2 class="h2-food">{F.hStore}</h2>
+          <ul class="prose-list">{store.map((s) => <li>{s}</li>)}</ul>
+        </section>
+
+        <section id="similar" class="mt-8 md:mt-12">
+          <h2 class="h2-food">{U.similar}</h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5 md:gap-3 mt-[18px]">
+            {similar.map((s) => <a href={s.href} class="block p-3 md:p-3.5 border border-line rounded-[10px] min-h-11 hover:border-[#c9c9cf]"><div class="font-medium text-[15px] leading-snug">{s.name}</div><div class="text-[13px] text-muted mt-0.5">{U.fridge}: {s.fridge}</div></a>)}
+          </div>
+          <p class="mt-3.5 text-sm"><a href={lurl.hub(L, f.category)} class="link">{U.allIn.replace("{cat}", catName)} →</a> · <a href={enUrl.food(f)} hreflang="en" lang="en" class="link">{U.readInEnglish} →</a></p>
+        </section>
+
+        <section id="faq" class="mt-8 md:mt-12">
+          <h2 class="h2-food">{F.hFaq}</h2>
+          <Faq items={faq} />
+        </section>
+
+        <div class="mt-12 px-5 py-[18px] bg-panel rounded-[10px] text-sm text-muted flex flex-wrap justify-between gap-4">
+          <span>{U.trust.replace("{source}", "USDA FoodKeeper").replace("{date}", date)}</span>
+          <span><a href={lurl.method(L)} class="link">{U.howWeVerifyLong}</a> · <a href={reportHref(path)} class="link">{U.report}</a></span>
+        </div>
+      </article>
+      <aside class="hidden lg:grid sticky top-[90px] gap-5" aria-label={T.n}>
+        <div class="border border-line rounded-[10px] p-4">
+          <div class="eyebrow">{T.n}</div>
+          <dl class="grid gap-2 mt-2.5 text-sm m-0">
+            {(() => { const c = cellsL(L, f, f.states[0], 0); return [[U.counter, c.pantry.value], [U.fridge, c.fridge.value], [U.freezer, c.freezer.value]].map(([k, v]) => <div class="flex justify-between gap-3"><dt class="text-muted">{k}</dt><dd class="m-0 font-medium text-right">{v}</dd></div>); })()}
+          </dl>
+        </div>
+        <AdSlot w={300} h={250} id="l-food-rail" />
+      </aside>
+    </div>
+  </div>
+</Base>

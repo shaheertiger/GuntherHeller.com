@@ -1,0 +1,6 @@
+---
+import LocaleRoute from "../../components/i18n/LocaleRoute.astro";
+import { localePaths } from "../../lib/i18n-routes";
+export const getStaticPaths = () => localePaths("es");
+---
+<LocaleRoute {...(Astro.props as any)} />

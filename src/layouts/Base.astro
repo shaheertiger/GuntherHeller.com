@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE, abs } from "../lib/site";
+import type { Alt, Locale } from "../lib/i18n";
 
 interface Props {
   title: string;
@@ -11,14 +12,21 @@ interface Props {
   jsonld?: object | object[];
   noindex?: boolean;
   ogType?: "website" | "article";
+  /** hreflang cluster (English first). Omit for English-only pages. */
+  alternates?: Alt[];
+  /** Set on localized pages. */
+  L?: Locale;
 }
-const { title, description, path, jsonld, noindex = false, ogType = "website" } = Astro.props;
+const { title, description, path, jsonld, noindex = false, ogType = "website", alternates, L } = Astro.props;
+const htmlLang = L?.s.htmlLang ?? "en";
+const alts = alternates && alternates.length > 1 ? alternates : [{ lang: "en", href: path }];
+const xDefault = alts.find((a) => a.lang === "en")?.href ?? path;
 const canonical = abs(path);
 const og = abs(SITE.ogImage);
 const ld = jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [];
 ---
 <!doctype html>
-<html lang="en">
+<html lang={htmlLang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -26,12 +34,13 @@ const ld = jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [];
     <meta name="description" content={description} />
     <meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large, max-snippet:-1"} />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="en" href={canonical} />
-    <link rel="alternate" hreflang="x-default" href={canonical} />
+    {!noindex && alts.map((a) => <link rel="alternate" hreflang={a.lang} href={abs(a.href)} />)}
+    {!noindex && <link rel="alternate" hreflang="x-default" href={abs(xDefault)} />}
     <link rel="preload" href="/fonts/dm-sans-latin-opsz.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="theme-color" content="#ffffff" />
     <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content={(L?.s.locale ?? "en-US").replace("-", "_")} />
     <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -47,11 +56,11 @@ const ld = jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : [];
     {ld.map((x) => <script type="application/ld+json" set:html={JSON.stringify(x).replace(/</g, "\\u003c")} />)}
   </head>
   <body class="min-h-screen flex flex-col">
-    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:px-3 focus:py-2">Skip to content</a>
-    <Header />
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:px-3 focus:py-2">{L ? L.s.ui.skip : "Skip to content"}</a>
+    <Header L={L} />
     <main id="main" class="flex-1">
       <slot />
     </main>
-    <Footer />
+    <Footer L={L} alternates={alternates} />
   </body>
 </html>

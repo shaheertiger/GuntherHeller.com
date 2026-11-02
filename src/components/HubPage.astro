@@ -8,6 +8,7 @@ import { type Category, foodsIn, url, cellsFor, days, hasFreezePage, hasLeftOutP
 import { freezeVerdict } from "../lib/content";
 import { breadcrumbLd, ORG } from "../lib/schema";
 import { SITE, abs } from "../lib/site";
+import { hubAlternates } from "../lib/i18n";
 
 interface Props { cat: Category; sub?: { slug: string; name: string; count: number } }
 const { cat, sub } = Astro.props;
@@ -53,7 +54,7 @@ const ld = {
   ],
 };
 ---
-<Base title={title} description={description} path={path} jsonld={ld}>
+<Base title={title} description={description} path={path} jsonld={ld} alternates={sub ? undefined : hubAlternates(cat.slug)}>
   <div class="container-site pt-4 md:pt-6">
     <Breadcrumb items={crumbs} />
     <div class="mt-5 grid md:grid-cols-[minmax(0,1fr)_360px] gap-10 items-end">

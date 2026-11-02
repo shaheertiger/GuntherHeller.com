@@ -1,0 +1,126 @@
+---
+import Base from "../../layouts/Base.astro";
+import Breadcrumb from "../Breadcrumb.astro";
+import Squiggle from "../Squiggle.astro";
+import CatIcon from "../CatIcon.astro";
+import AdSlot from "../AdSlot.astro";
+import LFood from "./LFood.astro";
+import { CATEGORIES, FOODS, getFood, foodsIn, url as enUrl } from "../../lib/data";
+import { getLocale, lurl, ft, cellsL, freezeL, verifiedDate, fill, homeAlternates, hubAlternates, hubIndexAlternates, methodAlternates } from "../../lib/i18n";
+import type { LocaleRouteProps } from "../../lib/i18n-routes";
+import { ORG, breadcrumbLd } from "../../lib/schema";
+import { SITE, abs } from "../../lib/site";
+
+const props = Astro.props as LocaleRouteProps;
+const L = getLocale(props.code);
+const S = L.s, U = S.ui;
+const date = verifiedDate(L);
+const N = String(FOODS.length);
+const popular = ["eggs", "cooked-rice", "raw-chicken", "milk", "hard-cheese", "bread", "ground-beef", "pizza", "avocado", "bananas", "butter", "cooked-pasta", "shrimp", "bacon", "soup", "cooked-chicken"].map(getFood).filter((f) => !!f);
+const cat = props.kind === "hub" ? CATEGORIES.find((c) => c.slug === props.cat)! : null;
+const catName = cat ? S.categories[cat.slug] : "";
+const rows = cat ? foodsIn(cat.slug).map((f) => ({ f, T: ft(L, f), c: cellsL(L, f, f.states[0], 0), z: freezeL(L, f) })).sort((a, b) => a.T.n.localeCompare(b.T.n, S.locale)) : [];
+const site = { "@type": "WebSite", name: SITE.name, url: `${SITE.url}/`, inLanguage: S.htmlLang };
+---
+{props.kind === "food" && <LFood L={L} food={getFood(props.slug)!} />}
+
+{props.kind === "home" && (
+  <Base title={S.home.title} description={fill(S.home.desc, { n: N })} path={lurl.home(L)} alternates={homeAlternates()} L={L} jsonld={{ "@context": "https://schema.org", "@graph": [ORG, site] }}>
+    <section class="pt-10 md:pt-14 text-center">
+      <div class="container-site">
+        <h1 class="max-w-[900px] mx-auto hyphens-auto">{S.home.h1}</h1>
+        <Squiggle center />
+        <p class="lead mt-[18px] max-w-[760px] mx-auto">{fill(S.home.lead, { n: N })}</p>
+      </div>
+    </section>
+    <section class="pt-16">
+      <div class="container-site">
+        <h2>{S.home.categories}</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-8">
+          {CATEGORIES.map((c) => (
+            <a href={lurl.hub(L, c.slug)} class="group">
+              <div class="paper aspect-[4/3] rounded-[10px] grid place-items-center"><CatIcon slug={c.slug} size={48} /></div>
+              <h3 class="mt-3 group-hover:text-primary hyphens-auto">{S.categories[c.slug]}</h3>
+              <p class="text-[15px] text-muted mt-0.5">{U.foodsCount.replace("{n}", String(c.count))}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+    <div class="container-site pt-16"><AdSlot w={970} h={250} class="hidden lg:grid" id="l-home" /><AdSlot w={300} h={250} class="lg:hidden" id="l-home-m" /></div>
+    <section class="pt-16">
+      <div class="container-site">
+        <div class="bg-panel rounded-[12px] px-6 py-12">
+          <h2 class="!text-[34px]">{S.home.popular}</h2>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 mt-8">
+            {popular.map((f) => <a href={lurl.food(L, f!)} class="flex justify-between gap-2 py-3 border-b border-line text-[15px]"><span>{ft(L, f!).n}</span><span class="text-muted text-[13px]">{cellsL(L, f!, f!.states[0], 0).fridge.value}</span></a>)}
+          </div>
+        </div>
+        <p class="mt-10 max-w-[760px] text-muted">{S.home.about} <a class="link" href={lurl.method(L)}>{U.howWeVerifyLong} →</a></p>
+      </div>
+    </section>
+  </Base>
+)}
+
+{props.kind === "hubIndex" && (
+  <Base title={`${U.foods} | ${SITE.name}`} description={fill(S.home.desc, { n: N })} path={lurl.hubIndex(L)} alternates={hubIndexAlternates()} L={L}
+    jsonld={{ "@context": "https://schema.org", "@graph": [ORG, breadcrumbLd([{ name: U.home, href: lurl.home(L) }, { name: U.foods }], lurl.hubIndex(L)), { "@type": "ItemList", itemListElement: CATEGORIES.map((c, i) => ({ "@type": "ListItem", position: i + 1, name: S.categories[c.slug], url: abs(lurl.hub(L, c.slug)) })) }] }}>
+    <div class="container-site pt-4 md:pt-6">
+      <Breadcrumb items={[{ name: U.home, href: lurl.home(L) }, { name: U.foods }]} />
+      <h1 class="h1-food mt-5">{U.foods}</h1>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
+        {CATEGORIES.map((c) => (
+          <section class="border border-line rounded-[10px] p-5">
+            <a href={lurl.hub(L, c.slug)} class="flex items-center gap-4 group">
+              <span class="paper w-14 h-14 rounded-[14px] grid place-items-center shrink-0"><CatIcon slug={c.slug} /></span>
+              <span><h2 class="!text-[21px] !tracking-[-0.025em] group-hover:text-primary">{S.categories[c.slug]}</h2><span class="text-sm text-muted">{U.foodsCount.replace("{n}", String(c.count))}</span></span>
+            </a>
+            <ul class="list-none p-0 mt-4 grid gap-1.5 text-[15px]">{foodsIn(c.slug).sort((a, b) => a.rank - b.rank).slice(0, 5).map((f) => <li><a href={lurl.food(L, f)}>{ft(L, f).n}</a></li>)}</ul>
+          </section>
+        ))}
+      </div>
+    </div>
+  </Base>
+)}
+
+{props.kind === "hub" && cat && (
+  <Base title={fill(S.hub.title, { cat: catName, n: String(rows.length) })} description={fill(S.hub.desc, { cat: catName, n: String(rows.length) }).slice(0, 155)} path={lurl.hub(L, cat.slug)} alternates={hubAlternates(cat.slug)} L={L}
+    jsonld={{ "@context": "https://schema.org", "@graph": [ORG, breadcrumbLd([{ name: U.home, href: lurl.home(L) }, { name: U.foods, href: lurl.hubIndex(L) }, { name: catName }], lurl.hub(L, cat.slug)), { "@type": "ItemList", numberOfItems: rows.length, itemListElement: rows.map((r, i) => ({ "@type": "ListItem", position: i + 1, name: r.T.n, url: abs(lurl.food(L, r.f)) })) }] }}>
+    <div class="container-site pt-4 md:pt-6">
+      <Breadcrumb items={[{ name: U.home, href: lurl.home(L) }, { name: U.foods, href: lurl.hubIndex(L) }, { name: catName }]} />
+      <div class="eyebrow eyebrow-rule mt-5">{U.foodsCount.replace("{n}", String(rows.length))}</div>
+      <h1 class="h1-food mt-3.5 hyphens-auto">{fill(S.hub.h1, { cat: catName })}</h1>
+      <p class="lead mt-3 max-w-[680px]">{fill(S.hub.lead, { date })}</p>
+      <div class="table-wrap mt-10">
+        <table class="data-table min-w-[640px]">
+          <thead><tr><th>{S.hub.thFood}</th><th>{U.counter}</th><th>{U.fridge}</th><th>{U.freezer}</th><th>{S.hub.thFreezes}</th></tr></thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr>
+                <td><a href={lurl.food(L, r.f)} class="font-medium">{r.T.n}</a></td>
+                <td class="text-muted">{r.c.pantry.value}</td><td>{r.c.fridge.value}</td><td>{r.c.freezer.value}</td>
+                <td><span class:list={["pill !text-[13px] !py-[3px] !px-2.5", r.z.tone === "yes" ? "pill-yes" : r.z.tone === "no" ? "pill-no" : "pill-caution"]}>{r.z.tone === "yes" ? S.hub.yes : r.z.tone === "no" ? S.hub.no : r.z.steps.length ? S.hub.cooking : "—"}</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-6 text-sm"><a class="link" href={enUrl.category(cat.slug)} hreflang="en" lang="en">English →</a></p>
+    </div>
+  </Base>
+)}
+
+{props.kind === "method" && (
+  <Base title={S.method.title} description={S.method.desc} path={lurl.method(L)} alternates={methodAlternates()} L={L}
+    jsonld={{ "@context": "https://schema.org", "@graph": [ORG, { "@type": "WebPage", name: S.method.h1, url: abs(lurl.method(L)), inLanguage: S.htmlLang, dateModified: SITE.verifiedISO }] }}>
+    <div class="container-site pt-4 md:pt-6">
+      <Breadcrumb items={[{ name: U.home, href: lurl.home(L) }, { name: S.method.h1 }]} />
+      <article class="max-w-[760px] mt-5">
+        <h1 class="h1-food">{S.method.h1}</h1>
+        {[S.method.p1, S.method.p2, S.method.p3].map((p) => <p class="mt-5">{p}</p>)}
+        <p class="mt-5">{S.method.p4.split("{email}")[0]}<a class="link" href={`mailto:${SITE.email}`}>{SITE.email}</a>{S.method.p4.split("{email}")[1]}</p>
+        <p class="mt-8 text-sm"><a class="link" href="/methodology/" hreflang="en" lang="en">English: full methodology →</a></p>
+      </article>
+    </div>
+  </Base>
+)}

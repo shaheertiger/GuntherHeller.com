@@ -3,11 +3,12 @@ import Base from "./Base.astro";
 import Breadcrumb from "../components/Breadcrumb.astro";
 import { ORG, breadcrumbLd } from "../lib/schema";
 import { abs, SITE } from "../lib/site";
-interface Props { title: string; h1: string; description: string; path: string; lead?: string; jsonld?: object | object[] }
+import type { Alt } from "../lib/i18n";
+interface Props { title: string; h1: string; description: string; path: string; lead?: string; jsonld?: object | object[]; alternates?: Alt[] }
 const { title, h1, description, path, lead } = Astro.props;
 const jsonld = Astro.props.jsonld ?? { "@context": "https://schema.org", "@graph": [ORG, { "@type": "WebPage", name: h1, url: abs(path), description, dateModified: SITE.verifiedISO }, breadcrumbLd([{ name: "Home", href: "/" }, { name: h1 }], path)] };
 ---
-<Base title={title} description={description} path={path} jsonld={jsonld}>
+<Base title={title} description={description} path={path} jsonld={jsonld} alternates={Astro.props.alternates}>
   <div class="container-site pt-6">
     <Breadcrumb items={[{ name: "Home", href: "/" }, { name: h1 }]} />
     <article class="max-w-[760px] mt-5 prose-page">
