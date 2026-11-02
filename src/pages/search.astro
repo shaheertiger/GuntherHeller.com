@@ -1,0 +1,30 @@
+---
+import Base from "../layouts/Base.astro";
+---
+<Base title="Search Foods | Gunther Heller" description="Search storage times for 660+ foods." path="/search/" noindex>
+  <div class="container-site pt-8 max-w-[760px]">
+    <h1 class="h1-food">Search foods</h1>
+    <form action="/search/" method="get" class="mt-6 flex gap-2" role="search">
+      <label for="q" class="sr-only">Food</label>
+      <input id="q" name="q" type="search" autocomplete="off" placeholder="e.g. cooked rice" class="flex-1 h-11 border border-line rounded-lg px-3 text-base outline-none focus:border-primary-soft" />
+      <button class="btn-primary">Search</button>
+    </form>
+    <ul class="list-none p-0 mt-6" data-results aria-live="polite"></ul>
+    <p class="mt-6 text-sm">Or <a class="link" href="/foods/">browse all foods by category</a>.</p>
+  </div>
+</Base>
+<script>
+  import { loadFoods, search, foodHref, esc } from "../scripts/foods";
+  const input = document.querySelector<HTMLInputElement>("#q")!;
+  const ul = document.querySelector<HTMLElement>("[data-results]")!;
+  input.value = new URLSearchParams(location.search).get("q") ?? "";
+  const run = async () => {
+    const hits = search(await loadFoods(), input.value, 30);
+    ul.innerHTML = input.value.trim() && !hits.length ? `<li class="text-muted">No match. Try a simpler word.</li>` :
+      hits.map((r) => `<li class="border-b border-line"><a href="${foodHref(r)}" class="flex justify-between gap-4 py-3"><span class="font-medium">${esc(r.n)}</span><span class="text-sm text-muted">Fridge: ${esc(r.f)}</span></a></li>`).join("");
+  };
+  input.addEventListener("input", run);
+  document.querySelector("form")!.addEventListener("submit", (e) => { e.preventDefault(); history.replaceState(null, "", `?q=${encodeURIComponent(input.value)}`); run(); });
+  run();
+  input.focus();
+</script>

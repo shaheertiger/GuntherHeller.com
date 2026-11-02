@@ -1,0 +1,264 @@
+{
+  "$schema": "./overrides.schema.json",
+  "_doc": "Our additions on top of USDA FoodKeeper. 'names' renames FoodKeeper products (key = FoodKeeper product ID) to the phrase people search for; the slug is derived from the name unless 'slugs' sets one. 'pairs' merges a second FoodKeeper product into a food page as the toggle's second state. 'derived' creates an extra entity whose numbers come from a FoodKeeper product. 'custom' holds entities FoodKeeper does not cover; each MUST carry its own source. 'content' holds hand-written copy keyed by slug and always wins over generated copy. Re-run `npm run data` after editing.",
+
+  "names": {
+    "3": "Hard cheese", "4": "Parmesan cheese (grated)", "5": "Shredded cheese", "6": "Cheese slices (processed)",
+    "7": "Soft cheese", "8": "Liquid coffee creamer", "11": "Whipping cream", "12": "Whipped cream (homemade, sweetened)",
+    "13": "Half and half", "14": "Heavy cream", "15": "Light cream", "16": "Sour cream dip", "17": "Liquid egg substitute",
+    "20": "Eggnog", "21": "Eggs", "22": "Raw egg whites and yolks", "23": "Hard-boiled eggs", "24": "Egg dishes",
+    "25": "Kefir", "27": "Milk", "30": "Whipped cream (aerosol can)", "31": "Whipped topping (aerosol can)", "32": "Whipped topping (tub)",
+    "34": "Bone-in rib roast", "35": "Boneless rib roast", "36": "Round roast", "37": "Whole beef tenderloin", "38": "Half beef tenderloin",
+    "39": "Brisket and chuck roast", "40": "Steak", "41": "Beef stew meat", "42": "Beef short ribs", "43": "Ground beef",
+    "44": "Small bone-in leg of lamb", "45": "Large bone-in leg of lamb", "46": "Boneless leg of lamb", "47": "Lamb crown roast",
+    "48": "Lamb shoulder roast", "49": "Lamb kabob cubes", "50": "Ground lamb", "51": "Lamb chops", "52": "Lamb leg steaks",
+    "53": "Lamb stew meat", "54": "Lamb shanks", "55": "Rolled lamb breast", "56": "Boneless veal shoulder roast",
+    "57": "Boneless veal leg roast", "58": "Bone-in veal loin roast", "59": "Ground veal", "60": "Bone-in pork loin roast",
+    "61": "Boneless pork loin roast", "63": "Bone-in pork chops", "64": "Pork chops", "65": "Small pork crown roast",
+    "66": "Large pork crown roast", "67": "Pork tenderloin", "69": "Pork medallions", "70": "Goat meat (whole cuts)",
+    "71": "Goat stew meat", "72": "Pork ribs", "73": "Ground pork", "74": "Pork shoulder", "75": "Pork loin cubes",
+    "76": "Venison roast", "77": "Organ meats (liver, tongue)", "78": "Ground goat", "79": "Bacon",
+    "81": "Corned beef", "82": "Refrigerated canned ham", "83": "Whole cooked ham (bone-in)", "84": "Half cooked ham (bone-in)",
+    "85": "Spiral ham", "86": "Boneless picnic ham", "87": "Boneless canned ham (refrigerated)", "88": "Vacuum-packed ham",
+    "89": "Fresh whole ham (bone-in)", "90": "Fresh half ham (bone-in)", "91": "Fresh ham shank", "92": "Fresh boneless picnic ham",
+    "93": "Fresh pork butt roll", "94": "Uncooked whole leg ham (bone-in)", "95": "Uncooked boneless leg ham",
+    "96": "Uncooked half leg ham (bone-in)", "97": "Country ham", "98": "Hot dogs", "102": "Raw sausage",
+    "103": "Kielbasa and smoked sausage", "104": "Pepperoni", "105": "Stuffed pork chops", "106": "Raw beef kabobs",
+    "107": "Fully cooked bacon", "108": "Canned ham (shelf-stable)", "109": "Beef jerky", "110": "Homemade jerky",
+    "111": "Canned meat", "112": "Meat in retort pouches", "113": "Whole raw chicken", "114": "Whole turkey",
+    "115": "Ground turkey", "116": "Bone-in chicken breast", "117": "Raw chicken", "118": "Chicken thighs",
+    "119": "Bone-in turkey breast", "120": "Boneless turkey breast", "121": "Turkey legs", "123": "Duck",
+    "125": "Goose", "126": "Pheasant", "127": "Quail", "128": "Capon", "129": "Cornish hens", "130": "Giblets",
+    "131": "Stuffed chicken breasts", "132": "Raw chicken kabobs", "133": "Turducken", "134": "Chicken nuggets",
+    "135": "Cooked chicken", "136": "Fried chicken", "140": "Chicken in gravy", "141": "Rotisserie chicken",
+    "142": "Canned chicken", "143": "Chicken in retort pouches", "144": "Cod and lean white fish", "145": "Pollock and rockfish",
+    "146": "Salmon", "147": "Caviar", "148": "Cooked fish", "149": "Imitation crab (surimi)", "150": "Scallops",
+    "151": "Shrimp", "152": "Squid", "153": "Shucked oysters, clams and mussels", "154": "Fresh crab meat",
+    "155": "Pasteurized crab meat", "156": "Crab legs", "157": "Live clams, mussels and oysters", "158": "Live lobster",
+    "159": "Cooked lobster tails", "160": "Fresh clams and mussels", "161": "Frozen whole lobster", "162": "Cooked shellfish",
+    "163": "Pickled herring", "164": "Hot-smoked fish (air pack)", "165": "Hot-smoked fish (vacuum pack)",
+    "166": "Smoked salmon (air pack)", "167": "Smoked salmon", "170": "Soy flour", "171": "Textured soy protein (dry)",
+    "172": "Rehydrated textured soy protein", "173": "Leftovers with meat", "174": "Leftovers without meat",
+    "175": "Pizza", "176": "Vacuum-packed dinners", "177": "Cooked pasta", "178": "Cooked rice", "179": "Cut fruit",
+    "181": "Hummus", "183": "Homemade hummus", "184": "Deli meat", "185": "Prepared meals", "186": "Meat in gravy",
+    "187": "Olive bar olives", "188": "Pâté", "192": "Packaged lunch meat", "193": "Soup", "194": "Casseroles",
+    "195": "Bread", "196": "Flour tortillas", "197": "Cake", "199": "Soft cookies", "200": "Crispy cookies",
+    "201": "Eclairs", "204": "Danish pastries", "205": "Cream pie", "206": "Chiffon pie", "207": "Fruit pie",
+    "208": "Mincemeat pie", "209": "Pecan pie", "210": "Pumpkin pie", "214": "Pancake mix", "215": "Cake mix",
+    "216": "Baking chocolate", "217": "Cocoa powder", "218": "Cornmeal", "219": "Stone-ground cornmeal",
+    "222": "Flour", "223": "Whole wheat flour (bulk)", "224": "Frosting", "225": "Jell-O (flavored gelatin)",
+    "226": "Unflavored gelatin", "227": "Olive oil", "228": "Nut oils", "229": "Cooking spray", "230": "Shortening",
+    "232": "Chili powder", "233": "Seasoning blends", "234": "Herb mixes", "235": "Jarred minced garlic",
+    "236": "Dried herbs", "237": "Whole spices", "238": "Ground spices", "239": "Brown sugar", "240": "Sugar",
+    "241": "Powdered sugar", "242": "Sugar substitutes", "243": "Tapioca", "245": "Canned biscuit and pizza dough",
+    "246": "Pie crust (ready-to-bake)", "247": "Cookie dough", "250": "Avocado", "251": "Bananas",
+    "252": "Cherries and lychee", "253": "Blackberries", "256": "Citrus fruit", "257": "Shredded coconut",
+    "258": "Fresh coconut", "263": "Kiwi", "264": "Melon", "265": "Mango and papaya", "266": "Peaches, plums and pears",
+    "270": "Artichokes", "273": "Green beans", "276": "Broccoli", "279": "Carrots", "287": "Cooking greens",
+    "288": "Fresh herbs", "290": "Lettuce", "291": "Spinach", "294": "Onions", "295": "Green onions",
+    "296": "Bell peppers", "302": "Zucchini and summer squash", "303": "Winter squash", "308": "Cassava (yuca)",
+    "309": "Frozen dough", "310": "Frozen egg substitute", "311": "Frozen breaded fish", "312": "Frozen raw fish",
+    "313": "Frozen fries and hash browns", "315": "Frozen fruit", "317": "Ice cream", "318": "Popsicles",
+    "319": "Frozen juice concentrate", "320": "Frozen lobster tails", "321": "Frozen pancakes and waffles",
+    "322": "Frozen raw sausages", "323": "Frozen precooked sausages", "324": "Sorbet and sherbet", "325": "Frozen shrimp",
+    "326": "Veggie hot dogs and crumbles", "327": "Meat substitutes", "328": "Tempeh", "330": "Frozen meals",
+    "331": "Frozen vegetables", "332": "Fresh pasta", "333": "Dried beans", "334": "Lentils", "335": "Dry pasta",
+    "336": "Egg noodles", "337": "Split peas", "338": "Rice", "339": "Brown rice", "340": "Barbecue sauce",
+    "342": "Alfredo and cream sauces", "343": "Gravy mix", "344": "Jarred gravy", "346": "Horseradish",
+    "347": "Jam and jelly", "348": "Ketchup", "350": "Mayonnaise", "352": "Olives", "354": "Pesto",
+    "356": "Salad dressing", "357": "Jarred salsa", "358": "Taco and spaghetti seasoning mixes", "359": "Spaghetti sauce",
+    "360": "Soy sauce", "363": "Baby food jars and pouches", "364": "Baby food fruit", "365": "Baby food vegetables",
+    "366": "Baby food dinners", "367": "Baby cereal", "368": "Prepared baby formula", "369": "Liquid baby formula",
+    "370": "Applesauce", "371": "Imitation bacon bits", "372": "Canned food (low acid)", "373": "Canned food (high acid)",
+    "374": "Cereal", "375": "Oatmeal", "379": "Dried fruit", "380": "Fruit snacks", "383": "Evaporated and condensed milk",
+    "385": "Dried mushrooms", "386": "Canned nuts", "387": "Peanut butter", "389": "Popcorn kernels",
+    "390": "Bagged popcorn", "391": "Microwave popcorn", "393": "Instant mashed potatoes", "395": "Pudding mix",
+    "396": "Bouillon", "397": "Sun-dried tomatoes", "398": "Pancake syrup", "400": "Coffee beans",
+    "401": "Home-ground coffee", "402": "Instant coffee", "403": "Drink mixes", "404": "Juice cartons and fruit punch",
+    "405": "Juice boxes", "406": "Fruit nectar", "407": "Soda", "408": "Shelf-stable soy and rice milk",
+    "410": "Tea bags", "411": "Instant tea", "412": "Loose leaf tea", "413": "Bottled water", "415": "Bagged salad",
+    "437": "Almonds in the shell", "438": "Almonds", "439": "Cashews", "440": "Macadamia nuts", "441": "Peanuts in the shell",
+    "442": "Peanuts", "443": "Pecans in the shell", "444": "Pecans", "445": "Pistachios", "446": "Walnuts",
+    "449": "Bagels", "450": "Frozen bagels", "451": "Homemade muffins", "452": "Muffins", "453": "Muffin mix",
+    "455": "Orange juice", "456": "Frozen orange juice concentrate", "457": "Fresh-squeezed orange juice",
+    "458": "Roasted red peppers", "459": "Whole wheat flour", "460": "Homemade whole wheat bread", "461": "Whole wheat bread",
+    "462": "Red wine", "463": "White wine", "464": "Stuffing mix", "468": "Salt", "469": "Black pepper",
+    "470": "Cracked black pepper", "471": "Cajun seasoning", "472": "Cinnamon", "473": "Cumin", "474": "Garlic powder",
+    "475": "Onion powder", "476": "Nutmeg", "477": "Nacho cheese", "484": "Homemade broth", "485": "Beef broth",
+    "486": "Chicken broth", "487": "Vegetable broth", "488": "Stabilized peanut butter", "489": "Natural peanut butter",
+    "492": "Jicama", "498": "Boiled peanuts", "508": "Dried basil", "509": "Basil", "514": "Deli turkey",
+    "515": "Deli ham", "516": "Salami", "517": "Deli chicken", "518": "Canadian bacon (whole)", "519": "Canadian bacon",
+    "526": "Reused frying oil", "530": "Vanilla extract", "533": "Maple syrup", "534": "Maple syrup (plastic bottle)",
+    "536": "Fresh lemon juice", "537": "Fresh apple juice", "538": "Fresh carrot juice", "539": "Liquor",
+    "540": "Cream liqueur", "541": "Ground coffee", "542": "French macarons", "543": "Lactose-free milk",
+    "544": "String cheese", "545": "Vegan cheese", "546": "Quark", "547": "Whole zucchini", "548": "Hot peppers",
+    "551": "Puff pastry", "552": "Refrigerated biscuits", "553": "Corn tortillas", "554": "Refrigerated pie crust",
+    "558": "Canned nutrition shakes", "561": "Yeast", "562": "Homemade applesauce", "563": "Meat pâté",
+    "564": "Chicken liver pâté", "565": "Canned cranberry sauce", "566": "Homemade cranberry sauce",
+    "567": "Shelf-stable vegetable juice", "568": "Refrigerated vegetable juice", "569": "Homemade vegetable juice",
+    "570": "Marinated vegetables in oil", "571": "Frozen pizza", "572": "Fresh salsa", "574": "Homemade bread",
+    "575": "Amaranth", "576": "Amaranth flour", "577": "Barley", "578": "Barley flour", "579": "Buckwheat",
+    "580": "Buckwheat flour", "581": "Farro", "582": "Farro flour", "583": "Millet", "584": "Millet flour",
+    "585": "Oats", "586": "Oat flour", "587": "Rye berries", "588": "Rye flour", "589": "Sorghum", "590": "Sorghum flour",
+    "591": "Spelt", "592": "Spelt flour", "593": "Teff", "594": "Teff flour", "595": "Rabbit", "596": "Spaghetti squash",
+    "597": "Cut spaghetti squash", "599": "Tomato sauce", "601": "Canned coconut cream", "602": "Canned coconut milk",
+    "603": "Coleslaw", "604": "Pumpkin seeds", "605": "Pumpkin seeds in the shell", "606": "Roasted pumpkin seeds",
+    "607": "Roasted pumpkin seeds in the shell", "608": "Sunflower seeds", "609": "Roasted sunflower seeds",
+    "610": "Salted sunflower seeds in the shell", "611": "Parsley", "614": "Capers", "615": "Nutella (hazelnut spread)",
+    "616": "Roasted nuts", "617": "Tuna pouches", "618": "Canned tuna", "619": "Canned seafood", "620": "Pimento cheese",
+    "621": "Bison", "622": "Ground bison", "623": "Creamy salad dressing", "624": "Homemade vinaigrette",
+    "625": "Vinaigrette", "626": "Dry salad dressing mix", "627": "Grits", "628": "Cheese curds",
+    "629": "Homemade vegetable soup", "630": "Fresh chorizo", "631": "Uncooked smoked chorizo", "632": "Cooked chorizo",
+    "633": "Pickled beets", "634": "Cinnamon rolls (tube)", "635": "Cinnamon rolls", "638": "Bratwurst",
+    "639": "Smoked bratwurst", "640": "Edamame", "641": "Frozen edamame", "642": "Roasted edamame",
+    "643": "Breadcrumbs", "644": "Shelf-stable milk", "645": "Homemade salsa", "646": "Home-canned salsa",
+    "647": "Home-canned tomato sauce", "648": "Home-canned barbecue sauce", "651": "Bottled nutrition shakes",
+    "652": "Instant breakfast drinks", "655": "Chopped pecans", "656": "Polenta", "657": "Frozen polenta",
+    "658": "Granola bars", "659": "Ultra-pasteurized milk", "661": "Celery root", "662": "Apple cider",
+    "663": "Yuzu juice", "664": "Yuzu", "666": "Kugel", "667": "Homemade kugel", "668": "Avocado oil",
+    "670": "Aioli", "671": "Homemade salad dressing", "672": "Bouillon base", "673": "Anchovies",
+    "676": "Uncured cooked ham", "677": "Uncured fresh ham", "679": "Mung bean sprouts", "680": "Dried mung beans",
+    "681": "Vacuum-sealed mung beans", "683": "Uncured bacon", "684": "Dry mustard", "426": "Cooked quinoa",
+    "425": "Quinoa", "430": "Powdered coffee creamer", "431": "Turkey bacon", "432": "Canned fruit cocktail",
+    "429": "Coconut milk", "421": "Soy milk", "427": "Almond milk", "428": "Rice milk", "422": "Sweet potatoes",
+    "417": "Tuna salad", "418": "Chicken salad", "419": "Ham salad", "420": "Pasta salad", "190": "Egg salad",
+    "191": "Potato salad", "416": "Tahini", "493": "Kimchi", "497": "Honeydew melon", "496": "Cantaloupe",
+    "495": "Watermelon", "481": "Strawberries", "482": "Raspberries", "483": "Fresh cherries", "480": "Dragon fruit",
+    "506": "Cilantro", "649": "Ghee", "490": "Ricotta", "465": "Powdered milk", "203": "Fruitcake", "202": "Donuts",
+    "198": "Cheesecake", "211": "Quiche", "180": "Guacamole"
+  },
+
+  "slugs": {
+    "4": "grated-parmesan", "12": "homemade-whipped-cream", "30": "canned-whipped-cream", "31": "aerosol-whipped-topping",
+    "32": "cool-whip", "77": "organ-meats", "146": "salmon", "166": "air-packed-smoked-salmon", "225": "jell-o",
+    "534": "maple-syrup-plastic-bottle", "615": "nutella", "149": "imitation-crab", "188": "pate",
+    "564": "chicken-liver-pate", "563": "meat-pate", "539": "liquor", "136": "fried-chicken"
+  },
+
+  "aliases": {
+    "liquor": ["vodka", "tequila", "whiskey", "rum", "gin"],
+    "salmon": ["tuna steaks", "mackerel", "catfish"],
+    "pizza": ["leftover pizza"],
+    "cooked-chicken": ["leftover chicken"],
+    "deli-meat": ["lunch meat", "cold cuts"],
+    "bread": ["sandwich bread", "rolls", "buns"],
+    "steak": ["raw steak"],
+    "mayonnaise": ["mayo"]
+  },
+
+  "pairs": [
+    { "id": 178, "alt": 338, "labels": ["Cooked", "Dry / uncooked"] },
+    { "id": 177, "alt": 335, "labels": ["Cooked", "Dry"] },
+    { "id": 426, "alt": 425, "labels": ["Cooked", "Uncooked"] }
+  ],
+
+  "patches": {
+    "27": {
+      "_why": "FoodKeeper lists milk's fridge time only as the package use-by date. FoodSafety.gov's cold food storage chart (USDA/HHS) gives 1 week.",
+      "states": [
+        { "key": "default", "label": null, "pantry": null, "fridge": { "min": 1, "max": 1, "unit": "weeks" }, "freezer": { "min": 3, "max": 3, "unit": "months" } }
+      ],
+      "notes": { "fridge": "per FoodSafety.gov chart; or the use-by date" },
+      "extraSource": { "name": "FoodSafety.gov Cold Food Storage Chart", "url": "https://www.foodsafety.gov/food-safety-charts/cold-food-storage-charts" }
+    }
+  },
+
+  "derived": [
+    { "slug": "mashed-potatoes", "name": "Mashed potatoes", "from": 174, "category": "leftovers-deli",
+      "note": "FoodKeeper lists mashed potatoes under leftovers without meat." }
+  ],
+
+  "custom": [
+    { "slug": "breast-milk", "name": "Breast milk", "category": "baby-food", "kind": "baby-milk", "perishable": true,
+      "source": { "name": "CDC: Proper Storage and Preparation of Breast Milk", "url": "https://www.cdc.gov/breastfeeding-special-circumstances/hcp/storage-preparation/index.html" },
+      "states": [
+        { "key": "fresh", "label": "Freshly expressed",
+          "pantry": { "min": 4, "max": 4, "unit": "hours" }, "fridge": { "min": 4, "max": 4, "unit": "days" }, "freezer": { "min": 6, "max": 12, "unit": "months" } },
+        { "key": "thawed", "label": "Thawed",
+          "pantry": { "min": 1, "max": 2, "unit": "hours" }, "fridge": { "min": 1, "max": 1, "unit": "days" }, "freezer": { "text": "Do not refreeze" } }
+      ],
+      "notes": { "pantry": "77°F (25°C) or colder", "fridge": "at 40°F (4°C)", "freezer": "6 months best, 12 acceptable" } }
+  ],
+
+  "content": {
+    "cooked-rice": {
+      "portion": "1 cup cooked (158 g)",
+      "notes": {
+        "cooked": { "pantry": "1 hour if above 90°F", "fridge": "airtight, at or below 40°F", "freezer": "safe indefinitely; quality drops" },
+        "dry": { "pantry": "white rice, sealed; brown rice 1 year", "fridge": "keep dry rice sealed instead", "freezer": "optional; stops pantry pests" }
+      },
+      "quote": "Cool it within an hour of cooking and reheat to 165°F (74°C) before eating.",
+      "methods": [
+        { "method": "Room temperature", "duration": "2 hours", "temp": "68–72°F", "container": "Any", "note": "Discard after 2 h (1 h above 90°F)" },
+        { "method": "Refrigerator", "duration": "4–6 days", "temp": "≤ 40°F / 4°C", "container": "Airtight, shallow", "note": "Cool within 1 hour of cooking" },
+        { "method": "Freezer", "duration": "6 months", "temp": "0°F / -18°C", "container": "Freezer bag, flat", "note": "Safe longer; texture declines" },
+        { "method": "Reheated once", "duration": "Eat same day", "temp": "165°F / 74°C", "container": "Covered", "note": "Do not reheat a second time" },
+        { "method": "Dry, uncooked white", "duration": "2 years", "temp": "Pantry", "container": "Sealed", "note": "Brown rice: 1 year" }
+      ],
+      "signs": [
+        { "title": "Smell", "text": "Sour or musty instead of neutral." },
+        { "title": "Texture", "text": "Slimy, sticky film or unusually hard, dried grains." },
+        { "title": "Colour", "text": "Yellow, grey or any green/black spots." },
+        { "title": "Mould", "text": "Any fuzzy growth — discard the whole container." }
+      ],
+      "freezeSteps": [
+        "Cool the rice quickly — spread it on a tray so it drops below 40°F within an hour.",
+        "Portion into freezer bags, press flat and squeeze the air out; label with the date.",
+        "Reheat from frozen with a splash of water, covered, until steaming (165°F)."
+      ],
+      "leftOut": "Rice left at room temperature for more than 2 hours (1 hour above 90°F) should be thrown away. Bacillus cereus spores survive cooking and produce heat-stable toxins; reheating does not make it safe.",
+      "dates": {
+        "unopened": { "title": "Dry, unopened", "text": "FoodKeeper gives dry white rice 2 years in the pantry and brown rice 1 year — the oils in brown rice go rancid. Keep it sealed, cool and dry." },
+        "opened": { "title": "Cooked", "text": "There is no printed date; the clock starts when it cools. Count 4–6 days from the day you cooked it, not from the day you bought the rice." }
+      },
+      "store": [
+        "Refrigerate within 1 hour in a shallow, airtight container.",
+        "Keep the fridge at or below 40°F (4°C); the door shelf is warmest.",
+        "Reheat only the portion you will eat; do not reheat more than once."
+      ],
+      "similar": ["cooked-pasta", "cooked-quinoa", "mashed-potatoes", "leftovers-without-meat", "soup", "casseroles", "pasta-salad", "potato-salad"],
+      "faq": [
+        ["How long can cooked rice sit out?", "No more than 2 hours at room temperature, or 1 hour when it is above 90°F. After that, discard it."],
+        ["Is week-old rice safe?", "No. The USDA window is 4–6 days refrigerated. At 7 days, throw it away even if it looks fine."],
+        ["Can I reheat rice twice?", "Reheat only once, to 165°F, and only the portion you will eat."],
+        ["Does brown rice last as long as white?", "Cooked, both keep 4–6 days. Dry brown rice goes rancid in about a year; dry white rice keeps about 2 years."],
+        ["Why is leftover rice risky?", "Bacillus cereus spores survive cooking and multiply at room temperature, producing toxins that reheating does not destroy."],
+        ["How do I cool rice fast?", "Spread it on a sheet pan or divide into shallow containers so it drops below 40°F within an hour."]
+      ]
+    },
+    "eggs": {
+      "leftOut": "Refrigerated eggs left out more than 2 hours should be discarded. A cold egg left out can sweat, which lets bacteria move through the shell. In the US, eggs are washed, so they must stay refrigerated.",
+      "faq": [
+        ["Do eggs go bad in the fridge?", "Yes, slowly. In-shell eggs keep 3–5 weeks after purchase at 40°F or below. The sell-by date may pass during that time."],
+        ["Does the float test work?", "It shows age, not safety. An old egg floats because its air cell grows. Crack it into a bowl and check the smell."],
+        ["Can you freeze eggs in the shell?", "No. The contents expand and crack the shell. Beat them first, then freeze for up to 12 months."],
+        ["How long do hard-boiled eggs last?", "1 week in the fridge, peeled or unpeeled."]
+      ]
+    },
+    "salmon": {
+      "quote": "FoodKeeper groups salmon with other fatty fish, such as tuna, mackerel and catfish."
+    },
+    "liquor": {
+      "quote": "This covers unflavoured spirits such as vodka, tequila, gin, rum and whiskey."
+    },
+    "mashed-potatoes": {
+      "quote": "FoodKeeper counts mashed potatoes as leftovers without meat. Homemade mash with cream or butter follows the same 3–4 day rule."
+    }
+  },
+
+  "priority": [
+    "cooked-rice", "raw-chicken", "cooked-chicken", "ground-beef", "eggs", "hard-boiled-eggs", "milk", "hard-cheese",
+    "shredded-cheese", "cream-cheese", "cottage-cheese", "butter", "yogurt", "bread", "bacon", "deli-meat",
+    "rotisserie-chicken", "salmon", "shrimp", "steak", "pork-chops", "raw-sausage", "cooked-pasta", "pizza", "soup",
+    "chicken-broth", "mashed-potatoes", "potatoes", "watermelon", "avocado", "bananas", "strawberries", "grapes",
+    "apples", "carrots", "broccoli", "lettuce", "tomatoes", "mushrooms", "cilantro", "fresh-salsa", "jarred-salsa",
+    "mayonnaise", "sour-cream", "hummus", "honey", "peanut-butter", "ground-coffee", "coffee-beans", "red-wine",
+    "white-wine", "liquor", "liquid-baby-formula", "prepared-baby-formula", "breast-milk", "heavy-cream", "half-half",
+    "tofu", "guacamole", "hot-dogs", "ham-salad", "chicken-salad", "tuna-salad", "egg-salad", "potato-salad",
+    "pasta-salad", "coleslaw", "spinach", "bagged-salad", "onions", "garlic", "bell-peppers", "cucumbers", "celery",
+    "corn-cob", "sweet-potatoes", "citrus-fruit", "blueberries", "raspberries", "fresh-cherries", "pineapple",
+    "cantaloupe", "melon", "orange-juice", "ketchup", "mustard", "soy-sauce", "jam-jelly", "maple-syrup",
+    "olive-oil", "flour", "sugar", "rice", "brown-rice", "dry-pasta", "oatmeal", "cereal", "flour-tortillas", "bagels",
+    "muffins", "cake", "cheesecake", "pumpkin-pie", "fruit-pie", "ice-cream", "frozen-pizza", "frozen-vegetables"
+  ]
+}

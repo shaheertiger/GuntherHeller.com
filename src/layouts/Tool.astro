@@ -1,0 +1,48 @@
+---
+import Base from "./Base.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+import Faq from "../components/Faq.astro";
+import AdSlot from "../components/AdSlot.astro";
+import TrustBlock from "../components/TrustBlock.astro";
+import { ORG, breadcrumbLd, faqLd } from "../lib/schema";
+import { abs } from "../lib/site";
+import { TOOLS } from "../lib/tools";
+interface Props { slug: string; title: string; description: string; h1: string; lead: string; faq: [string, string][] }
+const { slug, title, description, h1, lead, faq } = Astro.props;
+const path = `/tools/${slug}/`;
+const crumbs = [{ name: "Home", href: "/" }, { name: "Tools", href: "/tools/" }, { name: h1 }];
+const ld = { "@context": "https://schema.org", "@graph": [ORG, { "@type": "WebApplication", name: h1, url: abs(path), applicationCategory: "UtilitiesApplication", operatingSystem: "Any", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, description }, breadcrumbLd(crumbs, path), faqLd(faq)] };
+---
+<Base title={title} description={description} path={path} jsonld={ld}>
+  <div class="container-site pt-4 md:pt-6">
+    <Breadcrumb items={crumbs} />
+    <div class="grid lg:grid-cols-[minmax(0,1fr)_300px] gap-10 mt-5 items-start">
+      <div class="min-w-0 max-w-[820px] tool-page">
+        <div class="eyebrow eyebrow-rule">Calculator</div>
+        <h1 class="h1-food mt-3.5">{h1}</h1>
+        <p class="lead mt-3">{lead}</p>
+        <div class="border border-line rounded-[10px] mt-8 overflow-hidden">
+          <div class="p-5 md:p-6 grid gap-4"><slot name="form" /></div>
+          <div class="border-t border-line bg-panel p-5 md:p-6 min-h-[120px]" aria-live="polite" data-out><slot name="empty" /></div>
+        </div>
+        <div class="tool-prose"><slot /></div>
+        <section class="mt-12"><h2 class="h2-food">FAQ</h2><Faq items={faq} /></section>
+        <p class="mt-8 text-sm">More tools: {TOOLS.filter((t) => t.slug !== slug).map((t, i) => <>{i > 0 && " · "}<a class="link" href={`/tools/${t.slug}/`}>{t.name}</a></>)}</p>
+        <TrustBlock path={path} />
+      </div>
+      <aside class="hidden lg:block sticky top-[90px]"><AdSlot w={300} h={250} id="tool-rail" /></aside>
+    </div>
+  </div>
+</Base>
+<style is:global>
+  .tool-page label { font-size: 14px; font-weight: 500; display: block; margin-bottom: 6px; }
+  .tool-page input, .tool-page select { font: inherit; font-size: 16px; height: 44px; width: 100%; border: 1px solid var(--color-line); border-radius: 8px; padding: 0 12px; background: #fff; color: var(--color-ink); }
+  .tool-page input[type="checkbox"] { width: 18px; height: 18px; display: inline; vertical-align: middle; margin-right: 8px; }
+  .tool-page input:focus, .tool-page select:focus { outline: none; border-color: var(--color-primary-soft); }
+  .tool-prose h2 { font-size: 30px; letter-spacing: -0.035em; margin-top: 48px; }
+  .tool-prose p, .tool-prose ul, .tool-prose ol { margin-top: 14px; }
+  .tool-prose ul, .tool-prose ol { padding-left: 20px; display: grid; gap: 6px; }
+  .tool-prose a { color: var(--color-primary); }
+  .big-out { font-size: 34px; font-weight: 650; letter-spacing: -0.03em; line-height: 1.1; }
+  @media (max-width: 720px) { .tool-prose h2 { font-size: 22px; } .big-out { font-size: 26px; } }
+</style>

@@ -1,0 +1,25 @@
+# guntherheller.com
+# Search and AI answer engines are explicitly welcome. A crawler obeys only the most
+# specific group that names it, so the named group repeats the shared rules.
+User-agent: *
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: Claude-SearchBot
+User-agent: PerplexityBot
+User-agent: Applebot
+User-agent: bingbot
+User-agent: Google-Extended
+Allow: /
+Disallow: /api/
+Disallow: /search/
+Disallow: /search?
+Disallow: /*?utm_
+Disallow: /*&utm_
+
+# Backlink crawlers that only cost bandwidth.
+User-agent: AhrefsBot
+User-agent: DataForSeoBot
+User-agent: SERankingBacklinksBot
+Disallow: /
+
+Sitemap: https://guntherheller.com/sitemap.xml

@@ -1,0 +1,14 @@
+---
+import { type Food, cellsFor } from "../lib/data";
+interface Props { food: Food }
+const { food: f } = Astro.props;
+const c = cellsFor(f, f.states[0], 0);
+---
+<div class="border border-line rounded-[10px] p-4">
+  <div class="eyebrow">{f.name}{f.states[0].label && ` · ${f.states[0].label.toLowerCase()}`}</div>
+  <dl class="grid gap-2 mt-2.5 text-sm m-0">
+    <div class="flex justify-between gap-3"><dt class="text-muted">Counter</dt><dd class="m-0 font-medium text-right">{c.pantry.value}</dd></div>
+    <div class="flex justify-between gap-3"><dt class="text-muted">Fridge</dt><dd class="m-0 font-medium text-right">{c.fridge.value}</dd></div>
+    <div class="flex justify-between gap-3"><dt class="text-muted">Freezer</dt><dd class="m-0 font-medium text-right">{c.freezer.value}</dd></div>
+  </dl>
+</div>

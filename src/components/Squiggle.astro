@@ -1,0 +1,5 @@
+---
+interface Props { center?: boolean }
+const { center = false } = Astro.props;
+---
+<svg class:list={["block w-16 h-2.5 mt-[18px] text-squiggle", center && "mx-auto"]} viewBox="0 0 64 10" aria-hidden="true"><path d="M1 7 C 12 1, 22 1, 32 6 S 52 11, 63 3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>

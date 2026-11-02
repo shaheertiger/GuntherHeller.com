@@ -1,0 +1,52 @@
+---
+import Tool from "../../layouts/Tool.astro";
+import FoodPicker from "../../components/FoodPicker.astro";
+const faq: [string, string][] = [
+  ["What is the 2-hour rule?", "Perishable food should not sit between 40°F and 140°F for more than 2 hours, or 1 hour when it is above 90°F (32°C)."],
+  ["Does it matter if the food was cooked?", "Cooked food is still perishable. Cooked rice, meat, pasta and sauces all follow the 2-hour rule."],
+  ["Is it safe if I reheat it?", "No. Some bacteria produce toxins that heat does not destroy. Food left out too long should be thrown away."],
+  ["What foods are safe to leave out?", "Shelf-stable foods: bread, whole fruit, most condiments before opening, dry goods. Check each food's page."],
+];
+---
+<Tool slug="left-out-checker" title="Left Out Overnight Checker: Is Your Food Still Safe? (2-Hour Rule)" h1="Left-out checker"
+  description="Was it left out too long? Enter the food, how many hours and whether it was hot, and get a keep-or-discard answer based on the USDA 2-hour rule."
+  lead="Enter the food and how long it sat out. We apply USDA's 2-hour rule (1 hour above 90°F) to that specific food." faq={faq}>
+  <Fragment slot="form">
+    <FoodPicker label="Food" />
+    <div class="grid sm:grid-cols-2 gap-4">
+      <div><label for="h">Hours at room temperature</label><input id="h" type="number" min="0" step="0.5" value="8" inputmode="decimal" /></div>
+      <div class="self-end pb-2.5"><label class="!inline-flex items-center !mb-0"><input id="hot" type="checkbox" />Above 90°F (32°C)</label></div>
+    </div>
+  </Fragment>
+  <p slot="empty" class="text-muted text-[19px]">Keep or discard appears here.</p>
+  <h2>Why 2 hours?</h2>
+  <p>Bacteria such as <em>Salmonella</em>, <em>Staphylococcus aureus</em> and <em>Bacillus cereus</em> double quickly between 40°F and 140°F (4–60°C) — FSIS calls this the danger zone. Two hours is the limit before numbers or toxins can reach unsafe levels. In hot weather, the limit is one hour.</p>
+  <p>See every food on one page: <a href="/left-out-overnight/">food left out overnight, A–Z</a>.</p>
+</Tool>
+<script>
+  import { picker, foodHref, esc } from "../../scripts/foods";
+  const food = document.querySelector<HTMLInputElement>("#food")!;
+  const h = document.querySelector<HTMLInputElement>("#h")!;
+  const hot = document.querySelector<HTMLInputElement>("#hot")!;
+  const out = document.querySelector<HTMLElement>("[data-out]")!;
+  const resolve = await picker(food);
+  const run = () => {
+    const r = resolve();
+    if (!r) return;
+    const hours = Number(h.value) || 0;
+    const limit = hot.checked ? 1 : 2;
+    const name = esc(r.n.toLowerCase());
+    let pill: string, text: string;
+    if (r.p) {
+      const bad = hours > limit;
+      pill = bad ? `<span class="pill pill-no">Discard</span>` : `<span class="pill pill-yes">Refrigerate now</span>`;
+      text = bad ? `${hours} hours is over the ${limit}-hour limit for ${name}. Throw it out; reheating will not make it safe.` : `${name} is within the ${limit}-hour limit. Get it into the fridge now; it then keeps ${esc(r.f.toLowerCase())}.`;
+    } else {
+      pill = `<span class="pill pill-yes">Usually fine</span>`;
+      text = `${name} is not a high-risk perishable food. On the counter: ${esc(r.c.toLowerCase())}. Check it looks and smells normal.`;
+    }
+    out.innerHTML = `<div class="flex flex-wrap gap-3 items-start">${pill}<p class="text-base">${text.charAt(0).toUpperCase() + text.slice(1)}</p></div>
+      <p class="mt-3 text-sm"><a class="link" href="${r.v[1] ? `/${r.s}-left-out-overnight/` : foodHref(r)}">More on ${name} →</a></p>`;
+  };
+  food.addEventListener("change", run); food.addEventListener("input", run); h.addEventListener("input", run); hot.addEventListener("change", run);
+</script>

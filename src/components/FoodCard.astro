@@ -1,0 +1,11 @@
+---
+import { type Food, url, primaryFridge } from "../lib/data";
+interface Props { food: Food }
+const { food: f } = Astro.props;
+const v = primaryFridge(f);
+const where = f.states[0].fridge ? "in the fridge" : f.states[0].pantry ? "in the pantry" : "";
+---
+<a href={url.food(f)} class="block p-3 md:p-3.5 border border-line rounded-[10px] min-h-11 hover:border-[#c9c9cf]">
+  <div class="font-medium text-[15px] leading-snug">{f.name}</div>
+  <div class="text-[13px] text-muted mt-0.5">{v} {where}</div>
+</a>

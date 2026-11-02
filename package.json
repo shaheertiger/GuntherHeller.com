@@ -1,0 +1,29 @@
+{
+  "name": "guntherheller",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=20.3"
+  },
+  "scripts": {
+    "data": "node scripts/import-foodkeeper.mjs",
+    "dev": "astro dev",
+    "build": "astro build && node scripts/check-build.mjs",
+    "preview": "astro preview",
+    "check:html": "node scripts/check-build.mjs",
+    "disavow": "node scripts/build-disavow.mjs",
+    "og": "node scripts/make-og.mjs"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "4.3.3",
+    "astro": "7.3.8",
+    "tailwindcss": "4.3.3"
+  },
+  "devDependencies": {
+    "satori": "0.62.0",
+    "@resvg/resvg-js": "2.6.2",
+    "@fontsource/dm-sans": "5.2.8",
+    "@fontsource-variable/dm-sans": "5.2.8"
+  }
+}

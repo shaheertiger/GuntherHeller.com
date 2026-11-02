@@ -1,0 +1,9 @@
+---
+import HubPage from "../../../components/HubPage.astro";
+import { CATEGORIES, type Category } from "../../../lib/data";
+export function getStaticPaths() {
+  return CATEGORIES.flatMap((cat) => cat.subcategories.map((sub) => ({ params: { category: cat.slug, sub: sub.slug }, props: { cat, sub } })));
+}
+const { cat, sub } = Astro.props as { cat: Category; sub: Category["subcategories"][number] };
+---
+<HubPage cat={cat} sub={sub} />

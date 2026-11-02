@@ -1,0 +1,13 @@
+---
+import Prose from "../layouts/Prose.astro";
+import { SITE } from "../lib/site";
+---
+<Prose title="Terms of Service | Gunther Heller" h1="Terms of service" path="/terms/" description="Terms for using Gunther Heller's food storage guidance.">
+  <p>Last updated {SITE.verifiedLabel}.</p>
+  <h2>General guidance only</h2>
+  <p>Storage times on this site are general guidance based on public food-safety data. They are not medical advice. When in doubt, throw it out; if food smells, looks or feels wrong, do not eat it.</p>
+  <h2>Using our content</h2>
+  <p>The underlying USDA data is public domain. Our page text, layouts and compilations are ours: link to a page rather than copying it.</p>
+  <h2>Contact</h2>
+  <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+</Prose>

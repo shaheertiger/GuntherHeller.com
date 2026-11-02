@@ -1,0 +1,6 @@
+---
+/** Reserved ad space. Fixed dimensions so a late-loading ad never shifts layout. */
+interface Props { w: number; h: number; class?: string; id?: string }
+const { w, h, class: cls = "", id } = Astro.props;
+---
+<aside class:list={["ad-slot", cls]} style={`width:${w}px;height:${h}px`} aria-label="Advertisement" data-ad-slot={id ?? `${w}x${h}`}>Advertisement · {w}×{h}</aside>

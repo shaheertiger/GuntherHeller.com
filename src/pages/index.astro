@@ -1,0 +1,251 @@
+---
+import Base from "../layouts/Base.astro";
+import Squiggle from "../components/Squiggle.astro";
+import CatIcon from "../components/CatIcon.astro";
+import AdSlot from "../components/AdSlot.astro";
+import Faq from "../components/Faq.astro";
+import { CATEGORIES, FOODS, getFood, url, type Food } from "../lib/data";
+import { ORG, faqLd } from "../lib/schema";
+import { SITE } from "../lib/site";
+
+const N = FOODS.length;
+const title = "How Long Does Food Last? Fridge, Freezer & Pantry Times | Gunther Heller";
+const description = `Free storage times for ${N} foods: counter, fridge and freezer, opened and unopened, from USDA FoodKeeper. Check how long food lasts in seconds.`;
+
+const popularSlugs = ["eggs", "cooked-rice", "raw-chicken", "milk", "hard-cheese", "bread", "ground-beef", "pizza", "avocado", "bananas", "lettuce", "tomatoes", "fresh-salsa", "butter", "cooked-pasta", "shrimp", "bacon", "soup", "red-wine", "cooked-chicken"];
+const popular = popularSlugs.map(getFood).filter((f): f is Food => !!f);
+const topCats = ["dairy-eggs", "meat", "poultry", "seafood", "leftovers-deli", "fruits", "vegetables", "grains-beans-pasta", "baked-goods", "condiments-sauces", "pantry-staples", "beverages"].map((s) => CATEGORIES.find((c) => c.slug === s)!);
+
+const I = {
+  three: "M4 5h16v14H4zM9.5 5v14M14.5 5v14",
+  shield: "M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4zM9 12l2 2 4-4",
+  open: "M7 11V7a5 5 0 019.9-1M5 11h14v10H5z",
+  clean: "M4 6h16M4 12h10M4 18h6",
+  nose: "M12 3a7 7 0 017 7c0 5-7 11-7 11S5 15 5 10a7 7 0 017-7z",
+  thermo: "M10 14V5a2 2 0 114 0v9a4 4 0 11-4 0z",
+  snow: "M12 2v20M4 7l16 10M20 7L4 17",
+  cal: "M4 6h16v14H4zM4 10h16M8 3v4M16 3v4",
+  link: "M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1",
+};
+const features = [
+  [I.three, "Three answers, one look", "Counter, fridge and freezer times side by side, so you never guess."],
+  [I.shield, "USDA-sourced", "Numbers come from USDA FoodKeeper, with a last-verified date on every page."],
+  [I.open, "Opened vs. unopened", "Shelf life changes the moment the seal breaks. We show both."],
+  [I.clean, "Answer first", "No pop-ups and no recipe-blog scrolling. The answer is at the top."],
+  [I.nose, "Signs it's gone bad", "Smell, texture and colour cues for each food so you can decide fast."],
+  [I.thermo, "Left-out rules", "The 2-hour / 1-hour rule applied to each food, with the exact cutoff."],
+  [I.snow, "Freezing guidance", "Whether it freezes well, how to wrap it, and how long quality holds."],
+  [I.cal, "Date labels decoded", "Best-by, use-by and sell-by explained, so a printed date never fools you."],
+  [I.link, "Similar foods", "Every page links to related foods, so you can check the whole fridge."],
+];
+const tools = [
+  ["Leftover calculator", "/tools/leftover-calculator/"], ["Freezer time calculator", "/tools/freezer-time-calculator/"],
+  ["Thaw time calculator", "/tools/thaw-time-calculator/"], ["Left-out overnight checker", "/tools/left-out-checker/"],
+  ["Best-by date decoder", "/tools/date-decoder/"], ["All storage tools", "/tools/"],
+  ["Can you freeze it?", "/can-you-freeze/"], ["Does it go bad?", "/does-it-go-bad/"], ["Food left out overnight", "/left-out-overnight/"],
+  ["All foods A–Z", "/foods/"], ["How we verify", "/methodology/"],
+];
+const faq: [string, string][] = [
+  ["Where do the storage times come from?", "The USDA FoodKeeper database and FSIS food-safety guidance. Each page shows its source and the date we last verified it."],
+  ["Is this food safety advice?", "It is general guidance based on public food-safety data. If food smells, looks or feels wrong, discard it regardless of the number on the page."],
+  ['What does "left out" mean?', "Time at room temperature (above 40°F / 4°C). Perishable food left out longer than 2 hours, or 1 hour above 90°F / 32°C, should be discarded."],
+  ["Do freezer times mean food becomes unsafe?", "No. Food kept frozen at 0°F / -18°C stays safe indefinitely. Freezer times are about quality: texture and taste decline after that point."],
+  ["Why do opened and unopened times differ so much?", 'Sealing keeps out oxygen and microbes. Once opened, most foods follow the shorter "opened" clock even if the printed date is months away.'],
+  ["What do best-by, use-by and sell-by actually mean?", "Best-by and sell-by describe quality and stock rotation, not safety. Use-by is the one federally required safety date, and only for infant formula."],
+  ["How often are the numbers updated?", 'We check every page against the current USDA FoodKeeper release and update the "last verified" date shown on it.'],
+  ["Can I use this data on my own site or app?", "The underlying USDA data is public domain. Our write-ups and tables are ours; link to the page rather than copying it."],
+  ["How do I report a wrong number?", 'Use the "Report a wrong number" link at the bottom of any food page. Corrections are checked against the source within a few days.'],
+];
+const ld = {
+  "@context": "https://schema.org",
+  "@graph": [ORG, { "@type": "WebSite", "@id": `${SITE.url}/#site`, name: SITE.name, url: `${SITE.url}/`, publisher: { "@id": ORG["@id"] }, inLanguage: "en" }, faqLd(faq)],
+};
+const tabs = [["fridge", "Fridge"], ["freezer", "Freezer"], ["counter", "Counter"]];
+---
+<Base title={title} description={description} path="/" jsonld={ld}>
+  <section class="pt-10 md:pt-14 pb-6 text-center" id="hero">
+    <div class="container-site">
+      <h1 class="max-w-[900px] mx-auto">How Long Does Food Last? Fridge, Freezer &amp; Pantry</h1>
+      <Squiggle center />
+      <p class="lead mt-[18px]">Free storage times for {N} foods — counter, fridge and freezer — sourced from USDA FoodKeeper.</p>
+
+      <div class="mt-10 text-left" data-widget>
+        <div class="flex items-center gap-0.5 mb-3" role="tablist" aria-label="Storage">
+          {tabs.map(([k, l], i) => (
+            <button type="button" role="tab" data-tab={k} aria-selected={i === 0 ? "true" : "false"} class="w-tab inline-flex items-center gap-1.5 text-[15px] font-medium px-3 py-2 rounded-lg">
+              <span class:list={["dot", k === "fridge" ? "bg-fridge" : k === "freezer" ? "bg-freezer" : "bg-counter"]}></span>{l}
+            </button>
+          ))}
+        </div>
+        <div class="border border-line rounded-[10px] bg-white grid md:grid-cols-2 relative overflow-hidden min-h-[310px]">
+          <form class="flex flex-col min-w-0" action="/search/" method="get" data-form>
+            <div class="h-[46px] px-5 border-b border-line flex items-center text-sm font-medium"><label for="w-q">Any food</label></div>
+            <div class="flex-1 px-7 py-6">
+              <textarea id="w-q" name="q" rows="5" maxlength="60" placeholder="Type a food… e.g. cooked rice, opened salsa, raw chicken" class="w-full h-full min-h-[150px] resize-none border-0 outline-none text-[19px] leading-normal bg-transparent placeholder:text-faint"></textarea>
+            </div>
+            <div class="flex items-center justify-between px-4 pb-4">
+              <span class="text-[13px] text-muted" data-counter>0 / 60</span>
+              <button type="submit" class="btn-primary !text-[15px] !font-[550] !rounded-[9px]" data-go disabled>Check</button>
+            </div>
+          </form>
+          <div class="flex flex-col min-w-0 border-t md:border-t-0 md:border-l border-line bg-panel">
+            <div class="h-[46px] px-5 border-b border-line flex items-center gap-2 text-sm font-medium"><span class="text-[10px] tracking-[.04em] text-muted">US</span> <span data-where>Fridge · 40°F</span></div>
+            <div class="flex-1 px-7 py-6" data-result aria-live="polite">
+              <div class="text-muted text-[19px]">Storage times</div>
+              <div class="flex flex-wrap gap-2 mt-2.5">
+                {popular.slice(0, 8).map((f) => <a href={url.food(f)} data-suggest={f.name} class="border border-line bg-white rounded-full text-[13px] px-2.5 py-1 text-muted hover:text-ink">{f.name.toLowerCase()}</a>)}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pt-24">
+    <div class="container-site">
+      <div class="grid lg:grid-cols-[240px_1fr] gap-12 mt-[18px]">
+        <div class="lg:sticky lg:top-[140px] self-start">
+          <div class="eyebrow eyebrow-rule">01 / Why Gunther Heller</div>
+          <h2 class="!text-[38px] mt-[18px]">Why Check Food Storage Here</h2>
+          <Squiggle />
+        </div>
+        <div class="grid md:grid-cols-2 gap-10">
+          {features.map(([icon, t, d]) => (
+            <div class="grid grid-cols-[64px_1fr] gap-5 items-start">
+              <div class="w-16 h-16 rounded-[14px] grid place-items-center bg-panel border border-line"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#18181b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d={icon} /></svg></div>
+              <div><h3>{t}</h3><p class="text-[15px] leading-[1.6] text-muted mt-1.5">{d}</p></div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="h-px bg-line mt-[72px]"></div>
+    </div>
+  </section>
+
+  <section class="pt-24">
+    <div class="container-site">
+      <div class="eyebrow eyebrow-rule">02 / Browse by category</div>
+      <div class="flex items-end justify-between gap-6 mt-[18px]"><h2>Every Food, Sorted</h2><div class="hidden md:block flex-1 max-w-[240px] h-px bg-line mb-3.5"></div></div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-9">
+        {topCats.map((c) => (
+          <a href={url.category(c.slug)} class="group">
+            <div class="paper aspect-[4/3] rounded-[10px] grid place-items-center"><CatIcon slug={c.slug} size={56} /></div>
+            <h3 class="mt-3.5 group-hover:text-primary">{c.name}</h3>
+            <p class="text-[15px] text-muted mt-0.5">{c.count} foods</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="container-site pt-24"><AdSlot w={970} h={250} class="hidden lg:grid" id="home-1" /><AdSlot w={300} h={250} class="lg:hidden" id="home-1m" /></div>
+
+  <section class="pt-24">
+    <div class="container-site">
+      <div class="eyebrow eyebrow-rule">03 / In practice</div>
+      <div class="flex items-end justify-between gap-6 mt-[18px]"><h2>Built for Real Kitchens</h2><div class="hidden md:block flex-1 max-w-[240px] h-px bg-line mb-3.5"></div></div>
+      <div class="grid md:grid-cols-6 gap-5 mt-9">
+        <div class="md:col-span-6 bg-panel rounded-[10px] p-[22px] grid md:grid-cols-2 gap-5">
+          <div class="self-center"><h3 class="!text-[26px]">Meal preppers</h3><p class="text-[15px] text-muted mt-1.5">Know exactly how many days your Sunday batch is safe to eat, and what to freeze on day three. <a class="link" href="/tools/leftover-calculator/">Leftover calculator →</a></p></div>
+          <div class="paper h-[250px] rounded-lg grid place-items-center"><CatIcon slug="leftovers-deli" size={72} /></div>
+        </div>
+        {[
+          ["Parents", "Formula, breast milk, purées and pouches, each with its own clock.", "/foods/baby-food/", "baby-food"],
+          ["Students", "Is that week-old takeout still fine? Get a yes or no in seconds.", "/how-long-does-leftovers-meat-last/", "leftovers-deli"],
+          ["Home cooks", "Raw, cooked, cured or frozen: how long each one keeps.", "/foods/meat/", "meat"],
+        ].map(([t, d, h, ic]) => (
+          <a href={h} class="md:col-span-2 group"><div class="paper aspect-[4/3] rounded-[10px] grid place-items-center"><CatIcon slug={ic} size={56} /></div><h3 class="mt-4 group-hover:text-primary">{t}</h3><p class="text-[15px] text-muted mt-1.5">{d}</p></a>
+        ))}
+        {[
+          ["Power cuts & coolers", "Food left out overnight? The 2-hour rule, food by food.", "/left-out-overnight/", "frozen-foods"],
+          ["Bulk buyers", "Big packs and what to freeze first so nothing goes to waste.", "/can-you-freeze/", "pantry-staples"],
+        ].map(([t, d, h, ic]) => (
+          <a href={h} class="md:col-span-3 group"><div class="paper aspect-[4/3] rounded-[10px] grid place-items-center"><CatIcon slug={ic} size={56} /></div><h3 class="mt-4 group-hover:text-primary">{t}</h3><p class="text-[15px] text-muted mt-1.5">{d}</p></a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="pt-24" id="tools">
+    <div class="container-site">
+      <h2>Explore Storage Tools</h2>
+      <div class="mt-[18px] flex flex-wrap gap-x-6 gap-y-1.5 text-[15px]">{tools.map(([l, h]) => <a href={h} class="py-1">{l}</a>)}</div>
+      <div class="h-px bg-line mt-10"></div>
+    </div>
+  </section>
+
+  <section class="pt-16">
+    <div class="container-site">
+      <h2>FAQ</h2>
+      <p class="text-muted mt-2.5 text-[15px]">Quick answers before you open the fridge</p>
+      <div class="mt-5"><Faq items={faq} /></div>
+      <p class="text-[13px] text-muted mt-[18px]">Got another question? Email <a class="link" href={`mailto:${SITE.email}`}>{SITE.email}</a> – a person replies within one business day.</p>
+    </div>
+  </section>
+
+  <section class="pt-14" id="popular">
+    <div class="container-site">
+      <div class="bg-panel rounded-[12px] px-6 py-12">
+        <h2 class="!text-[34px]">Most Popular Foods</h2>
+        <p class="lead !text-[15px] max-w-[520px] mt-2.5">The foods people look up most. Jump straight to the storage times.</p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 mt-9">
+          {popular.map((f) => <a href={url.food(f)} class="flex items-center gap-2 py-3 border-b border-line text-[15px]">{f.name}</a>)}
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .w-tab { color: var(--color-muted); }
+  .w-tab[aria-selected="true"] { color: var(--color-ink); background: var(--color-tab); }
+</style>
+
+<script>
+  import { loadFoods, search, foodHref, esc, type Row } from "../scripts/foods";
+  const root = document.querySelector<HTMLElement>("[data-widget]")!;
+  const q = root.querySelector<HTMLTextAreaElement>("#w-q")!;
+  const go = root.querySelector<HTMLButtonElement>("[data-go]")!;
+  const counter = root.querySelector("[data-counter]")!;
+  const out = root.querySelector<HTMLElement>("[data-result]")!;
+  const where = root.querySelector("[data-where]")!;
+  let tab = "fridge";
+  const WHERE: Record<string, string> = { fridge: "Fridge · 40°F", freezer: "Freezer · 0°F", counter: "Counter · 70°F" };
+  const KEY: Record<string, keyof Row> = { fridge: "f", freezer: "z", counter: "c" };
+
+  async function render() {
+    const v = q.value.trim();
+    counter.textContent = `${q.value.length} / 60`;
+    go.disabled = !v;
+    if (!v) return;
+    const rows = await loadFoods();
+    const hits = search(rows, v, 6);
+    if (!hits.length) {
+      out.innerHTML = `<div class="text-muted text-[19px]">No match for “${esc(v)}”. Try another word, or <a class="link" href="/foods/">browse all foods</a>.</div>`;
+      return;
+    }
+    const [r, ...more] = hits;
+    out.innerHTML = `
+      <div class="text-[34px] font-[650] tracking-[-0.03em] leading-[1.1]">${esc(String(r[KEY[tab]]))}</div>
+      <div class="text-[15px] text-muted mt-1">${esc(r.n.toLowerCase())}${r.sl ? ` (${esc(r.sl.toLowerCase())})` : ""} · ${tab === "counter" ? "on the counter" : `in the ${tab}`}</div>
+      <table class="w-full mt-[18px] text-[15px] border-collapse"><tbody>
+        <tr><td class="py-2 border-t border-line">On the counter</td><td class="py-2 border-t border-line text-right font-medium">${esc(r.c)}</td></tr>
+        <tr><td class="py-2 border-t border-line">In the fridge</td><td class="py-2 border-t border-line text-right font-medium">${esc(r.f)}</td></tr>
+        <tr><td class="py-2 border-t border-line">In the freezer</td><td class="py-2 border-t border-line text-right font-medium">${esc(r.z)}</td></tr>
+      </tbody></table>
+      <div class="mt-3.5 text-sm text-muted">Source: USDA FoodKeeper. <a class="link" href="${foodHref(r)}">Full guide →</a></div>
+      ${more.length ? `<div class="flex flex-wrap gap-2 mt-3">${more.map((m) => `<a href="${foodHref(m)}" class="border border-line bg-white rounded-full text-[13px] px-2.5 py-1 text-muted hover:text-ink">${esc(m.n.toLowerCase())}</a>`).join("")}</div>` : ""}`;
+  }
+  let t: number | undefined;
+  q.addEventListener("input", () => { clearTimeout(t); t = window.setTimeout(render, 120); counter.textContent = `${q.value.length} / 60`; go.disabled = !q.value.trim(); });
+  q.addEventListener("focus", () => loadFoods(), { once: true });
+  q.addEventListener("keydown", (e) => { if (e.key === "Enter") { e.preventDefault(); render(); } });
+  root.querySelector("form")!.addEventListener("submit", (e) => { e.preventDefault(); render(); });
+  root.querySelectorAll<HTMLButtonElement>("[data-tab]").forEach((b) => b.addEventListener("click", () => {
+    root.querySelectorAll("[data-tab]").forEach((x) => x.setAttribute("aria-selected", String(x === b)));
+    tab = b.dataset.tab!;
+    where.textContent = WHERE[tab];
+    render();
+  }));
+</script>

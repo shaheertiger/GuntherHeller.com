@@ -1,0 +1,172 @@
+---
+import Base from "../layouts/Base.astro";
+import Breadcrumb from "./Breadcrumb.astro";
+import AnswerCard from "./AnswerCard.astro";
+import MiniAnswer from "./MiniAnswer.astro";
+import Signs from "./Signs.astro";
+import FreezeBlock from "./FreezeBlock.astro";
+import LeftOutBlock from "./LeftOutBlock.astro";
+import FoodCard from "./FoodCard.astro";
+import Faq from "./Faq.astro";
+import AdSlot from "./AdSlot.astro";
+import TrustBlock from "./TrustBlock.astro";
+import { type Food, url, getCategory, similarFoods, lc, does, titleCase, cap1, hasFreezePage, hasLeftOutPage } from "../lib/data";
+import { foodTitle, foodDescription, quoteFor, methodsFor, datesFor, storeTipsFor, faqFor } from "../lib/content";
+import { foodGraph } from "../lib/schema";
+import { SITE } from "../lib/site";
+
+interface Props { food: Food }
+const { food: f } = Astro.props;
+const path = url.food(f);
+const cat = getCategory(f.category);
+const sub = f.subcategory ? cat.subcategories.find((s) => s.slug === f.subcategory) : null;
+const name = lc(f);
+const h1 = `How Long ${does(f)} ${titleCase(f.name)} Last?`;
+const title = foodTitle(f);
+const description = foodDescription(f);
+const crumbs = [
+  { name: "Home", href: "/" },
+  { name: cat.name, href: url.category(cat.slug) },
+  ...(sub ? [{ name: sub.name, href: url.sub(cat.slug, sub.slug) }] : []),
+  { name: f.name },
+];
+const faq = faqFor(f);
+const similar = similarFoods(f, 8);
+const dates = datesFor(f);
+const methods = methodsFor(f);
+const quote = quoteFor(f);
+const ld = foodGraph({ food: f, path, title, headline: h1, description, crumbs, faq });
+const sourceIsFk = f.source.name.startsWith("USDA");
+
+const toc = [
+  ["answer", "Quick answer"], ["methods", "Storage times by method"], ["bad", "Signs it has gone bad"], ["freeze", "Can you freeze it?"],
+  ["leftout", "Left out overnight"], ["dates", "Date labels"], ["store", "How to store it"], ["similar", "Similar foods"], ["faq", "FAQ"],
+];
+const related = [
+  hasFreezePage(f) && { href: url.freeze(f), label: `Can you freeze ${name}?` },
+  { href: url.bad(f), label: `${does(f)} ${name} go bad?` },
+  hasLeftOutPage(f) && { href: url.leftOut(f), label: `${cap1(name)} left out overnight` },
+  similar[0] && { href: url.food(similar[0]), label: `How long ${does(similar[0]).toLowerCase()} ${lc(similar[0])} last?` },
+].filter(Boolean) as { href: string; label: string }[];
+const freezeHub = hasFreezePage(f) ? { href: "/can-you-freeze/", label: "Can you freeze… hub" } : { href: "/does-it-go-bad/", label: "Does it go bad? hub" };
+const tools = [
+  { href: "/tools/leftover-calculator/", label: "Leftover calculator" },
+  { href: "/tools/freezer-time-calculator/", label: "Freezer time calculator" },
+  { href: "/tools/left-out-checker/", label: "Left-out checker" },
+];
+---
+<Base title={title} description={description} path={path} jsonld={ld} ogType="article">
+  <div class="container-site pt-4 md:pt-6">
+    <Breadcrumb items={crumbs} />
+
+    <div class="mt-3 md:mt-5 flex flex-wrap items-end justify-between gap-x-6 gap-y-2">
+      <div>
+        <h1 class="h1-food">{h1}</h1>
+        <p class="mt-1.5 md:mt-2 text-sm md:text-[17px] text-muted">Fridge, freezer, counter{f.states.length > 1 && ` · ${f.states.map((s) => s.label!.toLowerCase()).join(" vs ")}`} · last verified {SITE.verifiedLabel}</p>
+      </div>
+      <div class="hidden md:flex items-center gap-2 text-[13px] text-muted pb-1.5">
+        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2f8f5b" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+        Source: {sourceIsFk ? "USDA FoodKeeper" : f.source.name.split(":")[0]} · <a href="/methodology/" class="link">How we verify →</a>
+      </div>
+    </div>
+
+    <div class="grid lg:grid-cols-[200px_minmax(0,1fr)_300px] gap-10 mt-4 md:mt-8 items-start">
+      <aside class="hidden lg:block sticky top-[90px]" aria-label="On this page">
+        <div class="eyebrow">On this page</div>
+        <ul class="list-none mt-3 p-0 grid gap-0.5 text-sm">
+          {toc.map(([id, label], i) => (
+            <li><a href={`#${id}`} class:list={["block py-1.5 pl-3 border-l-2", i === 0 ? "border-primary font-medium" : "border-line text-muted"]}>{label}</a></li>
+          ))}
+        </ul>
+      </aside>
+
+      <article class="min-w-0">
+        <AnswerCard food={f} />
+        <p class="mt-4 md:mt-5 text-[17px] md:text-[19px] leading-[1.6]">{quote}</p>
+        {f.derivedNote && <p class="mt-2 text-sm text-muted">{f.derivedNote}</p>}
+
+        <nav aria-label="Sections" class="lg:hidden flex gap-2 overflow-x-auto -mx-4 px-4 mt-[18px] pb-1">
+          {[["methods", "By method"], ["bad", "Gone bad?"], ["freeze", "Freezing"], ["leftout", "Left out"], ["faq", "FAQ"]].map(([id, l]) => (
+            <a href={`#${id}`} class="whitespace-nowrap px-3 py-2 border border-line rounded-full text-[13px] font-medium min-h-9 inline-flex items-center">{l}</a>
+          ))}
+        </nav>
+
+        <section id="methods" class="mt-8 md:mt-14">
+          <h2 class="h2-food">{cap1(name)} storage times by method</h2>
+          <div class="table-wrap mt-[18px]">
+            <table class="data-table min-w-[640px]">
+              <thead><tr><th>Method</th><th>Duration</th><th>Temperature</th><th>Container</th><th>Notes</th></tr></thead>
+              <tbody>
+                {methods.map((m) => (
+                  <tr><td class="font-medium">{m.method}</td><td>{m.duration}</td><td class="text-muted">{m.temp}</td><td class="text-muted">{m.container}</td><td class="text-muted">{m.note}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <AdSlot w={300} h={250} class="lg:hidden mt-8" id="food-mobile-1" />
+
+        <section id="bad" class="mt-8 md:mt-14">
+          <h2 class="h2-food">Signs {name} {f.plural ? "have" : "has"} gone bad</h2>
+          <Signs food={f} />
+          <p class="mt-3 text-sm"><a href={url.bad(f)} class="link">{does(f)} {name} go bad? Full guide →</a></p>
+        </section>
+
+        <section id="freeze" class="mt-8 md:mt-14">
+          <h2 class="h2-food">Can you freeze {name}?</h2>
+          <FreezeBlock food={f} />
+          {hasFreezePage(f) && <p class="mt-3 text-sm"><a href={url.freeze(f)} class="link">How to freeze and thaw {name} →</a></p>}
+        </section>
+
+        <section id="leftout" class="mt-8 md:mt-14">
+          <h2 class="h2-food">{cap1(name)} left out overnight</h2>
+          <LeftOutBlock food={f} />
+          {hasLeftOutPage(f) && <p class="mt-3 text-sm"><a href={url.leftOut(f)} class="link">{cap1(name)} left out overnight: what to do →</a></p>}
+        </section>
+
+        <section id="dates" class="mt-8 md:mt-14">
+          <h2 class="h2-food">Best-by and use-by dates on {name}</h2>
+          <div class="grid sm:grid-cols-2 gap-4 mt-[18px]">
+            {[dates.unopened, dates.opened].map((d) => (
+              <div class="p-[18px] border border-line rounded-[10px]"><h3 class="!text-[17px] !tracking-normal font-[650]">{d.title}</h3><p class="mt-1.5 text-[15px] text-muted">{d.text}</p></div>
+            ))}
+          </div>
+        </section>
+
+        <section id="store" class="mt-8 md:mt-14">
+          <h2 class="h2-food">How to store {name}</h2>
+          <ul class="prose-list">{storeTipsFor(f).map((t) => <li>{t}</li>)}</ul>
+        </section>
+
+        <section id="similar" class="mt-8 md:mt-14">
+          <h2 class="h2-food">Similar foods</h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5 md:gap-3 mt-[18px]">
+            {similar.map((s) => <FoodCard food={s} />)}
+          </div>
+          <p class="mt-3.5 text-sm flex flex-wrap gap-x-2 gap-y-1">
+            <a href={sub ? url.sub(cat.slug, sub.slug) : url.category(cat.slug)} class="link">All {(sub ?? cat).name.toLowerCase()} →</a><span aria-hidden="true">·</span>
+            <a href={freezeHub.href} class="link">{freezeHub.label} →</a><span aria-hidden="true">·</span>
+            {tools.map((t, i) => <>{i > 0 && <span aria-hidden="true">·</span>}<a href={t.href} class="link">{t.label} →</a></>)}
+          </p>
+        </section>
+
+        <section id="faq" class="mt-8 md:mt-14">
+          <h2 class="h2-food">{cap1(name)} FAQ</h2>
+          <Faq items={faq} />
+        </section>
+
+        <TrustBlock path={path} sourceName={sourceIsFk ? "USDA FoodKeeper" : f.source.name} sourceUrl={f.source.url} extra={f.extraSource ? `and the ${f.extraSource.name}` : sourceIsFk ? "and FSIS guidance" : ""} />
+      </article>
+
+      <aside class="hidden lg:grid sticky top-[90px] gap-5" aria-label="Summary">
+        <MiniAnswer food={f} />
+        <AdSlot w={300} h={250} id="food-rail" />
+        <div class="border border-line rounded-[10px] p-4">
+          <div class="eyebrow">Related questions</div>
+          <ul class="list-none mt-2.5 p-0 grid gap-2 text-sm">{related.map((r) => <li><a href={r.href}>{r.label}</a></li>)}</ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</Base>

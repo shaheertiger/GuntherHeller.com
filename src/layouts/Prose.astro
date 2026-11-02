@@ -1,0 +1,28 @@
+---
+import Base from "./Base.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+import { ORG, breadcrumbLd } from "../lib/schema";
+import { abs, SITE } from "../lib/site";
+interface Props { title: string; h1: string; description: string; path: string; lead?: string; jsonld?: object | object[] }
+const { title, h1, description, path, lead } = Astro.props;
+const jsonld = Astro.props.jsonld ?? { "@context": "https://schema.org", "@graph": [ORG, { "@type": "WebPage", name: h1, url: abs(path), description, dateModified: SITE.verifiedISO }, breadcrumbLd([{ name: "Home", href: "/" }, { name: h1 }], path)] };
+---
+<Base title={title} description={description} path={path} jsonld={jsonld}>
+  <div class="container-site pt-6">
+    <Breadcrumb items={[{ name: "Home", href: "/" }, { name: h1 }]} />
+    <article class="max-w-[760px] mt-5 prose-page">
+      <h1 class="h1-food">{h1}</h1>
+      {lead && <p class="lead mt-3">{lead}</p>}
+      <slot />
+    </article>
+  </div>
+</Base>
+<style is:global>
+  .prose-page h2 { font-size: 30px; letter-spacing: -0.035em; margin-top: 48px; }
+  .prose-page h3 { margin-top: 28px; }
+  .prose-page p, .prose-page ul, .prose-page ol { margin-top: 14px; }
+  .prose-page ul, .prose-page ol { padding-left: 20px; display: grid; gap: 6px; }
+  .prose-page a { color: var(--color-primary); }
+  .prose-page a:hover { text-decoration: underline; }
+  @media (max-width: 720px) { .prose-page h2 { font-size: 22px; } }
+</style>

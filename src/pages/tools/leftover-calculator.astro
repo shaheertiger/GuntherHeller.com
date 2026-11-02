@@ -1,0 +1,48 @@
+---
+import Tool from "../../layouts/Tool.astro";
+import FoodPicker from "../../components/FoodPicker.astro";
+const faq: [string, string][] = [
+  ["When does the leftover clock start?", "When the food was cooked, or when a package was opened — not the day you bought the ingredients."],
+  ["How long are most leftovers good for?", "Most cooked leftovers keep 3–4 days at 40°F (4°C) or below. Cooked rice keeps 4–6 days; soups and stews 3–4 days."],
+  ["Does reheating reset the clock?", "No. Reheating does not extend fridge life. Reheat to 165°F (74°C) and only reheat what you will eat."],
+  ["Can I freeze leftovers on the last day?", "Yes. Freeze them any time within the fridge window; quality is better the sooner you freeze."],
+];
+---
+<Tool slug="leftover-calculator" title="Leftover Calculator: How Many Days Are Leftovers Good For?" h1="Leftover calculator"
+  description="Enter a food and the day you cooked or opened it to get the last safe day to eat it, using USDA FoodKeeper fridge times. Free, no sign-up."
+  lead="Pick the food and the day you cooked or opened it. We count the USDA FoodKeeper fridge window forward and give you the last safe day." faq={faq}>
+  <Fragment slot="form">
+    <FoodPicker filter="fridge" label="Food" />
+    <div><label for="day">Cooked or opened on</label><input id="day" type="date" /></div>
+  </Fragment>
+  <p slot="empty" class="text-muted text-[19px]">Your eat-by date appears here.</p>
+  <h2>How the calculator works</h2>
+  <p>We take the refrigerator time FoodKeeper lists for the food (for example, 4–6 days for cooked rice) and add it to the day you cooked or opened it. The <strong>safe target</strong> is the low end of the range; the high end is the outer limit if your fridge holds 40°F (4°C) or colder the whole time.</p>
+  <h2>The leftover rules that always apply</h2>
+  <ul>
+    <li>Refrigerate within 2 hours of cooking (1 hour above 90°F).</li>
+    <li>Use shallow containers so food cools quickly.</li>
+    <li>Reheat to 165°F (74°C). If in doubt, throw it out.</li>
+  </ul>
+</Tool>
+<script>
+  import { picker, fmtDate, addDays, todayISO, foodHref, esc } from "../../scripts/foods";
+  const food = document.querySelector<HTMLInputElement>("#food")!;
+  const day = document.querySelector<HTMLInputElement>("#day")!;
+  const out = document.querySelector<HTMLElement>("[data-out]")!;
+  day.value = todayISO();
+  const resolve = await picker(food);
+  const run = () => {
+    const r = resolve();
+    if (!r || !day.value) return;
+    if (r.fd == null) { out.innerHTML = `<p>FoodKeeper gives ${esc(r.n.toLowerCase())} “${esc(r.f)}” in the fridge. <a class="link" href="${foodHref(r)}">See the full guide →</a></p>`; return; }
+    const start = new Date(day.value + "T12:00:00");
+    const lo = addDays(start, Math.floor(r.fd)), hi = addDays(start, Math.floor(r.fx ?? r.fd));
+    const past = hi < new Date();
+    out.innerHTML = `<div class="big-out">${fmtDate(lo)}</div>
+      <p class="text-muted mt-1">Eat ${esc(r.n.toLowerCase())} by this day (${esc(r.f)} in the fridge)${hi > lo ? `; outer limit ${fmtDate(hi)}` : ""}.</p>
+      ${past ? `<p class="mt-2"><span class="pill pill-no">Past the window — discard</span></p>` : ""}
+      <p class="mt-3 text-sm"><a class="link" href="${foodHref(r)}">How long does ${esc(r.n.toLowerCase())} last? Full guide →</a></p>`;
+  };
+  food.addEventListener("change", run); food.addEventListener("input", run); day.addEventListener("change", run);
+</script>

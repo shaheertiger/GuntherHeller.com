@@ -1,0 +1,47 @@
+---
+import Tool from "../../layouts/Tool.astro";
+const faq: [string, string][] = [
+  ["How long does a turkey take to thaw in the fridge?", "About 24 hours for every 4–5 lb. A 15 lb turkey needs 3–4 days."],
+  ["Can I thaw meat on the counter?", "No. The outside reaches the danger zone (40–140°F) while the centre is still frozen. Use the fridge, cold water or the microwave."],
+  ["Can I refreeze thawed meat?", "Yes if it thawed in the fridge, though quality drops. Food thawed in cold water or the microwave should be cooked first."],
+  ["Can I cook meat from frozen?", "Yes. Allow about 50% more cooking time and check the internal temperature."],
+];
+---
+<Tool slug="thaw-time-calculator" title="Thaw Time Calculator: Turkey, Roasts, Chicken & Steak (USDA Times)" h1="Thaw time calculator"
+  description="How long to thaw a turkey, chicken, roast or steak in the fridge or in cold water, using USDA thawing guidance. Enter the weight, get the time."
+  lead="Enter the weight and the method. Times follow USDA FSIS guidance: about 24 hours per 5 lb in the fridge, 30 minutes per pound in cold water." faq={faq}>
+  <Fragment slot="form">
+    <div class="grid sm:grid-cols-2 gap-4">
+      <div><label for="what">What are you thawing?</label>
+        <select id="what"><option value="turkey">Whole turkey</option><option value="poultry">Chicken or poultry pieces</option><option value="roast">Roast or large cut</option><option value="small">Steaks, chops, ground meat</option><option value="seafood">Fish or seafood</option></select></div>
+      <div><label for="lb">Weight (lb)</label><input id="lb" type="number" min="0.25" step="0.25" value="4" inputmode="decimal" /></div>
+    </div>
+  </Fragment>
+  <p slot="empty" class="text-muted text-[19px]">Thaw times appear here.</p>
+  <h2>The three safe ways to thaw</h2>
+  <ol>
+    <li><strong>In the refrigerator.</strong> Slowest and safest. Food stays at 40°F (4°C) or below. Ground meat, poultry and seafood keep 1–2 more days after thawing; roasts and steaks 3–5 days.</li>
+    <li><strong>In cold water.</strong> Seal the food in a leak-proof bag, submerge it in cold tap water and change the water every 30 minutes. Cook immediately.</li>
+    <li><strong>In the microwave.</strong> Use the defrost setting and cook immediately, because some areas begin to cook.</li>
+  </ol>
+  <p>Source: USDA FSIS, "The Big Thaw — Safe Defrosting Methods".</p>
+</Tool>
+<script>
+  const what = document.querySelector<HTMLSelectElement>("#what")!;
+  const lb = document.querySelector<HTMLInputElement>("#lb")!;
+  const out = document.querySelector<HTMLElement>("[data-out]")!;
+  const hrs = (h: number) => (h >= 48 ? `${Math.round((h / 24) * 2) / 2} days` : h >= 1 ? `${Math.round(h * 2) / 2} hours` : `${Math.max(5, Math.round(h * 60))} minutes`);
+  const run = () => {
+    const w = Number(lb.value);
+    if (!(w > 0)) return;
+    // USDA: fridge ~24 h per 5 lb (turkey 24 h per 4–5 lb); small packs overnight. Cold water ~30 min per lb.
+    const fridge = what.value === "small" || what.value === "seafood" ? Math.max(12, (24 * w) / 5) : (24 * w) / (what.value === "turkey" ? 4 : 5);
+    const water = 0.5 * w;
+    const after = what.value === "roast" ? "3–5 days" : what.value === "small" && false ? "3–5 days" : "1–2 days";
+    out.innerHTML = `<div class="grid sm:grid-cols-2 gap-4">
+      <div><div class="eyebrow"><span class="dot bg-fridge"></span>In the fridge</div><div class="big-out mt-2">${hrs(fridge)}</div><p class="text-sm text-muted mt-1">Then keeps ${after} in the fridge.</p></div>
+      <div><div class="eyebrow"><span class="dot bg-freezer"></span>In cold water</div><div class="big-out mt-2">${hrs(water)}</div><p class="text-sm text-muted mt-1">Change the water every 30 min; cook right away.</p></div>
+    </div>`;
+  };
+  what.addEventListener("change", run); lb.addEventListener("input", run); run();
+</script>

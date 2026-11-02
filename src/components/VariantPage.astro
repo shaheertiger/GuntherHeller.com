@@ -1,0 +1,223 @@
+---
+import Base from "../layouts/Base.astro";
+import Breadcrumb from "./Breadcrumb.astro";
+import AnswerCard from "./AnswerCard.astro";
+import MiniAnswer from "./MiniAnswer.astro";
+import Signs from "./Signs.astro";
+import FreezeBlock from "./FreezeBlock.astro";
+import LeftOutBlock from "./LeftOutBlock.astro";
+import FoodCard from "./FoodCard.astro";
+import Faq from "./Faq.astro";
+import AdSlot from "./AdSlot.astro";
+import TrustBlock from "./TrustBlock.astro";
+import { type Food, type Variant, url, getCategory, similarFoods, lc, does, titleCase, cap1, fmt, isNum, freezerFacts, cellsFor, hasFreezePage, hasLeftOutPage, primaryFridge, isAre, itThey } from "../lib/data";
+import { freezeVerdict, freezeStepsFor, leftOutFor, datesFor, storeTipsFor, signsFor, groupOf, headline } from "../lib/content";
+import { foodGraph } from "../lib/schema";
+import { SITE } from "../lib/site";
+
+interface Props { food: Food; variant: Exclude<Variant, "food"> }
+const { food: f, variant } = Astro.props;
+const path = url[variant](f);
+const cat = getCategory(f.category);
+const name = lc(f);
+const Name = titleCase(f.name);
+const s0 = f.states[0];
+const c0 = cellsFor(f, s0, 0);
+const fz = freezerFacts(f);
+const fv = freezeVerdict(f);
+const lo = leftOutFor(f);
+const hd = headline(f);
+const them = itThey(f) === "they" ? "them" : "it";
+
+const g = groupOf(f);
+const thaw = g === "meat" || g === "seafood" || g === "cooked" || g === "cured"
+  ? [
+      ["In the fridge", "Safest. Allow about 24 hours per 5 lb (2.3 kg); small packs thaw overnight. Once thawed, raw meat and seafood keep 1–2 extra days in the fridge."],
+      ["In cold water", "Seal it in a leak-proof bag and submerge; change the water every 30 minutes. Allow about 30 minutes per pound, then cook right away."],
+      ["In the microwave", "Use the defrost setting and cook immediately — parts of the food may start to cook."],
+    ]
+  : [
+      ["In the fridge", "Move it to the fridge the night before; this keeps texture best."],
+      ["At room temperature", g === "bakery" ? "Bread and baked goods thaw well on the counter, still wrapped, in 1–3 hours." : "Only for shelf-stable items; perishable food should not thaw on the counter."],
+      ["From frozen", "Many foods can go straight into soups, sauces, smoothies or the oven."],
+    ];
+
+let h1 = "", title = "", description = "", quote = "", faq: [string, string][] = [];
+if (variant === "freeze") {
+  h1 = `Can You Freeze ${Name}?`;
+  const ans = fv.tone === "no" ? "No" : "Yes";
+  title = fz && isNum(fz) ? `Can You Freeze ${Name}? ${ans}, ${titleCase(fmt(fz)!)} [How to Freeze & Thaw]` : `Can You Freeze ${Name}? ${fv.tone === "no" ? "Not Recommended — Here's Why" : titleCase(fv.label)}`;
+  description = fz && isNum(fz)
+    ? `${ans}: ${name} ${f.plural ? "keep their" : "keeps its"} quality for ${fmt(fz)} in the freezer at 0°F. How to freeze ${them}, how to thaw ${them}, and how long ${itThey(f)} last${f.plural ? "" : "s"} after thawing.`
+    : `${fv.detail} What to do instead, and how long ${name} ${f.plural ? "last" : "lasts"} in the fridge (${primaryFridge(f)}).`;
+  quote = fz && isNum(fz)
+    ? `${fv.tone === "caution" ? "Yes, with a texture trade-off" : "Yes"}: ${name} ${f.plural ? "keep" : "keeps"} ${fmt(fz)} in the freezer at 0°F (-18°C), compared with ${c0.fridge.value.toLowerCase()} in the fridge.`
+    : `${fv.detail} Store ${them} in the fridge instead: ${c0.fridge.value.toLowerCase()}.`;
+  faq = [
+    [`How long can you freeze ${name}?`, fz && isNum(fz) ? `About ${fmt(fz)} for best quality at 0°F (-18°C). Kept frozen, it stays safe longer, but texture and flavour fade.` : fv.detail],
+    [`How do you thaw frozen ${name}?`, `${thaw[0][1]}`],
+    [`Can you refreeze ${name}?`, `Only if ${itThey(f)} ${f.plural ? "were" : "was"} thawed in the fridge and ${f.plural ? "have" : "has"} not been left out. Quality drops each time.`],
+    [`Does freezing kill bacteria in ${name}?`, "No. Freezing pauses bacteria; they become active again as the food thaws. Cook or reheat to a safe temperature."],
+  ];
+} else if (variant === "bad") {
+  h1 = `${does(f)} ${Name} Go Bad?`;
+  title = `${does(f)} ${Name} Go Bad? How to Tell + Shelf Life (${titleCase(hd.value)} ${hd.where.replace(/^in the /, "")})`;
+  description = `Yes, ${name} ${f.plural ? "go" : "goes"} bad: ${hd.value} ${hd.where.toLowerCase()}${fz && isNum(fz) ? `, ${fmt(fz)} frozen` : ""}. ${signsFor(f).slice(0, 2).map((s) => s.title).join(" and ")} are the first signs.`.slice(0, 155);
+  quote = `Yes. ${f.name} ${f.plural ? "last" : "lasts"} ${hd.value} ${hd.where.toLowerCase()}${fz && isNum(fz) ? ` and ${fmt(fz)} in the freezer` : ""}. After that, or sooner if stored badly, ${itThey(f)} ${f.plural ? "spoil" : "spoils"}: watch for the signs below.`;
+  const d = datesFor(f);
+  faq = [
+    [`How long does it take for ${name} to go bad?`, `${hd.value} ${hd.where.toLowerCase()}, per USDA FoodKeeper.${f.perishable ? " At room temperature, 2 hours." : ""}`],
+    [`Can ${name} expire?`, d.unopened.text],
+    [`What happens if you eat bad ${name}?`, f.perishable ? "Spoiled perishable food can cause food poisoning: nausea, vomiting, cramps or diarrhoea. See a doctor if symptoms are severe or last more than a few days." : "Usually an unpleasant taste rather than illness, but discard anything mouldy, rancid or smelling off."],
+    [`How do you keep ${name} from going bad?`, storeTipsFor(f)[0]],
+  ];
+} else {
+  h1 = `${Name} Left Out Overnight: Is It Safe?`;
+  title = `${Name} Left Out Overnight? ${lo.tone === "discard" ? "Discard After 2 Hours" : "What to Do"} [USDA Rule]`;
+  description = `${lo.tone === "discard" ? `No. ${f.name} left out more than 2 hours (1 hour above 90°F) should be thrown away.` : lo.text}`.slice(0, 150) + (lo.tone === "discard" ? " Why reheating won't save it." : "");
+  quote = lo.text;
+  faq = [
+    [`How long can ${name} sit out?`, `No more than 2 hours at room temperature, or 1 hour above 90°F (32°C).`],
+    [`Is ${name} left out overnight safe if I reheat ${them}?`, "No. Some bacteria make heat-stable toxins that reheating does not destroy. If in doubt, throw it out."],
+    [`What if ${name} ${f.plural ? "were" : "was"} left out for 3 hours?`, "Past the 2-hour mark, discard it, even if it looks and smells fine."],
+    [`How long ${does(f).toLowerCase()} ${name} last in the fridge?`, `${c0.fridge.value} at 40°F (4°C) or below, if refrigerated promptly.`],
+  ];
+}
+if (description.length > 155) description = description.slice(0, 154).replace(/\s+\S*$/, "") + "…";
+
+const crumbs = [{ name: "Home", href: "/" }, { name: cat.name, href: url.category(cat.slug) }, { name: f.name, href: url.food(f) }, { name: h1.replace(/\?$/, "") }];
+const ld = foodGraph({ food: f, path, title, headline: h1, description, crumbs, faq });
+const similar = similarFoods(f, 4);
+const hubFor = variant === "freeze" ? "/can-you-freeze/" : variant === "bad" ? "/does-it-go-bad/" : "/left-out-overnight/";
+const siblings = [
+  { href: url.food(f), label: `How long ${does(f).toLowerCase()} ${name} last? Full guide` },
+  variant !== "freeze" && hasFreezePage(f) && { href: url.freeze(f), label: `Can you freeze ${name}?` },
+  variant !== "bad" && { href: url.bad(f), label: `${does(f)} ${name} go bad?` },
+  variant !== "leftOut" && hasLeftOutPage(f) && { href: url.leftOut(f), label: `${cap1(name)} left out overnight` },
+].filter(Boolean) as { href: string; label: string }[];
+const pill = (t: string) => (t === "yes" || t === "keep" ? "pill-yes" : t === "no" || t === "discard" ? "pill-no" : "pill-caution");
+---
+<Base title={title} description={description} path={path} jsonld={ld} ogType="article">
+  <div class="container-site pt-4 md:pt-6">
+    <Breadcrumb items={crumbs} />
+    <h1 class="h1-food mt-3 md:mt-5">{h1}</h1>
+    <p class="mt-1.5 md:mt-2 text-sm md:text-[17px] text-muted">Source: USDA FoodKeeper and FSIS · last verified {SITE.verifiedLabel}</p>
+
+    <div class="grid lg:grid-cols-[minmax(0,1fr)_300px] gap-10 mt-4 md:mt-8 items-start">
+      <article class="min-w-0 max-w-[820px]">
+        {variant === "freeze" && (
+          <section id="answer" class="border border-line rounded-[10px] p-5 md:p-6 grid sm:grid-cols-[auto_1fr] gap-4 sm:gap-8 items-center">
+            <div>
+              <div class="eyebrow"><span class="dot bg-freezer"></span>In the freezer</div>
+              <div class="mt-2.5 text-[32px] md:text-[44px] font-[650] tracking-[-0.03em] leading-none">{fz ? fmt(fz) : "Not listed"}</div>
+            </div>
+            <div><span class:list={["pill", pill(fv.tone)]}>{fv.label}</span><p class="mt-2 text-[15px] text-muted">{fv.detail}</p></div>
+          </section>
+        )}
+        {variant === "leftOut" && (
+          <section id="answer" class="border border-line rounded-[10px] p-5 md:p-6 grid sm:grid-cols-[auto_1fr] gap-4 sm:gap-8 items-center">
+            <div>
+              <div class="eyebrow"><span class="dot bg-discard"></span>Room-temperature limit</div>
+              <div class="mt-2.5 text-[32px] md:text-[44px] font-[650] tracking-[-0.03em] leading-none">2 hours</div>
+              <div class="mt-1.5 text-sm text-muted">1 hour above 90°F (32°C)</div>
+            </div>
+            <div><span class:list={["pill", pill(lo.tone)]}>{lo.tone === "discard" ? "Overnight: discard" : lo.label}</span><p class="mt-2 text-[15px] text-muted">Food that sat out overnight has spent far longer than 2 hours in the danger zone (40–140°F).</p></div>
+          </section>
+        )}
+        {variant === "bad" && <AnswerCard food={f} />}
+
+        <p class="mt-4 md:mt-5 text-[17px] md:text-[19px] leading-[1.6]">{quote}</p>
+
+        {variant === "freeze" && (
+          <>
+            <section class="mt-8 md:mt-12">
+              <h2 class="h2-food">How to freeze {name}</h2>
+              {fv.tone === "no" ? <p class="mt-3.5">{fv.detail} Keep {them} in the fridge and use within {c0.fridge.value.toLowerCase()}.</p> : <ol class="prose-list">{freezeStepsFor(f).map((s) => <li>{s}</li>)}</ol>}
+            </section>
+            {fv.tone !== "no" && (
+              <section class="mt-8 md:mt-12">
+                <h2 class="h2-food">How to thaw {name}</h2>
+                <div class="grid sm:grid-cols-3 gap-3 md:gap-4 mt-[18px]">
+                  {thaw.map(([t, d]) => <div class="p-4 border border-line rounded-[10px]"><h3 class="!text-base !tracking-normal">{t}</h3><p class="text-sm text-muted mt-1">{d}</p></div>)}
+                </div>
+                <FreezeBlock food={f} steps={false} />
+              </section>
+            )}
+            <section class="mt-8 md:mt-12">
+              <h2 class="h2-food">Freezer vs fridge vs counter</h2>
+              <div class="mt-[18px]"><AnswerCard food={f} id="compare" /></div>
+            </section>
+          </>
+        )}
+
+        {variant === "bad" && (
+          <>
+            <section class="mt-8 md:mt-12">
+              <h2 class="h2-food">How to tell if {name} {f.plural ? "are" : "is"} bad</h2>
+              <Signs food={f} />
+            </section>
+            <section class="mt-8 md:mt-12">
+              <h2 class="h2-food">{cap1(name)} past the expiration date</h2>
+              <div class="grid sm:grid-cols-2 gap-4 mt-[18px]">
+                {[datesFor(f).unopened, datesFor(f).opened].map((d) => <div class="p-[18px] border border-line rounded-[10px]"><h3 class="!text-[17px] !tracking-normal">{d.title}</h3><p class="mt-1.5 text-[15px] text-muted">{d.text}</p></div>)}
+              </div>
+            </section>
+            <section class="mt-8 md:mt-12">
+              <h2 class="h2-food">How to keep {name} fresh longer</h2>
+              <ul class="prose-list">{storeTipsFor(f).slice(0, 3).map((t) => <li>{t}</li>)}</ul>
+            </section>
+          </>
+        )}
+
+        {variant === "leftOut" && (
+          <>
+            <section class="mt-8 md:mt-12">
+              <h2 class="h2-food">The verdict</h2>
+              <LeftOutBlock food={f} />
+            </section>
+            <section class="mt-8 md:mt-12">
+              <h2 class="h2-food">How long {name} can sit out, by temperature</h2>
+              <div class="table-wrap mt-[18px]">
+                <table class="data-table">
+                  <thead><tr><th>Room temperature</th><th>Safe for</th><th>Then</th></tr></thead>
+                  <tbody>
+                    <tr><td class="font-medium">Below 40°F (4°C)</td><td>Refrigerated — {c0.fridge.value.toLowerCase()}</td><td class="text-muted">Use within the fridge window</td></tr>
+                    <tr><td class="font-medium">40–90°F (4–32°C)</td><td>2 hours</td><td class="text-muted">Discard</td></tr>
+                    <tr><td class="font-medium">Above 90°F (32°C)</td><td>1 hour</td><td class="text-muted">Discard</td></tr>
+                    <tr><td class="font-medium">Overnight (8+ hours)</td><td>Not safe</td><td class="text-muted">Discard, even if reheated</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <section class="mt-8 md:mt-12">
+              <h2 class="h2-food">Store {name} safely next time</h2>
+              <ul class="prose-list">{storeTipsFor(f).slice(0, 3).map((t) => <li>{t}</li>)}</ul>
+              <p class="mt-3 text-sm"><a href="/tools/left-out-checker/" class="link">Check any food with the left-out checker →</a></p>
+            </section>
+          </>
+        )}
+
+        <AdSlot w={300} h={250} class="lg:hidden mt-8" id="variant-mobile-1" />
+
+        <section class="mt-8 md:mt-12">
+          <h2 class="h2-food">More about {name}</h2>
+          <ul class="list-none p-0 mt-3.5 grid gap-2">{siblings.map((s) => <li><a href={s.href} class="link">{s.label} →</a></li>)}</ul>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5 md:gap-3 mt-[18px]">{similar.map((s) => <FoodCard food={s} />)}</div>
+          <p class="mt-3.5 text-sm"><a href={hubFor} class="link">More {variant === "freeze" ? "“can you freeze it?”" : variant === "bad" ? "“does it go bad?”" : "“left out overnight”"} answers, A–Z →</a></p>
+        </section>
+
+        <section id="faq" class="mt-8 md:mt-12">
+          <h2 class="h2-food">FAQ</h2>
+          <Faq items={faq} />
+        </section>
+
+        <TrustBlock path={path} />
+      </article>
+
+      <aside class="hidden lg:grid sticky top-[90px] gap-5" aria-label="Summary">
+        <MiniAnswer food={f} />
+        <AdSlot w={300} h={250} id="variant-rail" />
+      </aside>
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,60 @@
+---
+import Tool from "../../layouts/Tool.astro";
+const faq: [string, string][] = [
+  ["Is it safe to eat food after the best-by date?", "Usually, yes, if it has been stored properly. Best-by is a quality date. Check smell, look and taste."],
+  ["Which date labels are required by law?", "In the US, only infant formula must carry a use-by date under federal rules. Other dates are set by manufacturers."],
+  ["What is a Julian date code?", "A pack date written as the day of the year (001–365), often with a year digit, such as 3215 = day 215 of a year ending in 3."],
+  ["What does sell-by mean?", "It tells the store how long to display the product. You can store it at home for the normal fridge time after that date."],
+];
+---
+<Tool slug="date-decoder" title="Best-By Date Decoder: Best-By vs Use-By vs Sell-By (+ Julian Codes)" h1="Best-by date decoder"
+  description="What best-by, use-by, sell-by and freeze-by dates mean, whether food is safe after them, and how to read Julian pack-date codes. Free decoder."
+  lead="Pick the label on your package. We explain what it means for safety and decode Julian pack-date codes." faq={faq}>
+  <Fragment slot="form">
+    <div class="grid sm:grid-cols-2 gap-4">
+      <div><label for="lbl">Label on the package</label>
+        <select id="lbl"><option value="best">Best if used by / Best by</option><option value="use">Use by</option><option value="sell">Sell by</option><option value="freeze">Freeze by</option><option value="julian">Pack date code (Julian)</option></select></div>
+      <div><label for="code">Date or code</label><input id="code" placeholder="e.g. 2026-11-20 or 6215" /></div>
+    </div>
+  </Fragment>
+  <p slot="empty" class="text-muted text-[19px]">The meaning appears here.</p>
+  <h2>The four common labels</h2>
+  <ul>
+    <li><strong>Best if used by</strong> — when quality is best. Not a safety date.</li>
+    <li><strong>Use by</strong> — the last recommended day for peak quality; for infant formula, a federally required safety date.</li>
+    <li><strong>Sell by</strong> — for the store's stock rotation. Count your home storage time from purchase.</li>
+    <li><strong>Freeze by</strong> — freeze before this day to keep quality.</li>
+  </ul>
+  <p>Source: USDA FSIS, "Food Product Dating".</p>
+</Tool>
+<script>
+  const lbl = document.querySelector<HTMLSelectElement>("#lbl")!;
+  const code = document.querySelector<HTMLInputElement>("#code")!;
+  const out = document.querySelector<HTMLElement>("[data-out]")!;
+  const M: Record<string, [string, string, string]> = {
+    best: ["pill-yes", "Quality date", "Food is usually safe after a best-by date if it was stored properly. Expect flavour or texture to fade; check smell and look."],
+    use: ["pill-caution", "Quality date (safety for formula)", "Use by this date for best quality. For infant formula, do not use after this date."],
+    sell: ["pill-yes", "Store date", "Buy before this date. At home, follow the normal storage time for the food, counted from when you bought it."],
+    freeze: ["pill-yes", "Freeze for quality", "Freeze before this date to keep the best quality. Once frozen, it stays safe indefinitely at 0°F."],
+    julian: ["pill-yes", "Pack date", "A Julian code shows when the food was packed, not when it expires."],
+  };
+  const run = () => {
+    const [cls, tag, text] = M[lbl.value];
+    let extra = "";
+    const v = code.value.trim();
+    if (lbl.value === "julian" && /^\d{4,5}$/.test(v)) {
+      const doy = Number(v.slice(-3)), yd = v.slice(0, v.length - 3);
+      const now = new Date().getFullYear();
+      let year = yd.length === 2 ? 2000 + Number(yd) : now - ((now - Number(yd)) % 10 + 10) % 10;
+      if (doy >= 1 && doy <= 366) {
+        const d = new Date(Date.UTC(year, 0, doy));
+        extra = `<p class="mt-2">Code <strong>${v}</strong> = day ${doy} of ${year}: <strong>${d.toLocaleDateString(undefined, { timeZone: "UTC", month: "long", day: "numeric", year: "numeric" })}</strong>.</p>`;
+      }
+    } else if (v && !isNaN(Date.parse(v))) {
+      const days = Math.round((Date.parse(v) - Date.now()) / 864e5);
+      extra = `<p class="mt-2">${days >= 0 ? `${days} days from today.` : `${-days} days ago.`}</p>`;
+    }
+    out.innerHTML = `<span class="pill ${cls}">${tag}</span><p class="mt-2">${text}</p>${extra}`;
+  };
+  lbl.addEventListener("change", run); code.addEventListener("input", run); run();
+</script>

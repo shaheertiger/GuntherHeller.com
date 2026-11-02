@@ -1,0 +1,19 @@
+---
+import Base from "../layouts/Base.astro";
+import { getFood, url } from "../lib/data";
+const popular = ["cooked-rice", "eggs", "raw-chicken", "milk", "bread", "ground-beef"].map(getFood).filter(Boolean);
+---
+<Base title="Page Not Found | Gunther Heller" description="That page does not exist. Search 660+ foods or browse by category." path="/404/" noindex>
+  <div class="container-site pt-16 max-w-[760px]">
+    <div class="eyebrow eyebrow-rule">Error 404</div>
+    <h1 class="h1-food mt-3.5">This page has gone off.</h1>
+    <p class="lead mt-3">We could not find that page. Search for a food, or start with one of these.</p>
+    <form action="/search/" method="get" class="mt-6 flex gap-2" role="search">
+      <label for="q404" class="sr-only">Food</label>
+      <input id="q404" name="q" type="search" placeholder="Search foods…" class="flex-1 h-11 border border-line rounded-lg px-3 text-base outline-none focus:border-primary-soft" />
+      <button class="btn-primary">Search</button>
+    </form>
+    <ul class="list-none p-0 mt-8 grid sm:grid-cols-2 gap-x-6">{popular.map((f) => <li class="border-b border-line"><a href={url.food(f!)} class="block py-3">How long does {f!.name.toLowerCase()} last?</a></li>)}</ul>
+    <p class="mt-6 text-sm"><a class="link" href="/foods/">All foods</a> · <a class="link" href="/">Home</a></p>
+  </div>
+</Base>

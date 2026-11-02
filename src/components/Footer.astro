@@ -1,0 +1,34 @@
+---
+import Logo from "./Logo.astro";
+import Squiggle from "./Squiggle.astro";
+import { SITE } from "../lib/site";
+const cols = [
+  { h: "Guides", links: [["All foods", "/foods/"], ["Can you freeze it?", "/can-you-freeze/"], ["Does it go bad?", "/does-it-go-bad/"], ["Left out overnight", "/left-out-overnight/"], ["Date label decoder", "/tools/date-decoder/"]] },
+  { h: "Tools", links: [["Leftover calculator", "/tools/leftover-calculator/"], ["Freezer time", "/tools/freezer-time-calculator/"], ["Thaw time", "/tools/thaw-time-calculator/"], ["Left-out checker", "/tools/left-out-checker/"]] },
+  { h: "About", links: [["How we verify", "/methodology/"], ["About & contact", "/about/"], ["Privacy", "/privacy/"], ["Terms", "/terms/"]] },
+];
+---
+<footer class="bg-panel mt-24 pt-12 pb-8">
+  <div class="container-site">
+    <div class="grid gap-8 md:grid-cols-[1.2fr_.6fr_.6fr_.6fr]">
+      <div>
+        <a href="/" class="flex items-center gap-2.5 font-[650] text-[23px]"><Logo /><span>Gunther Heller</span></a>
+        <Squiggle />
+        <p class="mt-4 text-sm text-muted max-w-xs">Storage times for {"660+"} foods from USDA FoodKeeper. General guidance, not medical advice.</p>
+        <p class="mt-3 text-[13px] text-muted"><a class="link" href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+      </div>
+      {cols.map((c) => (
+        <div>
+          <h2 class="eyebrow mb-3.5 !text-[11px] !tracking-[.12em] !leading-normal">{c.h}</h2>
+          <ul class="list-none m-0 p-0 grid gap-2 text-sm">
+            {c.links.map(([l, h]) => <li><a href={h}>{l}</a></li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+    <div class="flex flex-wrap justify-between gap-3 border-t border-line mt-10 pt-[18px] text-[13px] text-muted">
+      <span>© {new Date(SITE.verifiedISO).getFullYear()} Gunther Heller. Data: USDA FoodKeeper (public domain).</span>
+      <span class="flex gap-[18px]"><a href="/terms/">Terms of Service</a><a href="/privacy/">Privacy Policy</a><span>EN</span></span>
+    </div>
+  </div>
+</footer>

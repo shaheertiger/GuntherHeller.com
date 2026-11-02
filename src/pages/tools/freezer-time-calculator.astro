@@ -1,0 +1,42 @@
+---
+import Tool from "../../layouts/Tool.astro";
+import FoodPicker from "../../components/FoodPicker.astro";
+const faq: [string, string][] = [
+  ["Is frozen food safe after the freezer time?", "Yes. Food held at 0°F (-18°C) stays safe indefinitely. The freezer time is when quality — texture and flavour — starts to decline."],
+  ["What is freezer burn?", "Dry, greyish patches where air reached the food. It is safe to eat; trim the patches off before or after cooking."],
+  ["Does the clock start when I bought it?", "It starts when you froze it. Label bags with the date going in."],
+  ["What temperature should my freezer be?", "0°F (-18°C) or colder. Check it with an appliance thermometer."],
+];
+---
+<Tool slug="freezer-time-calculator" title="Freezer Time Calculator: When Does Frozen Food Lose Quality?" h1="Freezer time calculator"
+  description="Enter a food and the date you froze it to see when it passes best quality, using USDA FoodKeeper freezer times. Frozen food stays safe; this is about quality."
+  lead="Choose a food and the day it went into the freezer. We tell you when it is past its best — frozen food stays safe, but quality drops." faq={faq}>
+  <Fragment slot="form">
+    <FoodPicker filter="freezer" label="Food" />
+    <div><label for="day">Frozen on</label><input id="day" type="date" /></div>
+  </Fragment>
+  <p slot="empty" class="text-muted text-[19px]">Your best-quality date appears here.</p>
+  <h2>Quality, not safety</h2>
+  <p>FSIS is clear that food kept constantly at 0°F (-18°C) is safe indefinitely. FoodKeeper's freezer times tell you how long food keeps its best flavour and texture. After that, it is still safe to eat but may be dry, tough or bland.</p>
+  <h2>Getting the most from your freezer</h2>
+  <ul><li>Wrap tightly and squeeze out air to prevent freezer burn.</li><li>Freeze flat in bags for fast freezing and thawing.</li><li>Label everything with the name and date.</li></ul>
+</Tool>
+<script>
+  import { picker, fmtDate, addDays, todayISO, foodHref, esc } from "../../scripts/foods";
+  const food = document.querySelector<HTMLInputElement>("#food")!;
+  const day = document.querySelector<HTMLInputElement>("#day")!;
+  const out = document.querySelector<HTMLElement>("[data-out]")!;
+  day.value = todayISO();
+  const resolve = await picker(food);
+  const run = () => {
+    const r = resolve();
+    if (!r || !day.value) return;
+    if (r.zd == null) { out.innerHTML = `<p>Freezing ${esc(r.n.toLowerCase())}: <strong>${esc(r.z)}</strong>. <a class="link" href="${foodHref(r)}">Why →</a></p>`; return; }
+    const start = new Date(day.value + "T12:00:00");
+    const lo = addDays(start, Math.round(r.zd)), hi = addDays(start, Math.round(r.zx ?? r.zd));
+    out.innerHTML = `<div class="big-out">${fmtDate(lo)}</div>
+      <p class="text-muted mt-1">Best quality until this date (${esc(r.z)} in the freezer)${hi > lo ? `; still good until about ${fmtDate(hi)}` : ""}. It remains safe after that if kept at 0°F.</p>
+      <p class="mt-3 text-sm"><a class="link" href="/can-you-freeze-${r.s}/">How to freeze and thaw ${esc(r.n.toLowerCase())} →</a></p>`;
+  };
+  food.addEventListener("change", run); food.addEventListener("input", run); day.addEventListener("change", run);
+</script>

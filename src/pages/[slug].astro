@@ -1,0 +1,21 @@
+---
+/**
+ * Every root-level food URL:
+ *   /how-long-does-{food}-last/   /can-you-freeze-{food}/   /does-{food}-go-bad/   /{food}-left-out-overnight/
+ * Anything else at the root 404s (static build, no fallback).
+ */
+import FoodPage from "../components/FoodPage.astro";
+import VariantPage from "../components/VariantPage.astro";
+import { FOODS, variantsOf, variantPath, type Food, type Variant } from "../lib/data";
+
+export function getStaticPaths() {
+  return FOODS.flatMap((food: Food) =>
+    variantsOf(food).map((variant: Variant) => ({
+      params: { slug: variantPath(food, variant).replace(/^\/|\/$/g, "") },
+      props: { food, variant },
+    })),
+  );
+}
+const { food, variant } = Astro.props as { food: Food; variant: Variant };
+---
+{variant === "food" ? <FoodPage food={food} /> : <VariantPage food={food} variant={variant} />}

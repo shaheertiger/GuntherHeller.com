@@ -1,0 +1,9 @@
+---
+import { SITE, reportHref } from "../lib/site";
+interface Props { path: string; sourceName?: string; sourceUrl?: string; extra?: string }
+const { path, sourceName = "USDA FoodKeeper", sourceUrl = "https://www.foodsafety.gov/keep-food-safe/foodkeeper-app", extra = "and FSIS guidance" } = Astro.props;
+---
+<div class="mt-12 px-5 py-[18px] bg-panel rounded-[10px] text-sm text-muted flex flex-wrap justify-between gap-4">
+  <span>Numbers on this page come from <a href={sourceUrl} rel="nofollow noopener" class="font-medium text-ink hover:text-primary">{sourceName}</a> {extra}. Last verified <strong class="text-ink font-[550]">{SITE.verifiedLabel}</strong>.</span>
+  <span><a href="/methodology/" class="link">How we verify our data</a> · <a href={reportHref(path)} class="link">Report a wrong number</a></span>
+</div>

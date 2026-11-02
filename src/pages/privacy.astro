@@ -1,0 +1,15 @@
+---
+import Prose from "../layouts/Prose.astro";
+import { SITE } from "../lib/site";
+---
+<Prose title="Privacy Policy | Gunther Heller" h1="Privacy policy" path="/privacy/" description="How Gunther Heller handles data: no accounts, no sign-ups, and what advertising partners may collect.">
+  <p>Last updated {SITE.verifiedLabel}.</p>
+  <h2>What we collect</h2>
+  <p>We do not offer accounts, so we do not collect names, passwords or payment details. Our host keeps standard server logs (IP address, browser, pages requested) for security and to keep the site running.</p>
+  <h2>Advertising</h2>
+  <p>We show display ads. When ads are enabled, advertising partners may use cookies or similar technology to show and measure ads. Where the law requires it, we ask for your consent first, and you can change your choice at any time.</p>
+  <h2>Email</h2>
+  <p>If you email us, we use your address only to reply.</p>
+  <h2>Contact</h2>
+  <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+</Prose>

@@ -1,0 +1,9 @@
+---
+interface Props { id?: string; label?: string; filter?: "perishable" | "freezer" | "fridge" | "all" }
+const { id = "food", label = "Food", filter = "all" } = Astro.props;
+---
+<div>
+  <label for={id}>{label}</label>
+  <input id={id} list={`${id}-list`} placeholder="Start typing… e.g. cooked rice" autocomplete="off" data-picker={filter} />
+  <datalist id={`${id}-list`}></datalist>
+</div>

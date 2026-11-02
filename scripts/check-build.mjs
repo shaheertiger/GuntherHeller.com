@@ -1,0 +1,72 @@
+#!/usr/bin/env node
+/**
+ * Post-build checks on dist/ (runs after `astro build`; fails the build on errors):
+ *  - every internal link points at a built page or file
+ *  - every indexable page has a unique <title>, a description ≤ 160 chars, a canonical and JSON-LD
+ *  - the cooked-rice acceptance page has the spec'd title, answer text and schema types
+ *  - food pages ship no client JS
+ */
+import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
+import { join, relative } from "node:path";
+
+const DIST = new URL("../dist/", import.meta.url).pathname;
+const walk = (d) => readdirSync(d).flatMap((f) => (statSync(join(d, f)).isDirectory() ? walk(join(d, f)) : [join(d, f)]));
+const files = walk(DIST);
+const pages = files.filter((f) => f.endsWith(".html"));
+const errors = [];
+const warn = [];
+const titles = new Map();
+
+const exists = (href) => {
+  const p = decodeURI(href.split(/[?#]/)[0]);
+  if (p === "/") return true;
+  const f = join(DIST, p);
+  return existsSync(f) && (statSync(f).isFile() || existsSync(join(f, "index.html")));
+};
+
+for (const file of pages) {
+  const html = readFileSync(file, "utf8");
+  const rel = "/" + relative(DIST, file).replace(/index\.html$/, "");
+  const noindex = /name="robots" content="noindex/.test(html);
+  for (const [, href] of html.matchAll(/href="(\/[^"]*)"/g)) {
+    if (href.startsWith("//")) continue;
+    if (!exists(href)) errors.push(`${rel}: broken link ${href}`);
+    else if (!/\.[a-z0-9]+$/i.test(href.split(/[?#]/)[0]) && !href.split(/[?#]/)[0].endsWith("/")) errors.push(`${rel}: link without trailing slash ${href}`);
+  }
+  if (noindex || rel === "/404.html") continue;
+  const title = html.match(/<title>(.*?)<\/title>/)?.[1];
+  const desc = html.match(/name="description" content="([^"]*)"/)?.[1] ?? "";
+  if (!title) errors.push(`${rel}: missing title`);
+  else if (titles.has(title)) errors.push(`${rel}: duplicate title with ${titles.get(title)}`);
+  else titles.set(title, rel);
+  const plainDesc = desc.replace(/&amp;/g, "&").replace(/&#39;|&apos;/g, "'").replace(/&quot;/g, '"');
+  if (!plainDesc) errors.push(`${rel}: missing description`);
+  else if (plainDesc.length > 160) warn.push(`${rel}: description ${plainDesc.length} chars`);
+  if (!/rel="canonical" href="https:\/\/guntherheller\.com\//.test(html)) errors.push(`${rel}: missing canonical`);
+  if (!html.includes("application/ld+json")) errors.push(`${rel}: missing JSON-LD`);
+  for (const m of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
+    try { JSON.parse(m[1]); } catch { errors.push(`${rel}: invalid JSON-LD`); }
+  }
+  if (/^\/(how-long-does|can-you-freeze-|does-)/.test(rel) && /<script(?![^>]*application\/ld\+json)/.test(html)) errors.push(`${rel}: food page ships client JS`);
+}
+
+// Acceptance test (handoff §3): cooked rice.
+const rice = readFileSync(join(DIST, "how-long-does-cooked-rice-last/index.html"), "utf8");
+const expectTitle = "How Long Does Cooked Rice Last? 4–6 Days in the Fridge [Freezer 6 Months]";
+if (!rice.includes(`<title>${expectTitle}</title>`)) errors.push(`cooked rice: title is not "${expectTitle}"`);
+for (const t of ["4–6 days", "6 months", "2 hours", "Cooked rice lasts"]) if (!rice.includes(t)) errors.push(`cooked rice: answer text "${t}" missing`);
+for (const t of ['"Article"', '"BreadcrumbList"', '"FAQPage"', '"Organization"', '"Dataset"', '"PropertyValue"']) if (!rice.includes(t)) errors.push(`cooked rice: JSON-LD ${t} missing`);
+for (const f of ["robots.txt", "sitemap.xml", "og.png", "404.html", "search-index.json"]) if (!existsSync(join(DIST, f))) errors.push(`missing ${f}`);
+
+const css = files.filter((f) => f.endsWith(".css")).reduce((n, f) => n + statSync(f).size, 0);
+const inlineCss = (rice.match(/<style[^>]*>([\s\S]*?)<\/style>/g) ?? []).join("").length;
+console.log(`check-build: ${pages.length} pages, ${titles.size} unique titles, CSS ${(Math.max(css, inlineCss) / 1024).toFixed(1)} KB`);
+if (Math.max(css, inlineCss) > 60 * 1024) errors.push("CSS over the 60 KB budget");
+warn.slice(0, 10).forEach((w) => console.warn("warn:", w));
+if (warn.length > 10) console.warn(`warn: …and ${warn.length - 10} more`);
+if (errors.length) {
+  errors.slice(0, 40).forEach((e) => console.error("error:", e));
+  console.error(`check-build: ${errors.length} error(s)`);
+  process.exit(1);
+}
+console.log("check-build: ok");

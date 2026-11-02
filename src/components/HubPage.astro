@@ -1,0 +1,165 @@
+---
+import Base from "../layouts/Base.astro";
+import Breadcrumb from "./Breadcrumb.astro";
+import CatIcon from "./CatIcon.astro";
+import TrustBlock from "./TrustBlock.astro";
+import AdSlot from "./AdSlot.astro";
+import { type Category, foodsIn, url, cellsFor, days, hasFreezePage, hasLeftOutPage } from "../lib/data";
+import { freezeVerdict } from "../lib/content";
+import { breadcrumbLd, ORG } from "../lib/schema";
+import { SITE, abs } from "../lib/site";
+
+interface Props { cat: Category; sub?: { slug: string; name: string; count: number } }
+const { cat, sub } = Astro.props;
+const path = sub ? url.sub(cat.slug, sub.slug) : url.category(cat.slug);
+const label = sub ? sub.name : cat.name;
+const foods = foodsIn(cat.slug, sub?.slug);
+const h1 = `${label} Storage Times`;
+const title = `${label} Storage Times: Fridge, Freezer & Pantry Chart (${foods.length} Foods)`;
+const sample = foods.slice().sort((a, b) => a.rank - b.rank).slice(0, 3).map((f) => f.name.toLowerCase());
+const description = `How long ${sample.join(", ")} and ${foods.length - sample.length} more ${label.toLowerCase()} foods last on the counter, in the fridge and in the freezer. USDA FoodKeeper data.`.slice(0, 155);
+const crumbs = [{ name: "Home", href: "/" }, { name: "Foods", href: "/foods/" }, ...(sub ? [{ name: cat.name, href: url.category(cat.slug) }] : []), { name: label }];
+
+const rows = foods.map((f) => {
+  const op = f.states.find((s) => s.key === "opened") ?? f.states[0];
+  const un = f.states.find((s) => s.key === "unopened");
+  const c0 = cellsFor(f, f.states[0], 0);
+  const cOp = cellsFor(f, op, f.states.indexOf(op));
+  const cUn = un ? cellsFor(f, un, f.states.indexOf(un)) : null;
+  const v = freezeVerdict(f);
+  const fzi = f.states.findIndex((s) => s.freezer);
+  return {
+    f,
+    counter: c0.pantry.value,
+    opened: cOp.fridge.value,
+    unopened: cUn ? (un!.fridge ? cUn.fridge.value : cUn.pantry.value + " (pantry)") : "—",
+    freezer: fzi >= 0 ? cellsFor(f, f.states[fzi], fzi).freezer.value : c0.freezer.value,
+    fridgeDays: days(op.fridge) ?? 99999,
+    freezerDays: days(f.states.map((s) => s.freezer).find(Boolean)) ?? -1,
+    tone: v.tone,
+    pill: v.tone === "yes" ? "Yes" : v.tone === "no" ? "No" : v.label.startsWith("Yes") ? "Cooking only" : "—",
+  };
+});
+const filters = [["all", `All ${label.toLowerCase()}`], ["short", "Fridge < 1 week"], ["yes", "Freezes well"], ["no", "Do not freeze"]];
+const nFreeze = foods.filter(hasFreezePage).length;
+const nLeft = foods.filter(hasLeftOutPage).length;
+const ld = {
+  "@context": "https://schema.org",
+  "@graph": [
+    ORG,
+    { "@type": "CollectionPage", name: h1, url: abs(path), description, dateModified: SITE.verifiedISO, isPartOf: { "@type": "WebSite", name: SITE.name, url: SITE.url } },
+    { "@type": "ItemList", name: h1, numberOfItems: foods.length, itemListElement: foods.map((f, i) => ({ "@type": "ListItem", position: i + 1, name: f.name, url: abs(url.food(f)) })) },
+    breadcrumbLd(crumbs, path),
+  ],
+};
+---
+<Base title={title} description={description} path={path} jsonld={ld}>
+  <div class="container-site pt-4 md:pt-6">
+    <Breadcrumb items={crumbs} />
+    <div class="mt-5 grid md:grid-cols-[minmax(0,1fr)_360px] gap-10 items-end">
+      <div>
+        <div class="eyebrow eyebrow-rule">{sub ? `${cat.name} · ` : "Category · "}{foods.length} foods</div>
+        <h1 class="h1-food mt-3.5">{h1}</h1>
+        <p class="lead mt-3 max-w-[680px]">How long {sub ? sub.name.toLowerCase() : cat.blurb} last on the counter, in the fridge and in the freezer — opened and unopened. Sourced from USDA FoodKeeper, last verified {SITE.verifiedLabel}.</p>
+      </div>
+      <div class="paper hidden md:grid h-[180px] rounded-[12px] place-items-center"><CatIcon slug={cat.slug} size={72} /></div>
+    </div>
+
+    {!sub && cat.subcategories.length > 0 && (
+      <div class="grid grid-cols-2 md:grid-cols-6 gap-3 mt-9">
+        {cat.subcategories.map((s) => (
+          <a href={url.sub(cat.slug, s.slug)} class="block p-3.5 border border-line rounded-[10px] min-h-11 hover:border-[#c9c9cf]">
+            <div class="font-medium text-[15px]">{s.name}</div><div class="text-[13px] text-muted mt-0.5">{s.count} foods</div>
+          </a>
+        ))}
+      </div>
+    )}
+    {sub && (
+      <p class="mt-6 text-sm"><a class="link" href={url.category(cat.slug)}>← All {cat.name.toLowerCase()}</a>{cat.subcategories.filter((s) => s.slug !== sub.slug).map((s) => <> · <a class="link" href={url.sub(cat.slug, s.slug)}>{s.name}</a></>)}</p>
+    )}
+
+    <div class="hub" data-hub>
+      <div class="flex flex-wrap items-center gap-2 mt-10">
+        {filters.map(([k, l], i) => (
+          <button type="button" data-filter={k} aria-pressed={i === 0 ? "true" : "false"} class="hub-chip border border-line rounded-full px-3.5 py-2 text-sm font-medium min-h-10">{l}</button>
+        ))}
+        <span class="flex-1"></span>
+        <span class="text-[13px] text-muted"><span data-shown>{foods.length}</span> of {foods.length} foods · <span data-sortlabel>sorted A–Z</span></span>
+      </div>
+      <div class="table-wrap mt-3.5">
+        <table class="data-table min-w-[760px]">
+          <thead><tr>
+            <th><button type="button" data-sort="name">Food</button></th>
+            <th>Counter</th>
+            <th><button type="button" data-sort="fridge">Fridge (opened)</button></th>
+            <th>Fridge (unopened)</th>
+            <th><button type="button" data-sort="freezer">Freezer</button></th>
+            <th>Freezes well?</th>
+          </tr></thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr data-name={r.f.name.toLowerCase()} data-fridge={r.fridgeDays} data-freezer={r.freezerDays} data-tone={r.tone}>
+                <td><a href={url.food(r.f)} class="font-medium">{r.f.name}</a></td>
+                <td class="text-muted">{r.counter}</td>
+                <td>{r.opened}</td>
+                <td class="text-muted">{r.unopened}</td>
+                <td>{r.freezer}</td>
+                <td><span class:list={["pill !text-[13px] !py-[3px] !px-2.5", r.tone === "yes" ? "pill-yes" : r.tone === "no" ? "pill-no" : "pill-caution"]}>{r.pill}</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <AdSlot w={970} h={250} class="hidden lg:grid mt-12" id="hub-1" />
+
+    <div class="grid md:grid-cols-3 gap-4 mt-10">
+      <a href="/can-you-freeze/" class="block p-5 bg-panel rounded-[10px]"><div class="font-[650] text-lg tracking-[-0.02em]">Can you freeze… {label.toLowerCase()}?</div><div class="text-sm text-muted mt-1">{nFreeze} answers, A–Z</div></a>
+      <a href="/does-it-go-bad/" class="block p-5 bg-panel rounded-[10px]"><div class="font-[650] text-lg tracking-[-0.02em]">Does… go bad?</div><div class="text-sm text-muted mt-1">Signs of spoilage for every {label.toLowerCase()} item</div></a>
+      <a href="/left-out-overnight/" class="block p-5 bg-panel rounded-[10px]"><div class="font-[650] text-lg tracking-[-0.02em]">Left out overnight</div><div class="text-sm text-muted mt-1">{nLeft ? `The 2-hour rule for ${nLeft} perishable foods` : "The 2-hour rule, food by food"}</div></a>
+    </div>
+    <TrustBlock path={path} />
+  </div>
+</Base>
+
+<style>
+  .hub-chip { background: #fff; color: var(--color-ink); }
+  .hub-chip[aria-pressed="true"] { background: var(--color-ink); color: #fff; border-color: var(--color-ink); }
+  th button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+  th button::after { content: " ↕"; opacity: .5; }
+</style>
+
+<script>
+  // Filter chips + column sort for the hub table (progressive enhancement; the table works without JS).
+  for (const hub of document.querySelectorAll<HTMLElement>("[data-hub]")) {
+    const tbody = hub.querySelector("tbody")!;
+    const rows = [...tbody.querySelectorAll<HTMLTableRowElement>("tr")];
+    const shown = hub.querySelector("[data-shown]")!;
+    const sortLabel = hub.querySelector("[data-sortlabel]")!;
+    hub.querySelectorAll<HTMLButtonElement>("[data-filter]").forEach((b) =>
+      b.addEventListener("click", () => {
+        hub.querySelectorAll("[data-filter]").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+        const k = b.dataset.filter;
+        let n = 0;
+        for (const r of rows) {
+          const ok = k === "all" || (k === "short" && Number(r.dataset.fridge) < 7) || (k === "yes" && r.dataset.tone === "yes") || (k === "no" && r.dataset.tone === "no");
+          r.hidden = !ok;
+          if (ok) n++;
+        }
+        shown.textContent = String(n);
+      }),
+    );
+    let last = "name", dir = 1;
+    hub.querySelectorAll<HTMLButtonElement>("[data-sort]").forEach((b) =>
+      b.addEventListener("click", () => {
+        const k = b.dataset.sort!;
+        dir = k === last ? -dir : 1;
+        last = k;
+        rows.sort((a, c) => (k === "name" ? a.dataset.name!.localeCompare(c.dataset.name!) : Number(a.dataset[k]) - Number(c.dataset[k])) * dir);
+        tbody.append(...rows);
+        sortLabel.textContent = `sorted by ${b.textContent!.toLowerCase()} ${dir > 0 ? (k === "name" ? "A–Z" : "shortest first") : k === "name" ? "Z–A" : "longest first"}`;
+      }),
+    );
+  }
+</script>
