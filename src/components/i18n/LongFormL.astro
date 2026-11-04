@@ -1,0 +1,44 @@
+---
+/** Localized long-form sections; renders nothing until data/i18n/lf.{lang}.json exists. */
+import SectionHead from "../fun/SectionHead.astro";
+import Icon from "../fun/Icon.astro";
+interface Props { lf: any; part: "about" | "qa" | "spoil" | "buying" | "dates" }
+const { lf, part } = Astro.props;
+const E = lf?.X.eyebrows;
+---
+{lf && part === "about" && (
+  <section id="about" class="mt-8 md:mt-12">
+    <SectionHead icon="leaf" tint="var(--color-tint-green)" ink="#1b7a55" eyebrow={E.basics}>{lf.h.about}</SectionHead>
+    <div class="mt-[18px] grid gap-3 text-[16px] leading-[1.7] text-[#3f3f46]">{lf.about.map((p: string) => <p>{p}</p>)}</div>
+  </section>
+)}
+{lf && part === "qa" && (
+  <section id="qa" class="mt-8 md:mt-12">
+    <SectionHead icon="question" tint="var(--color-tint-blue)" ink="#2f5fbf" eyebrow={E.qa}>{lf.h.qa}</SectionHead>
+    <div class="grid gap-3 mt-[18px]">{lf.qa.map(([q, a]: [string, string]) => <div class="soft p-4 md:p-5 bg-[#f7f8fb] border border-[#e8ecf5]"><h3 class="!text-[17px] !tracking-[-0.01em]">{q}</h3><p class="text-[15px] text-[#3f3f46] mt-1.5">{a}</p></div>)}</div>
+  </section>
+)}
+{lf && part === "spoil" && (
+  <>
+    <section id="why" class="mt-8 md:mt-12">
+      <SectionHead icon="spark" tint="var(--color-tint-pink)" ink="#b83269" eyebrow={E.science}>{lf.h.why}</SectionHead>
+      <p class="soft mt-[18px] p-4 md:p-5 bg-[#fdf6f9] text-[16px] leading-[1.7] text-[#3f3f46]">{lf.spoil}</p>
+    </section>
+    <section id="mistakes" class="mt-8 md:mt-12">
+      <SectionHead icon="warn" tint="var(--color-tint-red)" ink="#a5281b" eyebrow={E.avoid}>{lf.h.mistakes}</SectionHead>
+      <ul class="grid gap-2.5 list-none p-0 mt-[18px]">{lf.mistakes.map((m: string) => <li class="soft flex gap-3 p-4 border border-line"><span class="icon-chip !w-7 !h-7 !rounded-full" style="background:var(--color-tint-red);color:#a5281b"><Icon name="warn" size={14} /></span><span class="text-[15px] leading-[1.55]">{m}</span></li>)}</ul>
+    </section>
+  </>
+)}
+{lf && part === "buying" && (
+  <section id="buying" class="mt-8 md:mt-12 grid md:grid-cols-2 gap-4">
+    <div class="soft p-5" style="background:var(--color-tint-blue)"><div class="text-[11px] font-bold uppercase tracking-[.08em] text-[#2f5fbf]">{E.store}</div><h2 class="!text-[22px] !tracking-[-0.02em] mt-1">{lf.h.buying}</h2><ul class="prose-list !text-[15px]">{lf.buying.map((b: string) => <li>{b}</li>)}</ul></div>
+    <div class="soft p-5" style="background:var(--color-tint-amber)"><div class="text-[11px] font-bold uppercase tracking-[.08em] text-[#8a5a0c]">{E.waste}</div><h2 class="!text-[22px] !tracking-[-0.02em] mt-1">{lf.h.useUp}</h2><ul class="prose-list !text-[15px]">{lf.useUp.map((b: string) => <li>{b}</li>)}</ul></div>
+  </section>
+)}
+{lf && part === "dates" && (
+  <section id="dates-explained" class="mt-8 md:mt-12">
+    <SectionHead icon="calendar" tint="var(--color-tint-lilac)" ink="#4a3bd2" eyebrow={E.dates}>{lf.h.dates}</SectionHead>
+    <div class="mt-[18px] grid gap-3 text-[16px] leading-[1.7] text-[#3f3f46]">{lf.dates.map((p: string) => <p>{p}</p>)}</div>
+  </section>
+)}

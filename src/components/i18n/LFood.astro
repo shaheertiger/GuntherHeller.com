@@ -16,6 +16,8 @@ import DangerZone from "../fun/DangerZone.astro";
 import Signs from "../Signs.astro";
 import Steps from "../Steps.astro";
 import Icon from "../fun/Icon.astro";
+import LongFormL from "./LongFormL.astro";
+import { longL } from "../../lib/longformL";
 import { timelineBars, perishLevel, checker, type VizStrings } from "../../lib/viz";
 import { type Food, getCategory, url as enUrl, cellsFor } from "../../lib/data";
 import { groupOf } from "../../lib/content";
@@ -34,7 +36,8 @@ const crumbs = [{ name: U.home, href: lurl.home(L) }, { name: catName, href: lur
 const methods = methodsL(L, f);
 const z = freezeL(L, f);
 const lo = leftOutL(L, f);
-const faq = faqL(L, f);
+const lf = longL(L, f);
+const faq = [...faqL(L, f), ...(lf ? lf.faq : [])];
 const signs = S.signs[groupOf(f)] as [string, string][];
 const store = S.store[groupOf(f)] as string[];
 const similar = similarL(L, f);
@@ -87,6 +90,8 @@ const ld = { "@context": "https://schema.org", "@graph": [ORG,
           </section>
         )}
 
+        <LongFormL lf={lf} part="about" />
+
         <section id="methods" class="mt-8 md:mt-12">
           <SectionHead icon="grid" tint="var(--color-tint-green)" ink="#1b7a55" eyebrow={E.methods}>{F.hMethods}</SectionHead>
           <div class="table-wrap mt-[18px] !rounded-[20px]">
@@ -103,6 +108,9 @@ const ld = { "@context": "https://schema.org", "@graph": [ORG,
           <SectionHead icon="nose" tint="var(--color-tint-pink)" ink="#b83269" eyebrow={E.signs}>{F.hSigns}</SectionHead>
           <Signs signs={signs.map(([title, text]) => ({ title, text }))} />
         </section>
+
+        <LongFormL lf={lf} part="qa" />
+        <LongFormL lf={lf} part="spoil" />
 
         <section id="freeze" class="mt-8 md:mt-12">
           <SectionHead icon="freezer" tint="var(--color-tint-blue)" ink="#2f5fbf" eyebrow={E.freeze}>{fill(F.hFreeze, {}, T)}</SectionHead>
@@ -123,6 +131,9 @@ const ld = { "@context": "https://schema.org", "@graph": [ORG,
             <li class="lift soft flex gap-3 p-4 border border-line"><span class="icon-chip" style="background:var(--color-tint-green);color:#1b7a55"><Icon name={TIP_ICONS[i % TIP_ICONS.length]} size={17} /></span><span class="text-[15px] leading-[1.55]">{t}</span></li>
           ))}</ul>
         </section>
+
+        <LongFormL lf={lf} part="buying" />
+        <LongFormL lf={lf} part="dates" />
 
         <section id="similar" class="mt-8 md:mt-12">
           <SectionHead icon="leaf" tint="var(--color-tint-amber)" ink="#8a5a0c" eyebrow={E.similar}>{U.similar}</SectionHead>

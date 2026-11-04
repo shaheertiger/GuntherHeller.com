@@ -9,7 +9,7 @@ import { groupOf, freezeVerdict, zoneFor } from "./content";
 
 type Copy = { about: string; spoil: string; mistakes: string[]; buying: string[]; useUp: string[]; container: string };
 
-const C: Record<string, Copy> = {
+export const C: Record<string, Copy> = {
   meat: {
     about: "Raw meat is one of the most perishable foods in the kitchen. Its surface carries bacteria from processing, and the juices it releases are an easy route for those bacteria to reach other food. That is why the safe fridge window is short and the freezer is your friend: freezing stops bacterial growth completely, so meat you cannot cook in time can simply go into the freezer on the day you buy it.",
     spoil: "Spoilage bacteria such as Pseudomonas and lactic-acid bacteria multiply on the surface of raw meat even at fridge temperature, producing the sour smell and sticky film you notice when it turns. Pathogens such as Salmonella and E. coli do not change the smell or look at all, so a piece of meat can seem fine and still be unsafe once it is past its window. Ground meat spoils fastest because grinding spreads surface bacteria through the whole batch.",
