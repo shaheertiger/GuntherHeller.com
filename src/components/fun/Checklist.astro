@@ -1,0 +1,17 @@
+---
+/** "Check your food": tick what you notice; any tick reveals the throw-it-out verdict (CSS only). */
+interface Props { id: string; title: string; items: { title: string; text: string }[]; okText: string; badText: string }
+const { id, title, items, okText, badText } = Astro.props;
+---
+<div class="cl soft border border-line p-4 md:p-5 mt-[18px]">
+  <div class="text-[15px] font-[650]">{title}</div>
+  <ul class="grid sm:grid-cols-2 gap-2 list-none p-0 mt-3">
+    {items.map((it, i) => (
+      <li><input class="sr-only cl-box" type="checkbox" id={`${id}-${i}`} /><label for={`${id}-${i}`} class="cl-item flex gap-3 items-start p-3 rounded-[14px] border border-line cursor-pointer min-h-11"><span class="cl-tick w-5 h-5 rounded-md border-2 border-[#a1a1aa] shrink-0 mt-0.5 grid place-items-center text-white text-[13px] font-bold" aria-hidden="true">✓</span><span><span class="block font-[600] text-[15px]">{it.title}</span><span class="block text-[13px] text-[#52525b]">{it.text}</span></span></label></li>
+    ))}
+  </ul>
+  <div class="mt-3" aria-live="polite">
+    <div class="cl-ok gap-3 items-center soft !rounded-[14px] p-3.5" style="background:var(--color-tint-green)"><img src="/mascot/gunther-happy.svg" width="240" height="300" alt="" loading="lazy" class="w-9 h-auto" /><p class="text-[14px] text-[#1b6b45]">{okText}</p></div>
+    <div class="cl-bad gap-3 items-center soft !rounded-[14px] p-3.5" style="background:var(--color-tint-red)"><img src="/mascot/gunther-oops.svg" width="240" height="300" alt="" loading="lazy" class="w-9 h-auto" /><p class="text-[14px] text-[#9a2f23] font-[600]">{badText}</p></div>
+  </div>
+</div>

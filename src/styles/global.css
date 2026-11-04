@@ -146,6 +146,22 @@
   .sg-chip:hover { transform: translateY(-1px); border-color: #c9c9cf; }
   .sg input:checked + .sg-chip { background: var(--color-ink); border-color: var(--color-ink); color: #fff; }
   .sg input:focus-visible + .sg-chip { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+  /* Quiz */
+  .qz-out, .qz-right, .qz-wrong { display: none; }
+  .qz:has(input:checked) .qz-out { display: block; background: #f7f7f8; }
+  .qz:has(input[data-ok="1"]:checked) .qz-right { display: block; }
+  .qz:has(input[data-ok="0"]:checked) .qz-wrong { display: block; }
+  .qz input:checked + .sg-chip { background: var(--color-ink); border-color: var(--color-ink); color: #fff; }
+  /* Checklist */
+  .cl-ok { display: flex; }
+  .cl-bad { display: none; }
+  .cl:has(.cl-box:checked) .cl-ok { display: none; }
+  .cl:has(.cl-box:checked) .cl-bad { display: flex; }
+  .cl-box:checked + .cl-item { border-color: #c0392b; background: var(--color-tint-red); }
+  .cl-box:checked + .cl-item .cl-tick { background: #c0392b; border-color: #c0392b; }
+  .cl-box:focus-visible + .cl-item { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+  .cl-tick { color: transparent; }
+  .cl-box:checked + .cl-item .cl-tick { color: #fff; }
   .lift { transition: transform .15s ease, box-shadow .15s ease; }
   .lift:hover { transform: translateY(-2px); }
   @media (prefers-reduced-motion: reduce) { .lift, .sg-chip { transition: none; } .lift:hover, .sg-chip:hover { transform: none; } }

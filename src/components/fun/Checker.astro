@@ -1,0 +1,25 @@
+---
+/** Generic CSS-only checker: tap an option, see a verdict (radio inputs + :has, no JS). */
+import type { Opt } from "../../lib/interactive";
+interface Props { id: string; ask: string; hint?: string; note?: string; options: Opt[] }
+const { id, ask, hint = "Tap a time to check.", note, options } = Astro.props;
+const TONE = { fresh: ["var(--color-tint-green)", "var(--color-green-ink)", "happy"], edge: ["var(--color-tint-amber)", "#8a5a0c", "worried"], toss: ["var(--color-tint-red)", "#9a2f23", "oops"] } as const;
+---
+<div class="sg soft border border-line p-4 md:p-5">
+  <fieldset class="m-0 p-0 border-0">
+    <legend class="text-[15px] font-[650]">{ask}</legend>
+    <div class="flex flex-wrap gap-2 mt-3">
+      {options.map((o, i) => (<><input class="sr-only" type="radio" name={id} id={`${id}-${i}`} data-i={i} /><label for={`${id}-${i}`} class="sg-chip">{o.label}</label></>))}
+    </div>
+  </fieldset>
+  <div class="mt-4" aria-live="polite">
+    <div class="sg-out text-[14px] text-muted" data-i="none">{hint}</div>
+    {options.map((o, i) => (
+      <div class="sg-out soft items-start gap-3 p-3.5 !rounded-[14px]" data-i={i} style={`background:${TONE[o.tone][0]}`}>
+        <img src={`/mascot/gunther-${TONE[o.tone][2]}.svg`} width="240" height="300" alt="" loading="lazy" decoding="async" class="w-10 h-auto shrink-0" />
+        <div><div class="font-[650]" style={`color:${TONE[o.tone][1]}`}>{o.head}</div><p class="text-[14px] text-[#3c4a42] mt-0.5">{o.text}</p></div>
+      </div>
+    ))}
+  </div>
+  {note && <p class="text-[12px] text-muted mt-3">{note}</p>}
+</div>

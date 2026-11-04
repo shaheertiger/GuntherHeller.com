@@ -24,6 +24,10 @@ import FridgeMap from "./fun/FridgeMap.astro";
 import CompareChart from "./fun/CompareChart.astro";
 import ToolsCta from "./fun/ToolsCta.astro";
 import LongForm from "./LongForm.astro";
+import Checker from "./fun/Checker.astro";
+import Quiz from "./fun/Quiz.astro";
+import Checklist from "./fun/Checklist.astro";
+import { freezerChecks, counterChecks, quizFor, checklistFor } from "../lib/interactive";
 import { faqExtraFor } from "../lib/longform";
 import { modifierQA, thawFor, reheatFor, zoneFor } from "../lib/content";
 import { range } from "../lib/viz";
@@ -76,6 +80,9 @@ const units = enStrings.units as Record<string, [string, string]>;
 const TIP_ICONS = ["fridge", "box", "thermo", "calendar", "leaf"];
 const fr = range(f.states[0].fridge);
 const qa = modifierQA(f);
+const fzChecks = freezerChecks(f);
+const ctChecks = counterChecks(f);
+const quiz = quizFor(f);
 const thaw = isNum(freezerFacts(f)) ? thawFor(f) : null;
 const reheat = reheatFor(f);
 const zone = zoneFor(f);
@@ -84,8 +91,8 @@ const lifeOf = (x: Food) => { const s0 = x.states[0]; const d = range(s0.fridge)
 const compare = [f, ...similar.slice(0, 6)].map((x) => ({ x, l: lifeOf(x) })).filter((r) => r.l).map(({ x, l }) => ({ name: x.name, href: x === f ? undefined : url.food(x), days: l!.days, label: l!.label, me: x === f })).sort((a, b) => b.days - a.days);
 
 const toc = [
-  ["answer", "Quick answer"], ["glance", "At a glance"], ["about", "About it"], ["methods", "Storage times by method"], ["where", "Where to store it"], ["qa", "Questions answered"], ["bad", "Signs it has gone bad"], ["freeze", "Can you freeze it?"],
-  ["leftout", "Left out overnight"], ["dates", "Date labels"], ["store", "How to store it"], ["similar", "Similar foods"], ["faq", "FAQ"],
+  ["answer", "Quick answer"], ["glance", "At a glance"], ["check", "Check your food"], ["about", "About it"], ["methods", "Storage times by method"], ["where", "Where to store it"], ["qa", "Questions answered"], ["bad", "Signs it has gone bad"], ["freeze", "Can you freeze it?"],
+  ["leftout", "Left out overnight"], ["dates", "Date labels"], ["store", "How to store it"], ["similar", "Similar foods"], ["quiz", "Quiz"], ["faq", "FAQ"],
 ];
 const related = [
   hasFreezePage(f) && { href: url.freeze(f), label: `Can you freeze ${name}?` },
@@ -160,6 +167,16 @@ const tools = [
           </section>
         )}
 
+        {(fzChecks || ctChecks) && (
+          <section id="check" class="mt-8 md:mt-14">
+            <SectionHead icon="clock" tint="var(--color-tint-amber)" ink="#8a5a0c" eyebrow="Try it">{`Check your ${name}`}</SectionHead>
+            <div class="grid gap-3 mt-[18px]">
+              {ctChecks && <Checker id={`ct-${f.slug}`} ask={f.perishable ? "It's been out on the counter for…" : "It's been in the pantry for…"} options={ctChecks} note={f.perishable ? "Room temperature means anything above 4°C (40°F). On hot days above 32°C (90°F), the limit is 1 hour." : "Assumes a cool, dry, dark cupboard with the package tightly closed."} />}
+              {fzChecks && <Checker id={`fz-${f.slug}`} ask="It's been in the freezer for…" options={fzChecks} note="Assumes a freezer at -18°C (0°F) or colder. Frozen food stays safe; these verdicts are about quality." />}
+            </div>
+          </section>
+        )}
+
         <LongForm food={f} parts={["about"]} />
 
         <section id="methods" class="mt-8 md:mt-14">
@@ -197,6 +214,7 @@ const tools = [
         <section id="bad" class="mt-8 md:mt-14">
           <SectionHead icon="nose" tint="var(--color-tint-pink)" ink="#b83269" eyebrow="Check before you eat">{`Signs ${name} ${f.plural ? "have" : "has"} gone bad`}</SectionHead>
           <Signs food={f} />
+          <Checklist id={`cl-${f.slug}`} title={`Check your ${name}: tick anything you notice`} items={checklistFor(f)} okText="Nothing ticked? Good sign. Still check how long it has been stored: the bacteria that cause food poisoning are invisible." badText="Any of these means it has gone bad. Throw it out — don't taste it to check." />
           <p class="mt-3 text-sm"><a href={url.bad(f)} class="link">{does(f)} {name} go bad? Full guide →</a></p>
         </section>
 
@@ -277,6 +295,11 @@ const tools = [
             <a href={freezeHub.href} class="link">{freezeHub.label} →</a><span aria-hidden="true">·</span>
             {tools.map((t, i) => <>{i > 0 && <span aria-hidden="true">·</span>}<a href={t.href} class="link">{t.label} →</a></>)}
           </p>
+        </section>
+
+        <section id="quiz" class="mt-8 md:mt-14">
+          <SectionHead icon="spark" tint="var(--color-tint-lilac)" ink="#4a3bd2" eyebrow="Quick quiz">{`True or false? ${cap1(name)} myths`}</SectionHead>
+          <Quiz id={`qz-${f.slug}`} items={quiz} />
         </section>
 
         <section id="faq" class="mt-8 md:mt-14">

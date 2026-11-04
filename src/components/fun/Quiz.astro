@@ -1,0 +1,26 @@
+---
+/** True-or-false quiz: each statement is a radio pair; the answer and explanation reveal on tap (CSS only). */
+import type { Quiz } from "../../lib/interactive";
+interface Props { id: string; items: Quiz[]; labels?: { t: string; f: string; right: string; wrong: string } }
+const { id, items, labels = { t: "True", f: "False", right: "Correct!", wrong: "Not quite." } } = Astro.props;
+---
+<ol class="grid gap-3 list-none p-0 mt-[18px]">
+  {items.map((q, i) => (
+    <li class="qz soft border border-line p-4 md:p-5">
+      <fieldset class="m-0 p-0 border-0">
+        <legend class="text-[15px] md:text-base font-[600] leading-snug"><span class="text-[#4a3bd2] mr-1.5">{i + 1}.</span>{q.q}</legend>
+        <div class="flex gap-2 mt-3">
+          <input class="sr-only" type="radio" name={`${id}-${i}`} id={`${id}-${i}-t`} data-ok={q.answer ? "1" : "0"} />
+          <label for={`${id}-${i}-t`} class="sg-chip">{labels.t}</label>
+          <input class="sr-only" type="radio" name={`${id}-${i}`} id={`${id}-${i}-f`} data-ok={q.answer ? "0" : "1"} />
+          <label for={`${id}-${i}-f`} class="sg-chip">{labels.f}</label>
+        </div>
+      </fieldset>
+      <div class="qz-out mt-3 soft !rounded-[14px] p-3.5" aria-live="polite">
+        <div class="qz-right font-[650] text-[#1b6b45]">{labels.right}</div>
+        <div class="qz-wrong font-[650] text-[#9a2f23]">{labels.wrong}</div>
+        <p class="text-[14px] text-[#3f3f46] mt-0.5">{q.why}</p>
+      </div>
+    </li>
+  ))}
+</ol>

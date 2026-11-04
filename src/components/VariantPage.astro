@@ -19,6 +19,10 @@ import { freezeVerdict, freezeStepsFor, leftOutFor, datesFor, storeTipsFor, sign
 import { foodGraph } from "../lib/schema";
 import { SITE } from "../lib/site";
 import LongForm from "./LongForm.astro";
+import Checker from "./fun/Checker.astro";
+import Quiz from "./fun/Quiz.astro";
+import Checklist from "./fun/Checklist.astro";
+import { freezerChecks, counterChecks, quizFor, checklistFor } from "../lib/interactive";
 import SectionHead from "./fun/SectionHead.astro";
 import { faqExtraFor, freezeScienceFor, scenariosFor, datesExplained } from "../lib/longform";
 import FridgeMap from "./fun/FridgeMap.astro";
@@ -96,6 +100,9 @@ if (variant === "freeze") {
 }
 faq = [...faq, ...faqExtraFor(f)];
 const qa = modifierQA(f);
+const fzChecks = freezerChecks(f);
+const ctChecks = counterChecks(f);
+const quiz = quizFor(f);
 if (description.length > 155) description = description.slice(0, 154).replace(/\s+\S*$/, "") + "…";
 
 const crumbs = [{ name: "Home", href: "/" }, { name: cat.name, href: url.category(cat.slug) }, { name: f.name, href: url.food(f) }, { name: h1.replace(/\?$/, "") }];
@@ -252,6 +259,31 @@ const pill = (t: string) => (t === "yes" || t === "keep" ? "pill-yes" : t === "n
             <div class="mt-[18px] grid gap-3 text-[16px] leading-[1.7] text-[#3f3f46]">{datesExplained(f).map((p) => <p>{p}</p>)}</div>
           </section>
         )}
+
+        {variant === "freeze" && fzChecks && (
+          <section id="check" class="mt-8 md:mt-12">
+            <SectionHead icon="freezer" tint="var(--color-tint-blue)" ink="#2f5fbf" eyebrow="Try it">{`How long has your ${name} been frozen?`}</SectionHead>
+            <div class="mt-[18px]"><Checker id={`fz-${f.slug}`} ask="It's been in the freezer for…" options={fzChecks} note="Assumes -18°C (0°F) or colder. Frozen food stays safe; these verdicts are about quality." /></div>
+          </section>
+        )}
+        {variant === "leftOut" && ctChecks && (
+          <section id="check" class="mt-8 md:mt-12">
+            <SectionHead icon="clock" tint="var(--color-tint-amber)" ink="#8a5a0c" eyebrow="Try it">{`How long was your ${name} out?`}</SectionHead>
+            <div class="mt-[18px]"><Checker id={`ct-${f.slug}`} ask="It's been out on the counter for…" options={ctChecks} note="Room temperature means anything above 4°C (40°F). On hot days above 32°C (90°F), the limit is 1 hour." /></div>
+          </section>
+        )}
+        {variant === "bad" && (
+          <section id="check" class="mt-8 md:mt-12">
+            <SectionHead icon="nose" tint="var(--color-tint-pink)" ink="#b83269" eyebrow="Try it">{`Check your ${name}`}</SectionHead>
+            <Checklist id={`cl-${f.slug}`} title="Tick anything you notice" items={checklistFor(f)} okText="Nothing ticked? Good sign. Still check how long it has been stored: the bacteria that cause food poisoning are invisible." badText="Any of these means it has gone bad. Throw it out — don't taste it to check." />
+            {ctChecks && <div class="mt-3"><Checker id={`ct-${f.slug}`} ask={f.perishable ? "It's been out on the counter for…" : "It's been in the pantry for…"} options={ctChecks} /></div>}
+          </section>
+        )}
+
+        <section id="quiz" class="mt-8 md:mt-12">
+          <SectionHead icon="spark" tint="var(--color-tint-lilac)" ink="#4a3bd2" eyebrow="Quick quiz">{`True or false? ${cap1(name)} myths`}</SectionHead>
+          <Quiz id={`qz-${f.slug}`} items={quiz} />
+        </section>
 
         <section id="qa" class="mt-8 md:mt-12">
           <SectionHead icon="question" tint="var(--color-tint-blue)" ink="#2f5fbf" eyebrow="Question by question">{`${cap1(name)} shelf life, answered`}</SectionHead>
