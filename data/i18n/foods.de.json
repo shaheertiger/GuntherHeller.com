@@ -4639,5 +4639,642 @@
   "o": "trockenes Sojagranulat",
   "p": false,
   "s": "sojagranulat"
+ },
+ "brie": {
+  "n": "Brie",
+  "q": "Brie",
+  "o": "Brie",
+  "p": false,
+  "s": "brie"
+ },
+ "cheddar-cheese": {
+  "n": "Cheddar",
+  "q": "Cheddar",
+  "o": "Cheddar",
+  "p": false,
+  "s": "cheddar"
+ },
+ "egg-whites": {
+  "n": "Eiweiß",
+  "q": "Eiweiß",
+  "o": "Eiweiß",
+  "p": false,
+  "s": "eiweiss"
+ },
+ "egg-yolks": {
+  "n": "Eigelb",
+  "q": "Eigelb",
+  "o": "Eigelb",
+  "p": false,
+  "s": "eigelb"
+ },
+ "goat-cheese": {
+  "n": "Ziegenkäse",
+  "q": "Ziegenkäse",
+  "o": "Ziegenkäse",
+  "p": false,
+  "s": "ziegenkaese"
+ },
+ "parmesan-cheese": {
+  "n": "Parmesan",
+  "q": "Parmesan",
+  "o": "Parmesan",
+  "p": false,
+  "s": "parmesan"
+ },
+ "shredded-mozzarella": {
+  "n": "Geriebener Mozzarella",
+  "q": "geriebener Mozzarella",
+  "o": "geriebenen Mozzarella",
+  "p": false,
+  "s": "geriebener-mozzarella"
+ },
+ "swiss-cheese": {
+  "n": "Emmentaler",
+  "q": "Emmentaler",
+  "o": "Emmentaler",
+  "p": false,
+  "s": "emmentaler"
+ },
+ "beef-tongue": {
+  "n": "Rinderzunge",
+  "q": "Rinderzunge",
+  "o": "Rinderzunge",
+  "p": false,
+  "s": "rinderzunge"
+ },
+ "brisket": {
+  "n": "Rinderbrust (Brisket)",
+  "q": "Rinderbrust (Brisket)",
+  "o": "Rinderbrust (Brisket)",
+  "p": false,
+  "s": "rinderbrust-brisket"
+ },
+ "chitterlings": {
+  "n": "Schweinedärme (Chitterlings)",
+  "q": "Schweinedärme (Chitterlings)",
+  "o": "Schweinedärme (Chitterlings)",
+  "p": true,
+  "s": "schweinedaerme"
+ },
+ "chuck-roast": {
+  "n": "Rinderschulterbraten",
+  "q": "Rinderschulterbraten",
+  "o": "Rinderschulterbraten",
+  "p": false,
+  "s": "rinderschulterbraten"
+ },
+ "liver": {
+  "n": "Leber",
+  "q": "Leber",
+  "o": "Leber",
+  "p": false,
+  "s": "leber"
+ },
+ "chicken-legs": {
+  "n": "Hähnchenkeulen",
+  "q": "Hähnchenkeulen",
+  "o": "Hähnchenkeulen",
+  "p": true,
+  "s": "haehnchenkeulen"
+ },
+ "chicken-patties": {
+  "n": "Hähnchen-Patties",
+  "q": "Hähnchen-Patties",
+  "o": "Hähnchen-Patties",
+  "p": true,
+  "s": "haehnchen-patties"
+ },
+ "turkey-thighs": {
+  "n": "Putenoberkeulen",
+  "q": "Putenoberkeulen",
+  "o": "Putenoberkeulen",
+  "p": true,
+  "s": "putenoberkeulen"
+ },
+ "bluefish": {
+  "n": "Blaubarsch",
+  "q": "Blaubarsch",
+  "o": "Blaubarsch",
+  "p": false,
+  "s": "blaubarsch"
+ },
+ "catfish": {
+  "n": "Wels",
+  "q": "Wels",
+  "o": "Wels",
+  "p": false,
+  "s": "wels"
+ },
+ "clams": {
+  "n": "Venusmuscheln",
+  "q": "Venusmuscheln",
+  "o": "Venusmuscheln",
+  "p": true,
+  "s": "venusmuscheln"
+ },
+ "cod": {
+  "n": "Kabeljau (Dorsch)",
+  "q": "Kabeljau (Dorsch)",
+  "o": "Kabeljau (Dorsch)",
+  "p": false,
+  "s": "kabeljau-dorsch"
+ },
+ "crayfish": {
+  "n": "Flusskrebse",
+  "q": "Flusskrebse",
+  "o": "Flusskrebse",
+  "p": true,
+  "s": "flusskrebse"
+ },
+ "dungeness-crab": {
+  "n": "Dungeness-Krabbe",
+  "q": "Dungeness-Krabbe",
+  "o": "Dungeness-Krabbe",
+  "p": false,
+  "s": "dungeness-krabbe"
+ },
+ "flounder": {
+  "n": "Flunder",
+  "q": "Flunder",
+  "o": "Flunder",
+  "p": false,
+  "s": "flunder"
+ },
+ "haddock": {
+  "n": "Schellfisch",
+  "q": "Schellfisch",
+  "o": "Schellfisch",
+  "p": false,
+  "s": "schellfisch"
+ },
+ "halibut": {
+  "n": "Heilbutt",
+  "q": "Heilbutt",
+  "o": "Heilbutt",
+  "p": false,
+  "s": "heilbutt"
+ },
+ "king-crab-legs": {
+  "n": "Königskrabbenbeine",
+  "q": "Königskrabbenbeine",
+  "o": "Königskrabbenbeine",
+  "p": true,
+  "s": "koenigskrabbenbeine"
+ },
+ "mackerel": {
+  "n": "Makrele",
+  "q": "Makrele",
+  "o": "Makrele",
+  "p": false,
+  "s": "makrele"
+ },
+ "mullet": {
+  "n": "Meeräsche",
+  "q": "Meeräsche",
+  "o": "Meeräsche",
+  "p": false,
+  "s": "meeraesche"
+ },
+ "mussels": {
+  "n": "Miesmuscheln",
+  "q": "Miesmuscheln",
+  "o": "Miesmuscheln",
+  "p": true,
+  "s": "miesmuscheln"
+ },
+ "ocean-perch": {
+  "n": "Rotbarsch",
+  "q": "Rotbarsch",
+  "o": "Rotbarsch",
+  "p": false,
+  "s": "rotbarsch"
+ },
+ "oysters": {
+  "n": "Austern",
+  "q": "Austern",
+  "o": "Austern",
+  "p": true,
+  "s": "austern"
+ },
+ "pollock": {
+  "n": "Seelachs (Pollack)",
+  "q": "Seelachs (Pollack)",
+  "o": "Seelachs (Pollack)",
+  "p": false,
+  "s": "seelachs"
+ },
+ "rockfish": {
+  "n": "Felsenfisch (Rockfish)",
+  "q": "Felsenfisch (Rockfish)",
+  "o": "Felsenfisch (Rockfish)",
+  "p": false,
+  "s": "felsenfisch"
+ },
+ "sea-trout": {
+  "n": "Meerforelle",
+  "q": "Meerforelle",
+  "o": "Meerforelle",
+  "p": false,
+  "s": "meerforelle"
+ },
+ "snow-crab-legs": {
+  "n": "Schneekrabbenbeine",
+  "q": "Schneekrabbenbeine",
+  "o": "Schneekrabbenbeine",
+  "p": true,
+  "s": "schneekrabbenbeine"
+ },
+ "sole": {
+  "n": "Seezunge",
+  "q": "Seezunge",
+  "o": "Seezunge",
+  "p": false,
+  "s": "seezunge"
+ },
+ "tuna-steaks": {
+  "n": "Thunfischsteaks",
+  "q": "Thunfischsteaks",
+  "o": "Thunfischsteaks",
+  "p": true,
+  "s": "thunfischsteaks"
+ },
+ "stew": {
+  "n": "Eintopf",
+  "q": "Eintopf",
+  "o": "Eintopf",
+  "p": false,
+  "s": "eintopf"
+ },
+ "boysenberries": {
+  "n": "Boysenbeeren",
+  "q": "Boysenbeeren",
+  "o": "Boysenbeeren",
+  "p": true,
+  "s": "boysenbeeren"
+ },
+ "clementines": {
+  "n": "Clementinen",
+  "q": "Clementinen",
+  "o": "Clementinen",
+  "p": true,
+  "s": "clementinen"
+ },
+ "currants": {
+  "n": "Johannisbeeren",
+  "q": "Johannisbeeren",
+  "o": "Johannisbeeren",
+  "p": true,
+  "s": "johannisbeeren"
+ },
+ "feijoa": {
+  "n": "Feijoa",
+  "q": "Feijoa",
+  "o": "Feijoa",
+  "p": false,
+  "s": "feijoa"
+ },
+ "gooseberries": {
+  "n": "Stachelbeeren",
+  "q": "Stachelbeeren",
+  "o": "Stachelbeeren",
+  "p": true,
+  "s": "stachelbeeren"
+ },
+ "grapefruit": {
+  "n": "Grapefruit",
+  "q": "Grapefruit",
+  "o": "Grapefruit",
+  "p": false,
+  "s": "grapefruit"
+ },
+ "lemons": {
+  "n": "Zitronen",
+  "q": "Zitronen",
+  "o": "Zitronen",
+  "p": true,
+  "s": "zitronen"
+ },
+ "limes": {
+  "n": "Limetten",
+  "q": "Limetten",
+  "o": "Limetten",
+  "p": true,
+  "s": "limetten"
+ },
+ "lychee": {
+  "n": "Litschis",
+  "q": "Litschis",
+  "o": "Litschis",
+  "p": true,
+  "s": "litschis"
+ },
+ "mango": {
+  "n": "Mango",
+  "q": "Mango",
+  "o": "Mango",
+  "p": false,
+  "s": "mango"
+ },
+ "nectarines": {
+  "n": "Nektarinen",
+  "q": "Nektarinen",
+  "o": "Nektarinen",
+  "p": true,
+  "s": "nektarinen"
+ },
+ "oranges": {
+  "n": "Orangen",
+  "q": "Orangen",
+  "o": "Orangen",
+  "p": true,
+  "s": "orangen"
+ },
+ "papaya": {
+  "n": "Papaya",
+  "q": "Papaya",
+  "o": "Papaya",
+  "p": false,
+  "s": "papaya"
+ },
+ "passion-fruit": {
+  "n": "Passionsfrucht",
+  "q": "Passionsfrucht",
+  "o": "Passionsfrucht",
+  "p": false,
+  "s": "passionsfrucht"
+ },
+ "peaches": {
+  "n": "Pfirsiche",
+  "q": "Pfirsiche",
+  "o": "Pfirsiche",
+  "p": true,
+  "s": "pfirsiche"
+ },
+ "pears": {
+  "n": "Birnen",
+  "q": "Birnen",
+  "o": "Birnen",
+  "p": true,
+  "s": "birnen"
+ },
+ "plums": {
+  "n": "Pflaumen",
+  "q": "Pflaumen",
+  "o": "Pflaumen",
+  "p": true,
+  "s": "pflaumen"
+ },
+ "tangerines": {
+  "n": "Mandarinen",
+  "q": "Mandarinen",
+  "o": "Mandarinen",
+  "p": true,
+  "s": "mandarinen"
+ },
+ "broccoli-rabe": {
+  "n": "Stängelkohl (Cima di Rapa)",
+  "q": "Stängelkohl (Cima di Rapa)",
+  "o": "Stängelkohl (Cima di Rapa)",
+  "p": false,
+  "s": "staengelkohl"
+ },
+ "fava-beans": {
+  "n": "Dicke Bohnen",
+  "q": "dicke Bohnen",
+  "o": "dicke Bohnen",
+  "p": true,
+  "s": "dicke-bohnen"
+ },
+ "iceberg-lettuce": {
+  "n": "Eisbergsalat",
+  "q": "Eisbergsalat",
+  "o": "Eisbergsalat",
+  "p": false,
+  "s": "eisbergsalat"
+ },
+ "leaf-lettuce": {
+  "n": "Pflücksalat",
+  "q": "Pflücksalat",
+  "o": "Pflücksalat",
+  "p": false,
+  "s": "pfluecksalat"
+ },
+ "lima-beans": {
+  "n": "Limabohnen",
+  "q": "Limabohnen",
+  "o": "Limabohnen",
+  "p": true,
+  "s": "limabohnen"
+ },
+ "parsnips": {
+  "n": "Pastinaken",
+  "q": "Pastinaken",
+  "o": "Pastinaken",
+  "p": true,
+  "s": "pastinaken"
+ },
+ "romaine-lettuce": {
+  "n": "Römersalat",
+  "q": "Römersalat",
+  "o": "Römersalat",
+  "p": false,
+  "s": "roemersalat"
+ },
+ "snow-peas": {
+  "n": "Zuckerschoten",
+  "q": "Zuckerschoten",
+  "o": "Zuckerschoten",
+  "p": true,
+  "s": "zuckerschoten"
+ },
+ "sugar-snap-peas": {
+  "n": "Zuckererbsen (Knackerbsen)",
+  "q": "Zuckererbsen (Knackerbsen)",
+  "o": "Zuckererbsen (Knackerbsen)",
+  "p": true,
+  "s": "zuckererbsen"
+ },
+ "wax-beans": {
+  "n": "Wachsbohnen",
+  "q": "Wachsbohnen",
+  "o": "Wachsbohnen",
+  "p": true,
+  "s": "wachsbohnen"
+ },
+ "yellow-squash": {
+  "n": "Gelbe Zucchini",
+  "q": "gelbe Zucchini",
+  "o": "gelbe Zucchini",
+  "p": true,
+  "s": "gelbe-zucchini"
+ },
+ "apple-pie": {
+  "n": "Apfelkuchen",
+  "q": "Apfelkuchen",
+  "o": "Apfelkuchen",
+  "p": false,
+  "s": "apfelkuchen"
+ },
+ "banana-cream-pie": {
+  "n": "Banana Cream Pie",
+  "q": "Banana Cream Pie",
+  "o": "Banana Cream Pie",
+  "p": false,
+  "s": "banana-cream-pie"
+ },
+ "blueberry-pie": {
+  "n": "Heidelbeerkuchen",
+  "q": "Heidelbeerkuchen",
+  "o": "Heidelbeerkuchen",
+  "p": false,
+  "s": "heidelbeerkuchen"
+ },
+ "brownie-mix": {
+  "n": "Brownie-Backmischung",
+  "q": "Brownie-Backmischung",
+  "o": "Brownie-Backmischung",
+  "p": false,
+  "s": "brownie-backmischung"
+ },
+ "cherry-pie": {
+  "n": "Kirschkuchen",
+  "q": "Kirschkuchen",
+  "o": "Kirschkuchen",
+  "p": false,
+  "s": "kirschkuchen"
+ },
+ "coconut-cream-pie": {
+  "n": "Coconut Cream Pie",
+  "q": "Coconut Cream Pie",
+  "o": "Coconut Cream Pie",
+  "p": false,
+  "s": "coconut-cream-pie"
+ },
+ "dinner-rolls": {
+  "n": "Brötchen",
+  "q": "Brötchen",
+  "o": "Brötchen",
+  "p": true,
+  "s": "broetchen"
+ },
+ "flatbread": {
+  "n": "Fladenbrot",
+  "q": "Fladenbrot",
+  "o": "Fladenbrot",
+  "p": false,
+  "s": "fladenbrot"
+ },
+ "hamburger-buns": {
+  "n": "Burgerbrötchen",
+  "q": "Burgerbrötchen",
+  "o": "Burgerbrötchen",
+  "p": true,
+  "s": "burgerbroetchen"
+ },
+ "peach-pie": {
+  "n": "Pfirsichkuchen",
+  "q": "Pfirsichkuchen",
+  "o": "Pfirsichkuchen",
+  "p": false,
+  "s": "pfirsichkuchen"
+ },
+ "canned-beans": {
+  "n": "Bohnen aus der Dose",
+  "q": "Bohnen aus der Dose",
+  "o": "Bohnen aus der Dose",
+  "p": true,
+  "s": "bohnen-dose"
+ },
+ "canned-carrots": {
+  "n": "Karotten aus der Dose",
+  "q": "Karotten aus der Dose",
+  "o": "Karotten aus der Dose",
+  "p": true,
+  "s": "karotten-dose"
+ },
+ "canned-corn": {
+  "n": "Mais aus der Dose",
+  "q": "Mais aus der Dose",
+  "o": "Mais aus der Dose",
+  "p": false,
+  "s": "mais-dose"
+ },
+ "canned-fruit": {
+  "n": "Obstkonserven",
+  "q": "Obstkonserven",
+  "o": "Obstkonserven",
+  "p": true,
+  "s": "obstkonserven"
+ },
+ "canned-juice": {
+  "n": "Saft aus der Dose",
+  "q": "Saft aus der Dose",
+  "o": "Saft aus der Dose",
+  "p": false,
+  "s": "saft-dose"
+ },
+ "canned-pasta": {
+  "n": "Nudeln aus der Dose",
+  "q": "Nudeln aus der Dose",
+  "o": "Nudeln aus der Dose",
+  "p": true,
+  "s": "nudeln-dose"
+ },
+ "canned-peas": {
+  "n": "Erbsen aus der Dose",
+  "q": "Erbsen aus der Dose",
+  "o": "Erbsen aus der Dose",
+  "p": true,
+  "s": "erbsen-dose"
+ },
+ "canned-potatoes": {
+  "n": "Kartoffeln aus der Dose",
+  "q": "Kartoffeln aus der Dose",
+  "o": "Kartoffeln aus der Dose",
+  "p": true,
+  "s": "kartoffeln-dose"
+ },
+ "canned-soup": {
+  "n": "Suppe aus der Dose",
+  "q": "Suppe aus der Dose",
+  "o": "Suppe aus der Dose",
+  "p": false,
+  "s": "suppe-dose"
+ },
+ "canned-spinach": {
+  "n": "Spinat aus der Dose",
+  "q": "Spinat aus der Dose",
+  "o": "Spinat aus der Dose",
+  "p": false,
+  "s": "spinat-dose"
+ },
+ "canned-stew": {
+  "n": "Eintopf aus der Dose",
+  "q": "Eintopf aus der Dose",
+  "o": "Eintopf aus der Dose",
+  "p": false,
+  "s": "eintopf-dose"
+ },
+ "canned-tomato-soup": {
+  "n": "Tomatensuppe aus der Dose",
+  "q": "Tomatensuppe aus der Dose",
+  "o": "Tomatensuppe aus der Dose",
+  "p": false,
+  "s": "tomatensuppe-dose"
+ },
+ "sauerkraut": {
+  "n": "Sauerkraut",
+  "q": "Sauerkraut",
+  "o": "Sauerkraut",
+  "p": false,
+  "s": "sauerkraut"
+ },
+ "fruit-punch": {
+  "n": "Fruchtpunsch",
+  "q": "Fruchtpunsch",
+  "o": "Fruchtpunsch",
+  "p": false,
+  "s": "fruchtpunsch"
  }
 }

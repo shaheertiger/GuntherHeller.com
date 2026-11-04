@@ -4639,5 +4639,642 @@
   "o": "a proteína texturizada de soja seca",
   "p": false,
   "s": "proteina-texturizada-soja"
+ },
+ "brie": {
+  "n": "Queijo brie",
+  "q": "o queijo brie",
+  "o": "o queijo brie",
+  "p": false,
+  "s": "queijo-brie"
+ },
+ "cheddar-cheese": {
+  "n": "Queijo cheddar",
+  "q": "o queijo cheddar",
+  "o": "o queijo cheddar",
+  "p": false,
+  "s": "queijo-cheddar"
+ },
+ "egg-whites": {
+  "n": "Claras de ovo",
+  "q": "as claras de ovo",
+  "o": "as claras de ovo",
+  "p": true,
+  "s": "clara-ovo"
+ },
+ "egg-yolks": {
+  "n": "Gemas de ovo",
+  "q": "as gemas de ovo",
+  "o": "as gemas de ovo",
+  "p": true,
+  "s": "gema-ovo"
+ },
+ "goat-cheese": {
+  "n": "Queijo de cabra",
+  "q": "o queijo de cabra",
+  "o": "o queijo de cabra",
+  "p": false,
+  "s": "queijo-cabra"
+ },
+ "parmesan-cheese": {
+  "n": "Queijo parmesão",
+  "q": "o queijo parmesão",
+  "o": "o queijo parmesão",
+  "p": false,
+  "s": "queijo-parmesao"
+ },
+ "shredded-mozzarella": {
+  "n": "Muçarela ralada",
+  "q": "a muçarela ralada",
+  "o": "a muçarela ralada",
+  "p": false,
+  "s": "mucarela-ralada"
+ },
+ "swiss-cheese": {
+  "n": "Queijo suíço",
+  "q": "o queijo suíço",
+  "o": "o queijo suíço",
+  "p": false,
+  "s": "queijo-suico"
+ },
+ "beef-tongue": {
+  "n": "Língua de boi",
+  "q": "a língua de boi",
+  "o": "a língua de boi",
+  "p": false,
+  "s": "lingua-boi"
+ },
+ "brisket": {
+  "n": "Peito bovino",
+  "q": "o peito bovino",
+  "o": "o peito bovino",
+  "p": false,
+  "s": "peito-bovino"
+ },
+ "chitterlings": {
+  "n": "Tripa de porco",
+  "q": "a tripa de porco",
+  "o": "a tripa de porco",
+  "p": false,
+  "s": "tripa-porco"
+ },
+ "chuck-roast": {
+  "n": "Acém para assar",
+  "q": "o acém para assar",
+  "o": "o acém para assar",
+  "p": false,
+  "s": "acem-assar"
+ },
+ "liver": {
+  "n": "Fígado",
+  "q": "o fígado",
+  "o": "o fígado",
+  "p": false,
+  "s": "figado"
+ },
+ "chicken-legs": {
+  "n": "Coxas de frango",
+  "q": "as coxas de frango",
+  "o": "as coxas de frango",
+  "p": true,
+  "s": "coxa-frango"
+ },
+ "chicken-patties": {
+  "n": "Hambúrgueres de frango",
+  "q": "os hambúrgueres de frango",
+  "o": "os hambúrgueres de frango",
+  "p": true,
+  "s": "hamburguer-frango"
+ },
+ "turkey-thighs": {
+  "n": "Sobrecoxas de peru",
+  "q": "as sobrecoxas de peru",
+  "o": "as sobrecoxas de peru",
+  "p": true,
+  "s": "sobrecoxa-peru"
+ },
+ "bluefish": {
+  "n": "Enchova",
+  "q": "a enchova",
+  "o": "a enchova",
+  "p": false,
+  "s": "enchova"
+ },
+ "catfish": {
+  "n": "Bagre",
+  "q": "o bagre",
+  "o": "o bagre",
+  "p": false,
+  "s": "bagre"
+ },
+ "clams": {
+  "n": "Mariscos",
+  "q": "os mariscos",
+  "o": "os mariscos",
+  "p": true,
+  "s": "marisco"
+ },
+ "cod": {
+  "n": "Bacalhau fresco",
+  "q": "o bacalhau fresco",
+  "o": "o bacalhau fresco",
+  "p": false,
+  "s": "bacalhau-fresco"
+ },
+ "crayfish": {
+  "n": "Lagostins",
+  "q": "os lagostins",
+  "o": "os lagostins",
+  "p": true,
+  "s": "lagostim"
+ },
+ "dungeness-crab": {
+  "n": "Caranguejo dungeness",
+  "q": "o caranguejo dungeness",
+  "o": "o caranguejo dungeness",
+  "p": false,
+  "s": "caranguejo-dungeness"
+ },
+ "flounder": {
+  "n": "Linguado",
+  "q": "o linguado",
+  "o": "o linguado",
+  "p": false,
+  "s": "linguado"
+ },
+ "haddock": {
+  "n": "Hadoque",
+  "q": "o hadoque",
+  "o": "o hadoque",
+  "p": false,
+  "s": "hadoque"
+ },
+ "halibut": {
+  "n": "Halibute",
+  "q": "o halibute",
+  "o": "o halibute",
+  "p": false,
+  "s": "halibute"
+ },
+ "king-crab-legs": {
+  "n": "Patas de caranguejo-real",
+  "q": "as patas de caranguejo-real",
+  "o": "as patas de caranguejo-real",
+  "p": true,
+  "s": "patas-caranguejo-real"
+ },
+ "mackerel": {
+  "n": "Cavala",
+  "q": "a cavala",
+  "o": "a cavala",
+  "p": false,
+  "s": "cavala"
+ },
+ "mullet": {
+  "n": "Tainha",
+  "q": "a tainha",
+  "o": "a tainha",
+  "p": false,
+  "s": "tainha"
+ },
+ "mussels": {
+  "n": "Mexilhões",
+  "q": "os mexilhões",
+  "o": "os mexilhões",
+  "p": true,
+  "s": "mexilhao"
+ },
+ "ocean-perch": {
+  "n": "Perca-marinha",
+  "q": "a perca-marinha",
+  "o": "a perca-marinha",
+  "p": false,
+  "s": "perca-marinha"
+ },
+ "oysters": {
+  "n": "Ostras",
+  "q": "as ostras",
+  "o": "as ostras",
+  "p": true,
+  "s": "ostra"
+ },
+ "pollock": {
+  "n": "Polaca-do-alasca",
+  "q": "a polaca-do-alasca",
+  "o": "a polaca-do-alasca",
+  "p": false,
+  "s": "polaca-alasca"
+ },
+ "rockfish": {
+  "n": "Peixe de rocha",
+  "q": "o peixe de rocha",
+  "o": "o peixe de rocha",
+  "p": false,
+  "s": "peixe-rocha"
+ },
+ "sea-trout": {
+  "n": "Pescada",
+  "q": "a pescada",
+  "o": "a pescada",
+  "p": false,
+  "s": "pescada"
+ },
+ "snow-crab-legs": {
+  "n": "Patas de caranguejo-das-neves",
+  "q": "as patas de caranguejo-das-neves",
+  "o": "as patas de caranguejo-das-neves",
+  "p": true,
+  "s": "patas-caranguejo-neves"
+ },
+ "sole": {
+  "n": "Solha",
+  "q": "a solha",
+  "o": "a solha",
+  "p": false,
+  "s": "solha"
+ },
+ "tuna-steaks": {
+  "n": "Postas de atum",
+  "q": "as postas de atum",
+  "o": "as postas de atum",
+  "p": true,
+  "s": "posta-atum"
+ },
+ "stew": {
+  "n": "Ensopado caseiro",
+  "q": "o ensopado caseiro",
+  "o": "o ensopado caseiro",
+  "p": false,
+  "s": "ensopado"
+ },
+ "boysenberries": {
+  "n": "Amoras boysen",
+  "q": "as amoras boysen",
+  "o": "as amoras boysen",
+  "p": true,
+  "s": "amora-boysen"
+ },
+ "clementines": {
+  "n": "Clementinas",
+  "q": "as clementinas",
+  "o": "as clementinas",
+  "p": true,
+  "s": "clementina"
+ },
+ "currants": {
+  "n": "Groselhas",
+  "q": "as groselhas",
+  "o": "as groselhas",
+  "p": true,
+  "s": "groselha"
+ },
+ "feijoa": {
+  "n": "Goiaba-serrana",
+  "q": "a goiaba-serrana",
+  "o": "a goiaba-serrana",
+  "p": false,
+  "s": "goiaba-serrana"
+ },
+ "gooseberries": {
+  "n": "Groselhas-espinhosas",
+  "q": "as groselhas-espinhosas",
+  "o": "as groselhas-espinhosas",
+  "p": true,
+  "s": "groselha-espinhosa"
+ },
+ "grapefruit": {
+  "n": "Toranja",
+  "q": "a toranja",
+  "o": "a toranja",
+  "p": false,
+  "s": "toranja"
+ },
+ "lemons": {
+  "n": "Limões-sicilianos",
+  "q": "os limões-sicilianos",
+  "o": "os limões-sicilianos",
+  "p": true,
+  "s": "limao-siciliano"
+ },
+ "limes": {
+  "n": "Limões-taiti",
+  "q": "os limões-taiti",
+  "o": "os limões-taiti",
+  "p": true,
+  "s": "limao-taiti"
+ },
+ "lychee": {
+  "n": "Lichia",
+  "q": "a lichia",
+  "o": "a lichia",
+  "p": false,
+  "s": "lichia"
+ },
+ "mango": {
+  "n": "Manga",
+  "q": "a manga",
+  "o": "a manga",
+  "p": false,
+  "s": "manga"
+ },
+ "nectarines": {
+  "n": "Nectarinas",
+  "q": "as nectarinas",
+  "o": "as nectarinas",
+  "p": true,
+  "s": "nectarina"
+ },
+ "oranges": {
+  "n": "Laranjas",
+  "q": "as laranjas",
+  "o": "as laranjas",
+  "p": true,
+  "s": "laranja"
+ },
+ "papaya": {
+  "n": "Mamão",
+  "q": "o mamão",
+  "o": "o mamão",
+  "p": false,
+  "s": "mamao"
+ },
+ "passion-fruit": {
+  "n": "Maracujá",
+  "q": "o maracujá",
+  "o": "o maracujá",
+  "p": false,
+  "s": "maracuja"
+ },
+ "peaches": {
+  "n": "Pêssegos",
+  "q": "os pêssegos",
+  "o": "os pêssegos",
+  "p": true,
+  "s": "pessego"
+ },
+ "pears": {
+  "n": "Peras",
+  "q": "as peras",
+  "o": "as peras",
+  "p": true,
+  "s": "pera"
+ },
+ "plums": {
+  "n": "Ameixas",
+  "q": "as ameixas",
+  "o": "as ameixas",
+  "p": true,
+  "s": "ameixa"
+ },
+ "tangerines": {
+  "n": "Tangerinas",
+  "q": "as tangerinas",
+  "o": "as tangerinas",
+  "p": true,
+  "s": "tangerina"
+ },
+ "broccoli-rabe": {
+  "n": "Brócolis-de-nabo",
+  "q": "o brócolis-de-nabo",
+  "o": "o brócolis-de-nabo",
+  "p": false,
+  "s": "brocolis-nabo"
+ },
+ "fava-beans": {
+  "n": "Favas",
+  "q": "as favas",
+  "o": "as favas",
+  "p": true,
+  "s": "fava"
+ },
+ "iceberg-lettuce": {
+  "n": "Alface-americana",
+  "q": "a alface-americana",
+  "o": "a alface-americana",
+  "p": false,
+  "s": "alface-americana"
+ },
+ "leaf-lettuce": {
+  "n": "Alface crespa",
+  "q": "a alface crespa",
+  "o": "a alface crespa",
+  "p": false,
+  "s": "alface-crespa"
+ },
+ "lima-beans": {
+  "n": "Feijão-de-lima",
+  "q": "o feijão-de-lima",
+  "o": "o feijão-de-lima",
+  "p": false,
+  "s": "feijao-lima"
+ },
+ "parsnips": {
+  "n": "Pastinacas",
+  "q": "as pastinacas",
+  "o": "as pastinacas",
+  "p": true,
+  "s": "pastinaca"
+ },
+ "romaine-lettuce": {
+  "n": "Alface-romana",
+  "q": "a alface-romana",
+  "o": "a alface-romana",
+  "p": false,
+  "s": "alface-romana"
+ },
+ "snow-peas": {
+  "n": "Ervilhas-tortas",
+  "q": "as ervilhas-tortas",
+  "o": "as ervilhas-tortas",
+  "p": true,
+  "s": "ervilha-torta"
+ },
+ "sugar-snap-peas": {
+  "n": "Ervilhas sugar snap",
+  "q": "as ervilhas sugar snap",
+  "o": "as ervilhas sugar snap",
+  "p": true,
+  "s": "ervilha-sugar-snap"
+ },
+ "wax-beans": {
+  "n": "Vagens-amarelas",
+  "q": "as vagens-amarelas",
+  "o": "as vagens-amarelas",
+  "p": true,
+  "s": "vagem-amarela"
+ },
+ "yellow-squash": {
+  "n": "Abobrinha amarela",
+  "q": "a abobrinha amarela",
+  "o": "a abobrinha amarela",
+  "p": false,
+  "s": "abobrinha-amarela"
+ },
+ "apple-pie": {
+  "n": "Torta de maçã",
+  "q": "a torta de maçã",
+  "o": "a torta de maçã",
+  "p": false,
+  "s": "torta-maca"
+ },
+ "banana-cream-pie": {
+  "n": "Torta de creme de banana",
+  "q": "a torta de creme de banana",
+  "o": "a torta de creme de banana",
+  "p": false,
+  "s": "torta-creme-banana"
+ },
+ "blueberry-pie": {
+  "n": "Torta de mirtilo",
+  "q": "a torta de mirtilo",
+  "o": "a torta de mirtilo",
+  "p": false,
+  "s": "torta-mirtilo"
+ },
+ "brownie-mix": {
+  "n": "Mistura para brownie",
+  "q": "a mistura para brownie",
+  "o": "a mistura para brownie",
+  "p": false,
+  "s": "mistura-brownie"
+ },
+ "cherry-pie": {
+  "n": "Torta de cereja",
+  "q": "a torta de cereja",
+  "o": "a torta de cereja",
+  "p": false,
+  "s": "torta-cereja"
+ },
+ "coconut-cream-pie": {
+  "n": "Torta de creme de coco",
+  "q": "a torta de creme de coco",
+  "o": "a torta de creme de coco",
+  "p": false,
+  "s": "torta-creme-coco"
+ },
+ "dinner-rolls": {
+  "n": "Pãezinhos",
+  "q": "os pãezinhos",
+  "o": "os pãezinhos",
+  "p": true,
+  "s": "paozinho"
+ },
+ "flatbread": {
+  "n": "Pão sírio",
+  "q": "o pão sírio",
+  "o": "o pão sírio",
+  "p": false,
+  "s": "pao-sirio"
+ },
+ "hamburger-buns": {
+  "n": "Pães de hambúrguer",
+  "q": "os pães de hambúrguer",
+  "o": "os pães de hambúrguer",
+  "p": true,
+  "s": "pao-hamburguer"
+ },
+ "peach-pie": {
+  "n": "Torta de pêssego",
+  "q": "a torta de pêssego",
+  "o": "a torta de pêssego",
+  "p": false,
+  "s": "torta-pessego"
+ },
+ "canned-beans": {
+  "n": "Feijão enlatado",
+  "q": "o feijão enlatado",
+  "o": "o feijão enlatado",
+  "p": false,
+  "s": "feijao-enlatado"
+ },
+ "canned-carrots": {
+  "n": "Cenoura enlatada",
+  "q": "a cenoura enlatada",
+  "o": "a cenoura enlatada",
+  "p": false,
+  "s": "cenoura-enlatada"
+ },
+ "canned-corn": {
+  "n": "Milho enlatado",
+  "q": "o milho enlatado",
+  "o": "o milho enlatado",
+  "p": false,
+  "s": "milho-enlatado"
+ },
+ "canned-fruit": {
+  "n": "Frutas em calda",
+  "q": "as frutas em calda",
+  "o": "as frutas em calda",
+  "p": true,
+  "s": "frutas-calda"
+ },
+ "canned-juice": {
+  "n": "Suco em lata",
+  "q": "o suco em lata",
+  "o": "o suco em lata",
+  "p": false,
+  "s": "suco-lata"
+ },
+ "canned-pasta": {
+  "n": "Macarrão enlatado",
+  "q": "o macarrão enlatado",
+  "o": "o macarrão enlatado",
+  "p": false,
+  "s": "macarrao-enlatado"
+ },
+ "canned-peas": {
+  "n": "Ervilha enlatada",
+  "q": "a ervilha enlatada",
+  "o": "a ervilha enlatada",
+  "p": false,
+  "s": "ervilha-enlatada"
+ },
+ "canned-potatoes": {
+  "n": "Batata enlatada",
+  "q": "a batata enlatada",
+  "o": "a batata enlatada",
+  "p": false,
+  "s": "batata-enlatada"
+ },
+ "canned-soup": {
+  "n": "Sopa enlatada",
+  "q": "a sopa enlatada",
+  "o": "a sopa enlatada",
+  "p": false,
+  "s": "sopa-enlatada"
+ },
+ "canned-spinach": {
+  "n": "Espinafre enlatado",
+  "q": "o espinafre enlatado",
+  "o": "o espinafre enlatado",
+  "p": false,
+  "s": "espinafre-enlatado"
+ },
+ "canned-stew": {
+  "n": "Ensopado enlatado",
+  "q": "o ensopado enlatado",
+  "o": "o ensopado enlatado",
+  "p": false,
+  "s": "ensopado-enlatado"
+ },
+ "canned-tomato-soup": {
+  "n": "Sopa de tomate enlatada",
+  "q": "a sopa de tomate enlatada",
+  "o": "a sopa de tomate enlatada",
+  "p": false,
+  "s": "sopa-tomate-enlatada"
+ },
+ "sauerkraut": {
+  "n": "Chucrute",
+  "q": "o chucrute",
+  "o": "o chucrute",
+  "p": false,
+  "s": "chucrute"
+ },
+ "fruit-punch": {
+  "n": "Ponche de frutas",
+  "q": "o ponche de frutas",
+  "o": "o ponche de frutas",
+  "p": false,
+  "s": "ponche-frutas"
  }
 }
