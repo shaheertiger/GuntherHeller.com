@@ -1,0 +1,83 @@
+{
+ "eyebrow": "Ausprobieren",
+ "hCheck": "Prüfen Sie {o}",
+ "hint": "Tippen Sie auf eine Zeitangabe, um zu prüfen.",
+ "min": "Min.",
+ "overnight": "Über Nacht",
+ "counter": {
+  "ask": "Es steht schon so lange bei Zimmertemperatur …",
+  "note": "Als Zimmertemperatur gilt alles über 4 °C (40 °F). An heißen Tagen über 32 °C (90 °F) liegt die Grenze bei 1 Stunde.",
+  "h30": "Jetzt kühlen",
+  "t30": "Noch innerhalb der 2-Stunden-Grenze. Stellen Sie es sofort in den Kühlschrank, in einem flachen Behälter, damit es schnell abkühlt.",
+  "h60": "Jetzt kühlen",
+  "t60": "Bei normaler Zimmertemperatur in Ordnung. An einem heißen Tag über 32 °C (90 °F) ist 1 Stunde bereits die Grenze – stellen Sie es also sofort in den Kühlschrank.",
+  "h120": "An der Grenze",
+  "t120": "Zwei Stunden sind die Obergrenze laut USDA. War es warm oder wissen Sie nicht genau, wie lange es stand, entsorgen Sie es.",
+  "h240": "Entsorgen",
+  "t240": "Die 2-Stunden-Grenze ist überschritten. Bakterien können sich vermehrt oder Giftstoffe gebildet haben, die auch Aufwärmen nicht zerstört.",
+  "hNight": "Entsorgen",
+  "tNight": "Über Nacht stehen gelassen, war es viele Stunden in der Gefahrenzone (4–60 °C / 40–140 °F). Es mag gut aussehen, ist aber nicht sicher."
+ },
+ "pantry": {
+  "ask": "Es liegt schon so lange im Vorratsschrank …",
+  "note": "Vorausgesetzt wird ein kühler, trockener, dunkler Schrank und eine fest verschlossene Packung.",
+  "hFresh": "Noch gut",
+  "tFresh": "Deutlich innerhalb der Lagerzeit im Vorratsschrank ({p}), sofern es kühl, trocken und fest verschlossen aufbewahrt wurde.",
+  "hEdge": "Bald verbrauchen",
+  "tEdge": "Die Lagerzeit im Vorratsschrank ({p}) ist fast erreicht. Prüfen Sie vor der Verwendung Geruch und Aussehen; die Qualität beginnt nachzulassen.",
+  "hPast": "Vor der Verwendung prüfen",
+  "tPast": "Die Lagerzeit im Vorratsschrank ({p}) ist überschritten. Lagerstabile Lebensmittel verlieren meist eher an Qualität, als dass sie unsicher werden: Entsorgen Sie es bei Schimmel, Schädlingen, feuchten Klumpen oder fremdem Geruch."
+ },
+ "freezer": {
+  "ask": "Es liegt schon so lange im Gefrierschrank …",
+  "note": "Vorausgesetzt wird ein Gefrierschrank mit −18 °C (0 °F) oder kälter. Tiefgefrorene Lebensmittel bleiben sicher; hier geht es um die Qualität.",
+  "hFresh": "Beste Qualität",
+  "tFresh": "Bei −18 °C (0 °F) liegt es noch im Zeitraum bester Qualität ({d}). Tauen Sie es im Kühlschrank auf und verbrauchen Sie es innerhalb von ein bis zwei Tagen.",
+  "hEdge": "Bald verbrauchen",
+  "tEdge": "Noch sicher, aber am Ende des Zeitraums bester Qualität. Verbrauchen Sie es in den nächsten Wochen; nach Ablauf dieser Zeit ({d}) lassen Konsistenz und Geschmack nach.",
+  "hPast": "Sicher, aber nicht mehr optimal",
+  "tPast": "Durchgehend tiefgefrorene Lebensmittel bleiben unbegrenzt sicher, doch nach {m} Monaten ist mit Gefrierbrand und fadem Geschmack zu rechnen. Für Suppen, Saucen und zum Backen geeignet; schneiden Sie trockene, graue Stellen ab."
+ },
+ "checklist": {
+  "title": "Kreuzen Sie alles an, was Ihnen auffällt",
+  "ok": "Nichts angekreuzt? Ein gutes Zeichen. Prüfen Sie trotzdem, wie lange es schon gelagert wird: Die Bakterien, die Lebensmittelvergiftungen verursachen, sind unsichtbar.",
+  "bad": "Trifft einer dieser Punkte zu, ist es verdorben. Entsorgen Sie es – probieren Sie es nicht, um sicherzugehen."
+ },
+ "quiz": {
+  "eyebrow": "Kurzes Quiz",
+  "h": "Richtig oder falsch? Mythen über {o}",
+  "t": "Richtig",
+  "f": "Falsch",
+  "right": "Richtig!",
+  "wrong": "Nicht ganz.",
+  "q1": [
+   "{Q} ist auch nach mehr als {d} im Kühlschrank noch bedenkenlos essbar, solange der Geruch unauffällig ist.",
+   "{Q} sind auch nach mehr als {d} im Kühlschrank noch bedenkenlos essbar, solange der Geruch unauffällig ist."
+  ],
+  "a1Perishable": "Falsch. Die Bakterien, die Lebensmittelvergiftungen verursachen, verändern den Geruch nur selten. Halten Sie sich an den Zeitraum von {d} und entsorgen Sie alles, was älter ist.",
+  "a1Other": "Teilweise richtig. Dies ist kein Risikolebensmittel; etwas länger als {d} bedeutet meist geringere Qualität, keine Gefahr. Prüfen Sie zuerst auf Schimmel und fremden Geruch.",
+  "q2": "Wer {o} einfriert, tötet damit die Bakterien ab.",
+  "a2": "Falsch. Einfrieren stoppt Bakterien nur vorübergehend, es tötet sie nicht ab. Beim Auftauen werden sie wieder aktiv; tauen Sie daher im Kühlschrank auf und garen oder erhitzen Sie gründlich.",
+  "q3": [
+   "{Q} lässt sich gut einfrieren.",
+   "{Q} lassen sich gut einfrieren."
+  ],
+  "a3Yes": "Richtig. {detail}",
+  "a3No": "Falsch. {detail}",
+  "a3Partly": "Nur teilweise. {detail}",
+  "q4": "Die Kühlschranktür ist ein guter Platz für {o}.",
+  "a4Yes": "Richtig. Die Tür ist der wärmste Bereich des Kühlschranks, aber dieses Lebensmittel verdirbt so langsam, dass es dort gelagert werden kann.",
+  "a4No": "Falsch. Die Tür erwärmt sich bei jedem Öffnen. Der beste Platz: {why}",
+  "q5Perishable": [
+   "{Q} ist nach einer Nacht bei Zimmertemperatur noch in Ordnung, sofern gründlich aufgewärmt wird.",
+   "{Q} sind nach einer Nacht bei Zimmertemperatur noch in Ordnung, sofern gründlich aufgewärmt wird."
+  ],
+  "a5Perishable": "Falsch. Manche Bakterien bilden hitzebeständige Giftstoffe. Aufwärmen tötet die Bakterien, aber nicht diese Giftstoffe; Lebensmittel, die länger als 2 Stunden ungekühlt standen, sollten daher entsorgt werden.",
+  "q5Shelf": [
+   "{Q} muss gekühlt werden, um sicher zu bleiben.",
+   "{Q} müssen gekühlt werden, um sicher zu bleiben."
+  ],
+  "a5Shelf": "Falsch. Es ist ohne Kühlung haltbar: {p} an einem kühlen, trockenen Ort. Bei manchen Lebensmitteln verlängert Kühlen die Qualität, für die Sicherheit ist es aber nicht nötig.",
+  "a5ShelfNoPantry": "Nicht für die Sicherheit, aber die Qualität bleibt länger erhalten. Beachten Sie die Lagerzeiten auf dieser Seite."
+ }
+}

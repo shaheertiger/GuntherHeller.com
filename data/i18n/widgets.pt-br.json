@@ -1,0 +1,83 @@
+{
+ "eyebrow": "Experimente",
+ "hCheck": "Verifique {o}",
+ "hint": "Toque em um tempo para verificar.",
+ "min": "min",
+ "overnight": "A noite toda",
+ "counter": {
+  "ask": "Está fora da geladeira, em temperatura ambiente, há…",
+  "note": "Temperatura ambiente é qualquer temperatura acima de 4 °C (40 °F). Em dias quentes, acima de 32 °C (90 °F), o limite é de 1 hora.",
+  "h30": "Leve à geladeira agora",
+  "t30": "Ainda dentro do limite de 2 horas. Guarde na geladeira imediatamente, em um recipiente raso para que esfrie rápido.",
+  "h60": "Leve à geladeira agora",
+  "t60": "Tudo bem em temperatura ambiente normal. Em um dia quente, acima de 32 °C (90 °F), 1 hora já é o limite: guarde na geladeira imediatamente.",
+  "h120": "No limite",
+  "t120": "Duas horas é o limite do USDA. Se estava calor, ou se você não sabe exatamente há quanto tempo o alimento está fora, jogue fora.",
+  "h240": "Jogue fora",
+  "t240": "Passou do limite de 2 horas. As bactérias podem ter se multiplicado ou produzido toxinas que o reaquecimento não destrói.",
+  "hNight": "Jogue fora",
+  "tNight": "Depois de uma noite inteira fora da geladeira, o alimento passou muitas horas na zona de perigo (4–60 °C / 40–140 °F). A aparência pode estar normal, mas não é seguro consumir."
+ },
+ "pantry": {
+  "ask": "Está no armário há…",
+  "note": "Considera um armário fresco, seco e escuro, com a embalagem bem fechada.",
+  "hFresh": "Ainda está bom",
+  "tFresh": "Bem dentro do prazo de {p} no armário, desde que o alimento tenha ficado em local fresco, seco e bem fechado.",
+  "hEdge": "Consuma logo",
+  "tEdge": "Perto do fim do prazo de {p} no armário. Confira o cheiro e a aparência antes de usar; a qualidade já começa a cair.",
+  "hPast": "Confira antes de usar",
+  "tPast": "Passou do prazo de {p} no armário. Alimentos de despensa costumam perder qualidade, e não se tornar perigosos: jogue fora se notar mofo, insetos, grumos úmidos ou cheiro estranho."
+ },
+ "freezer": {
+  "ask": "Está no freezer há…",
+  "note": "Considera um freezer a −18 °C (0 °F) ou mais frio. O alimento congelado continua seguro; estas avaliações tratam da qualidade.",
+  "hFresh": "Melhor qualidade",
+  "tFresh": "A −18 °C (0 °F), ainda está dentro do prazo de qualidade de {d}. Descongele na geladeira e consuma em um ou dois dias.",
+  "hEdge": "Consuma logo",
+  "tEdge": "Ainda é seguro, mas está no fim do prazo de melhor qualidade. Consuma nas próximas semanas; a textura e o sabor se perdem depois de {d}.",
+  "hPast": "Seguro, mas já não está no auge",
+  "tPast": "O alimento mantido bem congelado continua seguro indefinidamente, mas depois de {m} meses espere queimaduras de congelamento e sabor mais fraco. Ainda serve para sopas, molhos e receitas de forno; corte as partes secas e acinzentadas."
+ },
+ "checklist": {
+  "title": "Marque o que você notar",
+  "ok": "Nada marcado? Bom sinal. Mesmo assim, confira há quanto tempo está guardado: as bactérias que causam intoxicação alimentar são invisíveis.",
+  "bad": "Qualquer um destes sinais indica que estragou. Jogue fora — não prove para conferir."
+ },
+ "quiz": {
+  "eyebrow": "Teste rápido",
+  "h": "Verdadeiro ou falso? Mitos sobre {o}",
+  "t": "Verdadeiro",
+  "f": "Falso",
+  "right": "Acertou!",
+  "wrong": "Não exatamente.",
+  "q1": [
+   "{Q} aguenta mais de {d} na geladeira sem risco, desde que o cheiro esteja normal.",
+   "{Q} aguentam mais de {d} na geladeira sem risco, desde que o cheiro esteja normal."
+  ],
+  "a1Perishable": "Falso. As bactérias que causam intoxicação alimentar raramente alteram o cheiro. Respeite o prazo de {d} e jogue fora o que for mais antigo.",
+  "a1Other": "Em parte verdadeiro. Este não é um alimento de alto risco, então passar um pouco de {d} geralmente significa perda de qualidade, não perigo. Antes, procure sinais de mofo e cheiro estranho.",
+  "q2": "Congelar {o} mata as bactérias.",
+  "a2": "Falso. O congelamento só paralisa as bactérias, não as mata. Elas voltam a agir quando o alimento descongela, por isso descongele na geladeira e cozinhe ou reaqueça bem.",
+  "q3": [
+   "{Q} congela bem.",
+   "{Q} congelam bem."
+  ],
+  "a3Yes": "Verdadeiro. {detail}",
+  "a3No": "Falso. {detail}",
+  "a3Partly": "Só em parte. {detail}",
+  "q4": "A porta da geladeira é um bom lugar para guardar {o}.",
+  "a4Yes": "Verdadeiro. A porta é a parte mais quente da geladeira, mas este alimento resiste bem o suficiente à deterioração para ficar ali.",
+  "a4No": "Falso. A porta esquenta toda vez que a geladeira é aberta. Melhor lugar: {why}",
+  "q5Perishable": [
+   "{Q} pode passar a noite toda em temperatura ambiente sem problema, desde que você reaqueça bem antes de comer.",
+   "{Q} podem passar a noite toda em temperatura ambiente sem problema, desde que você reaqueça bem antes de comer."
+  ],
+  "a5Perishable": "Falso. Algumas bactérias produzem toxinas resistentes ao calor. O reaquecimento mata as bactérias, mas não essas toxinas; por isso, alimentos que ficaram mais de 2 horas fora da geladeira devem ir para o lixo.",
+  "q5Shelf": [
+   "{Q} precisa de geladeira para não oferecer risco.",
+   "{Q} precisam de geladeira para não oferecer risco."
+  ],
+  "a5Shelf": "Falso. É um alimento de despensa: dura {p} em local fresco e seco. Para alguns alimentos, a geladeira prolonga a qualidade, mas não é necessária para a segurança.",
+  "a5ShelfNoPantry": "Não para a segurança, mas a geladeira mantém a melhor qualidade por mais tempo. Siga os prazos de conservação desta página."
+ }
+}

@@ -17,6 +17,10 @@ import Signs from "../Signs.astro";
 import Steps from "../Steps.astro";
 import Icon from "../fun/Icon.astro";
 import LongFormL from "./LongFormL.astro";
+import Checker from "../fun/Checker.astro";
+import Quiz from "../fun/Quiz.astro";
+import Checklist from "../fun/Checklist.astro";
+import { widgetsL } from "../../lib/interactiveL";
 import { longL } from "../../lib/longformL";
 import { timelineBars, perishLevel, checker, type VizStrings } from "../../lib/viz";
 import { type Food, getCategory, url as enUrl, cellsFor } from "../../lib/data";
@@ -37,6 +41,7 @@ const methods = methodsL(L, f);
 const z = freezeL(L, f);
 const lo = leftOutL(L, f);
 const lf = longL(L, f);
+const wi = widgetsL(L, f);
 const faq = [...faqL(L, f), ...(lf ? lf.faq : [])];
 const signs = S.signs[groupOf(f)] as [string, string][];
 const store = S.store[groupOf(f)] as string[];
@@ -90,6 +95,16 @@ const ld = { "@context": "https://schema.org", "@graph": [ORG,
           </section>
         )}
 
+        {wi && (wi.counter || wi.freezer) && (
+          <section id="check" class="mt-8 md:mt-12">
+            <SectionHead icon="clock" tint="var(--color-tint-amber)" ink="#8a5a0c" eyebrow={wi.W.eyebrow}>{wi.hCheck}</SectionHead>
+            <div class="grid gap-3 mt-[18px]">
+              {wi.counter && <Checker id={`ct-${L.code}-${f.slug}`} ask={wi.counter.ask} hint={wi.W.hint} note={wi.counter.note} options={wi.counter.options} />}
+              {wi.freezer && <Checker id={`fz-${L.code}-${f.slug}`} ask={wi.freezer.ask} hint={wi.W.hint} note={wi.freezer.note} options={wi.freezer.options} />}
+            </div>
+          </section>
+        )}
+
         <LongFormL lf={lf} part="about" />
 
         <section id="methods" class="mt-8 md:mt-12">
@@ -107,6 +122,7 @@ const ld = { "@context": "https://schema.org", "@graph": [ORG,
         <section id="bad" class="mt-8 md:mt-12">
           <SectionHead icon="nose" tint="var(--color-tint-pink)" ink="#b83269" eyebrow={E.signs}>{F.hSigns}</SectionHead>
           <Signs signs={signs.map(([title, text]) => ({ title, text }))} />
+          {wi && <Checklist id={`cl-${L.code}-${f.slug}`} title={wi.W.checklist.title} items={wi.checklist} okText={wi.W.checklist.ok} badText={wi.W.checklist.bad} />}
         </section>
 
         <LongFormL lf={lf} part="where" />
@@ -143,6 +159,13 @@ const ld = { "@context": "https://schema.org", "@graph": [ORG,
           </div>
           <p class="mt-3.5 text-sm"><a href={lurl.hub(L, f.category)} class="link">{U.allIn.replace("{cat}", catName)} →</a> · <a href={enUrl.food(f)} hreflang="en" lang="en" class="link">{U.readInEnglish} →</a></p>
         </section>
+
+        {wi && (
+          <section id="quiz" class="mt-8 md:mt-12">
+            <SectionHead icon="spark" tint="var(--color-tint-lilac)" ink="#4a3bd2" eyebrow={wi.W.quiz.eyebrow}>{wi.hQuiz}</SectionHead>
+            <Quiz id={`qz-${L.code}-${f.slug}`} items={wi.quiz} labels={wi.quizLabels} />
+          </section>
+        )}
 
         <section id="faq" class="mt-8 md:mt-12">
           <SectionHead icon="question" tint="var(--color-tint-lilac)" ink="#4a3bd2" eyebrow={E.faq}>{F.hFaq}</SectionHead>

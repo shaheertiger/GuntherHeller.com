@@ -1,0 +1,83 @@
+{
+ "eyebrow": "À essayer",
+ "hCheck": "Vérifiez {o}",
+ "hint": "Touchez une durée pour vérifier.",
+ "min": "min",
+ "overnight": "Toute la nuit",
+ "counter": {
+  "ask": "Hors du réfrigérateur, sur le plan de travail, depuis…",
+  "note": "Par température ambiante, on entend toute température supérieure à 4 °C (40 °F). Par forte chaleur, au-delà de 32 °C (90 °F), la limite est de 1 heure.",
+  "h30": "Au réfrigérateur, maintenant",
+  "t30": "Encore dans la limite des 2 heures. Mettez au réfrigérateur sans attendre, dans un récipient peu profond pour un refroidissement rapide.",
+  "h60": "Au réfrigérateur, maintenant",
+  "t60": "Pas de problème à température ambiante normale. Par forte chaleur, au-delà de 32 °C (90 °F), 1 heure est déjà la limite : mettez au réfrigérateur immédiatement.",
+  "h120": "À la limite",
+  "t120": "Deux heures, c'est la limite fixée par l'USDA. S'il faisait chaud, ou si vous ne savez pas exactement depuis combien de temps, jetez.",
+  "h240": "À jeter",
+  "t240": "La limite des 2 heures est dépassée. Les bactéries ont pu se multiplier ou produire des toxines que le réchauffage ne détruit pas.",
+  "hNight": "À jeter",
+  "tNight": "Après une nuit dehors, l'aliment a passé de nombreuses heures dans la zone de danger (4–60 °C / 40–140 °F). Son aspect peut sembler normal, mais il n'est pas sans danger."
+ },
+ "pantry": {
+  "ask": "Au placard depuis…",
+  "note": "Suppose un placard frais, sec et sombre, avec l'emballage bien fermé.",
+  "hFresh": "Toujours bon",
+  "tFresh": "Bien en deçà de la durée de conservation au placard ({p}), à condition d'avoir été gardé au frais, au sec et bien fermé.",
+  "hEdge": "À consommer bientôt",
+  "tEdge": "Proche de la fin de la durée de conservation au placard ({p}). Vérifiez l'odeur et l'aspect avant utilisation ; la qualité commence à baisser.",
+  "hPast": "À vérifier avant utilisation",
+  "tPast": "La durée de conservation au placard ({p}) est dépassée. Un aliment stable à température ambiante perd généralement en qualité plutôt que de devenir dangereux : jetez-le en cas de moisissure, d'insectes, de grumeaux humides ou d'odeur anormale."
+ },
+ "freezer": {
+  "ask": "Au congélateur depuis…",
+  "note": "Suppose un congélateur à −18 °C (0 °F) ou moins. Les aliments congelés restent sans danger ; ces verdicts concernent la qualité.",
+  "hFresh": "Qualité optimale",
+  "tFresh": "À −18 °C (0 °F), la période de qualité optimale ({d}) n'est pas encore dépassée. Décongelez au réfrigérateur et consommez dans un jour ou deux.",
+  "hEdge": "À consommer bientôt",
+  "tEdge": "Toujours sans danger, mais en fin de période de qualité optimale. À consommer dans les prochaines semaines ; texture et saveur se dégradent au-delà de {d}.",
+  "hPast": "Sans danger, mais moins bon",
+  "tPast": "Un aliment maintenu bien congelé reste sans danger indéfiniment, mais au-delà de {m} mois, attendez-vous à des brûlures de congélation et à une saveur affadie. Convient encore aux soupes, sauces et pâtisseries ; retirez les zones sèches et grisâtres."
+ },
+ "checklist": {
+  "title": "Cochez ce que vous remarquez",
+  "ok": "Rien de coché ? Bon signe. Vérifiez quand même la durée de conservation : les bactéries responsables des intoxications alimentaires sont invisibles.",
+  "bad": "Un seul de ces signes suffit : l'aliment est gâté. Jetez-le, sans le goûter pour vérifier."
+ },
+ "quiz": {
+  "eyebrow": "Petit quiz",
+  "h": "Vrai ou faux ? Idées reçues sur {o}",
+  "t": "Vrai",
+  "f": "Faux",
+  "right": "Bonne réponse !",
+  "wrong": "Pas tout à fait.",
+  "q1": [
+   "{Q} reste sans danger après plus de {d} au réfrigérateur, tant que l'odeur semble normale.",
+   "{Q} restent sans danger après plus de {d} au réfrigérateur, tant que l'odeur semble normale."
+  ],
+  "a1Perishable": "Faux. Les bactéries responsables des intoxications alimentaires modifient rarement l'odeur. Respectez le délai de {d} et jetez tout ce qui est plus ancien.",
+  "a1Other": "Plutôt vrai. Ce n'est pas un aliment à risque : un léger dépassement de {d} signifie généralement une baisse de qualité, pas un danger. Vérifiez d'abord l'absence de moisissure et d'odeur anormale.",
+  "q2": "Congeler {o} tue les bactéries.",
+  "a2": "Faux. La congélation met les bactéries en pause, elle ne les tue pas. Elles redeviennent actives à la décongélation : décongelez donc au réfrigérateur, puis cuisez ou réchauffez correctement.",
+  "q3": [
+   "{Q} se congèle bien.",
+   "{Q} se congèlent bien."
+  ],
+  "a3Yes": "Vrai. {detail}",
+  "a3No": "Faux. {detail}",
+  "a3Partly": "En partie seulement. {detail}",
+  "q4": "La porte du réfrigérateur est un bon endroit pour {o}.",
+  "a4Yes": "Vrai. La porte est la zone la plus chaude du réfrigérateur, mais cet aliment résiste assez bien à l'altération pour y être rangé.",
+  "a4No": "Faux. La porte se réchauffe à chaque ouverture. Le meilleur endroit : {why}",
+  "q5Perishable": [
+   "{Q} peut passer la nuit à température ambiante sans risque, à condition de bien réchauffer avant de consommer.",
+   "{Q} peuvent passer la nuit à température ambiante sans risque, à condition de bien réchauffer avant de consommer."
+  ],
+  "a5Perishable": "Faux. Certaines bactéries produisent des toxines résistantes à la chaleur. Le réchauffage tue les bactéries, mais pas ces toxines : tout aliment resté plus de 2 heures à température ambiante doit être jeté.",
+  "q5Shelf": [
+   "{Q} doit aller au réfrigérateur pour rester sans danger.",
+   "{Q} doivent aller au réfrigérateur pour rester sans danger."
+  ],
+  "a5Shelf": "Faux. Cet aliment se conserve à température ambiante : {p} dans un endroit frais et sec. Le réfrigérateur peut prolonger la qualité de certains aliments, mais il n'est pas nécessaire pour la sécurité.",
+  "a5ShelfNoPantry": "Pas pour la sécurité, mais la qualité se maintient plus longtemps. Suivez les durées de conservation indiquées sur cette page."
+ }
+}

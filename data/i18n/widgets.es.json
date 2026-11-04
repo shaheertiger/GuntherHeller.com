@@ -1,0 +1,83 @@
+{
+ "eyebrow": "Pruébelo",
+ "hCheck": "Revise {o}",
+ "hint": "Toque un tiempo para revisar.",
+ "min": "min",
+ "overnight": "Toda la noche",
+ "counter": {
+  "ask": "Ha estado a temperatura ambiente durante…",
+  "note": "Temperatura ambiente significa cualquier temperatura por encima de 4 °C (40 °F). En días calurosos, por encima de 32 °C (90 °F), el límite es de 1 hora.",
+  "h30": "Refrigere ahora",
+  "t30": "Aún está dentro del límite de 2 horas. Métalo al refrigerador de inmediato, en un recipiente poco profundo para que se enfríe rápido.",
+  "h60": "Refrigere ahora",
+  "t60": "No hay problema a temperatura ambiente normal. En un día caluroso, por encima de 32 °C (90 °F), 1 hora ya es el límite, así que refrigérelo de inmediato.",
+  "h120": "En el límite",
+  "t120": "Dos horas es el límite del USDA. Si hacía calor, o si no está seguro de cuánto tiempo exactamente, deséchelo.",
+  "h240": "Deséchelo",
+  "t240": "Ya pasó el límite de 2 horas. Las bacterias pueden haberse multiplicado o haber producido toxinas que el recalentamiento no destruye.",
+  "hNight": "Deséchelo",
+  "tNight": "Si pasó la noche fuera, estuvo muchas horas en la zona de peligro (4–60 °C / 40–140 °F). Puede verse bien, pero no es seguro."
+ },
+ "pantry": {
+  "ask": "Ha estado en la despensa durante…",
+  "note": "Se supone una alacena fresca, seca y oscura, con el empaque bien cerrado.",
+  "hFresh": "Todavía está bien",
+  "tFresh": "Está muy dentro del tiempo de despensa de {p}, siempre que se haya mantenido en un lugar fresco y seco, y bien cerrado.",
+  "hEdge": "Úselo pronto",
+  "tEdge": "Se acerca el final del tiempo de despensa de {p}. Revise el olor y el aspecto antes de usarlo; la calidad empieza a disminuir.",
+  "hPast": "Revise antes de usar",
+  "tPast": "Ya pasó el tiempo de despensa de {p}. Los alimentos no perecederos suelen perder calidad más que volverse peligrosos: deséchelo si ve moho, plagas, grumos húmedos o nota un olor extraño."
+ },
+ "freezer": {
+  "ask": "Ha estado en el congelador durante…",
+  "note": "Se supone un congelador a −18 °C (0 °F) o menos. Los alimentos congelados siguen siendo seguros; estos resultados se refieren a la calidad.",
+  "hFresh": "Calidad óptima",
+  "tFresh": "A −18 °C (0 °F), todavía está dentro del periodo de calidad de {d}. Descongélelo en el refrigerador y consúmalo en uno o dos días.",
+  "hEdge": "Úselo pronto",
+  "tEdge": "Todavía es seguro, pero está al final de su periodo de calidad óptima. Úselo en las próximas semanas; la textura y el sabor se deterioran después de {d}.",
+  "hPast": "Seguro, pero ya no en su mejor momento",
+  "tPast": "Los alimentos que se mantienen bien congelados son seguros indefinidamente, pero después de {m} meses es de esperar quemaduras por congelación y un sabor apagado. Sirve para sopas, salsas y repostería; recorte las partes secas y grisáceas."
+ },
+ "checklist": {
+  "title": "Marque lo que observe",
+  "ok": "¿No marcó nada? Buena señal. Aun así, revise cuánto tiempo lleva almacenado: las bacterias que causan intoxicaciones alimentarias son invisibles.",
+  "bad": "Cualquiera de estas señales significa que se echó a perder. Deséchelo; no lo pruebe para comprobarlo."
+ },
+ "quiz": {
+  "eyebrow": "Prueba rápida",
+  "h": "¿Verdadero o falso? Mitos sobre {o}",
+  "t": "Verdadero",
+  "f": "Falso",
+  "right": "¡Correcto!",
+  "wrong": "No exactamente.",
+  "q1": [
+   "{Q} se puede comer sin riesgo después de más de {d} en el refrigerador, siempre que huela bien.",
+   "{Q} se pueden comer sin riesgo después de más de {d} en el refrigerador, siempre que huelan bien."
+  ],
+  "a1Perishable": "Falso. Las bacterias que causan intoxicaciones alimentarias rara vez cambian el olor. Respete el periodo de {d} y deseche todo lo que sea más antiguo.",
+  "a1Other": "En parte, verdadero. No es un alimento de alto riesgo, así que pasarse un poco de {d} suele significar menor calidad, no peligro. Primero revise que no tenga moho ni olores extraños.",
+  "q2": "Congelar {o} mata las bacterias.",
+  "a2": "Falso. La congelación detiene a las bacterias, pero no las mata. Se reactivan cuando el alimento se descongela, así que descongélelo en el refrigerador y cocínelo o recaliéntelo bien.",
+  "q3": [
+   "{Q} se congela bien.",
+   "{Q} se congelan bien."
+  ],
+  "a3Yes": "Verdadero. {detail}",
+  "a3No": "Falso. {detail}",
+  "a3Partly": "Solo en parte. {detail}",
+  "q4": "La puerta del refrigerador es un buen lugar para {o}.",
+  "a4Yes": "Verdadero. La puerta es la parte más tibia del refrigerador, pero este alimento resiste la descomposición lo suficiente como para guardarse ahí.",
+  "a4No": "Falso. La puerta se calienta cada vez que se abre. El mejor lugar: {why}",
+  "q5Perishable": [
+   "{Q} que pasó la noche a temperatura ambiente se puede comer sin problema si se recalienta bien.",
+   "{Q} que pasaron la noche a temperatura ambiente se pueden comer sin problema si se recalientan bien."
+  ],
+  "a5Perishable": "Falso. Algunas bacterias producen toxinas resistentes al calor. Recalentar mata las bacterias, pero no esas toxinas, así que los alimentos que hayan estado fuera más de 2 horas deben desecharse.",
+  "q5Shelf": [
+   "{Q} debe refrigerarse para que sea seguro consumirlo.",
+   "{Q} deben refrigerarse para que sea seguro consumirlos."
+  ],
+  "a5Shelf": "Falso. Se conserva sin refrigeración: {p} en un lugar fresco y seco. Refrigerar puede prolongar la calidad de algunos alimentos, pero no es necesario por seguridad.",
+  "a5ShelfNoPantry": "No por seguridad, pero así conserva su mejor calidad por más tiempo. Siga los tiempos de conservación de esta página."
+ }
+}

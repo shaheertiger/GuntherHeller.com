@@ -1,0 +1,84 @@
+{
+ "_doc": "Strings for the interactive widgets on localized food pages. Keep every {placeholder}. Food tokens as in en.json: {q}/{Q} subject form, {o} object form. [singular, plural] pairs follow the food's grammatical number. {d} = a duration (e.g. '4–6 days'), {m} = a number of months, {p} = pantry duration, {detail} = a translated freezing explanation, {why} = a translated 'where to store it' phrase. Celsius first.",
+ "eyebrow": "Try it",
+ "hCheck": "Check your {o}",
+ "hint": "Tap a time to check.",
+ "min": "min",
+ "overnight": "Overnight",
+ "counter": {
+  "ask": "It's been out on the counter for…",
+  "note": "Room temperature means anything above 4 °C (40 °F). On hot days above 32 °C (90 °F), the limit is 1 hour.",
+  "h30": "Refrigerate now",
+  "t30": "Still inside the 2-hour limit. Put it in the fridge straight away, in a shallow container so it cools quickly.",
+  "h60": "Refrigerate now",
+  "t60": "Fine at normal room temperature. On a hot day above 32 °C (90 °F), 1 hour is already the limit, so refrigerate it immediately.",
+  "h120": "At the limit",
+  "t120": "Two hours is the USDA cut-off. If it was warm, or you are not sure exactly how long, throw it out.",
+  "h240": "Throw it out",
+  "t240": "Past the 2-hour limit. Bacteria may have multiplied or produced toxins that reheating will not destroy.",
+  "hNight": "Throw it out",
+  "tNight": "Left out overnight, it has spent many hours in the danger zone (4–60 °C / 40–140 °F). It may look fine, but it is not safe."
+ },
+ "pantry": {
+  "ask": "It's been in the pantry for…",
+  "note": "Assumes a cool, dry, dark cupboard with the package tightly closed.",
+  "hFresh": "Still good",
+  "tFresh": "Well inside the {p} pantry time, as long as it has been kept cool, dry and tightly closed.",
+  "hEdge": "Use it soon",
+  "tEdge": "Near the end of the {p} pantry time. Check the smell and look before using; quality is starting to fade.",
+  "hPast": "Check before using",
+  "tPast": "Past the {p} pantry time. Shelf-stable food usually loses quality rather than becoming unsafe: throw it out if you see mould, pests, damp clumps or an off smell."
+ },
+ "freezer": {
+  "ask": "It's been in the freezer for…",
+  "note": "Assumes a freezer at −18 °C (0 °F) or colder. Frozen food stays safe; these verdicts are about quality.",
+  "hFresh": "Best quality",
+  "tFresh": "At −18 °C (0 °F), it is still within the {d} quality window. Thaw it in the fridge and use it within a day or two.",
+  "hEdge": "Use it soon",
+  "tEdge": "Still safe, and at the end of its best-quality window. Use it in the next few weeks; texture and flavour fade after {d}.",
+  "hPast": "Safe, but past its best",
+  "tPast": "Food kept frozen solid stays safe indefinitely, but after {m} months expect freezer burn and dull flavour. Fine for soups, sauces and baking; trim dry grey patches."
+ },
+ "checklist": {
+  "title": "Tick anything you notice",
+  "ok": "Nothing ticked? Good sign. Still check how long it has been stored: the bacteria that cause food poisoning are invisible.",
+  "bad": "Any of these means it has gone bad. Throw it out — don't taste it to check."
+ },
+ "quiz": {
+  "eyebrow": "Quick quiz",
+  "h": "True or false? Myths about {o}",
+  "t": "True",
+  "f": "False",
+  "right": "Correct!",
+  "wrong": "Not quite.",
+  "q1": [
+   "{Q} is safe to eat after more than {d} in the fridge, as long as it smells fine.",
+   "{Q} are safe to eat after more than {d} in the fridge, as long as they smell fine."
+  ],
+  "a1Perishable": "False. The bacteria that cause food poisoning rarely change the smell. Stick to the {d} window and throw out anything older.",
+  "a1Other": "Partly true. This is not a high-risk food, so a little past {d} usually means lower quality, not danger. Check for mould and off smells first.",
+  "q2": "Freezing {o} kills the bacteria.",
+  "a2": "False. Freezing pauses bacteria; it does not kill them. They become active again as the food thaws, so thaw in the fridge and cook or reheat properly.",
+  "q3": [
+   "{Q} freezes well.",
+   "{Q} freeze well."
+  ],
+  "a3Yes": "True. {detail}",
+  "a3No": "False. {detail}",
+  "a3Partly": "Only partly. {detail}",
+  "q4": "The fridge door is a good place for {o}.",
+  "a4Yes": "True. The door is the warmest part of the fridge, but this food resists spoilage well enough to be stored there.",
+  "a4No": "False. The door warms up every time it opens. Best place: {why}",
+  "q5Perishable": [
+   "{Q} left out overnight is fine if you reheat it well.",
+   "{Q} left out overnight are fine if you reheat them well."
+  ],
+  "a5Perishable": "False. Some bacteria make heat-stable toxins. Reheating kills bacteria but not those toxins, so food left out more than 2 hours should be thrown away.",
+  "q5Shelf": [
+   "{Q} needs to be refrigerated to stay safe.",
+   "{Q} need to be refrigerated to stay safe."
+  ],
+  "a5Shelf": "False. It is shelf-stable: {p} in a cool, dry place. Refrigerating can extend quality for some foods, but it is not needed for safety.",
+  "a5ShelfNoPantry": "Not for safety, but it keeps best quality longer. Follow the storage times on this page."
+ }
+}
