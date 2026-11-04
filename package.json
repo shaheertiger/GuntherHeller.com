@@ -16,7 +16,8 @@
     "og": "node scripts/make-og.mjs",
     "indexnow": "node scripts/indexnow.mjs",
     "favicons": "node scripts/make-favicons.mjs",
-    "images": "node scripts/make-images.mjs"
+    "images": "node scripts/make-images.mjs",
+    "mascot": "node scripts/make-mascot.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "4.3.3",

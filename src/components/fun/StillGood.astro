@@ -24,7 +24,7 @@ const text = (c: Check) => (c.tone === "fresh" ? (c.left[0] === c.left[1] || c.l
     <div class="sg-out text-[14px] text-muted" data-i="none">{V.checkHint}</div>
     {checks.map((c, i) => (
       <div class="sg-out soft items-start gap-3 p-3.5 !rounded-[14px]" data-i={i} style={`background:${TONE[c.tone][0]}`}>
-        <span class="icon-chip !w-8 !h-8" style={`background:#fff;color:${TONE[c.tone][1]}`}><Icon name={TONE[c.tone][2]} size={16} stroke={2.4} /></span>
+        <img src={`/mascot/gunther-${c.tone === "fresh" ? "happy" : c.tone === "edge" ? "worried" : "oops"}.svg`} width="240" height="300" alt="" loading="lazy" decoding="async" class="w-10 h-auto shrink-0" />
         <div><div class="font-[650]" style={`color:${TONE[c.tone][1]}`}>{TONE[c.tone][3]}</div><p class="text-[14px] text-[#3c4a42] mt-0.5">{text(c)}</p></div>
       </div>
     ))}
