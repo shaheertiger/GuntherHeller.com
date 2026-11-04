@@ -3976,5 +3976,551 @@
 "en": "Textured soy protein (dry)",
 "category": "vegetarian-proteins",
 "usda": "Textured soy protein (TSP)"
+},
+{
+"slug": "brie",
+"en": "Brie",
+"category": "dairy-eggs",
+"usda": "Cheese (soft such as brie, bel paese, goat)"
+},
+{
+"slug": "cheddar-cheese",
+"en": "Cheddar cheese",
+"category": "dairy-eggs",
+"usda": "Cheese (hard such as cheddar, swiss, block parmesan)"
+},
+{
+"slug": "egg-whites",
+"en": "Egg whites",
+"category": "dairy-eggs",
+"usda": "Eggs (raw whites, yolks)"
+},
+{
+"slug": "egg-yolks",
+"en": "Egg yolks",
+"category": "dairy-eggs",
+"usda": "Eggs (raw whites, yolks)"
+},
+{
+"slug": "goat-cheese",
+"en": "Goat cheese",
+"category": "dairy-eggs",
+"usda": "Cheese (soft such as brie, bel paese, goat)"
+},
+{
+"slug": "parmesan-cheese",
+"en": "Parmesan cheese",
+"category": "dairy-eggs",
+"usda": "Cheese (hard such as cheddar, swiss, block parmesan)"
+},
+{
+"slug": "shredded-mozzarella",
+"en": "Shredded mozzarella",
+"category": "dairy-eggs",
+"usda": "Cheese (shredded; cheddar, mozzarella, etc.)"
+},
+{
+"slug": "swiss-cheese",
+"en": "Swiss cheese",
+"category": "dairy-eggs",
+"usda": "Cheese (hard such as cheddar, swiss, block parmesan)"
+},
+{
+"slug": "beef-tongue",
+"en": "Beef tongue",
+"category": "meat",
+"usda": "Variety meats (liver, tongue, chitterlings, etc.)"
+},
+{
+"slug": "brisket",
+"en": "Brisket",
+"category": "meat",
+"usda": "Beef (chuck roast, brisket)"
+},
+{
+"slug": "chitterlings",
+"en": "Chitterlings",
+"category": "meat",
+"usda": "Variety meats (liver, tongue, chitterlings, etc.)"
+},
+{
+"slug": "chuck-roast",
+"en": "Chuck roast",
+"category": "meat",
+"usda": "Beef (chuck roast, brisket)"
+},
+{
+"slug": "liver",
+"en": "Liver",
+"category": "meat",
+"usda": "Variety meats (liver, tongue, chitterlings, etc.)"
+},
+{
+"slug": "chicken-legs",
+"en": "Chicken legs",
+"category": "poultry",
+"usda": "Chicken parts (legs or thighs)"
+},
+{
+"slug": "chicken-patties",
+"en": "Chicken patties",
+"category": "poultry",
+"usda": "Chicken nuggets, patties"
+},
+{
+"slug": "turkey-thighs",
+"en": "Turkey thighs",
+"category": "poultry",
+"usda": "Turkey parts (legs or thighs)"
+},
+{
+"slug": "bluefish",
+"en": "Bluefish",
+"category": "seafood",
+"usda": "Fatty fish (bluefish, catfish, mackerel, mullet, salmon, tuna, etc.)"
+},
+{
+"slug": "catfish",
+"en": "Catfish",
+"category": "seafood",
+"usda": "Fatty fish (bluefish, catfish, mackerel, mullet, salmon, tuna, etc.)"
+},
+{
+"slug": "clams",
+"en": "Clams",
+"category": "seafood",
+"usda": "Live clams, mussels, crab, and oysters"
+},
+{
+"slug": "cod",
+"en": "Cod",
+"category": "seafood",
+"usda": "Lean fish (cod, flounder, haddock, halibut, sole, etc.)"
+},
+{
+"slug": "crayfish",
+"en": "Crayfish",
+"category": "seafood",
+"usda": "Shrimp, crayfish"
+},
+{
+"slug": "dungeness-crab",
+"en": "Dungeness crab",
+"category": "seafood",
+"usda": "Crab legs (king, dungeness, snow)"
+},
+{
+"slug": "flounder",
+"en": "Flounder",
+"category": "seafood",
+"usda": "Lean fish (cod, flounder, haddock, halibut, sole, etc.)"
+},
+{
+"slug": "haddock",
+"en": "Haddock",
+"category": "seafood",
+"usda": "Lean fish (cod, flounder, haddock, halibut, sole, etc.)"
+},
+{
+"slug": "halibut",
+"en": "Halibut",
+"category": "seafood",
+"usda": "Lean fish (cod, flounder, haddock, halibut, sole, etc.)"
+},
+{
+"slug": "king-crab-legs",
+"en": "King crab legs",
+"category": "seafood",
+"usda": "Crab legs (king, dungeness, snow)"
+},
+{
+"slug": "mackerel",
+"en": "Mackerel",
+"category": "seafood",
+"usda": "Fatty fish (bluefish, catfish, mackerel, mullet, salmon, tuna, etc.)"
+},
+{
+"slug": "mullet",
+"en": "Mullet",
+"category": "seafood",
+"usda": "Fatty fish (bluefish, catfish, mackerel, mullet, salmon, tuna, etc.)"
+},
+{
+"slug": "mussels",
+"en": "Mussels",
+"category": "seafood",
+"usda": "Live clams, mussels, crab, and oysters"
+},
+{
+"slug": "ocean-perch",
+"en": "Ocean perch",
+"category": "seafood",
+"usda": "Lean fish (pollock, ocean perch, rockfish, sea trout.)"
+},
+{
+"slug": "oysters",
+"en": "Oysters",
+"category": "seafood",
+"usda": "Live clams, mussels, crab, and oysters"
+},
+{
+"slug": "pollock",
+"en": "Pollock",
+"category": "seafood",
+"usda": "Lean fish (pollock, ocean perch, rockfish, sea trout.)"
+},
+{
+"slug": "rockfish",
+"en": "Rockfish",
+"category": "seafood",
+"usda": "Lean fish (pollock, ocean perch, rockfish, sea trout.)"
+},
+{
+"slug": "sea-trout",
+"en": "Sea trout",
+"category": "seafood",
+"usda": "Lean fish (pollock, ocean perch, rockfish, sea trout.)"
+},
+{
+"slug": "snow-crab-legs",
+"en": "Snow crab legs",
+"category": "seafood",
+"usda": "Crab legs (king, dungeness, snow)"
+},
+{
+"slug": "sole",
+"en": "Sole",
+"category": "seafood",
+"usda": "Lean fish (cod, flounder, haddock, halibut, sole, etc.)"
+},
+{
+"slug": "tuna-steaks",
+"en": "Tuna steaks",
+"category": "seafood",
+"usda": "Fatty fish (bluefish, catfish, mackerel, mullet, salmon, tuna, etc.)"
+},
+{
+"slug": "stew",
+"en": "Stew",
+"category": "leftovers-deli",
+"usda": "Soup, stews"
+},
+{
+"slug": "boysenberries",
+"en": "Boysenberries",
+"category": "fruits",
+"usda": "Berries (blackberries, boysenberries, currant)"
+},
+{
+"slug": "clementines",
+"en": "Clementines",
+"category": "fruits",
+"usda": "Citrus fruit (lemon, lime, orange, grapefruit, tangerines, clementines)"
+},
+{
+"slug": "currants",
+"en": "Currants",
+"category": "fruits",
+"usda": "Berries (blackberries, boysenberries, currant)"
+},
+{
+"slug": "feijoa",
+"en": "Feijoa",
+"category": "fruits",
+"usda": "Papaya, mango, feijoa, passionfruit, casaha melon"
+},
+{
+"slug": "gooseberries",
+"en": "Gooseberries",
+"category": "fruits",
+"usda": "Berries (cherries, goose berries, lychee)"
+},
+{
+"slug": "grapefruit",
+"en": "Grapefruit",
+"category": "fruits",
+"usda": "Citrus fruit (lemon, lime, orange, grapefruit, tangerines, clementines)"
+},
+{
+"slug": "lemons",
+"en": "Lemons",
+"category": "fruits",
+"usda": "Citrus fruit (lemon, lime, orange, grapefruit, tangerines, clementines)"
+},
+{
+"slug": "limes",
+"en": "Limes",
+"category": "fruits",
+"usda": "Citrus fruit (lemon, lime, orange, grapefruit, tangerines, clementines)"
+},
+{
+"slug": "lychee",
+"en": "Lychee",
+"category": "fruits",
+"usda": "Berries (cherries, goose berries, lychee)"
+},
+{
+"slug": "mango",
+"en": "Mango",
+"category": "fruits",
+"usda": "Papaya, mango, feijoa, passionfruit, casaha melon"
+},
+{
+"slug": "nectarines",
+"en": "Nectarines",
+"category": "fruits",
+"usda": "Peaches, nectarines, plums, pears, sapote"
+},
+{
+"slug": "oranges",
+"en": "Oranges",
+"category": "fruits",
+"usda": "Citrus fruit (lemon, lime, orange, grapefruit, tangerines, clementines)"
+},
+{
+"slug": "papaya",
+"en": "Papaya",
+"category": "fruits",
+"usda": "Papaya, mango, feijoa, passionfruit, casaha melon"
+},
+{
+"slug": "passion-fruit",
+"en": "Passion fruit",
+"category": "fruits",
+"usda": "Papaya, mango, feijoa, passionfruit, casaha melon"
+},
+{
+"slug": "peaches",
+"en": "Peaches",
+"category": "fruits",
+"usda": "Peaches, nectarines, plums, pears, sapote"
+},
+{
+"slug": "pears",
+"en": "Pears",
+"category": "fruits",
+"usda": "Peaches, nectarines, plums, pears, sapote"
+},
+{
+"slug": "plums",
+"en": "Plums",
+"category": "fruits",
+"usda": "Peaches, nectarines, plums, pears, sapote"
+},
+{
+"slug": "tangerines",
+"en": "Tangerines",
+"category": "fruits",
+"usda": "Citrus fruit (lemon, lime, orange, grapefruit, tangerines, clementines)"
+},
+{
+"slug": "broccoli-rabe",
+"en": "Broccoli rabe",
+"category": "vegetables",
+"usda": "Broccoli and broccoli raab (rapini)"
+},
+{
+"slug": "fava-beans",
+"en": "Fava beans",
+"category": "vegetables",
+"usda": "Beans and peas (green, fava, lima, soybean, wax, snow, sugar snap)"
+},
+{
+"slug": "iceberg-lettuce",
+"en": "Iceberg lettuce",
+"category": "vegetables",
+"usda": "Lettuce (iceberg, romaine)"
+},
+{
+"slug": "leaf-lettuce",
+"en": "Leaf lettuce",
+"category": "vegetables",
+"usda": "Lettuce (leaf, spinach)"
+},
+{
+"slug": "lima-beans",
+"en": "Lima beans",
+"category": "vegetables",
+"usda": "Beans and peas (green, fava, lima, soybean, wax, snow, sugar snap)"
+},
+{
+"slug": "parsnips",
+"en": "Parsnips",
+"category": "vegetables",
+"usda": "Carrots, parsnips"
+},
+{
+"slug": "romaine-lettuce",
+"en": "Romaine lettuce",
+"category": "vegetables",
+"usda": "Lettuce (iceberg, romaine)"
+},
+{
+"slug": "snow-peas",
+"en": "Snow peas",
+"category": "vegetables",
+"usda": "Beans and peas (green, fava, lima, soybean, wax, snow, sugar snap)"
+},
+{
+"slug": "sugar-snap-peas",
+"en": "Sugar snap peas",
+"category": "vegetables",
+"usda": "Beans and peas (green, fava, lima, soybean, wax, snow, sugar snap)"
+},
+{
+"slug": "wax-beans",
+"en": "Wax beans",
+"category": "vegetables",
+"usda": "Beans and peas (green, fava, lima, soybean, wax, snow, sugar snap)"
+},
+{
+"slug": "yellow-squash",
+"en": "Yellow squash",
+"category": "vegetables",
+"usda": "Squash (summer and zucchini)"
+},
+{
+"slug": "apple-pie",
+"en": "Apple pie",
+"category": "baked-goods",
+"usda": "Fruit pies (apple, peach, blueberry, apricot, cherry, blackberry)"
+},
+{
+"slug": "banana-cream-pie",
+"en": "Banana cream pie",
+"category": "baked-goods",
+"usda": "Cream pies (banana cream, coconut cream, butterscotch)"
+},
+{
+"slug": "blueberry-pie",
+"en": "Blueberry pie",
+"category": "baked-goods",
+"usda": "Fruit pies (apple, peach, blueberry, apricot, cherry, blackberry)"
+},
+{
+"slug": "brownie-mix",
+"en": "Brownie mix",
+"category": "baked-goods",
+"usda": "Cake, brownie, bread mixes"
+},
+{
+"slug": "cherry-pie",
+"en": "Cherry pie",
+"category": "baked-goods",
+"usda": "Fruit pies (apple, peach, blueberry, apricot, cherry, blackberry)"
+},
+{
+"slug": "coconut-cream-pie",
+"en": "Coconut cream pie",
+"category": "baked-goods",
+"usda": "Cream pies (banana cream, coconut cream, butterscotch)"
+},
+{
+"slug": "dinner-rolls",
+"en": "Dinner rolls",
+"category": "baked-goods",
+"usda": "Commercial bread products (including pan breads, flat breads, rolls, and buns)"
+},
+{
+"slug": "flatbread",
+"en": "Flatbread",
+"category": "baked-goods",
+"usda": "Commercial bread products (including pan breads, flat breads, rolls, and buns)"
+},
+{
+"slug": "hamburger-buns",
+"en": "Hamburger buns",
+"category": "baked-goods",
+"usda": "Commercial bread products (including pan breads, flat breads, rolls, and buns)"
+},
+{
+"slug": "peach-pie",
+"en": "Peach pie",
+"category": "baked-goods",
+"usda": "Fruit pies (apple, peach, blueberry, apricot, cherry, blackberry)"
+},
+{
+"slug": "canned-beans",
+"en": "Canned beans",
+"category": "pantry-staples",
+"usda": "Canned goods (low acid such as meat, poultry, fish, gravy, stew, soups, beans, carrots, corn, pasta, peas, potatoes, spinach)"
+},
+{
+"slug": "canned-carrots",
+"en": "Canned carrots",
+"category": "pantry-staples",
+"usda": "Canned goods (low acid such as meat, poultry, fish, gravy, stew, soups, beans, carrots, corn, pasta, peas, potatoes, spinach)"
+},
+{
+"slug": "canned-corn",
+"en": "Canned corn",
+"category": "pantry-staples",
+"usda": "Canned goods (low acid such as meat, poultry, fish, gravy, stew, soups, beans, carrots, corn, pasta, peas, potatoes, spinach)"
+},
+{
+"slug": "canned-fruit",
+"en": "Canned fruit",
+"category": "pantry-staples",
+"usda": "Canned goods (high acid such as juices, fruit, pickles, sauerkraut, tomato soup, and foods in vinegar-based sauce)"
+},
+{
+"slug": "canned-juice",
+"en": "Canned juice",
+"category": "pantry-staples",
+"usda": "Canned goods (high acid such as juices, fruit, pickles, sauerkraut, tomato soup, and foods in vinegar-based sauce)"
+},
+{
+"slug": "canned-pasta",
+"en": "Canned pasta",
+"category": "pantry-staples",
+"usda": "Canned goods (low acid such as meat, poultry, fish, gravy, stew, soups, beans, carrots, corn, pasta, peas, potatoes, spinach)"
+},
+{
+"slug": "canned-peas",
+"en": "Canned peas",
+"category": "pantry-staples",
+"usda": "Canned goods (low acid such as meat, poultry, fish, gravy, stew, soups, beans, carrots, corn, pasta, peas, potatoes, spinach)"
+},
+{
+"slug": "canned-potatoes",
+"en": "Canned potatoes",
+"category": "pantry-staples",
+"usda": "Canned goods (low acid such as meat, poultry, fish, gravy, stew, soups, beans, carrots, corn, pasta, peas, potatoes, spinach)"
+},
+{
+"slug": "canned-soup",
+"en": "Canned soup",
+"category": "pantry-staples",
+"usda": "Canned goods (low acid such as meat, poultry, fish, gravy, stew, soups, beans, carrots, corn, pasta, peas, potatoes, spinach)"
+},
+{
+"slug": "canned-spinach",
+"en": "Canned spinach",
+"category": "pantry-staples",
+"usda": "Canned goods (low acid such as meat, poultry, fish, gravy, stew, soups, beans, carrots, corn, pasta, peas, potatoes, spinach)"
+},
+{
+"slug": "canned-stew",
+"en": "Canned stew",
+"category": "pantry-staples",
+"usda": "Canned goods (low acid such as meat, poultry, fish, gravy, stew, soups, beans, carrots, corn, pasta, peas, potatoes, spinach)"
+},
+{
+"slug": "canned-tomato-soup",
+"en": "Canned tomato soup",
+"category": "pantry-staples",
+"usda": "Canned goods (high acid such as juices, fruit, pickles, sauerkraut, tomato soup, and foods in vinegar-based sauce)"
+},
+{
+"slug": "sauerkraut",
+"en": "Sauerkraut",
+"category": "pantry-staples",
+"usda": "Canned goods (high acid such as juices, fruit, pickles, sauerkraut, tomato soup, and foods in vinegar-based sauce)"
+},
+{
+"slug": "fruit-punch",
+"en": "Fruit punch",
+"category": "beverages",
+"usda": "Fruit Juice in cartons, fruit drinks, punch"
 }
 ]
