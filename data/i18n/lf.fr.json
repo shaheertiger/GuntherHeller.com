@@ -1,0 +1,463 @@
+{
+ "eyebrows": {
+  "basics": "L'essentiel",
+  "science": "Ce que dit la science",
+  "avoid": "À éviter",
+  "store": "Au magasin",
+  "waste": "Moins de gaspillage",
+  "qa": "Question par question",
+  "dates": "Dates sur l'emballage",
+  "where": "Le bon endroit",
+  "best": "Le meilleur endroit"
+ },
+ "h": {
+  "about": "Tout savoir sur {o}",
+  "why": [
+   "Pourquoi {q} s'abîme",
+   "Pourquoi {q} s'abîment"
+  ],
+  "mistakes": "Les erreurs de conservation courantes",
+  "buying": "Bien choisir un produit frais",
+  "useUp": "Le consommer à temps",
+  "qa": "Durées de conservation, question par question",
+  "dates": "Les dates de péremption décodées",
+  "where": "Où le conserver",
+  "fifo": "Premier entré, premier sorti"
+ },
+ "intro": {
+  "category": "Cet aliment appartient à notre catégorie « {cat} ».",
+  "source": "Dans la base de données USDA FoodKeeper, il figure sous le nom « {fk} ».",
+  "keeps": [
+   "Selon l'USDA FoodKeeper, {q} se conserve {list}.",
+   "Selon l'USDA FoodKeeper, {q} se conservent {list}."
+  ],
+  "fridgeUseBy": "Au réfrigérateur, respectez la date limite de consommation (DLC) indiquée sur l'emballage.",
+  "notFreeze": "La congélation est déconseillée.",
+  "perishable": "Comme tout aliment périssable, il ne doit pas rester plus de 2 heures à température ambiante.",
+  "notPerishable": "Ce n'est pas un aliment périssable à haut risque : l'enjeu principal est la qualité plutôt que la sécurité.",
+  "where": "Où le conserver : {why}",
+  "ripe": "à température ambiante jusqu'à maturité",
+  "indefinitely": "indéfiniment au placard"
+ },
+ "zones": {
+  "freezer": "gardez-le bien congelé à −18 °C (0 °F) jusqu'au moment de le cuisiner.",
+  "pantry": "l'idéal est un placard frais, sombre et sec ; le réfrigérateur n'est pas nécessaire.",
+  "bottom": "la viande et les produits de la mer crus se rangent sur l'étagère du bas, dans un plat, pour que leur jus ne coule jamais sur les aliments prêts à consommer.",
+  "crisper": "le bac à légumes conserve l'humidité, ce qui empêche les fruits et légumes de flétrir.",
+  "door": "la porte est la zone la plus chaude du réfrigérateur, qui convient aux condiments et aux boissons peu sensibles à l'altération.",
+  "middle": "une étagère du milieu est idéale, pas la porte : celle-ci se réchauffe à chaque ouverture.",
+  "top": "les aliments prêts à consommer et les plats cuisinés se rangent sur les étagères du haut, au-dessus de tout produit cru."
+ },
+ "qa": {
+  "fridgeQ": [
+   "Combien de temps se conserve {q} au réfrigérateur ?",
+   "Combien de temps se conservent {q} au réfrigérateur ?"
+  ],
+  "fridgeA": "{d} à 4 °C (40 °F) ou moins. Comptez à partir du jour de la cuisson, de l'ouverture ou de l'achat, et non à partir de la date imprimée.",
+  "freezerQ": [
+   "Combien de temps se conserve {q} au congélateur ?",
+   "Combien de temps se conservent {q} au congélateur ?"
+  ],
+  "freezerA": "{d} pour une qualité optimale à −18 °C (0 °F). Un aliment congelé reste sûr indéfiniment ; passé ce délai, la texture et la saveur s'estompent.",
+  "freezerNo": "La congélation est déconseillée pour cet aliment : sa texture se dégrade. Gardez-le plutôt au réfrigérateur et consommez-le dans le délai prévu.",
+  "roomQ": [
+   "Combien de temps se conserve {q} à température ambiante ?",
+   "Combien de temps se conservent {q} à température ambiante ?"
+  ],
+  "roomPerishable": "Pas plus de 2 heures, ou 1 heure au-delà de 32 °C (90 °F). Un aliment périssable laissé dehors plus longtemps doit être jeté.",
+  "roomPantry": "{d} dans un endroit frais et sec, à l'abri de la chaleur et de la lumière du soleil.",
+  "roomFridgeOnly": "Ce produit n'est pas fait pour être conservé à température ambiante. Gardez-le au réfrigérateur.",
+  "openedQ": [
+   "Combien de temps se conserve {q} après ouverture ?",
+   "Combien de temps se conservent {q} après ouverture ?"
+  ],
+  "openedA": "{d} après ouverture. La date imprimée cesse de s'appliquer dès que l'emballage est ouvert.",
+  "unopenedQ": [
+   "Combien de temps se conserve {q} avant ouverture ?",
+   "Combien de temps se conservent {q} avant ouverture ?"
+  ],
+  "unopenedA": "{d}, tant que l'emballage reste intact et que le produit est conservé comme l'indique l'étiquette.",
+  "pantryQ": [
+   "Combien de temps se conserve {q} au placard ?",
+   "Combien de temps se conservent {q} au placard ?"
+  ],
+  "pantryA": "{d} dans un placard frais, sombre et sec, bien fermé. Après ouverture, vérifiez l'étiquette : certains produits doivent alors aller au réfrigérateur.",
+  "expireQ": [
+   "{q} peut-il périmer ?",
+   "{q} peuvent-ils périmer ?"
+  ],
+  "expireShelf": "Oui, mais pour un aliment de garde comme celui-ci, être périmé signifie surtout perdre en qualité plutôt que devenir dangereux. Le goût, l'arôme et la texture s'estompent avec le temps, surtout après ouverture. S'il a été conservé au frais, au sec et bien fermé, sans moisissure, odeur anormale ni couleur inhabituelle, il reste généralement utilisable.",
+  "expirePerishable": "Oui, et pour un aliment périssable comme celui-ci, la durée de conservation compte davantage que la date imprimée. S'il est resté au réfrigérateur plus de {d}, ou plus de 2 heures hors du réfrigérateur, il faut le jeter, même s'il a l'air et l'odeur normaux."
+ },
+ "faq": {
+  "tempQ": "À quelle température régler le réfrigérateur pour conserver {o} ?",
+  "tempA": "Réglez votre réfrigérateur à 4 °C (40 °F) ou moins et votre congélateur à −18 °C (0 °F). Beaucoup de réfrigérateurs sont plus chauds que ne le laisse croire leur thermostat : un thermomètre de réfrigérateur bon marché est donc utile. Chaque degré au-dessus de 4 °C réduit sensiblement la durée de conservation au réfrigérateur ({d}).",
+  "containerQ": "Quel est le meilleur contenant pour conserver {o} ?",
+  "containerA": "Utilisez {container}. L'objectif est d'empêcher l'air et l'humidité d'entrer, d'éviter que les odeurs se propagent et de savoir facilement depuis quand l'aliment est conservé. Notez la date sur une étiquette ou sur le couvercle pour ne jamais avoir à deviner depuis combien de temps il est stocké.",
+  "doorQ": "Peut-on ranger {o} dans la porte du réfrigérateur ?",
+  "doorYes": "Oui. La porte est la zone la plus chaude du réfrigérateur, mais cet aliment résiste assez bien à l'altération pour y être rangé. Refermez bien le couvercle après chaque utilisation.",
+  "doorNo": "Mieux vaut éviter. La porte est la zone la plus chaude du réfrigérateur et se réchauffe à chaque ouverture. Meilleur emplacement : {why}",
+  "doorOther": "Meilleur emplacement : {why}",
+  "refreezeQ": "Peut-on recongeler {o} ?",
+  "refreezeNo": "La congélation est déjà déconseillée pour cet aliment, la recongélation l'est donc aussi. Gardez-le au réfrigérateur et consommez-le dans le délai prévu.",
+  "refreezeYes": "Seulement si la décongélation s'est faite au réfrigérateur et que l'aliment n'est pas resté dehors. Un aliment décongelé dans l'eau froide ou au micro-ondes doit être cuit avant d'être recongelé. Chaque cycle de congélation et de décongélation réduit la qualité : congelez en portions que vous utiliserez en une seule fois.",
+  "killQ": "La congélation tue-t-elle les bactéries présentes dans {o} ?",
+  "killA": "Non. La congélation à −18 °C (0 °F) empêche les bactéries de se multiplier, mais ne les tue pas. À la décongélation, les bactéries présentes redeviennent actives : décongelez donc l'aliment au réfrigérateur, puis cuisez-le ou réchauffez-le à une température sûre le cas échéant.",
+  "smellQ": "Un aliment qui sent bon mais dont la durée de conservation est dépassée est-il sans danger ?",
+  "smellPerishable": "Pas forcément. Les bactéries responsables des intoxications alimentaires ne modifient généralement ni l'odeur, ni l'aspect, ni le goût des aliments. Si l'aliment est au réfrigérateur depuis plus de {d}, jetez-le même s'il semble correct.",
+  "smellOther": "Pour un aliment à faible risque comme celui-ci, une durée de conservation dépassée signifie généralement une qualité moindre plutôt qu'un danger. Vérifiez l'absence de moisissure, d'odeur anormale ou de goût inhabituel, et jetez-le au moindre doute."
+ },
+ "dates": [
+  "La plupart des dates imprimées sur les emballages concernent la qualité, et non la sécurité. Aux États-Unis, la seule date imposée par la loi fédérale est la date limite d'utilisation des préparations pour nourrissons ; toutes les autres sont fixées par le fabricant. La mention « Best if used by », équivalent de notre date de durabilité minimale (DDM, « à consommer de préférence avant »), indique jusqu'à quand la saveur et la texture sont optimales. La date « Sell-by » sert à la rotation des stocks du magasin : chez vous, l'aliment se conserve ensuite pendant sa durée normale. La date « Use-by » est la dernière date recommandée par le fabricant pour une qualité optimale.",
+  "C'est pourquoi cette page compte la durée de conservation à partir du jour où vous achetez, cuisinez ou ouvrez l'aliment, et non à partir de la date imprimée : {d} au réfrigérateur. Un aliment bien conservé peut rester bon après sa date de durabilité minimale ; mal conservé, il peut s'abîmer bien avant."
+ ],
+ "groups": {
+  "meat": {
+   "about": "La viande crue est l'un des aliments les plus périssables de la cuisine. Sa surface porte des bactéries issues de la transformation, et le jus qu'elle libère leur offre un chemin tout trouvé vers les autres aliments. C'est pourquoi le délai de conservation sûr au réfrigérateur est court et pourquoi le congélateur est votre allié : la congélation stoppe complètement la prolifération bactérienne, et la viande que vous ne pourrez pas cuisiner à temps peut tout simplement aller au congélateur le jour de l'achat.",
+   "spoil": "Des bactéries d'altération comme Pseudomonas et les bactéries lactiques se multiplient à la surface de la viande crue, même à la température du réfrigérateur : ce sont elles qui produisent l'odeur aigre et le film collant que l'on remarque quand la viande tourne. Les bactéries pathogènes comme Salmonella et E. coli, elles, ne modifient ni l'odeur ni l'aspect : un morceau de viande peut sembler correct et être pourtant dangereux une fois son délai dépassé. La viande hachée s'altère le plus vite, car le hachage répartit les bactéries de surface dans toute la préparation.",
+   "mistakes": [
+    "La décongeler sur le plan de travail : l'extérieur atteint la température ambiante alors que le centre est encore congelé.",
+    "La ranger sur une étagère du haut, d'où son jus peut couler sur les aliments prêts à consommer.",
+    "La rincer dans l'évier, ce qui projette les bactéries dans toute la cuisine au lieu de les éliminer.",
+    "Compter les jours de conservation à partir de la date limite de vente plutôt que du jour de l'achat.",
+    "Recongeler sans la cuire une viande décongelée dans l'eau froide ou au micro-ondes."
+   ],
+   "buying": [
+    "Prenez-la en dernier, juste avant de passer en caisse, et rapportez-la chez vous dans l'heure ou les deux heures.",
+    "Choisissez des barquettes froides, bien fermées, sans déchirure ni liquide accumulé.",
+    "Emballez-la à part, loin des fruits et légumes et des aliments prêts à consommer."
+   ],
+   "useUp": [
+    "Faites-la cuire, puis congelez la viande cuite en portions pour des repas rapides.",
+    "Transformez-la en ragoût, en chili ou en sauce pour les pâtes, qui se congèlent bien.",
+    "Faites-la mariner et congelez-la crue pour la cuire directement à la sortie du congélateur."
+   ],
+   "container": "la barquette d'origine, enveloppée de papier aluminium ou d'un sac de congélation, posée sur une assiette ou dans un plateau"
+  },
+  "seafood": {
+   "about": "Le poisson frais et les fruits de mer comptent parmi les aliments qui se conservent le moins longtemps. Leur chair délicate contient des enzymes et des bactéries naturelles qui restent actives même au réfrigérateur, et les graisses des poissons gras s'oxydent rapidement. La plupart des produits de la mer doivent être cuits ou congelés dans les un ou deux jours qui suivent l'achat ; au congélateur, leur qualité se maintient pendant des mois.",
+   "spoil": "Les bactéries décomposent les acides aminés de la chair du poisson en composés comme la triméthylamine, responsable de la forte odeur de « poisson » ou d'ammoniaque du poisson qui s'altère. Dans le même temps, les enzymes ramollissent la texture. Certains poissons, dont le thon et le maquereau, peuvent aussi produire de l'histamine s'ils se réchauffent : elle provoque l'intoxication histaminique (scombroïde) et n'est pas détruite par la cuisson.",
+   "mistakes": [
+    "Conserver des coquillages vivants dans l'eau ou dans un sac plastique fermé, ce qui les étouffe.",
+    "Laisser le poisson dans la zone la plus chaude du réfrigérateur au lieu de le mettre sur de la glace ou sur l'étagère du bas.",
+    "Recongeler des produits de la mer décongelés à température ambiante.",
+    "Cuire des coquillages dont la coquille reste ouverte quand on la tapote."
+   ],
+   "buying": [
+    "Un poisson frais sent la marée et sa chair est ferme, elle reprend sa forme quand on appuie dessus.",
+    "Un poisson entier doit avoir l'œil clair et les branchies rouge vif.",
+    "Les palourdes, moules et huîtres vivantes doivent se refermer quand on les tapote."
+   ],
+   "useUp": [
+    "Cuisinez-le le jour de l'achat, puis gardez le poisson cuit 3 à 4 jours.",
+    "Congelez les filets à plat dans des sacs de congélation, en chassant l'air.",
+    "Émiettez le poisson cuit restant dans des croquettes, des pâtes ou des salades sous quelques jours."
+   ],
+   "container": "la zone la plus froide du réfrigérateur, dans un plat couvert ou sur un lit de glace"
+  },
+  "cooked": {
+   "about": "Plats cuisinés et restes obéissent aux mêmes règles simples : les refroidir vite, les mettre au réfrigérateur dans les deux heures et les consommer sous quelques jours. La cuisson tue la plupart des bactéries, mais certaines survivent sous forme de spores résistantes à la chaleur, et de nouvelles bactéries arrivent par les mains, les ustensiles et l'air. La façon de refroidir et de conserver un plat après cuisson compte davantage que la façon dont il a été cuit.",
+   "spoil": "Les spores de bactéries comme Bacillus cereus et Clostridium perfringens survivent à la cuisson. Quand un plat cuit reste tiède, les spores germent et se multiplient rapidement, et certaines produisent des toxines que le réchauffage ne détruit pas. Au réfrigérateur, elles se développent lentement : c'est pourquoi un plat cuit se conserve quelques jours et non plusieurs semaines.",
+   "mistakes": [
+    "Laisser refroidir une grande marmite sur la cuisinière pendant des heures au lieu de la répartir dans des récipients peu profonds.",
+    "Mettre directement au réfrigérateur un récipient profond et chaud, dont le centre reste tiède pendant des heures.",
+    "Réchauffer les mêmes restes plus d'une fois.",
+    "Goûter un plat pour savoir s'il est encore bon."
+   ],
+   "buying": [
+    "Pour les plats à emporter et les produits traiteur, rapportez-les et mettez-les au réfrigérateur dans les deux heures.",
+    "Choisissez des plats chauds bien fumants et des plats froids bien froids au toucher.",
+    "Vérifiez la date de préparation des plats faits en magasin et comptez les jours de conservation à partir de celle-ci."
+   ],
+   "useUp": [
+    "Congelez des portions dès le premier ou le deuxième jour si vous ne les mangerez pas à temps.",
+    "Transformez les restes en soupes, riz sauté, frittatas ou wraps.",
+    "Étiquetez les récipients avec la date pour savoir exactement depuis combien de temps ils sont au réfrigérateur."
+   ],
+   "container": "des récipients hermétiques peu profonds, refroidis rapidement et étiquetés avec la date"
+  },
+  "cured": {
+   "about": "Les viandes salées, fumées et transformées se conservent plus longtemps que la viande fraîche, car le sel, la fumée, les nitrites et une teneur en eau plus faible ralentissent la prolifération bactérienne. Elles ne se conservent pas pour autant à température ambiante : une fois l'emballage ouvert, l'air et les manipulations lancent le compte à rebours, et les produits tranchés s'altèrent plus vite que les pièces entières, car leur surface exposée est plus grande.",
+   "spoil": "La salaison ralentit la plupart des bactéries d'altération, mais Listeria monocytogenes peut se développer à la température du réfrigérateur sur les charcuteries prêtes à consommer comme le jambon en tranches ou les saucisses de type hot-dog. C'est la principale raison pour laquelle les paquets entamés se conservent peu de temps, et pour laquelle on conseille aux femmes enceintes et aux personnes âgées de réchauffer la charcuterie jusqu'à ce qu'elle soit fumante.",
+   "mistakes": [
+    "Garder un paquet entamé bien au-delà de son délai après ouverture parce que la date imprimée est encore loin.",
+    "Laisser des tranches de charcuterie sur un plateau pendant des heures lors d'une fête.",
+    "Ranger les paquets entamés sans les remballer, si bien qu'ils se dessèchent et prennent les odeurs.",
+    "Utiliser le même couteau ou la même planche pour les viandes crues et les produits prêts à consommer."
+   ],
+   "buying": [
+    "Vérifiez que les emballages sous vide sont bien tendus, sans poche d'air ni gonflement.",
+    "Achetez la charcuterie à la coupe en quantités que vous finirez dans le délai après ouverture.",
+    "Prenez les paquets au fond du rayon frais, là où ils restent le plus froids."
+   ],
+   "useUp": [
+    "Congelez les paquets non entamés si vous ne les ouvrirez pas avant la date.",
+    "Utilisez les tranches entamées dans des croque-monsieur, des omelettes, des pâtes ou des pizzas.",
+    "Divisez les grands paquets en portions et congelez ce que vous n'utiliserez pas bientôt."
+   ],
+   "container": "son emballage d'origine bien refermé, ou une boîte hermétique"
+  },
+  "dairy": {
+   "about": "Le lait, la crème, le yaourt et les autres produits laitiers frais sont pasteurisés, ce qui élimine les bactéries dangereuses, mais ils restent périssables une fois ouverts. Leur durée de conservation au réfrigérateur dépend beaucoup de la température : un produit laitier rangé au fond d'une étagère froide se garde nettement plus longtemps qu'un autre rangé dans la porte, qui se réchauffe à chaque ouverture.",
+   "spoil": "Les bactéries lactiques et psychrotrophes qui survivent à la pasteurisation ou s'introduisent après l'ouverture font fermenter le sucre du lait et produisent de l'acide. C'est cet acide qui provoque l'odeur aigre, le caillage et les grumeaux des produits laitiers altérés. Des moisissures peuvent aussi apparaître à la surface du yaourt, de la crème aigre et des produits similaires.",
+   "mistakes": [
+    "Les ranger dans la porte du réfrigérateur, la zone la plus chaude.",
+    "Reverser le lait non utilisé dans la bouteille ou la brique d'origine.",
+    "Les laisser sur la table pendant un long repas.",
+    "Les congeler en espérant retrouver la même texture pour les boire : les produits laitiers congelés servent surtout en cuisine."
+   ],
+   "buying": [
+    "Prenez-les vers la fin de vos courses et rentrez directement chez vous.",
+    "Choisissez au fond du rayon frais les produits à la date la plus lointaine.",
+    "Vérifiez que les couvercles et les opercules sont intacts."
+   ],
+   "useUp": [
+    "Utilisez-les en pâtisserie : pancakes, muffins, scones et sauces en contiennent tous.",
+    "Congelez-les en petites portions ou dans des bacs à glaçons pour la cuisine.",
+    "Mixez-les dans des smoothies avant la fin de leur délai."
+   ],
+   "container": "son contenant d'origine, bien fermé, sur une étagère du milieu"
+  },
+  "cheese": {
+   "about": "Le fromage est du lait conservé grâce à l'acidité, au sel et à l'élimination de l'eau : il se garde donc bien plus longtemps que le lait. Sa durée de conservation dépend surtout de son humidité : les fromages à pâte dure et affinés se gardent des semaines, voire des mois, tandis que les fromages à pâte molle et les fromages frais se comportent davantage comme des produits laitiers frais et ne se gardent que quelques jours à deux semaines environ une fois entamés.",
+   "spoil": "La moisissure est la principale cause d'altération du fromage. Dans un fromage à pâte dure, les filaments de moisissure ne pénètrent pas loin : vous pouvez retirer au moins 2,5 cm autour et en dessous de la tache. Dans un fromage à pâte molle, râpé ou émietté, la moisissure se propage de façon invisible dans tout le morceau, qu'il faut donc jeter entièrement. Les bactéries produisent aussi une odeur d'ammoniaque lorsque le fromage à pâte molle dépasse son meilleur moment.",
+   "mistakes": [
+    "L'envelopper serré dans du film alimentaire, qui retient l'humidité et favorise la formation d'un film visqueux et de moisissures.",
+    "Retirer la moisissure d'un fromage à pâte molle ou râpé et manger le reste.",
+    "Le laisser des heures sur un plateau de fromages dans une pièce chaude.",
+    "Congeler un fromage à pâte molle en espérant retrouver la même texture."
+   ],
+   "buying": [
+    "Achetez le fromage à pâte dure en morceau plutôt que déjà râpé si vous voulez qu'il se garde plus longtemps.",
+    "Vérifiez que les emballages sont fermés, sans humidité ni moisissure.",
+    "Achetez le fromage à pâte molle en quantités que vous finirez dans le délai après ouverture."
+   ],
+   "useUp": [
+    "Râpez et congelez le fromage à pâte dure pour la cuisine.",
+    "Faites-le fondre dans des sauces, des croque-monsieur, des gratins et des omelettes.",
+    "Utilisez le fromage à pâte molle dans des sauces froides, des pâtes ou des plats au four avant la fin de son délai."
+   ],
+   "container": "du papier ciré ou sulfurisé, puis un sac non fermé, dans le bac à fromages"
+  },
+  "eggs": {
+   "about": "Les œufs se gardent des semaines au réfrigérateur, car la coquille et les membranes qu'elle contient forment une barrière naturelle. Aux États-Unis, les œufs sont lavés avant la vente, ce qui retire la couche protectrice de la coquille : ils doivent donc rester au réfrigérateur. Une fois cassés, cuits ou séparés, ils se conservent beaucoup moins longtemps.",
+   "spoil": "Le principal risque sanitaire lié aux œufs est Salmonella, qui peut être présente à l'intérieur d'un œuf d'apparence parfaitement normale. Avec le temps, les œufs perdent aussi de l'humidité et du dioxyde de carbone à travers la coquille : le blanc devient plus liquide et le jaune s'aplatit. Un œuf vraiment gâté dégage une odeur soufrée due à la décomposition des protéines par les bactéries.",
+   "mistakes": [
+    "Ranger les œufs dans la porte du réfrigérateur, où la température varie.",
+    "Laver les œufs avant de les ranger.",
+    "Laisser des œufs réfrigérés dehors plus de deux heures : un œuf froid qui se couvre de condensation peut laisser entrer des bactéries à travers sa coquille.",
+    "Congeler les œufs dans leur coquille, ce qui la fait éclater."
+   ],
+   "buying": [
+    "Ouvrez la boîte et vérifiez qu'aucun œuf n'est fêlé ou sale.",
+    "Achetez-les dans un rayon réfrigéré.",
+    "Gardez-les dans leur boîte, qui les protège et indique la date d'emballage."
+   ],
+   "useUp": [
+    "Faites cuire une série d'œufs durs : ils se gardent une semaine au réfrigérateur.",
+    "Battez et congelez les œufs en trop pour la pâtisserie.",
+    "Utilisez-les dans des frittatas, des quiches, des crèmes et des pâtisseries."
+   ],
+   "container": "leur boîte d'origine, sur une étagère du milieu"
+  },
+  "produce": {
+   "about": "Les fruits et légumes frais restent vivants après la récolte : ils continuent de respirer, de mûrir et de perdre de l'eau. Leur durée de conservation dépend de leur variété, de leur maturité à l'achat et du fait qu'ils soient entiers ou coupés. Beaucoup se conservent mieux dans le bac à légumes du réfrigérateur, mais certains mûrissent et sont meilleurs s'ils passent d'abord par la température ambiante.",
+   "spoil": "Les fruits et légumes s'abîment sous l'effet combiné d'une maturation excessive, de la perte d'eau et du développement de micro-organismes. Les fruits qui mûrissent libèrent de l'éthylène, un gaz qui accélère la maturation de tout ce qui les entoure. Les meurtrissures et les coupures brisent les parois cellulaires et laissent entrer moisissures et bactéries : c'est pourquoi les fruits et légumes coupés doivent être réfrigérés et consommés sous quelques jours.",
+   "mistakes": [
+    "Laver les fruits et légumes avant de les ranger, ce qui ajoute de l'humidité et favorise les moisissures.",
+    "Ranger les producteurs d'éthylène (pommes, bananes, avocats) à côté de produits qui mûrissent trop vite.",
+    "Laisser des fruits ou légumes coupés à température ambiante plus de deux heures.",
+    "Enfermer les fruits et légumes dans des sacs hermétiques, sans circulation d'air."
+   ],
+   "buying": [
+    "Choisissez des fruits et légumes sans meurtrissures, zones molles ni moisissures.",
+    "Achetez des pièces mûres et d'autres moins mûres pour qu'elles ne mûrissent pas toutes en même temps.",
+    "Prenez les fruits et légumes coupés dans un présentoir réfrigéré."
+   ],
+   "useUp": [
+    "Congelez les fruits mûrs pour les smoothies et la pâtisserie.",
+    "Faites rôtir ou sauter les légumes qui commencent à ramollir.",
+    "Mixez les fruits et légumes fatigués en soupes, sauces et jus."
+   ],
+   "container": "le bac à légumes, sans les laver, dans un sac non fermé ou perforé"
+  },
+  "leafy": {
+   "about": "Les légumes-feuilles et les herbes fraîches sont surtout constitués d'eau retenue dans de fines feuilles : ils flétrissent et s'abîment plus vite que presque tous les autres fruits et légumes. Deux choses réduisent leur durée de conservation : trop d'humidité, qui rend les feuilles visqueuses, et pas assez, qui les fait flétrir. Conservés au sec, au froid et emballés sans être serrés, ils se gardent de quelques jours à deux semaines environ.",
+   "spoil": "Les bactéries et les moisissures décomposent les tissus des feuilles abîmés par les chocs ou l'excès d'eau, ce qui produit les taches sombres et visqueuses et l'odeur aigre des salades altérées. Les légumes-feuilles sont aussi des vecteurs connus d'E. coli et de Listeria provenant du champ : c'est pourquoi les salades en sachet doivent être gardées au froid et consommées avant leur date.",
+   "mistakes": [
+    "Ranger les légumes-feuilles encore mouillés après les avoir lavés.",
+    "Les tasser, si bien que les feuilles s'abîment.",
+    "Les garder près de fruits producteurs d'éthylène.",
+    "Les congeler pour en faire des salades : congelés, ils ne conviennent qu'à la cuisson."
+   ],
+   "buying": [
+    "Choisissez des feuilles croquantes, sans partie visqueuse, jaunie ni tache sombre.",
+    "Vérifiez qu'il n'y a pas de liquide dans les salades en sachet et que la date est encore lointaine.",
+    "Achetez des herbes aux tiges bien droites et à l'odeur fraîche."
+   ],
+   "useUp": [
+    "Faites tomber les feuilles tendres dans des soupes, des pâtes, des currys et des omelettes.",
+    "Mixez les herbes en pesto ou congelez-les dans de l'huile, en bacs à glaçons.",
+    "Ajoutez-en une poignée dans vos smoothies."
+   ],
+   "container": "une boîte ou un sac garni d'essuie-tout, dans le bac à légumes"
+  },
+  "bakery": {
+   "about": "Le pain et les produits de boulangerie contiennent peu d'eau par rapport aux aliments frais : ils deviennent rarement dangereux rapidement, mais ils rassissent puis finissent par moisir. Le rassissement est une modification de l'amidon, pas une altération, et il est même plus rapide au réfrigérateur. La véritable limite, c'est la moisissure, qui se développe plus vite dans une cuisine chaude et humide.",
+   "spoil": "Les spores de moisissure présentes dans l'air se déposent sur le pain et forment des taches duveteuses en quelques jours dans une atmosphère chaude et humide. La tache visible n'est qu'une partie du problème : des filaments se propagent dans la mie tendre, et il faut donc jeter tout le pain dès que la moisissure apparaît. Les pâtisseries garnies de crème ou de crème pâtissière sont un cas à part : elles doivent être réfrigérées comme les produits laitiers.",
+   "mistakes": [
+    "Garder le pain au réfrigérateur, ce qui le fait rassir plus vite.",
+    "Retirer une tache de moisissure et manger le reste d'un pain de mie.",
+    "Ranger le pain encore chaud dans un sac fermé, ce qui emprisonne l'humidité.",
+    "Laisser des pâtisseries à la crème à température ambiante."
+   ],
+   "buying": [
+    "Vérifiez que le sachet ne présente ni condensation ni taches de moisissure.",
+    "Choisissez une taille de pain que vous finirez en quelques jours, ou prévoyez d'en congeler la moitié.",
+    "Choisissez les produits de boulangerie à la date de cuisson la plus récente."
+   ],
+   "useUp": [
+    "Congelez le pain en tranches et faites-le griller directement à la sortie du congélateur.",
+    "Transformez le pain rassis en croûtons, en chapelure ou en pudding.",
+    "Utilisez les pains aux fruits moelleux pour faire du pain perdu."
+   ],
+   "container": "une boîte à pain ou un sac fermé à température ambiante, ou le congélateur"
+  },
+  "dry": {
+   "about": "Les produits secs du placard se conservent longtemps, car les micro-organismes ont besoin d'eau pour se développer. Leurs ennemis sont l'humidité, la chaleur, la lumière, l'air et les insectes. La plupart ne deviennent pas dangereux après leur date de durabilité minimale (DDM) : ils perdent lentement leur saveur, leur arôme et leur texture. Les produits complets et tout ce qui contient des huiles naturelles font exception, car ces huiles peuvent rancir.",
+   "spoil": "Dans les aliments secs, la qualité se dégrade par oxydation et par l'humidité plutôt qu'à cause des bactéries. Les huiles des céréales complètes, des fruits à coque et des graines s'oxydent lentement et rancissent, en dégageant une odeur amère qui rappelle la peinture. L'humidité permet aux moisissures de se développer et fait s'agglomérer les poudres, et un stockage au chaud attire les mites alimentaires et les charançons.",
+   "mistakes": [
+    "Les ranger au-dessus de la cuisinière, de la bouilloire ou du lave-vaisselle, où la chaleur et la vapeur accélèrent l'altération.",
+    "Laisser les sachets ouverts au lieu de transvaser leur contenu dans des boîtes hermétiques.",
+    "Mélanger le nouveau stock à l'ancien, si bien que le plus ancien n'est jamais utilisé.",
+    "Se servir avec une cuillère humide."
+   ],
+   "buying": [
+    "Vérifiez que les paquets ne présentent ni trous, ni toiles, ni grumeaux.",
+    "Achetez les farines complètes et les fruits à coque en quantités que vous utiliserez en quelques mois.",
+    "Choisissez la date de durabilité minimale la plus lointaine."
+   ],
+   "useUp": [
+    "Placez le stock le plus ancien devant pour l'utiliser en premier.",
+    "Congelez les farines complètes et les fruits à coque pour éviter qu'ils rancissent.",
+    "Prévoyez une « semaine placard » avec des repas composés de ce que vous avez déjà."
+   ],
+   "container": "une boîte hermétique dans un placard frais, sombre et sec"
+  },
+  "fat": {
+   "about": "Le beurre, les huiles, les fruits à coque, les graines et les purées d'oléagineux sont riches en matières grasses, sur lesquelles les bactéries se développent difficilement : leur principal ennemi est donc le rancissement plutôt que l'intoxication alimentaire. Les graisses rances ne sont généralement pas dangereuses en petite quantité, mais elles ont un goût amer et éventé. Un stockage au frais, à l'abri de la lumière et hermétique ralentit le rancissement ; le réfrigérateur le ralentit encore davantage.",
+   "spoil": "L'oxygène, la lumière et la chaleur réagissent avec les graisses et les décomposent en composés qui sentent le crayon de cire, la peinture ou les vieilles noix. Les graisses insaturées, présentes dans les huiles de noix et de graines, rancissent plus vite que les graisses saturées comme le beurre. L'humidité et les miettes apportées par un couteau sale peuvent aussi faire moisir le beurre et les pâtes à tartiner.",
+   "mistakes": [
+    "Ranger les huiles à côté de la cuisinière.",
+    "Laisser des bouteilles transparentes au soleil.",
+    "Mal refermer les couvercles, ce qui laisse entrer l'air.",
+    "Acheter de grands contenants d'huiles de noix ou de fruits à coque que vous ne finirez pas avant qu'ils rancissent."
+   ],
+   "buying": [
+    "Choisissez des huiles en bouteille de verre teinté ou en bidon métallique.",
+    "Achetez les fruits à coque et les graines dans des magasins où ils se renouvellent vite, ou en sachets fermés.",
+    "Vérifiez la date de durabilité minimale et achetez des formats que vous utiliserez en quelques mois."
+   ],
+   "useUp": [
+    "Gardez les fruits à coque et les graines au réfrigérateur ou au congélateur pour qu'ils restent frais plus longtemps.",
+    "Utilisez les purées d'oléagineux dans des sauces, des vinaigrettes et des pâtisseries.",
+    "Sentez les huiles avant de les utiliser : si elles sentent le rance, remplacez-les."
+   ],
+   "container": "un contenant hermétique et opaque, à l'abri de la chaleur et de la lumière"
+  },
+  "condiment": {
+   "about": "Les condiments, les sauces et les conserves sont faits pour durer : l'acidité, le sucre, le sel et un emballage hermétique tiennent les micro-organismes à distance. Non entamés, la plupart se conservent des mois, voire des années, au placard. Une fois ouverts, l'air, l'humidité et les miettes apportées par les ustensiles y pénètrent : la plupart doivent alors aller au réfrigérateur et se conservent beaucoup moins longtemps.",
+   "spoil": "Dans les bocaux entamés, les levures et les moisissures sont les coupables habituels : elles se manifestent par un duvet en surface, des bulles ou une odeur de fermentation. Les conserves peu acides présentent un risque rare mais grave de Clostridium botulinum si la boîte est endommagée : c'est pourquoi une boîte bombée, qui fuit ou profondément cabossée doit être jetée sans être ouverte.",
+   "mistakes": [
+    "Tremper deux fois ou utiliser un couteau sale, ce qui apporte miettes et bactéries.",
+    "Ranger au placard un bocal entamé alors que l'étiquette indique de le garder au réfrigérateur.",
+    "Garder un aliment dans sa boîte de conserve ouverte au réfrigérateur : transvasez-le dans un récipient couvert.",
+    "Utiliser des boîtes bombées, rouillées ou profondément cabossées."
+   ],
+   "buying": [
+    "Vérifiez que les boîtes ne sont ni bombées, ni rouillées, ni profondément cabossées au niveau des soudures.",
+    "Assurez-vous que les couvercles des bocaux sont bien scellés et font « pop » à la première ouverture.",
+    "Achetez des formats de condiments que vous finirez dans le délai après ouverture."
+   ],
+   "useUp": [
+    "Notez la date d'ouverture sur le couvercle.",
+    "Utilisez le fond d'un bocal dans des marinades, des vinaigrettes ou des sauces.",
+    "Congelez les restes de sauce dans des bacs à glaçons."
+   ],
+   "container": "le bocal ou la bouteille d'origine, bien fermé ; une conserve entamée se transvase dans un récipient couvert"
+  },
+  "drink": {
+   "about": "Certaines boissons se conservent à température ambiante, d'autres sont très périssables. Les bouteilles, canettes et briques non ouvertes se gardent souvent des mois, mais une fois ouverts, les jus frais et les boissons végétales se comportent comme des aliments frais et doivent aller au réfrigérateur. Le café et le thé ne deviennent pas dangereux mais perdent leur arôme, et le vin comme les spiritueux évoluent au contact de l'air.",
+   "spoil": "Dans les jus et les boissons végétales, les levures et les bactéries font fermenter les sucres une fois l'emballage ouvert, ce qui produit des bulles, une odeur aigre et un mauvais goût. Le café et le thé perdent leurs huiles aromatiques sous l'effet de l'air, de la chaleur et de la lumière. Le vin entamé s'oxyde et se transforme lentement en vinaigre.",
+   "mistakes": [
+    "Laisser un jus ou une boisson végétale entamés hors du réfrigérateur.",
+    "Boire directement à la bouteille, ce qui y introduit des bactéries.",
+    "Ranger le café dans un bocal transparent sur le plan de travail.",
+    "Garder du vin entamé à température ambiante sans bouchon."
+   ],
+   "buying": [
+    "Vérifiez que les opercules et les bouchons sont intacts.",
+    "Pour les jus frais, achetez-les dans un rayon réfrigéré.",
+    "Achetez le café en quantités que vous utiliserez dans les quelques semaines qui suivent l'ouverture."
+   ],
+   "useUp": [
+    "Congelez le jus dans des bacs à glaçons pour les smoothies.",
+    "Utilisez le reste de vin en cuisine ou congelez-le pour vos sauces.",
+    "Transformez le café en trop en café glacé ou utilisez-le en pâtisserie."
+   ],
+   "container": "le contenant d'origine, bien fermé, au réfrigérateur une fois ouvert"
+  },
+  "frozen": {
+   "about": "Un aliment acheté surgelé reste sûr tant qu'il reste bien congelé à −18 °C (0 °F) ; les durées de congélation concernent la qualité, pas la sécurité. Au fil des mois, les brûlures de congélation et les cristaux de glace dessèchent et durcissent lentement l'aliment. L'essentiel est de le garder congelé du magasin jusqu'à chez vous et de bien refermer les sachets entamés.",
+   "spoil": "La congélation empêche les bactéries de se développer mais ne les tue pas. À la décongélation, elles redeviennent actives. La brûlure de congélation, ces zones sèches d'un blanc grisâtre que l'on voit parfois, se produit lorsque l'air atteint l'aliment et que l'humidité s'évapore de sa surface : l'aliment reste consommable, mais il est sec et sans goût.",
+   "mistakes": [
+    "Le laisser décongeler sur le trajet du retour puis le recongeler.",
+    "Laisser les sachets entamés ouverts, ce qui provoque des brûlures de congélation.",
+    "Surcharger le congélateur, ce qui empêche l'air froid de circuler.",
+    "Le décongeler sur le plan de travail."
+   ],
+   "buying": [
+    "Prenez les surgelés en dernier et regroupez-les pour qu'ils restent froids.",
+    "Évitez les paquets couverts de givre ou contenant des cristaux de glace, signe d'une décongélation suivie d'une recongélation.",
+    "Vérifiez que les boîtes ne sont ni écrasées ni déchirées."
+   ],
+   "useUp": [
+    "Placez les paquets les plus anciens devant.",
+    "Affichez sur la porte du congélateur la liste de ce qu'il contient.",
+    "Cuisinez directement à partir du congelé lorsque l'emballage le permet."
+   ],
+   "container": "l'emballage d'origine bien refermé, ou un sac de congélation dont on a chassé l'air"
+  },
+  "baby": {
+   "about": "Les aliments pour bébé, le lait infantile et le lait maternel obéissent à des règles de conservation plus strictes que la plupart des aliments, car les bébés sont plus vulnérables aux toxi-infections alimentaires. Suivez toujours en priorité l'étiquette et les conseils de votre pédiatre. Dès qu'un repas a commencé, les bactéries de la bouche du bébé passent dans le biberon ou le pot : les restes ne doivent donc pas être conservés.",
+   "spoil": "Le lait infantile préparé et les petits pots ouverts sont humides, riches en nutriments et peu acides : des conditions idéales pour les bactéries. Le lait infantile en poudre n'est pas stérile et peut contenir Cronobacter : c'est pourquoi le lait préparé se conserve peu de temps et pourquoi l'hygiène de l'eau et du matériel est importante.",
+   "mistakes": [
+    "Garder un biberon ou un pot à moitié fini pour le repas suivant.",
+    "Nourrir le bébé directement dans le pot et mettre le reste au réfrigérateur.",
+    "Réchauffer les biberons au micro-ondes, ce qui crée des points chauds.",
+    "Laisser du lait infantile préparé à température ambiante plus longtemps que ne l'autorise l'étiquette."
+   ],
+   "buying": [
+    "Vérifiez que les couvercles des pots sont scellés et font « pop » à l'ouverture.",
+    "N'achetez jamais de boîtes de lait infantile abîmées, bombées ou qui fuient.",
+    "Vérifiez la date limite d'utilisation du lait infantile : aux États-Unis, c'est une date de sécurité imposée par la loi fédérale."
+   ],
+   "useUp": [
+    "Servez les portions dans un bol au lieu de nourrir le bébé directement dans le pot.",
+    "Préparez le lait infantile un biberon à la fois.",
+    "Congelez les purées maison dans des bacs à glaçons et décongelez une portion à la fois."
+   ],
+   "container": "le contenant d'origine ou des biberons de conservation propres et fermés, étiquetés avec la date et l'heure"
+  }
+ },
+ "zoneNames": {
+  "door": "Porte",
+  "top": "Étagère du haut",
+  "middle": "Étagère du milieu",
+  "bottom": "Étagère du bas",
+  "crisper": "Bac à légumes",
+  "pantry": "Placard",
+  "freezer": "Congélateur"
+ },
+ "fifo": "Les aliments de garde se conservent le mieux quand on les fait tourner. Rangez les nouveaux achats derrière les anciens pour utiliser d'abord les plus vieux, notez la date d'ouverture sur le couvercle et vérifiez votre placard tous les quelques mois pour repérer ce qui approche ou dépasse sa date de durabilité minimale."
+}

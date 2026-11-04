@@ -1,0 +1,463 @@
+{
+ "eyebrows": {
+  "basics": "Lo básico",
+  "science": "La ciencia",
+  "avoid": "Evite esto",
+  "store": "En la tienda",
+  "waste": "Menos desperdicio",
+  "qa": "Pregunta por pregunta",
+  "dates": "Fechas en la etiqueta",
+  "where": "El mejor lugar",
+  "best": "El mejor lugar"
+ },
+ "h": {
+  "about": "Todo sobre {o}",
+  "why": [
+   "Por qué se echa a perder {q}",
+   "Por qué se echan a perder {q}"
+  ],
+  "mistakes": "Errores comunes al guardarlo",
+  "buying": "Cómo elegirlo fresco",
+  "useUp": "Aprovéchelo a tiempo",
+  "qa": "Tiempo de conservación, pregunta por pregunta",
+  "dates": "Fechas de caducidad, explicadas",
+  "where": "Dónde guardarlo",
+  "fifo": "Primero en entrar, primero en salir"
+ },
+ "intro": {
+  "category": "Este alimento pertenece a nuestra categoría “{cat}”.",
+  "source": "En la base de datos USDA FoodKeeper aparece como “{fk}”.",
+  "keeps": [
+   "Según USDA FoodKeeper, {q} se conserva {list}.",
+   "Según USDA FoodKeeper, {q} se conservan {list}."
+  ],
+  "fridgeUseBy": "En el refrigerador, siga la fecha de caducidad del empaque.",
+  "notFreeze": "No se recomienda congelarlo.",
+  "perishable": "Como todo alimento perecedero, no debe permanecer a temperatura ambiente más de 2 horas.",
+  "notPerishable": "No es un alimento perecedero de alto riesgo, así que lo principal es la calidad más que la inocuidad.",
+  "where": "Dónde guardarlo: {why}",
+  "ripe": "a temperatura ambiente hasta que madure",
+  "indefinitely": "indefinidamente en la despensa"
+ },
+ "zones": {
+  "freezer": "manténgalo bien congelado a −18 °C (0 °F) hasta el momento de cocinarlo.",
+  "pantry": "lo mejor es una alacena fresca, oscura y seca; no necesita refrigerador.",
+  "bottom": "la carne cruda y los mariscos van en la repisa de abajo, dentro de un recipiente, para que sus jugos nunca goteen sobre alimentos listos para comer.",
+  "crisper": "el cajón de verduras conserva la humedad, lo que evita que los productos frescos se marchiten.",
+  "door": "la puerta es la parte más tibia del refrigerador, adecuada para condimentos y bebidas que resisten la descomposición.",
+  "middle": "lo mejor es una repisa intermedia, no la puerta: la puerta se calienta cada vez que se abre.",
+  "top": "los alimentos listos para comer y los cocinados van en las repisas de arriba, por encima de todo lo crudo."
+ },
+ "qa": {
+  "fridgeQ": [
+   "¿Cuánto dura {q} en el refrigerador?",
+   "¿Cuánto duran {q} en el refrigerador?"
+  ],
+  "fridgeA": "{d} a 4 °C (40 °F) o menos. Cuente a partir del día en que se cocinó, se abrió o se compró, no desde la fecha impresa.",
+  "freezerQ": [
+   "¿Cuánto dura {q} en el congelador?",
+   "¿Cuánto duran {q} en el congelador?"
+  ],
+  "freezerA": "{d} para la mejor calidad a −18 °C (0 °F). Los alimentos congelados son seguros indefinidamente; pasado ese tiempo, la textura y el sabor se deterioran.",
+  "freezerNo": "No se recomienda congelar este alimento: la textura se deteriora. Guárdelo en el refrigerador y consúmalo dentro de su tiempo de refrigeración.",
+  "roomQ": [
+   "¿Cuánto dura {q} a temperatura ambiente?",
+   "¿Cuánto duran {q} a temperatura ambiente?"
+  ],
+  "roomPerishable": "No más de 2 horas, o 1 hora por encima de 32 °C (90 °F). Los alimentos perecederos que permanezcan fuera más tiempo deben desecharse.",
+  "roomPantry": "{d} en un lugar fresco y seco, lejos del calor y de la luz del sol.",
+  "roomFridgeOnly": "No está hecho para conservarse a temperatura ambiente. Guárdelo en el refrigerador.",
+  "openedQ": [
+   "¿Cuánto dura {q} una vez abierto?",
+   "¿Cuánto duran {q} una vez abiertos?"
+  ],
+  "openedA": "{d} una vez abierto. La fecha impresa deja de aplicar en cuanto se rompe el sello.",
+  "unopenedQ": [
+   "¿Cuánto dura {q} sin abrir?",
+   "¿Cuánto duran {q} sin abrir?"
+  ],
+  "unopenedA": "{d}, siempre que el sello esté intacto y se almacene como indica la etiqueta.",
+  "pantryQ": [
+   "¿Cuánto dura {q} en la despensa?",
+   "¿Cuánto duran {q} en la despensa?"
+  ],
+  "pantryA": "{d} en una alacena fresca, oscura y seca, bien cerrado. Una vez abierto, revise la etiqueta: algunos productos necesitan refrigeración.",
+  "expireQ": [
+   "¿Puede caducar {q}?",
+   "¿Pueden caducar {q}?"
+  ],
+  "expireShelf": "Sí, pero en un alimento no perecedero como este, caducar suele significar perder calidad, no volverse peligroso. El sabor, el aroma y la textura se pierden con el tiempo, sobre todo después de abrirlo. Si se ha guardado en un lugar fresco y seco, bien cerrado, y no muestra moho, mal olor ni un color extraño, por lo general todavía se puede usar.",
+  "expirePerishable": "Sí, y en un alimento perecedero como este importa más el tiempo de conservación que la fecha impresa. Si lleva en el refrigerador más de {d}, o más de 2 horas fuera del refrigerador, deséchelo aunque se vea y huela normal."
+ },
+ "faq": {
+  "tempQ": "¿A qué temperatura debe estar el refrigerador para {o}?",
+  "tempA": "Mantenga el refrigerador a 4 °C (40 °F) o menos y el congelador a −18 °C (0 °F). Muchos refrigeradores enfrían menos de lo que indica el control, así que vale la pena tener un termómetro para electrodomésticos, que es económico. Cada pocos grados por encima de 4 °C se acorta notablemente el tiempo en el refrigerador ({d}).",
+  "containerQ": "¿Cuál es el mejor recipiente para guardar {o}?",
+  "containerA": "Use {container}. El objetivo es evitar la entrada de aire y humedad, impedir que se propaguen los olores y facilitar ver cuánto tiempo lleva guardado el alimento. Escriba la fecha en una etiqueta o en la tapa para no tener que adivinar cuánto tiempo lleva almacenado.",
+  "doorQ": "¿Puedo guardar {o} en la puerta del refrigerador?",
+  "doorYes": "Sí. La puerta es la parte más tibia del refrigerador, pero este alimento resiste la descomposición lo suficiente como para guardarse ahí. Cierre bien la tapa después de cada uso.",
+  "doorNo": "Es mejor no hacerlo. La puerta es la parte más tibia del refrigerador y se calienta cada vez que se abre. El mejor lugar: {why}",
+  "doorOther": "El mejor lugar: {why}",
+  "refreezeQ": "¿Se puede volver a congelar {o}?",
+  "refreezeNo": "Para empezar, no se recomienda congelar este alimento, así que tampoco se aconseja volver a congelarlo. Guárdelo en el refrigerador y consúmalo dentro de su tiempo de refrigeración.",
+  "refreezeYes": "Solo si se descongeló en el refrigerador y no se dejó fuera. Los alimentos descongelados en agua fría o en el microondas deben cocinarse antes de volver a congelarse. Cada ciclo de congelación y descongelación reduce la calidad, así que congele porciones que vaya a usar de una sola vez.",
+  "killQ": "¿Congelar elimina las bacterias en {o}?",
+  "killA": "No. Congelar a −18 °C (0 °F) detiene la multiplicación de las bacterias, pero no las mata. Cuando el alimento se descongela, las bacterias presentes vuelven a activarse, así que descongélelo en el refrigerador y, cuando corresponda, cocínelo o recaliéntelo a una temperatura segura.",
+  "smellQ": "¿Es seguro si huele bien pero ya pasó su tiempo de conservación?",
+  "smellPerishable": "No necesariamente. Las bacterias que causan intoxicaciones alimentarias por lo general no cambian el olor, el aspecto ni el sabor de los alimentos. Si lleva en el refrigerador más de {d}, deséchelo aunque parezca estar bien.",
+  "smellOther": "En un alimento de bajo riesgo como este, pasar el tiempo de conservación suele significar menor calidad más que peligro. Revise si tiene moho, olores desagradables o un sabor extraño, y deséchelo si algo no parece estar bien."
+ },
+ "dates": [
+  "La mayoría de las fechas impresas en los empaques de alimentos se refieren a la calidad, no a la inocuidad. En EE. UU., la única fecha exigida por ley federal es la fecha de caducidad de la fórmula infantil; todas las demás las elige el fabricante. “Best if used by” (consumir preferentemente antes de) indica cuándo el sabor y la textura están en su mejor momento. “Sell-by” (fecha límite de venta) sirve para la rotación de inventario de la tienda, y en casa puede guardar el alimento durante su tiempo normal de conservación después de esa fecha. “Use-by” (fecha de caducidad) es la última fecha que el fabricante recomienda para obtener la mejor calidad.",
+  "Por eso esta página cuenta el tiempo de conservación a partir del día en que compra, cocina o abre el alimento, y no desde la fecha impresa: {d} en el refrigerador. Si el alimento se almacenó correctamente, puede estar bien después de la fecha de consumo preferente; si se almacenó mal, puede echarse a perder mucho antes."
+ ],
+ "groups": {
+  "meat": {
+   "about": "La carne cruda es uno de los alimentos más perecederos de la cocina. Su superficie lleva bacterias del procesamiento, y los jugos que suelta son una vía fácil para que esas bacterias lleguen a otros alimentos. Por eso el plazo seguro en el refrigerador es corto y el congelador es su aliado: congelar detiene por completo el crecimiento bacteriano, así que la carne que no alcance a cocinar a tiempo puede ir directamente al congelador el mismo día en que la compra.",
+   "spoil": "Las bacterias de descomposición, como Pseudomonas y las bacterias ácido-lácticas, se multiplican en la superficie de la carne cruda incluso a la temperatura del refrigerador, y producen el olor agrio y la película pegajosa que se notan cuando se echa a perder. Los patógenos como Salmonella y E. coli no cambian en absoluto el olor ni el aspecto, así que un trozo de carne puede parecer estar bien y aun así no ser seguro una vez pasado su plazo. La carne molida se descompone más rápido porque al molerla las bacterias de la superficie se reparten por toda la carne.",
+   "mistakes": [
+    "Descongelarla a temperatura ambiente: el exterior alcanza la temperatura ambiente mientras el centro sigue congelado.",
+    "Guardarla en una repisa de arriba, donde sus jugos pueden gotear sobre alimentos listos para comer.",
+    "Enjuagarla en el fregadero, lo que esparce las bacterias por la cocina en lugar de eliminarlas.",
+    "Contar los días de refrigeración desde la fecha límite de venta en lugar del día en que la compró.",
+    "Volver a congelar carne descongelada en agua fría o en el microondas sin cocinarla antes."
+   ],
+   "buying": [
+    "Tómela al final, justo antes de pasar a la caja, y llévela a casa en una o dos horas.",
+    "Elija paquetes fríos, bien sellados, sin roturas ni líquido acumulado.",
+    "Empáquela en una bolsa aparte de las frutas, verduras y alimentos listos para comer."
+   ],
+   "useUp": [
+    "Cocínela y congele la carne cocida en porciones para comidas rápidas.",
+    "Prepare un guisado, chili o salsa para pasta que se congele bien.",
+    "Marínela y congélela cruda para cocinarla directamente del congelador."
+   ],
+   "container": "el empaque original de la tienda, envuelto además en papel aluminio o en una bolsa para congelador, sobre un plato o una charola"
+  },
+  "seafood": {
+   "about": "El pescado y los mariscos frescos están entre los alimentos de vida más corta que se pueden comprar. Su carne delicada contiene enzimas y bacterias naturales que siguen actuando incluso en el refrigerador, y las grasas del pescado azul se oxidan rápidamente. La mayoría de los pescados y mariscos deben cocinarse o congelarse en uno o dos días después de comprarlos; el congelador mantiene la calidad durante meses.",
+   "spoil": "Las bacterias descomponen los aminoácidos de la carne del pescado en compuestos como la trimetilamina, que da al pescado en descomposición su fuerte olor 'a pescado' o a amoníaco. Al mismo tiempo, las enzimas ablandan la textura. Algunos pescados, como el atún y la macarela, también pueden formar histamina si se calientan, lo que causa intoxicación escombroide y no se destruye al cocinarlos.",
+   "mistakes": [
+    "Guardar mariscos vivos en agua o en una bolsa de plástico cerrada, lo que los asfixia.",
+    "Dejar el pescado en la parte más tibia del refrigerador en lugar de sobre hielo o en la repisa de abajo.",
+    "Volver a congelar pescados o mariscos descongelados a temperatura ambiente.",
+    "Cocinar mariscos cuyas conchas siguen abiertas al darles un golpecito."
+   ],
+   "buying": [
+    "El pescado fresco debe oler a mar, con carne firme que recupere su forma al presionarla.",
+    "El pescado entero debe tener los ojos claros y las branquias de color rojo brillante.",
+    "Las almejas, mejillones y ostiones vivos deben cerrarse al darles un golpecito."
+   ],
+   "useUp": [
+    "Cocínelo el mismo día en que lo compra y conserve el pescado cocido 3–4 días.",
+    "Congele los filetes extendidos en bolsas para congelador, sacando el aire.",
+    "Desmenuce el pescado cocido sobrante para hacer tortitas de pescado, pasta o ensaladas en pocos días."
+   ],
+   "container": "la parte más fría del refrigerador, en un recipiente tapado o sobre una cama de hielo"
+  },
+  "cooked": {
+   "about": "Los platillos cocinados y las sobras siguen las mismas reglas sencillas: enfriarlos rápido, refrigerarlos en menos de dos horas y comerlos en pocos días. La cocción elimina la mayoría de las bacterias, pero algunas sobreviven como esporas resistentes al calor, y llegan bacterias nuevas de las manos, los utensilios y el aire. Cómo enfría y guarda la comida después de cocinarla importa más que la forma en que se cocinó.",
+   "spoil": "Las esporas de bacterias como Bacillus cereus y Clostridium perfringens sobreviven a la cocción. Cuando la comida cocinada se queda tibia, las esporas germinan y se multiplican rápidamente, y algunas producen toxinas que el recalentado no destruye. En el refrigerador crecen lentamente, por eso la comida cocinada tiene un plazo de unos pocos días y no de semanas.",
+   "mistakes": [
+    "Dejar enfriar una olla grande en la estufa durante horas en lugar de repartirla en recipientes poco profundos.",
+    "Meter un recipiente hondo y caliente directamente al refrigerador, lo que mantiene tibio el centro durante horas.",
+    "Recalentar las mismas sobras más de una vez.",
+    "Probar la comida para saber si ya se echó a perder."
+   ],
+   "buying": [
+    "Con la comida para llevar o de salchichonería, llévela a casa y métala al refrigerador en menos de dos horas.",
+    "Elija la comida caliente cuando esté humeante y la fría cuando se sienta fría.",
+    "Revise la fecha de preparación de los platillos hechos en la tienda y cuente los días de refrigeración a partir de ella."
+   ],
+   "useUp": [
+    "Congele porciones el primer o segundo día si no las va a comer a tiempo.",
+    "Convierta las sobras en sopas, arroz frito, frittatas o wraps.",
+    "Etiquete los recipientes con la fecha para saber exactamente cuánto tiempo llevan en el refrigerador."
+   ],
+   "container": "recipientes herméticos poco profundos, enfriados rápidamente y etiquetados con la fecha"
+  },
+  "cured": {
+   "about": "Las carnes curadas, ahumadas y procesadas duran más que la carne fresca porque la sal, el humo, los nitritos y la menor humedad frenan el crecimiento bacteriano. Sin embargo, no se conservan a temperatura ambiente: una vez abierto el paquete, el aire y la manipulación ponen el reloj en marcha, y los productos rebanados se descomponen más rápido que las piezas enteras porque tienen más superficie expuesta.",
+   "spoil": "El curado frena la mayoría de las bacterias de descomposición, pero Listeria monocytogenes puede crecer a la temperatura del refrigerador en carnes listas para comer, como las carnes frías rebanadas y las salchichas para hot dog. Esa es la principal razón por la que los paquetes abiertos tienen un plazo corto, y por la que se aconseja a las mujeres embarazadas y a los adultos mayores calentar las carnes frías hasta que humeen.",
+   "mistakes": [
+    "Conservar un paquete abierto mucho después de su plazo una vez abierto porque la fecha impresa todavía está a semanas de distancia.",
+    "Dejar carnes frías rebanadas en un platón durante horas en una fiesta.",
+    "Guardar los paquetes abiertos sin volver a envolverlos, de modo que se resecan y absorben olores.",
+    "Usar el mismo cuchillo o tabla para carnes crudas y listas para comer."
+   ],
+   "buying": [
+    "Verifique que los empaques al vacío estén bien ajustados, sin bolsas de aire ni abultamientos.",
+    "Compre carnes frías rebanadas en salchichonería en cantidades que vaya a terminar dentro del plazo una vez abiertas.",
+    "Tome los paquetes del fondo del refrigerador de la tienda, donde se mantienen más fríos."
+   ],
+   "useUp": [
+    "Congele los paquetes sin abrir si no los va a abrir antes de la fecha.",
+    "Aproveche las rebanadas abiertas en sándwiches tostados, omelets, pasta o pizza.",
+    "Divida los paquetes grandes en porciones y congele lo que no vaya a usar pronto."
+   ],
+   "container": "su empaque original, bien cerrado de nuevo, o un recipiente hermético"
+  },
+  "dairy": {
+   "about": "La leche, la crema, el yogur y otros lácteos frescos están pasteurizados, lo que elimina las bacterias dañinas, pero siguen siendo perecederos una vez abiertos. Su vida en el refrigerador depende mucho de la temperatura: los lácteos guardados al fondo de una repisa fría duran notablemente más que los guardados en la puerta del refrigerador, que se calienta cada vez que se abre.",
+   "spoil": "Las bacterias ácido-lácticas y psicrótrofas que sobreviven a la pasteurización o entran después de abrir el envase fermentan el azúcar de la leche y producen ácido. Ese ácido causa el olor agrio, la leche cortada y los grumos que se ven en los lácteos echados a perder. También puede crecer moho en la superficie del yogur, la crema agria y productos similares.",
+   "mistakes": [
+    "Guardarlos en la puerta del refrigerador, el lugar más tibio.",
+    "Devolver la leche que no se usó al envase original.",
+    "Dejarlos en la mesa durante una comida larga.",
+    "Congelarlos y esperar la misma textura para beberlos; los lácteos congelados son mejores para cocinar."
+   ],
+   "buying": [
+    "Tómelos casi al final de sus compras y llévelos directamente a casa.",
+    "Elija envases del fondo del refrigerador de la tienda con la fecha más lejana.",
+    "Asegúrese de que las tapas y los sellos estén intactos."
+   ],
+   "useUp": [
+    "Úselos para hornear: hot cakes, muffins, scones y salsas llevan lácteos.",
+    "Congélelos en porciones pequeñas o en charolas para hielo para cocinar.",
+    "Lícuelos en smoothies antes de que termine su plazo."
+   ],
+   "container": "su envase original, bien cerrado, en una repisa intermedia"
+  },
+  "cheese": {
+   "about": "El queso es leche conservada mediante ácido, sal y la eliminación de humedad, por eso dura mucho más que la leche. Cuánto dura depende sobre todo de la humedad: los quesos duros y añejos se conservan semanas o meses, mientras que los quesos blandos y frescos se comportan más como lácteos frescos y duran solo de unos días a un par de semanas una vez abiertos.",
+   "spoil": "El moho es la principal forma en que el queso se echa a perder. En el queso duro, las raíces del moho no llegan lejos, así que puede cortar al menos 2.5 cm alrededor y por debajo de la mancha. En el queso blando, rallado o desmoronado, el moho se extiende sin que se vea por toda la pieza, así que debe desecharse completa. Las bacterias también producen olor a amoníaco cuando el queso blando envejece más allá de su mejor momento.",
+   "mistakes": [
+    "Envolverlo apretado en plástico autoadherente, lo que retiene la humedad y favorece la viscosidad y el moho.",
+    "Cortar el moho del queso blando o rallado y comerse el resto.",
+    "Dejarlo fuera durante horas en una tabla de quesos en una habitación cálida.",
+    "Congelar queso blando y esperar la misma textura."
+   ],
+   "buying": [
+    "Compre el queso duro en trozo en lugar de ya rallado si quiere que dure más.",
+    "Verifique que los paquetes estén sellados y sin humedad ni moho.",
+    "Compre queso blando en cantidades que vaya a terminar dentro de su plazo una vez abierto."
+   ],
+   "useUp": [
+    "Ralle y congele el queso duro para cocinar.",
+    "Derrítalo en salsas, sándwiches tostados, gratinados y omelets.",
+    "Use el queso blando en dips, pasta o platillos al horno antes de que termine su plazo."
+   ],
+   "container": "papel encerado o papel para hornear y luego una bolsa sin cerrar del todo, en el cajón para quesos"
+  },
+  "eggs": {
+   "about": "Los huevos duran semanas en el refrigerador porque el cascarón y las membranas de su interior son una barrera natural. En EE. UU., los huevos se lavan antes de venderse, lo que elimina una capa protectora del cascarón, así que deben mantenerse refrigerados. Una vez quebrados, cocidos o separados, el tiempo corre mucho más rápido.",
+   "spoil": "El principal riesgo para la inocuidad de los huevos es Salmonella, que puede estar dentro de un huevo de aspecto perfectamente normal. Con el tiempo, los huevos también pierden humedad y dióxido de carbono a través del cascarón; la clara se vuelve más líquida y la yema se aplana. Un huevo realmente echado a perder produce olor a azufre por la descomposición bacteriana de las proteínas.",
+   "mistakes": [
+    "Guardar los huevos en la puerta del refrigerador, donde la temperatura cambia mucho.",
+    "Lavar los huevos antes de guardarlos.",
+    "Dejar fuera huevos refrigerados más de dos horas: un huevo frío que suda puede hacer que las bacterias atraviesen el cascarón.",
+    "Congelar los huevos con cascarón, lo que hace que se rompan."
+   ],
+   "buying": [
+    "Abra el cartón y verifique que ningún huevo esté quebrado o sucio.",
+    "Cómprelos de un exhibidor refrigerado.",
+    "Guárdelos en su cartón, que los protege y muestra la fecha de empaque."
+   ],
+   "useUp": [
+    "Cueza una tanda de huevos duros: duran una semana en el refrigerador.",
+    "Bata y congele los huevos que le sobren para hornear.",
+    "Úselos en frittatas, quiches, flanes y repostería."
+   ],
+   "container": "el cartón original en una repisa intermedia"
+  },
+  "produce": {
+   "about": "Las frutas y verduras frescas siguen vivas después de la cosecha: continúan respirando, madurando y perdiendo humedad. Cuánto duran depende del tipo, de qué tan maduras estén al comprarlas y de si están enteras o cortadas. Muchas se conservan mejor en el cajón de verduras del refrigerador, pero algunas maduran y saben mejor si primero se dejan a temperatura ambiente.",
+   "spoil": "Las frutas y verduras se echan a perder por una combinación de maduración excesiva, pérdida de humedad y crecimiento de microbios. La fruta que madura libera gas etileno, que acelera la maduración de todo lo que tiene cerca. Los golpes y cortes rompen las paredes celulares y dejan entrar mohos y bacterias; por eso las frutas y verduras cortadas deben refrigerarse y consumirse en pocos días.",
+   "mistakes": [
+    "Lavar las frutas y verduras antes de guardarlas, lo que agrega humedad y acelera el moho.",
+    "Guardar productos que liberan etileno (manzanas, plátanos, aguacates) junto a otros que se maduran de más.",
+    "Dejar frutas o verduras cortadas a temperatura ambiente más de dos horas.",
+    "Cerrar frutas y verduras en bolsas herméticas sin circulación de aire."
+   ],
+   "buying": [
+    "Elija frutas y verduras sin golpes, partes blandas ni moho.",
+    "Compre una mezcla de piezas maduras y menos maduras para que no maduren todas al mismo tiempo.",
+    "Tome las frutas y verduras cortadas de un exhibidor refrigerado."
+   ],
+   "useUp": [
+    "Congele la fruta madura para smoothies y repostería.",
+    "Ase o saltee las verduras que empiecen a ablandarse.",
+    "Licúe las frutas y verduras marchitas en sopas, salsas y jugos."
+   ],
+   "container": "el cajón de verduras, sin lavar, en una bolsa holgada o perforada"
+  },
+  "leafy": {
+   "about": "Las verduras de hoja y las hierbas frescas son sobre todo agua contenida en hojas delgadas, así que se marchitan y se echan a perder más rápido que casi cualquier otro producto fresco. Dos cosas acortan su vida: demasiada humedad, que vuelve viscosas las hojas, y muy poca, que las marchita. Guardadas secas, frías y envueltas sin apretar, duran de unos días a un par de semanas.",
+   "spoil": "Las bacterias y los mohos descomponen el tejido de las hojas dañado por golpes o exceso de agua, lo que produce las manchas oscuras y viscosas y el olor agrio de las verduras echadas a perder. Las verduras de hoja también son portadoras conocidas de E. coli y Listeria procedentes del campo; por eso las ensaladas en bolsa deben mantenerse frías y consumirse antes de su fecha.",
+   "mistakes": [
+    "Guardar las hojas mojadas después de lavarlas.",
+    "Apretarlas tanto que las hojas se maltraten.",
+    "Guardarlas cerca de frutas que liberan etileno.",
+    "Congelarlas para ensaladas; las hojas congeladas solo sirven para cocinar."
+   ],
+   "buying": [
+    "Elija hojas crujientes, sin viscosidad, partes amarillas ni manchas oscuras.",
+    "Revise que la ensalada en bolsa no tenga líquido dentro y que su fecha esté lejana.",
+    "Compre hierbas con tallos firmes y olor fresco."
+   ],
+   "useUp": [
+    "Agregue las hojas tiernas a sopas, pasta, curris y omelets para que se suavicen.",
+    "Licúe las hierbas en pesto o congélelas en aceite en charolas para hielo.",
+    "Añada un puñado a sus smoothies."
+   ],
+   "container": "un recipiente o bolsa forrado con una toalla de papel, en el cajón de verduras"
+  },
+  "bakery": {
+   "about": "El pan y los productos horneados tienen poca humedad en comparación con los alimentos frescos, así que rara vez se vuelven inseguros rápidamente, pero sí se endurecen y con el tiempo les sale moho. El endurecimiento es un cambio en el almidón, no una descomposición, y de hecho ocurre más rápido en el refrigerador. El verdadero límite es el moho, que crece más rápido en cocinas cálidas y húmedas.",
+   "spoil": "Las esporas de moho caen sobre el pan desde el aire y, en condiciones cálidas y húmedas, en pocos días forman manchas algodonosas. La mancha visible es solo una parte: unas raíces como hilos se extienden por el pan blando, así que debe desecharse la pieza entera en cuanto aparece el moho. Los panes rellenos de crema o de natilla son distintos y deben refrigerarse como los lácteos.",
+   "mistakes": [
+    "Guardar el pan en el refrigerador, lo que hace que se endurezca más rápido.",
+    "Cortar la parte con moho y comerse el resto de un pan blando.",
+    "Guardar el pan en una bolsa cerrada cuando todavía está caliente, lo que retiene la humedad.",
+    "Dejar panes rellenos de crema a temperatura ambiente."
+   ],
+   "buying": [
+    "Revise que la bolsa no tenga condensación ni manchas de moho.",
+    "Compre panes de un tamaño que vaya a terminar en pocos días, o planee congelar la mitad.",
+    "Elija productos de panadería con la fecha de horneado más reciente."
+   ],
+   "useUp": [
+    "Congele el pan rebanado y tuéstelo directamente congelado.",
+    "Convierta el pan duro en crutones, pan molido o budín de pan.",
+    "Use los panes de fruta blandos para hacer pan francés."
+   ],
+   "container": "una panera o una bolsa cerrada a temperatura ambiente, o el congelador"
+  },
+  "dry": {
+   "about": "Los alimentos secos de la despensa duran mucho tiempo porque los microbios necesitan agua para crecer. Sus enemigos son la humedad, el calor, la luz, el aire y las plagas de despensa. La mayoría no se vuelven inseguros después de su fecha de consumo preferente; poco a poco pierden sabor, aroma y textura. Los productos integrales y todo lo que contenga aceites naturales son la excepción, porque esos aceites pueden enranciarse.",
+   "spoil": "En los alimentos secos, la calidad disminuye por oxidación y humedad, no por bacterias. Los aceites de los granos integrales, las nueces y las semillas se oxidan lentamente y se enrancian, lo que les da un olor amargo, parecido a la pintura. La humedad permite que crezca moho y hace que los polvos se apelmacen, y almacenarlos en un lugar cálido atrae polillas y escarabajos de despensa.",
+   "mistakes": [
+    "Guardarlos encima de la estufa, el hervidor o el lavavajillas, donde el calor y el vapor aceleran su deterioro.",
+    "Dejar las bolsas abiertas en lugar de pasarlos a recipientes herméticos.",
+    "Mezclar lo nuevo con lo viejo, de modo que lo más antiguo nunca se usa.",
+    "Servirse con una cuchara húmeda."
+   ],
+   "buying": [
+    "Revise que los paquetes no tengan agujeros, telarañas ni grumos.",
+    "Compre harinas integrales y nueces en cantidades que vaya a usar en pocos meses.",
+    "Busque la fecha de consumo preferente más lejana."
+   ],
+   "useUp": [
+    "Coloque lo más antiguo al frente para que se use primero.",
+    "Congele las harinas integrales y las nueces para evitar que se enrancien.",
+    "Planee una 'semana de despensa' con comidas basadas en lo que ya tiene."
+   ],
+   "container": "un recipiente hermético en una alacena fresca, oscura y seca"
+  },
+  "fat": {
+   "about": "La mantequilla, los aceites, las nueces, las semillas y las cremas de cacahuate y otras nueces son ricos en grasa, en la que las bacterias no crecen con facilidad, así que su principal enemigo es la rancidez más que las intoxicaciones alimentarias. La grasa rancia no suele ser peligrosa en pequeñas cantidades, pero sabe amarga y a viejo. Guardarla en un lugar fresco, oscuro y hermético la retrasa; refrigerarla la retrasa todavía más.",
+   "spoil": "El oxígeno, la luz y el calor reaccionan con las grasas y las descomponen en compuestos que huelen a crayones, a pintura o a nueces viejas. Las grasas insaturadas, presentes en los aceites de nueces y semillas, se enrancian más rápido que las grasas saturadas como la mantequilla. La humedad y las migajas que entran con un cuchillo sucio también pueden hacer que crezca moho en la mantequilla y las pastas para untar.",
+   "mistakes": [
+    "Guardar los aceites junto a la estufa.",
+    "Dejar botellas transparentes a la luz del sol.",
+    "Dejar las tapas flojas, de modo que entre el aire.",
+    "Comprar envases grandes de aceites de nueces o de nueces que no terminará antes de que se enrancien."
+   ],
+   "buying": [
+    "Elija aceites en botellas de vidrio oscuro o en latas.",
+    "Compre nueces y semillas en tiendas con mucha rotación o en paquetes sellados.",
+    "Revise la fecha de consumo preferente y compre tamaños que vaya a usar en pocos meses."
+   ],
+   "useUp": [
+    "Refrigere o congele las nueces y semillas para que se mantengan frescas más tiempo.",
+    "Aproveche las cremas de nueces en salsas, aderezos y repostería.",
+    "Huela los aceites antes de usarlos: si huelen a viejo, reemplácelos."
+   ],
+   "container": "un recipiente hermético y oscuro, lejos del calor y de la luz"
+  },
+  "condiment": {
+   "about": "Los condimentos, las salsas y los enlatados están hechos para durar: el ácido, el azúcar, la sal y el empaque sellado impiden la entrada de microbios. Sin abrir, la mayoría se conservan meses o años en la despensa. Una vez abiertos, entran aire, humedad y migajas de los utensilios, y la mayoría necesitan refrigerador y tienen un plazo mucho más corto.",
+   "spoil": "En los frascos abiertos, los culpables habituales son las levaduras y los mohos: aparecen como pelusa en la superficie, burbujeo o un olor a fermentado. Los enlatados de baja acidez conllevan un riesgo poco común pero grave de Clostridium botulinum si la lata está dañada; por eso las latas abombadas, con fugas o muy abolladas deben desecharse sin abrirlas.",
+   "mistakes": [
+    "Volver a meter algo ya mordido o usar un cuchillo sucio, lo que agrega migajas y bacterias.",
+    "Guardar frascos abiertos en la despensa cuando la etiqueta dice que hay que refrigerarlos.",
+    "Guardar la comida en la lata abierta en el refrigerador; pásela a un recipiente tapado.",
+    "Usar latas abombadas, oxidadas o muy abolladas."
+   ],
+   "buying": [
+    "Revise que las latas no estén abombadas, oxidadas ni tengan abolladuras profundas en las costuras.",
+    "Asegúrese de que las tapas de los frascos estén selladas y hagan 'pop' al abrirlas por primera vez.",
+    "Compre condimentos de un tamaño que vaya a terminar dentro de su plazo una vez abiertos."
+   ],
+   "useUp": [
+    "Escriba la fecha de apertura en la tapa.",
+    "Use lo que queda en un frasco para marinadas, aderezos o salsas.",
+    "Congele las salsas sobrantes en charolas para hielo."
+   ],
+   "container": "el frasco o la botella original, bien cerrados; los enlatados abiertos, pasados a un recipiente tapado"
+  },
+  "drink": {
+   "about": "Las bebidas van desde las que se conservan a temperatura ambiente hasta las muy perecederas. Las botellas, latas y envases de cartón sin abrir suelen durar meses, pero una vez abiertos, los jugos frescos y las bebidas vegetales se comportan como alimentos frescos y necesitan refrigerador. El café y el té no se vuelven inseguros, pero pierden aroma, y el vino y los licores cambian al estar expuestos al aire.",
+   "spoil": "En los jugos y las bebidas vegetales, las levaduras y las bacterias fermentan los azúcares una vez roto el sello, lo que produce burbujas, olores agrios y sabores desagradables. El café y el té pierden sus aceites aromáticos por el aire, el calor y la luz. El vino abierto se oxida y poco a poco se convierte en vinagre.",
+   "mistakes": [
+    "Dejar fuera del refrigerador el jugo o la bebida vegetal ya abiertos.",
+    "Beber directamente de la botella, lo que introduce bacterias.",
+    "Guardar el café en un frasco transparente sobre la barra de la cocina.",
+    "Dejar el vino abierto a temperatura ambiente sin corcho."
+   ],
+   "buying": [
+    "Verifique que los sellos y las tapas estén intactos.",
+    "Compre los jugos frescos de un exhibidor refrigerado.",
+    "Compre café en cantidades que vaya a usar en pocas semanas después de abrirlo."
+   ],
+   "useUp": [
+    "Congele el jugo en charolas para hielo para hacer smoothies.",
+    "Use el vino sobrante para cocinar o congélelo para salsas.",
+    "Convierta el café sobrante en café frío o úselo en repostería."
+   ],
+   "container": "el envase original, bien cerrado, en el refrigerador una vez abierto"
+  },
+  "frozen": {
+   "about": "Los alimentos comprados congelados son seguros mientras se mantengan bien congelados a −18 °C (0 °F); los tiempos en el congelador se refieren a la calidad, no a la inocuidad. Con los meses, las quemaduras por congelación y los cristales de hielo resecan y endurecen poco a poco los alimentos. La clave es mantenerlos congelados de la tienda a la casa y volver a cerrar bien las bolsas abiertas.",
+   "spoil": "Congelar detiene el crecimiento de las bacterias, pero no las mata. Cuando el alimento se descongela, vuelven a activarse. Las quemaduras por congelación, esas manchas secas de color blanco grisáceo que a veces se ven, se producen cuando el aire llega al alimento y la humedad de su superficie se evapora: es seguro comerlo, pero queda seco y sin sabor.",
+   "mistakes": [
+    "Dejar que se descongelen en el camino a casa y volver a congelarlos.",
+    "Dejar las bolsas abiertas sin cerrar, lo que causa quemaduras por congelación.",
+    "Llenar demasiado el congelador, de modo que el aire frío no puede circular.",
+    "Descongelarlos a temperatura ambiente."
+   ],
+   "buying": [
+    "Tome los congelados al final y empáquelos juntos para que se mantengan fríos.",
+    "Evite los paquetes con mucha escarcha o cristales de hielo por dentro, señal de que se descongelaron y se volvieron a congelar.",
+    "Verifique que las cajas no estén aplastadas ni rotas."
+   ],
+   "useUp": [
+    "Pase los paquetes más antiguos al frente.",
+    "Tenga en la puerta del congelador una lista de lo que hay dentro.",
+    "Cocínelos directamente congelados cuando el empaque lo permita."
+   ],
+   "container": "el empaque original, bien cerrado de nuevo, o una bolsa para congelador sin aire"
+  },
+  "baby": {
+   "about": "Los alimentos para bebé, la fórmula y la leche materna tienen reglas de conservación más estrictas que la mayoría de los alimentos, porque los bebés son más vulnerables a las enfermedades transmitidas por alimentos. Siga siempre primero la etiqueta y las indicaciones de su pediatra. Una vez que el bebé empieza a comer, las bacterias de su boca entran en el biberón o el frasco, así que las sobras no deben guardarse.",
+   "spoil": "La fórmula preparada y los alimentos para bebé abiertos son húmedos, ricos en nutrientes y de baja acidez: condiciones ideales para las bacterias. La fórmula en polvo no es estéril y puede contener Cronobacter; por eso la fórmula preparada tiene un plazo corto y por eso importa la higiene del agua y de los utensilios.",
+   "mistakes": [
+    "Guardar un biberón o frasco a medio terminar para la siguiente toma.",
+    "Darle de comer directamente del frasco y refrigerar el resto.",
+    "Calentar los biberones en el microondas, lo que crea puntos muy calientes.",
+    "Dejar la fórmula preparada a temperatura ambiente más tiempo del que permite la etiqueta."
+   ],
+   "buying": [
+    "Verifique que las tapas de los frascos estén selladas y hagan 'pop' al abrirlas.",
+    "Nunca compre latas de fórmula dañadas, abombadas o con fugas.",
+    "Revise la fecha de caducidad de la fórmula; es una fecha de seguridad exigida por ley federal."
+   ],
+   "useUp": [
+    "Sirva porciones con una cuchara en un plato en lugar de darle de comer del frasco.",
+    "Prepare la fórmula de una toma a la vez.",
+    "Congele los purés caseros en charolas para hielo y descongele una porción a la vez."
+   ],
+   "container": "el envase original o biberones de almacenamiento limpios y cerrados, etiquetados con la fecha y la hora"
+  }
+ },
+ "zoneNames": {
+  "door": "Puerta",
+  "top": "Repisa superior",
+  "middle": "Repisa media",
+  "bottom": "Repisa inferior",
+  "crisper": "Cajón de verduras",
+  "pantry": "Despensa",
+  "freezer": "Congelador"
+ },
+ "fifo": "Los alimentos no perecederos duran más cuando se rotan. Coloque las compras nuevas detrás de las anteriores para usar primero lo más antiguo, anote la fecha de apertura en la tapa y revise la alacena cada pocos meses para detectar lo que esté cerca o pasado de su fecha de consumo preferente."
+}

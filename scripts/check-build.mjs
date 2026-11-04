@@ -100,12 +100,12 @@ for (const f of ["favicon.ico", "favicon.svg", "favicon-96x96.png", "apple-touch
 const MIN_WORDS = 1200;
 const wordsIn = (html) => {
   const main = (html.match(/<main[\s\S]*?<\/main>/) ?? [html])[0].replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<svg[\s\S]*?<\/svg>/g, "");
-  return (main.replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/gi, " ").match(/[A-Za-zÀ-ÿ0-9][\w'’–-]*/g) ?? []).length;
+  return (main.replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/gi, " ").match(/[\p{L}\p{N}][\p{L}\p{N}'’–-]*/gu) ?? []).length;
 };
 let thin = 0, minSeen = Infinity;
 for (const file of pages) {
   const rel = "/" + relative(DIST, file).replace(/index\.html$/, "");
-  if (!/^\/(how-long-does-.*-last|can-you-freeze-.+|does-.+-go-bad|.+-left-out-overnight)\/$/.test(rel)) continue;
+  if (!/^\/((how-long-does-.*-last|can-you-freeze-.+|does-.+-go-bad|[^/]+-left-out-overnight)|(es\/cuanto-dura|de\/haltbarkeit|fr\/conservation|pt-br\/quanto-dura)-.+)\/$/.test(rel)) continue;
   const n = wordsIn(readFileSync(file, "utf8"));
   minSeen = Math.min(minSeen, n);
   if (n < MIN_WORDS) { thin++; if (thin <= 10) errors.push(`${rel}: only ${n} words (min ${MIN_WORDS})`); }

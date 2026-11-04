@@ -1,0 +1,463 @@
+{
+ "eyebrows": {
+  "basics": "O básico",
+  "science": "A ciência",
+  "avoid": "Evite",
+  "store": "Na hora da compra",
+  "waste": "Menos desperdício",
+  "qa": "Pergunta por pergunta",
+  "dates": "Datas na embalagem",
+  "where": "O lugar certo",
+  "best": "Melhor lugar"
+ },
+ "h": {
+  "about": "Sobre {o}",
+  "why": [
+   "Por que {q} estraga",
+   "Por que {q} estragam"
+  ],
+  "mistakes": "Erros comuns de armazenamento",
+  "buying": "Como escolher na hora da compra",
+  "useUp": "Consuma dentro do prazo",
+  "qa": "Prazos de conservação, pergunta por pergunta",
+  "dates": "Datas de validade, explicadas",
+  "where": "Onde guardar",
+  "fifo": "Primeiro que entra, primeiro que sai"
+ },
+ "intro": {
+  "category": "Este alimento faz parte da nossa categoria “{cat}”.",
+  "source": "No banco de dados USDA FoodKeeper, ele aparece como “{fk}”.",
+  "keeps": [
+   "Segundo o USDA FoodKeeper, {q} dura {list}.",
+   "Segundo o USDA FoodKeeper, {q} duram {list}."
+  ],
+  "fridgeUseBy": "Na geladeira, siga a data de validade da embalagem.",
+  "notFreeze": "Não é recomendável congelar.",
+  "perishable": "Como todo alimento perecível, não deve ficar mais de 2 horas em temperatura ambiente.",
+  "notPerishable": "Não é um alimento perecível de alto risco, então a principal preocupação é a qualidade, não a segurança.",
+  "where": "Onde guardar: {why}",
+  "ripe": "em temperatura ambiente até amadurecer",
+  "indefinitely": "indefinidamente no armário"
+ },
+ "zones": {
+  "freezer": "mantenha o alimento bem congelado a −18 °C (0 °F) até a hora de preparar.",
+  "pantry": "o ideal é um armário fresco, escuro e seco; não precisa de geladeira.",
+  "bottom": "carnes e frutos do mar crus ficam na prateleira de baixo, dentro de um recipiente, para que o líquido nunca pingue em alimentos prontos para consumo.",
+  "crisper": "a gaveta de legumes mantém a umidade, o que evita que frutas e verduras murchem.",
+  "door": "a porta é a parte mais quente da geladeira, adequada para condimentos e bebidas que resistem bem à deterioração.",
+  "middle": "o melhor lugar é uma prateleira do meio, não a porta: a porta esquenta toda vez que a geladeira é aberta.",
+  "top": "alimentos prontos e cozidos ficam nas prateleiras de cima, acima de qualquer alimento cru."
+ },
+ "qa": {
+  "fridgeQ": [
+   "Quanto tempo dura {q} na geladeira?",
+   "Quanto tempo duram {q} na geladeira?"
+  ],
+  "fridgeA": "{d} a 4 °C (40 °F) ou menos. Conte a partir do dia em que o alimento foi cozido, aberto ou comprado, e não a partir da data impressa.",
+  "freezerQ": [
+   "Quanto tempo dura {q} no freezer?",
+   "Quanto tempo duram {q} no freezer?"
+  ],
+  "freezerA": "{d} com a melhor qualidade a −18 °C (0 °F). O alimento congelado continua seguro indefinidamente; depois desse prazo, a textura e o sabor se perdem.",
+  "freezerNo": "Não é recomendável congelar este alimento: a textura se desfaz. Mantenha na geladeira e consuma dentro do prazo de geladeira.",
+  "roomQ": [
+   "Quanto tempo dura {q} em temperatura ambiente?",
+   "Quanto tempo duram {q} em temperatura ambiente?"
+  ],
+  "roomPerishable": "No máximo 2 horas, ou 1 hora acima de 32 °C (90 °F). Alimentos perecíveis deixados fora da geladeira por mais tempo devem ir para o lixo.",
+  "roomPantry": "{d} em local fresco e seco, longe do calor e da luz do sol.",
+  "roomFridgeOnly": "Este alimento não deve ser guardado em temperatura ambiente. Mantenha na geladeira.",
+  "openedQ": [
+   "Quanto tempo dura {q} depois de abrir a embalagem?",
+   "Quanto tempo duram {q} depois de abrir a embalagem?"
+  ],
+  "openedA": "{d} depois de aberta a embalagem. A data impressa deixa de valer assim que o lacre é rompido.",
+  "unopenedQ": [
+   "Quanto tempo dura {q} com a embalagem fechada?",
+   "Quanto tempo duram {q} com a embalagem fechada?"
+  ],
+  "unopenedA": "{d}, desde que o lacre esteja intacto e o produto seja armazenado conforme indica o rótulo.",
+  "pantryQ": [
+   "Quanto tempo dura {q} no armário?",
+   "Quanto tempo duram {q} no armário?"
+  ],
+  "pantryA": "{d} em um armário fresco, escuro e seco, bem fechado. Depois de aberto, confira o rótulo: alguns produtos passam a precisar de geladeira.",
+  "expireQ": [
+   "{q} pode vencer?",
+   "{q} podem vencer?"
+  ],
+  "expireShelf": "Sim, mas em um alimento não perecível como este, vencer costuma significar perder qualidade, não ficar perigoso. Sabor, aroma e textura se perdem com o tempo, principalmente depois de aberto. Se foi guardado em local fresco e seco, bem fechado, e não apresenta mofo, cheiro estranho nem cor diferente, geralmente ainda pode ser usado.",
+  "expirePerishable": "Sim, e em um alimento perecível como este o tempo de armazenamento importa mais do que a data impressa. Se ficou na geladeira por mais de {d}, ou mais de 2 horas fora dela, jogue fora, mesmo que pareça e cheire normal."
+ },
+ "faq": {
+  "tempQ": "Qual deve ser a temperatura da geladeira para {o}?",
+  "tempA": "Mantenha a geladeira a 4 °C (40 °F) ou menos e o freezer a −18 °C (0 °F). Muitas geladeiras funcionam mais quentes do que o termostato indica, por isso vale a pena ter um termômetro de geladeira barato. Cada poucos graus acima de 4 °C encurtam bastante o prazo na geladeira ({d}).",
+  "containerQ": "Qual é o melhor recipiente para {o}?",
+  "containerA": "Use {container}. O objetivo é impedir a entrada de ar e umidade, evitar que os odores se espalhem e facilitar saber há quanto tempo o alimento está guardado. Escreva a data em uma etiqueta ou na tampa para nunca precisar adivinhar há quanto tempo ele está armazenado.",
+  "doorQ": "Posso guardar {o} na porta da geladeira?",
+  "doorYes": "Sim. A porta é a parte mais quente da geladeira, mas este alimento resiste bem o suficiente à deterioração para ficar ali. Feche bem a tampa depois de cada uso.",
+  "doorNo": "É melhor não. A porta é a parte mais quente da geladeira e esquenta toda vez que é aberta. Melhor lugar: {why}",
+  "doorOther": "Melhor lugar: {why}",
+  "refreezeQ": "Dá para recongelar {o}?",
+  "refreezeNo": "Para começar, não é recomendável congelar este alimento, então recongelar também não é indicado. Mantenha na geladeira e consuma dentro do prazo de geladeira.",
+  "refreezeYes": "Só se tiver sido descongelado na geladeira e não tiver ficado fora dela. Alimentos descongelados em água fria ou no micro-ondas devem ser cozidos antes de voltar ao freezer. Cada ciclo de congelamento e descongelamento reduz a qualidade, então congele em porções que você vai usar de uma vez.",
+  "killQ": "O congelamento mata as bactérias em {o}?",
+  "killA": "Não. Congelar a −18 °C (0 °F) impede que as bactérias se multipliquem, mas não as mata. Quando o alimento descongela, as bactérias presentes voltam a ficar ativas; por isso, descongele na geladeira e, quando for o caso, cozinhe ou reaqueça até uma temperatura segura.",
+  "smellQ": "É seguro se o cheiro estiver normal, mas o prazo de armazenamento já tiver passado?",
+  "smellPerishable": "Não necessariamente. As bactérias que causam intoxicação alimentar geralmente não alteram o cheiro, a aparência nem o sabor dos alimentos. Se o alimento está na geladeira há mais de {d}, jogue fora, mesmo que pareça normal.",
+  "smellOther": "Para um alimento de baixo risco como este, passar do prazo de armazenamento geralmente significa perda de qualidade, não perigo. Verifique se há mofo, cheiro estranho ou sabor diferente, e jogue fora se algo parecer errado."
+ },
+ "dates": [
+  "A maioria das datas impressas nas embalagens de alimentos diz respeito à qualidade, não à segurança. Nos EUA, a única data exigida por lei federal é a data “use-by” das fórmulas infantis; todas as outras são definidas pelo fabricante. “Best if used by” (melhor consumir até) indica quando o sabor e a textura estão no auge. “Sell-by” (vender até) serve para o controle de estoque da loja, e em casa você pode guardar o alimento pelo prazo normal de armazenamento depois dessa data. “Use-by” (usar até) é a última data que o fabricante recomenda para a qualidade máxima.",
+  "Por isso, esta página conta o prazo de armazenamento a partir do dia em que você compra, cozinha ou abre o alimento, e não a partir da data impressa: {d} na geladeira. Se o alimento foi armazenado corretamente, pode estar bom depois da data de “consumir de preferência até”; se foi mal armazenado, pode estragar bem antes dela."
+ ],
+ "groups": {
+  "meat": {
+   "about": "A carne crua é um dos alimentos mais perecíveis da cozinha. Sua superfície carrega bactérias do processamento, e o líquido que ela solta é um caminho fácil para essas bactérias chegarem a outros alimentos. Por isso o prazo seguro na geladeira é curto e o freezer é seu aliado: o congelamento interrompe totalmente o crescimento das bactérias, então a carne que você não vai conseguir preparar a tempo pode ir direto para o freezer no dia da compra.",
+   "spoil": "Bactérias deteriorantes, como Pseudomonas e bactérias lácticas, se multiplicam na superfície da carne crua mesmo na temperatura da geladeira, produzindo o cheiro azedo e a película pegajosa que você nota quando ela estraga. Patógenos como Salmonella e E. coli não alteram em nada o cheiro nem a aparência, então um pedaço de carne pode parecer normal e ainda assim não ser seguro depois do prazo. A carne moída estraga mais rápido porque a moagem espalha as bactérias da superfície por toda a porção.",
+   "mistakes": [
+    "Descongelar sobre a bancada: a parte de fora chega à temperatura ambiente enquanto o centro ainda está congelado.",
+    "Guardar numa prateleira de cima, de onde o líquido pode pingar em alimentos prontos para consumo.",
+    "Lavar na pia, o que espalha as bactérias pela cozinha em vez de eliminá-las.",
+    "Contar os dias de geladeira a partir da data “vender até”, e não do dia da compra.",
+    "Recongelar carne descongelada em água fria ou no micro-ondas sem cozinhá-la antes."
+   ],
+   "buying": [
+    "Pegue a carne por último, logo antes do caixa, e leve para casa em no máximo uma ou duas horas.",
+    "Escolha embalagens geladas, bem fechadas, sem rasgos nem líquido acumulado.",
+    "Embale separada de frutas, verduras e alimentos prontos para consumo."
+   ],
+   "useUp": [
+    "Cozinhe e congele a carne cozida em porções para refeições rápidas.",
+    "Transforme em um ensopado, chili ou molho de macarrão, que congelam bem.",
+    "Tempere e congele crua, para cozinhar direto do freezer."
+   ],
+   "container": "a embalagem original do mercado, envolta em papel-alumínio ou num saco para freezer, sobre um prato ou numa bandeja"
+  },
+  "seafood": {
+   "about": "Peixes e frutos do mar frescos estão entre os alimentos de vida mais curta que se pode comprar. Sua carne delicada contém enzimas e bactérias naturais que continuam agindo mesmo na geladeira, e a gordura dos peixes gordos oxida rapidamente. A maioria dos frutos do mar deve ser cozida ou congelada em um ou dois dias após a compra; no freezer, a qualidade se mantém por meses.",
+   "spoil": "As bactérias decompõem os aminoácidos da carne do peixe em compostos como a trimetilamina, que dá ao peixe estragado o forte cheiro de “peixe” ou de amônia. Ao mesmo tempo, as enzimas amolecem a textura. Alguns peixes, como atum e cavala, também podem formar histamina se esquentarem, o que causa a intoxicação escombroide e não é destruído pelo cozimento.",
+   "mistakes": [
+    "Guardar frutos do mar vivos na água ou num saco plástico fechado, o que os sufoca.",
+    "Deixar o peixe na parte mais quente da geladeira em vez de sobre gelo ou na prateleira de baixo.",
+    "Recongelar frutos do mar descongelados em temperatura ambiente.",
+    "Cozinhar mariscos cujas conchas continuam abertas quando você bate nelas."
+   ],
+   "buying": [
+    "Peixe fresco deve ter cheiro de mar e carne firme, que volta ao lugar quando pressionada.",
+    "Peixes inteiros devem ter olhos brilhantes e guelras vermelho-vivo.",
+    "Amêijoas, mexilhões e ostras vivos devem se fechar quando você bate neles."
+   ],
+   "useUp": [
+    "Cozinhe no dia da compra e guarde o peixe cozido por 3–4 dias.",
+    "Congele os filés deitados em sacos para freezer, tirando o ar.",
+    "Desfie as sobras de peixe cozido em bolinhos, massas ou saladas em poucos dias."
+   ],
+   "container": "a parte mais fria da geladeira, num recipiente tampado ou sobre uma camada de gelo"
+  },
+  "cooked": {
+   "about": "Pratos cozidos e sobras seguem as mesmas regras simples: esfrie rápido, leve à geladeira em até duas horas e consuma em poucos dias. O cozimento mata a maioria das bactérias, mas algumas sobrevivem na forma de esporos resistentes ao calor, e novas bactérias chegam pelas mãos, pelos utensílios e pelo ar. A forma como você esfria e guarda o alimento depois de pronto importa mais do que a forma como ele foi cozido.",
+   "spoil": "Esporos de bactérias como Bacillus cereus e Clostridium perfringens sobrevivem ao cozimento. Quando o alimento cozido fica morno, os esporos germinam e se multiplicam rapidamente, e alguns produzem toxinas que o reaquecimento não destrói. Na geladeira, eles crescem devagar, e é por isso que a comida cozida dura alguns dias, e não semanas.",
+   "mistakes": [
+    "Deixar uma panela grande esfriando no fogão por horas em vez de dividir o conteúdo em recipientes rasos.",
+    "Colocar um recipiente fundo e quente direto na geladeira, o que mantém o centro morno por horas.",
+    "Reaquecer as mesmas sobras mais de uma vez.",
+    "Provar a comida para ver se estragou."
+   ],
+   "buying": [
+    "Comida para viagem e de rotisseria deve chegar em casa e ir para a geladeira em até duas horas.",
+    "Escolha pratos quentes bem quentes, soltando vapor, e pratos frios que estejam gelados.",
+    "Confira a data de preparo dos pratos feitos na loja e conte os dias de geladeira a partir dela."
+   ],
+   "useUp": [
+    "Congele porções no primeiro ou segundo dia se não for comer a tempo.",
+    "Transforme as sobras em sopas, arroz frito, fritadas ou wraps.",
+    "Etiquete os recipientes com a data para saber exatamente há quanto tempo estão na geladeira."
+   ],
+   "container": "recipientes rasos e herméticos, resfriados rapidamente e etiquetados com a data"
+  },
+  "cured": {
+   "about": "Carnes curadas, defumadas e processadas duram mais do que a carne fresca porque o sal, a fumaça, os nitritos e a menor umidade retardam o crescimento das bactérias. Mesmo assim, não podem ficar em temperatura ambiente: depois que a embalagem é aberta, o ar e o manuseio dão início à contagem, e os produtos fatiados estragam mais rápido do que as peças inteiras porque têm mais superfície exposta.",
+   "spoil": "A cura retarda a maioria das bactérias deteriorantes, mas a Listeria monocytogenes consegue crescer na temperatura da geladeira em carnes prontas para consumo, como frios fatiados e salsichas. Esse é o principal motivo de as embalagens abertas terem um prazo curto, e de gestantes e idosos serem orientados a aquecer os frios até soltarem vapor.",
+   "mistakes": [
+    "Guardar uma embalagem aberta muito além do prazo depois de aberta só porque a data impressa ainda está a semanas de distância.",
+    "Deixar frios fatiados por horas numa travessa durante uma festa.",
+    "Guardar embalagens abertas sem embrulhar de novo, o que resseca os frios e faz com que absorvam odores.",
+    "Usar a mesma faca ou tábua para carnes cruas e prontas para consumo."
+   ],
+   "buying": [
+    "Confira se as embalagens a vácuo estão bem justas, sem bolsas de ar nem estufamento.",
+    "Compre frios fatiados na hora em quantidade que você vá terminar dentro do prazo depois de aberto.",
+    "Pegue as embalagens do fundo do refrigerador, onde ficam mais geladas."
+   ],
+   "useUp": [
+    "Congele as embalagens fechadas se não for abri-las antes da data.",
+    "Aproveite as fatias abertas em mistos-quentes, omeletes, massas ou pizza.",
+    "Divida embalagens grandes em porções e congele o que não for usar logo."
+   ],
+   "container": "a embalagem original, bem fechada de novo, ou um recipiente hermético"
+  },
+  "dairy": {
+   "about": "Leite, creme de leite, iogurte e outros laticínios frescos são pasteurizados, o que mata as bactérias nocivas, mas continuam perecíveis depois de abertos. O tempo que duram na geladeira depende muito da temperatura: laticínios guardados no fundo de uma prateleira fria duram bem mais do que os guardados na porta, que esquenta toda vez que a geladeira é aberta.",
+   "spoil": "Bactérias lácticas e psicrotróficas que sobrevivem à pasteurização ou entram depois da abertura fermentam o açúcar do leite e produzem ácido. Esse ácido causa o cheiro azedo, o talhamento e os grumos que se veem nos laticínios estragados. Também pode surgir mofo na superfície do iogurte, do creme azedo e de produtos parecidos.",
+   "mistakes": [
+    "Guardar na porta da geladeira, o ponto mais quente.",
+    "Devolver o leite que sobrou para a embalagem original.",
+    "Deixar na mesa durante uma refeição longa.",
+    "Congelar e esperar a mesma textura para beber; laticínios congelados são melhores para cozinhar."
+   ],
+   "buying": [
+    "Pegue no fim das compras e vá direto para casa.",
+    "Escolha embalagens do fundo do refrigerador, com a data mais distante.",
+    "Confira se as tampas e os lacres estão intactos."
+   ],
+   "useUp": [
+    "Use em receitas: panquecas, muffins, scones e molhos levam laticínios.",
+    "Congele em pequenas porções ou em forminhas de gelo para cozinhar.",
+    "Bata em vitaminas antes de acabar o prazo."
+   ],
+   "container": "a embalagem original, bem fechada, numa prateleira do meio"
+  },
+  "cheese": {
+   "about": "O queijo é leite conservado pelo ácido, pelo sal e pela retirada de umidade, por isso dura muito mais do que o leite. Quanto tempo ele dura depende principalmente da umidade: queijos duros e curados se conservam por semanas ou meses, enquanto os queijos macios e frescos se comportam mais como laticínios frescos e duram só de alguns dias a umas duas semanas depois de abertos.",
+   "spoil": "O mofo é a principal forma de o queijo estragar. No queijo duro, as raízes do mofo não vão longe, então dá para cortar pelo menos 2,5 cm ao redor e abaixo da mancha. Em queijos macios, ralados ou esfarelados, o mofo se espalha de forma invisível pela peça inteira, que deve ser jogada fora. As bactérias também produzem cheiro de amônia quando o queijo macio passa do ponto.",
+   "mistakes": [
+    "Embrulhar bem apertado em filme plástico, o que retém umidade e favorece limo e mofo.",
+    "Cortar o mofo de um queijo macio ou ralado e comer o resto.",
+    "Deixar por horas numa tábua de queijos em um ambiente quente.",
+    "Congelar queijo macio e esperar a mesma textura."
+   ],
+   "buying": [
+    "Compre queijo duro em pedaço, e não já ralado, se quiser que dure mais.",
+    "Confira se as embalagens estão fechadas e sem umidade nem mofo.",
+    "Compre queijo macio em quantidade que você vá terminar dentro do prazo depois de aberto."
+   ],
+   "useUp": [
+    "Rale e congele o queijo duro para cozinhar.",
+    "Derreta em molhos, mistos-quentes, gratinados e omeletes.",
+    "Use o queijo macio em patês, massas ou pratos de forno antes de acabar o prazo."
+   ],
+   "container": "papel-manteiga ou papel encerado e depois um saco folgado, na gaveta de frios"
+  },
+  "eggs": {
+   "about": "Os ovos duram semanas na geladeira porque a casca e as membranas internas formam uma barreira natural. Nos EUA, os ovos são lavados antes da venda, o que remove uma camada protetora da casca, por isso precisam ficar refrigerados. Depois de quebrados, cozidos ou separados, o prazo encurta drasticamente.",
+   "spoil": "O principal risco dos ovos é a Salmonella, que pode estar dentro de um ovo de aparência perfeitamente normal. Com o tempo, os ovos também perdem umidade e gás carbônico pela casca, a clara fica mais rala e a gema achata. Um ovo realmente estragado tem cheiro de enxofre, causado pela decomposição das proteínas pelas bactérias.",
+   "mistakes": [
+    "Guardar os ovos na porta da geladeira, onde a temperatura oscila.",
+    "Lavar os ovos antes de guardar.",
+    "Deixar ovos refrigerados fora da geladeira por mais de duas horas: um ovo frio que “sua” pode puxar bactérias para dentro da casca.",
+    "Congelar os ovos com casca, o que faz com que rachem."
+   ],
+   "buying": [
+    "Abra a caixa e confira se nenhum ovo está rachado ou sujo.",
+    "Compre ovos de um expositor refrigerado.",
+    "Mantenha os ovos na caixa, que os protege e mostra a data de embalagem."
+   ],
+   "useUp": [
+    "Cozinhe uma leva de ovos duros: duram uma semana na geladeira.",
+    "Bata e congele os ovos que sobrarem para usar em receitas de forno.",
+    "Use em fritadas, quiches, cremes e bolos."
+   ],
+   "container": "a caixa original, numa prateleira do meio"
+  },
+  "produce": {
+   "about": "Frutas, legumes e verduras frescos continuam vivos depois da colheita: seguem respirando, amadurecendo e perdendo umidade. Quanto tempo duram depende do tipo, do ponto de maturação na hora da compra e de estarem inteiros ou cortados. Muitos se conservam melhor na gaveta de legumes da geladeira, mas alguns amadurecem e ficam mais saborosos em temperatura ambiente primeiro.",
+   "spoil": "Frutas e verduras estragam por uma combinação de amadurecimento excessivo, perda de umidade e crescimento de micróbios. As frutas em amadurecimento liberam gás etileno, que acelera o amadurecimento de tudo o que está por perto. Batidas e cortes rompem as paredes das células e deixam entrar mofos e bactérias; por isso, frutas e verduras cortadas devem ir para a geladeira e ser consumidas em poucos dias.",
+   "mistakes": [
+    "Lavar antes de guardar, o que acrescenta umidade e acelera o mofo.",
+    "Guardar produtores de etileno (maçã, banana, abacate) ao lado de frutas e verduras que amadurecem demais.",
+    "Deixar frutas ou legumes cortados em temperatura ambiente por mais de duas horas.",
+    "Fechar frutas e verduras em sacos herméticos, sem circulação de ar."
+   ],
+   "buying": [
+    "Escolha frutas e verduras sem batidas, partes moles ou mofo.",
+    "Compre uma mistura de peças maduras e menos maduras, para que não amadureçam todas ao mesmo tempo.",
+    "Pegue frutas e verduras cortadas de um expositor refrigerado."
+   ],
+   "useUp": [
+    "Congele frutas maduras para vitaminas e receitas de forno.",
+    "Asse ou refogue legumes que estão começando a amolecer.",
+    "Bata frutas e verduras já cansadas em sopas, molhos e sucos."
+   ],
+   "container": "a gaveta de legumes, sem lavar, num saco folgado ou perfurado"
+  },
+  "leafy": {
+   "about": "Folhas verdes e ervas frescas são basicamente água contida em folhas finas, por isso murcham e estragam mais rápido do que quase qualquer outro vegetal. Duas coisas encurtam sua vida: umidade demais, que deixa as folhas viscosas, e umidade de menos, que as faz murchar. Guardadas secas, frias e embrulhadas sem apertar, duram de alguns dias a umas duas semanas.",
+   "spoil": "Bactérias e mofos decompõem o tecido das folhas danificado por batidas ou excesso de água, produzindo as manchas escuras e viscosas e o cheiro azedo das folhas estragadas. As folhas verdes também são conhecidas por trazer E. coli e Listeria do campo, e é por isso que as saladas embaladas devem ser mantidas geladas e consumidas até a data.",
+   "mistakes": [
+    "Guardar as folhas molhadas depois de lavar.",
+    "Apertar demais as folhas, que ficam machucadas.",
+    "Guardar perto de frutas que produzem etileno.",
+    "Congelar para salada; folhas congeladas só servem para cozinhar."
+   ],
+   "buying": [
+    "Escolha folhas crocantes, sem limo, amarelamento ou manchas escuras.",
+    "Confira se não há líquido no saco das saladas embaladas e se a data está bem distante.",
+    "Compre ervas com talos firmes e cheiro fresco."
+   ],
+   "useUp": [
+    "Refogue as folhas macias em sopas, massas, curries e omeletes.",
+    "Bata as ervas em pesto ou congele-as no azeite em forminhas de gelo.",
+    "Acrescente um punhado às vitaminas."
+   ],
+   "container": "um pote ou saco forrado com papel-toalha, na gaveta de legumes"
+  },
+  "bakery": {
+   "about": "Pães e produtos de padaria têm pouca umidade em comparação com alimentos frescos, então raramente se tornam inseguros rápido, mas ficam amanhecidos e acabam embolorando. Ficar amanhecido é uma mudança no amido, não deterioração, e na verdade acontece mais rápido na geladeira. O verdadeiro limite é o mofo, que cresce mais rápido em cozinhas quentes e úmidas.",
+   "spoil": "Os esporos de mofo chegam ao pão pelo ar e, em condições quentes e úmidas, viram manchas felpudas em poucos dias. A mancha visível é só uma parte: raízes finas como fios se espalham pelo pão macio, então o pão inteiro deve ser jogado fora assim que o mofo aparecer. Doces recheados com creme ou creme de confeiteiro são diferentes e devem ficar na geladeira, como os laticínios.",
+   "mistakes": [
+    "Guardar o pão na geladeira, o que o deixa amanhecido mais rápido.",
+    "Cortar a parte mofada e comer o resto de um pão macio.",
+    "Guardar o pão num saco fechado ainda quente, o que retém umidade.",
+    "Deixar doces recheados com creme em temperatura ambiente."
+   ],
+   "buying": [
+    "Confira se o saco não tem condensação nem pontos de mofo.",
+    "Compre pães de um tamanho que você vá terminar em poucos dias, ou planeje congelar metade.",
+    "Escolha os produtos de padaria com a data de fabricação mais recente."
+   ],
+   "useUp": [
+    "Congele o pão fatiado e toste direto do freezer.",
+    "Transforme o pão amanhecido em croûtons, farinha de rosca ou pudim de pão.",
+    "Use pães doces com frutas para fazer rabanada."
+   ],
+   "container": "uma caixa de pão ou um saco fechado em temperatura ambiente, ou o freezer"
+  },
+  "dry": {
+   "about": "Os itens secos da despensa duram muito porque os micróbios precisam de água para crescer. Seus inimigos são a umidade, o calor, a luz, o ar e as pragas de despensa. A maioria não se torna insegura depois da data de “consumir de preferência até”; eles vão perdendo sabor, aroma e textura aos poucos. A exceção são os produtos integrais e tudo o que contém óleos naturais, porque esses óleos podem ficar rançosos.",
+   "spoil": "Nos alimentos secos, a qualidade cai por oxidação e umidade, e não por bactérias. Os óleos dos grãos integrais, das castanhas e das sementes oxidam lentamente e ficam rançosos, com um cheiro amargo, parecido com o de tinta. A umidade permite que o mofo cresça e empedra os pós, e o armazenamento em local quente atrai traças e besouros de despensa.",
+   "mistakes": [
+    "Guardar acima do fogão, da chaleira ou da lava-louças, onde o calor e o vapor aceleram a deterioração.",
+    "Deixar os pacotes abertos em vez de transferir o conteúdo para potes herméticos.",
+    "Misturar o estoque novo com o antigo, de modo que o mais velho nunca é usado.",
+    "Pegar o produto com uma colher úmida."
+   ],
+   "buying": [
+    "Confira se as embalagens não têm furos, teias ou grumos.",
+    "Compre farinhas integrais e castanhas em quantidades que você vá usar em poucos meses.",
+    "Procure a data de validade mais distante."
+   ],
+   "useUp": [
+    "Deixe o estoque mais antigo na frente, para ser usado primeiro.",
+    "Congele farinhas integrais e castanhas para evitar o ranço.",
+    "Planeje uma “semana da despensa”, com refeições feitas com o que você já tem."
+   ],
+   "container": "um pote hermético num armário fresco, escuro e seco"
+  },
+  "fat": {
+   "about": "Manteiga, óleos, castanhas, sementes e pastas de castanhas são ricos em gordura, onde as bactérias não crescem com facilidade; por isso, seu principal inimigo é o ranço, e não a intoxicação alimentar. A gordura rançosa geralmente não é perigosa em pequenas quantidades, mas tem gosto amargo e de velho. Guardar em local fresco, escuro e em recipiente hermético retarda o ranço; a refrigeração retarda ainda mais.",
+   "spoil": "O oxigênio, a luz e o calor reagem com as gorduras e as quebram em compostos com cheiro de giz de cera, tinta ou castanha velha. As gorduras insaturadas, presentes nos óleos de castanhas e sementes, ficam rançosas mais rápido do que as gorduras saturadas, como a manteiga. A umidade e as migalhas levadas por uma faca suja também podem fazer crescer mofo em manteigas e pastas.",
+   "mistakes": [
+    "Guardar os óleos ao lado do fogão.",
+    "Deixar garrafas transparentes no sol.",
+    "Deixar as tampas frouxas, o que deixa o ar entrar.",
+    "Comprar embalagens grandes de óleos de castanhas ou de castanhas que você não vai terminar antes de ficarem rançosos."
+   ],
+   "buying": [
+    "Prefira óleos em vidro escuro ou lata.",
+    "Compre castanhas e sementes em lojas de grande giro, ou em embalagens fechadas.",
+    "Confira a data de “consumir de preferência até” e compre tamanhos que você vá usar em poucos meses."
+   ],
+   "useUp": [
+    "Guarde castanhas e sementes na geladeira ou no freezer para que fiquem frescas por mais tempo.",
+    "Aproveite as pastas de castanhas em molhos, temperos de salada e receitas de forno.",
+    "Cheire os óleos antes de usar: se estiverem com cheiro de velho, troque."
+   ],
+   "container": "um recipiente hermético e escuro, longe do calor e da luz"
+  },
+  "condiment": {
+   "about": "Condimentos, molhos e enlatados são feitos para durar: o ácido, o açúcar, o sal e a embalagem lacrada mantêm os micróbios do lado de fora. Fechados, a maioria dura meses ou anos no armário. Depois de abertos, entram ar, umidade e migalhas dos utensílios, e a maioria precisa de geladeira e passa a ter um prazo bem mais curto.",
+   "spoil": "Em potes abertos, os culpados mais comuns são leveduras e mofos: aparecem como uma penugem na superfície, efervescência ou cheiro de fermentado. Enlatados de baixa acidez trazem um risco raro, mas grave, de Clostridium botulinum se a lata estiver danificada; por isso, latas estufadas, vazando ou muito amassadas devem ser jogadas fora sem abrir.",
+   "mistakes": [
+    "Mergulhar duas vezes o mesmo alimento ou usar uma faca suja, o que leva migalhas e bactérias ao pote.",
+    "Guardar potes abertos no armário quando o rótulo manda refrigerar.",
+    "Guardar o alimento na lata aberta na geladeira; passe-o para um recipiente tampado.",
+    "Usar latas estufadas, enferrujadas ou muito amassadas."
+   ],
+   "buying": [
+    "Confira se as latas não estão estufadas, enferrujadas ou com amassados fundos nas emendas.",
+    "Confira se as tampas dos potes estão vedadas e fazem “pop” na primeira abertura.",
+    "Compre condimentos de um tamanho que você vá terminar dentro do prazo depois de aberto."
+   ],
+   "useUp": [
+    "Escreva a data de abertura na tampa.",
+    "Use o finalzinho do pote em marinadas, temperos de salada ou molhos.",
+    "Congele as sobras de molho em forminhas de gelo."
+   ],
+   "container": "o pote ou a garrafa original, bem fechados; enlatados abertos passados para um recipiente tampado"
+  },
+  "drink": {
+   "about": "As bebidas vão das que dispensam refrigeração às altamente perecíveis. Garrafas, latas e caixinhas fechadas costumam durar meses, mas, depois de abertos, sucos frescos e bebidas vegetais se comportam como alimentos frescos e precisam de geladeira. Café e chá não se tornam inseguros, mas perdem o aroma, e vinhos e destilados mudam com a exposição ao ar.",
+   "spoil": "Em sucos e bebidas vegetais, leveduras e bactérias fermentam os açúcares depois que o lacre é rompido, produzindo gás, cheiro azedo e sabores estranhos. Café e chá perdem seus óleos aromáticos para o ar, o calor e a luz. O vinho aberto oxida e aos poucos vira vinagre.",
+   "mistakes": [
+    "Deixar suco ou bebida vegetal aberta fora da geladeira.",
+    "Beber direto da garrafa, o que introduz bactérias.",
+    "Guardar o café num pote transparente sobre a bancada.",
+    "Deixar o vinho aberto em temperatura ambiente sem rolha."
+   ],
+   "buying": [
+    "Confira se os lacres e as tampas estão intactos.",
+    "Compre sucos frescos de um expositor refrigerado.",
+    "Compre café em quantidades que você vá usar em poucas semanas depois de abrir."
+   ],
+   "useUp": [
+    "Congele suco em forminhas de gelo para fazer vitaminas.",
+    "Use as sobras de vinho na cozinha ou congele para molhos.",
+    "Transforme o café que sobrou em cold brew ou use em receitas de forno."
+   ],
+   "container": "a embalagem original, bem fechada, na geladeira depois de aberta"
+  },
+  "frozen": {
+   "about": "Alimentos comprados congelados são seguros enquanto continuarem bem congelados a −18 °C (0 °F); os prazos no freezer se referem à qualidade, não à segurança. Com os meses, a queimadura de freezer e os cristais de gelo vão ressecando e endurecendo o alimento. O segredo é mantê-lo congelado do mercado até em casa e fechar bem os pacotes abertos.",
+   "spoil": "O congelamento impede o crescimento das bactérias, mas não as mata. Quando o alimento descongela, elas voltam a ficar ativas. A queimadura de freezer, aquelas manchas secas branco-acinzentadas que às vezes aparecem, acontece quando o ar chega ao alimento e a umidade evapora da superfície: é segura para comer, mas fica seca e sem sabor.",
+   "mistakes": [
+    "Deixar descongelar no caminho para casa e recongelar.",
+    "Deixar os pacotes abertos sem fechar, o que causa queimadura de freezer.",
+    "Lotar o freezer, impedindo a circulação do ar frio.",
+    "Descongelar sobre a bancada."
+   ],
+   "buying": [
+    "Pegue os congelados por último e embale-os juntos para que continuem gelados.",
+    "Evite embalagens com muita geada ou cristais de gelo por dentro, sinal de que descongelaram e foram recongeladas.",
+    "Confira se as caixas não estão amassadas ou rasgadas."
+   ],
+   "useUp": [
+    "Passe as embalagens mais antigas para a frente.",
+    "Mantenha na porta do freezer uma lista do que há dentro.",
+    "Cozinhe direto do congelado quando a embalagem permitir."
+   ],
+   "container": "a embalagem original, bem fechada de novo, ou um saco para freezer sem ar"
+  },
+  "baby": {
+   "about": "Papinhas, fórmulas infantis e leite materno têm regras de armazenamento mais rígidas do que a maioria dos alimentos, porque os bebês são mais vulneráveis às doenças transmitidas por alimentos. Siga sempre, em primeiro lugar, o rótulo e a orientação do pediatra. Depois que a mamada começa, bactérias da boca do bebê entram na mamadeira ou no pote, então as sobras não devem ser guardadas.",
+   "spoil": "A fórmula preparada e a papinha aberta são úmidas, ricas em nutrientes e de baixa acidez: condições ideais para as bactérias. A fórmula em pó não é estéril e pode conter Cronobacter, e é por isso que a fórmula preparada tem um prazo curto e que a higiene da água e dos utensílios é importante.",
+   "mistakes": [
+    "Guardar uma mamadeira ou um pote pela metade para a próxima refeição.",
+    "Dar a papinha direto do pote e guardar o resto na geladeira.",
+    "Aquecer a mamadeira no micro-ondas, o que cria pontos muito quentes.",
+    "Deixar a fórmula preparada em temperatura ambiente por mais tempo do que o rótulo permite."
+   ],
+   "buying": [
+    "Confira se as tampas dos potes estão vedadas e fazem “pop” ao abrir.",
+    "Nunca compre latas de fórmula danificadas, estufadas ou vazando.",
+    "Confira a data “use-by” da fórmula; nos EUA, é uma data de segurança exigida por lei federal."
+   ],
+   "useUp": [
+    "Coloque porções numa tigela em vez de dar a papinha direto do pote.",
+    "Prepare a fórmula uma mamada de cada vez.",
+    "Congele papinhas caseiras em forminhas de gelo e descongele uma porção por vez."
+   ],
+   "container": "a embalagem original ou frascos de armazenamento limpos e fechados, etiquetados com a data e a hora"
+  }
+ },
+ "zoneNames": {
+  "door": "Porta",
+  "top": "Prateleira de cima",
+  "middle": "Prateleira do meio",
+  "bottom": "Prateleira de baixo",
+  "crisper": "Gaveta de legumes",
+  "pantry": "Armário",
+  "freezer": "Congelador"
+ },
+ "fifo": "Alimentos não perecíveis duram mais quando você faz o rodízio. Coloque as compras novas atrás das antigas para usar primeiro o que é mais velho, anote a data de abertura na tampa e confira o armário a cada poucos meses para achar o que está perto ou depois da data de validade."
+}

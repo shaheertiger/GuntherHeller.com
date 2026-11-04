@@ -2,7 +2,8 @@
 /** Localized long-form sections; renders nothing until data/i18n/lf.{lang}.json exists. */
 import SectionHead from "../fun/SectionHead.astro";
 import Icon from "../fun/Icon.astro";
-interface Props { lf: any; part: "about" | "qa" | "spoil" | "buying" | "dates" }
+import FridgeMap from "../fun/FridgeMap.astro";
+interface Props { lf: any; part: "about" | "qa" | "spoil" | "buying" | "dates" | "where" }
 const { lf, part } = Astro.props;
 const E = lf?.X.eyebrows;
 ---
@@ -40,5 +41,12 @@ const E = lf?.X.eyebrows;
   <section id="dates-explained" class="mt-8 md:mt-12">
     <SectionHead icon="calendar" tint="var(--color-tint-lilac)" ink="#4a3bd2" eyebrow={E.dates}>{lf.h.dates}</SectionHead>
     <div class="mt-[18px] grid gap-3 text-[16px] leading-[1.7] text-[#3f3f46]">{lf.dates.map((p: string) => <p>{p}</p>)}</div>
+  </section>
+)}
+{lf && part === "where" && (
+  <section id="where" class="mt-8 md:mt-12">
+    <SectionHead icon="fridge" tint="var(--color-tint-green)" ink="#1b7a55" eyebrow={lf.eyWhere}>{lf.hWhere}</SectionHead>
+    <FridgeMap zone={lf.zone} why={lf.why.charAt(0).toUpperCase() + lf.why.slice(1)} names={lf.zoneNames} bestLabel={lf.best} />
+    {lf.fifo && <div class="soft mt-3 p-4 md:p-5 border border-line"><h3 class="!text-[17px] !tracking-[-0.01em]">{lf.fifo.h}</h3><p class="text-[15px] text-[#3f3f46] mt-1.5">{lf.fifo.text}</p></div>}
   </section>
 )}

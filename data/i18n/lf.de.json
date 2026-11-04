@@ -1,0 +1,463 @@
+{
+ "eyebrows": {
+  "basics": "Das Wichtigste",
+  "science": "Die Wissenschaft",
+  "avoid": "Das sollten Sie vermeiden",
+  "store": "Beim Einkauf",
+  "waste": "Weniger Verschwendung",
+  "qa": "Frage für Frage",
+  "dates": "Datumsangaben",
+  "where": "Der richtige Platz",
+  "best": "Bester Platz"
+ },
+ "h": {
+  "about": "Über {o}",
+  "why": [
+   "Warum {q} verdirbt",
+   "Warum {q} verderben"
+  ],
+  "mistakes": "Häufige Fehler bei der Lagerung",
+  "buying": "So erkennen Sie frische Ware",
+  "useUp": "Rechtzeitig aufbrauchen",
+  "qa": "Haltbarkeit, Frage für Frage",
+  "dates": "Haltbarkeitsdaten verständlich erklärt",
+  "where": "Wo man es lagert",
+  "fifo": "Zuerst rein, zuerst raus"
+ },
+ "intro": {
+  "category": "Dieses Lebensmittel gehört zu unserer Kategorie „{cat}“.",
+  "source": "In der Datenbank USDA FoodKeeper ist es als „{fk}“ aufgeführt.",
+  "keeps": [
+   "Laut USDA FoodKeeper hält sich {q} {list}.",
+   "Laut USDA FoodKeeper halten sich {q} {list}."
+  ],
+  "fridgeUseBy": "Im Kühlschrank gilt das Verbrauchsdatum auf der Packung.",
+  "notFreeze": "Einfrieren wird nicht empfohlen.",
+  "perishable": "Wie alle leicht verderblichen Lebensmittel sollte es nicht länger als 2 Stunden bei Zimmertemperatur stehen.",
+  "notPerishable": "Es ist kein leicht verderbliches Risikolebensmittel; daher geht es vor allem um die Qualität, weniger um die Sicherheit.",
+  "where": "Wo es hingehört: {why}",
+  "ripe": "bei Zimmertemperatur bis zur Reife",
+  "indefinitely": "unbegrenzt im Vorratsschrank"
+ },
+ "zones": {
+  "freezer": "durchgehend tiefgefroren bei −18 °C (0 °F), bis Sie es zubereiten.",
+  "pantry": "in einem kühlen, dunklen, trockenen Schrank; der Kühlschrank ist nicht nötig.",
+  "bottom": "rohes Fleisch und roher Fisch gehören in einer Schale ins unterste Fach, damit kein Fleischsaft auf verzehrfertige Lebensmittel tropfen kann.",
+  "crisper": "im Gemüsefach, das die Feuchtigkeit hält und so verhindert, dass Obst und Gemüse welken.",
+  "door": "in der Kühlschranktür, dem wärmsten Bereich des Kühlschranks – geeignet für Saucen, Würzmittel und Getränke, die nicht so schnell verderben.",
+  "middle": "in einem mittleren Fach, nicht in der Tür: Die Tür erwärmt sich bei jedem Öffnen.",
+  "top": "verzehrfertige und gegarte Lebensmittel gehören in die oberen Fächer, oberhalb von allem Rohen."
+ },
+ "qa": {
+  "fridgeQ": [
+   "Wie lange hält sich {q} im Kühlschrank?",
+   "Wie lange halten sich {q} im Kühlschrank?"
+  ],
+  "fridgeA": "{d} bei 4 °C (40 °F) oder kälter. Gezählt wird ab dem Tag, an dem das Lebensmittel gegart, geöffnet oder gekauft wurde, nicht ab dem aufgedruckten Datum.",
+  "freezerQ": [
+   "Wie lange hält sich {q} im Gefrierschrank?",
+   "Wie lange halten sich {q} im Gefrierschrank?"
+  ],
+  "freezerA": "{d} in bester Qualität bei −18 °C (0 °F). Tiefgekühlte Lebensmittel bleiben unbegrenzt sicher; danach lassen Konsistenz und Geschmack nach.",
+  "freezerNo": "Für dieses Lebensmittel wird Einfrieren nicht empfohlen, da die Konsistenz leidet. Bewahren Sie es stattdessen im Kühlschrank auf und verbrauchen Sie es innerhalb der dortigen Haltbarkeit.",
+  "roomQ": [
+   "Wie lange hält sich {q} bei Zimmertemperatur?",
+   "Wie lange halten sich {q} bei Zimmertemperatur?"
+  ],
+  "roomPerishable": "Höchstens 2 Stunden, über 32 °C (90 °F) nur 1 Stunde. Leicht verderbliche Lebensmittel, die länger ungekühlt standen, sollten entsorgt werden.",
+  "roomPantry": "{d} an einem kühlen, trockenen Ort, geschützt vor Wärme und Sonnenlicht.",
+  "roomFridgeOnly": "Es ist nicht für die Lagerung bei Zimmertemperatur gedacht. Bewahren Sie es im Kühlschrank auf.",
+  "openedQ": [
+   "Wie lange hält sich {q} nach dem Öffnen?",
+   "Wie lange halten sich {q} nach dem Öffnen?"
+  ],
+  "openedA": "{d} nach dem Öffnen. Das aufgedruckte Datum gilt nicht mehr, sobald die Verpackung geöffnet ist.",
+  "unopenedQ": [
+   "Wie lange hält sich {q} ungeöffnet?",
+   "Wie lange halten sich {q} ungeöffnet?"
+  ],
+  "unopenedA": "{d}, solange die Verpackung unversehrt ist und wie auf dem Etikett angegeben gelagert wird.",
+  "pantryQ": [
+   "Wie lange hält sich {q} im Vorratsschrank?",
+   "Wie lange halten sich {q} im Vorratsschrank?"
+  ],
+  "pantryA": "{d} in einem kühlen, dunklen und trockenen Schrank, gut verschlossen. Nach dem Öffnen auf das Etikett achten: Manche Produkte gehören dann in den Kühlschrank.",
+  "expireQ": [
+   "Kann {q} ablaufen?",
+   "Können {q} ablaufen?"
+  ],
+  "expireShelf": "Ja, aber bei einem haltbaren Lebensmittel wie diesem bedeutet das meist einen Qualitätsverlust und keine Gefahr. Geschmack, Aroma und Konsistenz lassen mit der Zeit nach, vor allem nach dem Öffnen. Wenn es kühl, trocken und gut verschlossen gelagert wurde und weder Schimmel noch einen fremden Geruch oder eine ungewöhnliche Farbe zeigt, kann es in der Regel noch verwendet werden.",
+  "expirePerishable": "Ja, und bei einem leicht verderblichen Lebensmittel wie diesem zählt die Lagerzeit mehr als das aufgedruckte Datum. Wenn es länger als {d} im Kühlschrank lag oder mehr als 2 Stunden ungekühlt war, sollte es weggeworfen werden, auch wenn es normal aussieht und riecht."
+ },
+ "faq": {
+  "tempQ": "Welche Kühlschranktemperatur braucht man für {o}?",
+  "tempA": "Halten Sie Ihren Kühlschrank auf 4 °C (40 °F) oder kälter und Ihren Gefrierschrank auf −18 °C (0 °F). Viele Kühlschränke sind wärmer, als der Regler vermuten lässt; ein günstiges Kühlschrankthermometer lohnt sich daher. Schon wenige Grad über 4 °C verkürzen die Haltbarkeit im Kühlschrank ({d}) deutlich.",
+  "containerQ": "Worin bewahrt man {o} am besten auf?",
+  "containerA": "Verwenden Sie {container}. Ziel ist es, Luft und Feuchtigkeit fernzuhalten, die Übertragung von Gerüchen zu verhindern und auf einen Blick zu sehen, wie alt das Lebensmittel ist. Schreiben Sie das Datum auf ein Etikett oder den Deckel, damit Sie nie raten müssen, wie lange es schon gelagert wird.",
+  "doorQ": "Kann ich {o} in der Kühlschranktür aufbewahren?",
+  "doorYes": "Ja. Die Tür ist zwar der wärmste Bereich des Kühlschranks, aber dieses Lebensmittel verdirbt nicht so leicht und kann dort gelagert werden. Verschließen Sie es nach jedem Gebrauch fest.",
+  "doorNo": "Besser nicht. Die Tür ist der wärmste Bereich des Kühlschranks und erwärmt sich bei jedem Öffnen. Am besten lagern: {why}",
+  "doorOther": "Am besten lagern: {why}",
+  "refreezeQ": "Kann man {o} wieder einfrieren?",
+  "refreezeNo": "Für dieses Lebensmittel wird schon das Einfrieren nicht empfohlen, daher ist auch erneutes Einfrieren nicht ratsam. Bewahren Sie es im Kühlschrank auf und verbrauchen Sie es innerhalb der dortigen Haltbarkeit.",
+  "refreezeYes": "Nur wenn es im Kühlschrank aufgetaut wurde und nicht ungekühlt gestanden hat. Lebensmittel, die in kaltem Wasser oder in der Mikrowelle aufgetaut wurden, sollten vor dem erneuten Einfrieren gegart werden. Jedes Einfrieren und Auftauen mindert die Qualität; frieren Sie daher Portionen ein, die Sie auf einmal verbrauchen.",
+  "killQ": "Werden Bakterien abgetötet, wenn man {o} einfriert?",
+  "killA": "Nein. Einfrieren bei −18 °C (0 °F) stoppt die Vermehrung von Bakterien, tötet sie aber nicht ab. Beim Auftauen werden vorhandene Bakterien wieder aktiv. Tauen Sie das Lebensmittel deshalb im Kühlschrank auf und garen oder erhitzen Sie es, wo angebracht, auf eine sichere Temperatur.",
+  "smellQ": "Ist es unbedenklich, wenn es normal riecht, die Lagerzeit aber überschritten ist?",
+  "smellPerishable": "Nicht unbedingt. Die Bakterien, die Lebensmittelvergiftungen verursachen, verändern Geruch, Aussehen und Geschmack meist nicht. Wenn es länger als {d} im Kühlschrank war, entsorgen Sie es, auch wenn es noch in Ordnung scheint.",
+  "smellOther": "Bei einem risikoarmen Lebensmittel wie diesem bedeutet eine überschrittene Lagerzeit meist geringere Qualität, nicht Gefahr. Achten Sie auf Schimmel, unangenehmen Geruch oder ungewöhnlichen Geschmack, und entsorgen Sie es, wenn Ihnen etwas merkwürdig vorkommt."
+ },
+ "dates": [
+  "Die meisten Datumsangaben auf Lebensmittelverpackungen betreffen die Qualität, nicht die Sicherheit. In den USA ist bundesweit nur das Verbrauchsdatum auf Säuglingsnahrung vorgeschrieben; alle anderen Angaben legt der Hersteller fest. „Best if used by“ (vergleichbar mit dem Mindesthaltbarkeitsdatum) gibt an, bis wann Geschmack und Konsistenz am besten sind. „Sell-by“ dient dem Handel zur Warenrotation; zu Hause können Sie das Lebensmittel danach noch für seine übliche Lagerzeit aufbewahren. „Use-by“ ist das letzte Datum, das der Hersteller für die beste Qualität empfiehlt.",
+  "Deshalb rechnet diese Seite die Lagerzeit ab dem Tag, an dem Sie das Lebensmittel kaufen, garen oder öffnen, und nicht ab dem aufgedruckten Datum: {d} im Kühlschrank. Richtig gelagerte Lebensmittel können auch nach Ablauf des Mindesthaltbarkeitsdatums noch einwandfrei sein; schlecht gelagerte können lange vorher verderben."
+ ],
+ "groups": {
+  "meat": {
+   "about": "Rohes Fleisch gehört zu den am leichtesten verderblichen Lebensmitteln in der Küche. Seine Oberfläche trägt Bakterien aus der Verarbeitung, und der austretende Fleischsaft ist ein bequemer Weg, auf dem diese Bakterien andere Lebensmittel erreichen. Deshalb ist die sichere Zeit im Kühlschrank kurz und der Gefrierschrank Ihr Freund: Einfrieren stoppt das Bakterienwachstum vollständig, sodass Fleisch, das Sie nicht rechtzeitig zubereiten können, einfach noch am Einkaufstag eingefroren werden kann.",
+   "spoil": "Verderbsbakterien wie Pseudomonas und Milchsäurebakterien vermehren sich auch bei Kühlschranktemperatur auf der Oberfläche von rohem Fleisch und erzeugen den säuerlichen Geruch und den klebrigen Film, die man bemerkt, wenn es verdirbt. Krankheitserreger wie Salmonellen und E. coli verändern Geruch und Aussehen dagegen überhaupt nicht. Ein Stück Fleisch kann also unauffällig wirken und trotzdem nicht mehr sicher sein, wenn seine Zeit abgelaufen ist. Hackfleisch verdirbt am schnellsten, weil das Wolfen die Oberflächenbakterien in der ganzen Masse verteilt.",
+   "mistakes": [
+    "Auftauen auf der Arbeitsfläche: Außen erreicht das Fleisch Zimmertemperatur, während es innen noch gefroren ist.",
+    "Lagerung in einem oberen Fach, wo Fleischsaft auf verzehrfertige Lebensmittel tropfen kann.",
+    "Abspülen im Spülbecken – dabei werden Bakterien in der Küche verspritzt statt entfernt.",
+    "Die Tage im Kühlschrank ab dem „Sell-by“-Datum statt ab dem Einkaufstag zählen.",
+    "Fleisch, das in kaltem Wasser oder in der Mikrowelle aufgetaut wurde, ungegart wieder einfrieren."
+   ],
+   "buying": [
+    "Legen Sie es zuletzt, kurz vor der Kasse, in den Einkaufswagen und bringen Sie es innerhalb von ein bis zwei Stunden nach Hause.",
+    "Wählen Sie Packungen, die kalt, fest verschlossen und unbeschädigt sind und in denen sich keine Flüssigkeit gesammelt hat.",
+    "Packen Sie es getrennt von Obst, Gemüse und verzehrfertigen Lebensmitteln ein."
+   ],
+   "useUp": [
+    "Garen Sie es und frieren Sie das gegarte Fleisch portionsweise für schnelle Mahlzeiten ein.",
+    "Verarbeiten Sie es zu Eintopf, Chili oder Nudelsauce, die sich gut einfrieren lassen.",
+    "Marinieren Sie es und frieren Sie es roh ein, damit Sie es direkt aus dem Gefrierschrank zubereiten können."
+   ],
+   "container": "die Originalverpackung aus dem Laden, zusätzlich in Alufolie oder einen Gefrierbeutel gehüllt, auf einem Teller oder in einer Schale"
+  },
+  "seafood": {
+   "about": "Frischer Fisch und Meeresfrüchte gehören zu den kurzlebigsten Lebensmitteln, die man kaufen kann. Ihr zartes Fleisch enthält Enzyme und natürliche Bakterien, die auch im Kühlschrank weiterarbeiten, und die Fette in fettem Fisch oxidieren schnell. Die meisten Fische und Meeresfrüchte sollten innerhalb von ein, zwei Tagen nach dem Kauf zubereitet oder eingefroren werden; im Gefrierschrank bleibt die Qualität monatelang erhalten.",
+   "spoil": "Bakterien bauen die Aminosäuren im Fischfleisch zu Verbindungen wie Trimethylamin ab, das verderbendem Fisch seinen starken „fischigen“ oder ammoniakartigen Geruch verleiht. Gleichzeitig machen Enzyme die Konsistenz weich. Manche Fische, etwa Thunfisch und Makrele, können bei Erwärmung außerdem Histamin bilden; das verursacht eine Scombroid-Vergiftung und wird durch Erhitzen nicht zerstört.",
+   "mistakes": [
+    "Lebende Muscheln und Schalentiere in Wasser oder einer verschlossenen Plastiktüte aufbewahren – darin ersticken sie.",
+    "Fisch im wärmsten Teil des Kühlschranks lassen statt auf Eis oder im untersten Fach.",
+    "Bei Zimmertemperatur aufgetaute Meeresfrüchte wieder einfrieren.",
+    "Muscheln garen, deren Schalen beim Antippen offen bleiben."
+   ],
+   "buying": [
+    "Frischer Fisch sollte nach Meer riechen und festes Fleisch haben, das auf Druck zurückfedert.",
+    "Ganze Fische sollten klare Augen und leuchtend rote Kiemen haben.",
+    "Lebende Venusmuscheln, Miesmuscheln und Austern sollten sich beim Antippen schließen."
+   ],
+   "useUp": [
+    "Bereiten Sie ihn am Einkaufstag zu und bewahren Sie den gegarten Fisch dann 3–4 Tage auf.",
+    "Frieren Sie Filets flach in Gefrierbeuteln ein und drücken Sie die Luft heraus.",
+    "Zerpflücken Sie übrig gebliebenen gegarten Fisch innerhalb weniger Tage für Fischfrikadellen, Nudelgerichte oder Salate."
+   ],
+   "container": "den kältesten Bereich des Kühlschranks, in einer abgedeckten Schale oder auf einem Bett aus Eis"
+  },
+  "cooked": {
+   "about": "Für gekochte Gerichte und Reste gelten dieselben einfachen Regeln: schnell abkühlen, innerhalb von zwei Stunden in den Kühlschrank stellen und innerhalb weniger Tage essen. Beim Kochen sterben die meisten Bakterien ab, manche überleben jedoch als hitzebeständige Sporen, und neue Bakterien gelangen über Hände, Küchenutensilien und die Luft hinzu. Wie Sie das Essen nach dem Kochen abkühlen und lagern, ist wichtiger als die Art der Zubereitung.",
+   "spoil": "Sporen von Bakterien wie Bacillus cereus und Clostridium perfringens überstehen das Kochen. Bleibt gekochtes Essen warm stehen, keimen die Sporen aus und vermehren sich schnell; manche bilden Giftstoffe, die beim Aufwärmen nicht zerstört werden. Im Kühlschrank wachsen sie langsam – deshalb halten sich gekochte Speisen einige Tage, nicht Wochen.",
+   "mistakes": [
+    "Einen großen Topf stundenlang auf dem Herd abkühlen lassen, statt den Inhalt auf flache Behälter zu verteilen.",
+    "Einen tiefen, heißen Behälter direkt in den Kühlschrank stellen, sodass der Kern stundenlang warm bleibt.",
+    "Dieselben Reste mehr als einmal aufwärmen.",
+    "Durch Probieren prüfen, ob das Essen verdorben ist."
+   ],
+   "buying": [
+    "Bringen Sie Essen zum Mitnehmen und Feinkost innerhalb von zwei Stunden nach Hause und in den Kühlschrank.",
+    "Wählen Sie warme Speisen, die dampfend heiß sind, und kalte Speisen, die sich kalt anfühlen.",
+    "Achten Sie bei im Laden zubereiteten Gerichten auf das Herstellungsdatum und zählen Sie die Tage im Kühlschrank ab diesem Datum."
+   ],
+   "useUp": [
+    "Frieren Sie Portionen am ersten oder zweiten Tag ein, wenn Sie sie nicht rechtzeitig essen werden.",
+    "Verarbeiten Sie Reste zu Suppen, gebratenem Reis, Frittatas oder Wraps.",
+    "Beschriften Sie Behälter mit dem Datum, damit Sie genau wissen, wie lange sie schon im Kühlschrank stehen."
+   ],
+   "container": "flache, luftdichte Behälter; das Essen rasch abkühlen und mit dem Datum beschriften"
+  },
+  "cured": {
+   "about": "Gepökeltes, geräuchertes und verarbeitetes Fleisch hält sich länger als frisches, weil Salz, Rauch, Nitrit und ein geringerer Wassergehalt das Bakterienwachstum bremsen. Ungekühlt haltbar ist es trotzdem nicht: Sobald die Packung geöffnet ist, beginnen Luft und Hantieren die Uhr laufen zu lassen, und Aufschnitt verdirbt schneller als ein ganzes Stück, weil mehr Oberfläche freiliegt.",
+   "spoil": "Das Pökeln bremst die meisten Verderbsbakterien, aber Listeria monocytogenes kann sich bei Kühlschranktemperatur auf verzehrfertigen Fleischwaren wie Aufschnitt und Würstchen vermehren. Das ist der Hauptgrund, warum geöffnete Packungen nur kurz haltbar sind und warum Schwangeren und älteren Menschen geraten wird, Aufschnitt zu erhitzen, bis er dampft.",
+   "mistakes": [
+    "Eine geöffnete Packung weit über die Haltbarkeit nach dem Öffnen hinaus aufbewahren, weil das aufgedruckte Datum noch Wochen entfernt ist.",
+    "Aufschnitt auf einer Party stundenlang auf einer Platte stehen lassen.",
+    "Geöffnete Packungen nicht wieder einpacken, sodass der Inhalt austrocknet und Gerüche annimmt.",
+    "Dasselbe Messer oder Brett für rohes und verzehrfertiges Fleisch verwenden."
+   ],
+   "buying": [
+    "Prüfen Sie, ob Vakuumpackungen straff sitzen und keine Lufteinschlüsse oder Wölbungen haben.",
+    "Kaufen Sie frisch geschnittenen Aufschnitt nur in Mengen, die Sie innerhalb der Haltbarkeit nach dem Öffnen aufbrauchen.",
+    "Nehmen Sie Packungen von hinten aus dem Kühlregal, wo es am kältesten ist."
+   ],
+   "useUp": [
+    "Frieren Sie ungeöffnete Packungen ein, wenn Sie sie nicht vor Ablauf des Datums öffnen werden.",
+    "Verwenden Sie angebrochenen Aufschnitt für Toasts, Omeletts, Nudelgerichte oder Pizza.",
+    "Teilen Sie große Packungen in Portionen und frieren Sie ein, was Sie nicht bald verbrauchen."
+   ],
+   "container": "die Originalverpackung, wieder verschlossen, oder einen luftdichten Behälter"
+  },
+  "dairy": {
+   "about": "Milch, Sahne, Joghurt und andere frische Milchprodukte sind pasteurisiert, wodurch schädliche Bakterien abgetötet werden; nach dem Öffnen sind sie aber dennoch leicht verderblich. Ihre Haltbarkeit im Kühlschrank hängt stark von der Temperatur ab: Milchprodukte hinten in einem kalten Fach halten sich spürbar länger als in der Kühlschranktür, die sich bei jedem Öffnen erwärmt.",
+   "spoil": "Milchsäurebakterien und kälteliebende (psychrotrophe) Bakterien, die die Pasteurisierung überleben oder nach dem Öffnen hineingelangen, vergären den Milchzucker zu Säure. Diese Säure verursacht den sauren Geruch, das Gerinnen und die Klümpchen verdorbener Milchprodukte. Auf Joghurt, saurer Sahne und ähnlichen Produkten kann außerdem Schimmel wachsen.",
+   "mistakes": [
+    "Lagerung in der Kühlschranktür, dem wärmsten Platz.",
+    "Nicht verbrauchte Milch zurück in die Originalpackung gießen.",
+    "Sie während einer langen Mahlzeit auf dem Tisch stehen lassen.",
+    "Einfrieren und zum Trinken dieselbe Konsistenz erwarten; eingefrorene Milchprodukte eignen sich am besten zum Kochen."
+   ],
+   "buying": [
+    "Legen Sie sie gegen Ende des Einkaufs in den Wagen und bringen Sie sie direkt nach Hause.",
+    "Nehmen Sie Packungen von hinten aus dem Kühlregal, mit dem spätesten Datum.",
+    "Achten Sie darauf, dass Deckel und Versiegelungen unversehrt sind."
+   ],
+   "useUp": [
+    "Backen Sie damit: Pfannkuchen, Muffins, Scones und Saucen enthalten alle Milchprodukte.",
+    "Frieren Sie sie in kleinen Portionen oder in Eiswürfelformen zum Kochen ein.",
+    "Mixen Sie sie vor Ablauf der Haltbarkeit in Smoothies."
+   ],
+   "container": "die fest verschlossene Originalverpackung in einem mittleren Fach"
+  },
+  "cheese": {
+   "about": "Käse ist durch Säure, Salz und Wasserentzug haltbar gemachte Milch und hält sich deshalb viel länger als Milch. Wie lange, hängt vor allem vom Wassergehalt ab: Harte, gereifte Käse halten sich Wochen oder Monate, während Weich- und Frischkäse sich eher wie frische Milchprodukte verhalten und nach dem Öffnen nur Tage bis etwa zwei Wochen halten.",
+   "spoil": "Schimmel ist der häufigste Grund, warum Käse verdirbt. In Hartkäse können Schimmelfäden nicht weit vordringen; Sie können daher mindestens 2,5 cm um und unter der Stelle großzügig abschneiden. In Weichkäse sowie geriebenem oder zerbröckeltem Käse breitet sich Schimmel unsichtbar im ganzen Stück aus, daher sollte das ganze Stück entsorgt werden. Wenn Weichkäse über seinen Höhepunkt hinaus reift, bilden Bakterien außerdem einen Ammoniakgeruch.",
+   "mistakes": [
+    "Ihn fest in Frischhaltefolie wickeln – das schließt Feuchtigkeit ein und fördert Schmier und Schimmel.",
+    "Schimmel von Weichkäse oder geriebenem Käse abschneiden und den Rest essen.",
+    "Ihn stundenlang auf einer Käseplatte in einem warmen Raum stehen lassen.",
+    "Weichkäse einfrieren und dieselbe Konsistenz erwarten."
+   ],
+   "buying": [
+    "Kaufen Sie Hartkäse am Stück statt bereits gerieben, wenn er länger halten soll.",
+    "Prüfen Sie, ob die Packungen verschlossen und frei von Feuchtigkeit oder Schimmel sind.",
+    "Kaufen Sie Weichkäse nur in Mengen, die Sie innerhalb der Haltbarkeit nach dem Öffnen aufbrauchen."
+   ],
+   "useUp": [
+    "Reiben Sie Hartkäse und frieren Sie ihn zum Kochen ein.",
+    "Lassen Sie ihn in Saucen, Toasts, Aufläufen und Omeletts schmelzen.",
+    "Verwenden Sie Weichkäse für Dips, Nudelgerichte oder Ofengerichte, bevor seine Haltbarkeit abläuft."
+   ],
+   "container": "Wachs- oder Backpapier und darüber einen locker verschlossenen Beutel, im Käsefach"
+  },
+  "eggs": {
+   "about": "Eier halten sich im Kühlschrank wochenlang, weil die Schale und die Membranen darunter eine natürliche Barriere bilden. In den USA werden Eier vor dem Verkauf gewaschen; dabei wird eine Schutzschicht auf der Schale entfernt, weshalb sie gekühlt bleiben müssen. Sobald Eier aufgeschlagen, gekocht oder getrennt sind, läuft die Zeit deutlich schneller ab.",
+   "spoil": "Das größte Sicherheitsrisiko bei Eiern sind Salmonellen, die sich auch in einem völlig normal aussehenden Ei befinden können. Mit der Zeit verlieren Eier außerdem Feuchtigkeit und Kohlendioxid durch die Schale: Das Eiweiß wird dünnflüssiger und das Eigelb flacher. Ein wirklich verdorbenes Ei riecht nach Schwefel, weil Bakterien die Proteine zersetzen.",
+   "mistakes": [
+    "Eier in der Kühlschranktür lagern, wo die Temperatur schwankt.",
+    "Eier vor dem Lagern waschen.",
+    "Gekühlte Eier länger als zwei Stunden ungekühlt liegen lassen: Auf einem kalten Ei bildet sich Kondenswasser, das Bakterien durch die Schale ziehen kann.",
+    "Eier in der Schale einfrieren – dabei platzen sie."
+   ],
+   "buying": [
+    "Öffnen Sie den Karton und prüfen Sie, dass keine Eier gesprungen oder verschmutzt sind.",
+    "Kaufen Sie Eier aus dem Kühlregal.",
+    "Bewahren Sie sie im Karton auf; er schützt die Eier und zeigt das Packdatum."
+   ],
+   "useUp": [
+    "Kochen Sie mehrere Eier hart: Sie halten sich eine Woche im Kühlschrank.",
+    "Verquirlen Sie übrige Eier und frieren Sie sie zum Backen ein.",
+    "Verwenden Sie sie für Frittatas, Quiches, Puddings und zum Backen."
+   ],
+   "container": "den Originalkarton in einem mittleren Fach"
+  },
+  "produce": {
+   "about": "Frisches Obst und Gemüse lebt nach der Ernte weiter: Es atmet, reift und verliert Feuchtigkeit. Wie lange es sich hält, hängt von der Sorte ab, davon, wie reif es beim Kauf ist, und ob es ganz oder geschnitten ist. Vieles hält sich am besten im Gemüsefach des Kühlschranks, manches reift aber zunächst bei Zimmertemperatur nach und schmeckt dann besser.",
+   "spoil": "Obst und Gemüse verderben durch eine Mischung aus Überreife, Feuchtigkeitsverlust und mikrobiellem Wachstum. Reifendes Obst gibt Ethylen ab, ein Gas, das die Reifung von allem in seiner Nähe beschleunigt. Druckstellen und Schnitte zerstören Zellwände und lassen Schimmel und Bakterien eindringen – deshalb muss geschnittenes Obst und Gemüse gekühlt und innerhalb weniger Tage verbraucht werden.",
+   "mistakes": [
+    "Obst und Gemüse vor dem Lagern waschen – das bringt Feuchtigkeit und fördert Schimmel.",
+    "Ethylenbildner (Äpfel, Bananen, Avocados) neben Obst und Gemüse lagern, das schnell überreif wird.",
+    "Geschnittenes Obst oder Gemüse länger als zwei Stunden bei Zimmertemperatur stehen lassen.",
+    "Obst und Gemüse ohne Luftzirkulation in luftdichten Beuteln verschließen."
+   ],
+   "buying": [
+    "Wählen Sie Obst und Gemüse ohne Druckstellen, weiche Stellen oder Schimmel.",
+    "Kaufen Sie eine Mischung aus reifen und weniger reifen Stücken, damit nicht alles gleichzeitig reif wird.",
+    "Nehmen Sie geschnittenes Obst und Gemüse aus einer gekühlten Auslage."
+   ],
+   "useUp": [
+    "Frieren Sie reifes Obst für Smoothies und zum Backen ein.",
+    "Rösten oder braten Sie Gemüse an, das weich zu werden beginnt.",
+    "Verarbeiten Sie welkes Obst und Gemüse zu Suppen, Saucen und Säften."
+   ],
+   "container": "das Gemüsefach, ungewaschen, in einem locker verschlossenen oder gelochten Beutel"
+  },
+  "leafy": {
+   "about": "Blattgemüse und frische Kräuter bestehen größtenteils aus Wasser in dünnen Blättern; deshalb welken und verderben sie schneller als fast jedes andere Obst oder Gemüse. Zwei Dinge verkürzen ihre Haltbarkeit: zu viel Feuchtigkeit, die die Blätter schleimig macht, und zu wenig, die sie welken lässt. Trocken, kalt und locker verpackt halten sie sich einige Tage bis etwa zwei Wochen.",
+   "spoil": "Bakterien und Schimmelpilze zersetzen Blattgewebe, das durch Druck oder zu viel Wasser beschädigt wurde – so entstehen die schleimigen, dunklen Stellen und der saure Geruch verdorbener Blätter. Blattgemüse ist zudem ein bekannter Träger von E. coli und Listerien vom Feld; deshalb sollten abgepackte Salate kalt gelagert und bis zu ihrem Datum verbraucht werden.",
+   "mistakes": [
+    "Blattgemüse nach dem Waschen nass lagern.",
+    "Es so eng verpacken, dass die Blätter Druckstellen bekommen.",
+    "Es in der Nähe von Ethylen abgebendem Obst aufbewahren.",
+    "Es für Salate einfrieren; eingefrorenes Blattgemüse eignet sich nur zum Kochen."
+   ],
+   "buying": [
+    "Wählen Sie knackige Blätter ohne Schleim, Vergilbung oder dunkle Flecken.",
+    "Prüfen Sie abgepackten Salat auf Flüssigkeit im Beutel und auf ein Datum, das noch weit in der Zukunft liegt.",
+    "Kaufen Sie Kräuter mit straffen Stielen und frischem Duft."
+   ],
+   "useUp": [
+    "Lassen Sie zartes Blattgemüse in Suppen, Nudelgerichten, Currys und Omeletts zusammenfallen.",
+    "Verarbeiten Sie Kräuter zu Pesto oder frieren Sie sie in Öl in Eiswürfelformen ein.",
+    "Geben Sie eine Handvoll in Smoothies."
+   ],
+   "container": "einen mit Küchenpapier ausgelegten Behälter oder Beutel im Gemüsefach"
+  },
+  "bakery": {
+   "about": "Brot und Backwaren enthalten im Vergleich zu frischen Lebensmitteln wenig Wasser und werden daher selten schnell unsicher, aber sie werden altbacken und schließlich schimmelig. Altbackenwerden ist eine Veränderung der Stärke, kein Verderb – und es geht im Kühlschrank sogar schneller. Die eigentliche Grenze ist der Schimmel, der in warmen, feuchten Küchen schneller wächst.",
+   "spoil": "Schimmelsporen gelangen aus der Luft auf das Brot und wachsen bei warmen, feuchten Bedingungen innerhalb weniger Tage zu pelzigen Flecken heran. Der sichtbare Fleck ist nur ein Teil davon: Fadenartige Wurzeln durchziehen weiches Brot, deshalb sollte der ganze Laib entsorgt werden, sobald Schimmel auftaucht. Gebäck mit Sahne- oder Puddingfüllung ist eine Ausnahme und muss wie Milchprodukte gekühlt werden.",
+   "mistakes": [
+    "Brot im Kühlschrank aufbewahren – dort wird es schneller altbacken.",
+    "Eine schimmelige Stelle abschneiden und den Rest eines weichen Brotes essen.",
+    "Brot noch warm in einem verschlossenen Beutel lagern, sodass Feuchtigkeit eingeschlossen wird.",
+    "Gebäck mit Sahnefüllung bei Zimmertemperatur stehen lassen."
+   ],
+   "buying": [
+    "Prüfen Sie die Tüte auf Kondenswasser oder Schimmelflecken.",
+    "Kaufen Sie Brote in einer Größe, die Sie innerhalb weniger Tage aufessen, oder planen Sie ein, die Hälfte einzufrieren.",
+    "Wählen Sie Backwaren mit dem spätesten Backdatum."
+   ],
+   "useUp": [
+    "Frieren Sie geschnittenes Brot ein und toasten Sie es direkt gefroren.",
+    "Verarbeiten Sie altbackenes Brot zu Croûtons, Semmelbröseln oder Brotpudding.",
+    "Verwenden Sie weiches Früchtebrot für Arme Ritter."
+   ],
+   "container": "einen Brotkasten oder verschlossenen Beutel bei Zimmertemperatur – oder den Gefrierschrank"
+  },
+  "dry": {
+   "about": "Trockene Vorräte halten sich lange, weil Mikroorganismen Wasser zum Wachsen brauchen. Ihre Feinde sind Feuchtigkeit, Wärme, Licht, Luft und Vorratsschädlinge. Die meisten werden nach dem Mindesthaltbarkeitsdatum nicht unsicher, sondern verlieren langsam an Geschmack, Aroma und Konsistenz. Eine Ausnahme sind Vollkornprodukte und alles mit natürlichen Ölen, denn diese Öle können ranzig werden.",
+   "spoil": "Bei trockenen Lebensmitteln lässt die Qualität durch Oxidation und Feuchtigkeit nach, nicht durch Bakterien. Die Öle in Vollkorn, Nüssen und Samen oxidieren langsam und werden ranzig, was einen bitteren, farbartigen Geruch erzeugt. Feuchtigkeit lässt Schimmel wachsen und Pulver verklumpen, und warme Lagerung lockt Lebensmittelmotten und Käfer an.",
+   "mistakes": [
+    "Lagerung über Herd, Wasserkocher oder Geschirrspüler, wo Wärme und Dampf den Verderb beschleunigen.",
+    "Tüten offen lassen, statt den Inhalt in luftdichte Behälter umzufüllen.",
+    "Neue Ware zur alten schütten, sodass die älteste nie aufgebraucht wird.",
+    "Mit einem feuchten Löffel entnehmen."
+   ],
+   "buying": [
+    "Prüfen Sie Packungen auf Löcher, Gespinste oder Klumpen.",
+    "Kaufen Sie Vollkornmehl und Nüsse in Mengen, die Sie innerhalb weniger Monate verbrauchen.",
+    "Achten Sie auf das späteste Mindesthaltbarkeitsdatum."
+   ],
+   "useUp": [
+    "Stellen Sie ältere Vorräte nach vorn, damit sie zuerst verbraucht werden.",
+    "Frieren Sie Vollkornmehl und Nüsse ein, um Ranzigwerden zu verhindern.",
+    "Planen Sie eine „Vorratswoche“ mit Mahlzeiten aus dem, was Sie bereits haben."
+   ],
+   "container": "einen luftdichten Behälter in einem kühlen, dunklen, trockenen Schrank"
+  },
+  "fat": {
+   "about": "Butter, Öle, Nüsse, Samen und Nussmuse sind reich an Fett, auf dem Bakterien nicht leicht wachsen; ihr Hauptfeind ist daher das Ranzigwerden, nicht eine Lebensmittelvergiftung. Ranziges Fett ist in kleinen Mengen meist nicht gefährlich, schmeckt aber bitter und abgestanden. Kühle, dunkle, luftdichte Lagerung bremst den Vorgang, Kühlung bremst ihn zusätzlich.",
+   "spoil": "Sauerstoff, Licht und Wärme reagieren mit den Fetten und spalten sie in Verbindungen, die nach Wachsmalstiften, Farbe oder alten Nüssen riechen. Ungesättigte Fette, wie sie in Nuss- und Samenölen vorkommen, werden schneller ranzig als gesättigte Fette wie Butter. Feuchtigkeit und Krümel von einem benutzten Messer können außerdem Schimmel auf Butter und Aufstrichen wachsen lassen.",
+   "mistakes": [
+    "Öle neben dem Herd lagern.",
+    "Klare Flaschen im Sonnenlicht stehen lassen.",
+    "Deckel locker lassen, sodass Luft eindringt.",
+    "Große Gebinde Nussöl oder Nüsse kaufen, die Sie nicht aufbrauchen, bevor sie ranzig werden."
+   ],
+   "buying": [
+    "Wählen Sie Öle in dunklen Glasflaschen oder Dosen.",
+    "Kaufen Sie Nüsse und Samen in Geschäften mit hohem Umsatz oder in verschlossenen Packungen.",
+    "Prüfen Sie das Mindesthaltbarkeitsdatum und kaufen Sie Größen, die Sie innerhalb weniger Monate verbrauchen."
+   ],
+   "useUp": [
+    "Bewahren Sie Nüsse und Samen im Kühl- oder Gefrierschrank auf, damit sie länger frisch bleiben.",
+    "Verbrauchen Sie Nussmuse in Saucen, Dressings und beim Backen.",
+    "Riechen Sie vor der Verwendung an Ölen: Riechen sie abgestanden, ersetzen Sie sie."
+   ],
+   "container": "einen luftdichten, dunklen Behälter, fern von Wärme und Licht"
+  },
+  "condiment": {
+   "about": "Würzmittel, Saucen und Konserven sind auf lange Haltbarkeit ausgelegt: Säure, Zucker, Salz und eine dichte Verpackung halten Mikroorganismen fern. Ungeöffnet halten sich die meisten Monate oder Jahre im Vorratsschrank. Nach dem Öffnen gelangen Luft, Feuchtigkeit und Krümel von Besteck hinein; die meisten gehören dann in den Kühlschrank und sind deutlich kürzer haltbar.",
+   "spoil": "In geöffneten Gläsern sind meist Hefen und Schimmelpilze die Übeltäter: Sie zeigen sich als Flaum auf der Oberfläche, als Sprudeln oder als gäriger Geruch. Säurearme Konserven bergen bei beschädigten Dosen ein seltenes, aber ernstes Risiko durch Clostridium botulinum; deshalb müssen aufgeblähte, undichte oder stark eingedellte Dosen ungeöffnet entsorgt werden.",
+   "mistakes": [
+    "Mehrfach eintunken oder ein benutztes Messer verwenden, wodurch Krümel und Bakterien hineingelangen.",
+    "Geöffnete Gläser im Vorratsschrank lagern, obwohl auf dem Etikett „gekühlt aufbewahren“ steht.",
+    "Lebensmittel in einer geöffneten Dose im Kühlschrank aufbewahren; füllen Sie sie in einen abgedeckten Behälter um.",
+    "Aufgeblähte, rostige oder stark eingedellte Dosen verwenden."
+   ],
+   "buying": [
+    "Prüfen Sie Dosen auf Wölbungen, tiefe Dellen an den Nähten und Rost.",
+    "Achten Sie darauf, dass Glasdeckel dicht sind und beim ersten Öffnen ploppen.",
+    "Kaufen Sie Würzmittel in Größen, die Sie innerhalb der Haltbarkeit nach dem Öffnen aufbrauchen."
+   ],
+   "useUp": [
+    "Schreiben Sie das Öffnungsdatum auf den Deckel.",
+    "Verwenden Sie den Rest eines Glases für Marinaden, Dressings oder Saucen.",
+    "Frieren Sie übrige Saucen in Eiswürfelformen ein."
+   ],
+   "container": "das fest verschlossene Originalglas oder die Originalflasche; geöffnete Konserven in einen abgedeckten Behälter umfüllen"
+  },
+  "drink": {
+   "about": "Getränke reichen von ungekühlt haltbar bis leicht verderblich. Ungeöffnete Flaschen, Dosen und Kartons halten sich oft monatelang, doch nach dem Öffnen verhalten sich frische Säfte und Pflanzendrinks wie frische Lebensmittel und gehören in den Kühlschrank. Kaffee und Tee werden nicht unsicher, verlieren aber an Aroma, und Wein und Spirituosen verändern sich durch Kontakt mit Luft.",
+   "spoil": "In Säften und Milchalternativen vergären Hefen und Bakterien nach dem Öffnen den Zucker; dabei entstehen Kohlensäure, saure Gerüche und Fehlgeschmack. Kaffee und Tee verlieren ihre Aromaöle durch Luft, Wärme und Licht. Geöffneter Wein oxidiert und wird langsam zu Essig.",
+   "mistakes": [
+    "Geöffneten Saft oder Pflanzendrink außerhalb des Kühlschranks stehen lassen.",
+    "Direkt aus der Flasche trinken, wodurch Bakterien hineingelangen.",
+    "Kaffee in einem durchsichtigen Glas auf der Arbeitsfläche aufbewahren.",
+    "Geöffneten Wein ohne Korken bei Zimmertemperatur aufbewahren."
+   ],
+   "buying": [
+    "Prüfen Sie, ob Versiegelungen und Verschlüsse unversehrt sind.",
+    "Kaufen Sie frische Säfte aus dem Kühlregal.",
+    "Kaufen Sie Kaffee in Mengen, die Sie innerhalb weniger Wochen nach dem Öffnen verbrauchen."
+   ],
+   "useUp": [
+    "Frieren Sie Saft in Eiswürfelformen für Smoothies ein.",
+    "Verwenden Sie übrigen Wein zum Kochen oder frieren Sie ihn für Saucen ein.",
+    "Verarbeiten Sie übrigen Kaffee zu Eiskaffee oder verwenden Sie ihn beim Backen."
+   ],
+   "container": "die fest verschlossene Originalverpackung, nach dem Öffnen im Kühlschrank"
+  },
+  "frozen": {
+   "about": "Tiefkühlware ist sicher, solange sie bei −18 °C (0 °F) durchgehend gefroren bleibt; die Zeiten für den Gefrierschrank betreffen die Qualität, nicht die Sicherheit. Über Monate trocknen Gefrierbrand und Eiskristalle das Lebensmittel langsam aus und machen es zäh. Entscheidend ist, dass es vom Laden bis nach Hause gefroren bleibt und geöffnete Beutel gut wieder verschlossen werden.",
+   "spoil": "Einfrieren stoppt das Bakterienwachstum, tötet Bakterien aber nicht ab. Wenn das Lebensmittel auftaut, werden sie wieder aktiv. Gefrierbrand – die trockenen, grauweißen Stellen, die man manchmal sieht – entsteht, wenn Luft an das Lebensmittel gelangt und Feuchtigkeit von der Oberfläche verdunstet: Er ist unbedenklich, aber trocken und geschmacklos.",
+   "mistakes": [
+    "Es auf dem Heimweg antauen lassen und wieder einfrieren.",
+    "Geöffnete Beutel nicht verschließen, was Gefrierbrand verursacht.",
+    "Den Gefrierschrank so überladen, dass die kalte Luft nicht zirkulieren kann.",
+    "Es auf der Arbeitsfläche auftauen."
+   ],
+   "buying": [
+    "Nehmen Sie Tiefkühlware zuletzt und packen Sie sie zusammen ein, damit sie kalt bleibt.",
+    "Meiden Sie Packungen mit starkem Reif oder Eiskristallen im Inneren – ein Zeichen für Antauen und erneutes Einfrieren.",
+    "Prüfen Sie, dass Schachteln nicht zerdrückt oder eingerissen sind."
+   ],
+   "useUp": [
+    "Stellen Sie ältere Packungen nach vorn.",
+    "Führen Sie an der Gefrierschranktür eine Liste mit dem Inhalt.",
+    "Garen Sie direkt aus dem gefrorenen Zustand, wenn die Packung es erlaubt."
+   ],
+   "container": "die fest wieder verschlossene Originalverpackung oder einen Gefrierbeutel, aus dem die Luft herausgedrückt wurde"
+  },
+  "baby": {
+   "about": "Für Babynahrung, Säuglingsmilch und Muttermilch gelten strengere Lagerregeln als für die meisten Lebensmittel, weil Babys anfälliger für lebensmittelbedingte Erkrankungen sind. Halten Sie sich immer zuerst an das Etikett und den Rat Ihrer Kinderärztin oder Ihres Kinderarztes. Sobald eine Mahlzeit begonnen hat, gelangen Bakterien aus dem Mund des Babys in die Flasche oder das Glas; Reste sollten deshalb nicht aufbewahrt werden.",
+   "spoil": "Zubereitete Säuglingsmilch und geöffnete Babynahrung sind feucht, nährstoffreich und säurearm – ideale Bedingungen für Bakterien. Pulvermilch ist nicht steril und kann Cronobacter enthalten; deshalb ist zubereitete Säuglingsmilch nur kurz haltbar, und die Hygiene von Wasser und Zubehör ist wichtig.",
+   "mistakes": [
+    "Eine halb leere Flasche oder ein angebrochenes Glas für die nächste Mahlzeit aufheben.",
+    "Direkt aus dem Glas füttern und den Rest in den Kühlschrank stellen.",
+    "Fläschchen in der Mikrowelle erwärmen, wodurch heiße Stellen entstehen.",
+    "Zubereitete Säuglingsmilch länger bei Zimmertemperatur stehen lassen, als das Etikett erlaubt."
+   ],
+   "buying": [
+    "Prüfen Sie, dass Glasdeckel dicht sind und beim Öffnen ploppen.",
+    "Kaufen Sie niemals beschädigte, aufgeblähte oder undichte Dosen mit Säuglingsnahrung.",
+    "Prüfen Sie das Verbrauchsdatum auf Säuglingsnahrung; in den USA ist es ein bundesweit vorgeschriebenes Sicherheitsdatum."
+   ],
+   "useUp": [
+    "Füllen Sie Portionen mit einem Löffel in eine Schüssel, statt aus dem Glas zu füttern.",
+    "Bereiten Sie Säuglingsmilch immer nur für eine Mahlzeit zu.",
+    "Frieren Sie selbst gemachte Breie in Eiswürfelformen ein und tauen Sie jeweils eine Portion auf."
+   ],
+   "container": "den Originalbehälter oder saubere, verschlossene Aufbewahrungsflaschen, beschriftet mit Datum und Uhrzeit"
+  }
+ },
+ "zoneNames": {
+  "door": "Tür",
+  "top": "Oberes Fach",
+  "middle": "Mittleres Fach",
+  "bottom": "Unteres Fach",
+  "crisper": "Gemüsefach",
+  "pantry": "Vorratsschrank",
+  "freezer": "Gefrierfach"
+ },
+ "fifo": "Haltbare Lebensmittel halten am längsten, wenn Sie sie rotieren. Stellen Sie neue Einkäufe hinter ältere, damit das Älteste zuerst verbraucht wird, schreiben Sie das Öffnungsdatum auf den Deckel und prüfen Sie den Vorratsschrank alle paar Monate auf Produkte, deren Mindesthaltbarkeitsdatum bald erreicht oder schon überschritten ist."
+}

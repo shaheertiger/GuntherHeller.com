@@ -7,7 +7,9 @@
   "store": "At the store",
   "waste": "Less waste",
   "qa": "Question by question",
-  "dates": "Date labels"
+  "dates": "Date labels",
+  "where": "Where to keep it",
+  "best": "Best spot"
  },
  "h": {
   "about": "About {o}",
@@ -19,7 +21,9 @@
   "buying": "How to pick it fresh",
   "useUp": "Use it up in time",
   "qa": "Shelf life, question by question",
-  "dates": "Expiration dates, decoded"
+  "dates": "Expiration dates, decoded",
+  "where": "Where to store it",
+  "fifo": "First in, first out"
  },
  "intro": {
   "category": "This food belongs to our “{cat}” category.",
@@ -73,7 +77,18 @@
    "How long does unopened {q} last?",
    "How long do unopened {q} last?"
   ],
-  "unopenedA": "{d}, as long as the seal is intact and it is stored as the label says."
+  "unopenedA": "{d}, as long as the seal is intact and it is stored as the label says.",
+  "pantryQ": [
+   "How long does {q} last in the pantry?",
+   "How long do {q} last in the pantry?"
+  ],
+  "pantryA": "{d} in a cool, dark, dry cupboard, tightly closed. Once opened, check the label: some products then need the fridge.",
+  "expireQ": [
+   "Can {q} expire?",
+   "Can {q} expire?"
+  ],
+  "expireShelf": "Yes, but for a shelf-stable food like this, expiring usually means losing quality rather than becoming dangerous. Flavour, aroma and texture fade over time, especially after opening. If it has been stored cool, dry and tightly closed and shows no mould, off smell or odd colour, it is usually still fine to use.",
+  "expirePerishable": "Yes, and for a perishable food like this the storage time matters more than the printed date. Once it has been in the fridge longer than {d}, or out of the fridge for more than 2 hours, it should be thrown away, even if it looks and smells normal."
  },
  "faq": {
   "tempQ": "What temperature should the fridge be for {o}?",
@@ -435,5 +450,15 @@
    ],
    "container": "the original container or clean, sealed storage bottles, labelled with the date and time"
   }
- }
+ },
+ "zoneNames": {
+  "door": "Door",
+  "top": "Top shelf",
+  "middle": "Middle shelf",
+  "bottom": "Bottom shelf",
+  "crisper": "Crisper drawer",
+  "pantry": "Pantry",
+  "freezer": "Freezer"
+ },
+ "fifo": "Shelf-stable food lasts longest when you rotate it. Put new purchases behind older ones so the oldest gets used first, write the opening date on the lid, and check your cupboard every few months for anything near or past its best-by date."
 }
