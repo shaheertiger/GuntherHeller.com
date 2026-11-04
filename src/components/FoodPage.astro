@@ -23,6 +23,8 @@ import Countdown from "./fun/Countdown.astro";
 import FridgeMap from "./fun/FridgeMap.astro";
 import CompareChart from "./fun/CompareChart.astro";
 import ToolsCta from "./fun/ToolsCta.astro";
+import LongForm from "./LongForm.astro";
+import { faqExtraFor } from "../lib/longform";
 import { modifierQA, thawFor, reheatFor, zoneFor } from "../lib/content";
 import { range } from "../lib/viz";
 import { primaryFridge, fmt, isNum, FOODS } from "../lib/data";
@@ -52,7 +54,7 @@ const crumbs = [
   ...(sub ? [{ name: sub.name, href: url.sub(cat.slug, sub.slug) }] : []),
   { name: f.name },
 ];
-const faq = faqFor(f);
+const faq = [...faqFor(f), ...faqExtraFor(f)];
 const similar = similarFoods(f, 8);
 const dates = datesFor(f);
 const methods = methodsFor(f);
@@ -82,7 +84,7 @@ const lifeOf = (x: Food) => { const s0 = x.states[0]; const d = range(s0.fridge)
 const compare = [f, ...similar.slice(0, 6)].map((x) => ({ x, l: lifeOf(x) })).filter((r) => r.l).map(({ x, l }) => ({ name: x.name, href: x === f ? undefined : url.food(x), days: l!.days, label: l!.label, me: x === f })).sort((a, b) => b.days - a.days);
 
 const toc = [
-  ["answer", "Quick answer"], ["glance", "At a glance"], ["methods", "Storage times by method"], ["where", "Where to store it"], ["qa", "Questions answered"], ["bad", "Signs it has gone bad"], ["freeze", "Can you freeze it?"],
+  ["answer", "Quick answer"], ["glance", "At a glance"], ["about", "About it"], ["methods", "Storage times by method"], ["where", "Where to store it"], ["qa", "Questions answered"], ["bad", "Signs it has gone bad"], ["freeze", "Can you freeze it?"],
   ["leftout", "Left out overnight"], ["dates", "Date labels"], ["store", "How to store it"], ["similar", "Similar foods"], ["faq", "FAQ"],
 ];
 const related = [
@@ -158,6 +160,8 @@ const tools = [
           </section>
         )}
 
+        <LongForm food={f} parts={["about"]} />
+
         <section id="methods" class="mt-8 md:mt-14">
           <SectionHead icon="grid" tint="var(--color-tint-green)" ink="#1b7a55" eyebrow="Every method">{cap1(name)} storage times by method</SectionHead>
           <div class="table-wrap mt-[18px] !rounded-[20px]">
@@ -195,6 +199,8 @@ const tools = [
           <Signs food={f} />
           <p class="mt-3 text-sm"><a href={url.bad(f)} class="link">{does(f)} {name} go bad? Full guide →</a></p>
         </section>
+
+        <LongForm food={f} parts={["spoil", "mistakes"]} />
 
         <section id="freeze" class="mt-8 md:mt-14">
           <SectionHead icon="freezer" tint="var(--color-tint-blue)" ink="#2f5fbf" eyebrow="Freezing">Can you freeze {name}?</SectionHead>
@@ -249,6 +255,8 @@ const tools = [
             <li class="lift soft flex gap-3 p-4 border border-line"><span class="icon-chip" style="background:var(--color-tint-green);color:#1b7a55"><Icon name={TIP_ICONS[i % TIP_ICONS.length]} size={17} /></span><span class="text-[15px] leading-[1.55]">{t}</span></li>
           ))}</ul>
         </section>
+
+        <LongForm food={f} parts={["buying"]} />
 
         {compare.length >= 3 && (
           <section id="compare" class="mt-8 md:mt-14">

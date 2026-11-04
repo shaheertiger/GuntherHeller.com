@@ -18,6 +18,13 @@ import { type Food, type Variant, url, getCategory, similarFoods, lc, does, titl
 import { freezeVerdict, freezeStepsFor, leftOutFor, datesFor, storeTipsFor, signsFor, groupOf, headline } from "../lib/content";
 import { foodGraph } from "../lib/schema";
 import { SITE } from "../lib/site";
+import LongForm from "./LongForm.astro";
+import SectionHead from "./fun/SectionHead.astro";
+import { faqExtraFor, freezeScienceFor, scenariosFor, datesExplained } from "../lib/longform";
+import FridgeMap from "./fun/FridgeMap.astro";
+import { zoneFor } from "../lib/content";
+import { methodsFor } from "../lib/content";
+import { modifierQA } from "../lib/content";
 
 interface Props { food: Food; variant: Exclude<Variant, "food"> }
 const { food: f, variant } = Astro.props;
@@ -87,6 +94,8 @@ if (variant === "freeze") {
     [`How long ${does(f).toLowerCase()} ${name} last in the fridge?`, `${c0.fridge.value} at 40°F (4°C) or below, if refrigerated promptly.`],
   ];
 }
+faq = [...faq, ...faqExtraFor(f)];
+const qa = modifierQA(f);
 if (description.length > 155) description = description.slice(0, 154).replace(/\s+\S*$/, "") + "…";
 
 const crumbs = [{ name: "Home", href: "/" }, { name: cat.name, href: url.category(cat.slug) }, { name: f.name, href: url.food(f) }, { name: h1.replace(/\?$/, "") }];
@@ -207,7 +216,51 @@ const pill = (t: string) => (t === "yes" || t === "keep" ? "pill-yes" : t === "n
           </>
         )}
 
-        <AdSlot w={300} h={250} class="lg:hidden mt-8" id="variant-mobile-1" />
+        {variant === "freeze" && (
+          <section id="freeze-science" class="mt-8 md:mt-12">
+            <SectionHead icon="freezer" tint="var(--color-tint-blue)" ink="#2f5fbf" eyebrow="Inside the freezer">{`What freezing does to ${name}`}</SectionHead>
+            <p class="soft mt-[18px] p-4 md:p-5 bg-[#f4f7fd] text-[16px] leading-[1.7] text-[#3f3f46]">{freezeScienceFor(f)}</p>
+          </section>
+        )}
+        {variant === "leftOut" && (
+          <section id="scenarios" class="mt-8 md:mt-12">
+            <SectionHead icon="clock" tint="var(--color-tint-amber)" ink="#8a5a0c" eyebrow="Real life">{`${cap1(name)} left out: common situations`}</SectionHead>
+            <div class="grid sm:grid-cols-2 gap-3 mt-[18px]">{scenariosFor(f).map(([t, d]) => <div class="soft p-4 border border-line"><h3 class="!text-base !tracking-normal">{t}</h3><p class="text-[15px] text-[#3f3f46] mt-1">{d}</p></div>)}</div>
+          </section>
+        )}
+
+        <section id="methods" class="mt-8 md:mt-12">
+          <SectionHead icon="grid" tint="var(--color-tint-green)" ink="#1b7a55" eyebrow="Every method">{`${cap1(name)} storage times by method`}</SectionHead>
+          <div class="table-wrap mt-[18px] !rounded-[20px]">
+            <table class="data-table stack">
+              <thead><tr><th>Method</th><th>Duration</th><th>Temperature</th><th>Container</th><th>Notes</th></tr></thead>
+              <tbody>{methodsFor(f).map((m) => <tr><td class="font-medium full">{m.method}</td><td data-label="Duration">{m.duration}</td><td class="text-muted" data-label="Temperature">{m.temp}</td><td class="text-muted" data-label="Container">{m.container}</td><td class="text-muted full" data-label="Notes">{m.note}</td></tr>)}</tbody>
+            </table>
+          </div>
+        </section>
+
+        <LongForm food={f} />
+
+        <section id="where" class="mt-8 md:mt-12">
+          <SectionHead icon="fridge" tint="var(--color-tint-green)" ink="#1b7a55" eyebrow="Where to keep it">{`Where to store ${name}`}</SectionHead>
+          <FridgeMap zone={zoneFor(f).zone} why={zoneFor(f).why} names={{ door: "Door", top: "Top shelf", middle: "Middle shelf", bottom: "Bottom shelf", crisper: "Crisper drawer", pantry: "Pantry", freezer: "Freezer" }} />
+        </section>
+
+        {variant !== "leftOut" && (
+          <section id="dates-explained" class="mt-8 md:mt-12">
+            <SectionHead icon="calendar" tint="var(--color-tint-lilac)" ink="#4a3bd2" eyebrow="Date labels">Expiration dates, decoded</SectionHead>
+            <div class="mt-[18px] grid gap-3 text-[16px] leading-[1.7] text-[#3f3f46]">{datesExplained(f).map((p) => <p>{p}</p>)}</div>
+          </section>
+        )}
+
+        <section id="qa" class="mt-8 md:mt-12">
+          <SectionHead icon="question" tint="var(--color-tint-blue)" ink="#2f5fbf" eyebrow="Question by question">{`${cap1(name)} shelf life, answered`}</SectionHead>
+          <div class="grid gap-3 mt-[18px]">
+            {qa.map(([q, a]) => (
+              <div class="soft p-4 md:p-5 bg-[#f7f8fb] border border-[#e8ecf5]"><h3 class="!text-[17px] !tracking-[-0.01em]">{q}</h3><p class="text-[15px] text-[#3f3f46] mt-1.5">{a}</p></div>
+            ))}
+          </div>
+        </section>
 
         <section class="mt-8 md:mt-12">
           <h2 class="h2-food">More about {name}</h2>

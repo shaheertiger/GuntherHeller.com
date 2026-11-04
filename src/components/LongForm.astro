@@ -1,0 +1,44 @@
+---
+/** Long-form sections shared by food and variant pages. */
+import SectionHead from "./fun/SectionHead.astro";
+import Icon from "./fun/Icon.astro";
+import { type Food, lc, cap1 } from "../lib/data";
+import { aboutFor, spoilFor, mistakesFor, buyingFor, useUpFor } from "../lib/longform";
+interface Props { food: Food; parts?: ("about" | "spoil" | "mistakes" | "buying")[] }
+const { food: f, parts = ["about", "spoil", "mistakes", "buying"] } = Astro.props;
+const name = lc(f);
+---
+{parts.includes("about") && (
+  <section id="about" class="mt-8 md:mt-14">
+    <SectionHead icon="leaf" tint="var(--color-tint-green)" ink="#1b7a55" eyebrow="The basics">{`About ${name}`}</SectionHead>
+    <div class="mt-[18px] grid gap-3 text-[16px] leading-[1.7] text-[#3f3f46]">{aboutFor(f).map((p) => <p>{p}</p>)}</div>
+  </section>
+)}
+{parts.includes("spoil") && (
+  <section id="why" class="mt-8 md:mt-14">
+    <SectionHead icon="spark" tint="var(--color-tint-pink)" ink="#b83269" eyebrow="The science">{`Why ${name} ${f.plural ? "go" : "goes"} bad`}</SectionHead>
+    <p class="soft mt-[18px] p-4 md:p-5 bg-[#fdf6f9] text-[16px] leading-[1.7] text-[#3f3f46]">{spoilFor(f)}</p>
+  </section>
+)}
+{parts.includes("mistakes") && (
+  <section id="mistakes" class="mt-8 md:mt-14">
+    <SectionHead icon="warn" tint="var(--color-tint-red)" ink="#a5281b" eyebrow="Avoid these">{`Common ${name} storage mistakes`}</SectionHead>
+    <ul class="grid gap-2.5 list-none p-0 mt-[18px]">
+      {mistakesFor(f).map((m) => <li class="soft flex gap-3 p-4 border border-line"><span class="icon-chip !w-7 !h-7 !rounded-full" style="background:var(--color-tint-red);color:#a5281b"><Icon name="warn" size={14} /></span><span class="text-[15px] leading-[1.55]">{m}</span></li>)}
+    </ul>
+  </section>
+)}
+{parts.includes("buying") && (
+  <section id="buying" class="mt-8 md:mt-14 grid md:grid-cols-2 gap-4">
+    <div class="soft p-5" style="background:var(--color-tint-blue)">
+      <div class="text-[11px] font-bold uppercase tracking-[.08em] text-[#2f5fbf]">At the store</div>
+      <h2 class="!text-[22px] !tracking-[-0.02em] mt-1">{`How to pick fresh ${name}`}</h2>
+      <ul class="prose-list !text-[15px]">{buyingFor(f).map((b) => <li>{b}</li>)}</ul>
+    </div>
+    <div class="soft p-5" style="background:var(--color-tint-amber)">
+      <div class="text-[11px] font-bold uppercase tracking-[.08em] text-[#8a5a0c]">Less waste</div>
+      <h2 class="!text-[22px] !tracking-[-0.02em] mt-1">{`${cap1(name)}: use ${f.plural ? "them" : "it"} up in time`}</h2>
+      <ul class="prose-list !text-[15px]">{useUpFor(f).map((b) => <li>{b}</li>)}</ul>
+    </div>
+  </section>
+)}

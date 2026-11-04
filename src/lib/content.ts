@@ -339,11 +339,11 @@ export type Zone = "door" | "top" | "middle" | "bottom" | "crisper" | "pantry" |
 export function zoneFor(f: Food): { zone: Zone; why: string } {
   const g = groupOf(f);
   const s = f.states[0];
-  if (g === "frozen") return { zone: "freezer", why: "Keep it frozen at -18°C (0°F) until you cook it." };
-  if (!s.fridge && s.pantry) return { zone: "pantry", why: "It is shelf-stable: a cool, dark, dry cupboard is best. The fridge is not needed." };
+  if (g === "frozen") return { zone: "freezer", why: "Keep it frozen solid at -18°C (0°F) until you are ready to cook." };
+  if (!s.fridge && s.pantry) return { zone: "pantry", why: "A cool, dark, dry cupboard is best; the fridge is not needed." };
   if (g === "meat" || g === "seafood") return { zone: "bottom", why: "Raw meat and seafood go on the bottom shelf, in a dish, so juices can never drip onto ready-to-eat food." };
   if (g === "produce" || g === "leafy") return { zone: "crisper", why: "The crisper drawer holds humidity, which keeps produce from wilting." };
   if (g === "condiment" || g === "drink") return { zone: "door", why: "The door is the warmest part of the fridge, fine for condiments and drinks that resist spoilage." };
-  if (g === "dairy" || g === "eggs" || g === "cheese" || g === "fat") return { zone: "middle", why: "Keep it on a middle shelf, not the door: the door warms up every time it opens." };
+  if (g === "dairy" || g === "eggs" || g === "cheese" || g === "fat") return { zone: "middle", why: "A middle shelf is best, not the door: the door warms up every time it opens." };
   return { zone: "top", why: "Ready-to-eat and cooked food goes on the upper shelves, above anything raw." };
 }

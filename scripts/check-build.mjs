@@ -90,6 +90,22 @@ for (const file of pages) {
 }
 for (const f of ["favicon.ico", "favicon.svg", "favicon-96x96.png", "apple-touch-icon.png", "site.webmanifest", "web-app-manifest-512x512.png"]) if (!existsSync(join(DIST, f))) errors.push(`missing ${f}`);
 
+// Word count: every English food and variant page carries at least 1,200 words of main content.
+const MIN_WORDS = 1200;
+const wordsIn = (html) => {
+  const main = (html.match(/<main[\s\S]*?<\/main>/) ?? [html])[0].replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<svg[\s\S]*?<\/svg>/g, "");
+  return (main.replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/gi, " ").match(/[A-Za-zÀ-ÿ0-9][\w'’–-]*/g) ?? []).length;
+};
+let thin = 0, minSeen = Infinity;
+for (const file of pages) {
+  const rel = "/" + relative(DIST, file).replace(/index\.html$/, "");
+  if (!/^\/(how-long-does-.*-last|can-you-freeze-.+|does-.+-go-bad|.+-left-out-overnight)\/$/.test(rel)) continue;
+  const n = wordsIn(readFileSync(file, "utf8"));
+  minSeen = Math.min(minSeen, n);
+  if (n < MIN_WORDS) { thin++; if (thin <= 10) errors.push(`${rel}: only ${n} words (min ${MIN_WORDS})`); }
+}
+if (thin > 10) errors.push(`…${thin - 10} more pages under ${MIN_WORDS} words`);
+
 // Acceptance test (handoff §3): cooked rice.
 const rice = readFileSync(join(DIST, "how-long-does-cooked-rice-last/index.html"), "utf8");
 const expectTitle = "How Long Does Cooked Rice Last? 4–6 Days in the Fridge [Freezer 6 Months]";
@@ -100,7 +116,7 @@ for (const f of ["robots.txt", "sitemap.xml", "og.png", "404.html", "search-inde
 
 const css = files.filter((f) => f.endsWith(".css")).reduce((n, f) => n + statSync(f).size, 0);
 const inlineCss = (rice.match(/<style[^>]*>([\s\S]*?)<\/style>/g) ?? []).join("").length;
-console.log(`check-build: ${pages.length} pages, ${titles.size} unique titles, ${clusters} hreflang pages, ${listed.size} sitemap URLs, CSS ${(Math.max(css, inlineCss) / 1024).toFixed(1)} KB`);
+console.log(`check-build: ${pages.length} pages, ${titles.size} unique titles, ${clusters} hreflang pages, ${listed.size} sitemap URLs, shortest food page ${minSeen} words, CSS ${(Math.max(css, inlineCss) / 1024).toFixed(1)} KB`);
 if (Math.max(css, inlineCss) > 60 * 1024) errors.push("CSS over the 60 KB budget");
 warn.slice(0, 10).forEach((w) => console.warn("warn:", w));
 if (warn.length > 10) console.warn(`warn: …and ${warn.length - 10} more`);
