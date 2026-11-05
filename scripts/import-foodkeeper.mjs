@@ -207,7 +207,7 @@ export function slugify(s) {
     .toLowerCase().replace(/&/g, " and ").replace(/['’"“”]/g, "")
     .split(/[^a-z0-9]+/).filter((w) => w && !STOP.has(w)).join("-");
 }
-const SINGULAR = new Set(["molasses", "hummus", "asparagus", "couscous", "citrus", "swiss", "grits?", "half and half", "jerky", "bratwurst"]);
+const SINGULAR = new Set(["molasses", "hummus", "asparagus", "couscous", "citrus", "swiss", "grits?", "half and half", "jerky", "bratwurst", "mac and cheese"]);
 function isPlural(name) {
   const n = name.toLowerCase();
   if (SINGULAR.has(n)) return false;
@@ -365,6 +365,7 @@ for (const d of overrides.derived) {
     slug: d.slug,
     name: d.name,
     plural: isPlural(d.name),
+    keywords: [d.name.toLowerCase()],
     aliases: overrides.aliases[d.slug] ?? [],
     category: d.category ?? base.category,
     subcategory: d.subcategory ?? base.subcategory,

@@ -4522,5 +4522,815 @@
 "en": "Fruit punch",
 "category": "beverages",
 "usda": "Fruit Juice in cartons, fruit drinks, punch"
+},
+{
+"slug": "deviled-eggs",
+"en": "Deviled eggs",
+"category": "dairy-eggs",
+"usda": "Egg dishes"
+},
+{
+"slug": "french-onion-dip",
+"en": "French onion dip",
+"category": "dairy-eggs",
+"usda": "Dips (sour cream based)"
+},
+{
+"slug": "frittata",
+"en": "Frittata",
+"category": "dairy-eggs",
+"usda": "Egg dishes"
+},
+{
+"slug": "omelette",
+"en": "Omelette",
+"category": "dairy-eggs",
+"usda": "Egg dishes"
+},
+{
+"slug": "scrambled-eggs",
+"en": "Scrambled eggs",
+"category": "dairy-eggs",
+"usda": "Egg dishes"
+},
+{
+"slug": "breakfast-sausage",
+"en": "Breakfast sausage",
+"category": "meat",
+"usda": "Sausage (raw bulk type or patties)"
+},
+{
+"slug": "filet-mignon",
+"en": "Filet mignon",
+"category": "meat",
+"usda": "Beef (steaks)"
+},
+{
+"slug": "flank-steak",
+"en": "Flank steak",
+"category": "meat",
+"usda": "Beef (steaks)"
+},
+{
+"slug": "italian-sausage",
+"en": "Italian sausage",
+"category": "meat",
+"usda": "Sausage (raw bulk type or patties)"
+},
+{
+"slug": "new-york-strip-steak",
+"en": "New York strip steak",
+"category": "meat",
+"usda": "Beef (steaks)"
+},
+{
+"slug": "ribeye-steak",
+"en": "Ribeye steak",
+"category": "meat",
+"usda": "Beef (steaks)"
+},
+{
+"slug": "sirloin-steak",
+"en": "Sirloin steak",
+"category": "meat",
+"usda": "Beef (steaks)"
+},
+{
+"slug": "t-bone-steak",
+"en": "T-bone steak",
+"category": "meat",
+"usda": "Beef (steaks)"
+},
+{
+"slug": "chicken-drumsticks",
+"en": "Chicken drumsticks",
+"category": "poultry",
+"usda": "Chicken parts (legs or thighs)"
+},
+{
+"slug": "chicken-wings",
+"en": "Chicken wings",
+"category": "poultry",
+"usda": "Cooked poultry dishes"
+},
+{
+"slug": "cooked-turkey",
+"en": "Cooked turkey",
+"category": "poultry",
+"usda": "Cooked poultry dishes"
+},
+{
+"slug": "cooked-crab",
+"en": "Cooked crab",
+"category": "seafood",
+"usda": "Cooked shellfish (all)"
+},
+{
+"slug": "cooked-salmon",
+"en": "Cooked salmon",
+"category": "seafood",
+"usda": "Cooked fish (all)"
+},
+{
+"slug": "cooked-shrimp",
+"en": "Cooked shrimp",
+"category": "seafood",
+"usda": "Cooked shellfish (all)"
+},
+{
+"slug": "baked-potatoes",
+"en": "Baked potatoes",
+"category": "leftovers-deli",
+"usda": "Leftovers (without meat, fish, poultry, or egg such as cooked vegitables, rice, or potatoes)"
+},
+{
+"slug": "baked-ziti",
+"en": "Baked ziti",
+"category": "leftovers-deli",
+"usda": "Casseroles"
+},
+{
+"slug": "beef-stew",
+"en": "Beef stew",
+"category": "leftovers-deli",
+"usda": "Soup, stews"
+},
+{
+"slug": "bologna",
+"en": "Bologna",
+"category": "leftovers-deli",
+"usda": "Luncheon meat or poultry (pre-packaged)"
+},
+{
+"slug": "burritos",
+"en": "Burritos",
+"category": "leftovers-deli",
+"usda": "Leftovers (with meat, fish, poultry, or egg)"
+},
+{
+"slug": "chicken-noodle-soup",
+"en": "Chicken noodle soup",
+"category": "leftovers-deli",
+"usda": "Soup, stews"
+},
+{
+"slug": "chili",
+"en": "Chili",
+"category": "leftovers-deli",
+"usda": "Soup, stews"
+},
+{
+"slug": "chinese-takeout",
+"en": "Chinese takeout",
+"category": "leftovers-deli",
+"usda": "Leftovers (with meat, fish, poultry, or egg)"
+},
+{
+"slug": "cooked-beans",
+"en": "Cooked beans",
+"category": "leftovers-deli",
+"usda": "Leftovers (without meat, fish, poultry, or egg such as cooked vegitables, rice, or potatoes)"
+},
+{
+"slug": "cooked-ground-beef",
+"en": "Cooked ground beef",
+"category": "leftovers-deli",
+"usda": "Leftovers (with meat, fish, poultry, or egg)"
+},
+{
+"slug": "cooked-oatmeal",
+"en": "Cooked oatmeal",
+"category": "leftovers-deli",
+"usda": "Leftovers (without meat, fish, poultry, or egg such as cooked vegitables, rice, or potatoes)"
+},
+{
+"slug": "cooked-sausage",
+"en": "Cooked sausage",
+"category": "leftovers-deli",
+"usda": "Leftovers (with meat, fish, poultry, or egg)"
+},
+{
+"slug": "cooked-steak",
+"en": "Cooked steak",
+"category": "leftovers-deli",
+"usda": "Leftovers (with meat, fish, poultry, or egg)"
+},
+{
+"slug": "cooked-vegetables",
+"en": "Cooked vegetables",
+"category": "leftovers-deli",
+"usda": "Leftovers (without meat, fish, poultry, or egg such as cooked vegitables, rice, or potatoes)"
+},
+{
+"slug": "curry",
+"en": "Curry",
+"category": "leftovers-deli",
+"usda": "Leftovers (with meat, fish, poultry, or egg)"
+},
+{
+"slug": "deli-roast-beef",
+"en": "Deli roast beef",
+"category": "leftovers-deli",
+"usda": "Luncheon meat or poultry (store-sliced)"
+},
+{
+"slug": "enchiladas",
+"en": "Enchiladas",
+"category": "leftovers-deli",
+"usda": "Casseroles"
+},
+{
+"slug": "fried-rice",
+"en": "Fried rice",
+"category": "leftovers-deli",
+"usda": "Leftovers (with meat, fish, poultry, or egg)"
+},
+{
+"slug": "hamburgers",
+"en": "Hamburgers",
+"category": "leftovers-deli",
+"usda": "Leftovers (with meat, fish, poultry, or egg)"
+},
+{
+"slug": "lasagna",
+"en": "Lasagna",
+"category": "leftovers-deli",
+"usda": "Casseroles"
+},
+{
+"slug": "mac-and-cheese",
+"en": "Mac and cheese",
+"category": "leftovers-deli",
+"usda": "Casseroles"
+},
+{
+"slug": "meatballs",
+"en": "Meatballs",
+"category": "leftovers-deli",
+"usda": "Leftovers (with meat, fish, poultry, or egg)"
+},
+{
+"slug": "meatloaf",
+"en": "Meatloaf",
+"category": "leftovers-deli",
+"usda": "Leftovers (with meat, fish, poultry, or egg)"
+},
+{
+"slug": "pot-roast",
+"en": "Pot roast",
+"category": "leftovers-deli",
+"usda": "Leftovers (with meat, fish, poultry, or egg)"
+},
+{
+"slug": "pulled-pork",
+"en": "Pulled pork",
+"category": "leftovers-deli",
+"usda": "Leftovers (with meat, fish, poultry, or egg)"
+},
+{
+"slug": "roasted-vegetables",
+"en": "Roasted vegetables",
+"category": "leftovers-deli",
+"usda": "Leftovers (without meat, fish, poultry, or egg such as cooked vegitables, rice, or potatoes)"
+},
+{
+"slug": "salmon-salad",
+"en": "Salmon salad",
+"category": "leftovers-deli",
+"usda": "Seafood salads (tuna salad, shrimp salad, salmon salad, mixed seafood salad, etc.)"
+},
+{
+"slug": "shepherd-s-pie",
+"en": "Shepherd's pie",
+"category": "leftovers-deli",
+"usda": "Casseroles"
+},
+{
+"slug": "shrimp-salad",
+"en": "Shrimp salad",
+"category": "leftovers-deli",
+"usda": "Seafood salads (tuna salad, shrimp salad, salmon salad, mixed seafood salad, etc.)"
+},
+{
+"slug": "spaghetti-and-meatballs",
+"en": "Spaghetti and meatballs",
+"category": "leftovers-deli",
+"usda": "Leftovers (with meat, fish, poultry, or egg)"
+},
+{
+"slug": "stir-fry",
+"en": "Stir-fry",
+"category": "leftovers-deli",
+"usda": "Leftovers (with meat, fish, poultry, or egg)"
+},
+{
+"slug": "taco-meat",
+"en": "Taco meat",
+"category": "leftovers-deli",
+"usda": "Leftovers (with meat, fish, poultry, or egg)"
+},
+{
+"slug": "casaba-melon",
+"en": "Casaba melon",
+"category": "fruits",
+"usda": "Papaya, mango, feijoa, passionfruit, casaha melon"
+},
+{
+"slug": "acorn-squash",
+"en": "Acorn squash",
+"category": "vegetables",
+"usda": "Squash (winter)"
+},
+{
+"slug": "baby-spinach",
+"en": "Baby spinach",
+"category": "vegetables",
+"usda": "Lettuce (leaf, spinach)"
+},
+{
+"slug": "butter-lettuce",
+"en": "Butter lettuce",
+"category": "vegetables",
+"usda": "Lettuce (leaf, spinach)"
+},
+{
+"slug": "butternut-squash",
+"en": "Butternut squash",
+"category": "vegetables",
+"usda": "Squash (winter)"
+},
+{
+"slug": "collard-greens",
+"en": "Collard greens",
+"category": "vegetables",
+"usda": "Greens"
+},
+{
+"slug": "dill",
+"en": "Dill",
+"category": "vegetables",
+"usda": "Herbs"
+},
+{
+"slug": "jalapenos",
+"en": "Jalapeños",
+"category": "vegetables",
+"usda": "Hot peppers"
+},
+{
+"slug": "mustard-greens",
+"en": "Mustard greens",
+"category": "vegetables",
+"usda": "Greens"
+},
+{
+"slug": "red-onions",
+"en": "Red onions",
+"category": "vegetables",
+"usda": "Onions (yellow, white, red, etc.)"
+},
+{
+"slug": "red-potatoes",
+"en": "Red potatoes",
+"category": "vegetables",
+"usda": "Potatoes"
+},
+{
+"slug": "russet-potatoes",
+"en": "Russet potatoes",
+"category": "vegetables",
+"usda": "Potatoes"
+},
+{
+"slug": "sage",
+"en": "Sage",
+"category": "vegetables",
+"usda": "Herbs"
+},
+{
+"slug": "tarragon",
+"en": "Tarragon",
+"category": "vegetables",
+"usda": "Herbs"
+},
+{
+"slug": "turnip-greens",
+"en": "Turnip greens",
+"category": "vegetables",
+"usda": "Greens"
+},
+{
+"slug": "white-onions",
+"en": "White onions",
+"category": "vegetables",
+"usda": "Onions (yellow, white, red, etc.)"
+},
+{
+"slug": "yellow-onions",
+"en": "Yellow onions",
+"category": "vegetables",
+"usda": "Onions (yellow, white, red, etc.)"
+},
+{
+"slug": "basmati-rice",
+"en": "Basmati rice",
+"category": "grains-beans-pasta",
+"usda": "Rice (white or wild)"
+},
+{
+"slug": "jasmine-rice",
+"en": "Jasmine rice",
+"category": "grains-beans-pasta",
+"usda": "Rice (white or wild)"
+},
+{
+"slug": "macaroni",
+"en": "Macaroni",
+"category": "grains-beans-pasta",
+"usda": "Pasta (dry, without eggs)"
+},
+{
+"slug": "penne",
+"en": "Penne",
+"category": "grains-beans-pasta",
+"usda": "Pasta (dry, without eggs)"
+},
+{
+"slug": "spaghetti",
+"en": "Spaghetti",
+"category": "grains-beans-pasta",
+"usda": "Pasta (dry, without eggs)"
+},
+{
+"slug": "wild-rice",
+"en": "Wild rice",
+"category": "grains-beans-pasta",
+"usda": "Rice (white or wild)"
+},
+{
+"slug": "apricot-pie",
+"en": "Apricot pie",
+"category": "baked-goods",
+"usda": "Fruit pies (apple, peach, blueberry, apricot, cherry, blackberry)"
+},
+{
+"slug": "bay-leaves",
+"en": "Bay leaves",
+"category": "baked-goods",
+"usda": "Herbs (dried)"
+},
+{
+"slug": "blackberry-pie",
+"en": "Blackberry pie",
+"category": "baked-goods",
+"usda": "Fruit pies (apple, peach, blueberry, apricot, cherry, blackberry)"
+},
+{
+"slug": "butterscotch-pie",
+"en": "Butterscotch pie",
+"category": "baked-goods",
+"usda": "Cream pies (banana cream, coconut cream, butterscotch)"
+},
+{
+"slug": "cayenne-pepper",
+"en": "Cayenne pepper",
+"category": "baked-goods",
+"usda": "Spice/spices (ground)"
+},
+{
+"slug": "chocolate-chiffon-pie",
+"en": "Chocolate chiffon pie",
+"category": "baked-goods",
+"usda": "Chiffon pies (chocolate, lemon)"
+},
+{
+"slug": "cupcakes",
+"en": "Cupcakes",
+"category": "baked-goods",
+"usda": "Commercial cakes and muffins"
+},
+{
+"slug": "dried-oregano",
+"en": "Dried oregano",
+"category": "baked-goods",
+"usda": "Herbs (dried)"
+},
+{
+"slug": "dried-parsley",
+"en": "Dried parsley",
+"category": "baked-goods",
+"usda": "Herbs (dried)"
+},
+{
+"slug": "dried-thyme",
+"en": "Dried thyme",
+"category": "baked-goods",
+"usda": "Herbs (dried)"
+},
+{
+"slug": "english-muffins",
+"en": "English muffins",
+"category": "baked-goods",
+"usda": "Commercial bread products (including pan breads, flat breads, rolls, and buns)"
+},
+{
+"slug": "ground-ginger",
+"en": "Ground ginger",
+"category": "baked-goods",
+"usda": "Spice/spices (ground)"
+},
+{
+"slug": "hot-dog-buns",
+"en": "Hot dog buns",
+"category": "baked-goods",
+"usda": "Commercial bread products (including pan breads, flat breads, rolls, and buns)"
+},
+{
+"slug": "lemon-chiffon-pie",
+"en": "Lemon chiffon pie",
+"category": "baked-goods",
+"usda": "Chiffon pies (chocolate, lemon)"
+},
+{
+"slug": "naan",
+"en": "Naan",
+"category": "baked-goods",
+"usda": "Commercial bread products (including pan breads, flat breads, rolls, and buns)"
+},
+{
+"slug": "paprika",
+"en": "Paprika",
+"category": "baked-goods",
+"usda": "Spice/spices (ground)"
+},
+{
+"slug": "pita-bread",
+"en": "Pita bread",
+"category": "baked-goods",
+"usda": "Commercial bread products (including pan breads, flat breads, rolls, and buns)"
+},
+{
+"slug": "turmeric",
+"en": "Turmeric",
+"category": "baked-goods",
+"usda": "Spice/spices (ground)"
+},
+{
+"slug": "vegetable-oil",
+"en": "Vegetable oil",
+"category": "baked-goods",
+"usda": "Oils (olive or vegetable)"
+},
+{
+"slug": "blue-cheese-dressing",
+"en": "Blue cheese dressing",
+"category": "condiments-sauces",
+"usda": "Salad dressing (creamy)"
+},
+{
+"slug": "caesar-dressing",
+"en": "Caesar dressing",
+"category": "condiments-sauces",
+"usda": "Salad dressing (creamy)"
+},
+{
+"slug": "chili-sauce",
+"en": "Chili sauce",
+"category": "condiments-sauces",
+"usda": "Ketchup, cocktail, or chili sauce"
+},
+{
+"slug": "cocktail-sauce",
+"en": "Cocktail sauce",
+"category": "condiments-sauces",
+"usda": "Ketchup, cocktail, or chili sauce"
+},
+{
+"slug": "italian-dressing",
+"en": "Italian dressing",
+"category": "condiments-sauces",
+"usda": "Salad dressing (vinaigrette)"
+},
+{
+"slug": "marinara-sauce",
+"en": "Marinara sauce",
+"category": "condiments-sauces",
+"usda": "Spaghetti sauce (in jars)"
+},
+{
+"slug": "pizza-sauce",
+"en": "Pizza sauce",
+"category": "condiments-sauces",
+"usda": "Tomato sauce (spaghetti, pizza)"
+},
+{
+"slug": "ranch-dressing",
+"en": "Ranch dressing",
+"category": "condiments-sauces",
+"usda": "Salad dressing (creamy)"
+},
+{
+"slug": "taco-sauce",
+"en": "Taco sauce",
+"category": "condiments-sauces",
+"usda": "Salsa (picante and taco sauces)"
+},
+{
+"slug": "teriyaki-sauce",
+"en": "Teriyaki sauce",
+"category": "condiments-sauces",
+"usda": "Soy sauce or teriyaki sauce"
+},
+{
+"slug": "animal-crackers",
+"en": "Animal crackers",
+"category": "pantry-staples",
+"usda": "Graham cracker/animal cracker"
+},
+{
+"slug": "bouillon-cubes",
+"en": "Bouillon cubes",
+"category": "pantry-staples",
+"usda": "Soup mixes (dry bouillon)"
+},
+{
+"slug": "canned-chili",
+"en": "Canned chili",
+"category": "pantry-staples",
+"usda": "Canned goods (low acid such as meat, poultry, fish, gravy, stew, soups, beans, carrots, corn, pasta, peas, potatoes, spinach)"
+},
+{
+"slug": "canned-salmon",
+"en": "Canned salmon",
+"category": "pantry-staples",
+"usda": "Seafood (canned)"
+},
+{
+"slug": "canned-tomatoes",
+"en": "Canned tomatoes",
+"category": "pantry-staples",
+"usda": "Canned goods (high acid such as juices, fruit, pickles, sauerkraut, tomato soup, and foods in vinegar-based sauce)"
+},
+{
+"slug": "dried-apricots",
+"en": "Dried apricots",
+"category": "pantry-staples",
+"usda": "Fruits, dried (raisins, apricots, mangoes, cranberries, etc.)"
+},
+{
+"slug": "dried-cranberries",
+"en": "Dried cranberries",
+"category": "pantry-staples",
+"usda": "Fruits, dried (raisins, apricots, mangoes, cranberries, etc.)"
+},
+{
+"slug": "dried-mango",
+"en": "Dried mango",
+"category": "pantry-staples",
+"usda": "Fruits, dried (raisins, apricots, mangoes, cranberries, etc.)"
+},
+{
+"slug": "graham-crackers",
+"en": "Graham crackers",
+"category": "pantry-staples",
+"usda": "Graham cracker/animal cracker"
+},
+{
+"slug": "prunes",
+"en": "Prunes",
+"category": "pantry-staples",
+"usda": "Fruits, dried (raisins, apricots, mangoes, cranberries, etc.)"
+},
+{
+"slug": "raisins",
+"en": "Raisins",
+"category": "pantry-staples",
+"usda": "Fruits, dried (raisins, apricots, mangoes, cranberries, etc.)"
+},
+{
+"slug": "roasted-almonds",
+"en": "Roasted almonds",
+"category": "pantry-staples",
+"usda": "Roasted nuts (peanuts, cashews, almonds)"
+},
+{
+"slug": "roasted-cashews",
+"en": "Roasted cashews",
+"category": "pantry-staples",
+"usda": "Roasted nuts (peanuts, cashews, almonds)"
+},
+{
+"slug": "roasted-peanuts",
+"en": "Roasted peanuts",
+"category": "pantry-staples",
+"usda": "Roasted nuts (peanuts, cashews, almonds)"
+},
+{
+"slug": "saltine-crackers",
+"en": "Saltine crackers",
+"category": "pantry-staples",
+"usda": "Crackers"
+},
+{
+"slug": "sardines",
+"en": "Sardines",
+"category": "pantry-staples",
+"usda": "Seafood (canned)"
+},
+{
+"slug": "apple-juice",
+"en": "Apple juice",
+"category": "beverages",
+"usda": "Fruit Juice in cartons, fruit drinks, punch"
+},
+{
+"slug": "cranberry-juice",
+"en": "Cranberry juice",
+"category": "beverages",
+"usda": "Fruit Juice in cartons, fruit drinks, punch"
+},
+{
+"slug": "diet-soda",
+"en": "Diet soda",
+"category": "beverages",
+"usda": "Soda (carbonated cola drinks, mixers, diet sodas; bottles or cans)"
+},
+{
+"slug": "grape-juice",
+"en": "Grape juice",
+"category": "beverages",
+"usda": "Fruit Juice in cartons, fruit drinks, punch"
+},
+{
+"slug": "tonic-water",
+"en": "Tonic water",
+"category": "beverages",
+"usda": "Soda (carbonated cola drinks, mixers, diet sodas; bottles or cans)"
+},
+{
+"slug": "french-fries",
+"en": "French fries",
+"category": "frozen-foods",
+"usda": "Frozen potato products (fries, hashbrowns, tater tots)"
+},
+{
+"slug": "frozen-berries",
+"en": "Frozen berries",
+"category": "frozen-foods",
+"usda": "Fruits (such as berries, melons)"
+},
+{
+"slug": "frozen-broccoli",
+"en": "Frozen broccoli",
+"category": "frozen-foods",
+"usda": "Vegetables"
+},
+{
+"slug": "frozen-corn",
+"en": "Frozen corn",
+"category": "frozen-foods",
+"usda": "Vegetables"
+},
+{
+"slug": "frozen-pancakes",
+"en": "Frozen pancakes",
+"category": "frozen-foods",
+"usda": "Pancakes, waffles"
+},
+{
+"slug": "frozen-peas",
+"en": "Frozen peas",
+"category": "frozen-foods",
+"usda": "Vegetables"
+},
+{
+"slug": "frozen-waffles",
+"en": "Frozen waffles",
+"category": "frozen-foods",
+"usda": "Pancakes, waffles"
+},
+{
+"slug": "hash-browns",
+"en": "Hash browns",
+"category": "frozen-foods",
+"usda": "Frozen potato products (fries, hashbrowns, tater tots)"
+},
+{
+"slug": "sherbet",
+"en": "Sherbet",
+"category": "frozen-foods",
+"usda": "Sherbet, sorbet"
+},
+{
+"slug": "sorbet",
+"en": "Sorbet",
+"category": "frozen-foods",
+"usda": "Sherbet, sorbet"
+},
+{
+"slug": "tater-tots",
+"en": "Tater tots",
+"category": "frozen-foods",
+"usda": "Frozen potato products (fries, hashbrowns, tater tots)"
 }
 ]
