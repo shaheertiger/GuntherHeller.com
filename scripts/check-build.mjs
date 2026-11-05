@@ -51,7 +51,9 @@ for (const file of pages) {
     // Allow Vercel Analytics scripts but no other client JS
     // Vercel Analytics uses a <vercel-analytics> custom element and defines it via script
     const hasVercelAnalytics = html.includes('<vercel-analytics');
-    const hasNonJsonLdScript = /<script(?![^>]*application\/ld\+json)/.test(html);
+    // The Google tag (googletagmanager.com, GTM-KMS824N3) in Base.astro is also allowed.
+    const scripts = [...html.matchAll(/<script(?![^>]*application\/ld\+json)[^>]*>([\s\S]*?)<\/script>/g)];
+    const hasNonJsonLdScript = scripts.some(([tag, body]) => !tag.includes("googletagmanager.com/gtm.js?id=GTM-KMS824N3") && !/^\s*window\.dataLayer = window\.dataLayer \|\| \[\];\s*function gtag\(\)\{dataLayer\.push\(arguments\);\}\s*gtag\('js', new Date\(\)\);\s*$/.test(body));
     if (hasNonJsonLdScript && !hasVercelAnalytics) errors.push(`${rel}: food page ships client JS`);
   }
 }
