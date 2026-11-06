@@ -24,6 +24,8 @@ export type Food = {
   extraSource?: { name: string; url: string };
   derivedFrom?: string;
   derivedNote?: string;
+  /** Kept out of older pages' "similar foods" and comparison lists, so adding it leaves those pages unchanged. */
+  notInRelated?: boolean;
   rank: number;
 };
 export type Category = { slug: string; name: string; blurb: string; count: number; subcategories: { slug: string; name: string; count: number }[] };
@@ -133,7 +135,7 @@ export const variantPath = (f: Food, v: Variant) => url[v](f);
 /* ---------------------------------------------------------------- relations */
 export function similarFoods(f: Food, n = 8): Food[] {
   const picked = (contentFor(f).similar ?? []).map(getFood).filter((x): x is Food => !!x && x.slug !== f.slug);
-  const pool = FOODS.filter((x) => x.slug !== f.slug && !picked.includes(x));
+  const pool = FOODS.filter((x) => x.slug !== f.slug && !picked.includes(x) && (!x.notInRelated || f.notInRelated));
   const sameSub = f.subcategory ? pool.filter((x) => x.category === f.category && x.subcategory === f.subcategory) : [];
   const sameKind = pool.filter((x) => x.category === f.category && x.kind === f.kind);
   const sameCat = pool.filter((x) => x.category === f.category);
