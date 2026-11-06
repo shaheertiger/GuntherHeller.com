@@ -6221,5 +6221,222 @@
   "o": "os bolinhos de batata congelados",
   "p": true,
   "s": "bolinho-batata-congelado"
+ },
+ "cooked-bacon": {
+  "n": "Bacon frito",
+  "q": "o bacon frito",
+  "o": "o bacon frito",
+  "p": false,
+  "s": "bacon-frito"
+ },
+ "cooked-beef": {
+  "n": "Carne bovina cozida",
+  "q": "a carne bovina cozida",
+  "o": "a carne bovina cozida",
+  "p": false,
+  "s": "carne-bovina-cozida"
+ },
+ "cooked-pork": {
+  "n": "Carne de porco cozida",
+  "q": "a carne de porco cozida",
+  "o": "a carne de porco cozida",
+  "p": false,
+  "s": "porco-cozido"
+ },
+ "roast-beef": {
+  "n": "Rosbife",
+  "q": "o rosbife",
+  "o": "o rosbife",
+  "p": false,
+  "s": "rosbife"
+ },
+ "cooked-ham": {
+  "n": "Presunto cozido",
+  "q": "o presunto cozido",
+  "o": "o presunto cozido",
+  "p": false,
+  "s": "presunto-cozido"
+ },
+ "tamales": {
+  "n": "Tamales",
+  "q": "os tamales",
+  "o": "os tamales",
+  "p": true,
+  "s": "tamales"
+ },
+ "meat-sauce": {
+  "n": "Molho de carne (bolonhesa)",
+  "q": "o molho de carne",
+  "o": "o molho de carne",
+  "p": false,
+  "s": "molho-carne"
+ },
+ "grilled-chicken": {
+  "n": "Frango grelhado",
+  "q": "o frango grelhado",
+  "o": "o frango grelhado",
+  "p": false,
+  "s": "frango-grelhado"
+ },
+ "shredded-chicken": {
+  "n": "Frango desfiado",
+  "q": "o frango desfiado",
+  "o": "o frango desfiado",
+  "p": false,
+  "s": "frango-desfiado"
+ },
+ "cooked-ground-turkey": {
+  "n": "Peru moído cozido",
+  "q": "o peru moído cozido",
+  "o": "o peru moído cozido",
+  "p": false,
+  "s": "peru-moido-cozido"
+ },
+ "shrimp-cocktail": {
+  "n": "Coquetel de camarão",
+  "q": "o coquetel de camarão",
+  "o": "o coquetel de camarão",
+  "p": false,
+  "s": "coquetel-camarao"
+ },
+ "cooked-potatoes": {
+  "n": "Batatas cozidas",
+  "q": "as batatas cozidas",
+  "o": "as batatas cozidas",
+  "p": true,
+  "s": "batata-cozida"
+ },
+ "cooked-sweet-potatoes": {
+  "n": "Batatas-doces cozidas",
+  "q": "as batatas-doces cozidas",
+  "o": "as batatas-doces cozidas",
+  "p": true,
+  "s": "batata-doce-cozida"
+ },
+ "cooked-broccoli": {
+  "n": "Brócolis cozido",
+  "q": "o brócolis cozido",
+  "o": "o brócolis cozido",
+  "p": false,
+  "s": "brocolis-cozido"
+ },
+ "cooked-mushrooms": {
+  "n": "Cogumelos cozidos",
+  "q": "os cogumelos cozidos",
+  "o": "os cogumelos cozidos",
+  "p": true,
+  "s": "cogumelos-cozidos"
+ },
+ "potato-soup": {
+  "n": "Sopa de batata",
+  "q": "a sopa de batata",
+  "o": "a sopa de batata",
+  "p": false,
+  "s": "sopa-batata"
+ },
+ "lentil-soup": {
+  "n": "Sopa de lentilha",
+  "q": "a sopa de lentilha",
+  "o": "a sopa de lentilha",
+  "p": false,
+  "s": "sopa-lentilha"
+ },
+ "miso-soup": {
+  "n": "Sopa de missô",
+  "q": "a sopa de missô",
+  "o": "a sopa de missô",
+  "p": false,
+  "s": "sopa-misso"
+ },
+ "pho": {
+  "n": "Pho",
+  "q": "o pho",
+  "o": "o pho",
+  "p": false,
+  "s": "pho"
+ },
+ "pozole": {
+  "n": "Pozole",
+  "q": "o pozole",
+  "o": "o pozole",
+  "p": false,
+  "s": "pozole"
+ },
+ "goulash": {
+  "n": "Gulache",
+  "q": "o gulache",
+  "o": "o gulache",
+  "p": false,
+  "s": "gulache"
+ },
+ "bone-broth": {
+  "n": "Caldo de ossos",
+  "q": "o caldo de ossos",
+  "o": "o caldo de ossos",
+  "p": false,
+  "s": "caldo-ossos"
+ },
+ "greek-yogurt": {
+  "n": "Iogurte grego",
+  "q": "o iogurte grego",
+  "o": "o iogurte grego",
+  "p": false,
+  "s": "iogurte-grego"
+ },
+ "sweetened-condensed-milk": {
+  "n": "Leite condensado",
+  "q": "o leite condensado",
+  "o": "o leite condensado",
+  "p": false,
+  "s": "leite-condensado-adocado"
+ },
+ "evaporated-milk": {
+  "n": "Leite evaporado",
+  "q": "o leite evaporado",
+  "o": "o leite evaporado",
+  "p": false,
+  "s": "leite-evaporado"
+ },
+ "feta": {
+  "n": "Queijo feta",
+  "q": "o queijo feta",
+  "o": "o queijo feta",
+  "p": false,
+  "s": "queijo-feta"
+ },
+ "fresh-mozzarella": {
+  "n": "Muçarela fresca",
+  "q": "a muçarela fresca",
+  "o": "a muçarela fresca",
+  "p": false,
+  "s": "mucarela-fresca"
+ },
+ "american-cheese": {
+  "n": "Queijo americano",
+  "q": "o queijo americano",
+  "o": "o queijo americano",
+  "p": false,
+  "s": "queijo-americano"
+ },
+ "spam": {
+  "n": "Spam (carne enlatada)",
+  "q": "o Spam",
+  "o": "o Spam",
+  "p": false,
+  "s": "spam"
+ },
+ "pico-de-gallo": {
+  "n": "Pico de gallo",
+  "q": "o pico de gallo",
+  "o": "o pico de gallo",
+  "p": false,
+  "s": "pico-de-gallo"
+ },
+ "canned-pumpkin": {
+  "n": "Abóbora enlatada",
+  "q": "a abóbora enlatada",
+  "o": "a abóbora enlatada",
+  "p": false,
+  "s": "abobora-enlatada"
  }
 }

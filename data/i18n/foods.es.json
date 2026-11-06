@@ -6221,5 +6221,222 @@
   "o": "las croquetas de papa",
   "p": true,
   "s": "croquetas-papa"
+ },
+ "cooked-bacon": {
+  "n": "Tocino cocido",
+  "q": "el tocino cocido",
+  "o": "el tocino cocido",
+  "p": false,
+  "s": "tocino-cocido"
+ },
+ "cooked-beef": {
+  "n": "Carne de res cocida",
+  "q": "la carne de res cocida",
+  "o": "la carne de res cocida",
+  "p": false,
+  "s": "res-cocida"
+ },
+ "cooked-pork": {
+  "n": "Carne de cerdo cocida",
+  "q": "la carne de cerdo cocida",
+  "o": "la carne de cerdo cocida",
+  "p": false,
+  "s": "cerdo-cocido"
+ },
+ "roast-beef": {
+  "n": "Rosbif",
+  "q": "el rosbif",
+  "o": "el rosbif",
+  "p": false,
+  "s": "rosbif"
+ },
+ "cooked-ham": {
+  "n": "Jamón cocido",
+  "q": "el jamón cocido",
+  "o": "el jamón cocido",
+  "p": false,
+  "s": "jamon-cocido"
+ },
+ "tamales": {
+  "n": "Tamales",
+  "q": "los tamales",
+  "o": "los tamales",
+  "p": true,
+  "s": "tamales"
+ },
+ "meat-sauce": {
+  "n": "Salsa de carne (boloñesa)",
+  "q": "la salsa de carne",
+  "o": "la salsa de carne",
+  "p": false,
+  "s": "salsa-carne"
+ },
+ "grilled-chicken": {
+  "n": "Pollo a la parrilla",
+  "q": "el pollo a la parrilla",
+  "o": "el pollo a la parrilla",
+  "p": false,
+  "s": "pollo-parrilla"
+ },
+ "shredded-chicken": {
+  "n": "Pollo deshebrado",
+  "q": "el pollo deshebrado",
+  "o": "el pollo deshebrado",
+  "p": false,
+  "s": "pollo-deshebrado"
+ },
+ "cooked-ground-turkey": {
+  "n": "Carne molida de pavo cocida",
+  "q": "la carne molida de pavo cocida",
+  "o": "la carne molida de pavo cocida",
+  "p": false,
+  "s": "pavo-molido-cocido"
+ },
+ "shrimp-cocktail": {
+  "n": "Cóctel de camarones",
+  "q": "el cóctel de camarones",
+  "o": "el cóctel de camarones",
+  "p": false,
+  "s": "coctel-camarones"
+ },
+ "cooked-potatoes": {
+  "n": "Papas cocidas",
+  "q": "las papas cocidas",
+  "o": "las papas cocidas",
+  "p": true,
+  "s": "papas-cocidas"
+ },
+ "cooked-sweet-potatoes": {
+  "n": "Camotes cocidos",
+  "q": "los camotes cocidos",
+  "o": "los camotes cocidos",
+  "p": true,
+  "s": "camotes-cocidos"
+ },
+ "cooked-broccoli": {
+  "n": "Brócoli cocido",
+  "q": "el brócoli cocido",
+  "o": "el brócoli cocido",
+  "p": false,
+  "s": "brocoli-cocido"
+ },
+ "cooked-mushrooms": {
+  "n": "Champiñones cocidos",
+  "q": "los champiñones cocidos",
+  "o": "los champiñones cocidos",
+  "p": true,
+  "s": "champinones-cocidos"
+ },
+ "potato-soup": {
+  "n": "Sopa de papa",
+  "q": "la sopa de papa",
+  "o": "la sopa de papa",
+  "p": false,
+  "s": "sopa-papa"
+ },
+ "lentil-soup": {
+  "n": "Sopa de lentejas",
+  "q": "la sopa de lentejas",
+  "o": "la sopa de lentejas",
+  "p": false,
+  "s": "sopa-lentejas"
+ },
+ "miso-soup": {
+  "n": "Sopa de miso",
+  "q": "la sopa de miso",
+  "o": "la sopa de miso",
+  "p": false,
+  "s": "sopa-miso"
+ },
+ "pho": {
+  "n": "Pho",
+  "q": "el pho",
+  "o": "el pho",
+  "p": false,
+  "s": "pho"
+ },
+ "pozole": {
+  "n": "Pozole",
+  "q": "el pozole",
+  "o": "el pozole",
+  "p": false,
+  "s": "pozole"
+ },
+ "goulash": {
+  "n": "Gulash",
+  "q": "el gulash",
+  "o": "el gulash",
+  "p": false,
+  "s": "gulash"
+ },
+ "bone-broth": {
+  "n": "Caldo de huesos",
+  "q": "el caldo de huesos",
+  "o": "el caldo de huesos",
+  "p": false,
+  "s": "caldo-huesos"
+ },
+ "greek-yogurt": {
+  "n": "Yogur griego",
+  "q": "el yogur griego",
+  "o": "el yogur griego",
+  "p": false,
+  "s": "yogur-griego"
+ },
+ "sweetened-condensed-milk": {
+  "n": "Leche condensada",
+  "q": "la leche condensada",
+  "o": "la leche condensada",
+  "p": false,
+  "s": "leche-condensada"
+ },
+ "evaporated-milk": {
+  "n": "Leche evaporada",
+  "q": "la leche evaporada",
+  "o": "la leche evaporada",
+  "p": false,
+  "s": "leche-evaporada"
+ },
+ "feta": {
+  "n": "Queso feta",
+  "q": "el queso feta",
+  "o": "el queso feta",
+  "p": false,
+  "s": "queso-feta"
+ },
+ "fresh-mozzarella": {
+  "n": "Mozzarella fresca",
+  "q": "la mozzarella fresca",
+  "o": "la mozzarella fresca",
+  "p": false,
+  "s": "mozzarella-fresca"
+ },
+ "american-cheese": {
+  "n": "Queso americano",
+  "q": "el queso americano",
+  "o": "el queso americano",
+  "p": false,
+  "s": "queso-americano"
+ },
+ "spam": {
+  "n": "Spam (carne enlatada)",
+  "q": "el Spam",
+  "o": "el Spam",
+  "p": false,
+  "s": "spam"
+ },
+ "pico-de-gallo": {
+  "n": "Pico de gallo",
+  "q": "el pico de gallo",
+  "o": "el pico de gallo",
+  "p": false,
+  "s": "pico-de-gallo"
+ },
+ "canned-pumpkin": {
+  "n": "Calabaza enlatada",
+  "q": "la calabaza enlatada",
+  "o": "la calabaza enlatada",
+  "p": false,
+  "s": "calabaza-enlatada"
  }
 }

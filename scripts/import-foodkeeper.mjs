@@ -371,6 +371,7 @@ for (const d of overrides.derived) {
     subcategory: d.subcategory ?? base.subcategory,
     derivedFrom: base.slug,
     derivedNote: d.note,
+    ...(d.notInRelated ? { notInRelated: true } : {}),
   });
 }
 

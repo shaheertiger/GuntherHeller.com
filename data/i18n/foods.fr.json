@@ -6221,5 +6221,222 @@
   "o": "les croquettes de pommes de terre",
   "p": true,
   "s": "croquettes-pommes-terre"
+ },
+ "cooked-bacon": {
+  "n": "Bacon cuit",
+  "q": "le bacon cuit",
+  "o": "le bacon cuit",
+  "p": false,
+  "s": "bacon-cuit"
+ },
+ "cooked-beef": {
+  "n": "Bœuf cuit",
+  "q": "le bœuf cuit",
+  "o": "le bœuf cuit",
+  "p": false,
+  "s": "boeuf-cuit"
+ },
+ "cooked-pork": {
+  "n": "Porc cuit",
+  "q": "le porc cuit",
+  "o": "le porc cuit",
+  "p": false,
+  "s": "porc-cuit"
+ },
+ "roast-beef": {
+  "n": "Rôti de bœuf cuit",
+  "q": "le rôti de bœuf cuit",
+  "o": "le rôti de bœuf cuit",
+  "p": false,
+  "s": "roti-boeuf-cuit"
+ },
+ "cooked-ham": {
+  "n": "Jambon cuit",
+  "q": "le jambon cuit",
+  "o": "le jambon cuit",
+  "p": false,
+  "s": "jambon-cuit"
+ },
+ "tamales": {
+  "n": "Tamales",
+  "q": "les tamales",
+  "o": "les tamales",
+  "p": true,
+  "s": "tamales"
+ },
+ "meat-sauce": {
+  "n": "Sauce à la viande (bolognaise)",
+  "q": "la sauce à la viande",
+  "o": "la sauce à la viande",
+  "p": false,
+  "s": "sauce-viande"
+ },
+ "grilled-chicken": {
+  "n": "Poulet grillé",
+  "q": "le poulet grillé",
+  "o": "le poulet grillé",
+  "p": false,
+  "s": "poulet-grille"
+ },
+ "shredded-chicken": {
+  "n": "Poulet effiloché",
+  "q": "le poulet effiloché",
+  "o": "le poulet effiloché",
+  "p": false,
+  "s": "poulet-effiloche"
+ },
+ "cooked-ground-turkey": {
+  "n": "Dinde hachée cuite",
+  "q": "la dinde hachée cuite",
+  "o": "la dinde hachée cuite",
+  "p": false,
+  "s": "dinde-hachee-cuite"
+ },
+ "shrimp-cocktail": {
+  "n": "Cocktail de crevettes",
+  "q": "le cocktail de crevettes",
+  "o": "le cocktail de crevettes",
+  "p": false,
+  "s": "cocktail-crevettes"
+ },
+ "cooked-potatoes": {
+  "n": "Pommes de terre cuites",
+  "q": "les pommes de terre cuites",
+  "o": "les pommes de terre cuites",
+  "p": true,
+  "s": "pommes-terre-cuites"
+ },
+ "cooked-sweet-potatoes": {
+  "n": "Patates douces cuites",
+  "q": "les patates douces cuites",
+  "o": "les patates douces cuites",
+  "p": true,
+  "s": "patates-douces-cuites"
+ },
+ "cooked-broccoli": {
+  "n": "Brocoli cuit",
+  "q": "le brocoli cuit",
+  "o": "le brocoli cuit",
+  "p": false,
+  "s": "brocoli-cuit"
+ },
+ "cooked-mushrooms": {
+  "n": "Champignons cuits",
+  "q": "les champignons cuits",
+  "o": "les champignons cuits",
+  "p": true,
+  "s": "champignons-cuits"
+ },
+ "potato-soup": {
+  "n": "Soupe de pommes de terre",
+  "q": "la soupe de pommes de terre",
+  "o": "la soupe de pommes de terre",
+  "p": false,
+  "s": "soupe-pommes-terre"
+ },
+ "lentil-soup": {
+  "n": "Soupe de lentilles",
+  "q": "la soupe de lentilles",
+  "o": "la soupe de lentilles",
+  "p": false,
+  "s": "soupe-lentilles"
+ },
+ "miso-soup": {
+  "n": "Soupe miso",
+  "q": "la soupe miso",
+  "o": "la soupe miso",
+  "p": false,
+  "s": "soupe-miso"
+ },
+ "pho": {
+  "n": "Pho",
+  "q": "le pho",
+  "o": "le pho",
+  "p": false,
+  "s": "pho"
+ },
+ "pozole": {
+  "n": "Pozole",
+  "q": "le pozole",
+  "o": "le pozole",
+  "p": false,
+  "s": "pozole"
+ },
+ "goulash": {
+  "n": "Goulash",
+  "q": "le goulash",
+  "o": "le goulash",
+  "p": false,
+  "s": "goulash"
+ },
+ "bone-broth": {
+  "n": "Bouillon d’os",
+  "q": "le bouillon d’os",
+  "o": "le bouillon d’os",
+  "p": false,
+  "s": "bouillon-os"
+ },
+ "greek-yogurt": {
+  "n": "Yaourt grec",
+  "q": "le yaourt grec",
+  "o": "le yaourt grec",
+  "p": false,
+  "s": "yaourt-grec"
+ },
+ "sweetened-condensed-milk": {
+  "n": "Lait concentré sucré",
+  "q": "le lait concentré sucré",
+  "o": "le lait concentré sucré",
+  "p": false,
+  "s": "lait-concentre-sucre"
+ },
+ "evaporated-milk": {
+  "n": "Lait concentré non sucré",
+  "q": "le lait concentré non sucré",
+  "o": "le lait concentré non sucré",
+  "p": false,
+  "s": "lait-concentre-non-sucre"
+ },
+ "feta": {
+  "n": "Feta",
+  "q": "la feta",
+  "o": "la feta",
+  "p": false,
+  "s": "feta"
+ },
+ "fresh-mozzarella": {
+  "n": "Mozzarella fraîche",
+  "q": "la mozzarella fraîche",
+  "o": "la mozzarella fraîche",
+  "p": false,
+  "s": "mozzarella-fraiche"
+ },
+ "american-cheese": {
+  "n": "Fromage américain",
+  "q": "le fromage américain",
+  "o": "le fromage américain",
+  "p": false,
+  "s": "fromage-americain"
+ },
+ "spam": {
+  "n": "Spam (viande en conserve)",
+  "q": "le Spam",
+  "o": "le Spam",
+  "p": false,
+  "s": "spam"
+ },
+ "pico-de-gallo": {
+  "n": "Pico de gallo",
+  "q": "le pico de gallo",
+  "o": "le pico de gallo",
+  "p": false,
+  "s": "pico-de-gallo"
+ },
+ "canned-pumpkin": {
+  "n": "Purée de potiron en conserve",
+  "q": "la purée de potiron en conserve",
+  "o": "la purée de potiron en conserve",
+  "p": false,
+  "s": "puree-potiron-conserve"
  }
 }

@@ -6221,5 +6221,222 @@
   "o": "Tater Tots",
   "p": true,
   "s": "tater-tots"
+ },
+ "cooked-bacon": {
+  "n": "Gebratener Bacon",
+  "q": "gebratener Bacon",
+  "o": "gebratenen Bacon",
+  "p": false,
+  "s": "gebratener-bacon"
+ },
+ "cooked-beef": {
+  "n": "Gegartes Rindfleisch",
+  "q": "gegartes Rindfleisch",
+  "o": "gegartes Rindfleisch",
+  "p": false,
+  "s": "gegartes-rindfleisch"
+ },
+ "cooked-pork": {
+  "n": "Gegartes Schweinefleisch",
+  "q": "gegartes Schweinefleisch",
+  "o": "gegartes Schweinefleisch",
+  "p": false,
+  "s": "gegartes-schweinefleisch"
+ },
+ "roast-beef": {
+  "n": "Roastbeef",
+  "q": "Roastbeef",
+  "o": "Roastbeef",
+  "p": false,
+  "s": "roastbeef"
+ },
+ "cooked-ham": {
+  "n": "Gekochter Schinken",
+  "q": "gekochter Schinken",
+  "o": "gekochten Schinken",
+  "p": false,
+  "s": "gekochter-schinken"
+ },
+ "tamales": {
+  "n": "Tamales",
+  "q": "Tamales",
+  "o": "Tamales",
+  "p": true,
+  "s": "tamales"
+ },
+ "meat-sauce": {
+  "n": "Fleischsoße (Bolognese)",
+  "q": "Fleischsoße",
+  "o": "Fleischsoße",
+  "p": false,
+  "s": "fleischsosse"
+ },
+ "grilled-chicken": {
+  "n": "Gegrilltes Hähnchen",
+  "q": "gegrilltes Hähnchen",
+  "o": "gegrilltes Hähnchen",
+  "p": false,
+  "s": "gegrilltes-haehnchen"
+ },
+ "shredded-chicken": {
+  "n": "Gezupftes Hähnchen",
+  "q": "gezupftes Hähnchen",
+  "o": "gezupftes Hähnchen",
+  "p": false,
+  "s": "gezupftes-haehnchen"
+ },
+ "cooked-ground-turkey": {
+  "n": "Gegartes Putenhackfleisch",
+  "q": "gegartes Putenhackfleisch",
+  "o": "gegartes Putenhackfleisch",
+  "p": false,
+  "s": "gegartes-putenhackfleisch"
+ },
+ "shrimp-cocktail": {
+  "n": "Garnelencocktail",
+  "q": "Garnelencocktail",
+  "o": "Garnelencocktail",
+  "p": false,
+  "s": "garnelencocktail"
+ },
+ "cooked-potatoes": {
+  "n": "Gekochte Kartoffeln",
+  "q": "gekochte Kartoffeln",
+  "o": "gekochte Kartoffeln",
+  "p": true,
+  "s": "gekochte-kartoffeln"
+ },
+ "cooked-sweet-potatoes": {
+  "n": "Gegarte Süßkartoffeln",
+  "q": "gegarte Süßkartoffeln",
+  "o": "gegarte Süßkartoffeln",
+  "p": true,
+  "s": "gegarte-suesskartoffeln"
+ },
+ "cooked-broccoli": {
+  "n": "Gekochter Brokkoli",
+  "q": "gekochter Brokkoli",
+  "o": "gekochten Brokkoli",
+  "p": false,
+  "s": "gekochter-brokkoli"
+ },
+ "cooked-mushrooms": {
+  "n": "Gegarte Pilze",
+  "q": "gegarte Pilze",
+  "o": "gegarte Pilze",
+  "p": true,
+  "s": "gegarte-pilze"
+ },
+ "potato-soup": {
+  "n": "Kartoffelsuppe",
+  "q": "Kartoffelsuppe",
+  "o": "Kartoffelsuppe",
+  "p": false,
+  "s": "kartoffelsuppe"
+ },
+ "lentil-soup": {
+  "n": "Linsensuppe",
+  "q": "Linsensuppe",
+  "o": "Linsensuppe",
+  "p": false,
+  "s": "linsensuppe"
+ },
+ "miso-soup": {
+  "n": "Misosuppe",
+  "q": "Misosuppe",
+  "o": "Misosuppe",
+  "p": false,
+  "s": "misosuppe"
+ },
+ "pho": {
+  "n": "Pho",
+  "q": "Pho",
+  "o": "Pho",
+  "p": false,
+  "s": "pho"
+ },
+ "pozole": {
+  "n": "Pozole",
+  "q": "Pozole",
+  "o": "Pozole",
+  "p": false,
+  "s": "pozole"
+ },
+ "goulash": {
+  "n": "Gulasch",
+  "q": "Gulasch",
+  "o": "Gulasch",
+  "p": false,
+  "s": "gulasch"
+ },
+ "bone-broth": {
+  "n": "Knochenbrühe",
+  "q": "Knochenbrühe",
+  "o": "Knochenbrühe",
+  "p": false,
+  "s": "knochenbruehe"
+ },
+ "greek-yogurt": {
+  "n": "Griechischer Joghurt",
+  "q": "griechischer Joghurt",
+  "o": "griechischen Joghurt",
+  "p": false,
+  "s": "griechischer-joghurt"
+ },
+ "sweetened-condensed-milk": {
+  "n": "Gezuckerte Kondensmilch",
+  "q": "gezuckerte Kondensmilch",
+  "o": "gezuckerte Kondensmilch",
+  "p": false,
+  "s": "gezuckerte-kondensmilch"
+ },
+ "evaporated-milk": {
+  "n": "Ungezuckerte Kondensmilch",
+  "q": "ungezuckerte Kondensmilch",
+  "o": "ungezuckerte Kondensmilch",
+  "p": false,
+  "s": "ungezuckerte-kondensmilch"
+ },
+ "feta": {
+  "n": "Feta",
+  "q": "Feta",
+  "o": "Feta",
+  "p": false,
+  "s": "feta"
+ },
+ "fresh-mozzarella": {
+  "n": "Frischer Mozzarella",
+  "q": "frischer Mozzarella",
+  "o": "frischen Mozzarella",
+  "p": false,
+  "s": "frischer-mozzarella"
+ },
+ "american-cheese": {
+  "n": "American Cheese (Schmelzkäse)",
+  "q": "American Cheese",
+  "o": "American Cheese",
+  "p": false,
+  "s": "american-cheese"
+ },
+ "spam": {
+  "n": "Spam (Frühstücksfleisch)",
+  "q": "Spam",
+  "o": "Spam",
+  "p": false,
+  "s": "spam"
+ },
+ "pico-de-gallo": {
+  "n": "Pico de Gallo",
+  "q": "Pico de Gallo",
+  "o": "Pico de Gallo",
+  "p": false,
+  "s": "pico-de-gallo"
+ },
+ "canned-pumpkin": {
+  "n": "Kürbispüree aus der Dose",
+  "q": "Kürbispüree aus der Dose",
+  "o": "Kürbispüree aus der Dose",
+  "p": false,
+  "s": "kuerbispueree-dose"
  }
 }

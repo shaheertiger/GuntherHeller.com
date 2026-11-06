@@ -5332,5 +5332,191 @@
 "en": "Tater tots",
 "category": "frozen-foods",
 "usda": "Frozen potato products (fries, hashbrowns, tater tots)"
+},
+{
+"slug": "cooked-bacon",
+"en": "Cooked bacon",
+"category": "leftovers-deli",
+"usda": "Leftovers (with meat, fish, poultry, or egg)"
+},
+{
+"slug": "cooked-beef",
+"en": "Cooked beef",
+"category": "leftovers-deli",
+"usda": "Leftovers (with meat, fish, poultry, or egg)"
+},
+{
+"slug": "cooked-pork",
+"en": "Cooked pork",
+"category": "leftovers-deli",
+"usda": "Leftovers (with meat, fish, poultry, or egg)"
+},
+{
+"slug": "roast-beef",
+"en": "Roast beef",
+"category": "leftovers-deli",
+"usda": "Leftovers (with meat, fish, poultry, or egg)"
+},
+{
+"slug": "cooked-ham",
+"en": "Cooked ham",
+"category": "meat",
+"usda": "Ham (fully cooked, slices, half, or spiral cut)"
+},
+{
+"slug": "tamales",
+"en": "Tamales",
+"category": "leftovers-deli",
+"usda": "Leftovers (with meat, fish, poultry, or egg)"
+},
+{
+"slug": "meat-sauce",
+"en": "Meat sauce",
+"category": "leftovers-deli",
+"usda": "Leftovers (with meat, fish, poultry, or egg)"
+},
+{
+"slug": "grilled-chicken",
+"en": "Grilled chicken",
+"category": "poultry",
+"usda": "Cooked poultry dishes"
+},
+{
+"slug": "shredded-chicken",
+"en": "Shredded chicken",
+"category": "poultry",
+"usda": "Cooked poultry dishes"
+},
+{
+"slug": "cooked-ground-turkey",
+"en": "Cooked ground turkey",
+"category": "poultry",
+"usda": "Cooked poultry dishes"
+},
+{
+"slug": "shrimp-cocktail",
+"en": "Shrimp cocktail",
+"category": "seafood",
+"usda": "Cooked shellfish (all)"
+},
+{
+"slug": "cooked-potatoes",
+"en": "Cooked potatoes",
+"category": "leftovers-deli",
+"usda": "Leftovers (without meat, fish, poultry, or egg such as cooked vegitables, rice, or potatoes)"
+},
+{
+"slug": "cooked-sweet-potatoes",
+"en": "Cooked sweet potatoes",
+"category": "leftovers-deli",
+"usda": "Leftovers (without meat, fish, poultry, or egg such as cooked vegitables, rice, or potatoes)"
+},
+{
+"slug": "cooked-broccoli",
+"en": "Cooked broccoli",
+"category": "leftovers-deli",
+"usda": "Leftovers (without meat, fish, poultry, or egg such as cooked vegitables, rice, or potatoes)"
+},
+{
+"slug": "cooked-mushrooms",
+"en": "Cooked mushrooms",
+"category": "leftovers-deli",
+"usda": "Leftovers (without meat, fish, poultry, or egg such as cooked vegitables, rice, or potatoes)"
+},
+{
+"slug": "potato-soup",
+"en": "Potato soup",
+"category": "leftovers-deli",
+"usda": "Soup, stews"
+},
+{
+"slug": "lentil-soup",
+"en": "Lentil soup",
+"category": "leftovers-deli",
+"usda": "Soup, stews"
+},
+{
+"slug": "miso-soup",
+"en": "Miso soup",
+"category": "leftovers-deli",
+"usda": "Soup, stews"
+},
+{
+"slug": "pho",
+"en": "Pho",
+"category": "leftovers-deli",
+"usda": "Soup, stews"
+},
+{
+"slug": "pozole",
+"en": "Pozole",
+"category": "leftovers-deli",
+"usda": "Soup, stews"
+},
+{
+"slug": "goulash",
+"en": "Goulash",
+"category": "leftovers-deli",
+"usda": "Soup, stews"
+},
+{
+"slug": "bone-broth",
+"en": "Bone broth",
+"category": "condiments-sauces",
+"usda": "Broth (homemade)"
+},
+{
+"slug": "greek-yogurt",
+"en": "Greek yogurt",
+"category": "dairy-eggs",
+"usda": "Yogurt"
+},
+{
+"slug": "sweetened-condensed-milk",
+"en": "Sweetened condensed milk",
+"category": "pantry-staples",
+"usda": "Milk (canned evaporated or condensed)"
+},
+{
+"slug": "evaporated-milk",
+"en": "Evaporated milk",
+"category": "pantry-staples",
+"usda": "Milk (canned evaporated or condensed)"
+},
+{
+"slug": "feta",
+"en": "Feta",
+"category": "dairy-eggs",
+"usda": "Cheese (soft such as brie, bel paese, goat)"
+},
+{
+"slug": "fresh-mozzarella",
+"en": "Fresh mozzarella",
+"category": "dairy-eggs",
+"usda": "Cheese (soft such as brie, bel paese, goat)"
+},
+{
+"slug": "american-cheese",
+"en": "American cheese",
+"category": "dairy-eggs",
+"usda": "Cheese (processed slices)"
+},
+{
+"slug": "spam",
+"en": "Spam",
+"category": "pantry-staples",
+"usda": "Canned goods (low acid such as meat, poultry, fish, gravy, stew, soups, beans, carrots, corn, pasta, peas, potatoes, spinach)"
+},
+{
+"slug": "pico-de-gallo",
+"en": "Pico de gallo",
+"category": "leftovers-deli",
+"usda": "Salsa (homemade, fresh)"
+},
+{
+"slug": "canned-pumpkin",
+"en": "Canned pumpkin",
+"category": "pantry-staples",
+"usda": "Canned goods (low acid such as meat, poultry, fish, gravy, stew, soups, beans, carrots, corn, pasta, peas, potatoes, spinach)"
 }
 ]
