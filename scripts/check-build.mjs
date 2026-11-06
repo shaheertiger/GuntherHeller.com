@@ -51,9 +51,9 @@ for (const file of pages) {
     // Allow Vercel Analytics scripts but no other client JS
     // Vercel Analytics uses a <vercel-analytics> custom element and defines it via script
     const hasVercelAnalytics = html.includes('<vercel-analytics');
-    // The Google tag (googletagmanager.com, GTM-KMS824N3) in Base.astro is also allowed.
+    // The Google tag (GTM-KMS824N3) and the AdSense loader (ca-pub-2128579868272786) in Base.astro are also allowed.
     const scripts = [...html.matchAll(/<script(?![^>]*application\/ld\+json)[^>]*>([\s\S]*?)<\/script>/g)];
-    const hasNonJsonLdScript = scripts.some(([tag, body]) => !tag.includes("googletagmanager.com/gtm.js?id=GTM-KMS824N3") && !/^\s*window\.dataLayer = window\.dataLayer \|\| \[\];\s*function gtag\(\)\{dataLayer\.push\(arguments\);\}\s*gtag\('js', new Date\(\)\);\s*$/.test(body));
+    const hasNonJsonLdScript = scripts.some(([tag, body]) => !tag.includes("googletagmanager.com/gtm.js?id=GTM-KMS824N3") && !tag.includes("pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2128579868272786") && !/^\s*window\.dataLayer = window\.dataLayer \|\| \[\];\s*function gtag\(\)\{dataLayer\.push\(arguments\);\}\s*gtag\('js', new Date\(\)\);\s*$/.test(body));
     if (hasNonJsonLdScript && !hasVercelAnalytics) errors.push(`${rel}: food page ships client JS`);
   }
 }
@@ -120,7 +120,7 @@ const expectTitle = "How Long Does Cooked Rice Last? 4–6 Days in the Fridge [F
 if (!rice.includes(`<title>${expectTitle}</title>`)) errors.push(`cooked rice: title is not "${expectTitle}"`);
 for (const t of ["4–6 days", "6 months", "2 hours", "Cooked rice lasts"]) if (!rice.includes(t)) errors.push(`cooked rice: answer text "${t}" missing`);
 for (const t of ['"Article"', '"BreadcrumbList"', '"FAQPage"', '"Organization"', '"Dataset"', '"PropertyValue"']) if (!rice.includes(t)) errors.push(`cooked rice: JSON-LD ${t} missing`);
-for (const f of ["robots.txt", "sitemap.xml", "og.png", "404.html", "search-index.json"]) if (!existsSync(join(DIST, f))) errors.push(`missing ${f}`);
+for (const f of ["robots.txt", "ads.txt", "sitemap.xml", "og.png", "404.html", "search-index.json"]) if (!existsSync(join(DIST, f))) errors.push(`missing ${f}`);
 
 const css = files.filter((f) => f.endsWith(".css")).reduce((n, f) => n + statSync(f).size, 0);
 const inlineCss = (rice.match(/<style[^>]*>([\s\S]*?)<\/style>/g) ?? []).join("").length;
