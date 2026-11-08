@@ -1,0 +1,746 @@
+{
+ "_doc": "Swedish strings for localized pages, translated from en.json. Placeholders in {braces} must be kept exactly. Food tokens: {q} = the food in bare indefinite form without article (e.g. 'kokt ris'); {Q} = same, capitalised at the start of a sentence; {o} = same as q; {n} = bare display name. The en/ett gender of a food is unknown: never use an article, adjective ending or den/det/denna/detta that must agree with a food token — refer to it as 'varan', 'livsmedlet' or 'maten', or restructure. Values that are [singular, plural] pairs are chosen by the food's grammatical number (Swedish verbs do not change, so both are usually identical). Temperatures are Celsius first.",
+ "lang": "sv",
+ "htmlLang": "sv",
+ "langName": "Svenska",
+ "locale": "sv-SE",
+ "units": {
+  "hour": [
+   "timme",
+   "timmar"
+  ],
+  "day": [
+   "dag",
+   "dagar"
+  ],
+  "week": [
+   "vecka",
+   "veckor"
+  ],
+  "month": [
+   "månad",
+   "månader"
+  ],
+  "year": [
+   "år",
+   "år"
+  ]
+ },
+ "and": "och",
+ "or": "eller",
+ "ui": {
+  "home": "Start",
+  "foods": "Alla livsmedel",
+  "englishSite": "English",
+  "languages": "Språk",
+  "skip": "Hoppa till innehållet",
+  "onCounter": "I rumstemperatur",
+  "inFridge": "I kylen",
+  "inFreezer": "I frysen",
+  "counter": "Rumstemperatur",
+  "fridge": "Kyl",
+  "freezer": "Frys",
+  "showTimesFor": "Visa hållbarhet för",
+  "perSource": "Enligt {source}",
+  "opened": "Efter öppning",
+  "unopened": "Före öppning",
+  "cooked": "Efter tillagning",
+  "dry": "Torrvara / före tillagning",
+  "uncooked": "Före tillagning",
+  "dryShort": "Torrvara",
+  "fresh": "Nyutpumpad",
+  "thawed": "Efter upptining",
+  "lastVerified": "senast kontrollerad i {date}",
+  "subline": "Kyl, frys, rumstemperatur · senast kontrollerad i {date}",
+  "source": "Källa",
+  "howWeVerify": "Så kontrollerar vi",
+  "howWeVerifyLong": "Så kontrollerar vi våra uppgifter",
+  "report": "Rapportera en felaktig uppgift",
+  "trust": "Uppgifterna på den här sidan kommer från {source}. Senast kontrollerade i {date}.",
+  "similar": "Liknande livsmedel",
+  "allIn": "Alla livsmedel i kategorin {cat}",
+  "onThisPage": "På den här sidan",
+  "advert": "Annons",
+  "readInEnglish": "Läs hela guiden på engelska",
+  "foodsCount": "{n} livsmedel",
+  "disclaimer": "Allmänna råd baserade på USDA FoodKeeper, inte medicinsk rådgivning. Om ett livsmedel luktar, ser ut eller känns konstigt, släng det."
+ },
+ "vals": {
+  "Not recommended": "Rekommenderas inte",
+  "Use-by date": "Sista förbrukningsdag",
+  "Indefinitely": "Obegränsat",
+  "Until ripe": "Till mognad",
+  "Not needed": "Behövs inte",
+  "Not listed": "Uppgift saknas",
+  "Refrigerate": "Förvara i kylen",
+  "Do not refreeze": "Frys inte om",
+  "2 hours": "2 timmar"
+ },
+ "notes": {
+  "hot": "1 timme över 32 °C (90 °F)",
+  "cool": "svalt och torrt",
+  "ripe": "sedan i kylen",
+  "keepCold": "förvara kallt",
+  "onceOpened": "efter öppning",
+  "useBy": "följ datumet på förpackningen",
+  "fridgeTemp": "vid högst 4 °C (40 °F)",
+  "shelfStable": "håller utan kyla",
+  "noFigure": "ingen uppgift i FoodKeeper",
+  "freezerQuality": "vid −18 °C; kvalitet, inte säkerhet",
+  "notRec": "konsistens eller säkerhet försämras",
+  "noFreeze": "håller utan frysning"
+ },
+ "food": {
+  "h1": [
+   "Hur länge håller {Q}?",
+   "Hur länge håller {Q}?"
+  ],
+  "inFridge": "i kylen",
+  "inPantry": "i skafferiet",
+  "inFreezer": "i frysen",
+  "title": "{h1} {d} {where}",
+  "titleFreezer": " [Frys: {d}]",
+  "desc": [
+   "{Q} håller {d} {where}.",
+   "{Q} håller {d} {where}."
+  ],
+  "descFreezer": " Frys: {d}.",
+  "descPerishable": " Släng efter 2 timmar i rumstemperatur.",
+  "descTail": " Tecken på att varan har blivit dålig och tips om frysning.",
+  "quote": [
+   "{Q} håller {list}.",
+   "{Q} håller {list}."
+  ],
+  "phFridge": "{d} i kylen",
+  "phFreezer": "{d} i frysen",
+  "phPantry": "{d} i skafferiet",
+  "phRipe": "i rumstemperatur fram till mognad",
+  "phUseBy": "till sista förbrukningsdag i kylen",
+  "ph2h": "högst 2 timmar i rumstemperatur",
+  "quote2": "{label}: {list}.",
+  "hMethods": "Hållbarhet per förvaringssätt",
+  "hSigns": "Tecken på att varan har blivit dålig",
+  "hFreeze": "Kan man frysa {o}?",
+  "hLeftOut": "Stått framme över natten",
+  "hStore": "Rätt förvaring",
+  "hFaq": "Vanliga frågor",
+  "thMethod": "Förvaring",
+  "thDuration": "Tid",
+  "thTemp": "Temperatur",
+  "thNotes": "Anmärkning",
+  "mPantry": "Skafferi / rumstemperatur",
+  "mFridge": "Kylskåp",
+  "mFreezer": "Frys",
+  "mThawed": "Kyl efter upptining",
+  "mCook": "Tillagning",
+  "tRoom": "20–22 °C",
+  "tFridge": "≤ 4 °C (40 °F)",
+  "tFreezer": "−18 °C (0 °F)",
+  "tCook": "minst {c} °C ({f} °F)",
+  "noteThawed": "Frys inte om råa livsmedel som har tinats utanför kylen",
+  "noteCook": "Kontrollera med en stektermometer"
+ },
+ "freeze": {
+  "yesWell": "Ja – går bra att frysa",
+  "yesShort": "Ja, under kort tid",
+  "yesCooking": "Ja, för matlagning – {d}",
+  "no": "Rekommenderas inte",
+  "noFigure": "Ingen uppgift i FoodKeeper",
+  "dYes": "Kvaliteten håller i ungefär {d} vid −18 °C (0 °F). Fryst mat är säker obegränsat länge; det är bara kvaliteten som försämras.",
+  "dCooking": "Kvaliteten håller i ungefär {d} vid −18 °C (0 °F). Konsistensen förändras, så använd varan i lagade rätter.",
+  "dNo": "Frysning rekommenderas inte för det här livsmedlet; konsistensen bryts ner eller resultatet blir opålitligt.",
+  "dNoFigure": "FoodKeeper anger ingen frystid för det här livsmedlet.",
+  "afterThaw": "Efter upptining i kylen: använd inom {d}."
+ },
+ "leftOut": {
+  "keep": "Behåll",
+  "check": "Kontrollera",
+  "discard": "Släng",
+  "tDiscard": "Lättfördärvlig mat som har stått i rumstemperatur i mer än 2 timmar (1 timme över 32 °C / 90 °F) ska slängas. Bakterier förökar sig snabbast mellan 4 °C och 60 °C, och uppvärmning förstör inte alla gifter som de bildar.",
+  "tKeep": "Det här livsmedlet håller utan kyla. En natt i rumstemperatur går bra – förvara det svalt, torrt och skyddat från sol.",
+  "tRipe": "Livsmedlet kan eftermogna i rumstemperatur. När det har skurits upp eller tillagats gäller 2-timmarsregeln.",
+  "tOpened": "Efter öppning hör varan hemma i kylen. En natt i rumstemperatur gör att den förstörs snabbare; om den luktar, ser ut eller smakar konstigt, släng den.",
+  "tCaution": "Inget högrisklivsmedel, men en natt framme förkortar hållbarheten i kylen. Ställ in varan i kylen och använd den snart."
+ },
+ "faq": {
+  "qFridge": [
+   "Hur länge håller {q} i kylen?",
+   "Hur länge håller {q} i kylen?"
+  ],
+  "aFridge": "{d} vid 4 °C (40 °F) eller kallare, enligt USDA FoodKeeper.",
+  "qFreeze": "Kan man frysa {o}?",
+  "qSitOut": [
+   "Hur länge kan {q} stå framme?",
+   "Hur länge kan {q} stå framme?"
+  ],
+  "aSitOut": "Högst 2 timmar i rumstemperatur, eller 1 timme över 32 °C (90 °F). Därefter ska maten slängas.",
+  "qPantry": [
+   "Behöver {q} förvaras i kylen?",
+   "Behöver {q} förvaras i kylen?"
+  ],
+  "aPantry": "Inte av säkerhetsskäl. I ett svalt, torrt skafferi håller varan {d}.",
+  "qSigns": [
+   "Hur vet man om {q} fortfarande går att äta?",
+   "Hur vet man om {q} fortfarande går att äta?"
+  ],
+  "qSource": "Var kommer siffrorna ifrån?",
+  "aSource": "Från USDA FoodKeeper, lagringsdatabasen från den amerikanska livsmedelssäkerhetsmyndigheten FSIS (Food Safety and Inspection Service). Vi kontrollerar varje sida mot den senaste versionen."
+ },
+ "home": {
+  "title": "Hur länge håller maten? Hållbarhet i kyl, frys och skafferi | Gunther Heller",
+  "h1": "Hur länge håller maten?",
+  "lead": "Hållbarhet i kyl, frys och skafferi för {n} livsmedel, före och efter öppning, enligt USDA FoodKeeper.",
+  "desc": "Gratis hållbarhetstider för {n} livsmedel: rumstemperatur, kyl och frys, före och efter öppning. Data från USDA FoodKeeper.",
+  "categories": "Bläddra efter kategori",
+  "popular": "Mest sökta livsmedel",
+  "about": "Varje siffra kommer från FoodKeeper, lagringsdatabasen från USA:s jordbruksdepartement (USDA). Varje sida anger sin källa och när vi senast kontrollerade den."
+ },
+ "hub": {
+  "title": "{cat}: hållbarhet i kyl, frys och skafferi ({n} livsmedel)",
+  "h1": "{cat}: hållbarhet",
+  "desc": "Hur länge {n} livsmedel i kategorin {cat} håller i rumstemperatur, i kylen och i frysen. Data från USDA FoodKeeper.",
+  "lead": "Hur länge varje livsmedel håller i rumstemperatur, i kylen och i frysen. Källa: USDA FoodKeeper, senast kontrollerad i {date}.",
+  "thFood": "Livsmedel",
+  "thFreezes": "Går bra att frysa?",
+  "yes": "Ja",
+  "no": "Nej",
+  "cooking": "Bara för matlagning"
+ },
+ "method": {
+  "title": "Så kontrollerar vi våra uppgifter | Gunther Heller",
+  "h1": "Så kontrollerar vi våra uppgifter",
+  "desc": "Var våra hållbarhetstider kommer ifrån (USDA FoodKeeper), hur vi gör om dem till svar och hur du rapporterar en felaktig uppgift.",
+  "p1": "Varje hållbarhetstid på den här webbplatsen kommer från FoodKeeper, lagringsdatabasen som publiceras av Food Safety and Inspection Service (FSIS) vid USA:s jordbruksdepartement. Det är en offentlig datamängd från den amerikanska staten och är fri från upphovsrätt.",
+  "p2": "Vi importerar varje produkt i FoodKeeper med dess tider för skafferi, kyl och frys, inklusive de separata tiderna efter öppning. Vi hittar aldrig på en tid: om FoodKeeper saknar uppgift står det på sidan.",
+  "p3": "När FoodKeeper inte anger någon tid i rumstemperatur för lättfördärvlig mat tillämpar vi FSIS-regeln: släng maten efter 2 timmar i rumstemperatur, eller efter 1 timme över 32 °C (90 °F). Frystiderna gäller kvalitet; mat som förvaras vid −18 °C (0 °F) är säker obegränsat länge.",
+  "p4": "Översättningarna granskas för att vara korrekta; siffrorna är desamma på alla språk. Rapportera fel via e-post till {email}."
+ },
+ "categories": {
+  "dairy-eggs": "Mejeri och ägg",
+  "meat": "Kött",
+  "poultry": "Fågel",
+  "seafood": "Fisk och skaldjur",
+  "leftovers-deli": "Rester och chark",
+  "fruits": "Frukt",
+  "vegetables": "Grönsaker",
+  "grains-beans-pasta": "Spannmål, baljväxter och pasta",
+  "baked-goods": "Bröd och bakning",
+  "condiments-sauces": "Såser och smaksättare",
+  "pantry-staples": "Skafferi",
+  "beverages": "Drycker",
+  "frozen-foods": "Fryst mat",
+  "baby-food": "Barnmat",
+  "vegetarian-proteins": "Vegetariskt protein"
+ },
+ "signs": {
+  "meat": [
+   [
+    "Lukt",
+    "Sur, svavelaktig eller ammoniakliknande lukt, även om den är svag."
+   ],
+   [
+    "Konsistens",
+    "Klibbig eller slemmig yta som sitter kvar efter sköljning."
+   ],
+   [
+    "Färg",
+    "Gröngrå eller bruna fläckar som sprider sig över köttet."
+   ],
+   [
+    "Förpackning",
+    "Uppblåst eller läckande förpackning, eller datumet har passerats med mer än kyltiden."
+   ]
+  ],
+  "seafood": [
+   [
+    "Lukt",
+    "Stark fisklukt, sur eller ammoniakliknande lukt. Färsk fisk och färska skaldjur luktar hav."
+   ],
+   [
+    "Konsistens",
+    "Mosigt kött som inte fjädrar tillbaka, eller mjölkigt slem."
+   ],
+   [
+    "Färg",
+    "Matt, grått eller gulnande kött; mörka kanter."
+   ],
+   [
+    "Skal",
+    "Levande skaldjur med öppna skal som inte stängs när man knackar på dem."
+   ]
+  ],
+  "cooked": [
+   [
+    "Lukt",
+    "Sur, jästliknande eller ”konstig” i stället för som när maten var nylagad."
+   ],
+   [
+    "Konsistens",
+    "Slemmig hinna, eller vätska som separerar där den inte borde."
+   ],
+   [
+    "Färg",
+    "Matta eller mörknade partier, eller missfärgade fläckar."
+   ],
+   [
+    "Mögel",
+    "All luddig påväxt – släng hela behållaren, inte bara fläcken."
+   ]
+  ],
+  "cured": [
+   [
+    "Lukt",
+    "Sur eller härsken lukt i stället för rökig eller salt."
+   ],
+   [
+    "Konsistens",
+    "Hal, slemmig yta på skivor eller korvar."
+   ],
+   [
+    "Färg",
+    "Gråa, gröna eller skimrande fläckar som sprider sig."
+   ],
+   [
+    "Mögel",
+    "Luddiga fläckar på skivade eller tillagade produkter – släng."
+   ]
+  ],
+  "dairy": [
+   [
+    "Lukt",
+    "Sur eller ostliknande lukt när den borde vara ren och mild."
+   ],
+   [
+    "Konsistens",
+    "Klumpar, ystning eller en tjock, slemmig konsistens."
+   ],
+   [
+    "Färg",
+    "Gulnad eller en rosa, grön eller grå ton."
+   ],
+   [
+    "Smak",
+    "Sur eller bitter redan vid första klunken – sluta och släng."
+   ]
+  ],
+  "cheese": [
+   [
+    "Lukt",
+    "Ammoniak eller en skarp, sur lukt utöver ostens vanliga arom."
+   ],
+   [
+    "Konsistens",
+    "Slemmig yta, eller mycket torr och sprucken rakt igenom."
+   ],
+   [
+    "Färg",
+    "Mörknade eller gulnade kanter, eller nya färger som inte hör till osten."
+   ],
+   [
+    "Mögel",
+    "På hårdost: skär bort 2,5 cm runt fläcken. Mjukost eller riven ost: släng."
+   ]
+  ],
+  "eggs": [
+   [
+    "Lukt",
+    "Svavellukt när ägget knäcks – omisskännlig, släng."
+   ],
+   [
+    "Skal",
+    "Slemmiga, pudriga eller spruckna skal."
+   ],
+   [
+    "Insida",
+    "Rosa, grön eller skimrande vita eller gula."
+   ],
+   [
+    "Flyttest",
+    "Visar bara ålder. Ett ägg som flyter är gammalt; lukta på det innan du bestämmer dig."
+   ]
+  ],
+  "produce": [
+   [
+    "Lukt",
+    "Jäst, sur eller unken lukt."
+   ],
+   [
+    "Konsistens",
+    "Mjuka, mosiga eller läckande partier, eller skrynkligt skal med mjukt inre."
+   ],
+   [
+    "Färg",
+    "Mörka stötskador som sprider sig, eller brunfärgning inuti."
+   ],
+   [
+    "Mögel",
+    "Vitt, grått eller grönt ludd – släng mjuk frukt och mjuka grönsaker; skär bort generöst på fasta."
+   ]
+  ],
+  "leafy": [
+   [
+    "Lukt",
+    "Sur eller rutten lukt från påsen eller knippet."
+   ],
+   [
+    "Konsistens",
+    "Slemmiga, blöta eller slokande blad som inte piggnar till i kallt vatten."
+   ],
+   [
+    "Färg",
+    "Mörkt grönsvarta eller bruna blad."
+   ],
+   [
+    "Mögel",
+    "All luddig påväxt – släng hela påsen."
+   ]
+  ],
+  "bakery": [
+   [
+    "Lukt",
+    "Unken, sur eller alkoholaktig lukt."
+   ],
+   [
+    "Konsistens",
+    "Hårt och torrt är gammalt men ofarligt; fuktigt eller kladdigt är det inte."
+   ],
+   [
+    "Färg",
+    "Missfärgade fläckar på skorpan eller inkråmet."
+   ],
+   [
+    "Mögel",
+    "Synligt mögel – släng hela brödet eller bakverket; mögeltrådarna sprider sig osynligt."
+   ]
+  ],
+  "dry": [
+   [
+    "Lukt",
+    "Unken, sur eller härsken lukt."
+   ],
+   [
+    "Konsistens",
+    "Klumpar av fukt, eller en fuktig känsla."
+   ],
+   [
+    "Skadedjur",
+    "Spinnväv, hål eller små insekter i förpackningen."
+   ],
+   [
+    "Smak",
+    "Fadd, avslagen eller bitter smak – kvaliteten är borta även om varan är ofarlig."
+   ]
+  ],
+  "fat": [
+   [
+    "Lukt",
+    "Härsken: som kritor, målarfärg eller gamla nötter."
+   ],
+   [
+    "Smak",
+    "Bitter eller tvålaktig eftersmak."
+   ],
+   [
+    "Konsistens",
+    "Klibbiga eller sega rester runt locket."
+   ],
+   [
+    "Färg",
+    "Mörkare färg eller grumlighet där varan borde vara klar."
+   ]
+  ],
+  "condiment": [
+   [
+    "Lukt",
+    "Jäst eller sur lukt utöver produktens vanliga syrlighet."
+   ],
+   [
+    "Konsistens",
+    "Separation som inte går att röra ihop igen, eller ett slemmigt lager."
+   ],
+   [
+    "Färg",
+    "Mörknande eller färgförändring överst i burken."
+   ],
+   [
+    "Mögel",
+    "Allt ludd på ytan eller locket – släng burken."
+   ]
+  ],
+  "drink": [
+   [
+    "Lukt",
+    "Vinägeraktig, sur eller unken lukt i stället för frisk."
+   ],
+   [
+    "Smak",
+    "Fadd, sur eller bitter – kvaliteten är borta."
+   ],
+   [
+    "Utseende",
+    "Grumlighet, bottensats eller en hinna som inte fanns där tidigare."
+   ],
+   [
+    "Förpackning",
+    "Uppsvälld kartong, kapsyl eller burk – släng."
+   ]
+  ],
+  "frozen": [
+   [
+    "Frysbränna",
+    "Torra, gråvita fläckar. Ofarligt, men skär bort dem."
+   ],
+   [
+    "Iskristaller",
+    "Mycket is inne i förpackningen betyder att innehållet har tinat och frysts om."
+   ],
+   [
+    "Lukt",
+    "Konstig lukt efter upptining – släng."
+   ],
+   [
+    "Förpackning",
+    "En trasig förpackning släpper in luft och gör att kvaliteten försämras snabbare."
+   ]
+  ],
+  "baby": [
+   [
+    "Lukt",
+    "Sur eller konstig lukt i tillredd modersmjölksersättning eller barnmat."
+   ],
+   [
+    "Konsistens",
+    "Separation som inte går att blanda ihop igen, eller klumpar."
+   ],
+   [
+    "Färg",
+    "Förändring jämfört med den vanliga färgen."
+   ],
+   [
+    "Förslutning",
+    "Burklock som inte ”poppar” när burken öppnas, eller skadade klämpåsar – släng."
+   ]
+  ]
+ },
+ "freezeSteps": {
+  "meat": [
+   "Frys senast den sista dagen i kylen; ju tidigare, desto bättre konsistens.",
+   "Linda in originalförpackningen i aluminiumfolie eller en fryspåse, eller vakuumförpacka; pressa ut luften.",
+   "Tina i kylen (cirka 24 timmar per 2–2,5 kg), eller i kallt vatten och tillaga direkt."
+  ],
+  "seafood": [
+   "Frys så färskt som möjligt, helst samma dag som du köper varan.",
+   "Linda tätt i plastfolie och lägg sedan i en fryspåse; pressa ut luften och skriv datum.",
+   "Tina över natten i kylen eller i tät förpackning i kallt vatten; aldrig i rumstemperatur."
+  ],
+  "cooked": [
+   "Kyl snabbt: i grunda behållare, in i kyl eller frys inom 2 timmar.",
+   "Portionera i fryspåsar eller täta burkar, lämna utrymme för vätska och märk med datum.",
+   "Tina i kylen och värm till 74 °C (165 °F) tills maten ångar."
+  ],
+  "cured": [
+   "Frys i den oöppnade vakuumförpackningen; annars linda skivorna i plastfolie och aluminiumfolie.",
+   "Frys i portioner för en måltid så att du bara tinar det du behöver.",
+   "Tina i kylen; pålägg blir något mjukare efter frysning."
+  ],
+  "dairy": [
+   "Häll av lite så att det finns plats för expansion, och förslut sedan ordentligt.",
+   "Frys liggande eller stående och märk med datum.",
+   "Tina i kylen och skaka eller vispa väl; använd till matlagning eller bakning."
+  ],
+  "cheese": [
+   "Skär i bitar på högst 250 g, eller frys riven ost i sin påse.",
+   "Linda in i plastfolie och lägg i en fryspåse; pressa ut luften.",
+   "Tina i kylen; osten blir smuligare, så använd den smält eller i matlagning."
+  ],
+  "eggs": [
+   "Frys aldrig ägg med skal.",
+   "Vispa ihop hela ägg (eller dela vitor och gulor) och häll i en burk med lock eller en isbitsform.",
+   "Tina i kylen och använd bara i rätter som upphettas till 71 °C (160 °F)."
+  ],
+  "produce": [
+   "Skölj, torka och skär i bitar; förväll de flesta grönsaker i 1–3 minuter först.",
+   "Bred ut bitarna på en bricka och frys dem var för sig, lägg sedan i påse och pressa ut luften.",
+   "Använd direkt från frysen i matlagning eller smoothies; upptinade frukter och grönsaker blir mjuka."
+  ],
+  "leafy": [
+   "Bladgrönsaker och örter förlorar sin krispighet när de fryses.",
+   "För matlagning: förväll bladgrönsakerna eller hacka örterna och frys dem i isbitsformar med olja eller vatten.",
+   "Lägg dem direkt från frysen i soppor, såser och wokrätter."
+  ],
+  "bakery": [
+   "Frys samma dag som du köper eller bakar, när bakverket har svalnat helt.",
+   "Linda tätt i plastfolie och lägg i en fryspåse; skiva brödet först så att du kan ta ut det du behöver.",
+   "Tina i rumstemperatur i förpackningen, eller rosta eller värm direkt från frysen."
+  ],
+  "dry": [
+   "Frysning är frivilligt för torrvaror; det förhindrar främst skadedjur och härskning.",
+   "Använd en lufttät burk eller en väl försluten fryspåse.",
+   "Låt förpackningen nå rumstemperatur innan du öppnar den för att undvika kondens."
+  ],
+  "fat": [
+   "Frys i en lufttät burk eller i den oöppnade originalförpackningen.",
+   "Portionera först (tärningar eller små burkar) så att du bara tinar det du behöver.",
+   "Tina i kylen; fetter och nötter kan användas direkt från frysen."
+  ],
+  "condiment": [
+   "De flesta såser och smaksättare håller sig bra i kylen och behöver inte frysas.",
+   "Om du fryser: använd isbitsformar eller små burkar och märk dem.",
+   "Tina i kylen och rör om ordentligt; emulsioner kan separera."
+  ],
+  "drink": [
+   "Lämna utrymme i en frystålig behållare; vätska utvidgar sig.",
+   "Frys i isbitsformar för små portioner.",
+   "Tina i kylen och skaka väl före användning."
+  ],
+  "frozen": [
+   "Förvara i originalförpackningen vid −18 °C (0 °F) eller kallare.",
+   "Förslut öppnade påsar ordentligt eller flytta innehållet till en fryspåse.",
+   "Tillaga direkt från frysen enligt anvisningen på förpackningen, eller tina i kylen."
+  ],
+  "baby": [
+   "Frys bara det som rekommendationerna tillåter, i rena, förslutna behållare.",
+   "Märk med datum och klockslag.",
+   "Tina i kylen eller i varmt vatten; aldrig i mikrovågsugn, och frys inte om."
+  ]
+ },
+ "store": {
+  "meat": [
+   "Ställ in i kylen vid högst 4 °C (40 °F) så fort du kommer hem; på nedersta hyllan så att köttsaft inte droppar ner.",
+   "Behåll originalförpackningen tills du använder köttet, eller linda om det inför frysning.",
+   "Tillaga eller frys inom kyltiden; tiden räknas från inköpet."
+  ],
+  "seafood": [
+   "Förvara på is eller i kylens kallaste del, vid högst 4 °C (40 °F).",
+   "Förvara levande skaldjur i en skål täckt med en fuktig handduk, aldrig i vatten eller tät plast.",
+   "Tillaga eller frys inom kyltiden."
+  ],
+  "cooked": [
+   "Ställ in i kylen inom 2 timmar efter tillagning (1 timme över 32 °C / 90 °F), i grunda, täta behållare.",
+   "Håll kylen vid högst 4 °C (40 °F); dörrhyllan är den varmaste platsen.",
+   "Värm rester till 74 °C (165 °F) och värm bara det du ska äta."
+  ],
+  "cured": [
+   "Förvara i kylen vid högst 4 °C (40 °F), även om varan är rimmad, saltad eller rökt.",
+   "Efter öppning: linda in tätt eller flytta till en lufttät behållare.",
+   "Använd inom tiden efter öppning, oavsett datum på förpackningen."
+  ],
+  "dairy": [
+   "Förvara på en hylla inne i kylen, inte i dörren, vid högst 4 °C (40 °F).",
+   "Stäng förpackningen ordentligt; mejeriprodukter tar lätt upp lukter i kylen.",
+   "Häll upp det du behöver och ställ tillbaka resten i kylen direkt."
+  ],
+  "cheese": [
+   "Slå in i vaxat papper eller bakplåtspapper och sedan löst i plast, så att osten kan andas.",
+   "Förvara i ostfacket eller på en nedre hylla vid högst 4 °C (40 °F).",
+   "Använd en ren kniv varje gång så att du inte för in mögel."
+  ],
+  "eggs": [
+   "Förvara äggen i kartongen på en hylla inne i kylen, inte i dörren.",
+   "Förvara vid högst 4 °C (40 °F); tvätta inte äggen före förvaring.",
+   "Ställ hårdkokta ägg i kylen inom 2 timmar efter kokning."
+  ],
+  "produce": [
+   "Skölj inte före förvaring; skölj precis innan du äter.",
+   "Håll etylenavgivande frukter (äpplen, bananer, avokado) borta från frukt och grönt som lätt blir övermoget.",
+   "Förvara i kylen i en täckt behållare när varan har skurits."
+  ],
+  "leafy": [
+   "Förvara torrt: linda in i hushållspapper och lägg i en påse eller burk.",
+   "Förvara i grönsakslådan vid högst 4 °C (40 °F).",
+   "Ställ örter som koriander och persilja i ett glas vatten i kylen, löst övertäckta."
+  ],
+  "bakery": [
+   "Förvara i rumstemperatur i en brödburk eller försluten påse för bäst konsistens.",
+   "I kylen möglar bröd långsammare men blir fortare torrt.",
+   "Frys det du inte hinner äta."
+  ],
+  "dry": [
+   "Förvara i en lufttät burk på en sval, mörk och torr plats.",
+   "Håll borta från spis och diskmaskin, där värme och fukt påskyndar förstörelsen.",
+   "Skriv öppningsdatum på förpackningen."
+  ],
+  "fat": [
+   "Förvara svalt och mörkt, i väl tillsluten förpackning och borta från värme.",
+   "Nötter, frön och nötoljor håller betydligt längre i kylen.",
+   "Lukta före användning; härskning är ett kvalitetsproblem som går att känna."
+  ],
+  "condiment": [
+   "Förvara i kylen efter öppning om inte etiketten säger något annat.",
+   "Använd ett rent redskap varje gång; smulor och dubbeldoppning förkortar hållbarheten.",
+   "Torka av kanten och skruva på locket ordentligt."
+  ],
+  "drink": [
+   "Förvara oöppnade förpackningar svalt och mörkt.",
+   "Förvara i kylen efter öppning och förslut ordentligt.",
+   "Skydda mot ljus och värme, som gör smaken platt."
+  ],
+  "frozen": [
+   "Håll frysen vid −18 °C (0 °F) eller kallare.",
+   "Låt inte varan tina och frysas om på vägen hem; handla frysvaror sist.",
+   "Förslut öppnade påsar för att undvika frysbränna."
+  ],
+  "baby": [
+   "Följ i första hand etiketten och anvisningarna från BVC eller barnläkaren.",
+   "Ställ tillredda eller öppnade produkter i kylen direkt.",
+   "Släng det som blir kvar i en flaska eller skål som barnet har ätit ur."
+  ]
+ },
+ "viz": {
+  "quick": "Snabbt svar",
+  "glance": "Hållbarhet i korthet",
+  "glanceNote": "Staplarna visar den längsta rekommenderade tiden för varje förvaringsplats. Skalan går från 1 timme till 2 år.",
+  "ticks": [
+   "1 tim",
+   "1 dag",
+   "1 v",
+   "1 mån",
+   "6 mån",
+   "1 år",
+   "2 år"
+  ],
+  "plus": "längre",
+  "perish": "Hur lättfördärvlig är varan?",
+  "levels": [
+   "Använd inom några dagar",
+   "Håller en till två veckor",
+   "Håller i flera månader",
+   "Håller länge"
+  ],
+  "levelNote": "Baserat på den längsta tiden i kyl eller skafferi.",
+  "check": "Fortfarande bra?",
+  "checkAsk": "Har legat i kylen i …",
+  "checkHint": "Tryck på en tid för att kontrollera.",
+  "fresh": "Fortfarande bra",
+  "edge": "Använd i dag",
+  "toss": "Släng",
+  "freshText": "Ungefär {a}–{b} dagar till i kylen.",
+  "freshText1": "Ungefär {b} dagar till i kylen.",
+  "edgeText": "Varan är inom den säkra tiden men nära slutet. Ät den i dag eller frys in den nu.",
+  "tossText": "Den rekommenderade kyltiden har passerats. Även om varan ser ut och luktar bra: släng den.",
+  "checkNote": "Räknat från dagen då maten tillagades, öppnades eller köptes. Förutsätter ett kylskåp på 4 °C (40 °F) eller kallare.",
+  "dangerZone": "Riskzon",
+  "dangerText": "Bakterier förökar sig snabbast mellan 4 °C och 60 °C (40–140 °F).",
+  "safeCold": "Kyl",
+  "safeHot": "Varmhållning",
+  "badges": {
+   "perishable": "Färskvara",
+   "shelf": "Kräver ingen kyla",
+   "freezes": "Går bra att frysa",
+   "noFreeze": "Frys inte",
+   "opened": "Ändras efter öppning"
+  },
+  "steps": "Steg",
+  "tips": "Förvaringstips",
+  "eyebrows": {
+   "glance": "I korthet",
+   "methods": "Alla förvaringssätt",
+   "signs": "Kontrollera innan du äter",
+   "freeze": "Frysning",
+   "leftOut": "2-timmarsregeln",
+   "tips": "Förvaringstips",
+   "similar": "Utforska mer",
+   "faq": "Vanliga frågor"
+  }
+ }
+}

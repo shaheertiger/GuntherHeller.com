@@ -1,0 +1,84 @@
+{
+ "_doc": "Swedish strings for the interactive widgets on localized food pages, translated from widgets.en.json. Keep every {placeholder}. Food tokens as in sv.json: {q}/{Q} bare indefinite form without article, {o} same; never use an article, adjective ending or pronoun that must agree with the food's en/ett gender — say 'varan', 'livsmedlet' or 'maten' instead. [singular, plural] pairs follow the food's grammatical number. {d} = a duration, {m} = a number of months, {p} = pantry duration, {detail} = a translated freezing explanation, {why} = a translated 'where to store it' phrase. Celsius first.",
+ "eyebrow": "Testa själv",
+ "hCheck": "Är {o} fortfarande bra?",
+ "hint": "Tryck på en tid för att kontrollera.",
+ "min": "min",
+ "overnight": "Över natten",
+ "counter": {
+  "ask": "Har stått framme i …",
+  "note": "Med rumstemperatur menas allt över 4 °C (40 °F). En varm dag över 32 °C (90 °F) är gränsen 1 timme.",
+  "h30": "Ställ in i kylen nu",
+  "t30": "Fortfarande inom 2-timmarsgränsen. Ställ in maten i kylen direkt, i en grund behållare så att den svalnar snabbt.",
+  "h60": "Ställ in i kylen nu",
+  "t60": "Okej i normal rumstemperatur. En varm dag över 32 °C (90 °F) är 1 timme redan gränsen, så ställ in maten i kylen direkt.",
+  "h120": "Vid gränsen",
+  "t120": "Två timmar är USDA:s gräns. Om det var varmt, eller om du inte vet exakt hur länge maten har stått framme, släng den.",
+  "h240": "Släng",
+  "t240": "2-timmarsgränsen har passerats. Bakterier kan ha förökat sig eller bildat gifter som inte förstörs vid uppvärmning.",
+  "hNight": "Släng",
+  "tNight": "Efter en natt framme har maten tillbringat många timmar i riskzonen (4–60 °C / 40–140 °F). Den kan se bra ut, men den är inte säker."
+ },
+ "pantry": {
+  "ask": "Har legat i skafferiet i …",
+  "note": "Förutsätter ett svalt, torrt och mörkt skåp och en väl försluten förpackning.",
+  "hFresh": "Fortfarande bra",
+  "tFresh": "Väl inom skafferitiden ({p}), så länge varan har förvarats svalt, torrt och väl försluten.",
+  "hEdge": "Använd snart",
+  "tEdge": "Nära slutet av skafferitiden ({p}). Kontrollera lukt och utseende före användning; kvaliteten börjar försämras.",
+  "hPast": "Kontrollera före användning",
+  "tPast": "Skafferitiden ({p}) har passerats. Varor som håller utan kyla förlorar oftast kvalitet snarare än blir osäkra: släng varan om du ser mögel, skadedjur eller fuktiga klumpar, eller om lukten är konstig."
+ },
+ "freezer": {
+  "ask": "Har legat i frysen i …",
+  "note": "Förutsätter en frys på −18 °C (0 °F) eller kallare. Fryst mat förblir säker; bedömningarna gäller kvalitet.",
+  "hFresh": "Bästa kvalitet",
+  "tFresh": "Vid −18 °C (0 °F) är varan fortfarande inom tiden för bästa kvalitet ({d}). Tina i kylen och använd inom en till två dagar.",
+  "hEdge": "Använd snart",
+  "tEdge": "Varan är fortfarande säker men i slutet av tiden för bästa kvalitet. Använd den inom de närmaste veckorna; efter {d} försämras konsistens och smak.",
+  "hPast": "Går att äta, men kvaliteten sjunker",
+  "tPast": "Mat som hela tiden har hållits djupfryst är säker obegränsat länge, men efter {m} månader kan du räkna med frysbränna och blek smak. Fungerar bra till soppor, såser och bakning; skär bort torra, grå fläckar."
+ },
+ "checklist": {
+  "title": "Kryssa i allt du märker",
+  "ok": "Inget ikryssat? Gott tecken. Kontrollera ändå hur länge varan har förvarats: bakterierna som orsakar matförgiftning syns inte.",
+  "bad": "Stämmer något av detta har varan blivit dålig. Släng den – smaka inte för att kontrollera."
+ },
+ "quiz": {
+  "eyebrow": "Snabbquiz",
+  "h": "Sant eller falskt? Myter om {o}",
+  "t": "Sant",
+  "f": "Falskt",
+  "right": "Rätt!",
+  "wrong": "Inte riktigt.",
+  "q1": [
+   "{Q} går att äta utan risk efter mer än {d} i kylen, så länge lukten är normal.",
+   "{Q} går att äta utan risk efter mer än {d} i kylen, så länge lukten är normal."
+  ],
+  "a1Perishable": "Falskt. Bakterierna som orsakar matförgiftning ändrar sällan lukten. Håll dig till {d} och släng allt som är äldre.",
+  "a1Other": "Delvis sant. Det här är inget högrisklivsmedel, så lite mer än {d} innebär oftast sämre kvalitet, inte fara. Kontrollera först om det finns mögel eller konstig lukt.",
+  "q2": "Frysning dödar bakterierna i {o}.",
+  "a2": "Falskt. Frysning pausar bakterierna men dödar dem inte. De blir aktiva igen när maten tinar, så tina i kylen och tillaga eller värm upp ordentligt.",
+  "q3": [
+   "{Q} går bra att frysa.",
+   "{Q} går bra att frysa."
+  ],
+  "a3Yes": "Sant. {detail}",
+  "a3No": "Falskt. {detail}",
+  "a3Partly": "Bara delvis. {detail}",
+  "q4": "Kylskåpsdörren är en bra plats för {o}.",
+  "a4Yes": "Sant. Dörren är den varmaste delen av kylen, men det här livsmedlet tål det tillräckligt bra för att förvaras där.",
+  "a4No": "Falskt. Dörren blir varm varje gång den öppnas. Bästa platsen: {why}",
+  "q5Perishable": [
+   "{Q} som har stått framme över natten går bra att äta om maten värms upp ordentligt.",
+   "{Q} som har stått framme över natten går bra att äta om maten värms upp ordentligt."
+  ],
+  "a5Perishable": "Falskt. Vissa bakterier bildar värmetåliga gifter. Uppvärmning dödar bakterierna men inte gifterna, så mat som har stått framme mer än 2 timmar ska slängas.",
+  "q5Shelf": [
+   "{Q} måste förvaras i kylen av säkerhetsskäl.",
+   "{Q} måste förvaras i kylen av säkerhetsskäl."
+  ],
+  "a5Shelf": "Falskt. Varan håller utan kyla: {p} på en sval, torr plats. Kylförvaring kan förlänga kvaliteten för vissa livsmedel, men den behövs inte för säkerhetens skull.",
+  "a5ShelfNoPantry": "Inte av säkerhetsskäl, men kvaliteten håller längre. Följ förvaringstiderna på den här sidan."
+ }
+}
