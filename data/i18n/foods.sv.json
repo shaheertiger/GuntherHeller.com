@@ -6438,5 +6438,152 @@
   "o": "pumpapuré på burk",
   "p": false,
   "s": "pumpapure-pa-burk"
+ },
+ "cooked-cabbage": {
+  "n": "Kokt kål",
+  "q": "kokt kål",
+  "o": "kokt kål",
+  "p": false,
+  "s": "kokt-kal"
+ },
+ "cooked-asparagus": {
+  "n": "Kokt sparris",
+  "q": "kokt sparris",
+  "o": "kokt sparris",
+  "p": false,
+  "s": "kokt-sparris"
+ },
+ "cooked-green-beans": {
+  "n": "Kokta gröna bönor",
+  "q": "kokta gröna bönor",
+  "o": "kokta gröna bönor",
+  "p": true,
+  "s": "kokta-grona-bonor"
+ },
+ "cooked-corn": {
+  "n": "Kokt majs",
+  "q": "kokt majs",
+  "o": "kokt majs",
+  "p": false,
+  "s": "kokt-majs"
+ },
+ "cooked-spinach": {
+  "n": "Kokt spenat",
+  "q": "kokt spenat",
+  "o": "kokt spenat",
+  "p": false,
+  "s": "kokt-spenat"
+ },
+ "cooked-beets": {
+  "n": "Kokta rödbetor",
+  "q": "kokta rödbetor",
+  "o": "kokta rödbetor",
+  "p": true,
+  "s": "kokta-rodbetor"
+ },
+ "macaroni-salad": {
+  "n": "Makaronisallad",
+  "q": "makaronisallad",
+  "o": "makaronisallad",
+  "p": false,
+  "s": "makaronisallad"
+ },
+ "fruit-salad": {
+  "n": "Fruktsallad",
+  "q": "fruktsallad",
+  "o": "fruktsallad",
+  "p": false,
+  "s": "fruktsallad"
+ },
+ "spinach-dip": {
+  "n": "Spenatdipp",
+  "q": "spenatdipp",
+  "o": "spenatdipp",
+  "p": false,
+  "s": "spenatdipp"
+ },
+ "queso-dip": {
+  "n": "Ostdipp (queso)",
+  "q": "ostdipp",
+  "o": "ostdipp",
+  "p": false,
+  "s": "ostdipp-queso"
+ },
+ "salsa-verde": {
+  "n": "Salsa verde",
+  "q": "salsa verde",
+  "o": "salsa verde",
+  "p": false,
+  "s": "salsa-verde"
+ },
+ "ground-chicken": {
+  "n": "Kycklingfärs",
+  "q": "kycklingfärs",
+  "o": "kycklingfärs",
+  "p": false,
+  "s": "kycklingfars"
+ },
+ "roast-chicken": {
+  "n": "Ugnsstekt kyckling",
+  "q": "ugnsstekt kyckling",
+  "o": "ugnsstekt kyckling",
+  "p": false,
+  "s": "ugnsstekt-kyckling"
+ },
+ "chicken-alfredo": {
+  "n": "Pasta alfredo med kyckling",
+  "q": "pasta alfredo med kyckling",
+  "o": "pasta alfredo med kyckling",
+  "p": false,
+  "s": "pasta-alfredo-med-kyckling"
+ },
+ "fried-fish": {
+  "n": "Stekt fisk",
+  "q": "stekt fisk",
+  "o": "stekt fisk",
+  "p": false,
+  "s": "stekt-fisk"
+ },
+ "smoked-trout": {
+  "n": "Rökt forell",
+  "q": "rökt forell",
+  "o": "rökt forell",
+  "p": false,
+  "s": "rokt-forell"
+ },
+ "cooked-brisket": {
+  "n": "Tillagad oxbringa",
+  "q": "tillagad oxbringa",
+  "o": "tillagad oxbringa",
+  "p": false,
+  "s": "tillagad-oxbringa"
+ },
+ "egg-drop-soup": {
+  "n": "Kinesisk äggsoppa (egg drop soup)",
+  "q": "kinesisk äggsoppa",
+  "o": "kinesisk äggsoppa",
+  "p": false,
+  "s": "kinesisk-aggsoppa"
+ },
+ "french-toast": {
+  "n": "Fattiga riddare",
+  "q": "fattiga riddare",
+  "o": "fattiga riddare",
+  "p": true,
+  "s": "fattiga-riddare"
+ },
+ "napa-cabbage": {
+  "n": "Salladskål (kinakål)",
+  "q": "salladskål",
+  "o": "salladskål",
+  "p": false,
+  "s": "salladskal"
+ },
+ "pineapple-juice": {
+  "n": "Ananasjuice",
+  "q": "ananasjuice",
+  "o": "ananasjuice",
+  "p": false,
+  "s": "ananasjuice"
  }
 }

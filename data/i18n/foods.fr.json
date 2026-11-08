@@ -6438,5 +6438,152 @@
   "o": "la purée de potiron en conserve",
   "p": false,
   "s": "puree-potiron-conserve"
+ },
+ "cooked-cabbage": {
+  "n": "Chou cuit",
+  "q": "le chou cuit",
+  "o": "le chou cuit",
+  "p": false,
+  "s": "chou-cuit"
+ },
+ "cooked-asparagus": {
+  "n": "Asperges cuites",
+  "q": "les asperges cuites",
+  "o": "les asperges cuites",
+  "p": true,
+  "s": "asperges-cuites"
+ },
+ "cooked-green-beans": {
+  "n": "Haricots verts cuits",
+  "q": "les haricots verts cuits",
+  "o": "les haricots verts cuits",
+  "p": true,
+  "s": "haricots-verts-cuits"
+ },
+ "cooked-corn": {
+  "n": "Maïs cuit",
+  "q": "le maïs cuit",
+  "o": "le maïs cuit",
+  "p": false,
+  "s": "mais-cuit"
+ },
+ "cooked-spinach": {
+  "n": "Épinards cuits",
+  "q": "les épinards cuits",
+  "o": "les épinards cuits",
+  "p": true,
+  "s": "epinards-cuits"
+ },
+ "cooked-beets": {
+  "n": "Betteraves cuites",
+  "q": "les betteraves cuites",
+  "o": "les betteraves cuites",
+  "p": true,
+  "s": "betteraves-cuites"
+ },
+ "macaroni-salad": {
+  "n": "Salade de macaronis",
+  "q": "la salade de macaronis",
+  "o": "la salade de macaronis",
+  "p": false,
+  "s": "salade-macaronis"
+ },
+ "fruit-salad": {
+  "n": "Salade de fruits",
+  "q": "la salade de fruits",
+  "o": "la salade de fruits",
+  "p": false,
+  "s": "salade-fruits"
+ },
+ "spinach-dip": {
+  "n": "Dip aux épinards",
+  "q": "le dip aux épinards",
+  "o": "le dip aux épinards",
+  "p": false,
+  "s": "dip-epinards"
+ },
+ "queso-dip": {
+  "n": "Dip au fromage (queso)",
+  "q": "le dip au fromage",
+  "o": "le dip au fromage",
+  "p": false,
+  "s": "dip-fromage-queso"
+ },
+ "salsa-verde": {
+  "n": "Salsa verde",
+  "q": "la salsa verde",
+  "o": "la salsa verde",
+  "p": false,
+  "s": "salsa-verde"
+ },
+ "ground-chicken": {
+  "n": "Viande hachée de poulet",
+  "q": "la viande hachée de poulet",
+  "o": "la viande hachée de poulet",
+  "p": false,
+  "s": "poulet-hache"
+ },
+ "roast-chicken": {
+  "n": "Poulet rôti maison",
+  "q": "le poulet rôti maison",
+  "o": "le poulet rôti maison",
+  "p": false,
+  "s": "poulet-roti-maison"
+ },
+ "chicken-alfredo": {
+  "n": "Fettuccine Alfredo au poulet",
+  "q": "les fettuccine Alfredo au poulet",
+  "o": "les fettuccine Alfredo au poulet",
+  "p": true,
+  "s": "fettuccine-alfredo-poulet"
+ },
+ "fried-fish": {
+  "n": "Poisson frit",
+  "q": "le poisson frit",
+  "o": "le poisson frit",
+  "p": false,
+  "s": "poisson-frit"
+ },
+ "smoked-trout": {
+  "n": "Truite fumée",
+  "q": "la truite fumée",
+  "o": "la truite fumée",
+  "p": false,
+  "s": "truite-fumee"
+ },
+ "cooked-brisket": {
+  "n": "Poitrine de bœuf cuite",
+  "q": "la poitrine de bœuf cuite",
+  "o": "la poitrine de bœuf cuite",
+  "p": false,
+  "s": "poitrine-boeuf-cuite"
+ },
+ "egg-drop-soup": {
+  "n": "Soupe chinoise aux œufs",
+  "q": "la soupe chinoise aux œufs",
+  "o": "la soupe chinoise aux œufs",
+  "p": false,
+  "s": "soupe-chinoise-oeufs"
+ },
+ "french-toast": {
+  "n": "Pain perdu",
+  "q": "le pain perdu",
+  "o": "le pain perdu",
+  "p": false,
+  "s": "pain-perdu"
+ },
+ "napa-cabbage": {
+  "n": "Chou chinois",
+  "q": "le chou chinois",
+  "o": "le chou chinois",
+  "p": false,
+  "s": "chou-chinois"
+ },
+ "pineapple-juice": {
+  "n": "Jus d'ananas",
+  "q": "le jus d'ananas",
+  "o": "le jus d'ananas",
+  "p": false,
+  "s": "jus-ananas"
  }
 }

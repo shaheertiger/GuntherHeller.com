@@ -372,6 +372,7 @@ for (const d of overrides.derived) {
     derivedFrom: base.slug,
     derivedNote: d.note,
     ...(d.notInRelated ? { notInRelated: true } : {}),
+    ...(d.batch ? { batch: d.batch } : {}),
   });
 }
 

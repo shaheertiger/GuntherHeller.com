@@ -6438,5 +6438,152 @@
   "o": "a abóbora enlatada",
   "p": false,
   "s": "abobora-enlatada"
+ },
+ "cooked-cabbage": {
+  "n": "Repolho cozido",
+  "q": "o repolho cozido",
+  "o": "o repolho cozido",
+  "p": false,
+  "s": "repolho-cozido"
+ },
+ "cooked-asparagus": {
+  "n": "Aspargos cozidos",
+  "q": "os aspargos cozidos",
+  "o": "os aspargos cozidos",
+  "p": true,
+  "s": "aspargos-cozidos"
+ },
+ "cooked-green-beans": {
+  "n": "Vagem cozida",
+  "q": "a vagem cozida",
+  "o": "a vagem cozida",
+  "p": false,
+  "s": "vagem-cozida"
+ },
+ "cooked-corn": {
+  "n": "Milho cozido",
+  "q": "o milho cozido",
+  "o": "o milho cozido",
+  "p": false,
+  "s": "milho-cozido"
+ },
+ "cooked-spinach": {
+  "n": "Espinafre cozido",
+  "q": "o espinafre cozido",
+  "o": "o espinafre cozido",
+  "p": false,
+  "s": "espinafre-cozido"
+ },
+ "cooked-beets": {
+  "n": "Beterraba cozida",
+  "q": "a beterraba cozida",
+  "o": "a beterraba cozida",
+  "p": false,
+  "s": "beterraba-cozida"
+ },
+ "macaroni-salad": {
+  "n": "Salada de macarrão com maionese",
+  "q": "a salada de macarrão com maionese",
+  "o": "a salada de macarrão com maionese",
+  "p": false,
+  "s": "salada-macarrao-maionese"
+ },
+ "fruit-salad": {
+  "n": "Salada de frutas",
+  "q": "a salada de frutas",
+  "o": "a salada de frutas",
+  "p": false,
+  "s": "salada-frutas"
+ },
+ "spinach-dip": {
+  "n": "Patê de espinafre",
+  "q": "o patê de espinafre",
+  "o": "o patê de espinafre",
+  "p": false,
+  "s": "pate-espinafre"
+ },
+ "queso-dip": {
+  "n": "Molho de queijo cremoso",
+  "q": "o molho de queijo cremoso",
+  "o": "o molho de queijo cremoso",
+  "p": false,
+  "s": "molho-queijo-cremoso"
+ },
+ "salsa-verde": {
+  "n": "Molho verde mexicano",
+  "q": "o molho verde mexicano",
+  "o": "o molho verde mexicano",
+  "p": false,
+  "s": "molho-verde-mexicano"
+ },
+ "ground-chicken": {
+  "n": "Frango moído",
+  "q": "o frango moído",
+  "o": "o frango moído",
+  "p": false,
+  "s": "frango-moido"
+ },
+ "roast-chicken": {
+  "n": "Frango assado no forno",
+  "q": "o frango assado no forno",
+  "o": "o frango assado no forno",
+  "p": false,
+  "s": "frango-assado-forno"
+ },
+ "chicken-alfredo": {
+  "n": "Macarrão Alfredo com frango",
+  "q": "o macarrão Alfredo com frango",
+  "o": "o macarrão Alfredo com frango",
+  "p": false,
+  "s": "macarrao-alfredo-frango"
+ },
+ "fried-fish": {
+  "n": "Peixe frito",
+  "q": "o peixe frito",
+  "o": "o peixe frito",
+  "p": false,
+  "s": "peixe-frito"
+ },
+ "smoked-trout": {
+  "n": "Truta defumada",
+  "q": "a truta defumada",
+  "o": "a truta defumada",
+  "p": false,
+  "s": "truta-defumada"
+ },
+ "cooked-brisket": {
+  "n": "Peito bovino cozido",
+  "q": "o peito bovino cozido",
+  "o": "o peito bovino cozido",
+  "p": false,
+  "s": "peito-bovino-cozido"
+ },
+ "egg-drop-soup": {
+  "n": "Sopa chinesa de ovo",
+  "q": "a sopa chinesa de ovo",
+  "o": "a sopa chinesa de ovo",
+  "p": false,
+  "s": "sopa-chinesa-ovo"
+ },
+ "french-toast": {
+  "n": "Rabanada",
+  "q": "a rabanada",
+  "o": "a rabanada",
+  "p": false,
+  "s": "rabanada"
+ },
+ "napa-cabbage": {
+  "n": "Repolho chinês",
+  "q": "o repolho chinês",
+  "o": "o repolho chinês",
+  "p": false,
+  "s": "repolho-chines"
+ },
+ "pineapple-juice": {
+  "n": "Suco de abacaxi",
+  "q": "o suco de abacaxi",
+  "o": "o suco de abacaxi",
+  "p": false,
+  "s": "suco-abacaxi"
  }
 }

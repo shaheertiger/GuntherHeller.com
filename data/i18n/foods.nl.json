@@ -6438,5 +6438,152 @@
   "o": "pompoenpuree uit blik",
   "p": false,
   "s": "pompoenpuree-uit-blik"
+ },
+ "cooked-cabbage": {
+  "n": "Gekookte kool",
+  "q": "gekookte kool",
+  "o": "gekookte kool",
+  "p": false,
+  "s": "gekookte-kool"
+ },
+ "cooked-asparagus": {
+  "n": "Gekookte asperges",
+  "q": "gekookte asperges",
+  "o": "gekookte asperges",
+  "p": true,
+  "s": "gekookte-asperges"
+ },
+ "cooked-green-beans": {
+  "n": "Gekookte sperziebonen",
+  "q": "gekookte sperziebonen",
+  "o": "gekookte sperziebonen",
+  "p": true,
+  "s": "gekookte-sperziebonen"
+ },
+ "cooked-corn": {
+  "n": "Gekookte maïs",
+  "q": "gekookte maïs",
+  "o": "gekookte maïs",
+  "p": false,
+  "s": "gekookte-mais"
+ },
+ "cooked-spinach": {
+  "n": "Gekookte spinazie",
+  "q": "gekookte spinazie",
+  "o": "gekookte spinazie",
+  "p": false,
+  "s": "gekookte-spinazie"
+ },
+ "cooked-beets": {
+  "n": "Gekookte rode bieten",
+  "q": "gekookte rode bieten",
+  "o": "gekookte rode bieten",
+  "p": true,
+  "s": "gekookte-rode-bieten"
+ },
+ "macaroni-salad": {
+  "n": "Macaronisalade",
+  "q": "macaronisalade",
+  "o": "macaronisalade",
+  "p": false,
+  "s": "macaronisalade"
+ },
+ "fruit-salad": {
+  "n": "Fruitsalade",
+  "q": "fruitsalade",
+  "o": "fruitsalade",
+  "p": false,
+  "s": "fruitsalade"
+ },
+ "spinach-dip": {
+  "n": "Spinaziedip",
+  "q": "spinaziedip",
+  "o": "spinaziedip",
+  "p": false,
+  "s": "spinaziedip"
+ },
+ "queso-dip": {
+  "n": "Queso dip (kaasdip)",
+  "q": "queso dip (kaasdip)",
+  "o": "queso dip (kaasdip)",
+  "p": false,
+  "s": "queso-dip"
+ },
+ "salsa-verde": {
+  "n": "Salsa verde (groene salsa)",
+  "q": "salsa verde (groene salsa)",
+  "o": "salsa verde (groene salsa)",
+  "p": false,
+  "s": "salsa-verde"
+ },
+ "ground-chicken": {
+  "n": "Kipgehakt",
+  "q": "kipgehakt",
+  "o": "kipgehakt",
+  "p": false,
+  "s": "kipgehakt"
+ },
+ "roast-chicken": {
+  "n": "Gebraden kip",
+  "q": "gebraden kip",
+  "o": "gebraden kip",
+  "p": false,
+  "s": "gebraden-kip"
+ },
+ "chicken-alfredo": {
+  "n": "Pasta alfredo met kip",
+  "q": "pasta alfredo met kip",
+  "o": "pasta alfredo met kip",
+  "p": false,
+  "s": "pasta-alfredo-kip"
+ },
+ "fried-fish": {
+  "n": "Gefrituurde vis",
+  "q": "gefrituurde vis",
+  "o": "gefrituurde vis",
+  "p": false,
+  "s": "gefrituurde-vis"
+ },
+ "smoked-trout": {
+  "n": "Gerookte forel",
+  "q": "gerookte forel",
+  "o": "gerookte forel",
+  "p": false,
+  "s": "gerookte-forel"
+ },
+ "cooked-brisket": {
+  "n": "Gegaarde runderborst",
+  "q": "gegaarde runderborst",
+  "o": "gegaarde runderborst",
+  "p": false,
+  "s": "gegaarde-runderborst"
+ },
+ "egg-drop-soup": {
+  "n": "Chinese eiersoep (egg drop soup)",
+  "q": "Chinese eiersoep (egg drop soup)",
+  "o": "Chinese eiersoep (egg drop soup)",
+  "p": false,
+  "s": "chinese-eiersoep"
+ },
+ "french-toast": {
+  "n": "Wentelteefjes",
+  "q": "wentelteefjes",
+  "o": "wentelteefjes",
+  "p": true,
+  "s": "wentelteefjes"
+ },
+ "napa-cabbage": {
+  "n": "Chinese kool",
+  "q": "Chinese kool",
+  "o": "Chinese kool",
+  "p": false,
+  "s": "chinese-kool"
+ },
+ "pineapple-juice": {
+  "n": "Ananassap",
+  "q": "ananassap",
+  "o": "ananassap",
+  "p": false,
+  "s": "ananassap"
  }
 }

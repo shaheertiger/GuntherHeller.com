@@ -6438,5 +6438,152 @@
   "o": "かぼちゃピューレ缶",
   "p": false,
   "s": "kabocha-pyure-kan"
+ },
+ "cooked-cabbage": {
+  "n": "加熱したキャベツ",
+  "q": "加熱したキャベツ",
+  "o": "加熱したキャベツ",
+  "p": false,
+  "s": "kanetsu-kyabetsu"
+ },
+ "cooked-asparagus": {
+  "n": "ゆでたアスパラガス",
+  "q": "ゆでたアスパラガス",
+  "o": "ゆでたアスパラガス",
+  "p": false,
+  "s": "yudeta-asuparagasu"
+ },
+ "cooked-green-beans": {
+  "n": "ゆでたさやいんげん",
+  "q": "ゆでたさやいんげん",
+  "o": "ゆでたさやいんげん",
+  "p": false,
+  "s": "yudeta-sayaingen"
+ },
+ "cooked-corn": {
+  "n": "ゆでたとうもろこし",
+  "q": "ゆでたとうもろこし",
+  "o": "ゆでたとうもろこし",
+  "p": false,
+  "s": "yudeta-tomorokoshi"
+ },
+ "cooked-spinach": {
+  "n": "ゆでたほうれん草",
+  "q": "ゆでたほうれん草",
+  "o": "ゆでたほうれん草",
+  "p": false,
+  "s": "yudeta-horenso"
+ },
+ "cooked-beets": {
+  "n": "ゆでたビーツ",
+  "q": "ゆでたビーツ",
+  "o": "ゆでたビーツ",
+  "p": false,
+  "s": "yudeta-bitsu"
+ },
+ "macaroni-salad": {
+  "n": "マカロニサラダ",
+  "q": "マカロニサラダ",
+  "o": "マカロニサラダ",
+  "p": false,
+  "s": "makaroni-sarada"
+ },
+ "fruit-salad": {
+  "n": "フルーツサラダ",
+  "q": "フルーツサラダ",
+  "o": "フルーツサラダ",
+  "p": false,
+  "s": "furutsu-sarada"
+ },
+ "spinach-dip": {
+  "n": "ほうれん草のディップ（サワークリームベース）",
+  "q": "ほうれん草のディップ",
+  "o": "ほうれん草のディップ",
+  "p": false,
+  "s": "horenso-no-dippu"
+ },
+ "queso-dip": {
+  "n": "ケソディップ（メキシコ風チーズディップ）",
+  "q": "ケソディップ",
+  "o": "ケソディップ",
+  "p": false,
+  "s": "keso-dippu"
+ },
+ "salsa-verde": {
+  "n": "サルサヴェルデ（グリーンサルサ）",
+  "q": "サルサヴェルデ",
+  "o": "サルサヴェルデ",
+  "p": false,
+  "s": "sarusa-verude"
+ },
+ "ground-chicken": {
+  "n": "鶏ひき肉",
+  "q": "鶏ひき肉",
+  "o": "鶏ひき肉",
+  "p": false,
+  "s": "tori-hikiniku"
+ },
+ "roast-chicken": {
+  "n": "ローストチキン",
+  "q": "ローストチキン",
+  "o": "ローストチキン",
+  "p": false,
+  "s": "rosuto-chikin"
+ },
+ "chicken-alfredo": {
+  "n": "チキンアルフレッドパスタ",
+  "q": "チキンアルフレッドパスタ",
+  "o": "チキンアルフレッドパスタ",
+  "p": false,
+  "s": "chikin-arufureddo-pasuta"
+ },
+ "fried-fish": {
+  "n": "魚のフライ",
+  "q": "魚のフライ",
+  "o": "魚のフライ",
+  "p": false,
+  "s": "sakana-no-furai"
+ },
+ "smoked-trout": {
+  "n": "スモークトラウト（マスの温燻）",
+  "q": "スモークトラウト",
+  "o": "スモークトラウト",
+  "p": false,
+  "s": "sumoku-torauto"
+ },
+ "cooked-brisket": {
+  "n": "加熱調理した牛ブリスケット",
+  "q": "加熱調理した牛ブリスケット",
+  "o": "加熱調理した牛ブリスケット",
+  "p": false,
+  "s": "kanetsu-chori-gyu-burisuketto"
+ },
+ "egg-drop-soup": {
+  "n": "かき玉スープ",
+  "q": "かき玉スープ",
+  "o": "かき玉スープ",
+  "p": false,
+  "s": "kakitama-supu"
+ },
+ "french-toast": {
+  "n": "フレンチトースト",
+  "q": "フレンチトースト",
+  "o": "フレンチトースト",
+  "p": false,
+  "s": "furenchi-tosuto"
+ },
+ "napa-cabbage": {
+  "n": "白菜",
+  "q": "白菜",
+  "o": "白菜",
+  "p": false,
+  "s": "hakusai"
+ },
+ "pineapple-juice": {
+  "n": "パイナップルジュース",
+  "q": "パイナップルジュース",
+  "o": "パイナップルジュース",
+  "p": false,
+  "s": "painappuru-jusu"
  }
 }

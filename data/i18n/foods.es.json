@@ -6438,5 +6438,152 @@
   "o": "la calabaza enlatada",
   "p": false,
   "s": "calabaza-enlatada"
+ },
+ "cooked-cabbage": {
+  "n": "Repollo cocido",
+  "q": "el repollo cocido",
+  "o": "el repollo cocido",
+  "p": false,
+  "s": "repollo-cocido"
+ },
+ "cooked-asparagus": {
+  "n": "Espárragos cocidos",
+  "q": "los espárragos cocidos",
+  "o": "los espárragos cocidos",
+  "p": true,
+  "s": "esparragos-cocidos"
+ },
+ "cooked-green-beans": {
+  "n": "Ejotes cocidos",
+  "q": "los ejotes cocidos",
+  "o": "los ejotes cocidos",
+  "p": true,
+  "s": "ejotes-cocidos"
+ },
+ "cooked-corn": {
+  "n": "Elote cocido",
+  "q": "el elote cocido",
+  "o": "el elote cocido",
+  "p": false,
+  "s": "elote-cocido"
+ },
+ "cooked-spinach": {
+  "n": "Espinacas cocidas",
+  "q": "las espinacas cocidas",
+  "o": "las espinacas cocidas",
+  "p": true,
+  "s": "espinacas-cocidas"
+ },
+ "cooked-beets": {
+  "n": "Betabel cocido",
+  "q": "el betabel cocido",
+  "o": "el betabel cocido",
+  "p": false,
+  "s": "betabel-cocido"
+ },
+ "macaroni-salad": {
+  "n": "Ensalada de coditos",
+  "q": "la ensalada de coditos",
+  "o": "la ensalada de coditos",
+  "p": false,
+  "s": "ensalada-coditos"
+ },
+ "fruit-salad": {
+  "n": "Ensalada de frutas",
+  "q": "la ensalada de frutas",
+  "o": "la ensalada de frutas",
+  "p": false,
+  "s": "ensalada-frutas"
+ },
+ "spinach-dip": {
+  "n": "Dip de espinacas",
+  "q": "el dip de espinacas",
+  "o": "el dip de espinacas",
+  "p": false,
+  "s": "dip-espinacas"
+ },
+ "queso-dip": {
+  "n": "Dip de queso",
+  "q": "el dip de queso",
+  "o": "el dip de queso",
+  "p": false,
+  "s": "dip-queso"
+ },
+ "salsa-verde": {
+  "n": "Salsa verde",
+  "q": "la salsa verde",
+  "o": "la salsa verde",
+  "p": false,
+  "s": "salsa-verde"
+ },
+ "ground-chicken": {
+  "n": "Carne molida de pollo",
+  "q": "la carne molida de pollo",
+  "o": "la carne molida de pollo",
+  "p": false,
+  "s": "carne-molida-pollo"
+ },
+ "roast-chicken": {
+  "n": "Pollo al horno",
+  "q": "el pollo al horno",
+  "o": "el pollo al horno",
+  "p": false,
+  "s": "pollo-horno"
+ },
+ "chicken-alfredo": {
+  "n": "Pasta Alfredo con pollo",
+  "q": "la pasta Alfredo con pollo",
+  "o": "la pasta Alfredo con pollo",
+  "p": false,
+  "s": "pasta-alfredo-pollo"
+ },
+ "fried-fish": {
+  "n": "Pescado frito",
+  "q": "el pescado frito",
+  "o": "el pescado frito",
+  "p": false,
+  "s": "pescado-frito"
+ },
+ "smoked-trout": {
+  "n": "Trucha ahumada",
+  "q": "la trucha ahumada",
+  "o": "la trucha ahumada",
+  "p": false,
+  "s": "trucha-ahumada"
+ },
+ "cooked-brisket": {
+  "n": "Pecho de res cocido",
+  "q": "el pecho de res cocido",
+  "o": "el pecho de res cocido",
+  "p": false,
+  "s": "pecho-res-cocido"
+ },
+ "egg-drop-soup": {
+  "n": "Sopa china de huevo",
+  "q": "la sopa china de huevo",
+  "o": "la sopa china de huevo",
+  "p": false,
+  "s": "sopa-china-huevo"
+ },
+ "french-toast": {
+  "n": "Pan francés",
+  "q": "el pan francés",
+  "o": "el pan francés",
+  "p": false,
+  "s": "pan-frances"
+ },
+ "napa-cabbage": {
+  "n": "Col china",
+  "q": "la col china",
+  "o": "la col china",
+  "p": false,
+  "s": "col-china"
+ },
+ "pineapple-juice": {
+  "n": "Jugo de piña",
+  "q": "el jugo de piña",
+  "o": "el jugo de piña",
+  "p": false,
+  "s": "jugo-pina"
  }
 }
