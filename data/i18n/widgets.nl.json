@@ -1,0 +1,84 @@
+{
+ "_doc": "Dutch strings for the interactive widgets on localized food pages, translated from widgets.en.json. Keep every {placeholder}. Food tokens as in nl.json: {q}/{Q} subject form without article, {o} object form; never use a de/het-dependent word for the food. [singular, plural] pairs follow the food's grammatical number. {d} = a duration, {m} = a number of months, {p} = pantry duration, {detail} = a translated freezing explanation, {why} = a translated 'where to store it' phrase. Celsius first.",
+ "eyebrow": "Probeer het",
+ "hCheck": "Controleer je {o}",
+ "hint": "Tik op een tijd om te controleren.",
+ "min": "min",
+ "overnight": "Een nacht",
+ "counter": {
+  "ask": "Al zo lang buiten de koelkast…",
+  "note": "Kamertemperatuur betekent alles boven 4 °C (40 °F). Op warme dagen boven 32 °C (90 °F) is de grens 1 uur.",
+  "h30": "Nu in de koelkast",
+  "t30": "Nog binnen de grens van 2 uur. Zet het product meteen in de koelkast, in een ondiepe bak zodat het snel afkoelt.",
+  "h60": "Nu in de koelkast",
+  "t60": "Bij normale kamertemperatuur nog in orde. Op een warme dag boven 32 °C (90 °F) is 1 uur al de grens, dus zet het product direct in de koelkast.",
+  "h120": "Op de grens",
+  "t120": "Twee uur is de grens volgens de USDA. Was het warm, of weet je niet precies hoe lang het product heeft gestaan, gooi het dan weg.",
+  "h240": "Weggooien",
+  "t240": "De grens van 2 uur is overschreden. Bacteriën kunnen zich hebben vermenigvuldigd of gifstoffen hebben gevormd die opwarmen niet vernietigt.",
+  "hNight": "Weggooien",
+  "tNight": "Na een nacht buiten de koelkast heeft het product vele uren in de gevarenzone gestaan (4–60 °C / 40–140 °F). Het ziet er misschien goed uit, maar het is niet veilig."
+ },
+ "pantry": {
+  "ask": "Al zo lang in de voorraadkast…",
+  "note": "Uitgaande van een koele, droge, donkere kast en een goed gesloten verpakking.",
+  "hFresh": "Nog goed",
+  "tFresh": "Ruim binnen de bewaartijd in de voorraadkast ({p}), zolang het product koel, droog en goed afgesloten is bewaard.",
+  "hEdge": "Binnenkort opmaken",
+  "tEdge": "Bijna aan het eind van de bewaartijd in de voorraadkast ({p}). Controleer geur en uiterlijk voor gebruik; de kwaliteit begint achteruit te gaan.",
+  "hPast": "Controleer voor gebruik",
+  "tPast": "De bewaartijd in de voorraadkast ({p}) is voorbij. Houdbare producten verliezen meestal eerder kwaliteit dan dat ze onveilig worden: gooi het product weg als je schimmel, ongedierte, vochtige klontjes of een vreemde geur ziet of ruikt."
+ },
+ "freezer": {
+  "ask": "Al zo lang in de vriezer…",
+  "note": "Uitgaande van een vriezer van −18 °C (0 °F) of kouder. Ingevroren voedsel blijft veilig; deze oordelen gaan over kwaliteit.",
+  "hFresh": "Beste kwaliteit",
+  "tFresh": "Bij −18 °C (0 °F) valt het product nog binnen de termijn voor beste kwaliteit ({d}). Ontdooi in de koelkast en gebruik binnen een à twee dagen.",
+  "hEdge": "Binnenkort opmaken",
+  "tEdge": "Nog veilig, en aan het eind van de termijn voor beste kwaliteit. Gebruik het product in de komende weken; na {d} gaan structuur en smaak achteruit.",
+  "hPast": "Veilig, maar over het hoogtepunt",
+  "tPast": "Voedsel dat steeds bevroren is gebleven, blijft onbeperkt veilig, maar na {m} maanden kun je vriesbrand en een flauwe smaak verwachten. Prima voor soepen, sauzen en bakken; snijd droge, grijze plekken weg."
+ },
+ "checklist": {
+  "title": "Vink aan wat je opvalt",
+  "ok": "Niets aangevinkt? Goed teken. Controleer toch hoe lang het product al bewaard wordt: de bacteriën die voedselvergiftiging veroorzaken, zijn onzichtbaar.",
+  "bad": "Klopt een van deze punten, dan is het product bedorven. Gooi het weg – proef niet om het te controleren."
+ },
+ "quiz": {
+  "eyebrow": "Korte quiz",
+  "h": "Waar of niet waar? Fabels over {o}",
+  "t": "Waar",
+  "f": "Niet waar",
+  "right": "Goed!",
+  "wrong": "Niet helemaal.",
+  "q1": [
+   "{Q} is na meer dan {d} in de koelkast nog veilig om te eten, zolang de geur goed is.",
+   "{Q} zijn na meer dan {d} in de koelkast nog veilig om te eten, zolang de geur goed is."
+  ],
+  "a1Perishable": "Niet waar. De bacteriën die voedselvergiftiging veroorzaken, veranderen de geur zelden. Houd je aan de termijn van {d} en gooi alles weg wat ouder is.",
+  "a1Other": "Deels waar. Dit is geen risicoproduct, dus iets langer dan {d} betekent meestal mindere kwaliteit, geen gevaar. Controleer eerst op schimmel en vreemde geuren.",
+  "q2": "Invriezen doodt de bacteriën in {o}.",
+  "a2": "Niet waar. Invriezen legt bacteriën stil, maar doodt ze niet. Bij het ontdooien worden ze weer actief, dus ontdooi in de koelkast en verhit of warm goed op.",
+  "q3": [
+   "{Q} is goed in te vriezen.",
+   "{Q} zijn goed in te vriezen."
+  ],
+  "a3Yes": "Waar. {detail}",
+  "a3No": "Niet waar. {detail}",
+  "a3Partly": "Deels. {detail}",
+  "q4": "De koelkastdeur is een goede plek voor {o}.",
+  "a4Yes": "Waar. De deur is het warmste deel van de koelkast, maar dit product bederft langzaam genoeg om daar te staan.",
+  "a4No": "Niet waar. De deur warmt op telkens als je hem opent. Beste plek: {why}",
+  "q5Perishable": [
+   "{Q} is na een nacht op kamertemperatuur nog prima, mits goed opgewarmd.",
+   "{Q} zijn na een nacht op kamertemperatuur nog prima, mits goed opgewarmd."
+  ],
+  "a5Perishable": "Niet waar. Sommige bacteriën maken hittebestendige gifstoffen. Opwarmen doodt de bacteriën, maar niet die gifstoffen; voedsel dat langer dan 2 uur buiten de koelkast heeft gestaan, moet dus weg.",
+  "q5Shelf": [
+   "{Q} moet in de koelkast om veilig te blijven.",
+   "{Q} moeten in de koelkast om veilig te blijven."
+  ],
+  "a5Shelf": "Niet waar. Het product is houdbaar zonder koeling: {p} op een koele, droge plek. Bij sommige producten blijft de kwaliteit in de koelkast langer behouden, maar voor de veiligheid is het niet nodig.",
+  "a5ShelfNoPantry": "Niet voor de veiligheid, maar de kwaliteit blijft zo langer behouden. Volg de bewaartijden op deze pagina."
+ }
+}
