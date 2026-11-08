@@ -1,0 +1,84 @@
+{
+ "_doc": "Norwegian Bokmål strings for the interactive widgets on localized food pages, translated from widgets.en.json. Keep every {placeholder}. Food tokens as in no.json: {q}/{Q} subject form without article, {o} object form; never use an en/ei/et-dependent word (article, adjective ending, den/det) for the food — say 'varen'. [singular, plural] pairs follow the food's grammatical number. {d} = a duration, {m} = a number of months, {p} = pantry duration, {detail} = a translated freezing explanation, {why} = a translated 'where to store it' phrase. Celsius first.",
+ "eyebrow": "Prøv selv",
+ "hCheck": "Sjekk {o}",
+ "hint": "Trykk på en tid for å sjekke.",
+ "min": "min",
+ "overnight": "Over natten",
+ "counter": {
+  "ask": "Varen har stått framme i …",
+  "note": "Romtemperatur betyr alt over 4 °C (40 °F). På varme dager over 32 °C (90 °F) er grensen 1 time.",
+  "h30": "Sett i kjøleskapet nå",
+  "t30": "Fortsatt innenfor grensen på 2 timer. Sett varen i kjøleskapet med en gang, i en grunn beholder så den kjøles raskt ned.",
+  "h60": "Sett i kjøleskapet nå",
+  "t60": "Greit i vanlig romtemperatur. På en varm dag over 32 °C (90 °F) er 1 time allerede grensen, så sett varen i kjøleskapet umiddelbart.",
+  "h120": "Ved grensen",
+  "t120": "To timer er grensen ifølge USDA. Hvis det var varmt, eller du ikke vet nøyaktig hvor lenge varen har stått framme, bør du kaste den.",
+  "h240": "Kast",
+  "t240": "Grensen på 2 timer er passert. Bakterier kan ha formert seg eller laget giftstoffer som oppvarming ikke ødelegger.",
+  "hNight": "Kast",
+  "tNight": "Etter en natt i romtemperatur har varen vært mange timer i faresonen (4–60 °C / 40–140 °F). Den kan se fin ut, men den er ikke trygg."
+ },
+ "pantry": {
+  "ask": "Varen har stått i skapet i …",
+  "note": "Forutsetter et kjølig, tørt og mørkt skap og at pakningen er godt lukket.",
+  "hFresh": "Kan fortsatt brukes",
+  "tFresh": "Godt innenfor holdbarhetstiden i skapet ({p}), så lenge varen er oppbevart kjølig, tørt og godt lukket.",
+  "hEdge": "Bruk snart",
+  "tEdge": "Nær slutten av holdbarhetstiden i skapet ({p}). Sjekk lukt og utseende før bruk; kvaliteten begynner å bli dårligere.",
+  "hPast": "Sjekk før bruk",
+  "tPast": "Holdbarhetstiden i skapet ({p}) er passert. Varer som tåler romtemperatur, mister som regel kvalitet i stedet for å bli utrygge: Kast varen hvis du ser mugg, skadedyr eller fuktige klumper, eller kjenner en rar lukt."
+ },
+ "freezer": {
+  "ask": "Varen har ligget i fryseren i …",
+  "note": "Forutsetter en fryser på −18 °C (0 °F) eller kaldere. Frossen mat er trygg; disse vurderingene gjelder kvalitet.",
+  "hFresh": "Beste kvalitet",
+  "tFresh": "Ved −18 °C (0 °F) er varen fortsatt innenfor perioden for beste kvalitet ({d}). Tin i kjøleskapet og bruk innen en dag eller to.",
+  "hEdge": "Bruk snart",
+  "tEdge": "Varen er fortsatt trygg, men nær slutten av perioden for beste kvalitet. Bruk den i løpet av de neste ukene; etter {d} blir konsistens og smak dårligere.",
+  "hPast": "Trygt å spise, men forbi beste kvalitet",
+  "tPast": "Mat som har vært gjennomfrossen hele tiden, er trygg på ubestemt tid, men etter {m} måneder må du regne med at varen blir frysebrent og får flat smak. Fint til supper, sauser og baking; skjær bort tørre, grå flekker."
+ },
+ "checklist": {
+  "title": "Kryss av for det du legger merke til",
+  "ok": "Ingenting krysset av? Et godt tegn. Sjekk likevel hvor lenge varen har vært oppbevart: Bakteriene som gir matforgiftning, er usynlige.",
+  "bad": "Hvis noe av dette stemmer, er varen blitt dårlig. Kast den – ikke smak for å sjekke."
+ },
+ "quiz": {
+  "eyebrow": "Kjapp quiz",
+  "h": "Sant eller usant? Myter om {o}",
+  "t": "Sant",
+  "f": "Usant",
+  "right": "Riktig!",
+  "wrong": "Ikke helt.",
+  "q1": [
+   "{Q} kan trygt spises etter mer enn {d} i kjøleskapet, så lenge lukten er i orden.",
+   "{Q} kan trygt spises etter mer enn {d} i kjøleskapet, så lenge lukten er i orden."
+  ],
+  "a1Perishable": "Usant. Bakteriene som gir matforgiftning, endrer sjelden lukten. Hold deg til perioden på {d}, og kast alt som er eldre.",
+  "a1Other": "Delvis sant. Dette er ikke en høyrisikovare, så litt over {d} betyr som regel dårligere kvalitet, ikke fare. Sjekk først for mugg og rar lukt.",
+  "q2": "Frysing dreper bakteriene i {o}.",
+  "a2": "Usant. Frysing setter bakteriene på pause, men dreper dem ikke. De blir aktive igjen når maten tines, så tin i kjøleskapet og tilbered eller varm opp grundig.",
+  "q3": [
+   "{Q} egner seg godt til frysing.",
+   "{Q} egner seg godt til frysing."
+  ],
+  "a3Yes": "Sant. {detail}",
+  "a3No": "Usant. {detail}",
+  "a3Partly": "Bare delvis. {detail}",
+  "q4": "Kjøleskapsdøra er et godt sted for {o}.",
+  "a4Yes": "Sant. Døra er den varmeste delen av kjøleskapet, men denne varen tåler det godt nok til å stå der.",
+  "a4No": "Usant. Døra blir varmere hver gang den åpnes. Beste sted: {why}",
+  "q5Perishable": [
+   "{Q} som har stått framme over natten, kan spises hvis du varmer opp godt.",
+   "{Q} som har stått framme over natten, kan spises hvis du varmer opp godt."
+  ],
+  "a5Perishable": "Usant. Noen bakterier lager varmestabile giftstoffer. Oppvarming dreper bakteriene, men ikke giftstoffene, så mat som har stått framme i mer enn 2 timer, bør kastes.",
+  "q5Shelf": [
+   "{Q} må oppbevares i kjøleskap av hensyn til mattryggheten.",
+   "{Q} må oppbevares i kjøleskap av hensyn til mattryggheten."
+  ],
+  "a5Shelf": "Usant. Varen tåler romtemperatur: {p} på et kjølig, tørt sted. For noen matvarer holder kvaliteten seg lenger i kjøleskapet, men det er ikke nødvendig for mattryggheten.",
+  "a5ShelfNoPantry": "Ikke av hensyn til mattryggheten, men kvaliteten holder seg lenger. Følg holdbarhetstidene på denne siden."
+ }
+}

@@ -51,9 +51,14 @@ freezer figure; left-out-overnight is only for perishable foods. Currently 2,021
 | Portuguese (BR) | `/pt-br/quanto-dura-{alimento}/` | `/pt-br/alimentos/{categoria}/` |
 | Italian | `/it/quanto-dura-{alimento}/` | `/it/alimenti/{categoria}/` |
 | Dutch | `/nl/houdbaarheid-{product}/` | `/nl/levensmiddelen/{categorie}/` |
+| Swedish | `/sv/hur-lange-haller-{livsmedel}/` | `/sv/livsmedel/{kategori}/` |
+| Norwegian (Bokmål) | `/no/holdbarhet-{matvare}/` | `/no/matvarer/{kategori}/` |
+| Danish | `/da/holdbarhed-{fodevare}/` | `/da/foedevarer/{kategori}/` |
+| Finnish | `/fi/sailyvyys-{elintarvike}/` | `/fi/elintarvikkeet/{kategoria}/` |
+| Japanese | `/ja/himochi-{shokuhin}/` (romaji slugs) | `/ja/shokuhin/{category}/` (slugs in `LOCALE_DEFS`) |
 
 Each locale also has a home page (`/es/`) and a methodology page. Every food page, home, category
-hub and methodology page carries a reciprocal hreflang cluster (en, es, de, fr, pt-BR, it, nl, x-default →
+hub and methodology page carries a reciprocal hreflang cluster (en, es, de, fr, pt-BR, it, nl, sv, nb, da, fi, ja, x-default →
 English), and the build fails if a cluster is broken (`scripts/check-build.mjs`).
 
 - `data/i18n/en.json` is the source for all localized copy; `data/i18n/{lang}.json` are the translations.

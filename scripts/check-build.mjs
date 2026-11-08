@@ -38,7 +38,8 @@ for (const file of pages) {
   const desc = html.match(/name="description" content="([^"]*)"/)?.[1] ?? "";
   if (!title) errors.push(`${rel}: missing title`);
   else if (titles.has(title)) errors.push(`${rel}: duplicate title with ${titles.get(title)}`);
-  else titles.set(title, rel);
+  // Copy the title: a regex match keeps the whole page string alive, and 12k pages of that exhausts the heap.
+  else titles.set([...title].join(""), rel);
   const plainDesc = desc.replace(/&amp;/g, "&").replace(/&#39;|&apos;/g, "'").replace(/&quot;/g, '"');
   if (!plainDesc) errors.push(`${rel}: missing description`);
   else if (plainDesc.length > 160) warn.push(`${rel}: description ${plainDesc.length} chars`);
@@ -47,7 +48,7 @@ for (const file of pages) {
   for (const m of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
     try { JSON.parse(m[1]); } catch { errors.push(`${rel}: invalid JSON-LD`); }
   }
-  if (/^\/((how-long-does|can-you-freeze-|does-)|(es|de|fr|pt-br|it|nl)\/(cuanto-dura|haltbarkeit|conservation|quanto-dura|houdbaarheid)-)/.test(rel)) {
+  if (/^\/((how-long-does|can-you-freeze-|does-)|(es|de|fr|pt-br|it|nl|sv|no|da|fi|ja)\/(cuanto-dura|haltbarkeit|conservation|quanto-dura|houdbaarheid|hur-lange-haller|holdbarhet|holdbarhed|sailyvyys|himochi)-)/.test(rel)) {
     // Allow Vercel Analytics scripts but no other client JS
     // Vercel Analytics uses a <vercel-analytics> custom element and defines it via script
     const hasVercelAnalytics = html.includes('<vercel-analytics');
@@ -102,15 +103,21 @@ for (const f of ["favicon.ico", "favicon.svg", "favicon-96x96.png", "apple-touch
 const MIN_WORDS = 1200;
 const wordsIn = (html) => {
   const main = (html.match(/<main[\s\S]*?<\/main>/) ?? [html])[0].replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<svg[\s\S]*?<\/svg>/g, "");
-  return (main.replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/gi, " ").match(/[\p{L}\p{N}][\p{L}\p{N}'’–-]*/gu) ?? []).length;
+  const text = main.replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/gi, " ");
+  // Japanese has no spaces between words: count its characters at ~2 per word, and words elsewhere.
+  const cjk = (text.match(/[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/gu) ?? []).length;
+  const words = (text.replace(/[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}ー]+/gu, " ").match(/[\p{L}\p{N}][\p{L}\p{N}'’–-]*/gu) ?? []).length;
+  return words + Math.round(cjk / 2);
 };
 let thin = 0, minSeen = Infinity;
 for (const file of pages) {
   const rel = "/" + relative(DIST, file).replace(/index\.html$/, "");
-  if (!/^\/((how-long-does-.*-last|can-you-freeze-.+|does-.+-go-bad|[^/]+-left-out-overnight)|(es\/cuanto-dura|de\/haltbarkeit|fr\/conservation|pt-br\/quanto-dura|it\/quanto-dura|nl\/houdbaarheid)-.+)\/$/.test(rel)) continue;
+  if (!/^\/((how-long-does-.*-last|can-you-freeze-.+|does-.+-go-bad|[^/]+-left-out-overnight)|(es\/cuanto-dura|de\/haltbarkeit|fr\/conservation|pt-br\/quanto-dura|it\/quanto-dura|nl\/houdbaarheid|sv\/hur-lange-haller|no\/holdbarhet|da\/holdbarhed|fi\/sailyvyys|ja\/himochi)-.+)\/$/.test(rel)) continue;
   const n = wordsIn(readFileSync(file, "utf8"));
   minSeen = Math.min(minSeen, n);
-  if (n < MIN_WORDS) { thin++; if (thin <= 10) errors.push(`${rel}: only ${n} words (min ${MIN_WORDS})`); }
+  // Finnish packs several English words into one compound, so the same content counts ~20% fewer words.
+  const min = rel.startsWith("/fi/") ? 1000 : MIN_WORDS;
+  if (n < min) { thin++; if (thin <= 10) errors.push(`${rel}: only ${n} words (min ${min})`); }
 }
 if (thin > 10) errors.push(`…${thin - 10} more pages under ${MIN_WORDS} words`);
 

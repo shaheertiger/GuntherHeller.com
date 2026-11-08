@@ -1,0 +1,464 @@
+{
+ "_doc": "Long-form copy for localized food pages. Keep every {placeholder}. Food tokens as in en.json: {q}/{Q} subject form, {o} object form, {n} display name. [singular, plural] pairs follow the food's grammatical number. Celsius first.",
+ "eyebrows": {
+  "basics": "Det grunnleggende",
+  "science": "Vitenskapen",
+  "avoid": "Unngå dette",
+  "store": "I butikken",
+  "waste": "Mindre matsvinn",
+  "qa": "Spørsmål for spørsmål",
+  "dates": "Datomerking",
+  "where": "Hvor du oppbevarer varen",
+  "best": "Beste plass"
+ },
+ "h": {
+  "about": "Om {o}",
+  "why": [
+   "Hvorfor {q} blir dårlig",
+   "Hvorfor {q} blir dårlige"
+  ],
+  "mistakes": "Vanlige feil ved oppbevaring",
+  "buying": "Slik velger du ferske varer",
+  "useUp": "Bruk opp i tide",
+  "qa": "Holdbarhet, spørsmål for spørsmål",
+  "dates": "Datomerkingen forklart",
+  "where": "Hvor bør varen oppbevares?",
+  "fifo": "Først inn, først ut"
+ },
+ "intro": {
+  "category": "Denne matvaren hører til kategorien «{cat}» hos oss.",
+  "source": "I USDA-databasen FoodKeeper er varen oppført som «{fk}».",
+  "keeps": [
+   "Ifølge USDA FoodKeeper holder {q} seg {list}.",
+   "Ifølge USDA FoodKeeper holder {q} seg {list}."
+  ],
+  "fridgeUseBy": "I kjøleskapet gjelder siste forbruksdag på pakningen.",
+  "notFreeze": "Frysing anbefales ikke.",
+  "perishable": "Som all lettbedervelig mat bør varen ikke stå i romtemperatur i mer enn 2 timer.",
+  "notPerishable": "Dette er ikke en lettbedervelig høyrisikovare, så det handler mest om kvalitet og mindre om mattrygghet.",
+  "where": "Hvor varen bør oppbevares: {why}",
+  "ripe": "på kjøkkenbenken fram til modning",
+  "indefinitely": "på ubestemt tid i skapet"
+ },
+ "zones": {
+  "freezer": "oppbevares hardfrosset ved −18 °C (0 °F) til du skal tilberede maten.",
+  "pantry": "et kjølig, mørkt og tørt skap er best; kjøleskap trengs ikke.",
+  "bottom": "rått kjøtt og rå sjømat hører hjemme på nederste hylle, i en form eller skål, slik at saft aldri kan dryppe ned på spiseklar mat.",
+  "crisper": "grønnsaksskuffen holder på fuktigheten, slik at frukt og grønt ikke visner.",
+  "door": "døren er den varmeste delen av kjøleskapet, grei for sauser, dressinger og drikke som ikke blir fort dårlige.",
+  "middle": "en hylle i midten er best, ikke døren: den blir varm hver gang kjøleskapet åpnes.",
+  "top": "spiseklar og tilberedt mat hører hjemme på de øverste hyllene, over alt som er rått."
+ },
+ "qa": {
+  "fridgeQ": [
+   "Hvor lenge holder {q} seg i kjøleskapet?",
+   "Hvor lenge holder {q} seg i kjøleskapet?"
+  ],
+  "fridgeA": "{d} ved 4 °C (40 °F) eller kaldere. Regn fra dagen maten ble tilberedt, åpnet eller kjøpt, ikke fra datoen på pakningen.",
+  "freezerQ": [
+   "Hvor lenge holder {q} seg i fryseren?",
+   "Hvor lenge holder {q} seg i fryseren?"
+  ],
+  "freezerA": "{d} for best kvalitet ved −18 °C (0 °F). Frossen mat holder seg trygg på ubestemt tid; etter denne tiden blir konsistens og smak gradvis dårligere.",
+  "freezerNo": "Frysing anbefales ikke for denne varen: konsistensen blir ødelagt. Oppbevar varen i kjøleskapet i stedet, og bruk den innen holdbarhetstiden der.",
+  "roomQ": [
+   "Hvor lenge holder {q} seg i romtemperatur?",
+   "Hvor lenge holder {q} seg i romtemperatur?"
+  ],
+  "roomPerishable": "Ikke mer enn 2 timer, eller 1 time over 32 °C (90 °F). Lettbedervelig mat som har stått ute lenger, bør kastes.",
+  "roomPantry": "{d} på et kjølig, tørt sted, unna varme og sollys.",
+  "roomFridgeOnly": "Varen er ikke ment å oppbevares i romtemperatur. Ha den i kjøleskapet.",
+  "openedQ": [
+   "Hvor lenge holder {q} seg etter åpning?",
+   "Hvor lenge holder {q} seg etter åpning?"
+  ],
+  "openedA": "{d} etter åpning. Datoen på pakningen gjelder ikke lenger så snart forseglingen er brutt.",
+  "unopenedQ": [
+   "Hvor lenge holder {q} seg før åpning?",
+   "Hvor lenge holder {q} seg før åpning?"
+  ],
+  "unopenedA": "{d}, så lenge forseglingen er intakt og varen oppbevares slik etiketten sier.",
+  "pantryQ": [
+   "Hvor lenge holder {q} seg i skapet?",
+   "Hvor lenge holder {q} seg i skapet?"
+  ],
+  "pantryA": "{d} i et kjølig, mørkt og tørt skap, godt lukket. Sjekk etiketten etter åpning: noen produkter må da i kjøleskapet.",
+  "expireQ": [
+   "Kan {q} gå ut på dato?",
+   "Kan {q} gå ut på dato?"
+  ],
+  "expireShelf": "Ja, men for en holdbar vare som dette betyr det å gå ut på dato som regel at kvaliteten blir dårligere, ikke at varen blir farlig. Smak, aroma og konsistens svekkes over tid, særlig etter åpning. Har varen vært oppbevart kjølig, tørt og godt lukket, og ser du ingen mugg, kjenner ingen rar lukt og fargen er normal, kan du som regel fortsatt bruke den.",
+  "expirePerishable": "Ja, og for en lettbedervelig vare som dette betyr lagringstiden mer enn datoen på pakningen. Har varen ligget i kjøleskapet lenger enn {d}, eller stått utenfor kjøleskapet i mer enn 2 timer, bør den kastes, selv om den ser og lukter normal ut."
+ },
+ "faq": {
+  "tempQ": "Hvilken temperatur bør kjøleskapet ha for {o}?",
+  "tempA": "Hold kjøleskapet på 4 °C (40 °F) eller kaldere og fryseren på −18 °C (0 °F). Mange kjøleskap er varmere enn innstillingen tilsier, så et rimelig kjøleskapstermometer er verdt å ha. Allerede noen få grader over 4 °C forkorter holdbarheten i kjøleskapet ({d}) merkbart.",
+  "containerQ": "Hvilken beholder er best for {o}?",
+  "containerA": "Bruk {container}. Målet er å holde luft og fuktighet ute, hindre at lukt sprer seg og gjøre det lett å se hvor gammel maten er. Skriv datoen på en etikett eller på lokket, så slipper du å gjette hvor lenge noe har vært lagret.",
+  "doorQ": "Kan jeg oppbevare {o} i kjøleskapsdøren?",
+  "doorYes": "Ja. Døren er den varmeste delen av kjøleskapet, men denne varen tåler det godt nok til å stå der. Lukk lokket godt etter hver bruk.",
+  "doorNo": "Helst ikke. Døren er den varmeste delen av kjøleskapet og blir varm hver gang du åpner. Beste plass: {why}",
+  "doorOther": "Beste plass: {why}",
+  "refreezeQ": "Kan du fryse {o} på nytt?",
+  "refreezeNo": "Frysing anbefales ikke for denne varen i utgangspunktet, og dermed heller ikke ny frysing. Oppbevar varen i kjøleskapet og bruk den innen holdbarhetstiden der.",
+  "refreezeYes": "Bare hvis varen ble tint i kjøleskapet og ikke har stått ute. Mat som er tint i kaldt vann eller i mikrobølgeovnen, bør tilberedes før den fryses igjen. Hver runde med frysing og tining forringer kvaliteten, så frys i porsjoner du bruker opp på én gang.",
+  "killQ": "Dreper frysing bakteriene i {o}?",
+  "killA": "Nei. Frysing ved −18 °C (0 °F) stopper bakterieveksten, men dreper ikke bakteriene. Når maten tiner, blir eventuelle bakterier aktive igjen, så tin maten i kjøleskapet og tilbered eller varm den opp til en trygg temperatur der det er aktuelt.",
+  "smellQ": "Er maten trygg hvis den lukter greit, men lagringstiden er passert?",
+  "smellPerishable": "Ikke nødvendigvis. Bakteriene som gir matforgiftning, endrer som regel ikke lukt, utseende eller smak. Har varen ligget i kjøleskapet lenger enn {d}, bør du kaste den selv om den virker fin.",
+  "smellOther": "For en lavrisikovare som dette betyr passert lagringstid som regel lavere kvalitet, ikke fare. Se etter mugg, rar lukt eller uvanlig smak, og kast varen hvis noe virker galt."
+ },
+ "dates": [
+  "De fleste datoene på matemballasje handler om kvalitet, ikke trygghet. I USA er den eneste datoen som er påbudt ved føderal lov, «use-by»-datoen på morsmelkerstatning; alle andre datoer velger produsenten selv. «Best if used by» (omtrent som norsk «best før») forteller når smak og konsistens er på sitt beste. «Sell-by» er ment for butikkens vareflyt, og hjemme kan du oppbevare maten i den vanlige lagringstiden også etter denne datoen. «Use-by» er den siste datoen produsenten anbefaler for best kvalitet – altså ikke det samme som norsk «siste forbruksdag», som handler om trygghet.",
+  "Derfor regner denne siden lagringstiden fra dagen du kjøper, tilbereder eller åpner maten, og ikke fra datoen på pakningen: {d} i kjøleskapet. Mat som er riktig oppbevart, kan være helt fin etter best før-datoen; mat som er dårlig oppbevart, kan bli dårlig lenge før."
+ ],
+ "groups": {
+  "meat": {
+   "about": "Rått kjøtt er noe av det mest lettbedervelige du har på kjøkkenet. Overflaten bærer med seg bakterier fra bearbeidingen, og kjøttsaften som renner ut, er en lettvint vei for disse bakteriene over til annen mat. Derfor er det trygge tidsvinduet i kjøleskapet kort, og fryseren er din venn: frysing stopper bakterieveksten helt, så kjøtt du ikke rekker å tilberede, kan rett og slett legges i fryseren samme dag som du kjøper det.",
+   "spoil": "Forråtnelsesbakterier som Pseudomonas og melkesyrebakterier formerer seg på overflaten av rått kjøtt selv ved kjøleskapstemperatur. De gir den sure lukten og den klissete hinnen du legger merke til når kjøttet blir dårlig. Sykdomsfremkallende bakterier som Salmonella og E. coli endrer verken lukt eller utseende, så et kjøttstykke kan virke fint og likevel være utrygt når lagringstiden er passert. Kjøttdeig blir fortest dårlig, fordi malingen sprer bakteriene fra overflaten gjennom hele mengden.",
+   "mistakes": [
+    "Å tine kjøttet på kjøkkenbenken: utsiden når romtemperatur mens kjernen fortsatt er frossen.",
+    "Å oppbevare det på en øvre hylle, der kjøttsaft kan dryppe ned på spiseklar mat.",
+    "Å skylle det i vasken, som spruter bakterier rundt på kjøkkenet i stedet for å fjerne dem.",
+    "Å regne dagene i kjøleskapet fra «sell-by»-datoen i stedet for fra dagen du kjøpte det.",
+    "Å fryse kjøtt på nytt uten å tilberede det først etter at det er tint i kaldt vann eller i mikrobølgeovnen."
+   ],
+   "buying": [
+    "Plukk det med deg sist, rett før kassen, og få det hjem innen en time eller to.",
+    "Velg pakninger som er kalde, tette og uten rifter eller oppsamlet væske.",
+    "Pakk det for seg, adskilt fra frukt, grønt og spiseklar mat."
+   ],
+   "useUp": [
+    "Tilbered kjøttet og frys det ferdige kjøttet i porsjoner til raske middager.",
+    "Lag gryte, chili eller pastasaus som tåler frysing godt.",
+    "Mariner og frys kjøttet rått, så kan du tilberede det rett fra fryseren."
+   ],
+   "container": "originalpakningen fra butikken, ekstra innpakket i folie eller en frysepose, på en tallerken eller et brett"
+  },
+  "seafood": {
+   "about": "Fersk fisk og skalldyr er blant de matvarene som holder seg kortest. Det skjøre kjøttet inneholder enzymer og naturlige bakterier som fortsetter å virke selv i kjøleskapet, og fettet i fet fisk oksiderer raskt. Det meste av sjømat bør tilberedes eller fryses innen en dag eller to etter kjøp; i fryseren holder kvaliteten seg i månedsvis.",
+   "spoil": "Bakterier bryter ned aminosyrene i fiskekjøttet til stoffer som trimetylamin, som gir fisk som er i ferd med å bli dårlig, den sterke «fiskeaktige» eller ammoniakkaktige lukten. Samtidig gjør enzymer konsistensen bløt. Enkelte fisker, som tunfisk og makrell, kan dessuten danne histamin hvis de blir varme; det gir såkalt scombroidforgiftning og ødelegges ikke ved varmebehandling.",
+   "mistakes": [
+    "Å oppbevare levende skjell i vann eller i en lukket plastpose, slik at de kveles.",
+    "Å la fisken ligge i den varmeste delen av kjøleskapet i stedet for på is eller på nederste hylle.",
+    "Å fryse sjømat på nytt etter at den er tint i romtemperatur.",
+    "Å tilberede skjell som forblir åpne når du banker lett på dem."
+   ],
+   "buying": [
+    "Fersk fisk skal lukte hav og ha fast kjøtt som spretter tilbake når du trykker på det.",
+    "Hel fisk skal ha klare øyne og klarrøde gjeller.",
+    "Levende muslinger, blåskjell og østers skal lukke seg når du banker lett på dem."
+   ],
+   "useUp": [
+    "Tilbered fisken samme dag som du kjøper den, og oppbevar den ferdige fisken i 3–4 dager.",
+    "Frys fileter flatt i fryseposer, og press ut luften.",
+    "Bruk rester av tilberedt fisk i fiskekaker, pasta eller salater innen noen dager."
+   ],
+   "container": "den kaldeste delen av kjøleskapet, i en tildekket form eller på et lag med is"
+  },
+  "cooked": {
+   "about": "For ferdigretter og rester gjelder de samme enkle reglene: avkjøl raskt, sett i kjøleskapet innen to timer og spis opp innen noen dager. Varmebehandling dreper de fleste bakterier, men noen overlever som varmetålige sporer, og nye bakterier kommer til via hender, kjøkkenredskaper og luft. Hvordan du avkjøler og oppbevarer maten etter tilberedning, betyr mer enn hvordan den ble laget.",
+   "spoil": "Sporer fra bakterier som Bacillus cereus og Clostridium perfringens overlever koking. Når tilberedt mat blir stående lunken, spirer sporene og formerer seg raskt, og noen danner giftstoffer som ikke ødelegges ved oppvarming. I kjøleskapet vokser de sakte, og derfor holder tilberedt mat seg i noen dager, ikke uker.",
+   "mistakes": [
+    "Å la en stor gryte stå og avkjøles på komfyren i timevis i stedet for å fordele innholdet i grunne bokser.",
+    "Å sette en dyp, varm beholder rett i kjøleskapet, slik at kjernen holder seg varm i timevis.",
+    "Å varme opp de samme restene mer enn én gang.",
+    "Å smake på maten for å sjekke om den har blitt dårlig."
+   ],
+   "buying": [
+    "Få takeaway og mat fra ferskvaredisken hjem og inn i kjøleskapet innen to timer.",
+    "Velg varm mat som er rykende varm og kald mat som kjennes kald.",
+    "Sjekk produksjonsdatoen på retter laget i butikken, og regn dagene i kjøleskapet fra den."
+   ],
+   "useUp": [
+    "Frys porsjoner på dag én eller to hvis du ikke rekker å spise dem i tide.",
+    "Gjør rester om til suppe, stekt ris, frittata eller wraps.",
+    "Merk boksene med dato, så vet du nøyaktig hvor lenge de har stått i kjøleskapet."
+   ],
+   "container": "grunne, lufttette bokser, raskt avkjølt og merket med dato"
+  },
+  "cured": {
+   "about": "Spekede, røkte og bearbeidede kjøttvarer holder seg lenger enn ferskt kjøtt fordi salt, røyk, nitritt og lavere vanninnhold bremser bakterieveksten. De er likevel ikke holdbare i romtemperatur: når pakningen er åpnet, setter luft og håndtering klokken i gang, og oppskårne produkter blir fortere dårlige enn hele stykker fordi en større overflate er eksponert.",
+   "spoil": "Salting og speking bremser de fleste forråtnelsesbakterier, men Listeria monocytogenes kan vokse ved kjøleskapstemperatur på spiseklare kjøttvarer som pålegg og pølser. Det er hovedgrunnen til at åpnede pakninger har kort holdbarhet, og til at gravide og eldre rådes til å varme opp kjøttpålegg til det damper.",
+   "mistakes": [
+    "Å beholde en åpnet pakning lenge etter holdbarheten etter åpning fordi datoen på pakningen fortsatt er uker unna.",
+    "Å la pålegg ligge fremme på et fat i timevis på et selskap.",
+    "Å oppbevare åpnede pakninger uten å pakke dem inn igjen, slik at innholdet tørker ut og tar opp lukt.",
+    "Å bruke samme kniv eller skjærebrett til rått kjøtt og spiseklare kjøttvarer."
+   ],
+   "buying": [
+    "Sjekk at vakuumpakninger sitter stramt, uten luftlommer eller bule.",
+    "Kjøp oppskåret pålegg i mengder du rekker å spise opp innen holdbarheten etter åpning.",
+    "Ta pakninger fra bakerst i kjøledisken, der det er kaldest."
+   ],
+   "useUp": [
+    "Frys uåpnede pakninger hvis du ikke rekker å åpne dem før datoen.",
+    "Bruk opp åpnet pålegg i toast, omelett, pasta eller pizza.",
+    "Del store pakninger i porsjoner, og frys det du ikke skal bruke snart."
+   ],
+   "container": "originalpakningen, lukket igjen, eller en lufttett boks"
+  },
+  "dairy": {
+   "about": "Melk, fløte, yoghurt og andre ferske meieriprodukter er pasteurisert, noe som dreper skadelige bakterier, men de er likevel lettbedervelige når de først er åpnet. Hvor lenge de holder seg i kjøleskapet, avhenger mye av temperaturen: meieriprodukter innerst på en kald hylle holder seg merkbart lenger enn de som står i kjøleskapsdøren, som blir varm hver gang den åpnes.",
+   "spoil": "Melkesyrebakterier og kuldetolerante (psykrotrofe) bakterier som overlever pasteuriseringen eller kommer til etter åpning, gjærer melkesukkeret og danner syre. Syren gir den sure lukten, skillingen og klumpene du ser i meieriprodukter som har blitt dårlige. Mugg kan i tillegg vokse på overflaten av yoghurt, rømme og lignende produkter.",
+   "mistakes": [
+    "Å oppbevare dem i kjøleskapsdøren, den varmeste plassen.",
+    "Å helle ubrukt melk tilbake i den opprinnelige kartongen.",
+    "Å la dem stå fremme på bordet gjennom et langt måltid.",
+    "Å fryse dem og forvente samme konsistens til drikke; frosne meieriprodukter egner seg best til matlaging."
+   ],
+   "buying": [
+    "Ta meieriproduktene mot slutten av handleturen, og dra rett hjem.",
+    "Velg pakninger bakerst i kjøledisken med den seneste datoen.",
+    "Sjekk at lokk og forsegling er intakte."
+   ],
+   "useUp": [
+    "Bak med dem: pannekaker, muffins, scones og sauser bruker alle meieriprodukter.",
+    "Frys i små porsjoner eller i isbitbrett til matlaging.",
+    "Bland dem i smoothies før holdbarheten går ut."
+   ],
+   "container": "originalemballasjen, godt lukket, på en hylle i midten"
+  },
+  "cheese": {
+   "about": "Ost er melk som er konservert med syre, salt og fjerning av væske, og holder seg derfor mye lenger enn melk. Hvor lenge den holder seg, avhenger mest av vanninnholdet: harde, lagrede oster holder seg i uker eller måneder, mens myke og ferske oster oppfører seg mer som ferske meieriprodukter og bare holder seg fra noen dager til et par uker etter åpning.",
+   "spoil": "Mugg er den vanligste grunnen til at ost blir dårlig. I hard ost kommer muggtrådene ikke langt, så du kan skjære bort minst 2,5 cm rundt og under flekken. I myk, revet eller smuldret ost sprer muggen seg usynlig gjennom hele stykket, så da bør hele stykket kastes. Når myk ost modner forbi sitt beste, gir bakterier dessuten en ammoniakklukt.",
+   "mistakes": [
+    "Å pakke osten stramt inn i plastfolie, som stenger inne fuktighet og gir slim og mugg.",
+    "Å skjære mugg av myk eller revet ost og spise resten.",
+    "Å la osten stå på et ostebrett i et varmt rom i timevis.",
+    "Å fryse myk ost og forvente samme konsistens."
+   ],
+   "buying": [
+    "Kjøp hard ost i stykke i stedet for ferdigrevet hvis du vil at den skal holde seg lenger.",
+    "Sjekk at pakningene er tette og uten væske eller mugg.",
+    "Kjøp myk ost i mengder du rekker å spise opp innen holdbarheten etter åpning."
+   ],
+   "useUp": [
+    "Riv hard ost og frys den til matlaging.",
+    "Smelt osten i sauser, toast, gratenger og omeletter.",
+    "Bruk myk ost i dipp, pasta eller ovnsretter før holdbarheten går ut."
+   ],
+   "container": "vokspapir eller bakepapir, deretter en løs pose, i osteskuffen"
+  },
+  "eggs": {
+   "about": "Egg holder seg i ukevis i kjøleskapet fordi skallet og hinnene innenfor er en naturlig barriere. I USA vaskes egg før salg, noe som fjerner et beskyttende lag på skallet, og derfor må de holdes kjølt. Når egg er knekt, kokt eller skilt, går det mye fortere.",
+   "spoil": "Den største trygghetsrisikoen med egg er Salmonella, som kan finnes inne i et egg som ser helt normalt ut. Over tid mister egg dessuten fuktighet og karbondioksid gjennom skallet: eggehviten blir tynnere og plommen flatere. Et egg som virkelig har blitt dårlig, lukter svovel fordi bakterier bryter ned proteinene.",
+   "mistakes": [
+    "Å oppbevare egg i kjøleskapsdøren, der temperaturen svinger.",
+    "Å vaske egg før du setter dem bort.",
+    "Å la kjølte egg ligge ute i mer enn to timer: et kaldt egg som får kondens på seg, kan trekke bakterier inn gjennom skallet.",
+    "Å fryse egg med skall, som får dem til å sprekke."
+   ],
+   "buying": [
+    "Åpne kartongen og sjekk at ingen egg er knekt eller skitne.",
+    "Kjøp egg fra en kjøledisk.",
+    "Oppbevar dem i kartongen, som beskytter eggene og viser pakkedatoen."
+   ],
+   "useUp": [
+    "Hardkok en porsjon: hardkokte egg holder seg en uke i kjøleskapet.",
+    "Visp sammen og frys overskuddsegg til baking.",
+    "Bruk dem i frittata, quiche, eggekrem og bakst."
+   ],
+   "container": "originalkartongen på en hylle i midten"
+  },
+  "produce": {
+   "about": "Fersk frukt og grønnsaker lever videre etter innhøsting: de puster, modner og mister fuktighet. Hvor lenge de holder seg, avhenger av sorten, hvor modne de er når du kjøper dem, og om de er hele eller oppskåret. Mye holder seg best i grønnsaksskuffen i kjøleskapet, men noe modner og smaker bedre på kjøkkenbenken først.",
+   "spoil": "Frukt og grønt blir dårlig gjennom en kombinasjon av overmodning, uttørking og vekst av mikroorganismer. Frukt som modner, skiller ut etylengass, som får alt i nærheten til å modne raskere. Støtskader og kutt bryter opp celleveggene og slipper inn mugg og bakterier, og derfor må oppskåret frukt og grønt stå i kjøleskapet og brukes opp innen få dager.",
+   "mistakes": [
+    "Å vaske frukt og grønt før du setter det bort, som tilfører fuktighet og gir raskere mugg.",
+    "Å legge etylenprodusenter (epler, bananer, avokado) ved siden av frukt og grønt som lett blir overmodent.",
+    "Å la oppskåret frukt eller grønnsaker stå i romtemperatur i mer enn to timer.",
+    "Å lukke frukt og grønt inne i lufttette poser uten luftsirkulasjon."
+   ],
+   "buying": [
+    "Velg frukt og grønt uten støtskader, myke flekker eller mugg.",
+    "Kjøp en blanding av modne og mindre modne eksemplarer, så ikke alt modner samtidig.",
+    "Ta oppskåret frukt og grønt fra en kjøledisk."
+   ],
+   "useUp": [
+    "Frys moden frukt til smoothies og baking.",
+    "Ovnsbak eller wok grønnsaker som begynner å bli myke.",
+    "Kjør slapp frukt og grønt til supper, sauser og juice."
+   ],
+   "container": "grønnsaksskuffen, uvasket, i en løs eller perforert pose"
+  },
+  "leafy": {
+   "about": "Bladgrønnsaker og friske urter består for det meste av vann i tynne blader, så de visner og blir dårlige fortere enn nesten alt annet grønt. To ting forkorter holdbarheten: for mye fuktighet, som gjør bladene slimete, og for lite, som får dem til å visne. Oppbevart tørt, kaldt og løst innpakket holder de seg fra noen dager til et par uker.",
+   "spoil": "Bakterier og mugg bryter ned bladvev som er skadet av støt eller for mye vann, og det gir de slimete, mørke flekkene og den sure lukten du finner på dårlige bladgrønnsaker. Bladgrønnsaker er også en kjent bærer av E. coli og Listeria fra åkeren, og derfor bør ferdigpakket salat holdes kald og brukes innen datoen.",
+   "mistakes": [
+    "Å oppbevare bladgrønnsaker våte etter vask.",
+    "Å pakke dem så tett at bladene får støtskader.",
+    "Å oppbevare dem nær frukt som skiller ut etylen.",
+    "Å fryse dem til salat; frosne bladgrønnsaker egner seg bare til matlaging."
+   ],
+   "buying": [
+    "Velg sprø blader uten slim, gulning eller mørke flekker.",
+    "Sjekk at ferdigpakket salat ikke har væske i posen, og at datoen er god.",
+    "Kjøp urter med spenstige stilker og frisk duft."
+   ],
+   "useUp": [
+    "Fres myke bladgrønnsaker inn i supper, pasta, karriretter og omeletter.",
+    "Kjør urter til pesto, eller frys dem i olje i isbitbrett.",
+    "Ha en håndfull i smoothien."
+   ],
+   "container": "en boks eller pose med et tørkepapir i, i grønnsaksskuffen"
+  },
+  "bakery": {
+   "about": "Brød og bakevarer inneholder lite vann sammenlignet med fersk mat, så de blir sjelden utrygge raskt, men de blir tørre og til slutt mugne. At brød blir tørt, skyldes en endring i stivelsen, ikke forråtnelse, og det skjer faktisk raskere i kjøleskapet. Mugg er den egentlige grensen, og den vokser fortere på et varmt, fuktig kjøkken.",
+   "spoil": "Muggsporer lander på brødet fra luften og vokser til lodne flekker i løpet av få dager når det er varmt og fuktig. Flekken du ser, er bare en del av det: trådlignende røtter sprer seg gjennom mykt brød, så hele brødet bør kastes når det dukker opp mugg. Bakverk med krem- eller vaniljefyll er noe annet og må stå i kjøleskapet akkurat som meieriprodukter.",
+   "mistakes": [
+    "Å oppbevare brød i kjøleskapet, der det blir tørt fortere.",
+    "Å skjære bort en muggflekk og spise resten av et mykt brød.",
+    "Å legge brød i en lukket pose mens det fortsatt er varmt, slik at fuktigheten stenges inne.",
+    "Å la bakverk med kremfyll stå i romtemperatur."
+   ],
+   "buying": [
+    "Sjekk posen for kondens eller muggflekker.",
+    "Kjøp brød i en størrelse du rekker å spise opp på noen dager, eller planlegg å fryse halvparten.",
+    "Velg bakevarer med den nyeste bakedatoen."
+   ],
+   "useUp": [
+    "Frys oppskåret brød og rist skivene rett fra fryseren.",
+    "Gjør tørt brød om til krutonger, brødsmuler eller brødpudding.",
+    "Bruk mykt fruktbrød til arme riddere."
+   ],
+   "container": "en brødboks eller lukket pose i romtemperatur, eller fryseren"
+  },
+  "dry": {
+   "about": "Tørre basisvarer holder seg lenge fordi mikroorganismer trenger vann for å vokse. Fiendene deres er fuktighet, varme, lys, luft og skadedyr i skapet. De fleste blir ikke utrygge etter best før-datoen; de mister sakte smak, aroma og konsistens. Fullkornsprodukter og alt som inneholder naturlige oljer, er unntaket, fordi disse oljene kan harskne.",
+   "spoil": "I tørre matvarer svekkes kvaliteten gjennom oksidasjon og fuktighet, ikke bakterier. Oljene i fullkorn, nøtter og frø oksiderer sakte og blir harske, med en bitter lukt som minner om maling. Fuktighet gir grobunn for mugg og får pulver til å klumpe seg, og varm oppbevaring tiltrekker seg melmøll og biller.",
+   "mistakes": [
+    "Å oppbevare varene over komfyren, vannkokeren eller oppvaskmaskinen, der varme og damp gjør at de blir fortere dårlige.",
+    "Å la poser stå åpne i stedet for å helle innholdet over i lufttette bokser.",
+    "Å blande ny beholdning med den gamle, slik at det eldste aldri blir brukt opp.",
+    "Å øse med en fuktig skje."
+   ],
+   "buying": [
+    "Sjekk pakningene for hull, spinn eller klumper.",
+    "Kjøp fullkornsmel og nøtter i mengder du bruker opp innen noen måneder.",
+    "Se etter den seneste best før-datoen."
+   ],
+   "useUp": [
+    "Sett eldre varer fremst, så blir de brukt først.",
+    "Frys fullkornsmel og nøtter for å hindre harskning.",
+    "Planlegg en «skapuke» med måltider basert på det du allerede har."
+   ],
+   "container": "en lufttett boks i et kjølig, mørkt og tørt skap"
+  },
+  "fat": {
+   "about": "Smør, oljer, nøtter, frø og nøttesmør er rike på fett, som bakterier ikke vokser lett på, så hovedfienden er harskning snarere enn matforgiftning. Harskt fett er vanligvis ikke farlig i små mengder, men det smaker bittert og gammelt. Kjølig, mørk og lufttett oppbevaring bremser prosessen; kjøleskapet bremser den ytterligere.",
+   "spoil": "Oksygen, lys og varme reagerer med fettet og bryter det ned til stoffer som lukter fargestifter, maling eller gamle nøtter. Umettet fett, som i nøtte- og frøoljer, harskner raskere enn mettet fett som smør. Fuktighet og smuler fra en brukt kniv kan dessuten gi mugg på smør og smøremidler.",
+   "mistakes": [
+    "Å oppbevare oljer ved siden av komfyren.",
+    "Å la klare flasker stå i sollys.",
+    "Å la lokk sitte løst, slik at luft kommer inn.",
+    "Å kjøpe store mengder nøtteolje eller nøtter som du ikke rekker å bruke opp før de harskner."
+   ],
+   "buying": [
+    "Velg olje på mørke glassflasker eller bokser.",
+    "Kjøp nøtter og frø i butikker med høy omsetning, eller i forseglede pakninger.",
+    "Sjekk best før-datoen og kjøp størrelser du bruker opp innen noen måneder."
+   ],
+   "useUp": [
+    "Oppbevar nøtter og frø i kjøleskapet eller fryseren, så holder de seg ferske lenger.",
+    "Bruk opp nøttesmør i sauser, dressinger og bakst.",
+    "Lukt på oljen før du bruker den: lukter den gammelt, bør du bytte den ut."
+   ],
+   "container": "en lufttett, mørk beholder unna varme og lys"
+  },
+  "condiment": {
+   "about": "Smakstilsetninger, sauser og hermetikk er laget for å vare: syre, sukker, salt og tett emballasje holder mikroorganismer ute. Uåpnet holder det meste seg i måneder eller år i skapet. Etter åpning kommer luft, fuktighet og smuler fra bestikk inn, og de fleste produktene må da i kjøleskapet og har mye kortere holdbarhet.",
+   "spoil": "I åpnede glass er gjær og mugg som regel synderne: de viser seg som lo på overflaten, bobling eller en gjæret lukt. Hermetikk med lite syre har en sjelden, men alvorlig risiko for Clostridium botulinum (botulisme) hvis boksen er skadet, og derfor må bokser som buler, lekker eller har dype bulker, kastes uåpnet.",
+   "mistakes": [
+    "Å dyppe to ganger eller bruke en skitten kniv, som tilfører smuler og bakterier.",
+    "Å oppbevare åpnede glass i skapet når etiketten sier at de skal i kjøleskapet.",
+    "Å la mat stå i en åpnet hermetikkboks i kjøleskapet; flytt den over i en tildekket boks.",
+    "Å bruke bokser som buler, har rust eller dype bulker."
+   ],
+   "buying": [
+    "Sjekk hermetikkbokser for bule, dype bulker i skjøtene og rust.",
+    "Sørg for at lokkene på glass er tette og sier «plopp» første gang de åpnes.",
+    "Kjøp smakstilsetninger i størrelser du bruker opp innen holdbarheten etter åpning."
+   ],
+   "useUp": [
+    "Skriv åpningsdatoen på lokket.",
+    "Bruk det siste i glasset i marinader, dressinger eller sauser.",
+    "Frys sauserester i isbitbrett."
+   ],
+   "container": "originalglasset eller -flasken, godt lukket; åpnet hermetikk flyttet over i en tildekket boks"
+  },
+  "drink": {
+   "about": "Drikkevarer spenner fra holdbare i romtemperatur til svært lettbedervelige. Uåpnede flasker, bokser og kartonger holder seg ofte i månedsvis, men etter åpning oppfører fersk juice og plantebaserte drikker seg som fersk mat og må i kjøleskapet. Kaffe og te blir ikke utrygge, men mister aroma, og vin og brennevin endrer seg når de utsettes for luft.",
+   "spoil": "I juice og plantebaserte melkealternativer gjærer gjærsopp og bakterier sukkeret når forseglingen er brutt, noe som gir bobler, sur lukt og bismak. Kaffe og te mister de aromatiske oljene sine til luft, varme og lys. Åpnet vin oksiderer og blir sakte til eddik.",
+   "mistakes": [
+    "Å la åpnet juice eller plantedrikk stå utenfor kjøleskapet.",
+    "Å drikke rett fra flasken, som tilfører bakterier.",
+    "Å oppbevare kaffe i et gjennomsiktig glass på kjøkkenbenken.",
+    "Å oppbevare åpnet vin i romtemperatur uten kork."
+   ],
+   "buying": [
+    "Sjekk at forsegling og korker er intakte.",
+    "Kjøp fersk juice fra en kjøledisk.",
+    "Kjøp kaffe i mengder du bruker opp innen noen uker etter åpning."
+   ],
+   "useUp": [
+    "Frys juice i isbitbrett til smoothies.",
+    "Bruk vinrester i matlaging, eller frys dem til sauser.",
+    "Lag iskaffe av overskuddskaffe, eller bruk den i bakst."
+   ],
+   "container": "originalemballasjen, godt lukket, i kjøleskapet etter åpning"
+  },
+  "frozen": {
+   "about": "Mat som kjøpes frossen, er trygg så lenge den holder seg hardfrosset ved −18 °C (0 °F); tidene for fryseren handler om kvalitet, ikke trygghet. Over måneder tørker frysebrenning og iskrystaller sakte ut maten og gjør den seig. Det viktigste er at den holder seg frossen fra butikken og hjem, og at åpnede poser lukkes godt igjen.",
+   "spoil": "Frysing stopper bakterieveksten, men dreper ikke bakteriene. Når maten tiner, blir de aktive igjen. Frysebrenning – de tørre, gråhvite flekkene du av og til ser – oppstår når luft kommer til maten og fuktighet fordamper fra overflaten: maten er trygg å spise, men tørr og smakløs.",
+   "mistakes": [
+    "Å la frysevarer tine på vei hjem og så fryse dem på nytt.",
+    "Å la åpnede poser stå ulukket, som gir frysebrenning.",
+    "Å fylle fryseren så full at den kalde luften ikke kan sirkulere.",
+    "Å tine frysevarer på kjøkkenbenken."
+   ],
+   "buying": [
+    "Ta frysevarene sist og pakk dem sammen, så holder de seg kalde.",
+    "Unngå pakninger med mye rim eller iskrystaller på innsiden, et tegn på tining og ny frysing.",
+    "Sjekk at eskene ikke er klemt eller revet."
+   ],
+   "useUp": [
+    "Flytt eldre pakninger fremst.",
+    "Ha en liste på fryserdøren over hva som ligger der.",
+    "Tilbered rett fra frossen der pakningen tillater det."
+   ],
+   "container": "originalpakningen, godt lukket igjen, eller en frysepose med luften presset ut"
+  },
+  "baby": {
+   "about": "Barnemat, morsmelkerstatning og morsmelk har strengere oppbevaringsregler enn det meste av mat, fordi babyer er mer sårbare for matbårne sykdommer. Følg alltid etiketten og rådene fra lege eller helsestasjon først. Når et måltid er påbegynt, kommer bakterier fra babyens munn over i flasken eller glasset, så rester bør ikke spares.",
+   "spoil": "Tillaget morsmelkerstatning og åpnet barnemat er fuktig, næringsrikt og har lite syre: ideelle forhold for bakterier. Pulvererstatning er ikke steril og kan inneholde Cronobacter, og derfor har tillaget morsmelkerstatning kort holdbarhet, og god hygiene med vann og utstyr er viktig.",
+   "mistakes": [
+    "Å spare en halvtømt flaske eller et halvspist glass til neste måltid.",
+    "Å mate rett fra glasset og sette resten i kjøleskapet.",
+    "Å varme flasker i mikrobølgeovnen, som gir varme lommer.",
+    "Å la tillaget morsmelkerstatning stå i romtemperatur lenger enn etiketten tillater."
+   ],
+   "buying": [
+    "Sjekk at lokkene på glass er tette og sier «plopp» når de åpnes.",
+    "Kjøp aldri skadde, bulende eller lekkende bokser med morsmelkerstatning.",
+    "Sjekk «use-by»-datoen på morsmelkerstatning; i USA er dette en lovpålagt sikkerhetsdato."
+   ],
+   "useUp": [
+    "Øs porsjoner over i en skål i stedet for å mate rett fra glasset.",
+    "Lag morsmelkerstatning til ett måltid om gangen.",
+    "Frys hjemmelaget puré i isbitbrett og tin én porsjon om gangen."
+   ],
+   "container": "originalemballasjen eller rene, lukkede oppbevaringsflasker, merket med dato og klokkeslett"
+  }
+ },
+ "zoneNames": {
+  "door": "Dør",
+  "top": "Øverste hylle",
+  "middle": "Midterste hylle",
+  "bottom": "Nederste hylle",
+  "crisper": "Grønnsaksskuff",
+  "pantry": "Skap",
+  "freezer": "Fryser"
+ },
+ "fifo": "Holdbare varer holder seg lengst når du roterer dem. Sett nye innkjøp bak de eldre, så blir det eldste brukt først, skriv åpningsdatoen på lokket, og gå gjennom skapet med noen måneders mellomrom etter varer som nærmer seg eller har passert best før-datoen."
+}
