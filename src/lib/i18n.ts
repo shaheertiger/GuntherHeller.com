@@ -19,6 +19,8 @@ export const LOCALE_DEFS = [
   { code: "de", food: "haltbarkeit", hub: "lebensmittel", method: "methodik" },
   { code: "fr", food: "conservation", hub: "aliments", method: "methodologie" },
   { code: "pt-br", food: "quanto-dura", hub: "alimentos", method: "metodologia" },
+  { code: "it", food: "quanto-dura", hub: "alimenti", method: "metodologia" },
+  { code: "nl", food: "houdbaarheid", hub: "levensmiddelen", method: "methode" },
 ] as const;
 export type LocaleCode = (typeof LOCALE_DEFS)[number]["code"];
 
@@ -43,7 +45,7 @@ export const countL = (L: Locale, cat: string) => FOODS.filter((f) => f.category
 /* ---------------------------------------------------------------- URLs */
 export const slugify = (s: string) =>
   s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/ß/g, "ss").replace(/œ/g, "oe").replace(/æ/g, "ae").replace(/&/g, " ").replace(/['’]/g, "").split(/[^a-z0-9]+/).filter(Boolean).join("-");
-const CAT_STOP = new Set(["y", "e", "et", "und", "de", "del", "la", "el", "les", "des", "do", "da", "dos", "das"]);
+const CAT_STOP = new Set(["y", "e", "et", "und", "de", "del", "la", "el", "les", "des", "do", "da", "dos", "das", "di", "per", "l", "en", "van", "voor"]);
 export const lurl = {
   home: (L: Locale) => `/${L.code}/`,
   food: (L: Locale, f: Food) => `/${L.code}/${L.def.food}-${L.foods[f.slug].s}/`,

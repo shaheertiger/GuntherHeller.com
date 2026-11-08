@@ -5,7 +5,7 @@ import { SITE } from "../lib/site";
 import { FOODS } from "../lib/data";
 import { type Locale, type Alt, LOCALES, lurl } from "../lib/i18n";
 const { L, alternates } = Astro.props as { L?: Locale; alternates?: Alt[] };
-const NAMES: Record<string, string> = { en: "EN", es: "ES", de: "DE", fr: "FR", "pt-BR": "PT-BR" };
+const NAMES: Record<string, string> = { en: "EN", es: "ES", de: "DE", fr: "FR", "pt-BR": "PT-BR", it: "IT", nl: "NL" };
 const langLinks = (alternates && alternates.length > 1 ? alternates : [{ lang: "en", href: "/" }, ...LOCALES.map((x) => ({ lang: x.s.htmlLang, href: lurl.home(x) }))]);
 const current = L?.s.htmlLang ?? "en";
 const cols = [
