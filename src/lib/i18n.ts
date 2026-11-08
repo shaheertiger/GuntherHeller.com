@@ -50,7 +50,7 @@ export const countL = (L: Locale, cat: string) => FOODS.filter((f) => f.category
 
 /* ---------------------------------------------------------------- URLs */
 export const slugify = (s: string) =>
-  s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/ß/g, "ss").replace(/œ/g, "oe").replace(/æ/g, "ae").replace(/&/g, " ").replace(/['’]/g, "").split(/[^a-z0-9]+/).filter(Boolean).join("-");
+  s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/ß/g, "ss").replace(/œ/g, "oe").replace(/æ/g, "ae").replace(/ø/g, "oe").replace(/&/g, " ").replace(/['’]/g, "").split(/[^a-z0-9]+/).filter(Boolean).join("-");
 const CAT_STOP = new Set(["y", "e", "et", "und", "de", "del", "la", "el", "les", "des", "do", "da", "dos", "das", "di", "per", "l", "en", "van", "voor", "och", "og", "ja"]);
 export const lurl = {
   home: (L: Locale) => `/${L.code}/`,
