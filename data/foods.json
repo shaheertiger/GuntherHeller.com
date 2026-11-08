@@ -6,7 +6,7 @@
   "version": 128,
   "modified": "09-06-2018",
   "sha256": "037df0d301126acd8a48824506f04d49d8be1a1144b81fa69e4170228dc2e91a",
-  "builtAt": "2026-11-06"
+  "builtAt": "2026-11-08"
  },
  "categories": [
   {
@@ -2976,8 +2976,8 @@
     "freezer": "6 months best, 12 acceptable"
    },
    "source": {
-    "name": "CDC: Proper Storage and Preparation of Breast Milk",
-    "url": "https://www.cdc.gov/breastfeeding-special-circumstances/hcp/storage-preparation/index.html"
+    "name": "CDC: Breast Milk Storage and Preparation",
+    "url": "https://www.cdc.gov/breastfeeding/breast-milk-preparation-and-storage/handling-breastmilk.html"
    },
    "rank": 55
   },
