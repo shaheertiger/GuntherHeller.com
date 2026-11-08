@@ -5,7 +5,7 @@
 import { type Food, isNum } from "./data";
 import { groupOf, zoneFor } from "./content";
 import { range } from "./viz";
-import { type Locale, fmtL, fill, sub, pick, ft, freezeL, unitSep } from "./i18n";
+import { type Locale, fmtL, fill, sub, pick, ft, freezeL } from "./i18n";
 import { lfFor } from "./longformL";
 import type { Opt, Quiz } from "./interactive";
 
@@ -17,7 +17,7 @@ const pickTimes = (cands: number[], min: number, max: number) =>
 
 function label(L: Locale, days: number): string {
   const U = L.s.units as Record<string, [string, string]>;
-  const n = (k: number, u: string) => `${k}${unitSep(L)}${k === 1 ? U[u][0] : U[u][1]}`;
+  const n = (k: number, u: string) => `${k} ${k === 1 ? U[u][0] : U[u][1]}`;
   if (days >= 365 && days % 365 === 0) return n(days / 365, "year");
   if (days >= 30 && days % 30 === 0) return n(days / 30, "month");
   if (days >= 7 && days % 7 === 0) return n(days / 7, "week");
@@ -39,9 +39,9 @@ export function widgetsL(L: Locale, f: Food) {
       ask: C.ask, note: C.note,
       options: [
         { label: `30 ${W.min}`, tone: "fresh", head: C.h30, text: C.t30 },
-        { label: `1${unitSep(L)}${U.hour[0]}`, tone: "fresh", head: C.h60, text: C.t60 },
-        { label: `2${unitSep(L)}${U.hour[1]}`, tone: "edge", head: C.h120, text: C.t120 },
-        { label: `4${unitSep(L)}${U.hour[1]}`, tone: "toss", head: C.h240, text: C.t240 },
+        { label: `1 ${U.hour[0]}`, tone: "fresh", head: C.h60, text: C.t60 },
+        { label: `2 ${U.hour[1]}`, tone: "edge", head: C.h120, text: C.t120 },
+        { label: `4 ${U.hour[1]}`, tone: "toss", head: C.h240, text: C.t240 },
         { label: W.overnight, tone: "toss", head: C.hNight, text: C.tNight },
       ],
     };

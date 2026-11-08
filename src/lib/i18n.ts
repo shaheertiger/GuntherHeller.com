@@ -19,14 +19,6 @@ export const LOCALE_DEFS = [
   { code: "de", food: "haltbarkeit", hub: "lebensmittel", method: "methodik" },
   { code: "fr", food: "conservation", hub: "aliments", method: "methodologie" },
   { code: "pt-br", food: "quanto-dura", hub: "alimentos", method: "metodologia" },
-  { code: "it", food: "quanto-dura", hub: "alimenti", method: "metodologia" },
-  { code: "nl", food: "houdbaarheid", hub: "levensmiddelen", method: "methode" },
-  { code: "sv", food: "hur-lange-haller", hub: "livsmedel", method: "metod" },
-  { code: "no", food: "holdbarhet", hub: "matvarer", method: "metode" },
-  { code: "da", food: "holdbarhed", hub: "foedevarer", method: "metode" },
-  { code: "fi", food: "sailyvyys", hub: "elintarvikkeet", method: "menetelmat" },
-  // Japanese category names have no Latin letters, so their URL slugs are given here.
-  { code: "ja", food: "himochi", hub: "shokuhin", method: "hoho", cats: { "dairy-eggs": "nyuseihin-tamago", meat: "niku", poultry: "toriniku", seafood: "gyokairui", "leftovers-deli": "nokorimono-sozai", fruits: "kudamono", vegetables: "yasai", "grains-beans-pasta": "kokumotsu-mame-pasuta", "baked-goods": "pan-seika", "condiments-sauces": "chomiryo-sosu", "pantry-staples": "johin-shokuhin", beverages: "nomimono", "frozen-foods": "reito-shokuhin", "baby-food": "bebi-fudo", "vegetarian-proteins": "shokubutsusei-tanpakushitsu" } },
 ] as const;
 export type LocaleCode = (typeof LOCALE_DEFS)[number]["code"];
 
@@ -50,13 +42,13 @@ export const countL = (L: Locale, cat: string) => FOODS.filter((f) => f.category
 
 /* ---------------------------------------------------------------- URLs */
 export const slugify = (s: string) =>
-  s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/ß/g, "ss").replace(/œ/g, "oe").replace(/æ/g, "ae").replace(/ø/g, "oe").replace(/&/g, " ").replace(/['’]/g, "").split(/[^a-z0-9]+/).filter(Boolean).join("-");
-const CAT_STOP = new Set(["y", "e", "et", "und", "de", "del", "la", "el", "les", "des", "do", "da", "dos", "das", "di", "per", "l", "en", "van", "voor", "och", "og", "ja"]);
+  s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/ß/g, "ss").replace(/œ/g, "oe").replace(/æ/g, "ae").replace(/&/g, " ").replace(/['’]/g, "").split(/[^a-z0-9]+/).filter(Boolean).join("-");
+const CAT_STOP = new Set(["y", "e", "et", "und", "de", "del", "la", "el", "les", "des", "do", "da", "dos", "das"]);
 export const lurl = {
   home: (L: Locale) => `/${L.code}/`,
   food: (L: Locale, f: Food) => `/${L.code}/${L.def.food}-${L.foods[f.slug].s}/`,
   hubIndex: (L: Locale) => `/${L.code}/${L.def.hub}/`,
-  hub: (L: Locale, cat: string) => `/${L.code}/${L.def.hub}/${(L.def as { cats?: Record<string, string> }).cats?.[cat] ?? slugify(L.s.categories[cat]).split("-").filter((w) => !CAT_STOP.has(w)).join("-")}/`,
+  hub: (L: Locale, cat: string) => `/${L.code}/${L.def.hub}/${slugify(L.s.categories[cat]).split("-").filter((w) => !CAT_STOP.has(w)).join("-")}/`,
   method: (L: Locale) => `/${L.code}/${L.def.method}/`,
 };
 export type Alt = { lang: string; href: string };
@@ -84,11 +76,8 @@ export const sub = (tpl: string, vars: Record<string, string>) => Object.entries
 export const t = (L: Locale, path: string): any => path.split(".").reduce((o: any, k) => o?.[k], L.s);
 export const ft = (L: Locale, f: Food): FoodT => L.foods[f.slug];
 export const verifiedDate = (L: Locale) => new Intl.DateTimeFormat(L.s.locale, { month: "long", year: "numeric" }).format(new Date(SITE.verifiedISO + "T12:00:00Z"));
-/** Space between a number and its unit ("3 days"); Japanese writes them together ("3日"). */
-export const unitSep = (L: Locale) => (L.code === "ja" ? "" : " ");
 export function joinList(L: Locale, parts: string[]) {
   if (parts.length < 2) return parts[0] ?? "";
-  if (L.code === "ja") return parts.join("、");
   return `${parts.slice(0, -1).join(", ")} ${L.s.and} ${parts.at(-1)}`;
 }
 
@@ -98,7 +87,7 @@ export function fmtL(L: Locale, d: Dur | null | undefined): string | null {
   if (!isNum(d)) return L.s.vals[d.text] ?? d.text;
   const u = L.s.units[d.unit.replace(/s$/, "")] as [string, string];
   const n = d.min === d.max ? `${d.min}` : `${d.min}–${d.max}`;
-  return `${n}${unitSep(L)}${d.max === 1 ? u[0] : u[1]}`;
+  return `${n} ${d.max === 1 ? u[0] : u[1]}`;
 }
 const STATE_LABEL: Record<string, string> = { Opened: "opened", Unopened: "unopened", Cooked: "cooked", "Dry / uncooked": "dry", Dry: "dryShort", Uncooked: "uncooked", "Freshly expressed": "fresh", Thawed: "thawed" };
 export const stateLabel = (L: Locale, s: State) => (s.label ? L.s.ui[STATE_LABEL[s.label] ?? "opened"] : null);
