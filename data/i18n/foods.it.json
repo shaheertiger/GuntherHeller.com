@@ -6438,5 +6438,152 @@
   "o": "la purea di zucca in scatola",
   "p": false,
   "s": "purea-zucca-scatola"
+ },
+ "cooked-cabbage": {
+  "n": "Cavolo cotto",
+  "q": "il cavolo cotto",
+  "o": "il cavolo cotto",
+  "p": false,
+  "s": "cavolo-cotto"
+ },
+ "cooked-asparagus": {
+  "n": "Asparagi cotti",
+  "q": "gli asparagi cotti",
+  "o": "gli asparagi cotti",
+  "p": true,
+  "s": "asparagi-cotti"
+ },
+ "cooked-green-beans": {
+  "n": "Fagiolini cotti",
+  "q": "i fagiolini cotti",
+  "o": "i fagiolini cotti",
+  "p": true,
+  "s": "fagiolini-cotti"
+ },
+ "cooked-corn": {
+  "n": "Mais cotto",
+  "q": "il mais cotto",
+  "o": "il mais cotto",
+  "p": false,
+  "s": "mais-cotto"
+ },
+ "cooked-spinach": {
+  "n": "Spinaci cotti",
+  "q": "gli spinaci cotti",
+  "o": "gli spinaci cotti",
+  "p": true,
+  "s": "spinaci-cotti"
+ },
+ "cooked-beets": {
+  "n": "Barbabietole cotte",
+  "q": "le barbabietole cotte",
+  "o": "le barbabietole cotte",
+  "p": true,
+  "s": "barbabietole-cotte"
+ },
+ "macaroni-salad": {
+  "n": "Insalata di maccheroni",
+  "q": "l'insalata di maccheroni",
+  "o": "l'insalata di maccheroni",
+  "p": false,
+  "s": "insalata-maccheroni"
+ },
+ "fruit-salad": {
+  "n": "Macedonia di frutta",
+  "q": "la macedonia di frutta",
+  "o": "la macedonia di frutta",
+  "p": false,
+  "s": "macedonia-frutta"
+ },
+ "spinach-dip": {
+  "n": "Dip agli spinaci",
+  "q": "il dip agli spinaci",
+  "o": "il dip agli spinaci",
+  "p": false,
+  "s": "dip-spinaci"
+ },
+ "queso-dip": {
+  "n": "Dip al formaggio (queso)",
+  "q": "il dip al formaggio",
+  "o": "il dip al formaggio",
+  "p": false,
+  "s": "dip-formaggio-queso"
+ },
+ "salsa-verde": {
+  "n": "Salsa verde messicana",
+  "q": "la salsa verde messicana",
+  "o": "la salsa verde messicana",
+  "p": false,
+  "s": "salsa-verde-messicana"
+ },
+ "ground-chicken": {
+  "n": "Carne macinata di pollo",
+  "q": "la carne macinata di pollo",
+  "o": "la carne macinata di pollo",
+  "p": false,
+  "s": "carne-macinata-pollo"
+ },
+ "roast-chicken": {
+  "n": "Pollo arrosto",
+  "q": "il pollo arrosto",
+  "o": "il pollo arrosto",
+  "p": false,
+  "s": "pollo-arrosto"
+ },
+ "chicken-alfredo": {
+  "n": "Fettuccine Alfredo con pollo",
+  "q": "le fettuccine Alfredo con pollo",
+  "o": "le fettuccine Alfredo con pollo",
+  "p": true,
+  "s": "fettuccine-alfredo-pollo"
+ },
+ "fried-fish": {
+  "n": "Pesce fritto",
+  "q": "il pesce fritto",
+  "o": "il pesce fritto",
+  "p": false,
+  "s": "pesce-fritto"
+ },
+ "smoked-trout": {
+  "n": "Trota affumicata",
+  "q": "la trota affumicata",
+  "o": "la trota affumicata",
+  "p": false,
+  "s": "trota-affumicata"
+ },
+ "cooked-brisket": {
+  "n": "Punta di petto di manzo cotta",
+  "q": "la punta di petto di manzo cotta",
+  "o": "la punta di petto di manzo cotta",
+  "p": false,
+  "s": "punta-petto-manzo-cotta"
+ },
+ "egg-drop-soup": {
+  "n": "Zuppa cinese all'uovo",
+  "q": "la zuppa cinese all'uovo",
+  "o": "la zuppa cinese all'uovo",
+  "p": false,
+  "s": "zuppa-cinese-uovo"
+ },
+ "french-toast": {
+  "n": "French toast (pane dorato)",
+  "q": "il french toast",
+  "o": "il french toast",
+  "p": false,
+  "s": "french-toast"
+ },
+ "napa-cabbage": {
+  "n": "Cavolo cinese",
+  "q": "il cavolo cinese",
+  "o": "il cavolo cinese",
+  "p": false,
+  "s": "cavolo-cinese"
+ },
+ "pineapple-juice": {
+  "n": "Succo d'ananas",
+  "q": "il succo d'ananas",
+  "o": "il succo d'ananas",
+  "p": false,
+  "s": "succo-ananas"
  }
 }

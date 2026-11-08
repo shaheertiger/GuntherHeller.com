@@ -6231,6 +6231,7 @@
    "derivedFrom": "egg-dishes",
    "derivedNote": "USDA FoodKeeper has no separate entry for French toast. It is covered by “Egg dishes” (egg dish), so this page uses that entry’s storage times.",
    "notInRelated": true,
+   "batch": 2,
    "rank": 123
   },
   {
@@ -7260,6 +7261,7 @@
    "derivedFrom": "nacho-cheese",
    "derivedNote": "USDA FoodKeeper has no separate entry for store-bought queso dip. It is covered by “Nacho cheese (store bought)” (store-bought cheese dip), so this page uses that entry’s storage times.",
    "notInRelated": true,
+   "batch": 2,
    "rank": 144
   },
   {
@@ -7680,6 +7682,7 @@
    "derivedFrom": "sour-cream-dip",
    "derivedNote": "USDA FoodKeeper has no separate entry for spinach dip. It is covered by “Dips (sour cream based)” (sour-cream-based dip), so this page uses that entry’s storage times.",
    "notInRelated": true,
+   "batch": 2,
    "rank": 153
   },
   {
@@ -13037,6 +13040,7 @@
    "derivedFrom": "cooked-chicken",
    "derivedNote": "USDA FoodKeeper has no separate entry for chicken alfredo. It is covered by “Cooked poultry dishes” (cooked poultry dish), so this page uses that entry’s storage times.",
    "notInRelated": true,
+   "batch": 2,
    "rank": 263
   },
   {
@@ -13845,6 +13849,7 @@
    "derivedFrom": "ground-turkey",
    "derivedNote": "USDA FoodKeeper lists ground chicken under “Ground turkey or chicken”, so this page uses that entry’s storage times.",
    "notInRelated": true,
+   "batch": 2,
    "rank": 280
   },
   {
@@ -14087,6 +14092,7 @@
    "derivedFrom": "cooked-chicken",
    "derivedNote": "USDA FoodKeeper has no separate entry for homemade roast chicken. It is covered by “Cooked poultry dishes” (cooked poultry), so this page uses that entry’s storage times. Store-bought rotisserie chicken has its own page.",
    "notInRelated": true,
+   "batch": 2,
    "rank": 285
   },
   {
@@ -15366,6 +15372,7 @@
    "derivedFrom": "cooked-fish",
    "derivedNote": "USDA FoodKeeper has no separate entry for fried fish. It is covered by “Cooked fish (all)” (cooked fish), so this page uses that entry’s storage times.",
    "notInRelated": true,
+   "batch": 2,
    "rank": 312
   },
   {
@@ -16611,6 +16618,7 @@
    "derivedFrom": "hot-smoked-fish-vacuum-pack",
    "derivedNote": "USDA FoodKeeper has no separate entry for smoked trout. It is covered by “Fish (hot smoked, vacuum pack)” (hot-smoked fish), so this page uses that entry’s storage times. Hot-smoked fish sold in an air pack (not vacuum sealed) has a shorter freezer time; see that page.",
    "notInRelated": true,
+   "batch": 2,
    "rank": 338
   },
   {
@@ -17370,6 +17378,7 @@
    "derivedFrom": "leftovers-without-meat",
    "derivedNote": "USDA FoodKeeper has no separate entry for cooked asparagus. It is covered by “Leftovers (without meat, fish, poultry, or egg such as cooked vegitables, rice, or potatoes)” (cooked vegetables), so this page uses that entry’s storage times.",
    "notInRelated": true,
+   "batch": 2,
    "rank": 355
   },
   {
@@ -17545,6 +17554,7 @@
    "derivedFrom": "leftovers-without-meat",
    "derivedNote": "USDA FoodKeeper has no separate entry for cooked beets. It is covered by “Leftovers (without meat, fish, poultry, or egg such as cooked vegitables, rice, or potatoes)” (cooked vegetables), so this page uses that entry’s storage times.",
    "notInRelated": true,
+   "batch": 2,
    "rank": 359
   },
   {
@@ -17589,6 +17599,7 @@
    "derivedFrom": "leftovers-meat",
    "derivedNote": "USDA FoodKeeper has no separate entry for cooked brisket. It is covered by “Leftovers (with meat, fish, poultry, or egg)” (cooked meat), so this page uses that entry’s storage times.",
    "notInRelated": true,
+   "batch": 2,
    "rank": 360
   },
   {
@@ -17677,6 +17688,7 @@
    "derivedFrom": "leftovers-without-meat",
    "derivedNote": "USDA FoodKeeper has no separate entry for cooked cabbage. It is covered by “Leftovers (without meat, fish, poultry, or egg such as cooked vegitables, rice, or potatoes)” (cooked vegetables), so this page uses that entry’s storage times.",
    "notInRelated": true,
+   "batch": 2,
    "rank": 362
   },
   {
@@ -17721,6 +17733,7 @@
    "derivedFrom": "leftovers-without-meat",
    "derivedNote": "USDA FoodKeeper has no separate entry for cooked corn. It is covered by “Leftovers (without meat, fish, poultry, or egg such as cooked vegitables, rice, or potatoes)” (cooked vegetables), so this page uses that entry’s storage times.",
    "notInRelated": true,
+   "batch": 2,
    "rank": 363
   },
   {
@@ -17765,6 +17778,7 @@
    "derivedFrom": "leftovers-without-meat",
    "derivedNote": "USDA FoodKeeper has no separate entry for cooked green beans. It is covered by “Leftovers (without meat, fish, poultry, or egg such as cooked vegitables, rice, or potatoes)” (cooked vegetables), so this page uses that entry’s storage times.",
    "notInRelated": true,
+   "batch": 2,
    "rank": 364
   },
   {
@@ -18070,6 +18084,7 @@
    "derivedFrom": "leftovers-without-meat",
    "derivedNote": "USDA FoodKeeper has no separate entry for cooked spinach. It is covered by “Leftovers (without meat, fish, poultry, or egg such as cooked vegitables, rice, or potatoes)” (cooked vegetables), so this page uses that entry’s storage times.",
    "notInRelated": true,
+   "batch": 2,
    "rank": 371
   },
   {
@@ -18569,6 +18584,7 @@
    "derivedFrom": "soup",
    "derivedNote": "USDA FoodKeeper has no separate entry for egg drop soup. It is covered by “Soup, stews” (soup), so this page uses that entry’s storage times.",
    "notInRelated": true,
+   "batch": 2,
    "rank": 381
   },
   {
@@ -18709,6 +18725,7 @@
    "derivedFrom": "cut-fruit",
    "derivedNote": "USDA FoodKeeper has no separate entry for fruit salad. It is covered by “Fruit, cut” (cut fruit), so this page uses that entry’s storage times.",
    "notInRelated": true,
+   "batch": 2,
    "rank": 384
   },
   {
@@ -19244,6 +19261,7 @@
    "derivedFrom": "pasta-salad",
    "derivedNote": "USDA FoodKeeper has no separate entry for macaroni salad. It is covered by “Pasta salad” (pasta salad), so this page uses that entry’s storage times.",
    "notInRelated": true,
+   "batch": 2,
    "rank": 396
   },
   {
@@ -24345,6 +24363,7 @@
    "derivedFrom": "cabbage",
    "derivedNote": "USDA FoodKeeper has no separate entry for napa cabbage. It is covered by “Cabbage” (cabbage), so this page uses that entry’s storage times.",
    "notInRelated": true,
+   "batch": 2,
    "rank": 510
   },
   {
@@ -34451,6 +34470,7 @@
    "derivedFrom": "jarred-salsa",
    "derivedNote": "USDA FoodKeeper has no separate entry for jarred salsa verde. It is covered by “Salsa (picante and taco sauces)” (jarred salsa), so this page uses that entry’s storage times.",
    "notInRelated": true,
+   "batch": 2,
    "rank": 720
   },
   {
@@ -42922,6 +42942,7 @@
    "derivedFrom": "juice-cartons-fruit-punch",
    "derivedNote": "USDA FoodKeeper has no separate entry for pineapple juice. It is covered by “Fruit Juice in cartons, fruit drinks, punch” (carton fruit juice), so this page uses that entry’s storage times.",
    "notInRelated": true,
+   "batch": 2,
    "rank": 891
   },
   {
