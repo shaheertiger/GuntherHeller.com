@@ -5,7 +5,7 @@ const dir = new URL("../data/i18n/", import.meta.url);
 const en = JSON.parse(readFileSync(new URL("widgets.en.json", dir), "utf8"));
 const ph = (s) => [...s.matchAll(/\{[a-zA-Z]+\}/g)].map((m) => m[0]).sort().join(",");
 let failed = false;
-for (const lang of process.argv[2] ? [process.argv[2]] : ["es", "de", "fr", "pt-br"]) {
+for (const lang of process.argv[2] ? [process.argv[2]] : ["es", "de", "fr", "pt-br", "it", "nl"]) {
   const f = new URL(`widgets.${lang}.json`, dir);
   const errs = [];
   if (!existsSync(f)) errs.push("missing file");

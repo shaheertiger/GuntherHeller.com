@@ -49,9 +49,11 @@ freezer figure; left-out-overnight is only for perishable foods. Currently 2,021
 | German | `/de/haltbarkeit-{lebensmittel}/` | `/de/lebensmittel/{kategorie}/` |
 | French | `/fr/conservation-{aliment}/` | `/fr/aliments/{categorie}/` |
 | Portuguese (BR) | `/pt-br/quanto-dura-{alimento}/` | `/pt-br/alimentos/{categoria}/` |
+| Italian | `/it/quanto-dura-{alimento}/` | `/it/alimenti/{categoria}/` |
+| Dutch | `/nl/houdbaarheid-{product}/` | `/nl/levensmiddelen/{categorie}/` |
 
 Each locale also has a home page (`/es/`) and a methodology page. Every food page, home, category
-hub and methodology page carries a reciprocal hreflang cluster (en, es, de, fr, pt-BR, x-default →
+hub and methodology page carries a reciprocal hreflang cluster (en, es, de, fr, pt-BR, it, nl, x-default →
 English), and the build fails if a cluster is broken (`scripts/check-build.mjs`).
 
 - `data/i18n/en.json` is the source for all localized copy; `data/i18n/{lang}.json` are the translations.
