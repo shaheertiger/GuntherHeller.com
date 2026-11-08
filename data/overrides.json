@@ -1687,8 +1687,8 @@
       "kind": "baby-milk",
       "perishable": true,
       "source": {
-        "name": "CDC: Proper Storage and Preparation of Breast Milk",
-        "url": "https://www.cdc.gov/breastfeeding-special-circumstances/hcp/storage-preparation/index.html"
+        "name": "CDC: Breast Milk Storage and Preparation",
+        "url": "https://www.cdc.gov/breastfeeding/breast-milk-preparation-and-storage/handling-breastmilk.html"
       },
       "states": [
         {
