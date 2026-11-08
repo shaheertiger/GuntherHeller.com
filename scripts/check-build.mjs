@@ -47,7 +47,7 @@ for (const file of pages) {
   for (const m of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
     try { JSON.parse(m[1]); } catch { errors.push(`${rel}: invalid JSON-LD`); }
   }
-  if (/^\/((how-long-does|can-you-freeze-|does-)|(es|de|fr|pt-br|it|nl)\/(cuanto-dura|haltbarkeit|conservation|quanto-dura|houdbaarheid)-)/.test(rel)) {
+  if (/^\/((how-long-does|can-you-freeze-|does-)|(es|de|fr|pt-br|it|nl|sv|no|da|fi|ja)\/(cuanto-dura|haltbarkeit|conservation|quanto-dura|houdbaarheid|hur-lange-haller|holdbarhet|holdbarhed|sailyvyys|himochi)-)/.test(rel)) {
     // Allow Vercel Analytics scripts but no other client JS
     // Vercel Analytics uses a <vercel-analytics> custom element and defines it via script
     const hasVercelAnalytics = html.includes('<vercel-analytics');
@@ -107,7 +107,7 @@ const wordsIn = (html) => {
 let thin = 0, minSeen = Infinity;
 for (const file of pages) {
   const rel = "/" + relative(DIST, file).replace(/index\.html$/, "");
-  if (!/^\/((how-long-does-.*-last|can-you-freeze-.+|does-.+-go-bad|[^/]+-left-out-overnight)|(es\/cuanto-dura|de\/haltbarkeit|fr\/conservation|pt-br\/quanto-dura|it\/quanto-dura|nl\/houdbaarheid)-.+)\/$/.test(rel)) continue;
+  if (!/^\/((how-long-does-.*-last|can-you-freeze-.+|does-.+-go-bad|[^/]+-left-out-overnight)|(es\/cuanto-dura|de\/haltbarkeit|fr\/conservation|pt-br\/quanto-dura|it\/quanto-dura|nl\/houdbaarheid|sv\/hur-lange-haller|no\/holdbarhet|da\/holdbarhed|fi\/sailyvyys|ja\/himochi)-.+)\/$/.test(rel)) continue;
   const n = wordsIn(readFileSync(file, "utf8"));
   minSeen = Math.min(minSeen, n);
   if (n < MIN_WORDS) { thin++; if (thin <= 10) errors.push(`${rel}: only ${n} words (min ${MIN_WORDS})`); }

@@ -21,6 +21,12 @@ export const LOCALE_DEFS = [
   { code: "pt-br", food: "quanto-dura", hub: "alimentos", method: "metodologia" },
   { code: "it", food: "quanto-dura", hub: "alimenti", method: "metodologia" },
   { code: "nl", food: "houdbaarheid", hub: "levensmiddelen", method: "methode" },
+  { code: "sv", food: "hur-lange-haller", hub: "livsmedel", method: "metod" },
+  { code: "no", food: "holdbarhet", hub: "matvarer", method: "metode" },
+  { code: "da", food: "holdbarhed", hub: "foedevarer", method: "metode" },
+  { code: "fi", food: "sailyvyys", hub: "elintarvikkeet", method: "menetelmat" },
+  // Japanese category names have no Latin letters, so their URL slugs are given here.
+  { code: "ja", food: "himochi", hub: "shokuhin", method: "hoho", cats: { "dairy-eggs": "nyuseihin-tamago", meat: "niku", poultry: "toriniku", seafood: "gyokairui", "leftovers-deli": "nokorimono-sozai", fruits: "kudamono", vegetables: "yasai", "grains-beans-pasta": "kokumotsu-mame-pasuta", "baked-goods": "pan-seika", "condiments-sauces": "chomiryo-sosu", "pantry-staples": "johin-shokuhin", beverages: "nomimono", "frozen-foods": "reito-shokuhin", "baby-food": "bebi-fudo", "vegetarian-proteins": "shokubutsusei-tanpakushitsu" } },
 ] as const;
 export type LocaleCode = (typeof LOCALE_DEFS)[number]["code"];
 
@@ -45,12 +51,12 @@ export const countL = (L: Locale, cat: string) => FOODS.filter((f) => f.category
 /* ---------------------------------------------------------------- URLs */
 export const slugify = (s: string) =>
   s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/ß/g, "ss").replace(/œ/g, "oe").replace(/æ/g, "ae").replace(/&/g, " ").replace(/['’]/g, "").split(/[^a-z0-9]+/).filter(Boolean).join("-");
-const CAT_STOP = new Set(["y", "e", "et", "und", "de", "del", "la", "el", "les", "des", "do", "da", "dos", "das", "di", "per", "l", "en", "van", "voor"]);
+const CAT_STOP = new Set(["y", "e", "et", "und", "de", "del", "la", "el", "les", "des", "do", "da", "dos", "das", "di", "per", "l", "en", "van", "voor", "och", "og", "ja"]);
 export const lurl = {
   home: (L: Locale) => `/${L.code}/`,
   food: (L: Locale, f: Food) => `/${L.code}/${L.def.food}-${L.foods[f.slug].s}/`,
   hubIndex: (L: Locale) => `/${L.code}/${L.def.hub}/`,
-  hub: (L: Locale, cat: string) => `/${L.code}/${L.def.hub}/${slugify(L.s.categories[cat]).split("-").filter((w) => !CAT_STOP.has(w)).join("-")}/`,
+  hub: (L: Locale, cat: string) => `/${L.code}/${L.def.hub}/${(L.def as { cats?: Record<string, string> }).cats?.[cat] ?? slugify(L.s.categories[cat]).split("-").filter((w) => !CAT_STOP.has(w)).join("-")}/`,
   method: (L: Locale) => `/${L.code}/${L.def.method}/`,
 };
 export type Alt = { lang: string; href: string };

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Validates translations against data/i18n/en.json and data/i18n/foods.source.json.
- *   node scripts/check-i18n.mjs es      (or de, fr, pt-br, it, nl; no argument = all)
+ *   node scripts/check-i18n.mjs es      (or de, fr, pt-br, it, nl, sv, no, da, fi, ja; no argument = all)
  * Checks: same keys and array shapes as en.json, same {placeholders} in every string,
  * every food translated with n/q/o/p/s, slugs well-formed and unique per language.
  */
@@ -10,7 +10,7 @@ const dir = new URL("../data/i18n/", import.meta.url);
 const read = (f) => JSON.parse(readFileSync(new URL(f, dir), "utf8"));
 const en = read("en.json");
 const src = read("foods.source.json");
-const LANGS = process.argv[2] ? [process.argv[2]] : ["es", "de", "fr", "pt-br", "it", "nl"];
+const LANGS = process.argv[2] ? [process.argv[2]] : ["es", "de", "fr", "pt-br", "it", "nl", "sv", "no", "da", "fi", "ja"];
 const ph = (s) => [...s.matchAll(/\{[a-zA-Z]+\}/g)].map((m) => m[0]).sort().join(",");
 const SKIP = new Set(["_doc", "lang", "htmlLang", "langName", "locale"]);
 let failed = false;
