@@ -84,8 +84,11 @@ export const sub = (tpl: string, vars: Record<string, string>) => Object.entries
 export const t = (L: Locale, path: string): any => path.split(".").reduce((o: any, k) => o?.[k], L.s);
 export const ft = (L: Locale, f: Food): FoodT => L.foods[f.slug];
 export const verifiedDate = (L: Locale) => new Intl.DateTimeFormat(L.s.locale, { month: "long", year: "numeric" }).format(new Date(SITE.verifiedISO + "T12:00:00Z"));
+/** Space between a number and its unit ("3 days"); Japanese writes them together ("3日"). */
+export const unitSep = (L: Locale) => (L.code === "ja" ? "" : " ");
 export function joinList(L: Locale, parts: string[]) {
   if (parts.length < 2) return parts[0] ?? "";
+  if (L.code === "ja") return parts.join("、");
   return `${parts.slice(0, -1).join(", ")} ${L.s.and} ${parts.at(-1)}`;
 }
 
@@ -95,7 +98,7 @@ export function fmtL(L: Locale, d: Dur | null | undefined): string | null {
   if (!isNum(d)) return L.s.vals[d.text] ?? d.text;
   const u = L.s.units[d.unit.replace(/s$/, "")] as [string, string];
   const n = d.min === d.max ? `${d.min}` : `${d.min}–${d.max}`;
-  return `${n} ${d.max === 1 ? u[0] : u[1]}`;
+  return `${n}${unitSep(L)}${d.max === 1 ? u[0] : u[1]}`;
 }
 const STATE_LABEL: Record<string, string> = { Opened: "opened", Unopened: "unopened", Cooked: "cooked", "Dry / uncooked": "dry", Dry: "dryShort", Uncooked: "uncooked", "Freshly expressed": "fresh", Thawed: "thawed" };
 export const stateLabel = (L: Locale, s: State) => (s.label ? L.s.ui[STATE_LABEL[s.label] ?? "opened"] : null);
