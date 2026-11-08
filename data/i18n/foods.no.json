@@ -6438,5 +6438,152 @@
   "o": "hermetisk gresskarpuré",
   "p": false,
   "s": "hermetisk-gresskarpure"
+ },
+ "cooked-cabbage": {
+  "n": "Kokt kål",
+  "q": "kokt kål",
+  "o": "kokt kål",
+  "p": false,
+  "s": "kokt-kal"
+ },
+ "cooked-asparagus": {
+  "n": "Kokt asparges",
+  "q": "kokt asparges",
+  "o": "kokt asparges",
+  "p": false,
+  "s": "kokt-asparges"
+ },
+ "cooked-green-beans": {
+  "n": "Kokte grønne bønner",
+  "q": "kokte grønne bønner",
+  "o": "kokte grønne bønner",
+  "p": true,
+  "s": "kokte-gronne-bonner"
+ },
+ "cooked-corn": {
+  "n": "Kokt mais",
+  "q": "kokt mais",
+  "o": "kokt mais",
+  "p": false,
+  "s": "kokt-mais"
+ },
+ "cooked-spinach": {
+  "n": "Kokt spinat",
+  "q": "kokt spinat",
+  "o": "kokt spinat",
+  "p": false,
+  "s": "kokt-spinat"
+ },
+ "cooked-beets": {
+  "n": "Kokte rødbeter",
+  "q": "kokte rødbeter",
+  "o": "kokte rødbeter",
+  "p": true,
+  "s": "kokte-rodbeter"
+ },
+ "macaroni-salad": {
+  "n": "Makaronisalat",
+  "q": "makaronisalat",
+  "o": "makaronisalat",
+  "p": false,
+  "s": "makaronisalat"
+ },
+ "fruit-salad": {
+  "n": "Fruktsalat",
+  "q": "fruktsalat",
+  "o": "fruktsalat",
+  "p": false,
+  "s": "fruktsalat"
+ },
+ "spinach-dip": {
+  "n": "Spinatdipp",
+  "q": "spinatdipp",
+  "o": "spinatdipp",
+  "p": false,
+  "s": "spinatdipp"
+ },
+ "queso-dip": {
+  "n": "Ostedipp (queso)",
+  "q": "ostedipp",
+  "o": "ostedipp",
+  "p": false,
+  "s": "ostedipp-queso"
+ },
+ "salsa-verde": {
+  "n": "Salsa verde",
+  "q": "salsa verde",
+  "o": "salsa verde",
+  "p": false,
+  "s": "salsa-verde"
+ },
+ "ground-chicken": {
+  "n": "Kyllingkjøttdeig",
+  "q": "kyllingkjøttdeig",
+  "o": "kyllingkjøttdeig",
+  "p": false,
+  "s": "kyllingkjottdeig"
+ },
+ "roast-chicken": {
+  "n": "Ovnsstekt kylling",
+  "q": "ovnsstekt kylling",
+  "o": "ovnsstekt kylling",
+  "p": false,
+  "s": "ovnsstekt-kylling"
+ },
+ "chicken-alfredo": {
+  "n": "Pasta alfredo med kylling",
+  "q": "pasta alfredo med kylling",
+  "o": "pasta alfredo med kylling",
+  "p": false,
+  "s": "pasta-alfredo-med-kylling"
+ },
+ "fried-fish": {
+  "n": "Stekt fisk",
+  "q": "stekt fisk",
+  "o": "stekt fisk",
+  "p": false,
+  "s": "stekt-fisk"
+ },
+ "smoked-trout": {
+  "n": "Røkt ørret",
+  "q": "røkt ørret",
+  "o": "røkt ørret",
+  "p": false,
+  "s": "rokt-orret"
+ },
+ "cooked-brisket": {
+  "n": "Tilberedt oksebryst",
+  "q": "tilberedt oksebryst",
+  "o": "tilberedt oksebryst",
+  "p": false,
+  "s": "tilberedt-oksebryst"
+ },
+ "egg-drop-soup": {
+  "n": "Kinesisk eggesuppe (egg drop soup)",
+  "q": "kinesisk eggesuppe",
+  "o": "kinesisk eggesuppe",
+  "p": false,
+  "s": "kinesisk-eggesuppe"
+ },
+ "french-toast": {
+  "n": "Arme riddere",
+  "q": "arme riddere",
+  "o": "arme riddere",
+  "p": true,
+  "s": "arme-riddere"
+ },
+ "napa-cabbage": {
+  "n": "Kinakål",
+  "q": "kinakål",
+  "o": "kinakål",
+  "p": false,
+  "s": "kinakal"
+ },
+ "pineapple-juice": {
+  "n": "Ananasjuice",
+  "q": "ananasjuice",
+  "o": "ananasjuice",
+  "p": false,
+  "s": "ananasjuice"
  }
 }

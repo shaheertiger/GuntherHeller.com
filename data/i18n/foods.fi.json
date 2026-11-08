@@ -6438,5 +6438,152 @@
   "o": "säilötyn kurpitsasoseen",
   "p": false,
   "s": "sailotty-kurpitsasose"
+ },
+ "cooked-cabbage": {
+  "n": "Keitetty kaali",
+  "q": "keitetty kaali",
+  "o": "keitetyn kaalin",
+  "p": false,
+  "s": "keitetty-kaali"
+ },
+ "cooked-asparagus": {
+  "n": "Keitetty parsa",
+  "q": "keitetty parsa",
+  "o": "keitetyn parsan",
+  "p": false,
+  "s": "keitetty-parsa"
+ },
+ "cooked-green-beans": {
+  "n": "Keitetyt vihreät pavut",
+  "q": "keitetyt vihreät pavut",
+  "o": "keitetyt vihreät pavut",
+  "p": true,
+  "s": "keitetyt-vihreat-pavut"
+ },
+ "cooked-corn": {
+  "n": "Keitetty maissi",
+  "q": "keitetty maissi",
+  "o": "keitetyn maissin",
+  "p": false,
+  "s": "keitetty-maissi"
+ },
+ "cooked-spinach": {
+  "n": "Kypsennetty pinaatti",
+  "q": "kypsennetty pinaatti",
+  "o": "kypsennetyn pinaatin",
+  "p": false,
+  "s": "kypsennetty-pinaatti"
+ },
+ "cooked-beets": {
+  "n": "Keitetyt punajuuret",
+  "q": "keitetyt punajuuret",
+  "o": "keitetyt punajuuret",
+  "p": true,
+  "s": "keitetyt-punajuuret"
+ },
+ "macaroni-salad": {
+  "n": "Makaronisalaatti",
+  "q": "makaronisalaatti",
+  "o": "makaronisalaatin",
+  "p": false,
+  "s": "makaronisalaatti"
+ },
+ "fruit-salad": {
+  "n": "Hedelmäsalaatti",
+  "q": "hedelmäsalaatti",
+  "o": "hedelmäsalaatin",
+  "p": false,
+  "s": "hedelmasalaatti"
+ },
+ "spinach-dip": {
+  "n": "Pinaattidippi",
+  "q": "pinaattidippi",
+  "o": "pinaattidipin",
+  "p": false,
+  "s": "pinaattidippi"
+ },
+ "queso-dip": {
+  "n": "Queso-juustodippi",
+  "q": "queso-juustodippi",
+  "o": "queso-juustodipin",
+  "p": false,
+  "s": "queso-juustodippi"
+ },
+ "salsa-verde": {
+  "n": "Vihreä salsa (salsa verde)",
+  "q": "vihreä salsa",
+  "o": "vihreän salsan",
+  "p": false,
+  "s": "vihrea-salsa-verde"
+ },
+ "ground-chicken": {
+  "n": "Broilerin jauheliha",
+  "q": "broilerin jauheliha",
+  "o": "broilerin jauhelihan",
+  "p": false,
+  "s": "broilerin-jauheliha"
+ },
+ "roast-chicken": {
+  "n": "Uunikana",
+  "q": "uunikana",
+  "o": "uunikanan",
+  "p": false,
+  "s": "uunikana"
+ },
+ "chicken-alfredo": {
+  "n": "Kana-alfredopasta",
+  "q": "kana-alfredopasta",
+  "o": "kana-alfredopastan",
+  "p": false,
+  "s": "kana-alfredopasta"
+ },
+ "fried-fish": {
+  "n": "Paistettu kala",
+  "q": "paistettu kala",
+  "o": "paistetun kalan",
+  "p": false,
+  "s": "paistettu-kala"
+ },
+ "smoked-trout": {
+  "n": "Savustettu taimen",
+  "q": "savustettu taimen",
+  "o": "savustetun taimenen",
+  "p": false,
+  "s": "savustettu-taimen"
+ },
+ "cooked-brisket": {
+  "n": "Kypsennetty naudan rintapala",
+  "q": "kypsennetty naudan rintapala",
+  "o": "kypsennetyn naudan rintapalan",
+  "p": false,
+  "s": "kypsennetty-naudan-rintapala"
+ },
+ "egg-drop-soup": {
+  "n": "Kiinalainen munakeitto",
+  "q": "kiinalainen munakeitto",
+  "o": "kiinalaisen munakeiton",
+  "p": false,
+  "s": "kiinalainen-munakeitto"
+ },
+ "french-toast": {
+  "n": "Köyhät ritarit",
+  "q": "köyhät ritarit",
+  "o": "köyhät ritarit",
+  "p": true,
+  "s": "koyhat-ritarit"
+ },
+ "napa-cabbage": {
+  "n": "Kiinankaali",
+  "q": "kiinankaali",
+  "o": "kiinankaalin",
+  "p": false,
+  "s": "kiinankaali"
+ },
+ "pineapple-juice": {
+  "n": "Ananasmehu",
+  "q": "ananasmehu",
+  "o": "ananasmehun",
+  "p": false,
+  "s": "ananasmehu"
  }
 }
