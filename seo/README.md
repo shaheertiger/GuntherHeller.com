@@ -13,13 +13,13 @@ No disavow file is committed yet because it must be built from the real export.
 
 ## Launch checklist
 - [ ] Vercel: import the repo (framework auto-detected as Astro; `vercel.json` sets build, headers, trailing slashes).
-- [ ] Vercel → Domains: `guntherheller.com` is the primary domain (no redirect); `www.guntherheller.com` redirects to it (308). Canonicals, hreflang and sitemaps all use the non-www host, so the domain setting must match. Do not add a host redirect in vercel.json as well: it loops.
+- [ ] Vercel → Domains: `www.guntherheller.com` is the primary domain (no redirect); `guntherheller.com` redirects to it (308). Canonicals, hreflang and sitemaps all use the www host, so the domain setting must match. Do not add a host redirect in vercel.json as well: it loops.
 - [ ] Google Search Console: add a **Domain** property for `guntherheller.com` and verify with the DNS TXT record
       (or a URL-prefix property: set `PUBLIC_GOOGLE_SITE_VERIFICATION` in Vercel env vars and redeploy — the home page then carries the meta tag).
-- [ ] Search Console → Sitemaps: submit `https://guntherheller.com/sitemap.xml` (an index of foods, questions, hubs, es, de, fr, pt-br).
+- [ ] Search Console → Sitemaps: submit `https://www.guntherheller.com/sitemap.xml` (an index of foods, questions, hubs, es, de, fr, pt-br).
 - [ ] Bing Webmaster Tools: *Import from Google Search Console* (or set `PUBLIC_BING_SITE_VERIFICATION`), submit the same sitemap.
 - [ ] After every deploy that adds or changes pages: `npm run build && npm run indexnow` (Bing, Yandex, Naver, Seznam).
-- [ ] Request indexing for the top 50 URLs: `node -e 'const d=require("./data/foods.json");d.foods.slice(0,50).forEach(f=>console.log("https://guntherheller.com/how-long-does-"+f.slug+"-last/"))'`
+- [ ] Request indexing for the top 50 URLs: `node -e 'const d=require("./data/foods.json");d.foods.slice(0,50).forEach(f=>console.log("https://www.guntherheller.com/how-long-does-"+f.slug+"-last/"))'`
 - [ ] Ads: replace the `.ad-slot` placeholders (`src/components/AdSlot.astro`) with the network's tags; keep the fixed sizes so CLS stays 0, and add a consent banner before personalised ads in the EU/UK.
 
 ## What crawlers get

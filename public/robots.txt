@@ -1,4 +1,4 @@
-# guntherheller.com
+# www.guntherheller.com
 # Search and AI answer engines are explicitly welcome. A crawler obeys only the most
 # specific group that names it, so the named group repeats the shared rules.
 User-agent: *
@@ -22,4 +22,4 @@ User-agent: DataForSeoBot
 User-agent: SERankingBacklinksBot
 Disallow: /
 
-Sitemap: https://guntherheller.com/sitemap.xml
+Sitemap: https://www.guntherheller.com/sitemap.xml
