@@ -2,7 +2,7 @@
 import Base from "../layouts/Base.astro";
 import Breadcrumb from "./Breadcrumb.astro";
 import TrustBlock from "./TrustBlock.astro";
-import { FOODS, type Food, url, lc, does, hasFreezePage, hasLeftOutPage, fmt, freezerFacts, primaryFridge } from "../lib/data";
+import { FOODS, type Food, url, lc, does, hasFreezePage, hasLeftOutPage, fmt, freezerFacts, primaryFridge, isNum } from "../lib/data";
 import { freezeVerdict } from "../lib/content";
 import { breadcrumbLd, ORG } from "../lib/schema";
 import { abs } from "../lib/site";
@@ -12,7 +12,7 @@ const { kind } = Astro.props;
 const cfg = {
   freeze: { path: "/can-you-freeze/", h1: "Can you freeze it?", title: "Can You Freeze It? Freezer Answers for {n} Foods, A–Z", desc: "Yes-or-no freezing answers for {n} foods, with how long each keeps its quality in the freezer and how to thaw it. USDA FoodKeeper data.", filter: hasFreezePage, href: url.freeze, q: (f: Food) => `Can you freeze ${lc(f)}?`, a: (f: Food) => { const v = freezeVerdict(f); const d = freezerFacts(f); return { tone: v.tone, text: v.tone === "no" ? "No" : `Yes${d && "min" in d ? ` · ${fmt(d)}` : ""}` }; } },
   bad: { path: "/does-it-go-bad/", h1: "Does it go bad?", title: "Does It Go Bad? Shelf Life & Spoilage Signs for {n} Foods", desc: "Does it expire? Shelf life and signs of spoilage for {n} foods, from honey and rice to milk and chicken, A–Z. USDA FoodKeeper data.", filter: (_: Food) => true, href: url.bad, q: (f: Food) => `${does(f)} ${lc(f)} go bad?`, a: (f: Food) => ({ tone: "neutral", text: primaryFridge(f) }) },
-  leftOut: { path: "/left-out-overnight/", h1: "Left out overnight", title: "Food Left Out Overnight: Is It Safe? {n} Foods Checked", desc: "Left the chicken, rice or milk out overnight? The USDA 2-hour rule applied to {n} perishable foods, A–Z, with what to do next.", filter: hasLeftOutPage, href: url.leftOut, q: (f: Food) => `${lc(f).replace(/^./, (c) => c.toUpperCase())} left out overnight`, a: (_: Food) => ({ tone: "no", text: "Discard after 2 h" }) },
+  leftOut: { path: "/left-out-overnight/", h1: "Left out overnight", title: "Food Left Out Overnight: Is It Safe? {n} Foods Checked", desc: "Left the chicken, rice or milk out overnight? The USDA 2-hour rule applied to {n} perishable foods, A–Z, with what to do next.", filter: hasLeftOutPage, href: url.leftOut, q: (f: Food) => `${lc(f).replace(/^./, (c) => c.toUpperCase())} left out overnight`, a: (f: Food) => { const p = f.states[0].pantry; return { tone: "no", text: isNum(p) && p.unit === "hours" ? `Discard after ${p.max} h` : "Discard after 2 h" }; } },
 }[kind];
 const foods = FOODS.filter(cfg.filter).sort((a, b) => a.name.localeCompare(b.name));
 const groups = new Map<string, Food[]>();

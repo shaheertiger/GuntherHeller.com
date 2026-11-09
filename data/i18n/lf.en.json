@@ -88,6 +88,7 @@
    "Can {q} expire?"
   ],
   "expireShelf": "Yes, but for a shelf-stable food like this, expiring usually means losing quality rather than becoming dangerous. Flavour, aroma and texture fade over time, especially after opening. If it has been stored cool, dry and tightly closed and shows no mould, off smell or odd colour, it is usually still fine to use.",
+  "expireShort": "Yes. It is not shelf-stable, so go by the storage time rather than the printed date: once it is past that time, or shows mould, soft spots or an off smell, throw it out.",
   "expirePerishable": "Yes, and for a perishable food like this the storage time matters more than the printed date. Once it has been in the fridge longer than {d}, or out of the fridge for more than 2 hours, it should be thrown away, even if it looks and smells normal."
  },
  "faq": {

@@ -157,6 +157,8 @@
   "discard": "À jeter",
   "tDiscard": "Un aliment périssable resté plus de 2 heures à température ambiante (1 heure au-delà de 32 °C / 90 °F) doit être jeté. Les bactéries se multiplient le plus vite entre 4 °C et 60 °C, et le réchauffage n'élimine pas toutes les toxines qu'elles produisent.",
   "tKeep": "Cet aliment se conserve à température ambiante. Une nuit sur le plan de travail ne pose pas de problème : gardez-le au frais, au sec et à l'abri du soleil.",
+  "tShort": "Il se conserve {p} à température ambiante : une nuit dehors ne pose généralement pas de problème. Ce n'est pas pour autant un aliment de garde : consommez-le vite ou placez-le au frais.",
+  "tHours": "Il ne se conserve que {p} à température ambiante. Au-delà, ou après une nuit dehors, il faut le jeter.",
   "tRipe": "Cet aliment peut mûrir à température ambiante. Une fois coupé ou cuit, la règle des 2 heures s'applique.",
   "tOpened": "Une fois ouvert, cet aliment se garde au réfrigérateur. Une nuit à température ambiante accélère l'altération : s'il a une odeur, un aspect ou un goût anormal, jetez-le.",
   "tCaution": "Ce n'est pas un aliment à haut risque, mais une nuit dehors raccourcit sa conservation au réfrigérateur. Remettez-le au froid et consommez-le rapidement."

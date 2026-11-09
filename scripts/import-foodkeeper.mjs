@@ -301,7 +301,9 @@ for (const p of products) {
     states = [{ key: "default", label: null, ...unopened }];
   }
   const kind = kindOf(p, cat, name);
-  const anyPantry = Boolean(states[0].pantry && !states[0].pantry.text);
+  // A pantry figure measured in hours (prepared baby formula: 1 hour) is a time limit, not shelf
+  // stability, so it must not switch off the perishable flag.
+  const anyPantry = Boolean(states[0].pantry && !states[0].pantry.text && states[0].pantry.unit !== "hours");
   const tips = {
     pantry: clean(p.Pantry_tips) || clean(p.DOP_Pantry_tips),
     fridge: clean(p.Refrigerate_tips) || clean(p.DOP_Refrigerate_tips),

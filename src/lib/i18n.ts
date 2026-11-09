@@ -4,7 +4,7 @@
  * published only when both files exist. Numbers come from the same FoodKeeper data
  * as the English site; only words change.
  */
-import { type Food, type State, type Dur, FOODS, CATEGORIES, isNum, days, getFood, similarFoods, freezerFacts, url as enUrl } from "./data";
+import { type Food, type State, type Dur, FOODS, CATEGORIES, isNum, days, getFood, similarFoods, freezerFacts, shelfStable, stateShelfStable, url as enUrl } from "./data";
 import { groupOf, leftOutFor } from "./content";
 import { SITE } from "./site";
 
@@ -103,11 +103,11 @@ export function cellsL(L: Locale, f: Food, s: State, i: number): Record<"pantry"
   else pantry = { value: V["Not recommended"], note: N.keepCold };
   let fridge: CellL;
   if (s.fridge) fridge = { value: fmtL(L, s.fridge)!, note: !isNum(s.fridge) && s.fridge.text === "Use-by date" ? N.useBy : N.fridgeTemp };
-  else if (s.pantry) fridge = { value: V["Not needed"], note: N.shelfStable };
+  else if (s.pantry && stateShelfStable(s)) fridge = { value: V["Not needed"], note: N.shelfStable };
   else fridge = { value: V["Not listed"], note: N.noFigure };
   let freezer: CellL;
   if (s.freezer) freezer = isNum(s.freezer) ? { value: fmtL(L, s.freezer)!, note: N.freezerQuality } : { value: fmtL(L, s.freezer)!, note: s.freezer.text === "Not recommended" ? N.notRec : "" };
-  else if (s.pantry && !s.fridge) freezer = { value: V["Not needed"], note: N.noFreeze };
+  else if (s.pantry && !s.fridge && stateShelfStable(s)) freezer = { value: V["Not needed"], note: N.noFreeze };
   else freezer = { value: V["Not listed"], note: N.noFigure };
   return { pantry, fridge, freezer };
 }
@@ -193,7 +193,12 @@ export function leftOutL(L: Locale, f: Food) {
   const O = L.s.leftOut;
   const tone = leftOutFor(f).tone;
   const S = f.states[0];
-  const text = f.perishable ? O.tDiscard : S.pantry && isNum(S.pantry) ? O.tKeep : S.pantry ? O.tRipe : f.states.some((s) => s.key === "opened") ? O.tOpened : O.tCaution;
+  const p = isNum(S.pantry) ? fmtL(L, S.pantry)! : "";
+  const text = isNum(S.pantry) && S.pantry.unit === "hours" ? O.tHours.replace("{p}", p)
+    : f.perishable ? O.tDiscard
+    : shelfStable(f) ? O.tKeep
+    : isNum(S.pantry) ? O.tShort.replace("{p}", p)
+    : S.pantry ? O.tRipe : f.states.some((s) => s.key === "opened") ? O.tOpened : O.tCaution;
   return { tone, label: tone === "discard" ? O.discard : tone === "keep" ? O.keep : O.check, text };
 }
 

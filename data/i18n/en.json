@@ -158,6 +158,8 @@
   "discard": "Discard",
   "tDiscard": "Perishable food left at room temperature for more than 2 hours (1 hour above 32 °C / 90 °F) should be thrown away. Bacteria multiply fastest between 4 °C and 60 °C, and reheating does not remove every toxin they make.",
   "tKeep": "This food is shelf-stable. A night on the counter is fine — keep it cool, dry and out of the sun.",
+  "tShort": "It keeps {p} at room temperature, so one night out is usually fine. It is not shelf-stable, though: use it soon or move it somewhere cooler.",
+  "tHours": "It keeps only {p} at room temperature. Left out longer, or overnight, it should be thrown away.",
   "tRipe": "It can ripen on the counter. Once cut or cooked, the 2-hour rule applies.",
   "tOpened": "Once opened, it belongs in the fridge. A night at room temperature speeds spoilage; if it smells, looks or tastes off, throw it out.",
   "tCaution": "Not a high-risk food, but a night out shortens its fridge life. Refrigerate it and use it soon."

@@ -87,6 +87,7 @@
    "{q} peuvent-ils périmer ?"
   ],
   "expireShelf": "Oui, mais pour un aliment de garde comme celui-ci, être périmé signifie surtout perdre en qualité plutôt que devenir dangereux. Le goût, l'arôme et la texture s'estompent avec le temps, surtout après ouverture. S'il a été conservé au frais, au sec et bien fermé, sans moisissure, odeur anormale ni couleur inhabituelle, il reste généralement utilisable.",
+  "expireShort": "Oui. Ce n'est pas un aliment de garde : fiez-vous à la durée de conservation plutôt qu'à la date imprimée. Une fois cette durée dépassée, ou en cas de moisissure, de parties molles ou d'odeur anormale, jetez-le.",
   "expirePerishable": "Oui, et pour un aliment périssable comme celui-ci, la durée de conservation compte davantage que la date imprimée. S'il est resté au réfrigérateur plus de {d}, ou plus de 2 heures hors du réfrigérateur, il faut le jeter, même s'il a l'air et l'odeur normaux."
  },
  "faq": {

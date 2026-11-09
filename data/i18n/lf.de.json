@@ -87,6 +87,7 @@
    "Können {q} ablaufen?"
   ],
   "expireShelf": "Ja, aber bei einem haltbaren Lebensmittel wie diesem bedeutet das meist einen Qualitätsverlust und keine Gefahr. Geschmack, Aroma und Konsistenz lassen mit der Zeit nach, vor allem nach dem Öffnen. Wenn es kühl, trocken und gut verschlossen gelagert wurde und weder Schimmel noch einen fremden Geruch oder eine ungewöhnliche Farbe zeigt, kann es in der Regel noch verwendet werden.",
+  "expireShort": "Ja. Es ist ungekühlt nicht lange haltbar, daher zählt die Lagerzeit mehr als das aufgedruckte Datum: Ist sie überschritten oder zeigt es Schimmel, weiche Stellen oder einen seltsamen Geruch, entsorgen.",
   "expirePerishable": "Ja, und bei einem leicht verderblichen Lebensmittel wie diesem zählt die Lagerzeit mehr als das aufgedruckte Datum. Wenn es länger als {d} im Kühlschrank lag oder mehr als 2 Stunden ungekühlt war, sollte es weggeworfen werden, auch wenn es normal aussieht und riecht."
  },
  "faq": {

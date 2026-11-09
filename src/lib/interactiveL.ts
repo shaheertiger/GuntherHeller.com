@@ -2,7 +2,7 @@
  * Localized data for the interactive widgets (data/i18n/widgets.{lang}.json, validated by
  * scripts/check-widgets.mjs). Same verdict logic as src/lib/interactive.ts.
  */
-import { type Food, isNum } from "./data";
+import { type Food, isNum, shelfStable } from "./data";
 import { groupOf, zoneFor } from "./content";
 import { range } from "./viz";
 import { type Locale, fmtL, fill, sub, pick, ft, freezeL } from "./i18n";
@@ -33,7 +33,8 @@ export function widgetsL(L: Locale, f: Food) {
 
   // Counter / pantry
   let counter: { ask: string; note: string; options: Opt[] } | null = null;
-  if (f.perishable) {
+  const hoursOnly = isNum(s.pantry) && s.pantry.unit === "hours"; // stricter than the 2-hour rule the widget teaches
+  if (f.perishable && !hoursOnly) {
     const C = W.counter;
     counter = {
       ask: C.ask, note: C.note,
@@ -45,7 +46,7 @@ export function widgetsL(L: Locale, f: Food) {
         { label: W.overnight, tone: "toss", head: C.hNight, text: C.tNight },
       ],
     };
-  } else {
+  } else if (shelfStable(f)) {
     const pst = f.states.find((x) => x.pantry && isNum(x.pantry));
     const r = range(pst?.pantry);
     if (r) {

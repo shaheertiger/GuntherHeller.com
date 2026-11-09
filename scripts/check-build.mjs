@@ -98,21 +98,46 @@ for (const file of pages) {
 }
 for (const f of ["favicon.ico", "favicon.svg", "favicon-96x96.png", "apple-touch-icon.png", "site.webmanifest", "web-app-manifest-512x512.png"]) if (!existsSync(join(DIST, f))) errors.push(`missing ${f}`);
 
-// Word count: every English food and variant page carries at least 1,200 words of main content.
-const MIN_WORDS = 1200;
+// No word-count target: padding pages to a length is what scaled-content filters look for.
+// Instead, guard against duplication: an indexable question page (can you freeze / does it go bad)
+// must answer its own question, not repeat the main food page.
+const MAX_SHARED = 0.4;
 const wordsIn = (html) => {
   const main = (html.match(/<main[\s\S]*?<\/main>/) ?? [html])[0].replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<svg[\s\S]*?<\/svg>/g, "");
   return (main.replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/gi, " ").match(/[\p{L}\p{N}][\p{L}\p{N}'’–-]*/gu) ?? []).length;
 };
-let thin = 0, minSeen = Infinity;
+const sentencesIn = (html) => {
+  const art = (html.match(/<article[\s\S]*?<\/article>/) ?? [""])[0].replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<svg[\s\S]*?<\/svg>/g, "");
+  const text = art.replace(/<\/(p|li|h[1-6]|div|td|th|summary|dd)>/g, "\n").replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/gi, " ");
+  return new Set(text.split(/\n|(?<=[.!?])\s+/).map((x) => x.replace(/\s+/g, " ").trim().toLowerCase()).filter((x) => x.split(" ").length >= 5));
+};
+let minSeen = Infinity, worstShare = 0, dupes = 0;
+const isMain = (rel) => /^\/how-long-do(es)?-.+-last\/$/.test(rel);
+const isQuestion = (rel) => /^\/(can-you-freeze-.+|does-(?!it-go-bad\/).+-go-bad|do-.+-go-bad)\/$/.test(rel);
+const sets = new Map();
 for (const file of pages) {
   const rel = "/" + relative(DIST, file).replace(/index\.html$/, "");
-  if (!/^\/((how-long-does-.*-last|can-you-freeze-.+|does-.+-go-bad|[^/]+-left-out-overnight)|(es\/cuanto-dura|de\/haltbarkeit|fr\/conservation|pt-br\/quanto-dura)-.+)\/$/.test(rel)) continue;
-  const n = wordsIn(readFileSync(file, "utf8"));
-  minSeen = Math.min(minSeen, n);
-  if (n < MIN_WORDS) { thin++; if (thin <= 10) errors.push(`${rel}: only ${n} words (min ${MIN_WORDS})`); }
+  if (/^\/((how-long-do(es)?-.*-last)|(es\/cuanto-dura|de\/haltbarkeit|fr\/conservation|pt-br\/quanto-dura)-.+)\/$/.test(rel)) minSeen = Math.min(minSeen, wordsIn(readFileSync(file, "utf8")));
+  if (isMain(rel) || isQuestion(rel)) sets.set(rel, sentencesIn(readFileSync(file, "utf8")));
 }
-if (thin > 10) errors.push(`…${thin - 10} more pages under ${MIN_WORDS} words`);
+// Lines on a third of these pages or more are site furniture (trust line, table labels), not page content.
+const seenOn = new Map();
+for (const set of sets.values()) for (const x of set) seenOn.set(x, (seenOn.get(x) ?? 0) + 1);
+const furniture = Math.max(50, Math.round(sets.size / 3));
+for (const [rel, mine0] of sets) {
+  if (!isQuestion(rel)) continue;
+  const html = readFileSync(join(DIST, rel, "index.html"), "utf8");
+  if (/name="robots" content="noindex/.test(html)) continue;
+  const mainHref = html.match(/href="(\/how-long-do(?:es)?-[^"]+-last\/)"/)?.[1];
+  if (!mainHref || !sets.has(mainHref)) { errors.push(`${rel}: no link to its main food page`); continue; }
+  const mine = [...mine0].filter((x) => seenOn.get(x) < furniture), theirs = sets.get(mainHref);
+  const shared = mine.filter((x) => theirs.has(x)).length / Math.max(mine.length, 1);
+  worstShare = Math.max(worstShare, shared);
+  if (shared > MAX_SHARED) { dupes++; if (dupes <= 10) errors.push(`${rel}: ${Math.round(shared * 100)}% of its sentences repeat ${mainHref} (max ${MAX_SHARED * 100}%)`); }
+}
+if (dupes > 10) errors.push(`…${dupes - 10} more question pages repeat their main page`);
+// Regression guard for removed filler.
+for (const file of pages) if (/id="quiz"/.test(readFileSync(file, "utf8"))) { errors.push(`${"/" + relative(DIST, file)}: true/false quiz is back`); break; }
 
 // Acceptance test (handoff §3): cooked rice.
 const rice = readFileSync(join(DIST, "how-long-does-cooked-rice-last/index.html"), "utf8");
@@ -124,7 +149,7 @@ for (const f of ["robots.txt", "ads.txt", "sitemap.xml", "og.png", "404.html", "
 
 const css = files.filter((f) => f.endsWith(".css")).reduce((n, f) => n + statSync(f).size, 0);
 const inlineCss = (rice.match(/<style[^>]*>([\s\S]*?)<\/style>/g) ?? []).join("").length;
-console.log(`check-build: ${pages.length} pages, ${titles.size} unique titles, ${clusters} hreflang pages, ${listed.size} sitemap URLs, shortest food page ${minSeen} words, CSS ${(Math.max(css, inlineCss) / 1024).toFixed(1)} KB`);
+console.log(`check-build: ${pages.length} pages, ${titles.size} unique titles, ${clusters} hreflang pages, ${listed.size} sitemap URLs, shortest food page ${minSeen} words, question pages share at most ${Math.round(worstShare * 100)}% of sentences with their main page, CSS ${(Math.max(css, inlineCss) / 1024).toFixed(1)} KB`);
 if (Math.max(css, inlineCss) > 60 * 1024) errors.push("CSS over the 60 KB budget");
 warn.slice(0, 10).forEach((w) => console.warn("warn:", w));
 if (warn.length > 10) console.warn(`warn: …and ${warn.length - 10} more`);

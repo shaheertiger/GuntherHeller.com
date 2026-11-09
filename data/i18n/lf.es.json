@@ -87,6 +87,7 @@
    "¿Pueden caducar {q}?"
   ],
   "expireShelf": "Sí, pero en un alimento no perecedero como este, caducar suele significar perder calidad, no volverse peligroso. El sabor, el aroma y la textura se pierden con el tiempo, sobre todo después de abrirlo. Si se ha guardado en un lugar fresco y seco, bien cerrado, y no muestra moho, mal olor ni un color extraño, por lo general todavía se puede usar.",
+  "expireShort": "Sí. No es un alimento de despensa, así que guíese por el tiempo de conservación y no por la fecha impresa: si ya lo ha superado, o tiene moho, partes blandas u olor extraño, deséchelo.",
   "expirePerishable": "Sí, y en un alimento perecedero como este importa más el tiempo de conservación que la fecha impresa. Si lleva en el refrigerador más de {d}, o más de 2 horas fuera del refrigerador, deséchelo aunque se vea y huela normal."
  },
  "faq": {
