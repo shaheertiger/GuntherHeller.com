@@ -68,6 +68,9 @@ export const url = {
 const UNIT_DAYS = { hours: 1 / 24, days: 1, weeks: 7, months: 30, years: 365 } as const;
 export const isNum = (d: Dur | null | undefined): d is Extract<Dur, { min: number }> => !!d && "min" in d;
 export const days = (d: Dur | null | undefined): number | null => (isNum(d) ? d.min * UNIT_DAYS[d.unit] : d && d.text === "Indefinitely" ? 1e5 : null);
+/** Shelf-stable means at least a month at room temperature, not "FoodKeeper lists a pantry time" (okra: 1 day). */
+export const stateShelfStable = (s: State) => (days(s.pantry) ?? 0) >= 30;
+export const shelfStable = (f: Food) => !f.perishable && f.states.some((s) => s.key !== "opened" && stateShelfStable(s));
 
 export function fmt(d: Dur | null | undefined): string | null {
   if (!d) return null;
@@ -97,7 +100,7 @@ export function cellsFor(f: Food, s: State, i: number): Cells {
   if (s.fridge) {
     const t = fmt(s.fridge)!;
     fridge = { value: t, note: t === "Use-by date" ? "follow the package date" : "at or below 40°F (4°C)" };
-  } else if (s.pantry) fridge = { value: "Not needed", note: "shelf-stable" };
+  } else if (s.pantry && stateShelfStable(s)) fridge = { value: "Not needed", note: "shelf-stable" };
   else fridge = { value: "Not listed", note: "no FoodKeeper figure" };
 
   let freezer: Cell;
@@ -106,7 +109,7 @@ export function cellsFor(f: Food, s: State, i: number): Cells {
     freezer = isNum(s.freezer)
       ? { value: t, note: "at 0°F; quality, not safety" }
       : { value: t, note: t === "Not recommended" ? "texture or safety suffers" : "" };
-  } else if (s.pantry && !s.fridge) freezer = { value: "Not needed", note: "keeps without freezing" };
+  } else if (s.pantry && !s.fridge && stateShelfStable(s)) freezer = { value: "Not needed", note: "keeps without freezing" };
   else freezer = { value: "Not listed", note: "no FoodKeeper figure" };
 
   if (c.pantry) pantry.note = c.pantry;

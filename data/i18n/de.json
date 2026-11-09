@@ -157,6 +157,8 @@
   "discard": "Entsorgen",
   "tDiscard": "Leicht verderbliche Lebensmittel, die länger als 2 Stunden bei Zimmertemperatur standen (über 32 °C / 90 °F: 1 Stunde), sollten entsorgt werden. Bakterien vermehren sich zwischen 4 °C und 60 °C am schnellsten, und Erhitzen zerstört nicht alle Giftstoffe, die sie bilden.",
   "tKeep": "Dieses Lebensmittel ist ungekühlt haltbar. Eine Nacht bei Zimmertemperatur ist kein Problem – kühl, trocken und vor Sonne geschützt lagern.",
+  "tShort": "Es hält sich {p} bei Zimmertemperatur, eine Nacht ungekühlt ist also meist kein Problem. Ungekühlt lange haltbar ist es aber nicht: bald verbrauchen oder kühler lagern.",
+  "tHours": "Es hält sich bei Zimmertemperatur nur {p}. Stand es länger oder über Nacht draußen, sollte es entsorgt werden.",
   "tRipe": "Es kann bei Zimmertemperatur nachreifen. Sobald es angeschnitten oder gegart ist, gilt die 2-Stunden-Regel.",
   "tOpened": "Nach dem Öffnen gehört es in den Kühlschrank. Eine Nacht bei Zimmertemperatur beschleunigt den Verderb; wenn es seltsam riecht, aussieht oder schmeckt, entsorgen.",
   "tCaution": "Kein Hochrisiko-Lebensmittel, aber eine Nacht ungekühlt verkürzt die Haltbarkeit im Kühlschrank. In den Kühlschrank stellen und bald verbrauchen."

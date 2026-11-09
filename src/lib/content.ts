@@ -2,7 +2,7 @@
  * Generated copy. Every number comes from the FoodKeeper record; the prose around it comes
  * from per-kind templates below. Anything in data/overrides.json → content[slug] wins.
  */
-import { FOODS, type Food, type State, contentFor, fmt, isNum, days, lc, lasts, does, isAre, itThey, titleCase, cap1, freezerFacts, cellsFor } from "./data";
+import { FOODS, type Food, type State, contentFor, fmt, isNum, days, lc, lasts, does, isAre, itThey, titleCase, cap1, freezerFacts, cellsFor, shelfStable } from "./data";
 
 type Sign = { title: string; text: string; icon: string };
 const ICON = {
@@ -86,7 +86,9 @@ export const FREEZE_STEPS: Record<Group, string[]> = {
   frozen: ["Keep it at 0°F (-18°C) or colder in the original pack.", "Reseal opened bags tightly or move to a freezer bag.", "Cook from frozen as the package directs, or thaw in the fridge."],
   baby: ["Freeze only what the guidance allows, in clean, sealed containers.", "Label with the date and time.", "Thaw in the fridge or in warm water; never microwave, and do not refreeze."],
 };
-export const freezeStepsFor = (f: Food) => contentFor(f).freezeSteps ?? FREEZE_STEPS[groupOf(f)];
+const FRUIT_STEPS = ["Wash, dry, then peel, pit or slice as you would to eat it.", "Spread on a tray to freeze in a single layer, then bag and press out the air.", "Use from frozen in smoothies, baking or sauces; thawed fruit is soft."];
+const VEG_STEPS = ["Wash, trim and cut into pieces, then blanch for 1–3 minutes and cool in ice water.", "Dry well, freeze on a tray in a single layer, then bag and press out the air.", "Cook straight from frozen; thawed vegetables lose their crunch."];
+export const freezeStepsFor = (f: Food) => contentFor(f).freezeSteps ?? (f.kind === "fruit" ? FRUIT_STEPS : f.kind === "vegetable" ? VEG_STEPS : FREEZE_STEPS[groupOf(f)]);
 
 /* ---------------------------------------------------------------- left out */
 export type LeftOut = { tone: "keep" | "caution" | "discard"; label: string; text: string };
@@ -96,8 +98,12 @@ export function leftOutFor(f: Food): LeftOut {
   const S = f.states[0];
   if (f.perishable)
     return { tone: "discard", label: "Discard", text: c ?? `${cap1(name)} left at room temperature for more than 2 hours (1 hour above 90°F / 32°C) should be thrown away. Bacteria multiply fastest between 40°F and 140°F, and reheating does not remove every toxin they make.` };
-  if (S.pantry && isNum(S.pantry))
+  if (isNum(S.pantry) && S.pantry.unit === "hours")
+    return { tone: "discard", label: "Discard", text: c ?? `${cap1(name)} ${f.plural ? "keep" : "keeps"} only ${fmt(S.pantry)} at room temperature. Left out longer, or overnight, ${itThey(f)} should be thrown away.` };
+  if (shelfStable(f))
     return { tone: "keep", label: "Keep", text: c ?? `${cap1(name)} ${isAre(f)} shelf-stable${f.states.length > 1 ? " until opened" : ""}. A night on the counter is fine — keep ${itThey(f) === "they" ? "them" : "it"} cool, dry and away from sunlight.` };
+  if (isNum(S.pantry))
+    return { tone: "keep", label: "Keep", text: c ?? `${cap1(name)} ${f.plural ? "keep" : "keeps"} ${fmt(S.pantry)!.toLowerCase()} at room temperature, so one night out is usually fine.${S.fridge ? ` ${itThey(f) === "they" ? "They are" : "It is"} not shelf-stable, though: refrigerate ${itThey(f) === "they" ? "them" : "it"} next to get the full ${fmt(S.fridge)!.toLowerCase()}.` : ` Use ${itThey(f) === "they" ? "them" : "it"} soon.`}` };
   if (S.pantry)
     return { tone: "keep", label: "Keep", text: c ?? `Whole ${name} can sit on the counter ${fmt(S.pantry)!.toLowerCase()}. Once cut or cooked, the 2-hour rule applies.` };
   if (f.states.some((s) => s.key === "opened"))
@@ -156,7 +162,7 @@ export function methodsFor(f: Food) {
   if (c) return c;
   const rows: { method: string; duration: string; temp: string; container: string; note: string }[] = [];
   const g = groupOf(f);
-  const container = g === "dry" ? "Airtight, dry" : g === "meat" || g === "seafood" ? "Store pack or sealed" : g === "bakery" ? "Sealed bag" : "Airtight";
+  const container = g === "dry" ? "Airtight, dry" : g === "meat" || g === "seafood" ? "Store pack or sealed" : g === "bakery" ? "Sealed bag" : g === "produce" ? "Loose or perforated bag" : g === "leafy" ? "Bag lined with paper towel" : "Airtight";
   f.states.forEach((s, i) => {
     const cells = cellsFor(f, s, i);
     const tag = s.label ? ` (${s.label.toLowerCase()})` : "";
@@ -258,7 +264,8 @@ export function faqFor(f: Food): [string, string][] {
   const v = freezeVerdict(f);
   add(`Can you freeze ${name}?`, v.tone === "no" ? `Not recommended. ${v.detail}` : v.tone === "yes" ? `Yes. ${v.detail}` : v.detail);
   if (f.perishable) add(`How long can ${name} sit out?`, `No more than 2 hours at room temperature, or 1 hour above 90°F (32°C). After that, discard ${itThey(f) === "they" ? "them" : "it"}.`);
-  else if (s.pantry && isNum(s.pantry)) add(`${does(f)} ${name} need to be refrigerated?`, `Not ${f.states.length > 1 ? "until opened" : "for safety"}. ${f.name} ${lasts(f)} ${fmt(s.pantry)} in a cool, dry pantry.`);
+  else if (shelfStable(f) && isNum(s.pantry)) add(`${does(f)} ${name} need to be refrigerated?`, `Not ${f.states.length > 1 ? "until opened" : "for safety"}. ${f.name} ${lasts(f)} ${fmt(s.pantry)} in a cool, dry pantry.`);
+  else if (isNum(s.pantry) && s.fridge && isNum(s.fridge)) add(`${does(f)} ${name} need to be refrigerated?`, `Not right away, but it helps: ${name} ${f.plural ? "keep" : "keeps"} ${fmt(s.pantry)!.toLowerCase()} at room temperature and ${fmt(s.fridge)!.toLowerCase()} in the fridge.`);
   if (f.states.length > 1) {
     const [a, b] = f.states;
     add(`How long ${does(f).toLowerCase()} ${stateName(f, b)} last?`, `${[b.pantry && isNum(b.pantry) ? `${fmt(b.pantry)} in the pantry` : null, b.fridge ? `${fmt(b.fridge)!.toLowerCase()} in the fridge` : null].filter(Boolean).join(", ") || "Follow the package date"}. ${a.label}, the clock is shorter: ${[a.fridge ? `${fmt(a.fridge)!.toLowerCase()} in the fridge` : null, a.pantry ? `${fmt(a.pantry)!.toLowerCase()} in the pantry` : null].filter(Boolean).join(", ") || "see the table above"}.`);
@@ -292,7 +299,7 @@ export function modifierQA(f: Food): [string, string][] {
   const out: [string, string][] = [];
   const fzi = f.states.findIndex((x) => x.freezer);
   const cz = fzi >= 0 ? cellsFor(f, f.states[fzi], fzi).freezer : c.freezer;
-  out.push([`How long ${D} ${name} last in the fridge?`, s.fridge ? `${c.fridge.value} at 4°C (40°F) or colder${s.label && f.states.length > 1 ? ` (${s.label.toLowerCase()})` : ""}. ${f.perishable ? "Count from the day it was cooked, opened or bought." : "Keep it sealed so it does not pick up moisture or odours."}` : `FoodKeeper gives no fridge time for ${name}; ${s.pantry ? `it keeps ${fmt(s.pantry)!.toLowerCase()} in the pantry instead.` : "check the package."}`]);
+  out.push([`How long ${D} ${name} last in the fridge?`, s.fridge ? `${c.fridge.value} at 4°C (40°F) or colder${s.label && f.states.length > 1 ? ` (${s.label.toLowerCase()})` : ""}. ${f.perishable ? "Count from the day it was cooked, opened or bought." : groupOf(f) === "produce" || groupOf(f) === "leafy" ? "Store it unwashed in the crisper drawer." : "Keep it sealed so it does not pick up moisture or odours."}` : `FoodKeeper gives no fridge time for ${name}; ${s.pantry ? `it keeps ${fmt(s.pantry)!.toLowerCase()} in the pantry instead.` : "check the package."}`]);
   out.push([`How long ${D} ${name} last in the freezer?`, isNum(freezerFacts(f)) ? `${cz.value} for best quality at -18°C (0°F). Frozen food stays safe indefinitely; after that, texture and flavour fade.` : `${cz.value}. ${freezeVerdict(f).detail}`]);
   out.push([`How long ${D} ${name} last at room temperature?`, f.perishable ? `No more than 2 hours, or 1 hour above 32°C (90°F). Perishable food left out longer should be thrown away.` : s.pantry ? `${fmt(s.pantry)} in a cool, dry place.` : `It is not meant to be kept at room temperature. Refrigerate it.`]);
   const op = f.states.find((x) => x.key === "opened");
@@ -301,7 +308,8 @@ export function modifierQA(f: Food): [string, string][] {
   if (un) { const cu = cellsFor(f, un, f.states.indexOf(un)); out.push([`How long ${D} unopened ${name} last?`, `${[un.pantry && isNum(un.pantry) ? `${cu.pantry.value} in the pantry` : null, un.fridge ? `${cu.fridge.value} in the fridge` : null].filter(Boolean).join(" or ") || "Until the package date"}, if the seal is intact and it is stored as the label says.`]); }
   if (f.states.length > 1 && !op) { const b = f.states[1]; const cb = cellsFor(f, b, 1); out.push([`How long ${D} ${stateName(f, b)} last?`, `${[b.pantry && isNum(b.pantry) ? `${cb.pantry.value} in the pantry` : null, b.fridge ? `${cb.fridge.value} in the fridge` : null].filter(Boolean).join(" or ") || "See the table above"}.`]); }
   out.push([`How long is ${name} good for past the expiration date?`, datesFor(f).opened.title === "Past the date" ? datesFor(f).opened.text : datesFor(f).unopened.text]);
-  out.push([`How can you tell if ${name} ${f.plural ? "are" : "is"} bad?`, signsFor(f).slice(0, 3).map((x) => x.text.replace(/\.$/, "")).join(". ") + "."]);
+  const titles = signsFor(f).slice(0, 3).map((x) => x.title.toLowerCase());
+  out.push([`How can you tell if ${name} ${f.plural ? "are" : "is"} bad?`, `Check the ${titles.slice(0, -1).join(", ")} and ${titles.at(-1)}. ${f.perishable ? "Food-poisoning bacteria do not always change how food smells or looks, so go by the storage time as well." : "If any of them is off, throw it out."}`]);
   if (f.perishable) out.push([`How long can ${name} sit out?`, `2 hours at room temperature, 1 hour on a hot day above 32°C (90°F). Overnight is always too long.`]);
   return out;
 }

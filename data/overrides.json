@@ -1893,6 +1893,22 @@
     },
     "mashed-potatoes": {
       "quote": "FoodKeeper counts mashed potatoes as leftovers without meat. Homemade mash with cream or butter follows the same 3–4 day rule."
+    },
+    "prepared-baby-formula": {
+      "_why": "FoodKeeper gives prepared formula 1 hour at room temperature, stricter than the general 2-hour rule, so the generic perishable copy would overstate it.",
+      "notes": {
+        "opened": {
+          "pantry": "then discard",
+          "fridge": "covered, at or below 40°F (4°C)"
+        }
+      },
+      "leftOut": "Prepared baby formula keeps only 1 hour at room temperature, according to USDA FoodKeeper — half the usual 2-hour limit for perishable food. Formula left out longer, or overnight, should be thrown away, and so should anything left in a bottle after a feed.",
+      "faq": [
+        [
+          "How long can prepared baby formula sit out?",
+          "1 hour at room temperature, according to USDA FoodKeeper. After that, throw it away; do not put it back in the fridge."
+        ]
+      ]
     }
   },
   "priority": [

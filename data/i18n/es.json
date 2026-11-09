@@ -157,6 +157,8 @@
   "discard": "Deséchelo",
   "tDiscard": "Los alimentos perecederos que pasan más de 2 horas a temperatura ambiente (1 hora por encima de 32 °C / 90 °F) deben desecharse. Las bacterias se multiplican más rápido entre 4 °C y 60 °C, y recalentar no elimina todas las toxinas que producen.",
   "tKeep": "Este alimento no requiere refrigeración. Una noche fuera no hay problema: manténgalo en un lugar fresco, seco y lejos del sol.",
+  "tShort": "Se conserva {p} a temperatura ambiente, así que una noche fuera suele estar bien. Aun así, no es un alimento de despensa: úselo pronto o guárdelo en un lugar más fresco.",
+  "tHours": "Solo aguanta {p} a temperatura ambiente. Si pasa más tiempo fuera, o toda la noche, debe desecharse.",
   "tRipe": "Puede madurar a temperatura ambiente. Una vez cortado o cocinado, aplica la regla de las 2 horas.",
   "tOpened": "Una vez abierto, va en el refrigerador. Una noche a temperatura ambiente acelera su descomposición; si huele, se ve o sabe raro, deséchelo.",
   "tCaution": "No es un alimento de alto riesgo, pero una noche fuera acorta su vida en el refrigerador. Refrigérelo y úselo pronto."

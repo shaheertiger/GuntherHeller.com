@@ -19,26 +19,23 @@ import PerishScale from "./fun/PerishScale.astro";
 import StillGood from "./fun/StillGood.astro";
 import DangerZone from "./fun/DangerZone.astro";
 import Icon from "./fun/Icon.astro";
-import Countdown from "./fun/Countdown.astro";
 import FridgeMap from "./fun/FridgeMap.astro";
 import CompareChart from "./fun/CompareChart.astro";
 import ToolsCta from "./fun/ToolsCta.astro";
 import LongForm from "./LongForm.astro";
 import Checker from "./fun/Checker.astro";
-import Quiz from "./fun/Quiz.astro";
-import Checklist from "./fun/Checklist.astro";
-import { freezerChecks, counterChecks, quizFor, checklistFor } from "../lib/interactive";
+import { counterChecks } from "../lib/interactive";
 import { faqExtraFor } from "../lib/longform";
-import { modifierQA, thawFor, reheatFor, zoneFor } from "../lib/content";
+import { modifierQA, reheatFor, zoneFor, signsFor } from "../lib/content";
 import { range } from "../lib/viz";
-import { primaryFridge, fmt, isNum, FOODS } from "../lib/data";
+import { primaryFridge, fmt, isNum, FOODS, shelfStable } from "../lib/data";
 import { timelineBars, perishLevel, checker, VIZ_EN as V } from "../lib/viz";
 import { freezeVerdict } from "../lib/content";
 import { freezerFacts } from "../lib/data";
 import { cellsFor } from "../lib/data";
 import enStrings from "../../data/i18n/en.json";
 import { type Food, url, getCategory, similarFoods, lc, does, titleCase, cap1, hasFreezePage, hasLeftOutPage } from "../lib/data";
-import { foodTitle, foodDescription, quoteFor, methodsFor, datesFor, storeTipsFor, faqFor } from "../lib/content";
+import { foodTitle, foodDescription, quoteFor, methodsFor, storeTipsFor, faqFor } from "../lib/content";
 import { foodGraph } from "../lib/schema";
 import { SITE } from "../lib/site";
 import { foodAlternates } from "../lib/i18n";
@@ -58,9 +55,11 @@ const crumbs = [
   ...(sub ? [{ name: sub.name, href: url.sub(cat.slug, sub.slug) }] : []),
   { name: f.name },
 ];
-const faq = [...faqFor(f), ...faqExtraFor(f)];
+const qa = modifierQA(f);
+const opener = (q: string) => q.toLowerCase().split(/\s+/).slice(0, 5).join(" ");
+const faq = [...faqFor(f), ...faqExtraFor(f)].filter(([q, a]) => !qa.some(([q2, a2]) => opener(q2) === opener(q) || a2 === a))
+  .filter(([q]) => !(hasFreezePage(f) && /^(can you refreeze|does freezing kill)/i.test(q)));
 const similar = similarFoods(f, 8);
-const dates = datesFor(f);
 const methods = methodsFor(f);
 const quote = quoteFor(f);
 const ld = foodGraph({ food: f, path, title, headline: h1, description, crumbs, faq });
@@ -68,7 +67,7 @@ const sourceIsFk = f.source.name.startsWith("USDA");
 const c0 = cellsFor(f, f.states[0], 0);
 const fv = freezeVerdict(f);
 const badges = [
-  f.perishable ? { label: V.badges.perishable, tone: "red" as const } : f.states[0].pantry ? { label: V.badges.shelf, tone: "green" as const } : null,
+  f.perishable ? { label: V.badges.perishable, tone: "red" as const } : shelfStable(f) ? { label: V.badges.shelf, tone: "green" as const } : null,
   fv.tone === "yes" ? { label: V.badges.freezes, tone: "blue" as const } : fv.tone === "no" ? { label: V.badges.noFreeze, tone: "amber" as const } : null,
   f.states.some((s) => s.key === "opened") ? { label: V.badges.opened, tone: "lilac" as const } : null,
 ].filter((b): b is NonNullable<typeof b> => !!b);
@@ -78,12 +77,7 @@ const fzValue = fzi >= 0 ? cellsFor(f, f.states[fzi], fzi).freezer.value : c0.fr
 const checks = checker(f);
 const units = enStrings.units as Record<string, [string, string]>;
 const TIP_ICONS = ["fridge", "box", "thermo", "calendar", "leaf"];
-const fr = range(f.states[0].fridge);
-const qa = modifierQA(f);
-const fzChecks = freezerChecks(f);
 const ctChecks = counterChecks(f);
-const quiz = quizFor(f);
-const thaw = isNum(freezerFacts(f)) ? thawFor(f) : null;
 const reheat = reheatFor(f);
 const zone = zoneFor(f);
 const ZONES = { door: "Door", top: "Top shelf", middle: "Middle shelf", bottom: "Bottom shelf", crisper: "Crisper drawer", pantry: "Pantry", freezer: "Freezer" } as const;
@@ -91,8 +85,8 @@ const lifeOf = (x: Food) => { const s0 = x.states[0]; const d = range(s0.fridge)
 const compare = [f, ...similar.slice(0, 6)].map((x) => ({ x, l: lifeOf(x) })).filter((r) => r.l).map(({ x, l }) => ({ name: x.name, href: x === f ? undefined : url.food(x), days: l!.days, label: l!.label, me: x === f })).sort((a, b) => b.days - a.days);
 
 const toc = [
-  ["answer", "Quick answer"], ["glance", "At a glance"], ["check", "Check your food"], ["about", "About it"], ["methods", "Storage times by method"], ["where", "Where to store it"], ["qa", "Questions answered"], ["bad", "Signs it has gone bad"], ["freeze", "Can you freeze it?"],
-  ["leftout", "Left out overnight"], ["dates", "Date labels"], ["store", "How to store it"], ["similar", "Similar foods"], ["quiz", "Quiz"], ["faq", "FAQ"],
+  ["answer", "Quick answer"], ["glance", "At a glance"], ...(ctChecks ? [["check", "Check your food"]] : []), ["about", "About it"], ["methods", "Storage times by method"], ["where", "Where to store it"], ["qa", "Questions answered"], ["bad", "Signs it has gone bad"], ["freeze", "Can you freeze it?"],
+  ["leftout", "Left out overnight"], ["store", "How to store it"], ["similar", "Similar foods"], ["faq", "FAQ"],
 ];
 const related = [
   hasFreezePage(f) && { href: url.freeze(f), label: `Can you freeze ${name}?` },
@@ -160,19 +154,11 @@ const tools = [
           </section>
         )}
 
-        {fr && fr[1] <= 14 && fr[1] >= 1 && (
-          <section id="countdown" class="mt-8 md:mt-12">
-            <SectionHead icon="calendar" tint="var(--color-tint-amber)" ink="#8a5a0c" eyebrow="Meal prep">Your {name} fridge countdown</SectionHead>
-            <Countdown min={fr[0]} max={fr[1]} startLabel={f.perishable ? "Made" : "Open"} dayWord="Day" labels={{ fresh: V.fresh, edge: V.edge, toss: V.toss }} title={`Day 0 is the day it was ${f.states[0].key === "opened" ? "opened" : f.kind === "cooked" ? "cooked" : "bought"}.`} note="Based on the USDA FoodKeeper fridge window at 4°C (40°F) or colder." />
-          </section>
-        )}
-
-        {(fzChecks || ctChecks) && (
+        {ctChecks && (
           <section id="check" class="mt-8 md:mt-14">
             <SectionHead icon="clock" tint="var(--color-tint-amber)" ink="#8a5a0c" eyebrow="Try it">{`Check your ${name}`}</SectionHead>
             <div class="grid gap-3 mt-[18px]">
               {ctChecks && <Checker id={`ct-${f.slug}`} ask={f.perishable ? "It's been out on the counter for…" : "It's been in the pantry for…"} options={ctChecks} note={f.perishable ? "Room temperature means anything above 4°C (40°F). On hot days above 32°C (90°F), the limit is 1 hour." : "Assumes a cool, dry, dark cupboard with the package tightly closed."} />}
-              {fzChecks && <Checker id={`fz-${f.slug}`} ask="It's been in the freezer for…" options={fzChecks} note="Assumes a freezer at -18°C (0°F) or colder. Frozen food stays safe; these verdicts are about quality." />}
             </div>
           </section>
         )}
@@ -213,32 +199,17 @@ const tools = [
 
         <section id="bad" class="mt-8 md:mt-14">
           <SectionHead icon="nose" tint="var(--color-tint-pink)" ink="#b83269" eyebrow="Check before you eat">{`Signs ${name} ${f.plural ? "have" : "has"} gone bad`}</SectionHead>
-          <Signs food={f} />
-          <Checklist id={`cl-${f.slug}`} title={`Check your ${name}: tick anything you notice`} items={checklistFor(f)} okText="Nothing ticked? Good sign. Still check how long it has been stored: the bacteria that cause food poisoning are invisible." badText="Any of these means it has gone bad. Throw it out — don't taste it to check." />
-          <p class="mt-3 text-sm"><a href={url.bad(f)} class="link">{does(f)} {name} go bad? Full guide →</a></p>
+          <p class="mt-3.5 text-[16px] leading-[1.7] text-[#3f3f46]">Check {signsFor(f).map((x) => x.title.toLowerCase()).join(", ").replace(/, ([^,]*)$/, " and $1")} before you use {f.plural ? "them" : "it"}; anything off means it goes in the bin, whatever the date says.</p>
+          <p class="mt-3 text-sm"><a href={url.bad(f)} class="link">How to tell if {name} {f.plural ? "have" : "has"} gone bad →</a></p>
         </section>
 
-        <LongForm food={f} parts={["spoil", "mistakes"]} />
+        <LongForm food={f} parts={["mistakes"]} />
 
         <section id="freeze" class="mt-8 md:mt-14">
           <SectionHead icon="freezer" tint="var(--color-tint-blue)" ink="#2f5fbf" eyebrow="Freezing">Can you freeze {name}?</SectionHead>
-          <FreezeBlock food={f} />
+          <FreezeBlock food={f} steps={!hasFreezePage(f)} />
           {hasFreezePage(f) && <p class="mt-3 text-sm"><a href={url.freeze(f)} class="link">How to freeze and thaw {name} →</a></p>}
         </section>
-
-        {thaw && (
-          <section id="thaw" class="mt-8 md:mt-14">
-            <SectionHead icon="thermo" tint="var(--color-tint-blue)" ink="#2f5fbf" eyebrow="Thawing">How to thaw {name}</SectionHead>
-            <div class="grid sm:grid-cols-3 gap-3 mt-[18px]">
-              {thaw.map(([t, d], i) => (
-                <div class="lift soft p-4" style={`background:${["var(--color-tint-green)", "var(--color-tint-blue)", "var(--color-tint-amber)"][i]}`}>
-                  <span class="icon-chip bg-white" style={`color:${["#1f7048", "#2f5fbf", "#8a5a0c"][i]}`}><Icon name={["fridge", "thermo", "clock"][i]} size={17} /></span>
-                  <h3 class="!text-base !tracking-normal mt-2.5">{t}</h3><p class="text-sm text-[#3f3f46] mt-1">{d}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
 
         {reheat && (
           <section id="reheat" class="mt-8 md:mt-14">
@@ -258,23 +229,12 @@ const tools = [
           {hasLeftOutPage(f) && <p class="mt-3 text-sm"><a href={url.leftOut(f)} class="link">{cap1(name)} left out overnight: what to do →</a></p>}
         </section>
 
-        <section id="dates" class="mt-8 md:mt-14">
-          <SectionHead icon="calendar" tint="var(--color-tint-lilac)" ink="#4a3bd2" eyebrow="Date labels">Best-by and use-by dates on {name}</SectionHead>
-          <div class="grid sm:grid-cols-2 gap-4 mt-[18px]">
-            {[dates.unopened, dates.opened].map((d) => (
-              <div class="soft p-5 bg-[#f7f7f8]"><h3 class="!text-[17px] !tracking-normal font-[650]">{d.title}</h3><p class="mt-1.5 text-[15px] text-[#52525b]">{d.text}</p></div>
-            ))}
-          </div>
-        </section>
-
         <section id="store" class="mt-8 md:mt-14">
           <SectionHead icon="fridge" tint="var(--color-tint-green)" ink="#1b7a55" eyebrow={V.tips}>How to store {name}</SectionHead>
           <ul class="grid sm:grid-cols-2 gap-3 list-none p-0 mt-4">{storeTipsFor(f).map((t, i) => (
             <li class="lift soft flex gap-3 p-4 border border-line"><span class="icon-chip" style="background:var(--color-tint-green);color:#1b7a55"><Icon name={TIP_ICONS[i % TIP_ICONS.length]} size={17} /></span><span class="text-[15px] leading-[1.55]">{t}</span></li>
           ))}</ul>
         </section>
-
-        <LongForm food={f} parts={["buying"]} />
 
         {compare.length >= 3 && (
           <section id="compare" class="mt-8 md:mt-14">
@@ -295,11 +255,6 @@ const tools = [
             <a href={freezeHub.href} class="link">{freezeHub.label} →</a><span aria-hidden="true">·</span>
             {tools.map((t, i) => <>{i > 0 && <span aria-hidden="true">·</span>}<a href={t.href} class="link">{t.label} →</a></>)}
           </p>
-        </section>
-
-        <section id="quiz" class="mt-8 md:mt-14">
-          <SectionHead icon="spark" tint="var(--color-tint-lilac)" ink="#4a3bd2" eyebrow="Quick quiz">{`True or false? ${cap1(name)} myths`}</SectionHead>
-          <Quiz id={`qz-${f.slug}`} items={quiz} />
         </section>
 
         <section id="faq" class="mt-8 md:mt-14">

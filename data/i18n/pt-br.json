@@ -157,6 +157,8 @@
   "discard": "Descarte",
   "tDiscard": "Alimentos perecíveis deixados em temperatura ambiente por mais de 2 horas (1 hora acima de 32 °C / 90 °F) devem ir para o lixo. As bactérias se multiplicam mais rápido entre 4 °C e 60 °C, e reaquecer não elimina todas as toxinas que elas produzem.",
   "tKeep": "Este alimento não precisa de refrigeração. Uma noite fora da geladeira não tem problema — mantenha-o em local fresco, seco e longe do sol.",
+  "tShort": "Ele dura {p} em temperatura ambiente, então uma noite fora costuma não ter problema. Mas não é um alimento de despensa: consuma logo ou guarde em um lugar mais fresco.",
+  "tHours": "Ele dura só {p} em temperatura ambiente. Se ficar fora por mais tempo, ou a noite toda, deve ir para o lixo.",
   "tRipe": "Ele pode amadurecer em temperatura ambiente. Depois de cortado ou cozido, vale a regra das 2 horas.",
   "tOpened": "Depois de aberto, o lugar dele é na geladeira. Uma noite em temperatura ambiente acelera a deterioração; se o cheiro, a aparência ou o sabor estiverem estranhos, jogue fora.",
   "tCaution": "Não é um alimento de alto risco, mas uma noite fora encurta o prazo na geladeira. Refrigere e consuma logo."

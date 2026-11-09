@@ -1,4 +1,4 @@
-import { FOODS, CATEGORIES, url, hasFreezePage, hasLeftOutPage } from "./data";
+import { FOODS, CATEGORIES, url, hasFreezePage } from "./data";
 import { TOOLS } from "./tools";
 import { SITE, abs } from "./site";
 import { LOCALES, lurl, foodAlternates, homeAlternates, hasT, hubAlternates, hubIndexAlternates, methodAlternates, type Alt } from "./i18n";
@@ -8,7 +8,8 @@ const lastmod = SITE.verifiedISO;
 
 export const SECTIONS: Record<string, () => string[]> = {
   foods: () => FOODS.map((f) => url.food(f)),
-  questions: () => FOODS.flatMap((f) => [url.bad(f), ...(hasFreezePage(f) ? [url.freeze(f)] : []), ...(hasLeftOutPage(f) ? [url.leftOut(f)] : [])]),
+  // Left-out-overnight pages are noindex (the same 2-hour rule for every perishable food), so they are not listed.
+  questions: () => FOODS.flatMap((f) => [url.bad(f), ...(hasFreezePage(f) ? [url.freeze(f)] : [])]),
   hubs: () => [
     "/", "/foods/", ...CATEGORIES.flatMap((c) => [url.category(c.slug), ...c.subcategories.map((s) => url.sub(c.slug, s.slug))]),
     "/can-you-freeze/", "/does-it-go-bad/", "/left-out-overnight/", "/tools/", ...TOOLS.map((t) => `/tools/${t.slug}/`),

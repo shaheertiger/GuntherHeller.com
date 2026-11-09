@@ -2,7 +2,7 @@
  * Data for the CSS-only interactive widgets on food pages: freezer / counter / pantry
  * checkers and the true-or-false quiz. Every verdict is derived from the FoodKeeper numbers.
  */
-import { type Food, isNum, fmt, lc, does, itThey } from "./data";
+import { type Food, isNum, fmt, lc, does, itThey, shelfStable } from "./data";
 import { freezeVerdict, zoneFor, signsFor } from "./content";
 import { range } from "./viz";
 
@@ -37,6 +37,17 @@ export function freezerChecks(f: Food): Opt[] | null {
 export function counterChecks(f: Food): Opt[] | null {
   const name = lc(f);
   const them = itThey(f) === "they" ? "them" : "it";
+  const p0 = f.states[0].pantry;
+  if (isNum(p0) && p0.unit === "hours") {
+    // FoodKeeper's own limit is stricter than the 2-hour rule (prepared baby formula: 1 hour).
+    const lim = p0.max, limText = fmt(p0)!;
+    return [
+      { label: `${lim * 30} min`, tone: "fresh", head: "Use or refrigerate now", text: `Inside the ${limText} limit for ${name}. Use ${them} now or put ${them} straight in the fridge.` },
+      { label: limText, tone: "edge", head: "At the limit", text: `${limText} is the USDA FoodKeeper limit for ${name}. If you are not sure exactly how long ${itThey(f)} ${f.plural ? "have" : "has"} been out, throw ${them} away.` },
+      { label: `${lim * 2} hours`, tone: "toss", head: "Throw it out", text: `Past the ${limText} limit. Throw ${them} away; do not put ${them} back in the fridge.` },
+      { label: "Overnight", tone: "toss", head: "Throw it out", text: `${f.name} left out overnight ${f.plural ? "are" : "is"} far past the ${limText} limit and must be thrown away.` },
+    ];
+  }
   if (f.perishable)
     return [
       { label: "30 min", tone: "fresh", head: "Refrigerate now", text: `Still inside the 2-hour limit. Put ${them} in the fridge straight away, in a shallow container so ${itThey(f)} ${f.plural ? "cool" : "cools"} quickly.` },
@@ -53,10 +64,10 @@ export function counterChecks(f: Food): Opt[] | null {
   if (picks.length < 3) return null;
   const p = fmt(f.states.find((s) => s.pantry && isNum(s.pantry))!.pantry);
   return picks.map((d) => d < min
-    ? { label: label(d), tone: "fresh", head: "Still good", text: `Well inside the ${p} pantry time for ${name}, as long as it has been kept cool, dry and tightly closed.` }
+    ? { label: label(d), tone: "fresh", head: "Still good", text: `Well inside the ${p} pantry time for ${name}, as long as it has been kept ${shelfStable(f) ? "cool, dry and tightly closed" : "somewhere cool and dry"}.` }
     : d <= max
       ? { label: label(d), tone: "edge", head: "Use it soon", text: `Near the end of the ${p} pantry time. Check the smell and look before using; quality is starting to fade.` }
-      : { label: label(d), tone: "edge", head: "Check before using", text: `Past the ${p} pantry time. Shelf-stable food usually loses quality rather than becoming unsafe: throw it out if you see mould, pests, damp clumps or an off smell.` });
+      : { label: label(d), tone: "edge", head: "Check before using", text: shelfStable(f) ? `Past the ${p} pantry time. Shelf-stable food usually loses quality rather than becoming unsafe: throw it out if you see mould, pests, damp clumps or an off smell.` : `Past the ${p} pantry time. Check closely for soft spots, mould or an off smell, and throw it out if you find any.` });
 }
 
 export type Quiz = { q: string; answer: boolean; why: string };

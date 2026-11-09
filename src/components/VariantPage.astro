@@ -84,7 +84,6 @@ if (variant === "freeze") {
     [`How long does it take for ${name} to go bad?`, `${hd.value} ${hd.where.toLowerCase()}, per USDA FoodKeeper.${f.perishable ? " At room temperature, 2 hours." : ""}`],
     [`Can ${name} expire?`, d.unopened.text],
     [`What happens if you eat bad ${name}?`, f.perishable ? "Spoiled perishable food can cause food poisoning: nausea, vomiting, cramps or diarrhoea. See a doctor if symptoms are severe or last more than a few days." : "Usually an unpleasant taste rather than illness, but discard anything mouldy, rancid or smelling off."],
-    [`How do you keep ${name} from going bad?`, storeTipsFor(f)[0]],
   ];
 } else {
   h1 = `${Name} Left Out Overnight: Is It Safe?`;
@@ -98,11 +97,8 @@ if (variant === "freeze") {
     [`How long ${does(f).toLowerCase()} ${name} last in the fridge?`, `${c0.fridge.value} at 40°F (4°C) or below, if refrigerated promptly.`],
   ];
 }
-faq = [...faq, ...faqExtraFor(f)];
-const qa = modifierQA(f);
 const fzChecks = freezerChecks(f);
 const ctChecks = counterChecks(f);
-const quiz = quizFor(f);
 if (description.length > 155) description = description.slice(0, 154).replace(/\s+\S*$/, "") + "…";
 
 const crumbs = [{ name: "Home", href: "/" }, { name: cat.name, href: url.category(cat.slug) }, { name: f.name, href: url.food(f) }, { name: h1.replace(/\?$/, "") }];
@@ -117,7 +113,7 @@ const siblings = [
 ].filter(Boolean) as { href: string; label: string }[];
 const pill = (t: string) => (t === "yes" || t === "keep" ? "pill-yes" : t === "no" || t === "discard" ? "pill-no" : "pill-caution");
 ---
-<Base title={title} description={description} path={path} jsonld={ld} ogType="article">
+<Base title={title} description={description} path={path} jsonld={ld} ogType="article" noindex={variant === "leftOut"}>
   <div class="container-site pt-4 md:pt-6">
     <Breadcrumb items={crumbs} />
     <div class="mt-3 md:mt-5 grid md:grid-cols-[minmax(0,1fr)_300px] items-center gap-x-10 gap-y-4">
@@ -165,7 +161,7 @@ const pill = (t: string) => (t === "yes" || t === "keep" ? "pill-yes" : t === "n
                 <div class="grid sm:grid-cols-3 gap-3 md:gap-4 mt-[18px]">
                   {thaw.map(([t, d]) => <div class="p-4 border border-line rounded-[10px]"><h3 class="!text-base !tracking-normal">{t}</h3><p class="text-sm text-muted mt-1">{d}</p></div>)}
                 </div>
-                <FreezeBlock food={f} steps={false} />
+                <FreezeBlock food={f} steps={false} verdict={false} />
               </section>
             )}
             <section class="mt-8 md:mt-12">
@@ -186,11 +182,9 @@ const pill = (t: string) => (t === "yes" || t === "keep" ? "pill-yes" : t === "n
               <div class="grid sm:grid-cols-2 gap-4 mt-[18px]">
                 {[datesFor(f).unopened, datesFor(f).opened].map((d) => <div class="p-[18px] border border-line rounded-[10px]"><h3 class="!text-[17px] !tracking-normal">{d.title}</h3><p class="mt-1.5 text-[15px] text-muted">{d.text}</p></div>)}
               </div>
+              <div class="mt-4 grid gap-3 text-[16px] leading-[1.7] text-[#3f3f46]">{datesExplained(f).map((p) => <p>{p}</p>)}</div>
             </section>
-            <section class="mt-8 md:mt-12">
-              <h2 class="h2-food">How to keep {name} fresh longer</h2>
-              <ul class="prose-list">{storeTipsFor(f).slice(0, 3).map((t) => <li>{t}</li>)}</ul>
-            </section>
+            <LongForm food={f} parts={["spoil"]} />
           </>
         )}
 
@@ -236,30 +230,6 @@ const pill = (t: string) => (t === "yes" || t === "keep" ? "pill-yes" : t === "n
           </section>
         )}
 
-        <section id="methods" class="mt-8 md:mt-12">
-          <SectionHead icon="grid" tint="var(--color-tint-green)" ink="#1b7a55" eyebrow="Every method">{`${cap1(name)} storage times by method`}</SectionHead>
-          <div class="table-wrap mt-[18px] !rounded-[20px]">
-            <table class="data-table stack">
-              <thead><tr><th>Method</th><th>Duration</th><th>Temperature</th><th>Container</th><th>Notes</th></tr></thead>
-              <tbody>{methodsFor(f).map((m) => <tr><td class="font-medium full">{m.method}</td><td data-label="Duration">{m.duration}</td><td class="text-muted" data-label="Temperature">{m.temp}</td><td class="text-muted" data-label="Container">{m.container}</td><td class="text-muted full" data-label="Notes">{m.note}</td></tr>)}</tbody>
-            </table>
-          </div>
-        </section>
-
-        <LongForm food={f} />
-
-        <section id="where" class="mt-8 md:mt-12">
-          <SectionHead icon="fridge" tint="var(--color-tint-green)" ink="#1b7a55" eyebrow="Where to keep it">{`Where to store ${name}`}</SectionHead>
-          <FridgeMap zone={zoneFor(f).zone} why={zoneFor(f).why} names={{ door: "Door", top: "Top shelf", middle: "Middle shelf", bottom: "Bottom shelf", crisper: "Crisper drawer", pantry: "Pantry", freezer: "Freezer" }} />
-        </section>
-
-        {variant !== "leftOut" && (
-          <section id="dates-explained" class="mt-8 md:mt-12">
-            <SectionHead icon="calendar" tint="var(--color-tint-lilac)" ink="#4a3bd2" eyebrow="Date labels">Expiration dates, decoded</SectionHead>
-            <div class="mt-[18px] grid gap-3 text-[16px] leading-[1.7] text-[#3f3f46]">{datesExplained(f).map((p) => <p>{p}</p>)}</div>
-          </section>
-        )}
-
         {variant === "freeze" && fzChecks && (
           <section id="check" class="mt-8 md:mt-12">
             <SectionHead icon="freezer" tint="var(--color-tint-blue)" ink="#2f5fbf" eyebrow="Try it">{`How long has your ${name} been frozen?`}</SectionHead>
@@ -272,27 +242,6 @@ const pill = (t: string) => (t === "yes" || t === "keep" ? "pill-yes" : t === "n
             <div class="mt-[18px]"><Checker id={`ct-${f.slug}`} ask="It's been out on the counter for…" options={ctChecks} note="Room temperature means anything above 4°C (40°F). On hot days above 32°C (90°F), the limit is 1 hour." /></div>
           </section>
         )}
-        {variant === "bad" && (
-          <section id="check" class="mt-8 md:mt-12">
-            <SectionHead icon="nose" tint="var(--color-tint-pink)" ink="#b83269" eyebrow="Try it">{`Check your ${name}`}</SectionHead>
-            <Checklist id={`cl-${f.slug}`} title="Tick anything you notice" items={checklistFor(f)} okText="Nothing ticked? Good sign. Still check how long it has been stored: the bacteria that cause food poisoning are invisible." badText="Any of these means it has gone bad. Throw it out — don't taste it to check." />
-            {ctChecks && <div class="mt-3"><Checker id={`ct-${f.slug}`} ask={f.perishable ? "It's been out on the counter for…" : "It's been in the pantry for…"} options={ctChecks} /></div>}
-          </section>
-        )}
-
-        <section id="quiz" class="mt-8 md:mt-12">
-          <SectionHead icon="spark" tint="var(--color-tint-lilac)" ink="#4a3bd2" eyebrow="Quick quiz">{`True or false? ${cap1(name)} myths`}</SectionHead>
-          <Quiz id={`qz-${f.slug}`} items={quiz} />
-        </section>
-
-        <section id="qa" class="mt-8 md:mt-12">
-          <SectionHead icon="question" tint="var(--color-tint-blue)" ink="#2f5fbf" eyebrow="Question by question">{`${cap1(name)} shelf life, answered`}</SectionHead>
-          <div class="grid gap-3 mt-[18px]">
-            {qa.map(([q, a]) => (
-              <div class="soft p-4 md:p-5 bg-[#f7f8fb] border border-[#e8ecf5]"><h3 class="!text-[17px] !tracking-[-0.01em]">{q}</h3><p class="text-[15px] text-[#3f3f46] mt-1.5">{a}</p></div>
-            ))}
-          </div>
-        </section>
 
         <section class="mt-8 md:mt-12">
           <h2 class="h2-food">More about {name}</h2>

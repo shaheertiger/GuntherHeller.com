@@ -2,7 +2,7 @@
  * Localized long-form sections (data/i18n/lf.{lang}.json, validated by scripts/check-lf.mjs).
  * Mirrors src/lib/longform.ts for the translated food pages. Numbers come from the same data.
  */
-import { type Food, isNum } from "./data";
+import { type Food, isNum, shelfStable } from "./data";
 import { groupOf, zoneFor, freezeVerdict } from "./content";
 import { type Locale, cellsL, fmtL, fill, sub, pick, ft, joinList } from "./i18n";
 
@@ -26,12 +26,13 @@ export function longL(L: Locale, f: Food) {
   if (s.pantry) isNum(s.pantry) ? facts.push(sub(L.s.food.phPantry, { d: c.pantry.value })) : s.pantry.text === "Until ripe" ? facts.push(X.intro.ripe) : s.pantry.text === "Indefinitely" ? facts.push(X.intro.indefinitely) : null;
   const fz = f.states.map((x) => x.freezer).find(Boolean);
   if (fz) isNum(fz) ? facts.push(sub(L.s.food.phFreezer, { d: fmtL(L, fz)! })) : fz.text === "Not recommended" ? notes.push(X.intro.notFreeze) : null;
+  const hoursOnly = isNum(s.pantry) && s.pantry.unit === "hours";
   const intro = [
     sub(X.intro.category, { cat: L.s.categories[f.category] }),
     f.fkName ? sub(X.intro.source, { fk: f.fkName }) : "",
     facts.length ? fill(pick(X.intro.keeps, T.p), { list: joinList(L, facts) }, T) : "",
     ...notes,
-    f.perishable ? X.intro.perishable : X.intro.notPerishable,
+    hoursOnly ? "" : f.perishable ? X.intro.perishable : X.intro.notPerishable,
     sub(X.intro.where, { why }),
   ].filter(Boolean).join(" ");
 
@@ -40,13 +41,13 @@ export function longL(L: Locale, f: Food) {
   if (s.fridge) qa.push([fill(pick(X.qa.fridgeQ, T.p), {}, T), fill(X.qa.fridgeA, { d: c.fridge.value })]);
   qa.push([fill(pick(X.qa.freezerQ, T.p), {}, T), fz && isNum(fz) ? fill(X.qa.freezerA, { d: fmtL(L, fz)! }) : X.qa.freezerNo]);
   if (s.pantry && isNum(s.pantry) && !s.fridge) qa.push([fill(pick(X.qa.pantryQ, T.p), {}, T), fill(X.qa.pantryA, { d: c.pantry.value })]);
-  qa.push([fill(pick(X.qa.roomQ, T.p), {}, T), f.perishable ? X.qa.roomPerishable : s.pantry && isNum(s.pantry) ? fill(X.qa.roomPantry, { d: c.pantry.value }) : X.qa.roomFridgeOnly]);
+  qa.push([fill(pick(X.qa.roomQ, T.p), {}, T), hoursOnly ? L.s.leftOut.tHours.replace("{p}", c.pantry.value) : f.perishable ? X.qa.roomPerishable : s.pantry && isNum(s.pantry) ? fill(X.qa.roomPantry, { d: c.pantry.value }) : X.qa.roomFridgeOnly]);
   const op = f.states.find((x) => x.key === "opened");
   if (op?.fridge) qa.push([fill(pick(X.qa.openedQ, T.p), {}, T), fill(X.qa.openedA, { d: cellsL(L, f, op, f.states.indexOf(op)).fridge.value })]);
   const un = f.states.find((x) => x.key === "unopened");
   if (un && (un.pantry || un.fridge)) { const cu = cellsL(L, f, un, f.states.indexOf(un)); qa.push([fill(pick(X.qa.unopenedQ, T.p), {}, T), fill(X.qa.unopenedA, { d: un.pantry && isNum(un.pantry) ? cu.pantry.value : cu.fridge.value })]); }
 
-  qa.push([fill(pick(X.qa.expireQ, T.p), {}, T), f.perishable ? fill(X.qa.expirePerishable, { d: c.fridge.value }) : X.qa.expireShelf]);
+  qa.push([fill(pick(X.qa.expireQ, T.p), {}, T), f.perishable ? fill(X.qa.expirePerishable, { d: c.fridge.value }) : shelfStable(f) ? X.qa.expireShelf : X.qa.expireShort]);
 
   // Extra FAQ
   const v = freezeVerdict(f);
@@ -65,7 +66,7 @@ export function longL(L: Locale, f: Food) {
     about: [intro, g.about], spoil: g.spoil, mistakes: g.mistakes as string[], buying: g.buying as string[], useUp: g.useUp as string[],
     qa, faq,
     zone, why, zoneNames: X.zoneNames, hWhere: X.h.where, eyWhere: X.eyebrows.where, best: X.eyebrows.best,
-    fifo: !f.perishable && f.states.some((x) => x.pantry) ? { h: X.h.fifo, text: X.fifo } : null,
+    fifo: shelfStable(f) ? { h: X.h.fifo, text: X.fifo } : null,
     dates: [X.dates[0], fill(X.dates[1], { d: c.fridge.value })],
   };
 }

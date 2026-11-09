@@ -87,6 +87,7 @@
    "{q} podem vencer?"
   ],
   "expireShelf": "Sim, mas em um alimento não perecível como este, vencer costuma significar perder qualidade, não ficar perigoso. Sabor, aroma e textura se perdem com o tempo, principalmente depois de aberto. Se foi guardado em local fresco e seco, bem fechado, e não apresenta mofo, cheiro estranho nem cor diferente, geralmente ainda pode ser usado.",
+  "expireShort": "Sim. Não é um alimento de despensa, então siga o tempo de conservação, não a data impressa: passado esse tempo, ou se houver mofo, partes moles ou cheiro estranho, jogue fora.",
   "expirePerishable": "Sim, e em um alimento perecível como este o tempo de armazenamento importa mais do que a data impressa. Se ficou na geladeira por mais de {d}, ou mais de 2 horas fora dela, jogue fora, mesmo que pareça e cheire normal."
  },
  "faq": {

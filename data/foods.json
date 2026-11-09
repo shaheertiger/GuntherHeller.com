@@ -6,7 +6,7 @@
   "version": 128,
   "modified": "09-06-2018",
   "sha256": "037df0d301126acd8a48824506f04d49d8be1a1144b81fa69e4170228dc2e91a",
-  "builtAt": "2026-11-06"
+  "builtAt": "2026-11-09"
  },
  "categories": [
   {
@@ -2878,7 +2878,7 @@
    "category": "baby-food",
    "subcategory": null,
    "kind": "baby",
-   "perishable": false,
+   "perishable": true,
    "states": [
     {
      "key": "opened",

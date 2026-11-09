@@ -39,7 +39,10 @@ npm run og       # re-render the single site-wide OG image (public/og.png)
 /tools/  /tools/{tool}/  /methodology/  /about/
 ```
 Variant pages exist only where they have something to say: can-you-freeze needs a FoodKeeper
-freezer figure; left-out-overnight is only for perishable foods. Currently 2,021 HTML pages.
+freezer figure; left-out-overnight is only for perishable foods. Each variant answers its own
+question and links to the main page for the rest; it never re-renders the main page's sections.
+Left-out-overnight pages are `noindex, follow` and not in the sitemap: the answer is the same
+2-hour rule for every perishable food, so they exist for readers, not for the index.
 
 ## Translations (phase 3)
 
@@ -70,6 +73,12 @@ file, rebuilds `data/foods.json`, runs the full build check and opens a PR listi
 changed foods. Enable *Settings → Actions → General → Allow GitHub Actions to create pull requests*.
 
 ## Editorial rules
+- No word-count targets. Every block must say something about this food that no other block on
+  the page already says. The build fails if a question page repeats more than 40% of its main
+  page's sentences (`scripts/check-build.mjs`); it no longer checks length.
+- "Shelf-stable" means at least a month at room temperature (`shelfStable()` in `src/lib/data.ts`).
+  A short pantry time (okra: 1 day) is not shelf stability, and a pantry time in hours (prepared
+  baby formula: 1 hour) is a hard limit that overrides the general 2-hour rule.
 - Never invent a duration. No FoodKeeper figure → the page says "Not listed".
 - Any number not from FoodKeeper lives in `overrides.json` with `_why` and a named public source.
 - When you re-verify against a new FoodKeeper release, bump `SITE.verifiedISO` / `verifiedLabel` in
