@@ -1,7 +1,7 @@
 export const SITE = {
   name: "Gunther Heller",
   mark: "GH",
-  url: "https://guntherheller.com",
+  url: "https://www.guntherheller.com",
   email: "hello@guntherheller.com",
   /** Date the numbers were last checked against the FoodKeeper release. Change only when you re-verify. */
   verifiedISO: "2026-11-02",

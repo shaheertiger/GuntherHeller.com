@@ -42,7 +42,7 @@ for (const file of pages) {
   const plainDesc = desc.replace(/&amp;/g, "&").replace(/&#39;|&apos;/g, "'").replace(/&quot;/g, '"');
   if (!plainDesc) errors.push(`${rel}: missing description`);
   else if (plainDesc.length > 160) warn.push(`${rel}: description ${plainDesc.length} chars`);
-  if (!/rel="canonical" href="https:\/\/guntherheller\.com\//.test(html)) errors.push(`${rel}: missing canonical`);
+  if (!/rel="canonical" href="https:\/\/www\.guntherheller\.com\//.test(html)) errors.push(`${rel}: missing canonical`);
   if (!html.includes("application/ld+json")) errors.push(`${rel}: missing JSON-LD`);
   for (const m of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
     try { JSON.parse(m[1]); } catch { errors.push(`${rel}: invalid JSON-LD`); }
@@ -59,7 +59,7 @@ for (const file of pages) {
 }
 
 // hreflang: every alternate must exist, declare the same cluster back (reciprocity) and include x-default.
-const altsOf = (html) => [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="https:\/\/guntherheller\.com([^"]+)"/g)].map((m) => [m[1], m[2]]);
+const altsOf = (html) => [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="https:\/\/www\.guntherheller\.com([^"]+)"/g)].map((m) => [m[1], m[2]]);
 let clusters = 0;
 for (const file of pages) {
   const html = readFileSync(file, "utf8");
@@ -81,11 +81,11 @@ for (const file of pages) {
 // Sitemaps: every listed URL is a built, indexable page; every indexable page is listed.
 const listed = new Set();
 const idx = readFileSync(join(DIST, "sitemap.xml"), "utf8");
-for (const [, loc] of idx.matchAll(/<loc>https:\/\/guntherheller\.com(\/[^<]+)<\/loc>/g)) {
+for (const [, loc] of idx.matchAll(/<loc>https:\/\/www\.guntherheller\.com(\/[^<]+)<\/loc>/g)) {
   const xml = readFileSync(join(DIST, loc), "utf8");
   const n = (xml.match(/<url>/g) ?? []).length;
   if (n > 50000 || xml.length > 50 * 1024 * 1024) errors.push(`${loc}: over sitemap limits`);
-  for (const [, p] of xml.matchAll(/<loc>https:\/\/guntherheller\.com([^<]+)<\/loc>/g)) {
+  for (const [, p] of xml.matchAll(/<loc>https:\/\/www\.guntherheller\.com([^<]+)<\/loc>/g)) {
     listed.add(p);
     if (!exists(p)) errors.push(`${loc}: lists missing page ${p}`);
   }
