@@ -167,8 +167,11 @@ try {
         if (blob) await blob.put("fig/manifest.json", json(), { ...putOpts, contentType: "application/json", cacheControlMaxAge: 60 });
         else { mkdirSync(FIGDIR, { recursive: true }); writeFileSync(MANIFEST, json()); }
       }));
-      await Promise.all(pagesP.map(async (pg) => {
+      await Promise.all(pagesP.map(async (pg0) => {
+        let pg = pg0, used = 0;
         while (i < stale.length) {
+          // Recycle the browser context now and then: long runs otherwise slow down as Chromium accumulates state.
+          if (++used % 300 === 0) { await pg.context().close(); pg = await newPage(browser); }
           const job = stale[i++];
           const { c, h, page } = job;
           let r;

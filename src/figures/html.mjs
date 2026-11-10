@@ -112,9 +112,11 @@ function steps(spec) {
 /* ---------------------------------------------------------------- signs */
 function signs(spec) {
   const d = spec.data;
-  const rows = d.rows.map((r) => `<div class="sign-name">${icon(r.icon)}${esc(r.name)}</div><div class="sign-text" data-fit="26">${esc(r.text)}</div><div class="sign-x">${icon("cross", { size: 40, disc: "var(--discard)" })}</div>`).join("");
-  const key = `<div class="signs-key"><span class="verdict no">${icon("cross", { size: 32, disc: "var(--discard)" })}${esc(d.discard)}</span>${d.ok ? `<span class="signs-ok">${icon("check", { size: 32, disc: "var(--safe)" })}<span data-fit="26">${esc(d.ok)}</span></span>` : ""}</div>`;
-  return frame(spec, `<div class="signs">${rows}</div>${key}`);
+  // The last check may be dropped by the fitter when a language's sentences are too long for four rows.
+  const rows = d.rows.map((r, i) => { const drop = i === d.rows.length - 1 && i >= 3 ? " data-drop" : ""; return `<div class="sign-name"${drop}>${icon(r.icon)}${esc(r.name)}</div><div class="sign-text" data-fit="26"${drop}>${esc(r.text)}</div><div class="sign-x"${drop}>${icon("cross", { size: 40, disc: "var(--discard)" })}</div>`; }).join("");
+  const legend = `<span class="verdict no signs-legend">${icon("cross", { size: 32, disc: "var(--discard)" })}${esc(d.discard)}</span>`;
+  const key = d.ok ? `<div class="signs-key"><span class="signs-ok">${icon("check", { size: 32, disc: "var(--safe)" })}<span data-fit="26">${esc(d.ok)}</span></span></div>` : "";
+  return frame(spec, `<div class="signs">${rows}</div>${key}`).replace('<header class="fig-head">', `${legend}<header class="fig-head">`);
 }
 
 /* ---------------------------------------------------------------- versus */
@@ -164,16 +166,25 @@ export const FIT_SCRIPT = `(() => {
   }
   const body = fig.querySelector('[data-body]');
   const fits = [...fig.querySelectorAll('[data-fit]')];
-  const over = () => (body && body.scrollHeight > body.clientHeight + 1) || fig.scrollHeight > fig.clientHeight + 1 || fits.some((e) => e.scrollWidth > e.clientWidth + 1) || fits.some((e) => e.classList.contains('fig-title') && e.getBoundingClientRect().height > 150);
+  const over = () => (body && body.scrollHeight > body.clientHeight + 1) || fig.scrollHeight > fig.clientHeight + 1 || fits.some((e) => e.isConnected && e.scrollWidth > e.clientWidth + 1) || fits.some((e) => e.classList.contains('fig-title') && e.getBoundingClientRect().height > 150);
+  // Body text shrinks first; the headline only shrinks if it is itself too long.
+  const titleLong = (e) => e.classList.contains('fig-title') && (e.getBoundingClientRect().height > 150 || e.scrollWidth > e.clientWidth + 1);
   let guard = 0;
   while (over() && guard++ < 40) {
     let changed = false;
     for (const e of fits) {
+      if (e.classList.contains('fig-title') && !titleLong(e)) continue;
       const min = parseFloat(e.dataset.fit);
       const cur = parseFloat(getComputedStyle(e).fontSize);
       if (cur - 1 >= min) { e.style.fontSize = (cur - 1) + 'px'; changed = true; }
     }
     if (!changed) break;
+  }
+  if (over() && fig.querySelector('[data-drop]')) {
+    fig.querySelectorAll('[data-drop]').forEach((e) => e.remove());
+    fits.forEach((e) => { if (!e.isConnected) return; e.style.fontSize = ''; });
+    let g2 = 0;
+    while (over() && g2++ < 40) { let ch = false; for (const e of fits) { if (!e.isConnected || (e.classList.contains('fig-title') && !titleLong(e))) continue; const min = parseFloat(e.dataset.fit), cur = parseFloat(getComputedStyle(e).fontSize); if (cur - 1 >= min) { e.style.fontSize = (cur - 1) + 'px'; ch = true; } } if (!ch) break; }
   }
   if (over()) problems.push('content overflows the figure');
   for (const e of fig.querySelectorAll('.val, .v, .gauge-tick, .verdict, .z, .k, .vs-name, td, th, .hero-unit')) {

@@ -214,4 +214,8 @@ body { font-family: var(--f-sans); color: var(--ink); -webkit-font-smoothing: an
 /* ---------------------------------------------------------------- DE and other long-word locales */
 .fig[lang="de"] .step-text, .fig[lang="de"] .sign-text { hyphens: auto; }
 
-.fig--signs .fig-body { padding: 18px 0 14px; }
+.fig--signs .fig-body { padding: 16px 0 0; }
+.fig--signs .signs > div { padding: 7px 0; }
+.fig--signs .sign-name { font-size: 30px; }
+.signs-legend { position: absolute; top: 76px; right: 72px; }
+.fig--signs .fig-head { max-width: 760px; }
