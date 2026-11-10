@@ -1,0 +1,63 @@
+name: Figures
+
+# Renders the generated figures (scripts/figures.mjs) and uploads the ones the Vercel Blob store
+# lacks or has out of date. Unchanged figures are skipped by hash, so a data change re-renders only
+# the affected foods. Production serves /img/fig/* from the store via the rewrite in vercel.json.
+#
+# Needs the repository secret BLOB_READ_WRITE_TOKEN (Vercel → Storage → guntherheller-figures → .env.local).
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/**"
+      - "src/figures/**"
+      - "src/lib/**"
+      - "scripts/figures.mjs"
+      - "scripts/lib/**"
+      - "package-lock.json"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Re-render every figure"
+        type: boolean
+        default: false
+
+concurrency:
+  group: figures
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Render and upload changed figures
+        env:
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+          FIG_WORKERS: "4"
+        run: node scripts/figures.mjs --upload ${{ inputs.force && '--force' || '' }}
+      - name: Layout report
+        if: always()
+        run: |
+          if [ -s public/img/fig/problems.txt ]; then
+            echo "### Figure layout problems" >> "$GITHUB_STEP_SUMMARY"
+            head -100 public/img/fig/problems.txt | sed 's/^/- /' >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "No figure layout problems." >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Check that production serves figures as indexable WebP
+        if: success() && github.ref == 'refs/heads/main'
+        run: |
+          url="https://www.guntherheller.com/img/fig/en/how-long-does-cooked-rice-last-answer-1200x675.webp"
+          h=$(curl -sSI "$url")
+          echo "$h"
+          echo "$h" | grep -qi '^HTTP/[0-9.]* 200' || { echo "::error::$url is not 200"; exit 1; }
+          echo "$h" | grep -qi '^content-type: image/webp' || { echo "::error::$url is not image/webp"; exit 1; }
+          if echo "$h" | grep -qi '^x-robots-tag:.*noindex'; then echo "::error::$url sends X-Robots-Tag noindex"; exit 1; fi

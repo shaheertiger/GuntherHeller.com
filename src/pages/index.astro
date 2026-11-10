@@ -9,6 +9,9 @@ import { CATEGORIES, FOODS, getFood, url, type Food } from "../lib/data";
 import { ORG, faqLd } from "../lib/schema";
 import { SITE } from "../lib/site";
 import { homeAlternates } from "../lib/i18n";
+import Fig from "../components/Fig.astro";
+import { figsFor } from "../figures/cards";
+const pf = figsFor("/")!;
 
 const N = FOODS.length;
 const title = "How Long Does Food Last? Fridge, Freezer & Pantry Times | Gunther Heller";
@@ -64,13 +67,14 @@ const ld = {
 };
 const tabs = [["fridge", "Fridge"], ["freezer", "Freezer"], ["counter", "Counter"]];
 ---
-<Base title={title} description={description} path="/" jsonld={ld} alternates={homeAlternates()}>
+<Base title={title} description={description} path="/" jsonld={ld} alternates={homeAlternates()} figs={pf}>
   <section class="pt-10 md:pt-14 pb-6 text-center" id="hero">
     <div class="container-site">
       <img src="/mascot/gunther-wave.webp" width="480" height="600" alt="Gunther, our fridge mascot, waving hello" class="mx-auto w-[96px] md:w-[120px] h-auto -mb-1" fetchpriority="high" />
       <h1 class="max-w-[900px] mx-auto">How Long Does Food Last? Fridge, Freezer &amp; Pantry</h1>
       <Squiggle center />
       <p class="lead mt-[18px]">Free storage times for {N} foods — counter, fridge and freezer — sourced from USDA FoodKeeper.</p>
+      <Fig card={pf.hero} hero class="mx-auto text-left" />
 
       <div class="mt-10 text-left" data-widget>
         <div class="flex items-center gap-0.5 mb-3" role="tablist" aria-label="Storage">
@@ -130,6 +134,7 @@ const tabs = [["fridge", "Fridge"], ["freezer", "Freezer"], ["counter", "Counter
     <div class="container-site">
       <div class="eyebrow eyebrow-rule">02 / Browse by category</div>
       <div class="flex items-end justify-between gap-6 mt-[18px]"><h2>Every Food, Sorted</h2><div class="hidden md:block flex-1 max-w-[240px] h-px bg-line mb-3.5"></div></div>
+      <Fig cards={pf.at("categories")} />
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-9">
         {topCats.map((c) => (
           <a href={url.category(c.slug)} class="group">
@@ -181,6 +186,7 @@ const tabs = [["fridge", "Fridge"], ["freezer", "Freezer"], ["counter", "Counter
   <section class="pt-16">
     <div class="container-site">
       <h2>FAQ</h2>
+      <Fig cards={pf.at("faq")} />
       <p class="text-muted mt-2.5 text-[15px]">Quick answers before you open the fridge</p>
       <div class="mt-5"><Faq items={faq} /></div>
       <p class="text-[13px] text-muted mt-[18px]">Got another question? Email <a class="link" href={`mailto:${SITE.email}`}>{SITE.email}</a> – a person replies within one business day.</p>

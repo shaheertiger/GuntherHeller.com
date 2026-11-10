@@ -1,0 +1,13 @@
+---
+/** "At a glance" block for hubs and guides: one H2 with the page's figures for that anchor under it. */
+import Fig from "./Fig.astro";
+import type { Card } from "../figures/cards";
+interface Props { id: string; title: string; cards: Card[] }
+const { id, title, cards } = Astro.props;
+---
+{cards.length > 0 && (
+  <section id={id} class="mt-10 md:mt-14">
+    <h2 class="h2-food">{title}</h2>
+    <Fig cards={cards} />
+  </section>
+)}

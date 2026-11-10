@@ -12,7 +12,7 @@ const en = read("en.json");
 const src = read("foods.source.json");
 const LANGS = process.argv[2] ? [process.argv[2]] : ["es", "de", "fr", "pt-br"];
 const ph = (s) => [...s.matchAll(/\{[a-zA-Z]+\}/g)].map((m) => m[0]).sort().join(",");
-const SKIP = new Set(["_doc", "lang", "htmlLang", "langName", "locale"]);
+const SKIP = new Set(["_doc", "lang", "htmlLang", "langName", "locale", "figEn"]);
 let failed = false;
 
 for (const lang of LANGS) {

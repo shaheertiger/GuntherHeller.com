@@ -10,6 +10,7 @@ npm run data     # rebuild data/foods.json from FoodKeeper + overrides
 npm run dev      # http://localhost:4321
 npm run build    # astro build + scripts/check-build.mjs (fails on broken links, missing schema, etc.)
 npm run og       # re-render the single site-wide OG image (public/og.png)
+npm run figures  # render changed page figures locally into public/img/fig (git-ignored); see below
 ```
 
 ## How it fits together
@@ -29,6 +30,29 @@ npm run og       # re-render the single site-wide OG image (public/og.png)
 | `src/pages/tools/` | Leftover, freezer-time, thaw-time, left-out and date-label tools. |
 | `src/lib/sitemap.ts` | Sitemap index split into foods / questions / hubs; `lastmod` = `SITE.verifiedISO`. |
 | `seo/` | Disavow builder notes and the launch checklist. |
+
+## Figures (generated images)
+
+Every indexable page has a hero image under its H1 and 3–6 figures under the matching H2s, rendered
+from the same data the page prints. Brief: `docs/figures-art-direction.md`; specimen of every card:
+`docs/figures-specimen.png`.
+
+| Path | What it is |
+| --- | --- |
+| `src/figures/system.css` | The design system: type scale, zone colours, grid, card layouts |
+| `src/figures/icons.mjs` | Line icons and food-family silhouettes |
+| `src/figures/html.mjs` | Card spec → HTML (answer, shelf-life, temperature, steps, signs, versus, matrix, callout) |
+| `src/figures/cards.ts` | Which figures each page gets, built only from the page's own helpers and locale strings (`fig` in `data/i18n/*.json`) |
+| `src/components/Fig.astro` | `<figure>` markup: hero eager/high priority, others lazy, 1200 + 720 `srcset` |
+| `scripts/figures.mjs` | Playwright renderer (DSF 2 → WebP q86, 1200×675 and 720×405), skips unchanged figures by hash |
+| `scripts/check-figures.mjs` | Build check: hero under H1, ≥ 3 figures, sentence alt text, every number in a figure is in the page text |
+| `.github/workflows/figures.yml` | Renders changed figures on every push to `main` and uploads them to Vercel Blob |
+
+Storage: ~38,000 figures × 2 sizes ≈ 2.3 GB, too much for git. They live in the Vercel Blob store
+`guntherheller-figures`; `vercel.json` rewrites `/img/fig/*` to it, so URLs stay on this domain
+(image sitemap, `og:image`, `ImageObject`). The workflow needs the repo secret `BLOB_READ_WRITE_TOKEN`.
+`npm run figures -- --check --remote` lists figures the store does not have yet; the build prints
+the same count as a warning.
 
 ## URLs
 
@@ -84,4 +108,5 @@ Ad slots are fixed-size placeholders (`AdSlot.astro`) so CLS stays 0 when a netw
 - Localized variant pages and tools (phase 3 covers food pages, hubs, home and methodology).
 - Foods from the priority list that FoodKeeper does not cover and that need a citable source
   before publishing: cold brew, beer, protein powder, opened dog food and cat food.
-- Illustrations: hubs and home use paper tiles with stroke icons until the watercolour set exists.
+- Illustrations: hubs and home use paper tiles with stroke icons until the watercolour set exists
+  (food pages now lead with the generated hero figure; the watercolour placeholders remain on cards).

@@ -1,4 +1,7 @@
 ---
+import Fig from "../../components/Fig.astro";
+import { figsFor } from "../../figures/cards";
+const pf = figsFor("/tools/left-out-checker/")!;
 import Tool from "../../layouts/Tool.astro";
 import FoodPicker from "../../components/FoodPicker.astro";
 const faq: [string, string][] = [
@@ -20,6 +23,7 @@ const faq: [string, string][] = [
   </Fragment>
   <p slot="empty" class="text-muted text-[19px]">Keep or discard appears here.</p>
   <h2>Why 2 hours?</h2>
+  <Fig cards={pf.at("why")} />
   <p>Bacteria such as <em>Salmonella</em>, <em>Staphylococcus aureus</em> and <em>Bacillus cereus</em> double quickly between 40°F and 140°F (4–60°C) — FSIS calls this the danger zone. Two hours is the limit before numbers or toxins can reach unsafe levels. In hot weather, the limit is one hour.</p>
   <p>See every food on one page: <a href="/left-out-overnight/">food left out overnight, A–Z</a>.</p>
 </Tool>

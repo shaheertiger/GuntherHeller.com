@@ -7,6 +7,15 @@
   "trailingSlash": true,
   "headers": [
     {
+      "source": "/img/fig/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
       "source": "/_astro/(.*)",
       "headers": [
         {
@@ -62,6 +71,12 @@
           "value": "camera=(), microphone=(), geolocation=()"
         }
       ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/img/fig/:path*",
+      "destination": "https://cpegqs6wjdzroceh.public.blob.vercel-storage.com/fig/:path*"
     }
   ]
 }

@@ -6,3 +6,4 @@ dist/
 *.log
 .env*
 research/
+public/img/fig/

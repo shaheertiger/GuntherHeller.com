@@ -1,4 +1,7 @@
 ---
+import Fig from "../../components/Fig.astro";
+import { figsFor } from "../../figures/cards";
+const pf = figsFor("/tools/freezer-time-calculator/")!;
 import Tool from "../../layouts/Tool.astro";
 import FoodPicker from "../../components/FoodPicker.astro";
 const faq: [string, string][] = [
@@ -17,8 +20,10 @@ const faq: [string, string][] = [
   </Fragment>
   <p slot="empty" class="text-muted text-[19px]">Your best-quality date appears here.</p>
   <h2>Quality, not safety</h2>
+  <Fig cards={pf.at("quality")} />
   <p>FSIS is clear that food kept constantly at 0°F (-18°C) is safe indefinitely. FoodKeeper's freezer times tell you how long food keeps its best flavour and texture. After that, it is still safe to eat but may be dry, tough or bland.</p>
   <h2>Getting the most from your freezer</h2>
+  <Fig cards={pf.at("tips")} />
   <ul><li>Wrap tightly and squeeze out air to prevent freezer burn.</li><li>Freeze flat in bags for fast freezing and thawing.</li><li>Label everything with the name and date.</li></ul>
 </Tool>
 <script>

@@ -113,7 +113,7 @@ export function cellsL(L: Locale, f: Food, s: State, i: number): Record<"pantry"
 }
 
 /* ---------------------------------------------------------------- page copy */
-function headlineL(L: Locale, f: Food): { d: string; where: string } {
+export function headlineL(L: Locale, f: Food): { d: string; where: string } {
   const s = f.states[0];
   const F = L.s.food;
   if (s.pantry && isNum(s.pantry) && (days(s.pantry) ?? 0) >= 30) return { d: fmtL(L, s.pantry)!, where: F.inPantry };

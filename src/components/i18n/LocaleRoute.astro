@@ -11,6 +11,9 @@ import { getLocale, hasT, countL, lurl, ft, cellsL, freezeL, verifiedDate, fill,
 import type { LocaleRouteProps } from "../../lib/i18n-routes";
 import { ORG, breadcrumbLd } from "../../lib/schema";
 import { SITE, abs } from "../../lib/site";
+import Fig from "../Fig.astro";
+import FigSection from "../FigSection.astro";
+import { figsFor } from "../../figures/cards";
 
 const props = Astro.props as LocaleRouteProps;
 const L = getLocale(props.code);
@@ -21,22 +24,26 @@ const popular = ["eggs", "cooked-rice", "raw-chicken", "milk", "hard-cheese", "b
 const cat = props.kind === "hub" ? CATEGORIES.find((c) => c.slug === props.cat)! : null;
 const catName = cat ? S.categories[cat.slug] : "";
 const rows = cat ? foodsIn(cat.slug).filter((f) => hasT(L, f)).map((f) => ({ f, T: ft(L, f), c: cellsL(L, f, f.states[0], 0), z: freezeL(L, f) })).sort((a, b) => a.T.n.localeCompare(b.T.n, S.locale)) : [];
+const pfHome = figsFor(lurl.home(L)), pfIdx = figsFor(lurl.hubIndex(L)), pfMethod = figsFor(lurl.method(L)), pfHub = cat ? figsFor(lurl.hub(L, cat.slug)) : null;
+const G = (S.viz as any).eyebrows.glance;
 const site = { "@type": "WebSite", name: SITE.name, url: `${SITE.url}/`, inLanguage: S.htmlLang };
 ---
 {props.kind === "food" && <LFood L={L} food={getFood(props.slug)!} />}
 
 {props.kind === "home" && (
-  <Base title={S.home.title} description={fill(S.home.desc, { n: N })} path={lurl.home(L)} alternates={homeAlternates()} L={L} jsonld={{ "@context": "https://schema.org", "@graph": [ORG, site] }}>
+  <Base title={S.home.title} description={fill(S.home.desc, { n: N })} path={lurl.home(L)} alternates={homeAlternates()} L={L} figs={pfHome} jsonld={{ "@context": "https://schema.org", "@graph": [ORG, site] }}>
     <section class="pt-10 md:pt-14 text-center">
       <div class="container-site">
         <h1 class="max-w-[900px] mx-auto hyphens-auto">{S.home.h1}</h1>
         <Squiggle center />
         <p class="lead mt-[18px] max-w-[760px] mx-auto">{fill(S.home.lead, { n: N })}</p>
+        <Fig card={pfHome!.hero} hero class="mx-auto" />
       </div>
     </section>
     <section class="pt-16">
       <div class="container-site">
         <h2>{S.home.categories}</h2>
+        <Fig cards={pfHome!.at("categories")} />
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-8">
           {CATEGORIES.map((c) => (
             <a href={lurl.hub(L, c.slug)} class="group">
@@ -53,6 +60,7 @@ const site = { "@type": "WebSite", name: SITE.name, url: `${SITE.url}/`, inLangu
       <div class="container-site">
         <div class="bg-panel rounded-[12px] px-6 py-12">
           <h2 class="!text-[34px]">{S.home.popular}</h2>
+          <Fig cards={pfHome!.at("popular")} />
           <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 mt-8">
             {popular.map((f) => <a href={lurl.food(L, f!)} class="flex items-center justify-between gap-3 py-2.5 border-b border-line text-[15px]"><span class="flex items-center gap-3"><FoodImage food={f!} alt="" variant="thumb" />{ft(L, f!).n}</span><span class="text-muted text-[13px]">{cellsL(L, f!, f!.states[0], 0).fridge.value}</span></a>)}
           </div>
@@ -64,11 +72,14 @@ const site = { "@type": "WebSite", name: SITE.name, url: `${SITE.url}/`, inLangu
 )}
 
 {props.kind === "hubIndex" && (
-  <Base title={`${U.foods} | ${SITE.name}`} description={fill(S.home.desc, { n: N })} path={lurl.hubIndex(L)} alternates={hubIndexAlternates()} L={L}
+  <Base title={`${U.foods} | ${SITE.name}`} description={fill(S.home.desc, { n: N })} path={lurl.hubIndex(L)} alternates={hubIndexAlternates()} L={L} figs={pfIdx}
     jsonld={{ "@context": "https://schema.org", "@graph": [ORG, breadcrumbLd([{ name: U.home, href: lurl.home(L) }, { name: U.foods }], lurl.hubIndex(L)), { "@type": "ItemList", itemListElement: CATEGORIES.map((c, i) => ({ "@type": "ListItem", position: i + 1, name: S.categories[c.slug], url: abs(lurl.hub(L, c.slug)) })) }] }}>
     <div class="container-site pt-4 md:pt-6">
       <Breadcrumb items={[{ name: U.home, href: lurl.home(L) }, { name: U.foods }]} />
       <h1 class="h1-food mt-5">{U.foods}</h1>
+      <p class="lead mt-3 max-w-[760px]">{fill(S.home.lead, { n: N })}</p>
+      <Fig card={pfIdx!.hero} hero />
+      <FigSection id="categories" title={S.home.categories} cards={pfIdx!.at("categories")} />
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
         {CATEGORIES.map((c) => (
           <section class="border border-line rounded-[10px] p-5">
@@ -85,13 +96,14 @@ const site = { "@type": "WebSite", name: SITE.name, url: `${SITE.url}/`, inLangu
 )}
 
 {props.kind === "hub" && cat && (
-  <Base title={fill(S.hub.title, { cat: catName, n: String(rows.length) })} description={fill(S.hub.desc, { cat: catName, n: String(rows.length) }).slice(0, 155)} path={lurl.hub(L, cat.slug)} alternates={hubAlternates(cat.slug)} L={L}
+  <Base title={fill(S.hub.title, { cat: catName, n: String(rows.length) })} description={fill(S.hub.desc, { cat: catName, n: String(rows.length) }).slice(0, 155)} path={lurl.hub(L, cat.slug)} alternates={hubAlternates(cat.slug)} L={L} figs={pfHub}
     jsonld={{ "@context": "https://schema.org", "@graph": [ORG, breadcrumbLd([{ name: U.home, href: lurl.home(L) }, { name: U.foods, href: lurl.hubIndex(L) }, { name: catName }], lurl.hub(L, cat.slug)), { "@type": "ItemList", numberOfItems: rows.length, itemListElement: rows.map((r, i) => ({ "@type": "ListItem", position: i + 1, name: r.T.n, url: abs(lurl.food(L, r.f)) })) }] }}>
     <div class="container-site pt-4 md:pt-6">
       <Breadcrumb items={[{ name: U.home, href: lurl.home(L) }, { name: U.foods, href: lurl.hubIndex(L) }, { name: catName }]} />
       <div class="eyebrow eyebrow-rule mt-5">{U.foodsCount.replace("{n}", String(rows.length))}</div>
       <h1 class="h1-food mt-3.5 hyphens-auto">{fill(S.hub.h1, { cat: catName })}</h1>
       <p class="lead mt-3 max-w-[680px]">{fill(S.hub.lead, { date })}</p>
+      <Fig card={pfHub!.hero} hero />
       <div class="table-wrap mt-10">
         <table class="data-table stack md:min-w-[640px]">
           <thead><tr><th>{S.hub.thFood}</th><th>{U.counter}</th><th>{U.fridge}</th><th>{U.freezer}</th><th>{S.hub.thFreezes}</th></tr></thead>
@@ -106,19 +118,22 @@ const site = { "@type": "WebSite", name: SITE.name, url: `${SITE.url}/`, inLangu
           </tbody>
         </table>
       </div>
+      <FigSection id="table" title={G} cards={pfHub!.at("table")} />
       <p class="mt-6 text-sm"><a class="link" href={enUrl.category(cat.slug)} hreflang="en" lang="en">English →</a></p>
     </div>
   </Base>
 )}
 
 {props.kind === "method" && (
-  <Base title={S.method.title} description={S.method.desc} path={lurl.method(L)} alternates={methodAlternates()} L={L}
+  <Base title={S.method.title} description={S.method.desc} path={lurl.method(L)} alternates={methodAlternates()} L={L} figs={pfMethod}
     jsonld={{ "@context": "https://schema.org", "@graph": [ORG, { "@type": "WebPage", name: S.method.h1, url: abs(lurl.method(L)), inLanguage: S.htmlLang, dateModified: SITE.verifiedISO }] }}>
     <div class="container-site pt-4 md:pt-6">
       <Breadcrumb items={[{ name: U.home, href: lurl.home(L) }, { name: S.method.h1 }]} />
       <article class="max-w-[760px] mt-5">
         <h1 class="h1-food">{S.method.h1}</h1>
+        <Fig card={pfMethod!.hero} hero />
         {[S.method.p1, S.method.p2, S.method.p3].map((p) => <p class="mt-5">{p}</p>)}
+        <FigSection id="method" title={G} cards={pfMethod!.at("method")} />
         <p class="mt-5">{S.method.p4.split("{email}")[0]}<a class="link" href={`mailto:${SITE.email}`}>{SITE.email}</a>{S.method.p4.split("{email}")[1]}</p>
         <p class="mt-8 text-sm"><a class="link" href="/methodology/" hreflang="en" lang="en">English: full methodology →</a></p>
       </article>

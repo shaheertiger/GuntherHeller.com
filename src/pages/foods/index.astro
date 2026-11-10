@@ -1,4 +1,7 @@
 ---
+import Fig from "../../components/Fig.astro";
+import FigSection from "../../components/FigSection.astro";
+import { figsFor } from "../../figures/cards";
 import Base from "../../layouts/Base.astro";
 import Breadcrumb from "../../components/Breadcrumb.astro";
 import CatIcon from "../../components/CatIcon.astro";
@@ -8,14 +11,16 @@ import { breadcrumbLd, ORG } from "../../lib/schema";
 import { abs } from "../../lib/site";
 import { hubIndexAlternates } from "../../lib/i18n";
 const path = "/foods/";
+const pf = figsFor("/foods/")!;
 const crumbs = [{ name: "Home", href: "/" }, { name: "Foods" }];
 const ld = { "@context": "https://schema.org", "@graph": [ORG, { "@type": "ItemList", name: "Food categories", itemListElement: CATEGORIES.map((c, i) => ({ "@type": "ListItem", position: i + 1, name: c.name, url: abs(url.category(c.slug)) })) }, breadcrumbLd(crumbs, path)] };
 ---
-<Base title={`Food Storage Times for ${FOODS.length} Foods, by Category | Gunther Heller`} description={`Browse storage times for ${FOODS.length} foods in ${CATEGORIES.length} categories: dairy, meat, poultry, seafood, produce, leftovers, pantry staples and more. USDA FoodKeeper data.`} path={path} jsonld={ld} alternates={hubIndexAlternates()}>
+<Base title={`Food Storage Times for ${FOODS.length} Foods, by Category | Gunther Heller`} description={`Browse storage times for ${FOODS.length} foods in ${CATEGORIES.length} categories: dairy, meat, poultry, seafood, produce, leftovers, pantry staples and more. USDA FoodKeeper data.`} path={path} jsonld={ld} alternates={hubIndexAlternates()} figs={pf}>
   <div class="container-site pt-4 md:pt-6">
     <Breadcrumb items={crumbs} />
     <h1 class="h1-food mt-5">All foods</h1>
     <p class="lead mt-3 max-w-[680px]">{FOODS.length} foods in {CATEGORIES.length} categories, each with counter, fridge and freezer times.</p>
+    <Fig card={pf.hero} hero />
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
       {CATEGORIES.map((c) => (
         <section class="border border-line rounded-[10px] p-5">
@@ -30,6 +35,7 @@ const ld = { "@context": "https://schema.org", "@graph": [ORG, { "@type": "ItemL
         </section>
       ))}
     </div>
+    <FigSection id="categories" title="Foods by category" cards={pf.at("categories")} />
     <TrustBlock path={path} />
   </div>
 </Base>

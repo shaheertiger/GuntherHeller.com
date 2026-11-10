@@ -1,21 +1,27 @@
 ---
+import Fig from "../../components/Fig.astro";
+import { figsFor } from "../../figures/cards";
 import Base from "../../layouts/Base.astro";
 import Breadcrumb from "../../components/Breadcrumb.astro";
 import { TOOLS } from "../../lib/tools";
 import { ORG, breadcrumbLd } from "../../lib/schema";
 import { abs } from "../../lib/site";
+const pf = figsFor("/tools/")!;
 const crumbs = [{ name: "Home", href: "/" }, { name: "Tools" }];
 const ld = { "@context": "https://schema.org", "@graph": [ORG, { "@type": "ItemList", itemListElement: TOOLS.map((t, i) => ({ "@type": "ListItem", position: i + 1, name: t.name, url: abs(`/tools/${t.slug}/`) })) }, breadcrumbLd(crumbs, "/tools/")] };
 ---
-<Base title="Food Storage Calculators: Leftovers, Freezer, Thawing & Dates | Gunther Heller" description="Free food storage calculators: leftover eat-by dates, freezer quality dates, thaw times, the left-out 2-hour rule and best-by date codes." path="/tools/" jsonld={ld}>
+<Base title="Food Storage Calculators: Leftovers, Freezer, Thawing & Dates | Gunther Heller" description="Free food storage calculators: leftover eat-by dates, freezer quality dates, thaw times, the left-out 2-hour rule and best-by date codes." path="/tools/" jsonld={ld} figs={pf}>
   <div class="container-site pt-4 md:pt-6">
     <Breadcrumb items={crumbs} />
     <h1 class="h1-food mt-5">Food storage calculators</h1>
     <p class="lead mt-3 max-w-[680px]">Five quick tools built on USDA FoodKeeper and FSIS guidance. No sign-up, nothing stored.</p>
+    <Fig card={pf.hero} hero />
+    <Fig cards={pf.at("tools")} />
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
       {TOOLS.map((t) => <a href={`/tools/${t.slug}/`} class="block p-5 border border-line rounded-[10px] hover:border-[#c9c9cf]"><h2 class="!text-[21px] !tracking-[-0.025em]">{t.name}</h2><p class="text-[15px] text-muted mt-1.5">{t.blurb}</p></a>)}
     </div>
     <h2 class="h2-food mt-14">Question hubs</h2>
+    <Fig cards={pf.at("hubs")} />
     <ul class="list-none p-0 mt-4 grid gap-2"><li><a class="link" href="/can-you-freeze/">Can you freeze it? A–Z</a></li><li><a class="link" href="/does-it-go-bad/">Does it go bad? A–Z</a></li><li><a class="link" href="/left-out-overnight/">Food left out overnight A–Z</a></li></ul>
   </div>
 </Base>

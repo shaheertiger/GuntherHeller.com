@@ -742,5 +742,62 @@
    "similar": "Keep exploring",
    "faq": "Questions people ask"
   }
+ },
+ "fig": {
+  "source": "Source: USDA FoodKeeper",
+  "counter": "Counter",
+  "pantry": "Pantry",
+  "fridge": "Fridge",
+  "freezer": "Freezer",
+  "room": "Room temperature",
+  "where": {
+   "fridge": "in the fridge",
+   "pantry": "in the pantry",
+   "freezer": "in the freezer",
+   "counter": "at room temperature"
+  },
+  "foods": "foods",
+  "categories": "categories",
+  "shelfTitle": "Storage times for {n}",
+  "shelfSub": "Longest recommended time in each place. Bars are drawn to scale.",
+  "tempTitle": "How cold to keep {n}",
+  "tempSub": "The fridge and freezer temperatures behind these storage times",
+  "dangerLabel": "Danger zone",
+  "freezeTitle": "How to freeze {n}",
+  "storeTitle": "How to store {n}",
+  "signsTitle": "Check before you eat: {n}",
+  "discard": "Discard",
+  "vsTitle": "{a} vs {b}",
+  "fridgeVsFreezer": "Fridge vs freezer",
+  "calloutTitle": "The 2-hour rule",
+  "hubTopTitle": "Most-checked: {cat}",
+  "hubShortTitle": "Shortest fridge times: {cat}",
+  "hubLongTitle": "Longest in the freezer: {cat}",
+  "hubPantryTitle": "Longest in the pantry: {cat}",
+  "hubSub": "Values from the table on this page",
+  "popularTitle": "Popular foods in the fridge",
+  "heroFreezer": "Freezer: {d}",
+  "heroCounter": "Counter: {d}",
+  "heroFridge": "Fridge: {d}",
+  "alt": {
+   "answer": "Graphic answering “{q}”: {value}.",
+   "shelf": "Bar chart showing storage times for {n}: {list}.",
+   "temp": "Temperature gauges for {n}: {list}.",
+   "steps": "Numbered steps: {title}. {first}",
+   "signs": "Checklist of signs that {n} should be thrown out: {list}.",
+   "versus": "Side-by-side comparison for {n}, {a} vs {b}: {list}.",
+   "matrix": "Table, {title}: {list}.",
+   "bars": "Bar chart, {title}: {list}.",
+   "callout": "Food-safety rule: {text}"
+  }
+ },
+ "figEn": {
+  "thawTitle": "How to thaw {n}",
+  "keepTitle": "How to keep {n} fresh longer",
+  "storeSafeTitle": "Store {n} safely next time",
+  "freezeYes": "Freezes well",
+  "roomLimit": "Room-temperature limit",
+  "questionsTitle": "Answers by question",
+  "categoriesTitle": "Foods by category"
  }
 }

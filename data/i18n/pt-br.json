@@ -741,5 +741,53 @@
    "similar": "Continue explorando",
    "faq": "Perguntas frequentes"
   }
+ },
+ "fig": {
+  "source": "Fonte: USDA FoodKeeper",
+  "counter": "Temperatura ambiente",
+  "pantry": "Despensa",
+  "fridge": "Geladeira",
+  "freezer": "Freezer",
+  "room": "Temperatura ambiente",
+  "where": {
+   "fridge": "na geladeira",
+   "pantry": "na despensa",
+   "freezer": "no freezer",
+   "counter": "em temperatura ambiente"
+  },
+  "foods": "alimentos",
+  "categories": "categorias",
+  "shelfTitle": "Tempos de conservação: {n}",
+  "shelfSub": "Tempo máximo recomendado em cada lugar. Barras em escala.",
+  "tempTitle": "Em que temperatura guardar: {n}",
+  "tempSub": "As temperaturas de geladeira e freezer por trás destes tempos",
+  "dangerLabel": "Zona de perigo",
+  "freezeTitle": "Como congelar: {n}",
+  "storeTitle": "Como guardar: {n}",
+  "signsTitle": "Confira antes de comer: {n}",
+  "discard": "Descartar",
+  "vsTitle": "{a} vs. {b}",
+  "fridgeVsFreezer": "Geladeira vs. freezer",
+  "calloutTitle": "A regra das 2 horas",
+  "hubTopTitle": "Os mais consultados: {cat}",
+  "hubShortTitle": "Menos tempo na geladeira: {cat}",
+  "hubLongTitle": "Mais tempo no freezer: {cat}",
+  "hubPantryTitle": "Mais tempo na despensa: {cat}",
+  "hubSub": "Valores da tabela desta página",
+  "popularTitle": "Alimentos populares na geladeira",
+  "heroFreezer": "Freezer: {d}",
+  "heroCounter": "Temperatura ambiente: {d}",
+  "heroFridge": "Geladeira: {d}",
+  "alt": {
+   "answer": "Ilustração que responde a “{q}”: {value}.",
+   "shelf": "Gráfico de barras com tempos de conservação, {n}: {list}.",
+   "temp": "Medidores de temperatura, {n}: {list}.",
+   "steps": "Passos numerados: {title}. {first}",
+   "signs": "Lista de sinais de que estragou, {n}: {list}.",
+   "versus": "Comparação, {n}, {a} vs. {b}: {list}.",
+   "matrix": "Tabela, {title}: {list}.",
+   "bars": "Gráfico de barras, {title}: {list}.",
+   "callout": "Regra de segurança alimentar: {text}"
+  }
  }
 }

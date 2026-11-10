@@ -1,4 +1,7 @@
 ---
+import Fig from "../components/Fig.astro";
+import { figsFor } from "../figures/cards";
+const pf = figsFor("/about/")!;
 import Prose from "../layouts/Prose.astro";
 import { SITE } from "../lib/site";
 import { FOODS } from "../lib/data";
@@ -7,9 +10,12 @@ import { FOODS } from "../lib/data";
   description="Gunther Heller publishes free, source-backed answers to how long food lasts in the fridge, freezer and pantry. Who we are and how to contact us."
   lead="Gunther Heller answers one question well: how long does this food last, and is it still safe?">
   <h2>What we do</h2>
+  <Fig cards={pf.at("what")} />
   <p>We publish storage times for {FOODS.length} foods — counter, fridge and freezer, opened and unopened — with the answer at the top of every page. No sign-ups and no app. The site is funded by display advertising, which we keep out of the way of the answer.</p>
   <h2>Where the data comes from</h2>
+  <Fig cards={pf.at("data")} />
   <p>USDA FoodKeeper and FSIS food-safety guidance. Read <a href="/methodology/">how we verify our numbers</a>.</p>
   <h2>Contact</h2>
+  <Fig cards={pf.at("contact")} />
   <p>Questions, corrections and partnership requests: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. A person replies within one business day.</p>
 </Prose>

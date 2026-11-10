@@ -307,6 +307,21 @@ export function modifierQA(f: Food): [string, string][] {
 }
 
 export type Thaw = [string, string];
+/** Thawing methods as printed on the can-you-freeze page (US units first). */
+export function thawVariantFor(f: Food): Thaw[] {
+  const g = groupOf(f);
+  return g === "meat" || g === "seafood" || g === "cooked" || g === "cured"
+    ? [
+        ["In the fridge", "Safest. Allow about 24 hours per 5 lb (2.3 kg); small packs thaw overnight. Once thawed, raw meat and seafood keep 1–2 extra days in the fridge."],
+        ["In cold water", "Seal it in a leak-proof bag and submerge; change the water every 30 minutes. Allow about 30 minutes per pound, then cook right away."],
+        ["In the microwave", "Use the defrost setting and cook immediately — parts of the food may start to cook."],
+      ]
+    : [
+        ["In the fridge", "Move it to the fridge the night before; this keeps texture best."],
+        ["At room temperature", g === "bakery" ? "Bread and baked goods thaw well on the counter, still wrapped, in 1–3 hours." : "Only for shelf-stable items; perishable food should not thaw on the counter."],
+        ["From frozen", "Many foods can go straight into soups, sauces, smoothies or the oven."],
+      ];
+}
 export function thawFor(f: Food): Thaw[] {
   const g = groupOf(f);
   if (g === "meat" || g === "seafood" || g === "cooked" || g === "cured")

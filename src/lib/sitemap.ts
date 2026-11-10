@@ -1,6 +1,7 @@
 import { FOODS, CATEGORIES, url, hasFreezePage, hasLeftOutPage } from "./data";
 import { TOOLS } from "./tools";
 import { SITE, abs } from "./site";
+import { figsFor } from "../figures/cards";
 import { LOCALES, lurl, foodAlternates, homeAlternates, hasT, hubAlternates, hubIndexAlternates, methodAlternates, type Alt } from "./i18n";
 
 /** lastmod is the date the numbers were last verified — it changes only when data changes. */
@@ -21,14 +22,10 @@ export const SECTIONS: Record<string, () => string[]> = {
 
 /** Every hreflang cluster, indexed by each member's path. */
 let clusters: Map<string, Alt[]> | null = null;
-/** Food page path → image path (EN and localized food pages). */
-let images: Map<string, string> | null = null;
-function imageOf(path: string) {
-  if (!images) {
-    images = new Map();
-    for (const f of FOODS) for (const a of foodAlternates(f)) images.set(a.href, `/images/foods/${f.slug}.webp`);
-  }
-  return images.get(path);
+/** A page's generated figures (hero first) for the image sitemap. */
+function imagesOf(path: string): { loc: string; caption?: string }[] {
+  const pf = figsFor(path);
+  return pf ? [pf.hero, ...pf.figures].map((c) => ({ loc: c.src, caption: c.alt })) : [];
 }
 function clusterOf(path: string): Alt[] | undefined {
   if (!clusters) {
@@ -47,8 +44,8 @@ export const urlset = (paths: string[]) =>
     .map((p) => {
       const alts = clusterOf(p);
       const links = alts ? [...alts.map((a) => `<xhtml:link rel="alternate" hreflang="${a.lang}" href="${esc(abs(a.href))}"/>`), `<xhtml:link rel="alternate" hreflang="x-default" href="${esc(abs(alts[0].href))}"/>`].join("") : "";
-      const img = imageOf(p);
-      return `<url><loc>${esc(abs(p))}</loc><lastmod>${lastmod}</lastmod>${links}${img ? `<image:image><image:loc>${esc(abs(img))}</image:loc></image:image>` : ""}</url>`;
+      const imgs = imagesOf(p).map((i) => `<image:image><image:loc>${esc(abs(i.loc))}</image:loc></image:image>`).join("");
+      return `<url><loc>${esc(abs(p))}</loc><lastmod>${lastmod}</lastmod>${links}${imgs}</url>`;
     })
     .join("\n")}\n</urlset>\n`;
 

@@ -1,0 +1,23 @@
+---
+/** One generated figure (src/figures/cards.ts → public/img/fig). Hero: eager + high priority; others lazy. */
+import type { Card } from "../figures/cards";
+interface Props { card?: Card | null; cards?: Card[]; hero?: boolean; class?: string }
+const { card, cards, hero = false, class: cls = "" } = Astro.props;
+const list = cards ?? (card ? [card] : []);
+---
+{list.map((c) => (
+  <figure class:list={["fig-img", hero ? "fig-hero" : "mt-5", cls]} data-fig={c.id}>
+    <img
+      src={c.src}
+      srcset={`${c.src720} 720w, ${c.src} 1200w`}
+      sizes="(max-width: 820px) calc(100vw - 32px), 760px"
+      width={c.w}
+      height={c.h}
+      alt={c.alt}
+      loading={hero ? "eager" : "lazy"}
+      fetchpriority={hero ? "high" : "auto"}
+      decoding={hero ? "sync" : "async"}
+    />
+    {c.caption && <figcaption>{c.caption}</figcaption>}
+  </figure>
+))}

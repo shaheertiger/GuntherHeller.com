@@ -741,5 +741,53 @@
    "similar": "Weiter entdecken",
    "faq": "Häufige Fragen"
   }
+ },
+ "fig": {
+  "source": "Quelle: USDA FoodKeeper",
+  "counter": "Zimmertemperatur",
+  "pantry": "Vorratsschrank",
+  "fridge": "Kühlschrank",
+  "freezer": "Gefrierschrank",
+  "room": "Zimmertemperatur",
+  "where": {
+   "fridge": "im Kühlschrank",
+   "pantry": "im Vorratsschrank",
+   "freezer": "im Gefrierschrank",
+   "counter": "bei Zimmertemperatur"
+  },
+  "foods": "Lebensmittel",
+  "categories": "Kategorien",
+  "shelfTitle": "Haltbarkeit: {n}",
+  "shelfSub": "Längste empfohlene Zeit je Lagerort. Die Balken sind maßstabsgetreu.",
+  "tempTitle": "Richtig kühl lagern: {n}",
+  "tempSub": "Die Kühl- und Gefriertemperaturen hinter diesen Zeiten",
+  "dangerLabel": "Gefahrenzone",
+  "freezeTitle": "Einfrieren: {n}",
+  "storeTitle": "Richtig lagern: {n}",
+  "signsTitle": "Vor dem Essen prüfen: {n}",
+  "discard": "Entsorgen",
+  "vsTitle": "{a} vs. {b}",
+  "fridgeVsFreezer": "Kühlschrank vs. Gefrierschrank",
+  "calloutTitle": "Die 2-Stunden-Regel",
+  "hubTopTitle": "Am häufigsten gesucht: {cat}",
+  "hubShortTitle": "Am kürzesten im Kühlschrank: {cat}",
+  "hubLongTitle": "Am längsten im Gefrierschrank: {cat}",
+  "hubPantryTitle": "Am längsten im Vorratsschrank: {cat}",
+  "hubSub": "Werte aus der Tabelle auf dieser Seite",
+  "popularTitle": "Beliebte Lebensmittel im Kühlschrank",
+  "heroFreezer": "Gefrierschrank: {d}",
+  "heroCounter": "Zimmertemperatur: {d}",
+  "heroFridge": "Kühlschrank: {d}",
+  "alt": {
+   "answer": "Grafik zur Frage „{q}“: {value}.",
+   "shelf": "Balkendiagramm zur Haltbarkeit, {n}: {list}.",
+   "temp": "Temperaturskalen, {n}: {list}.",
+   "steps": "Nummerierte Schritte: {title}. {first}",
+   "signs": "Checkliste mit Anzeichen für Verderb, {n}: {list}.",
+   "versus": "Vergleich, {n}, {a} vs. {b}: {list}.",
+   "matrix": "Tabelle, {title}: {list}.",
+   "bars": "Balkendiagramm, {title}: {list}.",
+   "callout": "Regel zur Lebensmittelsicherheit: {text}"
+  }
  }
 }
