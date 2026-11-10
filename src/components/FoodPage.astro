@@ -42,6 +42,8 @@ import { foodTitle, foodDescription, quoteFor, methodsFor, datesFor, storeTipsFo
 import { foodGraph } from "../lib/schema";
 import { SITE } from "../lib/site";
 import { foodAlternates } from "../lib/i18n";
+import Fig from "./Fig.astro";
+import { figsFor } from "../figures/cards";
 
 interface Props { food: Food }
 const { food: f } = Astro.props;
@@ -63,7 +65,8 @@ const similar = similarFoods(f, 8);
 const dates = datesFor(f);
 const methods = methodsFor(f);
 const quote = quoteFor(f);
-const ld = foodGraph({ food: f, path, title, headline: h1, description, crumbs, faq });
+const pf = figsFor(path)!;
+const ld = foodGraph({ food: f, path, title, headline: h1, description, crumbs, faq, figures: [pf.hero, ...pf.figures] });
 const sourceIsFk = f.source.name.startsWith("USDA");
 const c0 = cellsFor(f, f.states[0], 0);
 const fv = freezeVerdict(f);
@@ -107,11 +110,11 @@ const tools = [
   { href: "/tools/left-out-checker/", label: "Left-out checker" },
 ];
 ---
-<Base title={title} description={description} path={path} jsonld={ld} ogType="article" alternates={foodAlternates(f)}>
+<Base title={title} description={description} path={path} jsonld={ld} ogType="article" alternates={foodAlternates(f)} ogImage={pf.hero}>
   <div class="container-site pt-4 md:pt-6">
     <Breadcrumb items={crumbs} />
 
-    <div class="mt-3 md:mt-5 grid md:grid-cols-[minmax(0,1fr)_360px] items-center gap-x-10 gap-y-4">
+    <div class="mt-3 md:mt-5">
       <div>
         <h1 class="h1-food">{h1}</h1>
         <p class="mt-1.5 md:mt-2 text-sm md:text-[17px] text-muted">Fridge, freezer, counter{f.states.length > 1 && ` · ${f.states.map((s) => s.label!.toLowerCase()).join(" vs ")}`} · last verified {SITE.verifiedLabel}</p>
@@ -120,8 +123,8 @@ const tools = [
         <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2f8f5b" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
         Source: {sourceIsFk ? "USDA FoodKeeper" : f.source.name.split(":")[0]} · <a href="/methodology/" class="link">How we verify →</a>
       </div>
+      <Fig card={pf.hero} hero />
       </div>
-      <FoodImage food={f} alt={`Illustration of ${name}`} variant="hero" />
     </div>
 
     <div class="grid lg:grid-cols-[200px_minmax(0,1fr)_300px] gap-10 mt-4 md:mt-8 items-start">
@@ -181,6 +184,7 @@ const tools = [
 
         <section id="methods" class="mt-8 md:mt-14">
           <SectionHead icon="grid" tint="var(--color-tint-green)" ink="#1b7a55" eyebrow="Every method">{cap1(name)} storage times by method</SectionHead>
+          <Fig cards={pf.at("methods")} />
           <div class="table-wrap mt-[18px] !rounded-[20px]">
             <table class="data-table stack">
               <thead><tr><th>Method</th><th>Duration</th><th>Temperature</th><th>Container</th><th>Notes</th></tr></thead>
@@ -196,11 +200,13 @@ const tools = [
 
         <section id="where" class="mt-8 md:mt-14">
           <SectionHead icon="fridge" tint="var(--color-tint-green)" ink="#1b7a55" eyebrow="Where to keep it">{`Where to store ${name}`}</SectionHead>
+          <Fig cards={pf.at("where")} />
           <FridgeMap zone={zone.zone} why={zone.why} names={ZONES} />
         </section>
 
         <section id="qa" class="mt-8 md:mt-14">
           <SectionHead icon="question" tint="var(--color-tint-blue)" ink="#2f5fbf" eyebrow="Question by question">{cap1(name)} shelf life, answered</SectionHead>
+          <Fig cards={pf.at("qa")} />
           <div class="grid gap-3 mt-[18px]">
             {qa.map(([q, a]) => (
               <div class="soft p-4 md:p-5 bg-[#f7f8fb] border border-[#e8ecf5]">
@@ -213,6 +219,7 @@ const tools = [
 
         <section id="bad" class="mt-8 md:mt-14">
           <SectionHead icon="nose" tint="var(--color-tint-pink)" ink="#b83269" eyebrow="Check before you eat">{`Signs ${name} ${f.plural ? "have" : "has"} gone bad`}</SectionHead>
+          <Fig cards={pf.at("bad")} />
           <Signs food={f} />
           <Checklist id={`cl-${f.slug}`} title={`Check your ${name}: tick anything you notice`} items={checklistFor(f)} okText="Nothing ticked? Good sign. Still check how long it has been stored: the bacteria that cause food poisoning are invisible." badText="Any of these means it has gone bad. Throw it out — don't taste it to check." />
           <p class="mt-3 text-sm"><a href={url.bad(f)} class="link">{does(f)} {name} go bad? Full guide →</a></p>
@@ -222,6 +229,7 @@ const tools = [
 
         <section id="freeze" class="mt-8 md:mt-14">
           <SectionHead icon="freezer" tint="var(--color-tint-blue)" ink="#2f5fbf" eyebrow="Freezing">Can you freeze {name}?</SectionHead>
+          <Fig cards={pf.at("freeze")} />
           <FreezeBlock food={f} />
           {hasFreezePage(f) && <p class="mt-3 text-sm"><a href={url.freeze(f)} class="link">How to freeze and thaw {name} →</a></p>}
         </section>
@@ -253,6 +261,7 @@ const tools = [
 
         <section id="leftout" class="mt-8 md:mt-14">
           <SectionHead icon="clock" tint="var(--color-tint-amber)" ink="#8a5a0c" eyebrow="The 2-hour rule">{cap1(name)} left out overnight</SectionHead>
+          <Fig cards={pf.at("leftout")} />
           <LeftOutBlock food={f} />
           {f.perishable && <DangerZone title={V.dangerZone} text={V.dangerText} cold={V.safeCold} hot={V.safeHot} />}
           {hasLeftOutPage(f) && <p class="mt-3 text-sm"><a href={url.leftOut(f)} class="link">{cap1(name)} left out overnight: what to do →</a></p>}
@@ -260,6 +269,7 @@ const tools = [
 
         <section id="dates" class="mt-8 md:mt-14">
           <SectionHead icon="calendar" tint="var(--color-tint-lilac)" ink="#4a3bd2" eyebrow="Date labels">Best-by and use-by dates on {name}</SectionHead>
+          <Fig cards={pf.at("dates")} />
           <div class="grid sm:grid-cols-2 gap-4 mt-[18px]">
             {[dates.unopened, dates.opened].map((d) => (
               <div class="soft p-5 bg-[#f7f7f8]"><h3 class="!text-[17px] !tracking-normal font-[650]">{d.title}</h3><p class="mt-1.5 text-[15px] text-[#52525b]">{d.text}</p></div>
@@ -269,6 +279,7 @@ const tools = [
 
         <section id="store" class="mt-8 md:mt-14">
           <SectionHead icon="fridge" tint="var(--color-tint-green)" ink="#1b7a55" eyebrow={V.tips}>How to store {name}</SectionHead>
+          <Fig cards={pf.at("store")} />
           <ul class="grid sm:grid-cols-2 gap-3 list-none p-0 mt-4">{storeTipsFor(f).map((t, i) => (
             <li class="lift soft flex gap-3 p-4 border border-line"><span class="icon-chip" style="background:var(--color-tint-green);color:#1b7a55"><Icon name={TIP_ICONS[i % TIP_ICONS.length]} size={17} /></span><span class="text-[15px] leading-[1.55]">{t}</span></li>
           ))}</ul>

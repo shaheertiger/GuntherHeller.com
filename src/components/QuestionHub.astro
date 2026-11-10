@@ -6,6 +6,9 @@ import { FOODS, type Food, url, lc, does, hasFreezePage, hasLeftOutPage, fmt, fr
 import { freezeVerdict } from "../lib/content";
 import { breadcrumbLd, ORG } from "../lib/schema";
 import { abs } from "../lib/site";
+import Fig from "./Fig.astro";
+import FigSection from "./FigSection.astro";
+import { figsFor } from "../figures/cards";
 
 interface Props { kind: "freeze" | "bad" | "leftOut" }
 const { kind } = Astro.props;
@@ -24,15 +27,18 @@ const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 const n = foods.length;
 const crumbs = [{ name: "Home", href: "/" }, { name: cfg.h1 }];
 const ld = { "@context": "https://schema.org", "@graph": [ORG, { "@type": "ItemList", name: cfg.h1, numberOfItems: n, itemListElement: foods.map((f, i) => ({ "@type": "ListItem", position: i + 1, name: cfg.q(f), url: abs(cfg.href(f)) })) }, breadcrumbLd(crumbs, cfg.path)] };
+const pf = figsFor(cfg.path)!;
 const others = [["/can-you-freeze/", "Can you freeze it?"], ["/does-it-go-bad/", "Does it go bad?"], ["/left-out-overnight/", "Left out overnight"]].filter(([h]) => h !== cfg.path);
 ---
-<Base title={cfg.title.replace("{n}", String(n))} description={cfg.desc.replace("{n}", String(n))} path={cfg.path} jsonld={ld}>
+<Base title={cfg.title.replace("{n}", String(n))} description={cfg.desc.replace("{n}", String(n))} path={cfg.path} jsonld={ld} figs={pf}>
   <div class="container-site pt-4 md:pt-6">
     <Breadcrumb items={crumbs} />
     <div class="eyebrow eyebrow-rule mt-5">Question hub · {n} answers</div>
     <h1 class="h1-food mt-3.5">{cfg.h1}</h1>
     <p class="lead mt-3 max-w-[680px]">{cfg.desc.replace("{n}", String(n))}</p>
+    <Fig card={pf.hero} hero />
     {kind === "leftOut" && <p class="mt-4 max-w-[680px]">The rule is the same for every food here: perishable food is safe at room temperature for <strong>2 hours</strong>, or <strong>1 hour</strong> above 90°F (32°C). Overnight is always too long. Each page explains why for that food and how long it keeps once refrigerated.</p>}
+    <FigSection id={kind === "leftOut" ? "rule" : "list"} title="At a glance" cards={pf.figures} />
     <nav aria-label="Jump to letter" class="sticky top-16 z-10 bg-white py-3 mt-6 border-b border-line flex flex-wrap gap-1">
       {letters.map((L) => groups.has(L) ? <a href={`#l-${L}`} class="w-8 h-8 grid place-items-center rounded-lg text-sm font-medium hover:bg-tab">{L}</a> : <span class="w-8 h-8 grid place-items-center text-sm text-faint" aria-hidden="true">{L}</span>)}
     </nav>

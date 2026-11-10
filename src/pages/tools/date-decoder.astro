@@ -1,4 +1,7 @@
 ---
+import Fig from "../../components/Fig.astro";
+import { figsFor } from "../../figures/cards";
+const pf = figsFor("/tools/date-decoder/")!;
 import Tool from "../../layouts/Tool.astro";
 const faq: [string, string][] = [
   ["Is it safe to eat food after the best-by date?", "Usually, yes, if it has been stored properly. Best-by is a quality date. Check smell, look and taste."],
@@ -19,6 +22,7 @@ const faq: [string, string][] = [
   </Fragment>
   <p slot="empty" class="text-muted text-[19px]">The meaning appears here.</p>
   <h2>The four common labels</h2>
+  <Fig cards={pf.at("labels")} />
   <ul>
     <li><strong>Best if used by</strong> — when quality is best. Not a safety date.</li>
     <li><strong>Use by</strong> — the last recommended day for peak quality; for infant formula, a federally required safety date.</li>

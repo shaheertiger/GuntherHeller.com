@@ -3,7 +3,8 @@ import Icon from "./Icon.astro";
 import { TICKS, pos, type Bar } from "../../lib/viz";
 interface Props { bars: Bar[]; labels: Record<"pantry" | "fridge" | "freezer", string>; values: Record<"pantry" | "fridge" | "freezer", string>; ticks: string[]; note: string; plus: string }
 const { bars, labels, values, ticks, note, plus } = Astro.props;
-const C = { pantry: ["#94600f", "var(--color-tint-amber)", "counter"], fridge: ["#1f7048", "var(--color-tint-green)", "fridge"], freezer: ["#2f5fbf", "var(--color-tint-blue)", "freezer"] } as const;
+// Zone colours shared with the figures (src/figures/system.css): dark enough for white 12px labels.
+const C = { pantry: ["#7a4a06", "#fcefd9", "counter"], fridge: ["#0b5c54", "#d9f2ee", "fridge"], freezer: ["#1d4f96", "#e6f3fd", "freezer"] } as const;
 ---
 <div class="soft border border-line p-4 md:p-6 mt-[18px]">
   <div class="grid gap-4">

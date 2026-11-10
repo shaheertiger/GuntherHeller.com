@@ -741,5 +741,53 @@
    "similar": "Continuer à explorer",
    "faq": "Questions fréquentes"
   }
+ },
+ "fig": {
+  "source": "Source : USDA FoodKeeper",
+  "counter": "Température ambiante",
+  "pantry": "Placard",
+  "fridge": "Réfrigérateur",
+  "freezer": "Congélateur",
+  "room": "Température ambiante",
+  "where": {
+   "fridge": "au réfrigérateur",
+   "pantry": "au placard",
+   "freezer": "au congélateur",
+   "counter": "à température ambiante"
+  },
+  "foods": "aliments",
+  "categories": "catégories",
+  "shelfTitle": "Durées de conservation : {n}",
+  "shelfSub": "Durée maximale conseillée à chaque endroit. Barres à l’échelle.",
+  "tempTitle": "À quelle température conserver : {n}",
+  "tempSub": "Les températures du réfrigérateur et du congélateur derrière ces durées",
+  "dangerLabel": "Zone de danger",
+  "freezeTitle": "Congeler : {n}",
+  "storeTitle": "Bien conserver : {n}",
+  "signsTitle": "À vérifier avant de manger : {n}",
+  "discard": "Jeter",
+  "vsTitle": "{a} ou {b}",
+  "fridgeVsFreezer": "Réfrigérateur ou congélateur",
+  "calloutTitle": "La règle des 2 heures",
+  "hubTopTitle": "Les plus consultés : {cat}",
+  "hubShortTitle": "Le moins longtemps au réfrigérateur : {cat}",
+  "hubLongTitle": "Le plus longtemps au congélateur : {cat}",
+  "hubPantryTitle": "Le plus longtemps au placard : {cat}",
+  "hubSub": "Valeurs du tableau de cette page",
+  "popularTitle": "Aliments populaires au réfrigérateur",
+  "heroFreezer": "Congélateur : {d}",
+  "heroCounter": "Température ambiante : {d}",
+  "heroFridge": "Réfrigérateur : {d}",
+  "alt": {
+   "answer": "Illustration qui répond à « {q} » : {value}.",
+   "shelf": "Graphique en barres des durées de conservation, {n} : {list}.",
+   "temp": "Jauges de température, {n} : {list}.",
+   "steps": "Étapes numérotées : {title}. {first}",
+   "signs": "Liste des signes d’altération, {n} : {list}.",
+   "versus": "Comparaison, {n}, {a} ou {b} : {list}.",
+   "matrix": "Tableau, {title} : {list}.",
+   "bars": "Graphique en barres, {title} : {list}.",
+   "callout": "Règle de sécurité alimentaire : {text}"
+  }
  }
 }

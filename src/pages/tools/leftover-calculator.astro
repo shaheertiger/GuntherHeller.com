@@ -1,4 +1,7 @@
 ---
+import Fig from "../../components/Fig.astro";
+import { figsFor } from "../../figures/cards";
+const pf = figsFor("/tools/leftover-calculator/")!;
 import Tool from "../../layouts/Tool.astro";
 import FoodPicker from "../../components/FoodPicker.astro";
 const faq: [string, string][] = [
@@ -17,8 +20,10 @@ const faq: [string, string][] = [
   </Fragment>
   <p slot="empty" class="text-muted text-[19px]">Your eat-by date appears here.</p>
   <h2>How the calculator works</h2>
+  <Fig cards={pf.at("how")} />
   <p>We take the refrigerator time FoodKeeper lists for the food (for example, 4–6 days for cooked rice) and add it to the day you cooked or opened it. The <strong>safe target</strong> is the low end of the range; the high end is the outer limit if your fridge holds 40°F (4°C) or colder the whole time.</p>
   <h2>The leftover rules that always apply</h2>
+  <Fig cards={pf.at("rules")} />
   <ul>
     <li>Refrigerate within 2 hours of cooking (1 hour above 90°F).</li>
     <li>Use shallow containers so food cools quickly.</li>

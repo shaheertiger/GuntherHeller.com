@@ -7,13 +7,16 @@ import TrustBlock from "../components/TrustBlock.astro";
 import { ORG, breadcrumbLd, faqLd } from "../lib/schema";
 import { abs } from "../lib/site";
 import { TOOLS } from "../lib/tools";
+import Fig from "../components/Fig.astro";
+import { figsFor } from "../figures/cards";
 interface Props { slug: string; title: string; description: string; h1: string; lead: string; faq: [string, string][] }
 const { slug, title, description, h1, lead, faq } = Astro.props;
 const path = `/tools/${slug}/`;
+const pf = figsFor(path);
 const crumbs = [{ name: "Home", href: "/" }, { name: "Tools", href: "/tools/" }, { name: h1 }];
 const ld = { "@context": "https://schema.org", "@graph": [ORG, { "@type": "WebApplication", name: h1, url: abs(path), applicationCategory: "UtilitiesApplication", operatingSystem: "Any", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, description }, breadcrumbLd(crumbs, path), faqLd(faq)] };
 ---
-<Base title={title} description={description} path={path} jsonld={ld}>
+<Base title={title} description={description} path={path} jsonld={ld} figs={pf}>
   <div class="container-site pt-4 md:pt-6">
     <Breadcrumb items={crumbs} />
     <div class="grid lg:grid-cols-[minmax(0,1fr)_300px] gap-10 mt-5 items-start">
@@ -21,6 +24,7 @@ const ld = { "@context": "https://schema.org", "@graph": [ORG, { "@type": "WebAp
         <div class="eyebrow eyebrow-rule">Calculator</div>
         <h1 class="h1-food mt-3.5">{h1}</h1>
         <p class="lead mt-3">{lead}</p>
+        {pf && <Fig card={pf.hero} hero />}
         <div class="border border-line rounded-[10px] mt-8 overflow-hidden">
           <div class="p-5 md:p-6 grid gap-4"><slot name="form" /></div>
           <div class="border-t border-line bg-panel p-5 md:p-6 min-h-[120px]" aria-live="polite" data-out><slot name="empty" /></div>

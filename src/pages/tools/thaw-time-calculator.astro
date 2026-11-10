@@ -1,4 +1,7 @@
 ---
+import Fig from "../../components/Fig.astro";
+import { figsFor } from "../../figures/cards";
+const pf = figsFor("/tools/thaw-time-calculator/")!;
 import Tool from "../../layouts/Tool.astro";
 const faq: [string, string][] = [
   ["How long does a turkey take to thaw in the fridge?", "About 24 hours for every 4–5 lb. A 15 lb turkey needs 3–4 days."],
@@ -19,6 +22,7 @@ const faq: [string, string][] = [
   </Fragment>
   <p slot="empty" class="text-muted text-[19px]">Thaw times appear here.</p>
   <h2>The three safe ways to thaw</h2>
+  <Fig cards={pf.at("ways")} />
   <ol>
     <li><strong>In the refrigerator.</strong> Slowest and safest. Food stays at 40°F (4°C) or below. Ground meat, poultry and seafood keep 1–2 more days after thawing; roasts and steaks 3–5 days.</li>
     <li><strong>In cold water.</strong> Seal the food in a leak-proof bag, submerge it in cold tap water and change the water every 30 minutes. Cook immediately.</li>

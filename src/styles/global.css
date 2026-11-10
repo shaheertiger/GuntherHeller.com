@@ -24,9 +24,9 @@
   --color-primary-ink: #f2f4ff;
   --color-squiggle: #b9a888;
   --color-paper-ink: #6b5f4a;
-  --color-counter: #c7871a;
-  --color-fridge: #2f8f5b;
-  --color-freezer: #3c6fd1;
+  --color-counter: #e39a2d; /* zone colours shared with the figures (src/figures/system.css) */
+  --color-fridge: #2aa497;
+  --color-freezer: #7cc0f2;
   --color-discard: #c0392b;
   --color-yes-bg: #e8f5ee;
   --color-yes: #1f6b43;
@@ -169,4 +169,12 @@
   .faq-card[open] summary::after { transform: rotate(45deg); }
   .faq-item summary::after { content: ""; width: 14px; height: 14px; flex-shrink: 0; background: no-repeat center/14px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%2371717a' stroke-width='1.5'%3E%3Cpath d='M3 5l4 4 4-4'/%3E%3C/svg%3E"); transition: transform .2s; }
   .faq-item[open] summary::after { transform: rotate(180deg); }
+}
+
+/* Generated figures (public/img/fig, see docs/figures-art-direction.md) */
+@layer components {
+  .fig-img { margin: 0; max-width: 760px; }
+  .fig-img img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border: 1px solid var(--color-line); border-radius: 14px; background: #fff; }
+  .fig-img figcaption { margin-top: 8px; font-size: 14px; color: var(--color-muted); }
+  .fig-hero { margin-top: 18px; }
 }

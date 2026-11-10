@@ -9,7 +9,7 @@
   "scripts": {
     "data": "node scripts/import-foodkeeper.mjs",
     "dev": "astro dev",
-    "build": "astro build && node scripts/check-build.mjs",
+    "build": "astro build && node scripts/check-build.mjs && node scripts/check-figures.mjs",
     "preview": "astro preview",
     "check:html": "node scripts/check-build.mjs",
     "disavow": "node scripts/build-disavow.mjs",
@@ -17,7 +17,9 @@
     "indexnow": "node scripts/indexnow.mjs",
     "favicons": "node scripts/make-favicons.mjs",
     "images": "node scripts/make-images.mjs",
-    "mascot": "node scripts/make-mascot.mjs"
+    "mascot": "node scripts/make-mascot.mjs",
+    "figures": "node scripts/figures.mjs",
+    "check:figures": "node scripts/check-figures.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "4.3.3",
@@ -26,9 +28,13 @@
     "tailwindcss": "4.3.3"
   },
   "devDependencies": {
+    "@fontsource-variable/archivo": "^5.3.0",
     "@fontsource-variable/dm-sans": "5.2.8",
+    "@fontsource-variable/newsreader": "^5.3.0",
     "@fontsource/dm-sans": "5.2.8",
     "@resvg/resvg-js": "2.6.2",
+    "@vercel/blob": "^2.9.0",
+    "playwright": "^1.63.0",
     "satori": "0.62.0"
   }
 }

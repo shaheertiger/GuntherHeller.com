@@ -10,6 +10,10 @@ import { freezeVerdict } from "../lib/content";
 import { breadcrumbLd, ORG } from "../lib/schema";
 import { SITE, abs } from "../lib/site";
 import { hubAlternates } from "../lib/i18n";
+import Fig from "./Fig.astro";
+import FigSection from "./FigSection.astro";
+import { figsFor } from "../figures/cards";
+const pf = figsFor(Astro.props.sub ? url.sub(Astro.props.cat.slug, Astro.props.sub.slug) : url.category(Astro.props.cat.slug));
 
 interface Props { cat: Category; sub?: { slug: string; name: string; count: number } }
 const { cat, sub } = Astro.props;
@@ -55,16 +59,16 @@ const ld = {
   ],
 };
 ---
-<Base title={title} description={description} path={path} jsonld={ld} alternates={sub ? undefined : hubAlternates(cat.slug)}>
+<Base title={title} description={description} path={path} jsonld={ld} alternates={sub ? undefined : hubAlternates(cat.slug)} figs={pf}>
   <div class="container-site pt-4 md:pt-6">
     <Breadcrumb items={crumbs} />
-    <div class="mt-5 grid md:grid-cols-[minmax(0,1fr)_360px] gap-10 items-end">
+    <div class="mt-5">
       <div>
         <div class="eyebrow eyebrow-rule">{sub ? `${cat.name} · ` : "Category · "}{foods.length} foods</div>
         <h1 class="h1-food mt-3.5">{h1}</h1>
         <p class="lead mt-3 max-w-[680px]">How long {sub ? sub.name.toLowerCase() : cat.blurb} last on the counter, in the fridge and in the freezer — opened and unopened. Sourced from USDA FoodKeeper, last verified {SITE.verifiedLabel}.</p>
+        {pf && <Fig card={pf.hero} hero />}
       </div>
-      <div class="paper hidden md:grid h-[180px] rounded-[12px] place-items-center"><CatIcon slug={cat.slug} size={72} /></div>
     </div>
 
     {!sub && cat.subcategories.length > 0 && (
@@ -113,6 +117,8 @@ const ld = {
         </table>
       </div>
     </div>
+
+    {pf && <FigSection id="table" title={`${label} at a glance`} cards={pf.at("table")} />}
 
     <AdSlot w={970} h={250} class="hidden lg:grid mt-12" id="hub-1" />
 

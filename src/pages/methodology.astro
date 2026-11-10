@@ -1,4 +1,7 @@
 ---
+import Fig from "../components/Fig.astro";
+import { figsFor } from "../figures/cards";
+const pf = figsFor("/methodology/")!;
 import Prose from "../layouts/Prose.astro";
 import { META } from "../lib/data";
 import { SITE, abs } from "../lib/site";
@@ -15,6 +18,7 @@ const ld = { "@context": "https://schema.org", "@type": "WebPage", name: "How we
   <p>A small number of foods FoodKeeper does not cover, such as breast milk, use another named public source (for breast milk, the CDC). Those pages name that source in place of FoodKeeper.</p>
 
   <h2>How we turn the data into a page</h2>
+  <Fig cards={pf.at("process")} />
   <ol>
     <li><strong>Import.</strong> A script reads every FoodKeeper product and keeps its pantry, refrigerator and freezer times, the separate "after opening" and "after thawing" times, and FSIS's storage tips.</li>
     <li><strong>Name.</strong> We rename products to the words people search for (FoodKeeper's "Cheese — hard such as cheddar, swiss" becomes "Hard cheese"). The numbers are not touched.</li>
@@ -23,6 +27,7 @@ const ld = { "@context": "https://schema.org", "@type": "WebPage", name: "How we
   </ol>
 
   <h2>What the numbers mean</h2>
+  <Fig cards={pf.at("meaning")} />
   <ul>
     <li><strong>Fridge times</strong> assume 40°F (4°C) or colder. Use a fridge thermometer; many fridges run warmer.</li>
     <li><strong>Freezer times</strong> are for quality. Food kept at 0°F (-18°C) stays safe indefinitely; after the stated time, texture and flavour decline.</li>
