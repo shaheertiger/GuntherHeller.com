@@ -85,7 +85,7 @@ body { font-family: var(--f-sans); color: var(--ink); -webkit-font-smoothing: an
 .fig--answer { padding: 0; }
 .fig--answer .hero-art { position: absolute; inset: 0; }
 .fig--answer .hero-text { position: relative; z-index: 2; display: flex; flex-direction: column; height: 100%; padding: 64px var(--m) 0; width: 640px; }
-.fig--answer .hero-name { font-family: var(--f-serif); font-weight: 560; font-size: 60px; line-height: 1.02; letter-spacing: -0.02em; font-variation-settings: "opsz" 72; text-wrap: balance; }
+.fig--answer .hero-name { hyphens: auto; overflow-wrap: break-word; font-family: var(--f-serif); font-weight: 560; font-size: 60px; line-height: 1.02; letter-spacing: -0.02em; font-variation-settings: "opsz" 72; text-wrap: balance; }
 .fig--answer .hero-num-wrap { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; }
 .fig--answer .hero-num {
   font-family: var(--f-num); font-weight: 820; font-stretch: 66%; font-size: var(--t-mega); line-height: .82;
@@ -108,9 +108,11 @@ body { font-family: var(--f-sans); color: var(--ink); -webkit-font-smoothing: an
 .bar .val small { font-family: var(--f-sans); font-size: 28px; font-weight: 500; color: var(--muted); margin-left: 10px; letter-spacing: 0; }
 .bar.is-alt .fill { background: repeating-linear-gradient(135deg, var(--zc) 0 10px, var(--zt) 10px 20px); }
 .bar.is-text .val { margin-left: 0; font-family: var(--f-sans); font-size: 32px; font-weight: 550; color: var(--muted); }
-.bars.paired .bar { height: 44px; }
+.bars.paired { row-gap: 16px; }
+.bars.paired .bar { height: 40px; }
+.bars.paired .track { gap: 6px; }
 .bars.paired .bar .val { font-size: 34px; }
-.legend { display: flex; gap: 28px; margin-top: 26px; font-size: 28px; color: var(--muted); font-weight: 500; }
+.legend { display: flex; gap: 28px; margin-top: 20px; font-size: 28px; color: var(--muted); font-weight: 500; }
 .legend span { display: inline-flex; align-items: center; gap: 12px; }
 .legend i { width: 40px; height: 24px; border-radius: 0 6px 6px 0; background: var(--ink); }
 .legend i.alt { background: repeating-linear-gradient(135deg, var(--ink) 0 6px, #c9cbd1 6px 12px); }

@@ -122,8 +122,12 @@ function shelfCard(ad: Ad, page: string, f: Food, anchor: string) {
   }
   if (rows.length < 1) return null;
   const legend = paired ? [ad.stateLabel(states[0]) ?? "", ad.stateLabel(states[1]) ?? ""] : null;
-  const title = fillS(ad.S.shelfTitle, { n: ad.name(f) });
-  return makeCard(page, ad.lang, "shelf-life", "shelf-life", anchor, { zone: "fridge", title, sub: ad.S.shelfSub, source: ad.S.source, data: { rows, legend } },
+  // "Haltbarkeit: {n}" style headlines put the food name on the sub-line so long names never wrap the headline;
+  // paired charts (opened vs unopened) drop the scale note to make room for the legend.
+  const colon = /:\s*\{n\}$/.test(ad.S.shelfTitle);
+  const title = colon ? ad.S.shelfTitle.split(/\s*:\s*\{n\}/)[0] : fillS(ad.S.shelfTitle, { n: ad.name(f) });
+  const sub = colon ? (paired ? cap1(ad.name(f)) : `${cap1(ad.name(f))}. ${ad.S.shelfSub}`) : paired ? undefined : ad.S.shelfSub;
+  return makeCard(page, ad.lang, "shelf-life", "shelf-life", anchor, { zone: "fridge", title, sub, source: ad.S.source, data: { rows, legend } },
     fillS(ad.S.alt.shelf, { n: ad.name(f), list: listParts.join(", ") }));
 }
 
