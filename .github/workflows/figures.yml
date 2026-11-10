@@ -4,7 +4,7 @@ name: Figures
 # lacks or has out of date. Unchanged figures are skipped by hash, so a data change re-renders only
 # the affected foods. Production serves /img/fig/* from the store via the rewrite in vercel.json.
 #
-# Needs the repository secret BLOB_READ_WRITE_TOKEN (Vercel → Storage → guntherheller-figures → .env.local).
+# Needs the repository secret BLOB_READ_WRITE_TOKEN (Vercel project → Settings → Environment Variables).
 on:
   push:
     branches: [main, feat/generated-figures]
