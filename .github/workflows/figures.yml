@@ -7,7 +7,7 @@ name: Figures
 # Needs the repository secret BLOB_READ_WRITE_TOKEN (Vercel project → Settings → Environment Variables).
 on:
   push:
-    branches: [main, feat/generated-figures]
+    branches: [main]
     paths:
       - "data/**"
       - "src/figures/**"
@@ -56,8 +56,13 @@ jobs:
       - name: Check that production serves figures as indexable WebP
         if: success() && github.ref == 'refs/heads/main'
         run: |
+          # The Vercel deploy of this commit may still be building; retry for up to 10 minutes.
           url="https://www.guntherheller.com/img/fig/en/how-long-does-cooked-rice-last-answer-1200x675.webp"
-          h=$(curl -sSI "$url")
+          for i in $(seq 1 20); do
+            h=$(curl -sSI "$url")
+            echo "$h" | grep -qi '^HTTP/[0-9.]* 200' && break
+            echo "attempt $i: not 200 yet"; sleep 30
+          done
           echo "$h"
           echo "$h" | grep -qi '^HTTP/[0-9.]* 200' || { echo "::error::$url is not 200"; exit 1; }
           echo "$h" | grep -qi '^content-type: image/webp' || { echo "::error::$url is not image/webp"; exit 1; }
