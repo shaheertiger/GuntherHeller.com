@@ -159,7 +159,7 @@ body { font-family: var(--f-sans); color: var(--ink); -webkit-font-smoothing: an
 
 /* ---------------------------------------------------------------- signs */
 .signs { display: grid; grid-template-columns: max-content 1fr 40px; column-gap: 28px; align-items: center; }
-.signs > div { padding: 12px 0; border-top: 2px solid var(--mist); }
+.signs > div { padding: 9px 0; border-top: 2px solid var(--mist); }
 .signs > div:nth-child(-n+3) { border-top: 0; }
 .sign-name { display: flex; align-items: center; gap: 14px; font-weight: 650; font-size: 32px; }
 .sign-name .ic { color: var(--ink); width: 44px; height: 44px; }
@@ -173,15 +173,16 @@ body { font-family: var(--f-sans); color: var(--ink); -webkit-font-smoothing: an
 .signs-ok > .ic { width: 32px; height: 32px; }
 
 /* ---------------------------------------------------------------- versus */
-.vs { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
-.vs-col { padding: 0 40px; }
+.vs { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0; }
+.vs-col { padding: 0 0 0 40px; min-width: 0; }
+.vs-col:first-child { padding-right: 40px; }
 .vs-col:first-child { padding-left: 0; border-right: 3px solid var(--mist); }
 .vs-name { font-family: var(--f-serif); font-size: 44px; font-weight: 560; letter-spacing: -0.015em; font-variation-settings: "opsz" 48; margin-bottom: 18px; }
-.vs-row { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 12px 0; border-top: 2px solid var(--mist); }
+.vs-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 20px; padding: 10px 0; border-top: 2px solid var(--mist); }
 .vs-row:first-of-type { border-top: 0; }
 .vs-row .k { display: flex; align-items: center; gap: 12px; font-size: 30px; font-weight: 600; color: var(--zx); }
 .vs-row .k .ic { width: 38px; height: 38px; }
-.vs-row .v { font-family: var(--f-num); font-stretch: 78%; font-weight: 760; font-size: 52px; letter-spacing: -0.015em; white-space: nowrap; }
+.vs-row .v { margin-left: auto; font-family: var(--f-num); font-stretch: 72%; font-weight: 760; font-size: 48px; letter-spacing: -0.015em; white-space: nowrap; }
 .vs-row .v.is-text { font-family: var(--f-sans); font-weight: 550; font-size: 30px; color: var(--muted); letter-spacing: 0; }
 .vs-col .vs-name .ic { width: 48px; height: 48px; color: var(--zx); }
 .vs-col > .vs-name { display: flex; align-items: center; gap: 16px; }
@@ -198,7 +199,7 @@ body { font-family: var(--f-sans); color: var(--ink); -webkit-font-smoothing: an
 .mx th.zh span { display: inline-flex; align-items: center; gap: 10px; }
 .mx th.zh .ic { width: 34px; height: 34px; }
 .mx td { border-top: 2px solid var(--mist); padding: 0 16px 0 0; height: 58px; font-family: var(--f-num); font-stretch: 80%; font-weight: 700; font-size: 34px; white-space: nowrap; overflow: hidden; text-overflow: clip; }
-.mx td.food { font-family: var(--f-sans); font-stretch: normal; font-weight: 550; font-size: 30px; white-space: nowrap; text-overflow: ellipsis; }
+.mx td.food { font-family: var(--f-sans); font-stretch: normal; font-weight: 550; font-size: 28px; white-space: normal; line-height: 1.08; hyphens: auto; }
 .mx td.is-text { font-family: var(--f-sans); font-stretch: normal; font-weight: 500; font-size: 26px; color: var(--muted); white-space: normal; line-height: 1.1; }
 .mx td .chip { display: inline-block; padding: 2px 14px; border-radius: var(--r-bar); background: var(--zt); color: var(--ink); }
 
@@ -212,3 +213,5 @@ body { font-family: var(--f-sans); color: var(--ink); -webkit-font-smoothing: an
 
 /* ---------------------------------------------------------------- DE and other long-word locales */
 .fig[lang="de"] .step-text, .fig[lang="de"] .sign-text { hyphens: auto; }
+
+.fig--signs .fig-body { padding: 18px 0 14px; }

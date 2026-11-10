@@ -25,7 +25,7 @@ on:
 
 concurrency:
   group: figures
-  cancel-in-progress: false
+  cancel-in-progress: true  # safe: uploads resume from the manifest, saved every 250 figures
 
 jobs:
   render:

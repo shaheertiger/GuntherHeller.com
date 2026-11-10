@@ -165,8 +165,9 @@ function stepsCard(ad: Ad, page: string, anchor: string, title: string, texts: s
 }
 function signsCard(ad: Ad, page: string, f: Food, anchor: string, signs: [string, string][], enTitles: string[], ok: string | null) {
   const rows = signs.slice(0, 4).map(([name, text], i) => ({ name, text, icon: signIcon(enTitles[i] ?? name) }));
-  const title = fillS(ad.S.signsTitle, { n: ad.name(f) });
-  return makeCard(page, ad.lang, "signs", "signs", anchor, { zone: "danger", title, source: ad.S.source, data: { rows, discard: ad.S.discard, ok } },
+  // Headline without the food name ("Check before you eat"), name as the sub-line: long names never wrap the headline.
+  const title = ad.S.signsTitle.split(/\s*:\s*\{n\}/)[0];
+  return makeCard(page, ad.lang, "signs", "signs", anchor, { zone: "danger", title, sub: cap1(ad.name(f)), source: ad.S.source, data: { rows, discard: ad.S.discard, ok } },
     fillS(ad.S.alt.signs, { n: ad.name(f), list: rows.map((r) => `${r.name}: ${r.text.replace(/\.$/, "")}`).join("; ") }));
 }
 function versusStates(ad: Ad, page: string, f: Food, anchor: string) {
