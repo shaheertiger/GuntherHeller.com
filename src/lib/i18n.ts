@@ -134,7 +134,12 @@ export function foodCopy(L: Locale, f: Food) {
   const h1 = fill(pick(F.h1, p), {}, T);
   const hd = headlineL(L, f);
   const fz = freezerFacts(f);
-  const title = fill(F.title, { h1, d: hd.d, where: hd.where }, T).replace(/\s+/g, " ").trim() + (fz && isNum(fz) ? sub(F.titleFreezer, { d: fmtL(L, fz)! }) : "");
+  // Native title per locale (Nov 2026): no English "[Freezer …]" badge; the freezer time joins as a
+  // plain clause and is dropped when the title would run past ~75 characters; the word after "?" is
+  // capitalised. English title wins don't transfer between languages (SearchPilot, Oct 2026).
+  const base = fill(F.title, { h1, d: hd.d, where: hd.where }, T).replace(/\s+/g, " ").trim().replace(/([?¿]\s+)(\p{Ll})/u, (_, a, b) => a + b.toUpperCase());
+  const fzPart = fz && isNum(fz) ? sub(F.titleFreezer, { d: fmtL(L, fz)! }) : "";
+  const title = (base + fzPart).length <= 75 ? base + fzPart : base;
   let desc = fill(pick(F.desc, p), { d: hd.d, where: hd.where }, T).replace(/\s+\./, ".");
   if (fz && isNum(fz)) desc += sub(F.descFreezer, { d: fmtL(L, fz)! });
   if (f.perishable) desc += F.descPerishable;
