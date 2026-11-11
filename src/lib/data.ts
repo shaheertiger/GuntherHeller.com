@@ -122,6 +122,9 @@ export const freezerFacts = (f: Food) => {
 };
 export const hasFreezePage = (f: Food) => Boolean(freezerFacts(f));
 import LEFTOUT_KEEP from "../../data/leftout-keep.json";
+import ASK from "../../data/ask.json";
+/** Hand-written, food-specific questions people search (top foods by traffic, Nov 2026). */
+export const askFor = (f: { slug: string }): [string, string][] => ((ASK as Record<string, [string, string][]>)[f.slug] ?? []);
 /** "Left out overnight" pages only where people search for that food (Search Console or Semrush
  *  impressions, or the priority list). Every one of these pages gives the same 2-hour answer, so a
  *  page per perishable food read as near-duplicates; the rest 301 to the food's main page. */
