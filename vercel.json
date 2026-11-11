@@ -78,5 +78,1052 @@
       "source": "/img/fig/:path*",
       "destination": "https://cpegqs6wjdzroceh.public.blob.vercel-storage.com/fig/:path*"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/brie-left-out-overnight/",
+      "destination": "/how-long-does-brie-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/deviled-eggs-left-out-overnight/",
+      "destination": "/how-long-does-deviled-eggs-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/egg-whites-left-out-overnight/",
+      "destination": "/how-long-does-egg-whites-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/feta-left-out-overnight/",
+      "destination": "/how-long-does-feta-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/fresh-mozzarella-left-out-overnight/",
+      "destination": "/how-long-does-fresh-mozzarella-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/goat-cheese-left-out-overnight/",
+      "destination": "/how-long-does-goat-cheese-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/greek-yogurt-left-out-overnight/",
+      "destination": "/how-long-does-greek-yogurt-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/liquid-egg-substitute-left-out-overnight/",
+      "destination": "/how-long-does-liquid-egg-substitute-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/omelette-left-out-overnight/",
+      "destination": "/how-long-does-omelette-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/pimento-cheese-left-out-overnight/",
+      "destination": "/how-long-does-pimento-cheese-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/quark-left-out-overnight/",
+      "destination": "/how-long-does-quark-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/ricotta-left-out-overnight/",
+      "destination": "/how-long-does-ricotta-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/scrambled-eggs-left-out-overnight/",
+      "destination": "/how-long-does-scrambled-eggs-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/sour-cream-dip-left-out-overnight/",
+      "destination": "/how-long-does-sour-cream-dip-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/canned-whipped-cream-left-out-overnight/",
+      "destination": "/how-long-does-canned-whipped-cream-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/aerosol-whipped-topping-left-out-overnight/",
+      "destination": "/how-long-does-aerosol-whipped-topping-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/beef-short-ribs-left-out-overnight/",
+      "destination": "/how-long-does-beef-short-ribs-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/beef-stew-meat-left-out-overnight/",
+      "destination": "/how-long-does-beef-stew-meat-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/beef-tongue-left-out-overnight/",
+      "destination": "/how-long-does-beef-tongue-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/bison-left-out-overnight/",
+      "destination": "/how-long-does-bison-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/bone-pork-chops-left-out-overnight/",
+      "destination": "/how-long-does-bone-pork-chops-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/bone-pork-loin-roast-left-out-overnight/",
+      "destination": "/how-long-does-bone-pork-loin-roast-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/bone-rib-roast-left-out-overnight/",
+      "destination": "/how-long-does-bone-rib-roast-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/bone-veal-loin-roast-left-out-overnight/",
+      "destination": "/how-long-does-bone-veal-loin-roast-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/boneless-canned-ham-refrigerated-left-out-overnight/",
+      "destination": "/how-long-does-boneless-canned-ham-refrigerated-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/boneless-leg-lamb-left-out-overnight/",
+      "destination": "/how-long-does-boneless-leg-lamb-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/boneless-picnic-ham-left-out-overnight/",
+      "destination": "/how-long-does-boneless-picnic-ham-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/boneless-pork-loin-roast-left-out-overnight/",
+      "destination": "/how-long-does-boneless-pork-loin-roast-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/boneless-rib-roast-left-out-overnight/",
+      "destination": "/how-long-does-boneless-rib-roast-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/boneless-veal-leg-roast-left-out-overnight/",
+      "destination": "/how-long-does-boneless-veal-leg-roast-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/boneless-veal-shoulder-roast-left-out-overnight/",
+      "destination": "/how-long-does-boneless-veal-shoulder-roast-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/bratwurst-left-out-overnight/",
+      "destination": "/how-long-does-bratwurst-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/breakfast-sausage-left-out-overnight/",
+      "destination": "/how-long-does-breakfast-sausage-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/brisket-left-out-overnight/",
+      "destination": "/how-long-does-brisket-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/brisket-chuck-roast-left-out-overnight/",
+      "destination": "/how-long-does-brisket-chuck-roast-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/chitterlings-left-out-overnight/",
+      "destination": "/how-long-does-chitterlings-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/chuck-roast-left-out-overnight/",
+      "destination": "/how-long-does-chuck-roast-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/cooked-ham-left-out-overnight/",
+      "destination": "/how-long-does-cooked-ham-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/filet-mignon-left-out-overnight/",
+      "destination": "/how-long-does-filet-mignon-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/flank-steak-left-out-overnight/",
+      "destination": "/how-long-does-flank-steak-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/fresh-boneless-picnic-ham-left-out-overnight/",
+      "destination": "/how-long-does-fresh-boneless-picnic-ham-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/fresh-chorizo-left-out-overnight/",
+      "destination": "/how-long-does-fresh-chorizo-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/fresh-half-ham-bone-left-out-overnight/",
+      "destination": "/how-long-does-fresh-half-ham-bone-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/fresh-ham-shank-left-out-overnight/",
+      "destination": "/how-long-does-fresh-ham-shank-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/fresh-pork-butt-roll-left-out-overnight/",
+      "destination": "/how-long-does-fresh-pork-butt-roll-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/fresh-whole-ham-bone-left-out-overnight/",
+      "destination": "/how-long-does-fresh-whole-ham-bone-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/goat-meat-whole-cuts-left-out-overnight/",
+      "destination": "/how-long-does-goat-meat-whole-cuts-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/goat-stew-meat-left-out-overnight/",
+      "destination": "/how-long-does-goat-stew-meat-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/ground-bison-left-out-overnight/",
+      "destination": "/how-long-does-ground-bison-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/ground-goat-left-out-overnight/",
+      "destination": "/how-long-does-ground-goat-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/ground-lamb-left-out-overnight/",
+      "destination": "/how-long-does-ground-lamb-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/ground-veal-left-out-overnight/",
+      "destination": "/how-long-does-ground-veal-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/half-beef-tenderloin-left-out-overnight/",
+      "destination": "/how-long-does-half-beef-tenderloin-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/half-cooked-ham-bone-left-out-overnight/",
+      "destination": "/how-long-does-half-cooked-ham-bone-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/italian-sausage-left-out-overnight/",
+      "destination": "/how-long-does-italian-sausage-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/lamb-chops-left-out-overnight/",
+      "destination": "/how-long-does-lamb-chops-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/lamb-crown-roast-left-out-overnight/",
+      "destination": "/how-long-does-lamb-crown-roast-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/lamb-kabob-cubes-left-out-overnight/",
+      "destination": "/how-long-does-lamb-kabob-cubes-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/lamb-leg-steaks-left-out-overnight/",
+      "destination": "/how-long-does-lamb-leg-steaks-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/lamb-shanks-left-out-overnight/",
+      "destination": "/how-long-does-lamb-shanks-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/lamb-shoulder-roast-left-out-overnight/",
+      "destination": "/how-long-does-lamb-shoulder-roast-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/lamb-stew-meat-left-out-overnight/",
+      "destination": "/how-long-does-lamb-stew-meat-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/large-bone-leg-lamb-left-out-overnight/",
+      "destination": "/how-long-does-large-bone-leg-lamb-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/large-pork-crown-roast-left-out-overnight/",
+      "destination": "/how-long-does-large-pork-crown-roast-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/liver-left-out-overnight/",
+      "destination": "/how-long-does-liver-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/meat-pate-left-out-overnight/",
+      "destination": "/how-long-does-meat-pate-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/new-york-strip-steak-left-out-overnight/",
+      "destination": "/how-long-does-new-york-strip-steak-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/organ-meats-left-out-overnight/",
+      "destination": "/how-long-does-organ-meats-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/pastrami-left-out-overnight/",
+      "destination": "/how-long-does-pastrami-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/pork-loin-cubes-left-out-overnight/",
+      "destination": "/how-long-does-pork-loin-cubes-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/pork-medallions-left-out-overnight/",
+      "destination": "/how-long-does-pork-medallions-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/pork-ribs-left-out-overnight/",
+      "destination": "/how-long-does-pork-ribs-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/prosciutto-left-out-overnight/",
+      "destination": "/how-long-does-prosciutto-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/rabbit-left-out-overnight/",
+      "destination": "/how-long-does-rabbit-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/raw-beef-kabobs-left-out-overnight/",
+      "destination": "/how-long-does-raw-beef-kabobs-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/refrigerated-canned-ham-left-out-overnight/",
+      "destination": "/how-long-does-refrigerated-canned-ham-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/ribeye-steak-left-out-overnight/",
+      "destination": "/how-long-does-ribeye-steak-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/rolled-lamb-breast-left-out-overnight/",
+      "destination": "/how-long-does-rolled-lamb-breast-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/round-roast-left-out-overnight/",
+      "destination": "/how-long-does-round-roast-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/sirloin-steak-left-out-overnight/",
+      "destination": "/how-long-does-sirloin-steak-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/small-bone-leg-lamb-left-out-overnight/",
+      "destination": "/how-long-does-small-bone-leg-lamb-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/small-pork-crown-roast-left-out-overnight/",
+      "destination": "/how-long-does-small-pork-crown-roast-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/smoked-bratwurst-left-out-overnight/",
+      "destination": "/how-long-does-smoked-bratwurst-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/stuffed-pork-chops-left-out-overnight/",
+      "destination": "/how-long-does-stuffed-pork-chops-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/t-bone-steak-left-out-overnight/",
+      "destination": "/how-long-does-t-bone-steak-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/uncooked-half-leg-ham-bone-left-out-overnight/",
+      "destination": "/how-long-does-uncooked-half-leg-ham-bone-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/uncooked-smoked-chorizo-left-out-overnight/",
+      "destination": "/how-long-does-uncooked-smoked-chorizo-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/uncured-bacon-left-out-overnight/",
+      "destination": "/how-long-does-uncured-bacon-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/uncured-fresh-ham-left-out-overnight/",
+      "destination": "/how-long-does-uncured-fresh-ham-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/vacuum-packed-ham-left-out-overnight/",
+      "destination": "/how-long-does-vacuum-packed-ham-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/venison-roast-left-out-overnight/",
+      "destination": "/how-long-does-venison-roast-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/whole-beef-tenderloin-left-out-overnight/",
+      "destination": "/how-long-does-whole-beef-tenderloin-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/bone-chicken-breast-left-out-overnight/",
+      "destination": "/how-long-does-bone-chicken-breast-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/bone-turkey-breast-left-out-overnight/",
+      "destination": "/how-long-does-bone-turkey-breast-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/boneless-turkey-breast-left-out-overnight/",
+      "destination": "/how-long-does-boneless-turkey-breast-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/capon-left-out-overnight/",
+      "destination": "/how-long-does-capon-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/chicken-drumsticks-left-out-overnight/",
+      "destination": "/how-long-does-chicken-drumsticks-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/chicken-legs-left-out-overnight/",
+      "destination": "/how-long-does-chicken-legs-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/chicken-patties-left-out-overnight/",
+      "destination": "/how-long-does-chicken-patties-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/chicken-thighs-left-out-overnight/",
+      "destination": "/how-long-does-chicken-thighs-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/cooked-ground-turkey-left-out-overnight/",
+      "destination": "/how-long-does-cooked-ground-turkey-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/cornish-hens-left-out-overnight/",
+      "destination": "/how-long-does-cornish-hens-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/giblets-left-out-overnight/",
+      "destination": "/how-long-does-giblets-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/goose-left-out-overnight/",
+      "destination": "/how-long-does-goose-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/grilled-chicken-left-out-overnight/",
+      "destination": "/how-long-does-grilled-chicken-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/ground-turkey-left-out-overnight/",
+      "destination": "/how-long-does-ground-turkey-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/pheasant-left-out-overnight/",
+      "destination": "/how-long-does-pheasant-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/quail-left-out-overnight/",
+      "destination": "/how-long-does-quail-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/raw-chicken-kabobs-left-out-overnight/",
+      "destination": "/how-long-does-raw-chicken-kabobs-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/shredded-chicken-left-out-overnight/",
+      "destination": "/how-long-does-shredded-chicken-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/stuffed-chicken-breasts-left-out-overnight/",
+      "destination": "/how-long-does-stuffed-chicken-breasts-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/turducken-left-out-overnight/",
+      "destination": "/how-long-does-turducken-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/turkey-legs-left-out-overnight/",
+      "destination": "/how-long-does-turkey-legs-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/turkey-thighs-left-out-overnight/",
+      "destination": "/how-long-does-turkey-thighs-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/whole-turkey-left-out-overnight/",
+      "destination": "/how-long-does-whole-turkey-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/bluefish-left-out-overnight/",
+      "destination": "/how-long-does-bluefish-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/catfish-left-out-overnight/",
+      "destination": "/how-long-does-catfish-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/caviar-left-out-overnight/",
+      "destination": "/how-long-does-caviar-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/cod-lean-white-fish-left-out-overnight/",
+      "destination": "/how-long-does-cod-lean-white-fish-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/cooked-crab-left-out-overnight/",
+      "destination": "/how-long-does-cooked-crab-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/cooked-fish-left-out-overnight/",
+      "destination": "/how-long-does-cooked-fish-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/cooked-shellfish-left-out-overnight/",
+      "destination": "/how-long-does-cooked-shellfish-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/crab-legs-left-out-overnight/",
+      "destination": "/how-long-does-crab-legs-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/crayfish-left-out-overnight/",
+      "destination": "/how-long-does-crayfish-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/dungeness-crab-left-out-overnight/",
+      "destination": "/how-long-does-dungeness-crab-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/flounder-left-out-overnight/",
+      "destination": "/how-long-does-flounder-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/frozen-whole-lobster-left-out-overnight/",
+      "destination": "/how-long-does-frozen-whole-lobster-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/haddock-left-out-overnight/",
+      "destination": "/how-long-does-haddock-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/halibut-left-out-overnight/",
+      "destination": "/how-long-does-halibut-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/hot-smoked-fish-air-pack-left-out-overnight/",
+      "destination": "/how-long-does-hot-smoked-fish-air-pack-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/hot-smoked-fish-vacuum-pack-left-out-overnight/",
+      "destination": "/how-long-does-hot-smoked-fish-vacuum-pack-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/king-crab-legs-left-out-overnight/",
+      "destination": "/how-long-does-king-crab-legs-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/live-clams-mussels-oysters-left-out-overnight/",
+      "destination": "/how-long-does-live-clams-mussels-oysters-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/mackerel-left-out-overnight/",
+      "destination": "/how-long-does-mackerel-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/mullet-left-out-overnight/",
+      "destination": "/how-long-does-mullet-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/mussels-left-out-overnight/",
+      "destination": "/how-long-does-mussels-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/ocean-perch-left-out-overnight/",
+      "destination": "/how-long-does-ocean-perch-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/pasteurized-crab-meat-left-out-overnight/",
+      "destination": "/how-long-does-pasteurized-crab-meat-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/pickled-herring-left-out-overnight/",
+      "destination": "/how-long-does-pickled-herring-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/pollock-left-out-overnight/",
+      "destination": "/how-long-does-pollock-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/pollock-rockfish-left-out-overnight/",
+      "destination": "/how-long-does-pollock-rockfish-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/rockfish-left-out-overnight/",
+      "destination": "/how-long-does-rockfish-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/scallops-left-out-overnight/",
+      "destination": "/how-long-does-scallops-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/shrimp-cocktail-left-out-overnight/",
+      "destination": "/how-long-does-shrimp-cocktail-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/shucked-oysters-clams-mussels-left-out-overnight/",
+      "destination": "/how-long-does-shucked-oysters-clams-mussels-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/air-packed-smoked-salmon-left-out-overnight/",
+      "destination": "/how-long-does-air-packed-smoked-salmon-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/snow-crab-legs-left-out-overnight/",
+      "destination": "/how-long-does-snow-crab-legs-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/sole-left-out-overnight/",
+      "destination": "/how-long-does-sole-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/squid-left-out-overnight/",
+      "destination": "/how-long-does-squid-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/tuna-steaks-left-out-overnight/",
+      "destination": "/how-long-does-tuna-steaks-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/canadian-bacon-left-out-overnight/",
+      "destination": "/how-long-does-canadian-bacon-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/canadian-bacon-whole-left-out-overnight/",
+      "destination": "/how-long-does-canadian-bacon-whole-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/casseroles-left-out-overnight/",
+      "destination": "/how-long-does-casseroles-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/chicken-gravy-left-out-overnight/",
+      "destination": "/how-long-does-chicken-gravy-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/chinese-takeout-left-out-overnight/",
+      "destination": "/how-long-does-chinese-takeout-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/cooked-bacon-left-out-overnight/",
+      "destination": "/how-long-does-cooked-bacon-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/cooked-beans-left-out-overnight/",
+      "destination": "/how-long-does-cooked-beans-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/cooked-beef-left-out-overnight/",
+      "destination": "/how-long-does-cooked-beef-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/cooked-broccoli-left-out-overnight/",
+      "destination": "/how-long-does-cooked-broccoli-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/cooked-mushrooms-left-out-overnight/",
+      "destination": "/how-long-does-cooked-mushrooms-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/cooked-pork-left-out-overnight/",
+      "destination": "/how-long-does-cooked-pork-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/cooked-potatoes-left-out-overnight/",
+      "destination": "/how-long-does-cooked-potatoes-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/cooked-sausage-left-out-overnight/",
+      "destination": "/how-long-does-cooked-sausage-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/cooked-steak-left-out-overnight/",
+      "destination": "/how-long-does-cooked-steak-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/cooked-sweet-potatoes-left-out-overnight/",
+      "destination": "/how-long-does-cooked-sweet-potatoes-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/cooked-vegetables-left-out-overnight/",
+      "destination": "/how-long-does-cooked-vegetables-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/curry-left-out-overnight/",
+      "destination": "/how-long-does-curry-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/deli-chicken-left-out-overnight/",
+      "destination": "/how-long-does-deli-chicken-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/deli-ham-left-out-overnight/",
+      "destination": "/how-long-does-deli-ham-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/deli-roast-beef-left-out-overnight/",
+      "destination": "/how-long-does-deli-roast-beef-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/fried-rice-left-out-overnight/",
+      "destination": "/how-long-does-fried-rice-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/goulash-left-out-overnight/",
+      "destination": "/how-long-does-goulash-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/homemade-salsa-left-out-overnight/",
+      "destination": "/how-long-does-homemade-salsa-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/lasagna-left-out-overnight/",
+      "destination": "/how-long-does-lasagna-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/leftovers-without-meat-left-out-overnight/",
+      "destination": "/how-long-does-leftovers-without-meat-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/lentil-soup-left-out-overnight/",
+      "destination": "/how-long-does-lentil-soup-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/mac-and-cheese-left-out-overnight/",
+      "destination": "/how-long-does-mac-and-cheese-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/meat-gravy-left-out-overnight/",
+      "destination": "/how-long-does-meat-gravy-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/meat-sauce-left-out-overnight/",
+      "destination": "/how-long-does-meat-sauce-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/meatloaf-left-out-overnight/",
+      "destination": "/how-long-does-meatloaf-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/miso-soup-left-out-overnight/",
+      "destination": "/how-long-does-miso-soup-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/pho-left-out-overnight/",
+      "destination": "/how-long-does-pho-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/pico-de-gallo-left-out-overnight/",
+      "destination": "/how-long-does-pico-de-gallo-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/pot-roast-left-out-overnight/",
+      "destination": "/how-long-does-pot-roast-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/potato-soup-left-out-overnight/",
+      "destination": "/how-long-does-potato-soup-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/pozole-left-out-overnight/",
+      "destination": "/how-long-does-pozole-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/prepared-meals-left-out-overnight/",
+      "destination": "/how-long-does-prepared-meals-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/roast-beef-left-out-overnight/",
+      "destination": "/how-long-does-roast-beef-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/roasted-vegetables-left-out-overnight/",
+      "destination": "/how-long-does-roasted-vegetables-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/salmon-salad-left-out-overnight/",
+      "destination": "/how-long-does-salmon-salad-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/shepherds-pie-left-out-overnight/",
+      "destination": "/how-long-does-shepherds-pie-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/shrimp-salad-left-out-overnight/",
+      "destination": "/how-long-does-shrimp-salad-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/spaghetti-and-meatballs-left-out-overnight/",
+      "destination": "/how-long-does-spaghetti-and-meatballs-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/stew-left-out-overnight/",
+      "destination": "/how-long-does-stew-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/stir-fry-left-out-overnight/",
+      "destination": "/how-long-does-stir-fry-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/tamales-left-out-overnight/",
+      "destination": "/how-long-does-tamales-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/vacuum-packed-dinners-left-out-overnight/",
+      "destination": "/how-long-does-vacuum-packed-dinners-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/canned-biscuit-pizza-dough-left-out-overnight/",
+      "destination": "/how-long-does-canned-biscuit-pizza-dough-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/pie-crust-ready-bake-left-out-overnight/",
+      "destination": "/how-long-does-pie-crust-ready-bake-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/bone-broth-left-out-overnight/",
+      "destination": "/how-long-does-bone-broth-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/homemade-broth-left-out-overnight/",
+      "destination": "/how-long-does-homemade-broth-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/homemade-cranberry-sauce-left-out-overnight/",
+      "destination": "/how-long-does-homemade-cranberry-sauce-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/homemade-vinaigrette-left-out-overnight/",
+      "destination": "/how-long-does-homemade-vinaigrette-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/vegetable-broth-left-out-overnight/",
+      "destination": "/how-long-does-vegetable-broth-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/homemade-vegetable-juice-left-out-overnight/",
+      "destination": "/how-long-does-homemade-vegetable-juice-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/baby-food-dinners-left-out-overnight/",
+      "destination": "/how-long-does-baby-food-dinners-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/baby-food-fruit-left-out-overnight/",
+      "destination": "/how-long-does-baby-food-fruit-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/baby-food-jars-pouches-left-out-overnight/",
+      "destination": "/how-long-does-baby-food-jars-pouches-last/#leftout",
+      "permanent": true
+    },
+    {
+      "source": "/miso-left-out-overnight/",
+      "destination": "/how-long-does-miso-last/#leftout",
+      "permanent": true
+    }
   ]
 }

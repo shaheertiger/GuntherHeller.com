@@ -98,8 +98,11 @@ for (const file of pages) {
 }
 for (const f of ["favicon.ico", "favicon.svg", "favicon-96x96.png", "apple-touch-icon.png", "site.webmanifest", "web-app-manifest-512x512.png"]) if (!existsSync(join(DIST, f))) errors.push(`missing ${f}`);
 
-// Word count: every English food and variant page carries at least 1,200 words of main content.
+// Word count: food pages (EN and localized) carry at least 1,200 words of main content. The three
+// question pages (freeze / go bad / left out) are deliberately focused and no longer repeat the food
+// page's long-form sections (Nov 2026 near-duplicate fix), so their floor is 650.
 const MIN_WORDS = 1200;
+const MIN_VARIANT = 650;
 const wordsIn = (html) => {
   const main = (html.match(/<main[\s\S]*?<\/main>/) ?? [html])[0].replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<svg[\s\S]*?<\/svg>/g, "");
   return (main.replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/gi, " ").match(/[\p{L}\p{N}][\p{L}\p{N}'’–-]*/gu) ?? []).length;
@@ -110,7 +113,8 @@ for (const file of pages) {
   if (!/^\/((how-long-does-.*-last|can-you-freeze-.+|does-.+-go-bad|[^/]+-left-out-overnight)|(es\/cuanto-dura|de\/haltbarkeit|fr\/conservation|pt-br\/quanto-dura)-.+)\/$/.test(rel)) continue;
   const n = wordsIn(readFileSync(file, "utf8"));
   minSeen = Math.min(minSeen, n);
-  if (n < MIN_WORDS) { thin++; if (thin <= 10) errors.push(`${rel}: only ${n} words (min ${MIN_WORDS})`); }
+  const min = /^\/(can-you-freeze-|does-.+-go-bad|[^/]+-left-out-overnight)/.test(rel) ? MIN_VARIANT : MIN_WORDS;
+  if (n < min) { thin++; if (thin <= 10) errors.push(`${rel}: only ${n} words (min ${min})`); }
 }
 if (thin > 10) errors.push(`…${thin - 10} more pages under ${MIN_WORDS} words`);
 
