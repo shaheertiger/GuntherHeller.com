@@ -35,7 +35,7 @@ import { freezeVerdict } from "../lib/content";
 import { freezerFacts } from "../lib/data";
 import { cellsFor } from "../lib/data";
 import enStrings from "../../data/i18n/en.json";
-import { type Food, url, getCategory, similarFoods, lc, does, titleCase, cap1, hasFreezePage, hasLeftOutPage } from "../lib/data";
+import { askFor, type Food, url, getCategory, similarFoods, lc, does, titleCase, cap1, hasFreezePage, hasLeftOutPage } from "../lib/data";
 import { foodTitle, foodDescription, quoteFor, methodsFor, datesFor, storeTipsFor, faqFor } from "../lib/content";
 import { foodGraph } from "../lib/schema";
 import { SITE } from "../lib/site";
@@ -61,12 +61,13 @@ const crumbs = [
 const qaSeen = new Set(modifierQA(f).map(([q]) => q.toLowerCase().replace(/[^a-z]/g, "")));
 const faq = faqFor(f).filter(([q]) => !qaSeen.has(q.toLowerCase().replace(/[^a-z]/g, "")));
 const cmp = compareSentences(f);
+const ask = askFor(f);
 const similar = similarFoods(f, 8);
 const dates = datesFor(f);
 const methods = methodsFor(f);
 const quote = quoteFor(f);
 const pf = figsFor(path)!;
-const ld = foodGraph({ food: f, path, title, headline: h1, description, crumbs, faq, figures: [pf.hero, ...pf.figures] });
+const ld = foodGraph({ food: f, path, title, headline: h1, description, crumbs, faq: [...faq, ...ask], figures: [pf.hero, ...pf.figures] });
 const sourceIsFk = f.source.name.startsWith("USDA");
 const c0 = cellsFor(f, f.states[0], 0);
 const fv = freezeVerdict(f);
@@ -307,6 +308,20 @@ const tools = [
           </p>
         </section>
 
+
+        {ask.length > 0 && (
+          <section id="ask" class="mt-8 md:mt-14">
+            <SectionHead icon="question" tint="var(--color-tint-amber)" ink="#8a5a0c" eyebrow="People also ask">{`More questions about ${name}`}</SectionHead>
+            <div class="grid gap-3 mt-[18px]">
+              {ask.map(([q, a]) => (
+                <div class="soft p-4 md:p-5 border border-line">
+                  <h3 class="!text-[17px] !tracking-[-0.01em]">{q}</h3>
+                  <p class="text-[15px] text-[#3f3f46] mt-1.5">{a}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section id="faq" class="mt-8 md:mt-14">
           <SectionHead icon="question" tint="var(--color-tint-lilac)" ink="#4a3bd2" eyebrow="Questions people ask">{cap1(name)} FAQ</SectionHead>
