@@ -98,11 +98,11 @@ for (const file of pages) {
 }
 for (const f of ["favicon.ico", "favicon.svg", "favicon-96x96.png", "apple-touch-icon.png", "site.webmanifest", "web-app-manifest-512x512.png"]) if (!existsSync(join(DIST, f))) errors.push(`missing ${f}`);
 
-// Word count: food pages (EN and localized) carry at least 1,200 words of main content. The three
+// Word count: food pages (EN and localized) carry at least 900 words of main content (Nov 2026: group-level copy moved to the hubs; NutriScan pages run 1,200–1,800). The three
 // question pages (freeze / go bad / left out) are deliberately focused and no longer repeat the food
-// page's long-form sections (Nov 2026 near-duplicate fix), so their floor is 650.
-const MIN_WORDS = 1200;
-const MIN_VARIANT = 650;
+// page's long-form sections (Nov 2026 near-duplicate fix), so their floor is 560 (a "no, don't freeze lettuce" answer is short by nature).
+const MIN_WORDS = 900;
+const MIN_VARIANT = 560;
 const wordsIn = (html) => {
   const main = (html.match(/<main[\s\S]*?<\/main>/) ?? [html])[0].replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<svg[\s\S]*?<\/svg>/g, "");
   return (main.replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/gi, " ").match(/[\p{L}\p{N}][\p{L}\p{N}'’–-]*/gu) ?? []).length;
@@ -125,6 +125,35 @@ if (!rice.includes(`<title>${expectTitle}</title>`)) errors.push(`cooked rice: t
 for (const t of ["4–6 days", "6 months", "2 hours", "Cooked rice lasts"]) if (!rice.includes(t)) errors.push(`cooked rice: answer text "${t}" missing`);
 for (const t of ['"Article"', '"BreadcrumbList"', '"FAQPage"', '"Organization"', '"Dataset"', '"PropertyValue"']) if (!rice.includes(t)) errors.push(`cooked rice: JSON-LD ${t} missing`);
 for (const f of ["robots.txt", "ads.txt", "sitemap.xml", "og.png", "404.html", "search-index.json"]) if (!existsSync(join(DIST, f))) errors.push(`missing ${f}`);
+
+// Near-duplicate check (Nov 2026, from the NutriScan/EatBetter study): two food pages should share
+// little text once the food name is masked. NutriScan's pages share ~2–3%; ours were ~26% (median).
+// 5-gram Jaccard over 80 fixed pairs of English food pages. Warn above 25%, fail above 35%.
+{
+  const foodPages = pages.filter((f) => /\/how-long-does-.+-last\/index\.html$/.test(f)).sort();
+  const body = (f) => {
+    const name = f.match(/how-long-does-(.+)-last/)[1].replace(/-/g, " ");
+    const h = readFileSync(f, "utf8").replace(/<(script|style|svg|nav|header|footer)[^>]*>[\s\S]*?<\/\1>/g, " ");
+    const main = (h.match(/<main[\s\S]*?<\/main>/) ?? [h])[0].replace(/<[^>]+>/g, " ").toLowerCase().split(name).join(" x ");
+    const w = main.match(/[a-z]+/g) ?? [];
+    const set = new Set();
+    for (let i = 0; i + 5 <= w.length; i++) set.add(w.slice(i, i + 5).join(" "));
+    return set;
+  };
+  const jac = [];
+  for (let k = 0; k < 80 && foodPages.length > 2; k++) {
+    const a = foodPages[(k * 37) % foodPages.length], b = foodPages[(k * 101 + 13) % foodPages.length];
+    if (a === b) continue;
+    const A = body(a), B = body(b);
+    let inter = 0; for (const g of A) if (B.has(g)) inter++;
+    jac.push((inter / (A.size + B.size - inter)) * 100);
+  }
+  jac.sort((x, y) => x - y);
+  const med = jac[jac.length >> 1] ?? 0;
+  console.log(`check-build: food-page overlap (name masked) median ${med.toFixed(1)}%, max ${(jac.at(-1) ?? 0).toFixed(1)}%`);
+  if (med > 35) errors.push(`food pages share ${med.toFixed(1)}% of their text (median) — near-duplicate risk`);
+  else if (med > 25) warn.push(`food pages share ${med.toFixed(1)}% of their text (median); aim for under 15%`);
+}
 
 const css = files.filter((f) => f.endsWith(".css")).reduce((n, f) => n + statSync(f).size, 0);
 const inlineCss = (rice.match(/<style[^>]*>([\s\S]*?)<\/style>/g) ?? []).join("").length;
