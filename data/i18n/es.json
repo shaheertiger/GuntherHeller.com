@@ -98,7 +98,7 @@
   "inPantry": "en la despensa",
   "inFreezer": "en el congelador",
   "title": "{h1} {d} {where}",
-  "titleFreezer": " [Congelador {d}]",
+  "titleFreezer": ", {d} en el congelador",
   "desc": [
    "{Q} dura {d} {where}.",
    "{Q} duran {d} {where}."

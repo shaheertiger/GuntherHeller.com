@@ -98,7 +98,7 @@
   "inPantry": "im Vorratsschrank",
   "inFreezer": "im Gefrierschrank",
   "title": "{h1} {d} {where}",
-  "titleFreezer": " [Gefrierschrank: {d}]",
+  "titleFreezer": ", eingefroren {d}",
   "desc": [
    "{Q} hält sich {d} {where}.",
    "{Q} halten sich {d} {where}."

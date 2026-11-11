@@ -98,7 +98,7 @@
   "inPantry": "no armário",
   "inFreezer": "no freezer",
   "title": "{h1} {d} {where}",
-  "titleFreezer": " [Freezer: {d}]",
+  "titleFreezer": ", {d} no freezer",
   "desc": [
    "{Q} dura {d} {where}.",
    "{Q} duram {d} {where}."
