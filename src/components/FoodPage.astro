@@ -25,11 +25,9 @@ import CompareChart from "./fun/CompareChart.astro";
 import ToolsCta from "./fun/ToolsCta.astro";
 import LongForm from "./LongForm.astro";
 import Checker from "./fun/Checker.astro";
-import Quiz from "./fun/Quiz.astro";
 import Checklist from "./fun/Checklist.astro";
-import { freezerChecks, counterChecks, quizFor, checklistFor } from "../lib/interactive";
-import { faqExtraFor } from "../lib/longform";
-import { modifierQA, thawFor, reheatFor, zoneFor } from "../lib/content";
+import { freezerChecks, counterChecks, checklistFor } from "../lib/interactive";
+import { modifierQA, thawFor, reheatFor, zoneFor, compareSentences } from "../lib/content";
 import { range } from "../lib/viz";
 import { primaryFridge, fmt, isNum, FOODS } from "../lib/data";
 import { timelineBars, perishLevel, checker, VIZ_EN as V } from "../lib/viz";
@@ -60,7 +58,9 @@ const crumbs = [
   ...(sub ? [{ name: sub.name, href: url.sub(cat.slug, sub.slug) }] : []),
   { name: f.name },
 ];
-const faq = [...faqFor(f), ...faqExtraFor(f)];
+const qaSeen = new Set(modifierQA(f).map(([q]) => q.toLowerCase().replace(/[^a-z]/g, "")));
+const faq = faqFor(f).filter(([q]) => !qaSeen.has(q.toLowerCase().replace(/[^a-z]/g, "")));
+const cmp = compareSentences(f);
 const similar = similarFoods(f, 8);
 const dates = datesFor(f);
 const methods = methodsFor(f);
@@ -85,7 +85,6 @@ const fr = range(f.states[0].fridge);
 const qa = modifierQA(f);
 const fzChecks = freezerChecks(f);
 const ctChecks = counterChecks(f);
-const quiz = quizFor(f);
 const thaw = isNum(freezerFacts(f)) ? thawFor(f) : null;
 const reheat = reheatFor(f);
 const zone = zoneFor(f);
@@ -95,7 +94,7 @@ const compare = [f, ...similar.slice(0, 6)].map((x) => ({ x, l: lifeOf(x) })).fi
 
 const toc = [
   ["answer", "Quick answer"], ["glance", "At a glance"], ["check", "Check your food"], ["about", "About it"], ["methods", "Storage times by method"], ["where", "Where to store it"], ["qa", "Questions answered"], ["bad", "Signs it has gone bad"], ["freeze", "Can you freeze it?"],
-  ["leftout", "Left out overnight"], ["dates", "Date labels"], ["store", "How to store it"], ["similar", "Similar foods"], ["quiz", "Quiz"], ["faq", "FAQ"],
+  ["leftout", "Left out overnight"], ["dates", "Date labels"], ["store", "How to store it"], ["similar", "Similar foods"], ["faq", "FAQ"],
 ];
 const related = [
   hasFreezePage(f) && { href: url.freeze(f), label: `Can you freeze ${name}?` },
@@ -195,6 +194,7 @@ const tools = [
               </tbody>
             </table>
           </div>
+          <p class="mt-3 text-sm text-muted">Times assume a fridge at 4°C (40°F) or colder and a freezer at -18°C (0°F).</p>
         </section>
 
 
@@ -225,7 +225,6 @@ const tools = [
           <p class="mt-3 text-sm"><a href={url.bad(f)} class="link">{does(f)} {name} go bad? Full guide →</a></p>
         </section>
 
-        <LongForm food={f} parts={["spoil", "mistakes"]} />
 
         <section id="freeze" class="mt-8 md:mt-14">
           <SectionHead icon="freezer" tint="var(--color-tint-blue)" ink="#2f5fbf" eyebrow="Freezing">Can you freeze {name}?</SectionHead>
@@ -285,12 +284,12 @@ const tools = [
           ))}</ul>
         </section>
 
-        <LongForm food={f} parts={["buying"]} />
 
-        {compare.length >= 3 && (
+        {(compare.length >= 3 || cmp.length > 0) && (
           <section id="compare" class="mt-8 md:mt-14">
-            <SectionHead icon="scale" tint="var(--color-tint-lilac)" ink="#4a3bd2" eyebrow="How it compares">{cap1(name)} vs similar foods</SectionHead>
-            <CompareChart rows={compare} title="Longest recommended storage time (fridge, or pantry for shelf-stable foods)" note="Same scale as the timeline above: 1 hour to 2 years." />
+            <SectionHead icon="scale" tint="var(--color-tint-lilac)" ink="#4a3bd2" eyebrow="How it compares">{`How long ${does(f).toLowerCase()} ${name} last compared with similar foods?`}</SectionHead>
+            {cmp.length > 0 && <div class="mt-[18px] grid gap-2 text-[16px] leading-[1.7] text-[#3f3f46]">{cmp.map((t) => <p>{t}</p>)}</div>}
+            {compare.length >= 3 && <CompareChart rows={compare} title="Longest recommended storage time (fridge, or pantry for shelf-stable foods)" note="Same scale as the timeline above: 1 hour to 2 years." />}
           </section>
         )}
 
@@ -308,10 +307,6 @@ const tools = [
           </p>
         </section>
 
-        <section id="quiz" class="mt-8 md:mt-14">
-          <SectionHead icon="spark" tint="var(--color-tint-lilac)" ink="#4a3bd2" eyebrow="Quick quiz">{`True or false? ${cap1(name)} myths`}</SectionHead>
-          <Quiz id={`qz-${f.slug}`} items={quiz} />
-        </section>
 
         <section id="faq" class="mt-8 md:mt-14">
           <SectionHead icon="question" tint="var(--color-tint-lilac)" ink="#4a3bd2" eyebrow="Questions people ask">{cap1(name)} FAQ</SectionHead>

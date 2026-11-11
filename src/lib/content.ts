@@ -2,7 +2,7 @@
  * Generated copy. Every number comes from the FoodKeeper record; the prose around it comes
  * from per-kind templates below. Anything in data/overrides.json → content[slug] wins.
  */
-import { FOODS, type Food, type State, contentFor, fmt, isNum, days, lc, lasts, does, isAre, itThey, titleCase, cap1, freezerFacts, cellsFor } from "./data";
+import { FOODS, type Food, type State, contentFor, fmt, isNum, days, lc, lasts, does, isAre, itThey, titleCase, cap1, freezerFacts, cellsFor, getCategory, type Dur } from "./data";
 
 type Sign = { title: string; text: string; icon: string };
 const ICON = {
@@ -270,7 +270,6 @@ export function faqFor(f: Food): [string, string][] {
   const safe = f.cooking.find((x) => x.safeTempF);
   if (safe) add(`What temperature should ${name} be cooked to?`, `${safe.safeTempF}°F (${Math.round(((safe.safeTempF! - 32) * 5) / 9)}°C) minimum internal temperature, checked with a food thermometer.`);
   add(`${does(f)} ${name} go bad past the date?`, datesFor(f).opened.title === "Past the date" ? datesFor(f).opened.text : datesFor(f).unopened.text);
-  add(`Where do these numbers come from?`, `USDA FoodKeeper, the storage database maintained by the Food Safety and Inspection Service. We last checked this page in the current release.`);
   return out.slice(0, 6).map(([q, a]) => [q, trimWords(a, 50)]);
 }
 const trimWords = (s: string, n: number) => {
@@ -460,4 +459,62 @@ export function variantDescription(f: Food, v: "freeze" | "bad" | "leftOut", d: 
   if (out.length < 135 && v === "leftOut") out += ` The USDA 2-hour rule explained.`;
   if (out.length < 135 && v === "freeze") out += ` Plus how to avoid freezer burn.`;
   return out;
+}
+
+/* ---------------------------------------------------------------- computed comparisons (Nov 2026)
+ * Every food page gets numbers that only it can have: where its fridge and freezer times rank
+ * among the foods in its own category. Same idea as EatBetter's per-page computed scores and
+ * brand-hub stats: unique, checkable data instead of repeated prose. */
+const maxDays = (d: Dur | null | undefined) => (isNum(d) ? d.max * ({ hours: 1 / 24, days: 1, weeks: 7, months: 30, years: 365 } as const)[d.unit] : null);
+const fridgeOf = (x: Food) => maxDays(x.states[0].fridge) ?? maxDays(x.states.find((s) => s.fridge)?.fridge);
+const freezerOf = (x: Food) => maxDays(x.states.find((s) => isNum(s.freezer))?.freezer);
+const plu = (n: number, w: string) => `${n} ${w}${n === 1 ? "" : "s"}`;
+const human = (d: number) => (d < 1 ? plu(Math.round(d * 24), "hour") : d < 14 ? plu(+d.toFixed(d < 3 ? 1 : 0), "day") : d < 60 ? plu(Math.round(d / 7), "week") : d < 365 ? plu(Math.round(d / 30), "month") : plu(+(d / 365).toFixed(1), "year"));
+const median = (a: number[]) => { const s = [...a].sort((x, y) => x - y); const m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
+
+export function compareStats(f: Food) {
+  const pool = FOODS.filter((x) => x.category === f.category);
+  const sub = f.subcategory ? pool.filter((x) => x.subcategory === f.subcategory) : [];
+  const group = sub.length >= 6 ? sub : pool;
+  const groupName = (sub.length >= 6 ? getCategory(f.category).subcategories.find((s) => s.slug === f.subcategory)?.name : getCategory(f.category).name) ?? getCategory(f.category).name;
+  const rank = (get: (x: Food) => number | null) => {
+    const me = get(f);
+    const rows = group.map((x) => ({ x, d: get(x) })).filter((r): r is { x: Food; d: number } => r.d != null);
+    if (me == null || rows.length < 5) return null;
+    const shorter = rows.filter((r) => r.d < me).length;
+    const longer = rows.filter((r) => r.d > me).sort((a, b) => a.d - b.d);
+    const sorted = [...rows].sort((a, b) => b.d - a.d);
+    return { me, n: rows.length, pct: Math.round((shorter / rows.length) * 100), med: median(rows.map((r) => r.d)), next: longer[0]?.x, top: sorted[0].x === f ? sorted[1]?.x : sorted[0].x, topD: sorted[0].x === f ? sorted[1]?.d : sorted[0].d, low: sorted.at(-1)!.x === f ? sorted.at(-2)?.x : sorted.at(-1)!.x, lowD: sorted.at(-1)!.x === f ? sorted.at(-2)?.d : sorted.at(-1)!.d };
+  };
+  return { groupName: groupName.toLowerCase(), fridge: rank(fridgeOf), freezer: rank(freezerOf) };
+}
+
+/** Plain-English sentences built from compareStats. */
+export function compareSentences(f: Food): string[] {
+  const name = lc(f);
+  const { groupName, fridge, freezer } = compareStats(f);
+  const out: string[] = [];
+  if (fridge) {
+    const vs = fridge.me > fridge.med * 1.15 ? "longer than" : fridge.me < fridge.med * 0.85 ? "shorter than" : "about the same as";
+    out.push(`At up to ${human(fridge.me)} in the fridge, ${name} ${f.plural ? "keep" : "keeps"} ${vs} the typical food in ${groupName} (median ${human(fridge.med)} across the ${fridge.n} we track). ${fridge.pct >= 50 ? `${cap1(name)} outlast${f.plural ? "" : "s"} ${fridge.pct}% of them.` : `${100 - fridge.pct}% of them last at least as long.`}`);
+    if (fridge.top && fridge.low) out.push(`In this group, ${lc(fridge.top)} keep${fridge.top.plural ? "" : "s"} longest (${human(fridge.topD!)}) and ${lc(fridge.low)} the shortest (${human(fridge.lowD!)}).${fridge.next ? ` If you need a little more time, ${lc(fridge.next)} ${fridge.next.plural ? "last" : "lasts"} ${human(fridgeOf(fridge.next)!)}.` : ""}`);
+  }
+  if (freezer) out.push(`Frozen, ${name} ${f.plural ? "keep" : "keeps"} best quality for up to ${human(freezer.me)}, ${freezer.pct >= 50 ? `longer than ${freezer.pct}%` : `shorter than ${100 - freezer.pct}%`} of the ${freezer.n} ${groupName} foods with a freezer time (median ${human(freezer.med)}).`);
+  return out;
+}
+
+/** Category hub quick answers: computed from the foods in the hub. */
+export function hubStats(foods: Food[]) {
+  const fr = foods.map((x) => ({ x, d: fridgeOf(x) })).filter((r): r is { x: Food; d: number } => r.d != null).sort((a, b) => a.d - b.d);
+  const fz = foods.map((x) => ({ x, d: freezerOf(x) })).filter((r): r is { x: Food; d: number } => r.d != null).sort((a, b) => a.d - b.d);
+  const freezes = foods.filter((x) => freezeVerdict(x).tone === "yes").length;
+  const perishable = foods.filter((x) => x.perishable).length;
+  return {
+    n: foods.length,
+    shortest: fr[0] && { f: fr[0].x, label: human(fr[0].d) },
+    longest: fr.at(-1) && { f: fr.at(-1)!.x, label: human(fr.at(-1)!.d) },
+    median: fr.length ? human(median(fr.map((r) => r.d))) : null,
+    freezerLongest: fz.at(-1) && { f: fz.at(-1)!.x, label: human(fz.at(-1)!.d) },
+    freezes, perishable,
+  };
 }

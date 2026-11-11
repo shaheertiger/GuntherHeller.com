@@ -24,10 +24,10 @@ import Quiz from "./fun/Quiz.astro";
 import Checklist from "./fun/Checklist.astro";
 import { freezerChecks, counterChecks, quizFor, checklistFor } from "../lib/interactive";
 import SectionHead from "./fun/SectionHead.astro";
-import { faqExtraFor, freezeScienceFor, scenariosFor, datesExplained } from "../lib/longform";
 import FridgeMap from "./fun/FridgeMap.astro";
 import { zoneFor } from "../lib/content";
-import { methodsFor, moldRuleFor, badScenariosFor, variantFaq, variantTitle, variantDescription } from "../lib/content";
+import { methodsFor, moldRuleFor, badScenariosFor, variantFaq, variantTitle, variantDescription, compareSentences } from "../lib/content";
+import { freezeScienceFor, scenariosFor, datesExplained } from "../lib/longform";
 import { modifierQA } from "../lib/content";
 import Fig from "./Fig.astro";
 import { figsFor } from "../figures/cards";
@@ -92,11 +92,8 @@ if (variant === "freeze") {
   ];
 }
 {
-  const extra = faqExtraFor(f);
-  const pick = (re: RegExp) => extra.filter(([q]) => re.test(q));
-  const more = variant === "freeze" ? pick(/temperature|container/) : variant === "bad" ? pick(/smell|container|temperature/) : pick(/smell|temperature/);
   const seen = new Set<string>();
-  faq = [...faq, ...variantFaq(f, variant), ...more].filter(([q]) => !seen.has(q.toLowerCase()) && !!seen.add(q.toLowerCase()));
+  faq = [...faq, ...variantFaq(f, variant)].filter(([q]) => !seen.has(q.toLowerCase()) && !!seen.add(q.toLowerCase()));
 }
 const qa = modifierQA(f);
 const fzChecks = freezerChecks(f);
@@ -110,6 +107,8 @@ const crumbs = [{ name: "Home", href: "/" }, { name: cat.name, href: url.categor
 const pf = figsFor(path)!;
 const ld = foodGraph({ food: f, path, title, headline: h1, description, crumbs, faq, figures: [pf.hero, ...pf.figures] });
 const similar = similarFoods(f, 4);
+const cmp = compareSentences(f);
+const cmpShown = variant === "freeze" ? cmp.filter((t) => /^Frozen/.test(t)).concat(cmp.filter((t) => !/^Frozen/.test(t)).slice(0, 1)) : cmp.filter((t) => !/^Frozen/.test(t));
 const sameQ = similarFoods(f, 10).filter((s) => s.slug !== f.slug && (variant === "bad" || (variant === "freeze" ? hasFreezePage(s) : hasLeftOutPage(s)))).slice(0, 8)
   .map((s) => ({ href: url[variant](s), label: variant === "freeze" ? `Can you freeze ${lc(s)}?` : variant === "bad" ? `${does(s)} ${lc(s)} go bad?` : `${cap1(lc(s))} left out overnight` }));
 const hubFor = variant === "freeze" ? "/can-you-freeze/" : variant === "bad" ? "/does-it-go-bad/" : "/left-out-overnight/";
@@ -176,12 +175,23 @@ const pill = (t: string) => (t === "yes" || t === "keep" ? "pill-yes" : t === "n
               <h2 class="h2-food">Freezer vs fridge vs counter</h2>
               <Fig cards={pf.at("vs-compare")} />
               <div class="mt-[18px]"><AnswerCard food={f} id="compare" /></div>
+              <div class="mt-4 grid gap-2 text-[16px] leading-[1.7] text-[#3f3f46]">
+                {cmpShown.map((t) => <p>{t}</p>)}
+                <p>{`These times assume a freezer at -18°C (0°F) and a fridge at 4°C (40°F) or colder; a warmer fridge shortens the ${name} fridge window.`}</p>
+              </div>
             </section>
           </>
         )}
 
         {variant === "bad" && (
           <>
+            <section id="how-fast" class="mt-8 md:mt-12">
+              <h2 class="h2-food">{`How fast ${does(f).toLowerCase()} ${name} go bad compared with similar foods?`}</h2>
+              <div class="mt-[18px] grid gap-2 text-[16px] leading-[1.7] text-[#3f3f46]">
+                {cmpShown.map((t) => <p>{t}</p>)}
+                <p>{`All times assume a fridge at 4°C (40°F) or colder and a freezer at -18°C (0°F). Every few degrees warmer shortens how long ${name} ${f.plural ? "keep" : "keeps"}.`}</p>
+              </div>
+            </section>
             <section id="how-tell" class="mt-8 md:mt-12">
               <h2 class="h2-food">How to tell if {name} {f.plural ? "are" : "is"} bad</h2>
               <Fig cards={pf.at("how-tell")} />

@@ -159,8 +159,10 @@ export function aboutFor(f: Food): string[] {
   const pl = f.plural;
   const source = f.derivedNote ? ` ${f.derivedNote}` : f.fkName && f.fkName !== f.name ? ` In the USDA FoodKeeper database ${pl ? "they are" : "it is"} listed as “${f.fkName}”.` : "";
   const intro = `${f.name} ${pl ? "belong" : "belongs"} to our ${cat.toLowerCase()} category.${source} ${list ? `According to USDA FoodKeeper${f.extraSource ? ` and the ${f.extraSource.name}` : ""}, ${itThey(f)} ${pl ? "keep" : "keeps"} ${list}.` : ""} ${notes.join(" ")} ${f.perishable ? `Like all perishable food, ${pl ? "they" : "it"} should not sit at room temperature for more than 2 hours.` : `${pl ? "They are" : "It is"} not a high-risk perishable food, so the main concern is quality rather than safety.`} Where to keep ${pl ? "them" : "it"}: ${zone.why.charAt(0).toLowerCase()}${zone.why.slice(1)}`.replace(/\s+/g, " ");
-  return [intro, c.about];
+  // The group explainer (c.about) now lives once on the category hub, not on every food page.
+  return [intro];
 }
+export const aboutGroup = (f: Food) => copyFor(f).about;
 export const spoilFor = (f: Food) => copyFor(f).spoil;
 export const mistakesFor = (f: Food) => copyFor(f).mistakes;
 export const buyingFor = (f: Food) => copyFor(f).buying;
