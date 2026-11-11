@@ -224,7 +224,9 @@ export function foodTitle(f: Food) {
   const h = headline(f);
   const fz = freezerFacts(f);
   const fzPart = fz && isNum(fz) ? ` [Freezer ${titleCase(fmt(fz)!)}]` : "";
-  return `How Long ${does(f)} ${titleCase(f.name)} Last? ${titleCase(h.value)} ${h.where}${fzPart}`;
+  const base = `How Long ${does(f)} ${titleCase(f.name)} Last? ${titleCase(h.value)} ${h.where}`;
+  // Keep the freezer time only while the title still fits; Google cuts titles near 70 characters.
+  return (base + fzPart).length <= 75 ? base + fzPart : base;
 }
 export function foodDescription(f: Food) {
   const s = f.states[0];
@@ -243,7 +245,8 @@ export function foodDescription(f: Food) {
     if (v) d += ` ${t.label}: ${v}.`;
   } else if (s.pantry && !isNum(s.pantry)) d += ` On the counter: ${s.pantry.text.toLowerCase()}.`;
   d += ` Signs ${f.plural ? "they've" : "it's"} gone bad, freezing tips.`;
-  return cap(d);
+  if (d.length < 130) d += ` Checked against USDA FoodKeeper.`;
+  return cap(d, 160);
 }
 
 /* ---------------------------------------------------------------- FAQ */
@@ -361,4 +364,100 @@ export function zoneFor(f: Food): { zone: Zone; why: string } {
   if (g === "condiment" || g === "drink") return { zone: "door", why: "The door is the warmest part of the fridge, fine for condiments and drinks that resist spoilage." };
   if (g === "dairy" || g === "eggs" || g === "cheese" || g === "fat") return { zone: "middle", why: "A middle shelf is best, not the door: the door warms up every time it opens." };
   return { zone: "top", why: "Ready-to-eat and cooked food goes on the upper shelves, above anything raw." };
+}
+
+/* ---------------------------------------------------------------- variant pages: content only they carry */
+
+/**
+ * What to do with mould, from USDA FSIS "Molds on Food: Are They Dangerous?". Hard cheese and firm
+ * produce: cut 1 inch around and below the spot. Hard salami and dry-cured country ham: scrub the
+ * surface mould off. Everything else (soft, moist, cooked, sliced, bakery, jams, nuts…): discard.
+ */
+const FIRM_PRODUCE = /\b(cabbage|carrots?|bell peppers?|peppers?|potato(es)?|sweet potato(es)?|turnips?|rutabagas?|parsnips?|beets?|radish(es)?|kohlrabi|celery root|celeriac|cauliflower|broccoli|brussels sprouts|onions?|garlic|ginger|jicama|winter squash|butternut|acorn squash|pumpkins?|apples?|pears?)\b/i;
+const DRY_CURED = /\b(hard salami|salami|pepperoni|country ham|dry[- ]cured|prosciutto)\b/i;
+export function moldRuleFor(f: Food): { q: string; verdict: "cut" | "scrub" | "discard"; label: string; text: string } {
+  const name = lc(f);
+  const them = itThey(f) === "they" ? "them" : "it";
+  const q = `Can you eat ${name} with mould on ${them}?`;
+  const firmProduce = (f.kind === "vegetable" || f.kind === "fruit") && FIRM_PRODUCE.test(f.name) && !/cooked|cut|sliced|chopped|mashed|juice|canned|dried/i.test(f.name);
+  if (f.kind === "hard-cheese" && !/shredded|grated|sliced|crumbled/i.test(f.name))
+    return { q, verdict: "cut", label: "Cut it off", text: `Yes, if it's a small spot. USDA says mould can't easily get far into hard cheese like ${name}: cut off at least 1 inch (2.5 cm) around and below the spot, keep the knife out of the mould so you don't spread it, and rewrap the cheese in fresh wrap. If mould covers much of the piece, throw it out.` };
+  if (firmProduce)
+    return { q, verdict: "cut", label: "Cut it off", text: `Usually, if it's a small spot. USDA puts firm, low-moisture produce like ${name} in the "cut it off" group: remove at least 1 inch (2.5 cm) around and below the mould. If ${itThey(f)} ${f.plural ? "are" : "is"} soft, wet or mouldy in several places, discard ${them}.` };
+  if (f.kind === "cured-meat" && DRY_CURED.test(f.name))
+    return { q, verdict: "scrub", label: "Scrub the surface", text: `USDA says it's normal for hard salami and dry-cured country hams to have surface mould: scrub it off before using. Discard ${them} if the inside is mouldy, slimy or smells off.` };
+  return { q, verdict: "discard", label: "Throw it out", text: `No. USDA says to discard ${name} with mould: in soft, moist or processed food the mould's roots reach well below the spot you can see, and harmful bacteria can grow alongside it. Don't sniff ${them} (spores can irritate your airways); bag ${them}, throw ${them} away, and wipe the spot in the fridge or cupboard where ${itThey(f)} sat.` };
+}
+
+/** "Is it still OK if…" situations, built only from this food's own numbers. */
+export function badScenariosFor(f: Food): [string, string][] {
+  const name = lc(f);
+  const them = itThey(f) === "they" ? "them" : "it";
+  const s0 = f.states[0];
+  const fr = fmt(s0.fridge);
+  const fz = freezerFacts(f);
+  const op = f.states.find((s) => s.key === "opened");
+  const out: [string, string][] = [];
+  if (f.perishable) {
+    out.push([`It's a few days past the date on the pack`, `The date mostly tracks quality. What matters for ${name} is time in the fridge: ${fr ? `${fr.toLowerCase()} at 40°F (4°C)` : "the window on the pack"}. Inside that window and showing no signs, ${itThey(f)}'${f.plural ? "re" : "s"} usually fine; past it, discard ${them} even if ${itThey(f)} look${f.plural ? "" : "s"} normal.`]);
+    out.push([`It feels slimy or sticky`, `Throw ${them} out. A slimy or tacky film on ${name} is bacterial growth, and rinsing doesn't remove what's already in the food.`]);
+  } else {
+    out.push([`It's past the best-by date`, `For a shelf-stable food like ${name}, the date is about quality, not safety. Check for an off smell, rancid or stale taste, pests or mould; if none, ${itThey(f)}'${f.plural ? "re" : "s"} generally safe, if less fresh.`]);
+    out.push([`It smells stale or rancid`, `That's quality loss (oils oxidising or moisture getting in) rather than a safety problem in most cases, but ${name} won't taste right. Replace ${them}, and store the next batch airtight and away from heat.`]);
+  }
+  if (op && op.fridge) out.push([`It's been open in the fridge a while`, `Once opened, ${name} ${f.plural ? "keep" : "keeps"} ${fmt(op.fridge)!.toLowerCase()} in the fridge. Write the opening date on the lid so you're not guessing.`]);
+  if (fz && isNum(fz)) out.push([`It's been in the freezer longer than ${fmt(fz)!.toLowerCase()}`, `Still safe if it stayed frozen at 0°F (-18°C) the whole time; the ${fmt(fz)!.toLowerCase()} figure is for best quality. Expect drier texture or freezer burn, and trim any grey-brown dry patches.`]);
+  return out.slice(0, 4);
+}
+
+/** Extra FAQ that only fits the variant's own question. */
+export function variantFaq(f: Food, v: "freeze" | "bad" | "leftOut"): [string, string][] {
+  const name = lc(f);
+  const them = itThey(f) === "they" ? "them" : "it";
+  const fr = fmt(f.states[0].fridge)?.toLowerCase();
+  if (v === "bad") {
+    const m = moldRuleFor(f);
+    return [
+      [m.q, m.text],
+      [`How long ${does(f).toLowerCase()} ${name} last once opened?`, (() => { const op = f.states.find((s) => s.key === "opened"); return op?.fridge ? `${fmt(op.fridge)} in the fridge after opening, per USDA FoodKeeper.` : fr ? `Treat it as ${fr} in the fridge from the day you open or cook it.` : `Follow the package date and check for signs before using.`; })()],
+    ];
+  }
+  if (v === "freeze") return [
+    [`What is freezer burn on ${name}?`, `Dry, greyish-brown patches where air reached the surface and moisture evaporated. It isn't unsafe; trim the patches. Wrap ${them} airtight and press out the air to prevent it.`],
+    [`Should you label frozen ${name}?`, `Yes. Write the name and the date on the bag before freezing, so you know when ${itThey(f)} ${f.plural ? "pass" : "passes"} the best-quality window.`],
+  ];
+  return [
+    [`Does the 2-hour rule apply to ${name} that ${f.plural ? "were" : "was"} cooked and cooling?`, `Yes. Hot food counts too: get it into the fridge within 2 hours of cooking, in shallow containers so it cools fast. You don't need to wait for it to reach room temperature first.`],
+    [`What if ${name} ${f.plural ? "were" : "was"} out in a cold room overnight?`, `If the room stayed below 40°F (4°C) the whole time, the 2-hour rule doesn't apply, but most kitchens are warmer than that overnight. Without a thermometer reading, treat it as room temperature and discard ${them}.`],
+  ];
+}
+
+/** Title fixes: answer inside the first ~55 characters, nothing past 70. */
+export function variantTitle(f: Food, v: "freeze" | "bad" | "leftOut", t: string): string {
+  if (v === "bad") {
+    const hd = headline(f);
+    const D = does(f), N = titleCase(f.name);
+    const val = /^until/i.test(hd.value) ? "Use by the Date on the Pack" : `in ${titleCase(hd.value)} ${hd.where.replace(/^Unopened in the /, "Unopened, ").replace(/^in the /, "in the ")}`;
+    const long = `${D} ${N} Go Bad? Yes, ${val}`;
+    if (long.length <= 70) return long;
+    const short = `${D} ${N} Go Bad? Yes, ${/^until/i.test(hd.value) ? "by the Pack Date" : `in ${titleCase(hd.value)}`}`;
+    return short.length <= 70 ? short : `${D} ${N} Go Bad? Yes: How to Tell`;
+  }
+  if (t.length <= 70) return t;
+  return t.replace(/\s*\[[^\]]+\]$/, "").replace(/ — Here's Why$/, "");
+}
+
+/** Descriptions: 140–160 characters, answer first, a second useful fact. */
+export function variantDescription(f: Food, v: "freeze" | "bad" | "leftOut", d: string): string {
+  let out = d.replace(/\s+/g, " ").trim();
+  const name = lc(f);
+  if (v === "bad") {
+    const signs = signsFor(f).slice(0, 2).map((s) => s.title.toLowerCase());
+    const hd = headline(f);
+    const fz = freezerFacts(f);
+    out = `Yes, ${name} ${f.plural ? "go" : "goes"} bad: ${/^until/i.test(hd.value) ? "use by the pack date" : `${hd.value} ${hd.where.toLowerCase()}`}${fz && isNum(fz) ? `, ${fmt(fz)} frozen` : ""}. Check ${signs.join(" and ")} first, and what to do about mould.`;
+  }
+  if (out.length < 135 && v === "leftOut") out += ` The USDA 2-hour rule explained.`;
+  if (out.length < 135 && v === "freeze") out += ` Plus how to avoid freezer burn.`;
+  return out;
 }

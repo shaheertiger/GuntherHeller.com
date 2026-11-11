@@ -121,7 +121,12 @@ export const freezerFacts = (f: Food) => {
   return d ?? null;
 };
 export const hasFreezePage = (f: Food) => Boolean(freezerFacts(f));
-export const hasLeftOutPage = (f: Food) => f.perishable;
+import LEFTOUT_KEEP from "../../data/leftout-keep.json";
+/** "Left out overnight" pages only where people search for that food (Search Console or Semrush
+ *  impressions, or the priority list). Every one of these pages gives the same 2-hour answer, so a
+ *  page per perishable food read as near-duplicates; the rest 301 to the food's main page. */
+const LEFTOUT = new Set<string>(LEFTOUT_KEEP as string[]);
+export const hasLeftOutPage = (f: Food) => f.perishable && LEFTOUT.has(f.slug);
 
 export type Variant = "food" | "freeze" | "bad" | "leftOut";
 export function variantsOf(f: Food): Variant[] {
