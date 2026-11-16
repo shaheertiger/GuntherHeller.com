@@ -8,7 +8,7 @@ import Breadcrumb from "./Breadcrumb.astro";
 import NutrientTable from "./NutrientTable.astro";
 import {
   type NFood, NFOODS, nfood, ncat, nurl, summary, servingLabel, pageTitle, pageDescription, per, fmtN, val, lcName, cap,
-  MAIN, VITAMINS, MINERALS, SUGARS, FATS, AMINOS, OTHER, SOURCE_NAME, macroSplit,
+  MAIN, VITAMINS, MINERALS, SUGARS, FATS, AMINOS, OTHER, SOURCE_NAME, macroSplit, rankingsOf, rankingFor, servingLinks, servingUnits, NCATS,
 } from "../lib/nutrition";
 import { getFood, cellsFor, fmt, isNum, askFor } from "../lib/data";
 import { freezeVerdict, leftOutFor, signsFor, storeTipsFor, methodsFor, quoteFor } from "../lib/content";
@@ -25,7 +25,7 @@ const grams = S.s[1];
 const m = macroSplit(food);
 const name = food.name;
 const lname = lcName(food);
-const crumbs = [{ name: "Food", href: nurl.browse() }, { name: cat.name, href: nurl.cat(cat.slug) }, { name }];
+const crumbs = [{ name: "Browse", href: nurl.browse() }, { name: cat.name, href: nurl.cat(cat.slug) }, { name }];
 
 // Storage (FoodKeeper) for the foods it covers.
 const sf = food.storage ? getFood(food.storage) : undefined;
@@ -87,7 +87,10 @@ const jsonld = {
   ],
 };
 const img = sf && existsSync(`public/images/foods/${sf.slug}.webp`) ? { src: `/images/foods/${sf.slug}.webp`, src600: `/images/foods/${sf.slug}-600.webp`, w: 1200, h: 800, alt: `${name}` } : null;
-const units: [string, number][] = [...food.p, ["g", 1], ["oz", 28.35]];
+const units = servingUnits(food);
+const sLinks = servingLinks(food);
+const ranks = rankingsOf(food).slice(0, 6);
+const goodLinks = S.good.map((g) => ({ g, r: rankingFor(g.d.k) })).filter((x) => x.r);
 const donut = `conic-gradient(var(--color-counter) 0 ${m.carbs}%, var(--color-primary) ${m.carbs}% ${m.carbs + m.fat}%, var(--color-fridge) ${m.carbs + m.fat}% 100%)`;
 ---
 <Base title={title} description={description} path={path} jsonld={jsonld} ogType="article" ogImage={img ?? undefined}>
@@ -115,6 +118,12 @@ const donut = `conic-gradient(var(--color-counter) 0 ${m.carbs}%, var(--color-pr
           <li><span class="dot" style="background:var(--color-fridge)"></span> Protein <b>{m.protein}%</b> · <span data-v100={per100("203")} data-unit="g">{fmtN(per(per100("203"), grams), "g")}</span></li>
         </ul>
         <p class="mt-3 text-[16px]">{S.text}</p>
+        {(ranks.length > 0 || goodLinks.length > 0) && (
+          <p class="mt-3 text-[14px] text-muted">
+            {ranks.length > 0 ? <>Ranks {ranks.map((x, i) => <>{i > 0 && ", "}<b>#{x.pos}</b> in <a class="link" href={nurl.rank(x.r)}>{x.r.h1.replace(/^F/, "f")}</a></>)}.</>
+              : <>See {goodLinks.map((x, i) => <>{i > 0 && ", "}<a class="link" href={nurl.rank(x.r!)}>{x.r!.h1.replace(/^F/, "f")}</a></>)}.</>}
+          </p>
+        )}
       </div>
     </section>
 
@@ -124,11 +133,17 @@ const donut = `conic-gradient(var(--color-counter) 0 ${m.carbs}%, var(--color-pr
       </label>
       <label class="grid text-[13px] text-muted">Unit
         <select name="unit" class="h-10 border border-line rounded-lg px-2 text-ink text-base max-w-[340px]">
-          {units.map(([l, g], i) => <option value={g} selected={i === 0}>{l === "g" || l === "oz" ? l : `${l} (${g} g)`}</option>)}
+          {units.map(([l, g], i) => <option value={g} selected={i === 0}>{l === "g" || l === "oz" || l === "lb" ? l : `${l} (${g} g)`}</option>)}
         </select>
       </label>
       <p class="text-[13px] text-muted pb-2">Serving: <span data-serving-label>{servingLabel(S.s)}</span></p>
     </form>
+    <nav aria-label={`Serving sizes of ${lname}`} class="mt-3">
+      <h2 class="sr-only-x">Calories by serving size</h2>
+      <ul class="list-none p-0 m-0 flex flex-wrap gap-1.5 text-[13px]">
+        {sLinks.map((x) => <li><a href={`${path}?a=${x.a}`} class="pill bg-tab hover:bg-tint-lilac !text-[13px] !py-1 !px-2.5" data-a={x.a}>{x.label} · {x.kcal} cal</a></li>)}
+      </ul>
+    </nav>
 
     <section class="mt-8" aria-labelledby="facts-h">
       <h2 id="facts-h" class="text-[28px]">Nutrition Facts</h2>
@@ -253,5 +268,15 @@ const donut = `conic-gradient(var(--color-counter) 0 ${m.carbs}%, var(--color-pr
     };
     amt.addEventListener("input", update);
     unit.addEventListener("change", update);
+    const apply = (a: string | null) => {
+      const m = a?.match(/^([\d.]+):(\d+)$/);
+      if (!m || +m[2] >= unit.options.length) return;
+      amt.value = String(+m[1]);
+      unit.selectedIndex = +m[2];
+      update();
+    };
+    apply(new URLSearchParams(location.search).get("a"));
+    document.querySelectorAll<HTMLAnchorElement>("a[data-a]").forEach((el) =>
+      el.addEventListener("click", (e) => { e.preventDefault(); history.replaceState(null, "", el.href); apply(el.dataset.a!); form.scrollIntoView({ behavior: "smooth", block: "start" }); }));
   }
 </script>

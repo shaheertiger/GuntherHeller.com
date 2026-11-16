@@ -229,7 +229,7 @@ export type Ranking = { slug: string; k: string; title: string; h1: string; blur
 const R = (slug: string, k: string, nutrient: string, dir: "high" | "low" = "high", blurb = ""): Ranking => ({
   slug, k, dir,
   title: `${dir === "high" ? "Foods High in" : "Foods Lowest in"} ${nutrient}`,
-  h1: `${dir === "high" ? "Foods high in" : "Foods lowest in"} ${nutrient.toLowerCase().replace(/^vitamin/, "vitamin")}`,
+  h1: `${dir === "high" ? "Foods high in" : "Foods lowest in"} ${/^Vitamin /.test(nutrient) ? nutrient.replace("Vitamin", "vitamin") : nutrient.toLowerCase()}`,
   blurb,
 });
 export const RANKINGS: Ranking[] = [
@@ -265,3 +265,38 @@ export function ranked(r: Ranking, n = 100): NFood[] {
 export const nutrientDef = (k: string): NDef => [...MAIN, ...VITAMINS, ...MINERALS, ...FATS, ...SUGARS, { k: "kcal", name: "Calories", unit: "kcal" as const }].find((d) => d.k === k)!;
 
 export const foodsInCat = (c: string) => NFOODS.filter((f) => f.cat === c).sort((a, b) => (a.storage ? 0 : 1) - (b.storage ? 0 : 1) || a.name.localeCompare(b.name));
+
+/* ---------------------------------------------------------------- interlinking */
+let RANK_POS: Map<string, { r: Ranking; pos: number }[]> | null = null;
+/** Every ranking list a food appears in, with its position (computed once per build). */
+export function rankingsOf(f: NFood) {
+  if (!RANK_POS) {
+    RANK_POS = new Map();
+    for (const r of RANKINGS) ranked(r).forEach((x, i) => (RANK_POS!.get(x.slug) ?? RANK_POS!.set(x.slug, []).get(x.slug)!).push({ r, pos: i + 1 }));
+  }
+  return (RANK_POS.get(f.slug) ?? []).sort((a, b) => a.pos - b.pos);
+}
+/** The "foods high in …" list for a nutrient key, if there is one. */
+export const rankingFor = (k: string) => RANKINGS.find((r) => r.k === k && r.dir === "high");
+
+/** EatThisMuch-style serving links: 50/100/200 g, ½/1/2 of each household unit, oz and lb.
+ *  Each is a link to the same page with ?a={amount}:{unitIndex}; the page reads it and rescales. */
+export function servingUnits(f: NFood): Portion[] {
+  return [...f.p.slice(0, 6), ["g", 1], ["oz", 28.35], ["lb", 453.6]];
+}
+const half = (n: number) => (n === 0.5 ? "½" : String(n));
+export function servingLinks(f: NFood) {
+  const units = servingUnits(f);
+  const out: { label: string; a: string; kcal: number }[] = [];
+  const add = (amt: number, idx: number) => {
+    const [l, g] = units[idx];
+    const label = l === "g" ? `${amt * 1} grams` : l === "oz" || l === "lb" ? `${half(amt)} ${l}` : `${half(amt)} ${l.replace(/^1 /, "")}`;
+    out.push({ label, a: `${amt}:${idx}`, kcal: Math.round(per(f.v.kcal, amt * g)) });
+  };
+  const gi = units.length - 3;
+  [50, 100, 200].forEach((n) => add(n, gi));
+  units.slice(0, gi).forEach((_, i) => [0.5, 1, 2].forEach((n) => add(n, i)));
+  [1, 4, 8].forEach((n) => add(n, gi + 1));
+  add(1, gi + 2);
+  return out;
+}
