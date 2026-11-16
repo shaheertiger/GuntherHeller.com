@@ -3,7 +3,6 @@
   "framework": "astro",
   "installCommand": "npm ci",
   "buildCommand": "npm run build",
-  "outputDirectory": "dist",
   "trailingSlash": true,
   "headers": [
     {
@@ -71,12 +70,6 @@
           "value": "camera=(), microphone=(), geolocation=()"
         }
       ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/:path*",
-      "destination": "/api/home?p=:path*"
     }
   ]
 }
