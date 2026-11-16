@@ -5,7 +5,7 @@
  *  - every indexable page has a unique <title>, a description, a canonical and valid JSON-LD
  *  - sitemaps list exactly the indexable pages
  *  - /calories/ pages carry at least 350 words; /calories/cooked-rice/ has its numbers, storage section and schema
- *  - every api/_redirects.js destination is a built page
+ *  - every data/old-redirects.json destination is a built page
  */
 import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join, relative } from "node:path";
@@ -98,11 +98,11 @@ if (!/<title>Cooked Rice Nutrition Facts \(\d+ Calories per [^<]+\)<\/title>/.te
 for (const t of ["Nutrition Facts", "Vitamins and minerals", "How long does cooked rice last?", "4–6 days", "2,000-calorie diet"]) if (!rice.includes(t)) errors.push(`cooked rice: "${t}" missing`);
 for (const t of ['"NutritionInformation"', '"BreadcrumbList"', '"FAQPage"', '"Organization"']) if (!rice.includes(t)) errors.push(`cooked rice: JSON-LD ${t} missing`);
 
-// Every 301 in api/_redirects.js lands on a built page (the catch-all handles everything else).
-const redirects = Object.entries((await import(new URL("../api/_redirects.js", import.meta.url))).default).map(([source, destination]) => ({ source, destination }));
+// Every 301 in data/old-redirects.json lands on a built page (the catch-all handles everything else).
+const redirects = Object.entries(JSON.parse(readFileSync(new URL("../data/old-redirects.json", import.meta.url), "utf8"))).map(([source, destination]) => ({ source, destination }));
 for (const r of redirects) {
-  if (!exists(r.destination)) errors.push(`api/_redirects.js: ${r.source} → missing ${r.destination}`);
-  if (exists(r.source) && r.source !== "/") errors.push(`api/_redirects.js: ${r.source} is also a built page`);
+  if (!exists(r.destination)) errors.push(`data/old-redirects.json: ${r.source} → missing ${r.destination}`);
+  if (exists(r.source) && r.source !== "/") errors.push(`data/old-redirects.json: ${r.source} is also a built page`);
 }
 
 const css = files.filter((f) => f.endsWith(".css")).reduce((n, f) => n + statSync(f).size, 0);

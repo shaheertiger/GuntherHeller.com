@@ -22,6 +22,7 @@
     "redirects": "node scripts/build-redirects.mjs"
   },
   "dependencies": {
+    "@astrojs/vercel": "^11.0.20",
     "@tailwindcss/vite": "4.3.3",
     "@vercel/analytics": "^2.0.1",
     "astro": "7.3.8",
