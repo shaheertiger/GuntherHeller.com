@@ -5,7 +5,7 @@ import { NCATS, NMETA, RANKINGS, nurl } from "../../lib/nutrition";
 import { ORG, breadcrumbLd } from "../../lib/schema";
 import { abs } from "../../lib/site";
 const path = "/food/";
-const crumbs = [{ name: "Home", href: "/" }, { name: "Food" }];
+const crumbs = [{ name: "Home", href: "/" }, { name: "Browse" }];
 const ld = { "@context": "https://schema.org", "@graph": [ORG, { "@type": "CollectionPage", name: "Browse foods", url: abs(path) }, breadcrumbLd(crumbs, path)] };
 ---
 <Base title="Browse Foods: Calories and Nutrition Facts by Category | Gunther Heller" description={`Calories, protein, carbs, fat, vitamins and minerals for ${NMETA.count.toLocaleString("en-US")} foods from USDA FoodData Central, by category and by nutrient.`} path={path} jsonld={ld}>

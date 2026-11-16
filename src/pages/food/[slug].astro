@@ -30,7 +30,7 @@ if (cat) {
   description = `The 100 foods ${rank!.dir === "high" ? "highest" : "lowest"} in ${d!.name.toLowerCase()} per 100 g, from USDA FoodData Central. #1: ${rows[0].name} (${fmtN(val(rows[0], rank!.k), d!.unit === "kcal" ? " cal" : d!.unit)}). ${rank!.blurb}`.slice(0, 300);
   lead = `${rank!.blurb} Ranked per 100 g, with the amount in a typical serving.`;
 }
-const crumbs = [{ name: "Home", href: "/" }, { name: "Food", href: "/food/" }, { name: cat ? cat.name : h1 }];
+const crumbs = [{ name: "Home", href: "/" }, { name: "Browse", href: "/food/" }, { name: cat ? cat.name : h1 }];
 const ld = {
   "@context": "https://schema.org",
   "@graph": [ORG, { "@type": "CollectionPage", name: h1, url: abs(path), description }, breadcrumbLd(crumbs, path),
@@ -72,6 +72,18 @@ const g = (f: NFood, k: string) => fmtN(val(f, k), "g");
       </table>
     </div>
     <p class="text-[13px] text-muted mt-4">Values per 100 g from USDA FoodData Central (Foundation Foods, SR Legacy and FNDDS 2021–2023).</p>
-    <p class="mt-6 text-[15px]"><a class="link" href="/food/">All categories and nutrients</a></p>
+    <nav aria-labelledby="more-cats" class="mt-10">
+      <h2 id="more-cats" class="text-[22px]">{cat ? "Other food categories" : "Food categories"}</h2>
+      <ul class="list-none p-0 m-0 mt-3 flex flex-wrap gap-2">
+        {NCATS.filter((c) => c.slug !== cat?.slug).map((c) => <li><a href={nurl.cat(c.slug)} class="pill bg-tab hover:bg-tint-lilac">{c.name}</a></li>)}
+      </ul>
+    </nav>
+    <nav aria-labelledby="more-ranks" class="mt-8">
+      <h2 id="more-ranks" class="text-[22px]">{rank ? "Other nutrient rankings" : "Foods by nutrient"}</h2>
+      <ul class="list-none p-0 m-0 mt-3 flex flex-wrap gap-2">
+        {RANKINGS.filter((r) => r.slug !== rank?.slug).map((r) => <li><a href={nurl.rank(r)} class="pill bg-tab hover:bg-tint-lilac">{r.h1}</a></li>)}
+      </ul>
+    </nav>
+    <p class="mt-8 text-[15px]"><a class="link" href="/food/">Browse all foods</a></p>
   </div>
 </Base>

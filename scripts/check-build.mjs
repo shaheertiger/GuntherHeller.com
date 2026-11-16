@@ -32,6 +32,7 @@ const wordsIn = (html) => {
   return (main.replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/gi, " ").match(/[\p{L}\p{N}][\p{L}\p{N}'’–-]*/gu) ?? []).length;
 };
 let thin = 0, minSeen = Infinity;
+const inbound = new Map(); // page → number of other pages linking to it (orphan check)
 
 for (const file of pages) {
   const html = readFileSync(file, "utf8");
@@ -39,6 +40,8 @@ for (const file of pages) {
   const noindex = /name="robots" content="noindex/.test(html);
   for (const [, href] of html.replace(/<script[\s\S]*?<\/script>/g, "").matchAll(/href="(\/[^"]*)"/g)) {
     if (href.startsWith("//")) continue;
+    const target = href.split(/[?#]/)[0];
+    if (target !== rel) inbound.set(target, (inbound.get(target) ?? 0) + 1);
     if (!exists(href)) errors.push(`${rel}: broken link ${href}`);
     else if (!/\.[a-z0-9]+$/i.test(href.split(/[?#]/)[0]) && !href.split(/[?#]/)[0].endsWith("/")) errors.push(`${rel}: link without trailing slash ${href}`);
   }
@@ -82,6 +85,12 @@ for (const file of pages) {
 }
 for (const f of ["favicon.ico", "favicon.svg", "favicon-96x96.png", "apple-touch-icon.png", "site.webmanifest", "web-app-manifest-512x512.png", "robots.txt", "ads.txt", "sitemap.xml", "og.png", "404.html", "search-index.json", "nutrition-index.json"])
   if (!existsSync(join(DIST, f))) errors.push(`missing ${f}`);
+
+// Interlinking: every indexable page is linked from at least one other page (no orphans).
+let orphans = 0;
+for (const p of listed) if (p !== "/" && !inbound.get(p)) { orphans++; if (orphans <= 10) errors.push(`${p}: orphan page (no internal links point to it)`); }
+const counts = [...listed].map((p) => inbound.get(p) ?? 0).sort((a, b) => a - b);
+console.log(`check-build: inbound internal links per page — min ${counts[0]}, median ${counts[counts.length >> 1]}, max ${counts.at(-1)}`);
 
 // Acceptance test: cooked rice (nutrition + FoodKeeper storage on one page).
 const rice = readFileSync(join(DIST, "calories/cooked-rice/index.html"), "utf8");
