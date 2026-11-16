@@ -1,0 +1,10 @@
+---
+/** /calories/{slug}/ — one page per food (USDA FoodData Central), EatThisMuch-style. */
+import NutritionPage from "../../components/NutritionPage.astro";
+import { NFOODS, type NFood } from "../../lib/nutrition";
+export function getStaticPaths() {
+  return NFOODS.map((food) => ({ params: { slug: food.slug }, props: { food } }));
+}
+const { food } = Astro.props as { food: NFood };
+---
+<NutritionPage food={food} />

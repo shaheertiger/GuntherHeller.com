@@ -1,0 +1,25 @@
+---
+import Base from "../../layouts/Base.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import { NCATS, NMETA, RANKINGS, nurl } from "../../lib/nutrition";
+import { ORG, breadcrumbLd } from "../../lib/schema";
+import { abs } from "../../lib/site";
+const path = "/food/";
+const crumbs = [{ name: "Home", href: "/" }, { name: "Food" }];
+const ld = { "@context": "https://schema.org", "@graph": [ORG, { "@type": "CollectionPage", name: "Browse foods", url: abs(path) }, breadcrumbLd(crumbs, path)] };
+---
+<Base title="Browse Foods: Calories and Nutrition Facts by Category | Gunther Heller" description={`Calories, protein, carbs, fat, vitamins and minerals for ${NMETA.count.toLocaleString("en-US")} foods from USDA FoodData Central, by category and by nutrient.`} path={path} jsonld={ld}>
+  <div class="container-site pt-6">
+    <Breadcrumb items={crumbs} />
+    <h1 class="h1-food mt-4">Browse foods</h1>
+    <p class="lead mt-3 max-w-[760px]">Nutrition facts for {NMETA.count.toLocaleString("en-US")} foods from USDA FoodData Central. Pick a category, or see which foods are highest in a nutrient.</p>
+    <h2 class="text-[28px] mt-10">Food categories</h2>
+    <ul class="list-none p-0 m-0 mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      {NCATS.map((c) => <li><a href={nurl.cat(c.slug)} class="card lift flex justify-between items-center gap-3 px-4 py-3.5"><span class="font-[550]">{c.name}</span><span class="text-sm text-muted">{c.count}</span></a></li>)}
+    </ul>
+    <h2 class="text-[28px] mt-12">Foods by nutrient</h2>
+    <ul class="list-none p-0 m-0 mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      {RANKINGS.map((r) => <li><a href={nurl.rank(r)} class="card lift block px-4 py-3.5 font-[550]">{r.h1}</a></li>)}
+    </ul>
+  </div>
+</Base>

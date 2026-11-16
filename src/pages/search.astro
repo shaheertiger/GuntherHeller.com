@@ -1,28 +1,43 @@
 ---
 import Base from "../layouts/Base.astro";
-import { FOODS } from "../lib/data";
+import { NMETA } from "../lib/nutrition";
 ---
-<Base title="Search Foods | Gunther Heller" description={`Search storage times for ${FOODS.length} foods.`} path="/search/" noindex>
+<Base title="Search Foods | Gunther Heller" description={`Search calories and nutrition facts for ${NMETA.count.toLocaleString("en-US")} foods.`} path="/search/" noindex>
   <div class="container-site pt-8 max-w-[760px]">
     <h1 class="h1-food">Search foods</h1>
     <form action="/search/" method="get" class="mt-6 flex gap-2" role="search">
-      <label for="q" class="sr-only">Food</label>
-      <input id="q" name="q" type="search" autocomplete="off" placeholder="e.g. cooked rice" class="flex-1 h-11 border border-line rounded-lg px-3 text-base outline-none focus:border-primary-soft" />
+      <label for="q" class="sr-only-x">Food</label>
+      <input id="q" name="q" type="search" autocomplete="off" placeholder="e.g. chicken breast" class="flex-1 h-11 border border-line rounded-lg px-3 text-base outline-none focus:border-primary-soft" />
       <button class="btn-primary">Search</button>
     </form>
     <ul class="list-none p-0 mt-6" data-results aria-live="polite"></ul>
-    <p class="mt-6 text-sm">Or <a class="link" href="/foods/">browse all foods by category</a>.</p>
+    <p class="mt-6 text-sm">Or <a class="link" href="/food/">browse all foods by category</a>.</p>
   </div>
 </Base>
 <script>
-  import { loadFoods, search, foodHref, esc } from "../scripts/foods";
+  type R = [string, string, number, string, number];
+  const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
+  const norm = (s: string) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
+  let rows: Promise<R[]> | null = null;
   const input = document.querySelector<HTMLInputElement>("#q")!;
   const ul = document.querySelector<HTMLElement>("[data-results]")!;
   input.value = new URLSearchParams(location.search).get("q") ?? "";
   const run = async () => {
-    const hits = search(await loadFoods(), input.value, 30);
-    ul.innerHTML = input.value.trim() && !hits.length ? `<li class="text-muted">No match. Try a simpler word.</li>` :
-      hits.map((r) => `<li class="border-b border-line"><a href="${foodHref(r)}" class="flex justify-between gap-4 py-3"><span class="font-medium">${esc(r.n)}</span><span class="text-sm text-muted">Fridge: ${esc(r.f)}</span></a></li>`).join("");
+    const q = norm(input.value);
+    if (!q) { ul.innerHTML = ""; return; }
+    const all = await (rows ??= fetch("/nutrition-index.json").then((r) => r.json()));
+    const words = q.split(" ");
+    const hits: [number, R][] = [];
+    for (const r of all) {
+      const n = norm(r[1]);
+      if (!words.every((w) => n.includes(w) || n.includes(w.replace(/s$/, "")))) continue;
+      let s = n.length / 100 - r[4];
+      if (n === q) s -= 100; else if (n.startsWith(q)) s -= 50; else if (n.includes(q)) s -= 20;
+      hits.push([s, r]);
+    }
+    hits.sort((a, b) => a[0] - b[0]);
+    ul.innerHTML = !hits.length ? `<li class="text-muted">No match. Try a simpler word.</li>` :
+      hits.slice(0, 50).map(([, r]) => `<li class="border-b border-line"><a href="/calories/${r[0]}/" class="flex justify-between gap-4 py-3"><span class="font-medium">${esc(r[1])}</span><span class="text-sm text-muted whitespace-nowrap">${r[2]} cal · ${esc(r[3])}</span></a></li>`).join("");
   };
   input.addEventListener("input", run);
   document.querySelector("form")!.addEventListener("submit", (e) => { e.preventDefault(); history.replaceState(null, "", `?q=${encodeURIComponent(input.value)}`); run(); });

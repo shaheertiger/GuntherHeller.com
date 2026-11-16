@@ -1,8 +1,8 @@
 /** Client helpers shared by the home widget, search page and calculators. */
-export type Row = { s: string; n: string; k: string; c: string; f: string; z: string; fd: number | null; fx: number | null; zx: number | null; zd: number | null; p: 0 | 1; fv: string; sl: string | null; r: number; v: [number, number] };
+export type Row = { s: string; n: string; k: string; c: string; f: string; z: string; fd: number | null; fx: number | null; zx: number | null; zd: number | null; p: 0 | 1; fv: string; sl: string | null; r: number };
 let cache: Promise<Row[]> | null = null;
 export const loadFoods = () => (cache ??= fetch("/search-index.json").then((r) => r.json()));
-export const foodHref = (r: Row) => `/how-long-does-${r.s}-last/`;
+export const foodHref = (r: Row) => `/calories/${r.s}/`;
 const norm = (s: string) => s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
 export function search(rows: Row[], q: string, limit = 8): Row[] {
   const nq = norm(q);

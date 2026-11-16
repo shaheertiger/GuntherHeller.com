@@ -1,24 +1,31 @@
 ---
-import Fig from "../components/Fig.astro";
-import { figsFor } from "../figures/cards";
-const pf = figsFor("/methodology/")!;
 import Prose from "../layouts/Prose.astro";
 import { META } from "../lib/data";
+import { NMETA } from "../lib/nutrition";
 import { SITE, abs } from "../lib/site";
-import { methodAlternates } from "../lib/i18n";
 const path = "/methodology/";
-const ld = { "@context": "https://schema.org", "@type": "WebPage", name: "How we verify food storage times", url: abs(path), dateModified: SITE.verifiedISO, publisher: { "@type": "Organization", name: SITE.name, url: SITE.url } };
+const ld = { "@context": "https://schema.org", "@type": "WebPage", name: "Where our nutrition and storage data comes from", url: abs(path), dateModified: SITE.verifiedISO, publisher: { "@type": "Organization", name: SITE.name, url: SITE.url } };
 ---
-<Prose title="How We Verify Food Storage Times | Gunther Heller" h1="How we verify our numbers" path={path} jsonld={ld} alternates={methodAlternates()}
-  description="Where Gunther Heller's storage times come from (USDA FoodKeeper), how we turn them into answers, what 'last verified' means and how to report a wrong number."
-  lead="Every storage time on this site comes from a public food-safety source. This page explains which one, how we process it, and what we do when it changes.">
-  <h2>The source: USDA FoodKeeper</h2>
+<Prose title="Our Data: USDA FoodData Central and FoodKeeper | Gunther Heller" h1="Where our numbers come from" path={path} jsonld={ld}
+  description="Gunther Heller's nutrition facts come from USDA FoodData Central and its storage times from USDA FoodKeeper. How we process both and how to report a wrong number."
+  lead="Every number on this site comes from a public U.S. government dataset. This page explains which ones and how we use them.">
+  <h2>Nutrition facts: USDA FoodData Central</h2>
+  <p>Calories, macronutrients, vitamins, minerals, fatty acids and amino acids come from <a href="https://fdc.nal.usda.gov/" rel="nofollow noopener">FoodData Central</a>, published by the USDA Agricultural Research Service. We use three of its datasets ({NMETA.count.toLocaleString("en-US")} foods in total): <strong>Foundation Foods</strong> (April 2025), <strong>SR Legacy</strong> (April 2018) and <strong>FNDDS 2021–2023</strong>, the survey database behind What We Eat in America. All three are public domain. Every food page links to its FoodData Central record.</p>
+  <ul>
+    <li><strong>Per serving.</strong> USDA reports values per 100 g. We multiply by the gram weight of each household serving USDA lists for that food (cup, slice, medium, tablespoon…). The serving picker on each page does the same sum in your browser.</li>
+    <li><strong>Calories.</strong> We use USDA's energy value in kilocalories. A few Foundation Foods records report only Atwater energy or kilojoules; we use those, converted where needed.</li>
+    <li><strong>% Daily Value</strong> uses the FDA Daily Values for adults and children 4 and over (2,000-calorie diet).</li>
+    <li><strong>Macro split</strong> is the share of calories from carbohydrate, fat and protein at 4, 9 and 4 calories per gram.</li>
+    <li><strong>Missing values</strong> show a dash. USDA did not analyse every nutrient in every food; a dash is not a zero.</li>
+  </ul>
+  <p>For the 918 foods that also have storage times, we matched each one to the single USDA record that best fits what people mean by it (for example, "cooked rice" uses "Rice, cooked"). The page names the USDA record it uses.</p>
+
+  <h2>Storage times: USDA FoodKeeper</h2>
   <p>Our numbers come from <a href="https://www.foodsafety.gov/keep-food-safe/foodkeeper-app" rel="nofollow noopener">FoodKeeper</a>, the storage database published by the U.S. Department of Agriculture's Food Safety and Inspection Service (FSIS) with Cornell University and the Food Marketing Institute. It is a U.S. government work in the public domain.</p>
   <p>We use FoodKeeper data version <strong>{META.version}</strong> (released {META.modified}). The file we import has SHA-256 <code class="text-sm break-all">{META.sha256}</code>, so anyone can confirm we use the unmodified dataset.</p>
   <p>A small number of foods FoodKeeper does not cover, such as breast milk, use another named public source (for breast milk, the CDC). Those pages name that source in place of FoodKeeper.</p>
 
   <h2>How we turn the data into a page</h2>
-  <Fig cards={pf.at("process")} />
   <ol>
     <li><strong>Import.</strong> A script reads every FoodKeeper product and keeps its pantry, refrigerator and freezer times, the separate "after opening" and "after thawing" times, and FSIS's storage tips.</li>
     <li><strong>Name.</strong> We rename products to the words people search for (FoodKeeper's "Cheese — hard such as cheddar, swiss" becomes "Hard cheese"). The numbers are not touched.</li>
@@ -27,7 +34,6 @@ const ld = { "@context": "https://schema.org", "@type": "WebPage", name: "How we
   </ol>
 
   <h2>What the numbers mean</h2>
-  <Fig cards={pf.at("meaning")} />
   <ul>
     <li><strong>Fridge times</strong> assume 40°F (4°C) or colder. Use a fridge thermometer; many fridges run warmer.</li>
     <li><strong>Freezer times</strong> are for quality. Food kept at 0°F (-18°C) stays safe indefinitely; after the stated time, texture and flavour decline.</li>
@@ -40,5 +46,5 @@ const ld = { "@context": "https://schema.org", "@type": "WebPage", name: "How we
   <p>Each page shows the month we last checked its numbers against the current FoodKeeper release. Our last full check was <strong>{SITE.verifiedLabel}</strong>. The dates in our sitemap change only when the underlying data changes, not when we restyle a page.</p>
 
   <h2>Corrections</h2>
-  <p>Every food page has a "Report a wrong number" link. Send it with your source and we check it against FoodKeeper and FSIS within a few days. If we were wrong, we fix the page and update its verified date. You can also email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+  <p>Spotted a wrong number? Email us with your source and we check it against FoodData Central, FoodKeeper and FSIS within a few days. If we were wrong, we fix the page and update its verified date. You can also email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
 </Prose>

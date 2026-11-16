@@ -1,0 +1,4594 @@
+{
+ "cooked-rice": {
+  "fdc": 2708402,
+  "src": "N",
+  "desc": "Rice, cooked, NFS"
+ },
+ "raw-chicken": {
+  "fdc": 171447,
+  "src": "S",
+  "desc": "Chicken, broilers or fryers, meat and skin, raw"
+ },
+ "cooked-chicken": {
+  "fdc": 2705934,
+  "src": "N",
+  "desc": "Chicken, NS as to part, baked, broiled, or roasted, skin not eaten"
+ },
+ "ground-beef": {
+  "fdc": 2705853,
+  "src": "N",
+  "desc": "Beef, ground, raw"
+ },
+ "eggs": {
+  "fdc": 2707152,
+  "src": "N",
+  "desc": "Egg, whole, raw"
+ },
+ "hard-boiled-eggs": {
+  "fdc": 2707154,
+  "src": "N",
+  "desc": "Egg, whole, boiled or poached"
+ },
+ "milk": {
+  "fdc": 2705385,
+  "src": "N",
+  "desc": "Milk, whole"
+ },
+ "hard-cheese": {
+  "fdc": 2705709,
+  "src": "N",
+  "desc": "Cheese, Cheddar"
+ },
+ "shredded-cheese": {
+  "fdc": 2705709,
+  "src": "N",
+  "desc": "Cheese, Cheddar"
+ },
+ "cream-cheese": {
+  "fdc": 2705760,
+  "src": "N",
+  "desc": "Cream cheese, regular, plain"
+ },
+ "cottage-cheese": {
+  "fdc": 2705747,
+  "src": "N",
+  "desc": "Cheese, cottage, NFS"
+ },
+ "butter": {
+  "fdc": 2710154,
+  "src": "N",
+  "desc": "Butter, NFS"
+ },
+ "yogurt": {
+  "fdc": 2705418,
+  "src": "N",
+  "desc": "Yogurt, whole milk, plain"
+ },
+ "bread": {
+  "fdc": 2707598,
+  "src": "N",
+  "desc": "Bread, white"
+ },
+ "bacon": {
+  "fdc": 2705889,
+  "src": "N",
+  "desc": "Pork bacon, smoked or cured, cooked"
+ },
+ "deli-meat": {
+  "fdc": 2706215,
+  "src": "N",
+  "desc": "Turkey, prepackaged or deli, luncheon meat"
+ },
+ "rotisserie-chicken": {
+  "fdc": 2705936,
+  "src": "N",
+  "desc": "Chicken, NS as to part, rotisserie, skin eaten"
+ },
+ "salmon": {
+  "fdc": 2706284,
+  "src": "N",
+  "desc": "Fish, salmon, raw"
+ },
+ "shrimp": {
+  "fdc": 175179,
+  "src": "S",
+  "desc": "Crustaceans, shrimp, raw"
+ },
+ "steak": {
+  "fdc": 2727574,
+  "src": "F",
+  "desc": "Beef, top sirloin steak, raw"
+ },
+ "pork-chops": {
+  "fdc": 2727575,
+  "src": "F",
+  "desc": "Pork, chop, center cut, raw"
+ },
+ "raw-sausage": {
+  "fdc": 172934,
+  "src": "S",
+  "desc": "Pork sausage, link/patty, unprepared"
+ },
+ "cooked-pasta": {
+  "fdc": 2708357,
+  "src": "N",
+  "desc": "Pasta, cooked"
+ },
+ "pizza": {
+  "fdc": 2708616,
+  "src": "N",
+  "desc": "Pizza, cheese, from restaurant or fast food, medium crust"
+ },
+ "soup": {
+  "fdc": 2709149,
+  "src": "N",
+  "desc": "Soup, chicken noodle"
+ },
+ "chicken-broth": {
+  "fdc": 174536,
+  "src": "S",
+  "desc": "Soup, chicken broth, ready-to-serve"
+ },
+ "mashed-potatoes": {
+  "fdc": 2709492,
+  "src": "N",
+  "desc": "Potato, mashed, NFS"
+ },
+ "potatoes": {
+  "fdc": 170026,
+  "src": "S",
+  "desc": "Potatoes, flesh and skin, raw"
+ },
+ "watermelon": {
+  "fdc": 2709270,
+  "src": "N",
+  "desc": "Watermelon, raw"
+ },
+ "avocado": {
+  "fdc": 2709223,
+  "src": "N",
+  "desc": "Avocado, raw"
+ },
+ "bananas": {
+  "fdc": 2709224,
+  "src": "N",
+  "desc": "Banana, raw"
+ },
+ "strawberries": {
+  "fdc": 2709283,
+  "src": "N",
+  "desc": "Strawberries, raw"
+ },
+ "grapes": {
+  "fdc": 2709237,
+  "src": "N",
+  "desc": "Grapes, raw"
+ },
+ "apples": {
+  "fdc": 2709215,
+  "src": "N",
+  "desc": "Apple, raw"
+ },
+ "carrots": {
+  "fdc": 2709660,
+  "src": "N",
+  "desc": "Carrots, raw"
+ },
+ "broccoli": {
+  "fdc": 2709643,
+  "src": "N",
+  "desc": "Broccoli, raw"
+ },
+ "lettuce": {
+  "fdc": 2709789,
+  "src": "N",
+  "desc": "Lettuce, raw"
+ },
+ "tomatoes": {
+  "fdc": 2709719,
+  "src": "N",
+  "desc": "Tomatoes, raw"
+ },
+ "mushrooms": {
+  "fdc": 2709793,
+  "src": "N",
+  "desc": "Mushrooms, raw"
+ },
+ "cilantro": {
+  "fdc": 2709782,
+  "src": "N",
+  "desc": "Cilantro, raw"
+ },
+ "fresh-salsa": {
+  "fdc": 2709737,
+  "src": "N",
+  "desc": "Salsa, pico de gallo"
+ },
+ "jarred-salsa": {
+  "fdc": 2709738,
+  "src": "N",
+  "desc": "Salsa, red"
+ },
+ "mayonnaise": {
+  "fdc": 2710204,
+  "src": "N",
+  "desc": "Mayonnaise, regular"
+ },
+ "sour-cream": {
+  "fdc": 2705614,
+  "src": "N",
+  "desc": "Sour cream, regular"
+ },
+ "hummus": {
+  "fdc": 2707402,
+  "src": "N",
+  "desc": "Hummus, plain"
+ },
+ "honey": {
+  "fdc": 2710281,
+  "src": "N",
+  "desc": "Honey"
+ },
+ "peanut-butter": {
+  "fdc": 2707537,
+  "src": "N",
+  "desc": "Peanut butter"
+ },
+ "ground-coffee": {
+  "fdc": 2710480,
+  "src": "N",
+  "desc": "Coffee, instant, not reconstituted"
+ },
+ "coffee-beans": {
+  "fdc": 2710480,
+  "src": "N",
+  "desc": "Coffee, instant, not reconstituted"
+ },
+ "red-wine": {
+  "fdc": 2710688,
+  "src": "N",
+  "desc": "Wine, red"
+ },
+ "white-wine": {
+  "fdc": 2710689,
+  "src": "N",
+  "desc": "Wine, white"
+ },
+ "liquor": {
+  "fdc": 174815,
+  "src": "S",
+  "desc": "Alcoholic beverage, distilled, all (gin, rum, vodka, whiskey) 80 proof"
+ },
+ "liquid-baby-formula": {
+  "fdc": 2705534,
+  "src": "N",
+  "desc": "Infant formula, Enfamil Infant, ready-to-feed"
+ },
+ "prepared-baby-formula": {
+  "fdc": 2705535,
+  "src": "N",
+  "desc": "Infant formula, Enfamil Infant, powder, made with tap water"
+ },
+ "breast-milk": {
+  "fdc": 171279,
+  "src": "S",
+  "desc": "Milk, human, mature, fluid (For Reference Only)"
+ },
+ "heavy-cream": {
+  "fdc": 2705597,
+  "src": "N",
+  "desc": "Cream, heavy"
+ },
+ "half-half": {
+  "fdc": 2705594,
+  "src": "N",
+  "desc": "Cream, half and half"
+ },
+ "tofu": {
+  "fdc": 172476,
+  "src": "S",
+  "desc": "Tofu, raw, regular, prepared with calcium sulfate"
+ },
+ "guacamole": {
+  "fdc": 2709307,
+  "src": "N",
+  "desc": "Guacamole, NFS"
+ },
+ "hot-dogs": {
+  "fdc": 2706166,
+  "src": "N",
+  "desc": "Hot dog, NFS"
+ },
+ "ham-salad": {
+  "fdc": 2706222,
+  "src": "N",
+  "desc": "Ham salad spread"
+ },
+ "chicken-salad": {
+  "fdc": 2706221,
+  "src": "N",
+  "desc": "Chicken salad spread"
+ },
+ "tuna-salad": {
+  "fdc": 2706828,
+  "src": "N",
+  "desc": "Tuna salad, made with mayonnaise"
+ },
+ "egg-salad": {
+  "fdc": 2707182,
+  "src": "N",
+  "desc": "Egg salad, made with mayonnaise"
+ },
+ "potato-salad": {
+  "fdc": 2709543,
+  "src": "N",
+  "desc": "Potato salad, made with mayonnaise"
+ },
+ "pasta-salad": {
+  "fdc": 2708932,
+  "src": "N",
+  "desc": "Macaroni or pasta salad, made with mayonnaise"
+ },
+ "coleslaw": {
+  "fdc": 2709815,
+  "src": "N",
+  "desc": "Coleslaw"
+ },
+ "spinach": {
+  "fdc": 2709614,
+  "src": "N",
+  "desc": "Spinach, raw"
+ },
+ "bagged-salad": {
+  "fdc": 2709792,
+  "src": "N",
+  "desc": "Mixed salad greens, raw"
+ },
+ "onions": {
+  "fdc": 2709795,
+  "src": "N",
+  "desc": "Onions, raw"
+ },
+ "garlic": {
+  "fdc": 2709786,
+  "src": "N",
+  "desc": "Garlic, raw"
+ },
+ "bell-peppers": {
+  "fdc": 2709800,
+  "src": "N",
+  "desc": "Peppers, sweet, green, raw"
+ },
+ "cucumbers": {
+  "fdc": 2709784,
+  "src": "N",
+  "desc": "Cucumber, raw"
+ },
+ "celery": {
+  "fdc": 2709778,
+  "src": "N",
+  "desc": "Celery, raw"
+ },
+ "corn-cob": {
+  "fdc": 2709783,
+  "src": "N",
+  "desc": "Corn, raw"
+ },
+ "sweet-potatoes": {
+  "fdc": 2346404,
+  "src": "F",
+  "desc": "Sweet potatoes, orange flesh, without skin, raw"
+ },
+ "citrus-fruit": {
+  "fdc": 2709171,
+  "src": "N",
+  "desc": "Orange, raw"
+ },
+ "blueberries": {
+  "fdc": 2709275,
+  "src": "N",
+  "desc": "Blueberries, raw"
+ },
+ "raspberries": {
+  "fdc": 2709281,
+  "src": "N",
+  "desc": "Raspberries, raw"
+ },
+ "fresh-cherries": {
+  "fdc": 2709231,
+  "src": "N",
+  "desc": "Cherries, raw"
+ },
+ "pineapple": {
+  "fdc": 2709260,
+  "src": "N",
+  "desc": "Pineapple, raw"
+ },
+ "cantaloupe": {
+  "fdc": 2709226,
+  "src": "N",
+  "desc": "Cantaloupe, raw"
+ },
+ "melon": {
+  "fdc": 2709226,
+  "src": "N",
+  "desc": "Cantaloupe, raw"
+ },
+ "orange-juice": {
+  "fdc": 2709186,
+  "src": "N",
+  "desc": "Orange juice, 100%, NFS"
+ },
+ "ketchup": {
+  "fdc": 2709733,
+  "src": "N",
+  "desc": "Ketchup"
+ },
+ "mustard": {
+  "fdc": 2710085,
+  "src": "N",
+  "desc": "Mustard"
+ },
+ "soy-sauce": {
+  "fdc": 2707442,
+  "src": "N",
+  "desc": "Soy sauce"
+ },
+ "jam-jelly": {
+  "fdc": 2710299,
+  "src": "N",
+  "desc": "Jam or jelly, NFS"
+ },
+ "maple-syrup": {
+  "fdc": 169661,
+  "src": "S",
+  "desc": "Syrups, maple"
+ },
+ "olive-oil": {
+  "fdc": 2710186,
+  "src": "N",
+  "desc": "Olive oil"
+ },
+ "flour": {
+  "fdc": 789890,
+  "src": "F",
+  "desc": "Flour, wheat, all-purpose, enriched, bleached"
+ },
+ "sugar": {
+  "fdc": 2710257,
+  "src": "N",
+  "desc": "Sugar, NFS"
+ },
+ "rice": {
+  "fdc": 168877,
+  "src": "S",
+  "desc": "Rice, white, long-grain, regular, raw, enriched"
+ },
+ "brown-rice": {
+  "fdc": 169703,
+  "src": "S",
+  "desc": "Rice, brown, long-grain, raw (Includes foods for USDA's Food Distribution Program)"
+ },
+ "dry-pasta": {
+  "fdc": 169736,
+  "src": "S",
+  "desc": "Pasta, dry, enriched"
+ },
+ "oatmeal": {
+  "fdc": 2708489,
+  "src": "N",
+  "desc": "Oats, raw"
+ },
+ "cereal": {
+  "fdc": 2708445,
+  "src": "N",
+  "desc": "Cereal, ready-to-eat, NFS"
+ },
+ "flour-tortillas": {
+  "fdc": 2707824,
+  "src": "N",
+  "desc": "Tortilla, flour"
+ },
+ "bagels": {
+  "fdc": 2707684,
+  "src": "N",
+  "desc": "Bagel"
+ },
+ "muffins": {
+  "fdc": 2707841,
+  "src": "N",
+  "desc": "Muffin, plain"
+ },
+ "cake": {
+  "fdc": 2707853,
+  "src": "N",
+  "desc": "Cake or cupcake, NFS"
+ },
+ "cheesecake": {
+  "fdc": 2707861,
+  "src": "N",
+  "desc": "Cheesecake, plain"
+ },
+ "pumpkin-pie": {
+  "fdc": 2708011,
+  "src": "N",
+  "desc": "Pie, pumpkin"
+ },
+ "fruit-pie": {
+  "fdc": 2707995,
+  "src": "N",
+  "desc": "Pie, apple"
+ },
+ "ice-cream": {
+  "fdc": 2705629,
+  "src": "N",
+  "desc": "Ice cream, NFS"
+ },
+ "frozen-pizza": {
+  "fdc": 2708613,
+  "src": "N",
+  "desc": "Pizza, cheese, from frozen, thick crust"
+ },
+ "frozen-vegetables": {
+  "fdc": 170471,
+  "src": "S",
+  "desc": "Vegetables, mixed, frozen, unprepared"
+ },
+ "almond-milk": {
+  "fdc": 2705410,
+  "src": "N",
+  "desc": "Almond milk, NFS"
+ },
+ "american-cheese": {
+  "fdc": 2705764,
+  "src": "N",
+  "desc": "Cheese, American"
+ },
+ "brie": {
+  "fdc": 2705708,
+  "src": "N",
+  "desc": "Cheese, Brie"
+ },
+ "buttermilk": {
+  "fdc": 2705393,
+  "src": "N",
+  "desc": "Buttermilk"
+ },
+ "cheddar-cheese": {
+  "fdc": 2705709,
+  "src": "N",
+  "desc": "Cheese, Cheddar"
+ },
+ "cheese-curds": {
+  "fdc": 2705709,
+  "src": "N",
+  "desc": "Cheese, Cheddar"
+ },
+ "cheese-slices-processed": {
+  "fdc": 2705764,
+  "src": "N",
+  "desc": "Cheese, American"
+ },
+ "coconut-milk": {
+  "fdc": 2705413,
+  "src": "N",
+  "desc": "Coconut milk"
+ },
+ "deviled-eggs": {
+  "fdc": 2707181,
+  "src": "N",
+  "desc": "Egg, deviled"
+ },
+ "egg-dishes": {
+  "fdc": 2707198,
+  "src": "N",
+  "desc": "Egg omelet or scrambled egg, NS as to fat"
+ },
+ "egg-whites": {
+  "fdc": 2707168,
+  "src": "N",
+  "desc": "Egg, white only, raw"
+ },
+ "egg-yolks": {
+  "fdc": 2707172,
+  "src": "N",
+  "desc": "Egg, yolk only, raw"
+ },
+ "eggnog": {
+  "fdc": 2705502,
+  "src": "N",
+  "desc": "Eggnog"
+ },
+ "feta": {
+  "fdc": 2705714,
+  "src": "N",
+  "desc": "Cheese, Feta"
+ },
+ "french-onion-dip": {
+  "fdc": 2705621,
+  "src": "N",
+  "desc": "Onion dip, regular"
+ },
+ "fresh-mozzarella": {
+  "fdc": 2705722,
+  "src": "N",
+  "desc": "Cheese, Mozzarella, NFS"
+ },
+ "frittata": {
+  "fdc": 2707198,
+  "src": "N",
+  "desc": "Egg omelet or scrambled egg, NS as to fat"
+ },
+ "ghee": {
+  "fdc": 2710168,
+  "src": "N",
+  "desc": "Ghee, clarified butter"
+ },
+ "goat-cheese": {
+  "fdc": 2705716,
+  "src": "N",
+  "desc": "Cheese, goat"
+ },
+ "greek-yogurt": {
+  "fdc": 2705422,
+  "src": "N",
+  "desc": "Yogurt, Greek, whole milk, plain"
+ },
+ "kefir": {
+  "fdc": 2705394,
+  "src": "N",
+  "desc": "Kefir"
+ },
+ "lactose-free-milk": {
+  "fdc": 2705392,
+  "src": "N",
+  "desc": "Milk, lactose free, whole"
+ },
+ "light-cream": {
+  "fdc": 2705593,
+  "src": "N",
+  "desc": "Cream, light"
+ },
+ "liquid-coffee-creamer": {
+  "fdc": 2705600,
+  "src": "N",
+  "desc": "Coffee creamer, liquid"
+ },
+ "liquid-egg-substitute": {
+  "fdc": 173462,
+  "src": "S",
+  "desc": "Egg substitute, liquid or frozen, fat free"
+ },
+ "margarine": {
+  "fdc": 2710158,
+  "src": "N",
+  "desc": "Margarine, NFS"
+ },
+ "nacho-cheese": {
+  "fdc": 2705808,
+  "src": "N",
+  "desc": "Cheese sauce"
+ },
+ "omelette": {
+  "fdc": 2707198,
+  "src": "N",
+  "desc": "Egg omelet or scrambled egg, NS as to fat"
+ },
+ "parmesan-cheese": {
+  "fdc": 2705730,
+  "src": "N",
+  "desc": "Cheese, Parmesan, hard"
+ },
+ "grated-parmesan": {
+  "fdc": 2705728,
+  "src": "N",
+  "desc": "Cheese, Parmesan, dry grated"
+ },
+ "pimento-cheese": {
+  "fdc": 170854,
+  "src": "S",
+  "desc": "Cheese, pasteurized process, pimento"
+ },
+ "powdered-coffee-creamer": {
+  "fdc": 2705606,
+  "src": "N",
+  "desc": "Coffee creamer, powder"
+ },
+ "powdered-milk": {
+  "fdc": 2705585,
+  "src": "N",
+  "desc": "Milk, dry, not reconstituted"
+ },
+ "pudding": {
+  "fdc": 2705681,
+  "src": "N",
+  "desc": "Pudding, flavors other than chocolate, NFS"
+ },
+ "quark": {
+  "fdc": 2705747,
+  "src": "N",
+  "desc": "Cheese, cottage, NFS"
+ },
+ "raw-egg-whites-yolks": {
+  "fdc": 2707152,
+  "src": "N",
+  "desc": "Egg, whole, raw"
+ },
+ "rice-milk": {
+  "fdc": 2705411,
+  "src": "N",
+  "desc": "Rice milk"
+ },
+ "ricotta": {
+  "fdc": 2705750,
+  "src": "N",
+  "desc": "Cheese, Ricotta"
+ },
+ "scrambled-eggs": {
+  "fdc": 2707198,
+  "src": "N",
+  "desc": "Egg omelet or scrambled egg, NS as to fat"
+ },
+ "shredded-mozzarella": {
+  "fdc": 170900,
+  "src": "S",
+  "desc": "Cheese, mozzarella, low moisture, part-skim, shredded"
+ },
+ "soft-cheese": {
+  "fdc": 2705708,
+  "src": "N",
+  "desc": "Cheese, Brie"
+ },
+ "sour-cream-dip": {
+  "fdc": 2705618,
+  "src": "N",
+  "desc": "Dip, NFS"
+ },
+ "soy-milk": {
+  "fdc": 2705404,
+  "src": "N",
+  "desc": "Soy milk, sweetened"
+ },
+ "string-cheese": {
+  "fdc": 2705723,
+  "src": "N",
+  "desc": "Cheese, Mozzarella, part skim"
+ },
+ "swiss-cheese": {
+  "fdc": 2705735,
+  "src": "N",
+  "desc": "Cheese, Swiss"
+ },
+ "vegan-cheese": {
+  "fdc": 2705777,
+  "src": "N",
+  "desc": "Imitation cheese"
+ },
+ "canned-whipped-cream": {
+  "fdc": 170860,
+  "src": "S",
+  "desc": "Cream, whipped, cream topping, pressurized"
+ },
+ "homemade-whipped-cream": {
+  "fdc": 2705598,
+  "src": "N",
+  "desc": "Cream, whipped"
+ },
+ "aerosol-whipped-topping": {
+  "fdc": 2705611,
+  "src": "N",
+  "desc": "Whipped topping"
+ },
+ "cool-whip": {
+  "fdc": 2705611,
+  "src": "N",
+  "desc": "Whipped topping"
+ },
+ "whipping-cream": {
+  "fdc": 170859,
+  "src": "S",
+  "desc": "Cream, fluid, heavy whipping"
+ },
+ "beef-jerky": {
+  "fdc": 2705860,
+  "src": "N",
+  "desc": "Beef jerky"
+ },
+ "beef-short-ribs": {
+  "fdc": 170826,
+  "src": "S",
+  "desc": "Beef, chuck, short ribs, boneless, separable lean and fat, trimmed to 0\" fat, all grades, raw"
+ },
+ "beef-stew-meat": {
+  "fdc": 2705849,
+  "src": "N",
+  "desc": "Beef, stew meat"
+ },
+ "beef-tongue": {
+  "fdc": 170196,
+  "src": "S",
+  "desc": "Beef, variety meats and by-products, tongue, raw"
+ },
+ "bison": {
+  "fdc": 2727571,
+  "src": "F",
+  "desc": "Bison, ground, raw"
+ },
+ "bone-pork-chops": {
+  "fdc": 168238,
+  "src": "S",
+  "desc": "Pork, fresh, loin, center loin (chops), bone-in, separable lean and fat, raw"
+ },
+ "bone-pork-loin-roast": {
+  "fdc": 167822,
+  "src": "S",
+  "desc": "Pork, fresh, loin, blade (chops or roasts), bone-in, separable lean and fat, raw"
+ },
+ "bone-rib-roast": {
+  "fdc": 168675,
+  "src": "S",
+  "desc": "Beef, rib, whole (ribs 6-12), separable lean and fat, trimmed to 1/8\" fat, choice, raw"
+ },
+ "bone-veal-loin-roast": {
+  "fdc": 173823,
+  "src": "S",
+  "desc": "Veal, loin, separable lean and fat, raw"
+ },
+ "boneless-canned-ham-refrigerated": {
+  "fdc": 2705880,
+  "src": "N",
+  "desc": "Ham, canned"
+ },
+ "boneless-leg-lamb": {
+  "fdc": 174311,
+  "src": "S",
+  "desc": "Lamb, leg, whole (shank and sirloin), separable lean and fat, trimmed to 1/4\" fat, choice, raw"
+ },
+ "boneless-picnic-ham": {
+  "fdc": 2705878,
+  "src": "N",
+  "desc": "Ham"
+ },
+ "boneless-pork-loin-roast": {
+  "fdc": 168314,
+  "src": "S",
+  "desc": "Pork, fresh, loin, top loin (roasts), boneless, separable lean and fat, raw"
+ },
+ "boneless-rib-roast": {
+  "fdc": 168675,
+  "src": "S",
+  "desc": "Beef, rib, whole (ribs 6-12), separable lean and fat, trimmed to 1/8\" fat, choice, raw"
+ },
+ "boneless-veal-leg-roast": {
+  "fdc": 175269,
+  "src": "S",
+  "desc": "Veal, leg (top round), separable lean only, raw"
+ },
+ "boneless-veal-shoulder-roast": {
+  "fdc": 173833,
+  "src": "S",
+  "desc": "Veal, shoulder, arm, separable lean and fat, raw"
+ },
+ "bratwurst": {
+  "fdc": 2706174,
+  "src": "N",
+  "desc": "Bratwurst"
+ },
+ "breakfast-sausage": {
+  "fdc": 172934,
+  "src": "S",
+  "desc": "Pork sausage, link/patty, unprepared"
+ },
+ "brisket": {
+  "fdc": 168664,
+  "src": "S",
+  "desc": "Beef, brisket, whole, separable lean and fat, trimmed to 1/8\" fat, all grades, raw"
+ },
+ "brisket-chuck-roast": {
+  "fdc": 2646174,
+  "src": "F",
+  "desc": "Beef, chuck, roast, boneless, choice, raw"
+ },
+ "canned-ham-shelf-stable": {
+  "fdc": 2705880,
+  "src": "N",
+  "desc": "Ham, canned"
+ },
+ "canned-meat": {
+  "fdc": 174571,
+  "src": "S",
+  "desc": "Luncheon meat, pork, canned"
+ },
+ "chitterlings": {
+  "fdc": 168266,
+  "src": "S",
+  "desc": "Pork, fresh, variety meats and by-products, chitterlings, raw"
+ },
+ "chuck-roast": {
+  "fdc": 2646174,
+  "src": "F",
+  "desc": "Beef, chuck, roast, boneless, choice, raw"
+ },
+ "cooked-chorizo": {
+  "fdc": 2706179,
+  "src": "N",
+  "desc": "Chorizo"
+ },
+ "cooked-ham": {
+  "fdc": 2705878,
+  "src": "N",
+  "desc": "Ham"
+ },
+ "corned-beef": {
+  "fdc": 2705850,
+  "src": "N",
+  "desc": "Beef, corned"
+ },
+ "country-ham": {
+  "fdc": 167875,
+  "src": "S",
+  "desc": "Pork, cured, ham, whole, separable lean and fat, unheated"
+ },
+ "filet-mignon": {
+  "fdc": 2727573,
+  "src": "F",
+  "desc": "Beef,\u00a0tenderloin steak, raw"
+ },
+ "flank-steak": {
+  "fdc": 2646175,
+  "src": "F",
+  "desc": "Beef, flank, steak, boneless, choice, raw"
+ },
+ "fresh-boneless-picnic-ham": {
+  "fdc": 168255,
+  "src": "S",
+  "desc": "Pork, fresh, shoulder, arm picnic, separable lean and fat, raw"
+ },
+ "fresh-chorizo": {
+  "fdc": 173859,
+  "src": "S",
+  "desc": "Sausage, pork, chorizo, link or ground, raw"
+ },
+ "fresh-half-ham-bone": {
+  "fdc": 168226,
+  "src": "S",
+  "desc": "Pork, fresh, leg (ham), shank half, separable lean and fat, raw"
+ },
+ "fresh-ham-shank": {
+  "fdc": 168226,
+  "src": "S",
+  "desc": "Pork, fresh, leg (ham), shank half, separable lean and fat, raw"
+ },
+ "fresh-pork-butt-roll": {
+  "fdc": 167849,
+  "src": "S",
+  "desc": "Pork, fresh, shoulder, (Boston butt), blade (steaks), separable lean and fat, raw"
+ },
+ "fresh-whole-ham-bone": {
+  "fdc": 168222,
+  "src": "S",
+  "desc": "Pork, fresh, leg (ham), whole, separable lean and fat, raw"
+ },
+ "fully-cooked-bacon": {
+  "fdc": 2705885,
+  "src": "N",
+  "desc": "Bacon, NS as to type of meat, cooked"
+ },
+ "goat-meat-whole-cuts": {
+  "fdc": 175303,
+  "src": "S",
+  "desc": "Game meat, goat, raw"
+ },
+ "goat-stew-meat": {
+  "fdc": 175303,
+  "src": "S",
+  "desc": "Game meat, goat, raw"
+ },
+ "ground-bison": {
+  "fdc": 2727571,
+  "src": "F",
+  "desc": "Bison, ground, raw"
+ },
+ "ground-goat": {
+  "fdc": 175303,
+  "src": "S",
+  "desc": "Game meat, goat, raw"
+ },
+ "ground-lamb": {
+  "fdc": 2727570,
+  "src": "F",
+  "desc": "Lamb, ground, raw"
+ },
+ "ground-pork": {
+  "fdc": 2514745,
+  "src": "F",
+  "desc": "Pork, ground, raw"
+ },
+ "ground-veal": {
+  "fdc": 175290,
+  "src": "S",
+  "desc": "Veal, ground, raw"
+ },
+ "half-beef-tenderloin": {
+  "fdc": 2727573,
+  "src": "F",
+  "desc": "Beef,\u00a0tenderloin steak, raw"
+ },
+ "half-cooked-ham-bone": {
+  "fdc": 2705878,
+  "src": "N",
+  "desc": "Ham"
+ },
+ "homemade-jerky": {
+  "fdc": 2705860,
+  "src": "N",
+  "desc": "Beef jerky"
+ },
+ "italian-sausage": {
+  "fdc": 171631,
+  "src": "S",
+  "desc": "Sausage, Italian, pork, mild, raw"
+ },
+ "kielbasa-smoked-sausage": {
+  "fdc": 2706188,
+  "src": "N",
+  "desc": "Polish sausage"
+ },
+ "lamb-chops": {
+  "fdc": 174319,
+  "src": "S",
+  "desc": "Lamb, loin, separable lean and fat, trimmed to 1/4\" fat, choice, raw"
+ },
+ "lamb-crown-roast": {
+  "fdc": 174321,
+  "src": "S",
+  "desc": "Lamb, rib, separable lean and fat, trimmed to 1/4\" fat, choice, raw"
+ },
+ "lamb-kabob-cubes": {
+  "fdc": 172508,
+  "src": "S",
+  "desc": "Lamb, cubed for stew or kabob (leg and shoulder), separable lean only, trimmed to 1/4\" fat, raw"
+ },
+ "lamb-leg-steaks": {
+  "fdc": 174311,
+  "src": "S",
+  "desc": "Lamb, leg, whole (shank and sirloin), separable lean and fat, trimmed to 1/4\" fat, choice, raw"
+ },
+ "lamb-shanks": {
+  "fdc": 172481,
+  "src": "S",
+  "desc": "Lamb, foreshank, separable lean and fat, trimmed to 1/4\" fat, choice, raw"
+ },
+ "lamb-shoulder-roast": {
+  "fdc": 172496,
+  "src": "S",
+  "desc": "Lamb, shoulder, whole (arm and blade), separable lean and fat, trimmed to 1/4\" fat, choice, raw"
+ },
+ "lamb-stew-meat": {
+  "fdc": 172508,
+  "src": "S",
+  "desc": "Lamb, cubed for stew or kabob (leg and shoulder), separable lean only, trimmed to 1/4\" fat, raw"
+ },
+ "large-bone-leg-lamb": {
+  "fdc": 174311,
+  "src": "S",
+  "desc": "Lamb, leg, whole (shank and sirloin), separable lean and fat, trimmed to 1/4\" fat, choice, raw"
+ },
+ "large-pork-crown-roast": {
+  "fdc": 167818,
+  "src": "S",
+  "desc": "Pork, fresh, loin, whole, separable lean and fat, raw"
+ },
+ "liver": {
+  "fdc": 169451,
+  "src": "S",
+  "desc": "Beef, variety meats and by-products, liver, raw"
+ },
+ "meat-retort-pouches": {
+  "fdc": 2705819,
+  "src": "N",
+  "desc": "Meat, NFS"
+ },
+ "meat-pate": {
+  "fdc": 2706155,
+  "src": "N",
+  "desc": "Liver, paste or pate"
+ },
+ "new-york-strip-steak": {
+  "fdc": 2727572,
+  "src": "F",
+  "desc": "Beef, short loin (NY strip steak), raw"
+ },
+ "organ-meats": {
+  "fdc": 169451,
+  "src": "S",
+  "desc": "Beef, variety meats and by-products, liver, raw"
+ },
+ "pastrami": {
+  "fdc": 2706183,
+  "src": "N",
+  "desc": "Pastrami, NFS"
+ },
+ "pepperoni": {
+  "fdc": 2706185,
+  "src": "N",
+  "desc": "Pepperoni, NFS"
+ },
+ "pork-loin-cubes": {
+  "fdc": 2646168,
+  "src": "F",
+  "desc": "Pork, loin, boneless, raw"
+ },
+ "pork-medallions": {
+  "fdc": 2646169,
+  "src": "F",
+  "desc": "Pork, loin, tenderloin, boneless, raw"
+ },
+ "pork-ribs": {
+  "fdc": 167853,
+  "src": "S",
+  "desc": "Pork, fresh, spareribs, separable lean and fat, raw"
+ },
+ "pork-roll": {
+  "fdc": 2705883,
+  "src": "N",
+  "desc": "Pork, roll"
+ },
+ "pork-shoulder": {
+  "fdc": 167843,
+  "src": "S",
+  "desc": "Pork, fresh, shoulder, whole, separable lean and fat, raw"
+ },
+ "pork-tenderloin": {
+  "fdc": 2646169,
+  "src": "F",
+  "desc": "Pork, loin, tenderloin, boneless, raw"
+ },
+ "prosciutto": {
+  "fdc": 2705879,
+  "src": "N",
+  "desc": "Ham, prosciutto"
+ },
+ "rabbit": {
+  "fdc": 172521,
+  "src": "S",
+  "desc": "Game meat, rabbit, domesticated, composite of cuts, raw"
+ },
+ "raw-beef-kabobs": {
+  "fdc": 2727574,
+  "src": "F",
+  "desc": "Beef, top sirloin steak, raw"
+ },
+ "refrigerated-canned-ham": {
+  "fdc": 2705880,
+  "src": "N",
+  "desc": "Ham, canned"
+ },
+ "ribeye-steak": {
+  "fdc": 2646172,
+  "src": "F",
+  "desc": "Beef, ribeye, steak, boneless, choice, raw"
+ },
+ "rolled-lamb-breast": {
+  "fdc": 172611,
+  "src": "S",
+  "desc": "Lamb, New Zealand, imported, breast, separable lean only, raw"
+ },
+ "round-roast": {
+  "fdc": 746761,
+  "src": "F",
+  "desc": "Beef, round, top round roast, boneless, separable lean only, trimmed to 0\" fat, select, raw"
+ },
+ "sirloin-steak": {
+  "fdc": 2727574,
+  "src": "F",
+  "desc": "Beef, top sirloin steak, raw"
+ },
+ "small-bone-leg-lamb": {
+  "fdc": 174311,
+  "src": "S",
+  "desc": "Lamb, leg, whole (shank and sirloin), separable lean and fat, trimmed to 1/4\" fat, choice, raw"
+ },
+ "small-pork-crown-roast": {
+  "fdc": 167818,
+  "src": "S",
+  "desc": "Pork, fresh, loin, whole, separable lean and fat, raw"
+ },
+ "smoked-bratwurst": {
+  "fdc": 172956,
+  "src": "S",
+  "desc": "Bratwurst, beef and pork, smoked"
+ },
+ "spiral-ham": {
+  "fdc": 2705878,
+  "src": "N",
+  "desc": "Ham"
+ },
+ "stuffed-pork-chops": {
+  "fdc": 2705872,
+  "src": "N",
+  "desc": "Pork, chop, stuffed"
+ },
+ "t-bone-steak": {
+  "fdc": 172118,
+  "src": "S",
+  "desc": "Beef, short loin, t-bone steak, separable lean and fat, trimmed to 1/8\" fat, all grades, raw"
+ },
+ "uncooked-boneless-leg-ham": {
+  "fdc": 168222,
+  "src": "S",
+  "desc": "Pork, fresh, leg (ham), whole, separable lean and fat, raw"
+ },
+ "uncooked-half-leg-ham-bone": {
+  "fdc": 168226,
+  "src": "S",
+  "desc": "Pork, fresh, leg (ham), shank half, separable lean and fat, raw"
+ },
+ "uncooked-smoked-chorizo": {
+  "fdc": 173859,
+  "src": "S",
+  "desc": "Sausage, pork, chorizo, link or ground, raw"
+ },
+ "uncooked-whole-leg-ham-bone": {
+  "fdc": 168222,
+  "src": "S",
+  "desc": "Pork, fresh, leg (ham), whole, separable lean and fat, raw"
+ },
+ "uncured-bacon": {
+  "fdc": 2705889,
+  "src": "N",
+  "desc": "Pork bacon, smoked or cured, cooked"
+ },
+ "uncured-cooked-ham": {
+  "fdc": 2705878,
+  "src": "N",
+  "desc": "Ham"
+ },
+ "uncured-fresh-ham": {
+  "fdc": 168222,
+  "src": "S",
+  "desc": "Pork, fresh, leg (ham), whole, separable lean and fat, raw"
+ },
+ "vacuum-packed-ham": {
+  "fdc": 2705878,
+  "src": "N",
+  "desc": "Ham"
+ },
+ "venison-roast": {
+  "fdc": 173855,
+  "src": "S",
+  "desc": "Game meat, deer, raw"
+ },
+ "whole-beef-tenderloin": {
+  "fdc": 2727573,
+  "src": "F",
+  "desc": "Beef,\u00a0tenderloin steak, raw"
+ },
+ "whole-cooked-ham-bone": {
+  "fdc": 2705878,
+  "src": "N",
+  "desc": "Ham"
+ },
+ "bone-chicken-breast": {
+  "fdc": 171474,
+  "src": "S",
+  "desc": "Chicken, broilers or fryers, breast, meat and skin, raw"
+ },
+ "bone-turkey-breast": {
+  "fdc": 171528,
+  "src": "S",
+  "desc": "Turkey, retail parts, breast, meat and skin, raw"
+ },
+ "boneless-turkey-breast": {
+  "fdc": 174515,
+  "src": "S",
+  "desc": "Turkey, retail parts, breast, meat only, raw"
+ },
+ "canned-chicken": {
+  "fdc": 2706086,
+  "src": "N",
+  "desc": "Chicken, canned, meat only"
+ },
+ "capon": {
+  "fdc": 173645,
+  "src": "S",
+  "desc": "Chicken, capons, meat and skin, raw"
+ },
+ "chicken-drumsticks": {
+  "fdc": 172373,
+  "src": "S",
+  "desc": "Chicken, broilers or fryers, drumstick, meat and skin, raw"
+ },
+ "chicken-retort-pouches": {
+  "fdc": 2706086,
+  "src": "N",
+  "desc": "Chicken, canned, meat only"
+ },
+ "chicken-legs": {
+  "fdc": 172378,
+  "src": "S",
+  "desc": "Chicken, broilers or fryers, leg, meat and skin, raw"
+ },
+ "chicken-liver-pate": {
+  "fdc": 172928,
+  "src": "S",
+  "desc": "Pate, chicken liver, canned"
+ },
+ "chicken-nuggets": {
+  "fdc": 2706092,
+  "src": "N",
+  "desc": "Chicken nuggets, NFS"
+ },
+ "chicken-patties": {
+  "fdc": 2706088,
+  "src": "N",
+  "desc": "Chicken patty, breaded"
+ },
+ "chicken-thighs": {
+  "fdc": 172385,
+  "src": "S",
+  "desc": "Chicken, broilers or fryers, thigh, meat and skin, raw"
+ },
+ "chicken-wings": {
+  "fdc": 2706057,
+  "src": "N",
+  "desc": "Chicken wing, baked, broiled, or roasted, from raw"
+ },
+ "cooked-ground-turkey": {
+  "fdc": 2706133,
+  "src": "N",
+  "desc": "Turkey, ground"
+ },
+ "cooked-turkey": {
+  "fdc": 2706104,
+  "src": "N",
+  "desc": "Turkey, NFS"
+ },
+ "cornish-hens": {
+  "fdc": 171507,
+  "src": "S",
+  "desc": "Chicken, cornish game hens, meat and skin, raw"
+ },
+ "duck": {
+  "fdc": 172408,
+  "src": "S",
+  "desc": "Duck, domesticated, meat and skin, raw"
+ },
+ "fried-chicken": {
+  "fdc": 2705949,
+  "src": "N",
+  "desc": "Chicken, NS as to part, fried, coated, skin / coating eaten"
+ },
+ "giblets": {
+  "fdc": 171057,
+  "src": "S",
+  "desc": "Chicken, broilers or fryers, giblets, raw"
+ },
+ "goose": {
+  "fdc": 174470,
+  "src": "S",
+  "desc": "Goose, domesticated, meat and skin, raw"
+ },
+ "grilled-chicken": {
+  "fdc": 2705942,
+  "src": "N",
+  "desc": "Chicken, NS as to part, grilled without sauce, skin eaten"
+ },
+ "ground-turkey": {
+  "fdc": 171505,
+  "src": "S",
+  "desc": "Turkey, Ground, raw"
+ },
+ "pheasant": {
+  "fdc": 174472,
+  "src": "S",
+  "desc": "Pheasant, raw, meat and skin"
+ },
+ "quail": {
+  "fdc": 172418,
+  "src": "S",
+  "desc": "Quail, meat and skin, raw"
+ },
+ "raw-chicken-kabobs": {
+  "fdc": 2646170,
+  "src": "F",
+  "desc": "Chicken, breast, boneless, skinless, raw"
+ },
+ "shredded-chicken": {
+  "fdc": 2705934,
+  "src": "N",
+  "desc": "Chicken, NS as to part, baked, broiled, or roasted, skin not eaten"
+ },
+ "stuffed-chicken-breasts": {
+  "fdc": 2646170,
+  "src": "F",
+  "desc": "Chicken, breast, boneless, skinless, raw"
+ },
+ "turducken": {
+  "fdc": 171081,
+  "src": "S",
+  "desc": "Turkey, whole, meat and skin, raw"
+ },
+ "turkey-bacon": {
+  "fdc": 2706135,
+  "src": "N",
+  "desc": "Turkey bacon, cooked"
+ },
+ "turkey-legs": {
+  "fdc": 171493,
+  "src": "S",
+  "desc": "Turkey, all classes, leg, meat and skin, raw"
+ },
+ "turkey-thighs": {
+  "fdc": 171533,
+  "src": "S",
+  "desc": "Turkey, retail parts, thigh, meat and skin, raw"
+ },
+ "whole-raw-chicken": {
+  "fdc": 171447,
+  "src": "S",
+  "desc": "Chicken, broilers or fryers, meat and skin, raw"
+ },
+ "whole-turkey": {
+  "fdc": 171081,
+  "src": "S",
+  "desc": "Turkey, whole, meat and skin, raw"
+ },
+ "bluefish": {
+  "fdc": 171949,
+  "src": "S",
+  "desc": "Fish, bluefish, raw"
+ },
+ "catfish": {
+  "fdc": 2684445,
+  "src": "F",
+  "desc": "Fish, catfish, farm raised, raw"
+ },
+ "caviar": {
+  "fdc": 2706332,
+  "src": "N",
+  "desc": "Caviar"
+ },
+ "clams": {
+  "fdc": 2706338,
+  "src": "N",
+  "desc": "Clams, raw"
+ },
+ "cod": {
+  "fdc": 2684444,
+  "src": "F",
+  "desc": "Fish, cod, Atlantic, wild caught, raw"
+ },
+ "cod-lean-white-fish": {
+  "fdc": 2684444,
+  "src": "F",
+  "desc": "Fish, cod, Atlantic, wild caught, raw"
+ },
+ "cooked-crab": {
+  "fdc": 2706344,
+  "src": "N",
+  "desc": "Crab"
+ },
+ "cooked-fish": {
+  "fdc": 2706224,
+  "src": "N",
+  "desc": "Fish, NFS"
+ },
+ "cooked-lobster-tails": {
+  "fdc": 2706349,
+  "src": "N",
+  "desc": "Lobster"
+ },
+ "cooked-salmon": {
+  "fdc": 2706286,
+  "src": "N",
+  "desc": "Fish, salmon, baked or broiled"
+ },
+ "cooked-shellfish": {
+  "fdc": 2706336,
+  "src": "N",
+  "desc": "Shellfish, NFS"
+ },
+ "cooked-shrimp": {
+  "fdc": 2706363,
+  "src": "N",
+  "desc": "Shrimp, steamed or boiled"
+ },
+ "crab-legs": {
+  "fdc": 175164,
+  "src": "S",
+  "desc": "Crustaceans, crab, alaska king, raw"
+ },
+ "crayfish": {
+  "fdc": 175169,
+  "src": "S",
+  "desc": "Crustaceans, crayfish, mixed species, farmed, raw"
+ },
+ "dungeness-crab": {
+  "fdc": 171968,
+  "src": "S",
+  "desc": "Crustaceans, crab, dungeness, raw"
+ },
+ "flounder": {
+  "fdc": 174196,
+  "src": "S",
+  "desc": "Fish, flatfish (flounder and sole species), raw"
+ },
+ "fresh-clams-mussels": {
+  "fdc": 2706338,
+  "src": "N",
+  "desc": "Clams, raw"
+ },
+ "fresh-crab-meat": {
+  "fdc": 174204,
+  "src": "S",
+  "desc": "Crustaceans, crab, blue, raw"
+ },
+ "frozen-whole-lobster": {
+  "fdc": 174208,
+  "src": "S",
+  "desc": "Crustaceans, lobster, northern, raw"
+ },
+ "haddock": {
+  "fdc": 333374,
+  "src": "F",
+  "desc": "Fish, haddock, raw"
+ },
+ "halibut": {
+  "fdc": 174200,
+  "src": "S",
+  "desc": "Fish, halibut, Atlantic and Pacific, raw"
+ },
+ "hot-smoked-fish-air-pack": {
+  "fdc": 2706230,
+  "src": "N",
+  "desc": "Fish, smoked"
+ },
+ "hot-smoked-fish-vacuum-pack": {
+  "fdc": 2706230,
+  "src": "N",
+  "desc": "Fish, smoked"
+ },
+ "imitation-crab": {
+  "fdc": 2706568,
+  "src": "N",
+  "desc": "Imitation crab meat"
+ },
+ "king-crab-legs": {
+  "fdc": 175164,
+  "src": "S",
+  "desc": "Crustaceans, crab, alaska king, raw"
+ },
+ "live-clams-mussels-oysters": {
+  "fdc": 2706351,
+  "src": "N",
+  "desc": "Oysters, raw"
+ },
+ "live-lobster": {
+  "fdc": 174208,
+  "src": "S",
+  "desc": "Crustaceans, lobster, northern, raw"
+ },
+ "mackerel": {
+  "fdc": 175119,
+  "src": "S",
+  "desc": "Fish, mackerel, Atlantic, raw"
+ },
+ "mullet": {
+  "fdc": 175123,
+  "src": "S",
+  "desc": "Fish, mullet, striped, raw"
+ },
+ "mussels": {
+  "fdc": 174216,
+  "src": "S",
+  "desc": "Mollusks, mussel, blue, raw"
+ },
+ "ocean-perch": {
+  "fdc": 175125,
+  "src": "S",
+  "desc": "Fish, ocean perch, Atlantic, raw"
+ },
+ "oysters": {
+  "fdc": 2706351,
+  "src": "N",
+  "desc": "Oysters, raw"
+ },
+ "pasteurized-crab-meat": {
+  "fdc": 171966,
+  "src": "S",
+  "desc": "Crustaceans, crab, blue, canned"
+ },
+ "pickled-herring": {
+  "fdc": 175118,
+  "src": "S",
+  "desc": "Fish, herring, Atlantic, pickled"
+ },
+ "pollock": {
+  "fdc": 333476,
+  "src": "F",
+  "desc": "Fish, pollock, raw"
+ },
+ "pollock-rockfish": {
+  "fdc": 333476,
+  "src": "F",
+  "desc": "Fish, pollock, raw"
+ },
+ "rockfish": {
+  "fdc": 173684,
+  "src": "S",
+  "desc": "Fish, rockfish, Pacific, mixed species, raw"
+ },
+ "scallops": {
+  "fdc": 174220,
+  "src": "S",
+  "desc": "Mollusks, scallop, mixed species, raw"
+ },
+ "sea-trout": {
+  "fdc": 173695,
+  "src": "S",
+  "desc": "Fish, seatrout, mixed species, raw"
+ },
+ "shrimp-cocktail": {
+  "fdc": 2706449,
+  "src": "N",
+  "desc": "Shrimp cocktail"
+ },
+ "shucked-oysters-clams-mussels": {
+  "fdc": 2706351,
+  "src": "N",
+  "desc": "Oysters, raw"
+ },
+ "smoked-salmon": {
+  "fdc": 2706292,
+  "src": "N",
+  "desc": "Fish, salmon, smoked"
+ },
+ "air-packed-smoked-salmon": {
+  "fdc": 2706292,
+  "src": "N",
+  "desc": "Fish, salmon, smoked"
+ },
+ "snow-crab-legs": {
+  "fdc": 171969,
+  "src": "S",
+  "desc": "Crustaceans, crab, queen, raw"
+ },
+ "sole": {
+  "fdc": 174196,
+  "src": "S",
+  "desc": "Fish, flatfish (flounder and sole species), raw"
+ },
+ "squid": {
+  "fdc": 174223,
+  "src": "S",
+  "desc": "Mollusks, squid, mixed species, raw"
+ },
+ "tuna-steaks": {
+  "fdc": 2706308,
+  "src": "N",
+  "desc": "Fish, tuna, raw"
+ },
+ "baked-potatoes": {
+  "fdc": 2709383,
+  "src": "N",
+  "desc": "Potato, baked, NFS"
+ },
+ "baked-ziti": {
+  "fdc": 2708826,
+  "src": "N",
+  "desc": "Pasta with tomato-based sauce and cheese"
+ },
+ "beef-stew": {
+  "fdc": 2706592,
+  "src": "N",
+  "desc": "Stew, beef"
+ },
+ "bologna": {
+  "fdc": 2706176,
+  "src": "N",
+  "desc": "Bologna"
+ },
+ "burritos": {
+  "fdc": 2708534,
+  "src": "N",
+  "desc": "Burrito, NFS"
+ },
+ "canadian-bacon": {
+  "fdc": 2705884,
+  "src": "N",
+  "desc": "Canadian bacon, cooked"
+ },
+ "canadian-bacon-whole": {
+  "fdc": 2705884,
+  "src": "N",
+  "desc": "Canadian bacon, cooked"
+ },
+ "casseroles": {
+  "fdc": 2708825,
+  "src": "N",
+  "desc": "Pasta with tomato-based sauce, cheese and meat"
+ },
+ "chicken-gravy": {
+  "fdc": 2706428,
+  "src": "N",
+  "desc": "Chicken with gravy"
+ },
+ "chicken-noodle-soup": {
+  "fdc": 2709149,
+  "src": "N",
+  "desc": "Soup, chicken noodle"
+ },
+ "chili": {
+  "fdc": 2706375,
+  "src": "N",
+  "desc": "Chili with meat and beans"
+ },
+ "chinese-takeout": {
+  "fdc": 2708798,
+  "src": "N",
+  "desc": "Lo mein, NFS"
+ },
+ "cooked-bacon": {
+  "fdc": 2705885,
+  "src": "N",
+  "desc": "Bacon, NS as to type of meat, cooked"
+ },
+ "cooked-beans": {
+  "fdc": 2707347,
+  "src": "N",
+  "desc": "Beans, NFS"
+ },
+ "cooked-beef": {
+  "fdc": 2705847,
+  "src": "N",
+  "desc": "Beef, roast"
+ },
+ "cooked-broccoli": {
+  "fdc": 2709647,
+  "src": "N",
+  "desc": "Broccoli, NS as to form, cooked"
+ },
+ "cooked-ground-beef": {
+  "fdc": 2705854,
+  "src": "N",
+  "desc": "Beef, ground"
+ },
+ "cooked-mushrooms": {
+  "fdc": 2709938,
+  "src": "N",
+  "desc": "Mushrooms, NS as to form, cooked"
+ },
+ "cooked-oatmeal": {
+  "fdc": 2708380,
+  "src": "N",
+  "desc": "Oatmeal, NFS"
+ },
+ "cooked-pork": {
+  "fdc": 2705882,
+  "src": "N",
+  "desc": "Pork, roast"
+ },
+ "cooked-potatoes": {
+  "fdc": 2709385,
+  "src": "N",
+  "desc": "Potato, boiled, NFS"
+ },
+ "cooked-sausage": {
+  "fdc": 2706191,
+  "src": "N",
+  "desc": "Pork sausage"
+ },
+ "cooked-steak": {
+  "fdc": 2705824,
+  "src": "N",
+  "desc": "Beef, steak, NFS"
+ },
+ "cooked-sweet-potatoes": {
+  "fdc": 2709698,
+  "src": "N",
+  "desc": "Sweet potato, baked, NS as to fat"
+ },
+ "cooked-vegetables": {
+  "fdc": 2710015,
+  "src": "N",
+  "desc": "Classic mixed vegetables, NS as to form, cooked"
+ },
+ "curry": {
+  "fdc": 2706437,
+  "src": "N",
+  "desc": "Chicken curry"
+ },
+ "cut-fruit": {
+  "fdc": 2709287,
+  "src": "N",
+  "desc": "Fruit salad, fresh or raw, excluding citrus fruits, no dressing"
+ },
+ "deli-chicken": {
+  "fdc": 2706208,
+  "src": "N",
+  "desc": "Chicken, prepackaged or deli, luncheon meat"
+ },
+ "deli-ham": {
+  "fdc": 2706206,
+  "src": "N",
+  "desc": "Ham, prepackaged or deli, luncheon meat"
+ },
+ "deli-roast-beef": {
+  "fdc": 174570,
+  "src": "S",
+  "desc": "Roast beef, deli style, prepackaged, sliced"
+ },
+ "deli-turkey": {
+  "fdc": 2706215,
+  "src": "N",
+  "desc": "Turkey, prepackaged or deli, luncheon meat"
+ },
+ "enchiladas": {
+  "fdc": 2708565,
+  "src": "N",
+  "desc": "Enchilada, NFS"
+ },
+ "fried-rice": {
+  "fdc": 2708952,
+  "src": "N",
+  "desc": "Rice, fried, NFS"
+ },
+ "goulash": {
+  "fdc": 2706482,
+  "src": "N",
+  "desc": "Beef and noodles with tomato-based sauce"
+ },
+ "hamburgers": {
+  "fdc": 2706920,
+  "src": "N",
+  "desc": "Hamburger, NFS"
+ },
+ "homemade-hummus": {
+  "fdc": 172454,
+  "src": "S",
+  "desc": "Hummus, home prepared"
+ },
+ "homemade-kugel": {
+  "fdc": 2708949,
+  "src": "N",
+  "desc": "Noodle pudding"
+ },
+ "homemade-salsa": {
+  "fdc": 2709739,
+  "src": "N",
+  "desc": "Salsa, red, homemade"
+ },
+ "homemade-vegetable-soup": {
+  "fdc": 2710113,
+  "src": "N",
+  "desc": "Soup, vegetable"
+ },
+ "lasagna": {
+  "fdc": 2708750,
+  "src": "N",
+  "desc": "Lasagna with meat"
+ },
+ "leftovers-meat": {
+  "fdc": 2706721,
+  "src": "N",
+  "desc": "Stew, NFS"
+ },
+ "leftovers-without-meat": {
+  "fdc": 2708826,
+  "src": "N",
+  "desc": "Pasta with tomato-based sauce and cheese"
+ },
+ "lentil-soup": {
+  "fdc": 2707462,
+  "src": "N",
+  "desc": "Soup, lentil"
+ },
+ "mac-and-cheese": {
+  "fdc": 2708811,
+  "src": "N",
+  "desc": "Macaroni or noodles with cheese"
+ },
+ "meat-gravy": {
+  "fdc": 2706473,
+  "src": "N",
+  "desc": "Meat with gravy, NS as to type of meat,"
+ },
+ "meat-sauce": {
+  "fdc": 2706470,
+  "src": "N",
+  "desc": "Spaghetti sauce with meat"
+ },
+ "meatballs": {
+  "fdc": 171638,
+  "src": "S",
+  "desc": "Meatballs, frozen, Italian style"
+ },
+ "meatloaf": {
+  "fdc": 2706499,
+  "src": "N",
+  "desc": "Meat loaf made with beef"
+ },
+ "miso-soup": {
+  "fdc": 2707455,
+  "src": "N",
+  "desc": "Soup, miso or tofu"
+ },
+ "olive-bar-olives": {
+  "fdc": 2710088,
+  "src": "N",
+  "desc": "Olives, NFS"
+ },
+ "packaged-lunch-meat": {
+  "fdc": 2706215,
+  "src": "N",
+  "desc": "Turkey, prepackaged or deli, luncheon meat"
+ },
+ "pate": {
+  "fdc": 2706155,
+  "src": "N",
+  "desc": "Liver, paste or pate"
+ },
+ "pho": {
+  "fdc": 2707124,
+  "src": "N",
+  "desc": "Soup, pho, with meat"
+ },
+ "pico-de-gallo": {
+  "fdc": 2709737,
+  "src": "N",
+  "desc": "Salsa, pico de gallo"
+ },
+ "pot-roast": {
+  "fdc": 2705848,
+  "src": "N",
+  "desc": "Beef, pot roast"
+ },
+ "potato-soup": {
+  "fdc": 2709556,
+  "src": "N",
+  "desc": "Soup, potato"
+ },
+ "pozole": {
+  "fdc": 2707129,
+  "src": "N",
+  "desc": "Soup, pozole"
+ },
+ "prepared-meals": {
+  "fdc": 2707095,
+  "src": "N",
+  "desc": "Frozen dinner, NFS"
+ },
+ "pulled-pork": {
+  "fdc": 2706399,
+  "src": "N",
+  "desc": "Barbecue pork, with sauce"
+ },
+ "roast-beef": {
+  "fdc": 2705847,
+  "src": "N",
+  "desc": "Beef, roast"
+ },
+ "roasted-vegetables": {
+  "fdc": 2710015,
+  "src": "N",
+  "desc": "Classic mixed vegetables, NS as to form, cooked"
+ },
+ "salami": {
+  "fdc": 2706195,
+  "src": "N",
+  "desc": "Salami, NFS"
+ },
+ "salmon-salad": {
+  "fdc": 2706826,
+  "src": "N",
+  "desc": "Salmon salad"
+ },
+ "shepherds-pie": {
+  "fdc": 2706594,
+  "src": "N",
+  "desc": "Shepherd's pie"
+ },
+ "shrimp-salad": {
+  "fdc": 2706837,
+  "src": "N",
+  "desc": "Shrimp salad"
+ },
+ "spaghetti-and-meatballs": {
+  "fdc": 169029,
+  "src": "S",
+  "desc": "Restaurant, family style, spaghetti and meatballs"
+ },
+ "stew": {
+  "fdc": 2706721,
+  "src": "N",
+  "desc": "Stew, NFS"
+ },
+ "stir-fry": {
+  "fdc": 2710036,
+  "src": "N",
+  "desc": "Asian stir fry vegetables, cooked, fat added"
+ },
+ "taco-meat": {
+  "fdc": 2705854,
+  "src": "N",
+  "desc": "Beef, ground"
+ },
+ "tamales": {
+  "fdc": 2708570,
+  "src": "N",
+  "desc": "Tamale, NFS"
+ },
+ "vacuum-packed-dinners": {
+  "fdc": 2707095,
+  "src": "N",
+  "desc": "Frozen dinner, NFS"
+ },
+ "apricots": {
+  "fdc": 2709221,
+  "src": "N",
+  "desc": "Apricot, raw"
+ },
+ "blackberries": {
+  "fdc": 2709273,
+  "src": "N",
+  "desc": "Blackberries, raw"
+ },
+ "boysenberries": {
+  "fdc": 171713,
+  "src": "S",
+  "desc": "Boysenberries, frozen, unsweetened"
+ },
+ "casaba-melon": {
+  "fdc": 169093,
+  "src": "S",
+  "desc": "Melons, casaba, raw"
+ },
+ "cherimoya": {
+  "fdc": 173953,
+  "src": "S",
+  "desc": "Cherimoya, raw"
+ },
+ "cherries-lychee": {
+  "fdc": 2709231,
+  "src": "N",
+  "desc": "Cherries, raw"
+ },
+ "clementines": {
+  "fdc": 2709164,
+  "src": "N",
+  "desc": "Clementine, raw"
+ },
+ "cranberries": {
+  "fdc": 2709279,
+  "src": "N",
+  "desc": "Cranberries, raw"
+ },
+ "currants": {
+  "fdc": 173963,
+  "src": "S",
+  "desc": "Currants, european black, raw"
+ },
+ "dates": {
+  "fdc": 2709203,
+  "src": "N",
+  "desc": "Date"
+ },
+ "dragon-fruit": {
+  "fdc": 2709234,
+  "src": "N",
+  "desc": "Dragon fruit"
+ },
+ "feijoa": {
+  "fdc": 168176,
+  "src": "S",
+  "desc": "Feijoa, raw"
+ },
+ "fresh-coconut": {
+  "fdc": 2707500,
+  "src": "N",
+  "desc": "Coconut, fresh"
+ },
+ "gooseberries": {
+  "fdc": 173030,
+  "src": "S",
+  "desc": "Gooseberries, raw"
+ },
+ "grapefruit": {
+  "fdc": 2709165,
+  "src": "N",
+  "desc": "Grapefruit, raw"
+ },
+ "guava": {
+  "fdc": 2709238,
+  "src": "N",
+  "desc": "Guava, raw"
+ },
+ "homemade-applesauce": {
+  "fdc": 2709217,
+  "src": "N",
+  "desc": "Applesauce, unsweetened"
+ },
+ "honeydew-melon": {
+  "fdc": 2709241,
+  "src": "N",
+  "desc": "Honeydew melon, raw"
+ },
+ "kiwi": {
+  "fdc": 2709239,
+  "src": "N",
+  "desc": "Kiwi fruit, raw"
+ },
+ "kumquats": {
+  "fdc": 2709167,
+  "src": "N",
+  "desc": "Kumquat, raw"
+ },
+ "lemons": {
+  "fdc": 2709168,
+  "src": "N",
+  "desc": "Lemon, raw"
+ },
+ "limes": {
+  "fdc": 2709170,
+  "src": "N",
+  "desc": "Lime, raw"
+ },
+ "lychee": {
+  "fdc": 2709240,
+  "src": "N",
+  "desc": "Lychee"
+ },
+ "mango": {
+  "fdc": 2709242,
+  "src": "N",
+  "desc": "Mango, raw"
+ },
+ "mango-papaya": {
+  "fdc": 2709242,
+  "src": "N",
+  "desc": "Mango, raw"
+ },
+ "nectarines": {
+  "fdc": 2709245,
+  "src": "N",
+  "desc": "Nectarine, raw"
+ },
+ "oranges": {
+  "fdc": 2709171,
+  "src": "N",
+  "desc": "Orange, raw"
+ },
+ "papaya": {
+  "fdc": 2709246,
+  "src": "N",
+  "desc": "Papaya, raw"
+ },
+ "passion-fruit": {
+  "fdc": 2709248,
+  "src": "N",
+  "desc": "Passion fruit, raw"
+ },
+ "peaches": {
+  "fdc": 2709249,
+  "src": "N",
+  "desc": "Peach, raw"
+ },
+ "peaches-plums-pears": {
+  "fdc": 2709249,
+  "src": "N",
+  "desc": "Peach, raw"
+ },
+ "pears": {
+  "fdc": 2709254,
+  "src": "N",
+  "desc": "Pear, raw"
+ },
+ "plantains": {
+  "fdc": 2709560,
+  "src": "N",
+  "desc": "Plantain, raw"
+ },
+ "plums": {
+  "fdc": 2709265,
+  "src": "N",
+  "desc": "Plum, raw"
+ },
+ "pomegranate": {
+  "fdc": 2709267,
+  "src": "N",
+  "desc": "Pomegranate, raw"
+ },
+ "prickly-pear": {
+  "fdc": 167750,
+  "src": "S",
+  "desc": "Prickly pears, raw"
+ },
+ "shredded-coconut": {
+  "fdc": 2707501,
+  "src": "N",
+  "desc": "Coconut, packaged"
+ },
+ "star-fruit": {
+  "fdc": 2709228,
+  "src": "N",
+  "desc": "Starfruit, raw"
+ },
+ "tangerines": {
+  "fdc": 2709175,
+  "src": "N",
+  "desc": "Tangerine, raw"
+ },
+ "acorn-squash": {
+  "fdc": 2685571,
+  "src": "F",
+  "desc": "Squash, winter, acorn, raw"
+ },
+ "artichokes": {
+  "fdc": 169205,
+  "src": "S",
+  "desc": "Artichokes, (globe or french), raw"
+ },
+ "arugula": {
+  "fdc": 2709791,
+  "src": "N",
+  "desc": "Lettuce, arugula, raw"
+ },
+ "asparagus": {
+  "fdc": 2709767,
+  "src": "N",
+  "desc": "Asparagus, raw"
+ },
+ "baby-carrots": {
+  "fdc": 2258587,
+  "src": "F",
+  "desc": "Carrots, baby, raw"
+ },
+ "baby-spinach": {
+  "fdc": 1999632,
+  "src": "F",
+  "desc": "Spinach, baby"
+ },
+ "bamboo-shoots": {
+  "fdc": 169212,
+  "src": "S",
+  "desc": "Bamboo shoots, canned, drained solids"
+ },
+ "basil": {
+  "fdc": 2709780,
+  "src": "N",
+  "desc": "Basil, raw"
+ },
+ "bean-sprouts": {
+  "fdc": 2709768,
+  "src": "N",
+  "desc": "Bean sprouts, raw"
+ },
+ "beets": {
+  "fdc": 2709770,
+  "src": "N",
+  "desc": "Beets, raw"
+ },
+ "bok-choy": {
+  "fdc": 2685572,
+  "src": "F",
+  "desc": "Cabbage, bok choy, raw"
+ },
+ "broccoli-rabe": {
+  "fdc": 2709572,
+  "src": "N",
+  "desc": "Broccoli raab, raw"
+ },
+ "brussels-sprouts": {
+  "fdc": 2709772,
+  "src": "N",
+  "desc": "Brussels sprouts, raw"
+ },
+ "butter-lettuce": {
+  "fdc": 2709790,
+  "src": "N",
+  "desc": "Lettuce, Boston, raw"
+ },
+ "butternut-squash": {
+  "fdc": 2685570,
+  "src": "F",
+  "desc": "Squash, winter, butternut, raw"
+ },
+ "cabbage": {
+  "fdc": 2709773,
+  "src": "N",
+  "desc": "Cabbage, green, raw"
+ },
+ "cassava-yuca": {
+  "fdc": 169985,
+  "src": "S",
+  "desc": "Cassava, raw"
+ },
+ "cauliflower": {
+  "fdc": 2709777,
+  "src": "N",
+  "desc": "Cauliflower, raw"
+ },
+ "celery-root": {
+  "fdc": 170400,
+  "src": "S",
+  "desc": "Celeriac, raw"
+ },
+ "cherry-tomatoes": {
+  "fdc": 321360,
+  "src": "F",
+  "desc": "Tomatoes, grape, raw"
+ },
+ "chives": {
+  "fdc": 2709781,
+  "src": "N",
+  "desc": "Chives, raw"
+ },
+ "collard-greens": {
+  "fdc": 2709576,
+  "src": "N",
+  "desc": "Collards, raw"
+ },
+ "cooking-greens": {
+  "fdc": 2709576,
+  "src": "N",
+  "desc": "Collards, raw"
+ },
+ "cut-spaghetti-squash": {
+  "fdc": 169298,
+  "src": "S",
+  "desc": "Squash, winter, spaghetti, raw"
+ },
+ "dill": {
+  "fdc": 172233,
+  "src": "S",
+  "desc": "Dill weed, fresh"
+ },
+ "dried-basil": {
+  "fdc": 171317,
+  "src": "S",
+  "desc": "Spices, basil, dried"
+ },
+ "edamame": {
+  "fdc": 2707436,
+  "src": "N",
+  "desc": "Edamame, cooked"
+ },
+ "eggplant": {
+  "fdc": 2709785,
+  "src": "N",
+  "desc": "Eggplant, raw"
+ },
+ "fava-beans": {
+  "fdc": 168574,
+  "src": "S",
+  "desc": "Beans, fava, in pod, raw"
+ },
+ "fresh-herbs": {
+  "fdc": 2709796,
+  "src": "N",
+  "desc": "Parsley, raw"
+ },
+ "ginger-root": {
+  "fdc": 169231,
+  "src": "S",
+  "desc": "Ginger root, raw"
+ },
+ "green-beans": {
+  "fdc": 2709769,
+  "src": "N",
+  "desc": "Green beans, raw"
+ },
+ "green-onions": {
+  "fdc": 2709794,
+  "src": "N",
+  "desc": "Onions, green, raw"
+ },
+ "hot-peppers": {
+  "fdc": 2709798,
+  "src": "N",
+  "desc": "Peppers, hot, raw"
+ },
+ "iceberg-lettuce": {
+  "fdc": 2346388,
+  "src": "F",
+  "desc": "Lettuce, iceberg, raw"
+ },
+ "jalapenos": {
+  "fdc": 168576,
+  "src": "S",
+  "desc": "Peppers, jalapeno, raw"
+ },
+ "jicama": {
+  "fdc": 2709787,
+  "src": "N",
+  "desc": "Jicama, raw"
+ },
+ "kale": {
+  "fdc": 2709599,
+  "src": "N",
+  "desc": "Kale, raw"
+ },
+ "kimchi": {
+  "fdc": 2710077,
+  "src": "N",
+  "desc": "Kimchi"
+ },
+ "kohlrabi": {
+  "fdc": 2709788,
+  "src": "N",
+  "desc": "Kohlrabi, raw"
+ },
+ "leaf-lettuce": {
+  "fdc": 2346391,
+  "src": "F",
+  "desc": "Lettuce, leaf, green, raw"
+ },
+ "leeks": {
+  "fdc": 169246,
+  "src": "S",
+  "desc": "Leeks, (bulb and lower leaf-portion), raw"
+ },
+ "lemongrass": {
+  "fdc": 168573,
+  "src": "S",
+  "desc": "Lemon grass (citronella), raw"
+ },
+ "lima-beans": {
+  "fdc": 168396,
+  "src": "S",
+  "desc": "Lima beans, immature seeds, raw"
+ },
+ "marinated-vegetables-oil": {
+  "fdc": 169384,
+  "src": "S",
+  "desc": "Tomatoes, sun-dried, packed in oil, drained"
+ },
+ "mint": {
+  "fdc": 173475,
+  "src": "S",
+  "desc": "Spearmint, fresh"
+ },
+ "mustard-greens": {
+  "fdc": 2709606,
+  "src": "N",
+  "desc": "Mustard greens, raw"
+ },
+ "okra": {
+  "fdc": 169260,
+  "src": "S",
+  "desc": "Okra, raw"
+ },
+ "oregano": {
+  "fdc": 171328,
+  "src": "S",
+  "desc": "Spices, oregano, dried"
+ },
+ "parsley": {
+  "fdc": 2709796,
+  "src": "N",
+  "desc": "Parsley, raw"
+ },
+ "parsnips": {
+  "fdc": 170417,
+  "src": "S",
+  "desc": "Parsnips, raw"
+ },
+ "pumpkins": {
+  "fdc": 168448,
+  "src": "S",
+  "desc": "Pumpkin, raw"
+ },
+ "radicchio": {
+  "fdc": 2709613,
+  "src": "N",
+  "desc": "Radicchio, raw"
+ },
+ "radishes": {
+  "fdc": 169276,
+  "src": "S",
+  "desc": "Radishes, raw"
+ },
+ "red-onions": {
+  "fdc": 790577,
+  "src": "F",
+  "desc": "Onions, red, raw"
+ },
+ "red-potatoes": {
+  "fdc": 170029,
+  "src": "S",
+  "desc": "Potatoes, red, flesh and skin, raw"
+ },
+ "rhubarb": {
+  "fdc": 167758,
+  "src": "S",
+  "desc": "Rhubarb, raw"
+ },
+ "romaine-lettuce": {
+  "fdc": 2709590,
+  "src": "N",
+  "desc": "Romaine lettuce, raw"
+ },
+ "rosemary": {
+  "fdc": 173473,
+  "src": "S",
+  "desc": "Rosemary, fresh"
+ },
+ "russet-potatoes": {
+  "fdc": 170027,
+  "src": "S",
+  "desc": "Potatoes, russet, flesh and skin, raw (Includes foods for USDA's Food Distribution Program)"
+ },
+ "rutabagas": {
+  "fdc": 2709804,
+  "src": "N",
+  "desc": "Rutabaga, raw"
+ },
+ "sage": {
+  "fdc": 170935,
+  "src": "S",
+  "desc": "Spices, sage, ground"
+ },
+ "snow-peas": {
+  "fdc": 170010,
+  "src": "S",
+  "desc": "Peas, edible-podded, raw"
+ },
+ "spaghetti-squash": {
+  "fdc": 169298,
+  "src": "S",
+  "desc": "Squash, winter, spaghetti, raw"
+ },
+ "sugar-snap-peas": {
+  "fdc": 170010,
+  "src": "S",
+  "desc": "Peas, edible-podded, raw"
+ },
+ "swiss-chard": {
+  "fdc": 2709574,
+  "src": "N",
+  "desc": "Chard, raw"
+ },
+ "tamarind": {
+  "fdc": 167763,
+  "src": "S",
+  "desc": "Tamarinds, raw"
+ },
+ "taro": {
+  "fdc": 169308,
+  "src": "S",
+  "desc": "Taro, raw"
+ },
+ "tarragon": {
+  "fdc": 170937,
+  "src": "S",
+  "desc": "Spices, tarragon, dried"
+ },
+ "thyme": {
+  "fdc": 173470,
+  "src": "S",
+  "desc": "Thyme, fresh"
+ },
+ "turnip-greens": {
+  "fdc": 170061,
+  "src": "S",
+  "desc": "Turnip greens, raw"
+ },
+ "turnips": {
+  "fdc": 2709809,
+  "src": "N",
+  "desc": "Turnip, raw"
+ },
+ "wax-beans": {
+  "fdc": 169320,
+  "src": "S",
+  "desc": "Beans, snap, yellow, raw"
+ },
+ "white-onions": {
+  "fdc": 1104962,
+  "src": "F",
+  "desc": "Onions, white, raw"
+ },
+ "whole-zucchini": {
+  "fdc": 2709808,
+  "src": "N",
+  "desc": "Summer squash, green, raw"
+ },
+ "winter-squash": {
+  "fdc": 2709693,
+  "src": "N",
+  "desc": "Winter squash, raw"
+ },
+ "yellow-onions": {
+  "fdc": 790646,
+  "src": "F",
+  "desc": "Onions, yellow, raw"
+ },
+ "yellow-squash": {
+  "fdc": 2709807,
+  "src": "N",
+  "desc": "Summer squash, yellow, raw"
+ },
+ "zucchini-summer-squash": {
+  "fdc": 2709808,
+  "src": "N",
+  "desc": "Summer squash, green, raw"
+ },
+ "amaranth": {
+  "fdc": 170682,
+  "src": "S",
+  "desc": "Amaranth grain, uncooked"
+ },
+ "barley": {
+  "fdc": 170284,
+  "src": "S",
+  "desc": "Barley, pearled, raw"
+ },
+ "basmati-rice": {
+  "fdc": 168877,
+  "src": "S",
+  "desc": "Rice, white, long-grain, regular, raw, enriched"
+ },
+ "boiled-peanuts": {
+  "fdc": 2707513,
+  "src": "N",
+  "desc": "Peanuts, boiled"
+ },
+ "buckwheat": {
+  "fdc": 2512378,
+  "src": "F",
+  "desc": "Buckwheat, whole grain"
+ },
+ "bulgur": {
+  "fdc": 2710820,
+  "src": "F",
+  "desc": "Bulgur, dry, raw"
+ },
+ "cooked-quinoa": {
+  "fdc": 2708400,
+  "src": "N",
+  "desc": "Quinoa, no added fat"
+ },
+ "corn-tortillas": {
+  "fdc": 2707823,
+  "src": "N",
+  "desc": "Tortilla, corn"
+ },
+ "dried-beans": {
+  "fdc": 175199,
+  "src": "S",
+  "desc": "Beans, pinto, mature seeds, raw (Includes foods for USDA's Food Distribution Program)"
+ },
+ "dried-mung-beans": {
+  "fdc": 174256,
+  "src": "S",
+  "desc": "Mung beans, mature seeds, raw"
+ },
+ "egg-noodles": {
+  "fdc": 169731,
+  "src": "S",
+  "desc": "Noodles, egg, dry, enriched"
+ },
+ "farro": {
+  "fdc": 2710828,
+  "src": "F",
+  "desc": "Farro, pearled, dry, raw"
+ },
+ "fresh-pasta": {
+  "fdc": 169728,
+  "src": "S",
+  "desc": "Pasta, fresh-refrigerated, plain, cooked"
+ },
+ "homemade-whole-wheat-bread": {
+  "fdc": 2707709,
+  "src": "N",
+  "desc": "Bread, whole wheat"
+ },
+ "jasmine-rice": {
+  "fdc": 168877,
+  "src": "S",
+  "desc": "Rice, white, long-grain, regular, raw, enriched"
+ },
+ "lentils": {
+  "fdc": 2644283,
+  "src": "F",
+  "desc": "Lentils, dry"
+ },
+ "macaroni": {
+  "fdc": 169736,
+  "src": "S",
+  "desc": "Pasta, dry, enriched"
+ },
+ "millet": {
+  "fdc": 2512379,
+  "src": "F",
+  "desc": "Millet, whole grain"
+ },
+ "mung-bean-sprouts": {
+  "fdc": 2709871,
+  "src": "N",
+  "desc": "Bean sprouts, cooked"
+ },
+ "oats": {
+  "fdc": 2708489,
+  "src": "N",
+  "desc": "Oats, raw"
+ },
+ "penne": {
+  "fdc": 169736,
+  "src": "S",
+  "desc": "Pasta, dry, enriched"
+ },
+ "quinoa": {
+  "fdc": 168874,
+  "src": "S",
+  "desc": "Quinoa, uncooked"
+ },
+ "refried-beans": {
+  "fdc": 2707396,
+  "src": "N",
+  "desc": "Refried beans"
+ },
+ "rye-berries": {
+  "fdc": 168884,
+  "src": "S",
+  "desc": "Rye grain"
+ },
+ "sorghum": {
+  "fdc": 2710842,
+  "src": "F",
+  "desc": "Sorghum, whole grain, white, dry, raw"
+ },
+ "spaghetti": {
+  "fdc": 169736,
+  "src": "S",
+  "desc": "Pasta, dry, enriched"
+ },
+ "spelt": {
+  "fdc": 169745,
+  "src": "S",
+  "desc": "Spelt, uncooked"
+ },
+ "split-peas": {
+  "fdc": 172428,
+  "src": "S",
+  "desc": "Peas, green, split, mature seeds, raw"
+ },
+ "teff": {
+  "fdc": 169747,
+  "src": "S",
+  "desc": "Teff, uncooked"
+ },
+ "vacuum-sealed-mung-beans": {
+  "fdc": 174256,
+  "src": "S",
+  "desc": "Mung beans, mature seeds, raw"
+ },
+ "whole-wheat-bread": {
+  "fdc": 2707709,
+  "src": "N",
+  "desc": "Bread, whole wheat"
+ },
+ "wild-rice": {
+  "fdc": 2710821,
+  "src": "F",
+  "desc": "Wild rice, dry, raw"
+ },
+ "almond-extract": {
+  "fdc": 173471,
+  "src": "S",
+  "desc": "Vanilla extract"
+ },
+ "amaranth-flour": {
+  "fdc": 2512371,
+  "src": "F",
+  "desc": "Flour, amaranth"
+ },
+ "apple-pie": {
+  "fdc": 2707995,
+  "src": "N",
+  "desc": "Pie, apple"
+ },
+ "apricot-pie": {
+  "fdc": 2708002,
+  "src": "N",
+  "desc": "Pie, peach"
+ },
+ "baking-chocolate": {
+  "fdc": 167568,
+  "src": "S",
+  "desc": "Baking chocolate, unsweetened, squares"
+ },
+ "baking-powder": {
+  "fdc": 172803,
+  "src": "S",
+  "desc": "Leavening agents, baking powder, double-acting, sodium aluminum sulfate"
+ },
+ "baking-soda": {
+  "fdc": 175040,
+  "src": "S",
+  "desc": "Leavening agents, baking soda"
+ },
+ "banana-cream-pie": {
+  "fdc": 2708004,
+  "src": "N",
+  "desc": "Pie, banana cream"
+ },
+ "barley-flour": {
+  "fdc": 2512376,
+  "src": "F",
+  "desc": "Flour, barley"
+ },
+ "bay-leaves": {
+  "fdc": 170917,
+  "src": "S",
+  "desc": "Spices, bay leaf"
+ },
+ "blackberry-pie": {
+  "fdc": 2707997,
+  "src": "N",
+  "desc": "Pie, berry"
+ },
+ "blueberry-pie": {
+  "fdc": 2707998,
+  "src": "N",
+  "desc": "Pie, blueberry"
+ },
+ "brown-sugar": {
+  "fdc": 2710260,
+  "src": "N",
+  "desc": "Sugar, brown"
+ },
+ "brownie-mix": {
+  "fdc": 174948,
+  "src": "S",
+  "desc": "Cookies, brownies, dry mix, regular"
+ },
+ "buckwheat-flour": {
+  "fdc": 2512374,
+  "src": "F",
+  "desc": "Flour, buckwheat"
+ },
+ "butter-flavor": {
+  "fdc": 172235,
+  "src": "S",
+  "desc": "Vanilla extract, imitation, alcohol"
+ },
+ "butterscotch-pie": {
+  "fdc": 2708013,
+  "src": "N",
+  "desc": "Pie, vanilla cream"
+ },
+ "cake-mix": {
+  "fdc": 174947,
+  "src": "S",
+  "desc": "Cake, yellow, enriched, dry mix"
+ },
+ "canned-biscuit-pizza-dough": {
+  "fdc": 2707802,
+  "src": "N",
+  "desc": "Biscuit, from refrigerated dough"
+ },
+ "cayenne-pepper": {
+  "fdc": 170932,
+  "src": "S",
+  "desc": "Spices, pepper, red or cayenne"
+ },
+ "cherry-pie": {
+  "fdc": 2707999,
+  "src": "N",
+  "desc": "Pie, cherry"
+ },
+ "chiffon-pie": {
+  "fdc": 2708013,
+  "src": "N",
+  "desc": "Pie, vanilla cream"
+ },
+ "chili-powder": {
+  "fdc": 171319,
+  "src": "S",
+  "desc": "Spices, chili powder"
+ },
+ "chocolate-chiffon-pie": {
+  "fdc": 2708005,
+  "src": "N",
+  "desc": "Pie, chocolate cream"
+ },
+ "cinnamon-extract": {
+  "fdc": 173471,
+  "src": "S",
+  "desc": "Vanilla extract"
+ },
+ "cinnamon-rolls": {
+  "fdc": 2707668,
+  "src": "N",
+  "desc": "Roll, sweet, cinnamon bun, frosted"
+ },
+ "cinnamon-rolls-tube": {
+  "fdc": 172798,
+  "src": "S",
+  "desc": "Sweet rolls, cinnamon, refrigerated dough with frosting"
+ },
+ "cocoa-powder": {
+  "fdc": 2705587,
+  "src": "N",
+  "desc": "Cocoa powder, not reconstituted"
+ },
+ "coconut-cream-pie": {
+  "fdc": 2708006,
+  "src": "N",
+  "desc": "Pie, coconut cream"
+ },
+ "coconut-flavor": {
+  "fdc": 172235,
+  "src": "S",
+  "desc": "Vanilla extract, imitation, alcohol"
+ },
+ "coconut-flour": {
+  "fdc": 2515382,
+  "src": "F",
+  "desc": "Flour, coconut"
+ },
+ "cookie-dough": {
+  "fdc": 2707898,
+  "src": "N",
+  "desc": "Cookie, batter or dough, raw"
+ },
+ "cooking-spray": {
+  "fdc": 171430,
+  "src": "S",
+  "desc": "Oil, PAM cooking spray, original"
+ },
+ "cornmeal": {
+  "fdc": 168867,
+  "src": "S",
+  "desc": "Cornmeal, degermed, enriched, yellow"
+ },
+ "cornstarch": {
+  "fdc": 169698,
+  "src": "S",
+  "desc": "Cornstarch"
+ },
+ "cream-pie": {
+  "fdc": 2708013,
+  "src": "N",
+  "desc": "Pie, vanilla cream"
+ },
+ "crispy-cookies": {
+  "fdc": 2707909,
+  "src": "N",
+  "desc": "Cookie, chocolate chip"
+ },
+ "cupcakes": {
+  "fdc": 2707853,
+  "src": "N",
+  "desc": "Cake or cupcake, NFS"
+ },
+ "danish-pastries": {
+  "fdc": 2708059,
+  "src": "N",
+  "desc": "Danish pastry, plain or spice"
+ },
+ "dinner-rolls": {
+  "fdc": 2707654,
+  "src": "N",
+  "desc": "Roll, white, soft"
+ },
+ "donuts": {
+  "fdc": 2708062,
+  "src": "N",
+  "desc": "Doughnut, NFS"
+ },
+ "dried-herbs": {
+  "fdc": 171317,
+  "src": "S",
+  "desc": "Spices, basil, dried"
+ },
+ "dried-oregano": {
+  "fdc": 171328,
+  "src": "S",
+  "desc": "Spices, oregano, dried"
+ },
+ "dried-parsley": {
+  "fdc": 170930,
+  "src": "S",
+  "desc": "Spices, parsley, dried"
+ },
+ "dried-thyme": {
+  "fdc": 170938,
+  "src": "S",
+  "desc": "Spices, thyme, dried"
+ },
+ "eclairs": {
+  "fdc": 2708031,
+  "src": "N",
+  "desc": "Cream puff, eclair, custard or cream filled, iced"
+ },
+ "english-muffins": {
+  "fdc": 2707698,
+  "src": "N",
+  "desc": "Muffin, English"
+ },
+ "farro-flour": {
+  "fdc": 790085,
+  "src": "F",
+  "desc": "Flour, whole wheat, unenriched"
+ },
+ "flatbread": {
+  "fdc": 2707616,
+  "src": "N",
+  "desc": "Bread, pita"
+ },
+ "french-macarons": {
+  "fdc": 2707936,
+  "src": "N",
+  "desc": "Cookie, macaroon"
+ },
+ "frosting": {
+  "fdc": 169620,
+  "src": "S",
+  "desc": "Frostings, vanilla, creamy, ready-to-eat"
+ },
+ "frozen-bagels": {
+  "fdc": 2707684,
+  "src": "N",
+  "desc": "Bagel"
+ },
+ "fruitcake": {
+  "fdc": 2707875,
+  "src": "N",
+  "desc": "Cake, fruit cake"
+ },
+ "garam-masala": {
+  "fdc": 170924,
+  "src": "S",
+  "desc": "Spices, curry powder"
+ },
+ "ground-ginger": {
+  "fdc": 170926,
+  "src": "S",
+  "desc": "Spices, ginger, ground"
+ },
+ "ground-spices": {
+  "fdc": 171320,
+  "src": "S",
+  "desc": "Spices, cinnamon, ground"
+ },
+ "hamburger-buns": {
+  "fdc": 2707657,
+  "src": "N",
+  "desc": "Roll, white, hamburger bun"
+ },
+ "herb-mixes": {
+  "fdc": 171331,
+  "src": "S",
+  "desc": "Spices, poultry seasoning"
+ },
+ "homemade-bread": {
+  "fdc": 2707598,
+  "src": "N",
+  "desc": "Bread, white"
+ },
+ "homemade-muffins": {
+  "fdc": 2707841,
+  "src": "N",
+  "desc": "Muffin, plain"
+ },
+ "hot-dog-buns": {
+  "fdc": 2707656,
+  "src": "N",
+  "desc": "Roll, white, hot dog bun"
+ },
+ "jarred-minced-garlic": {
+  "fdc": 2709786,
+  "src": "N",
+  "desc": "Garlic, raw"
+ },
+ "jell-o": {
+  "fdc": 168775,
+  "src": "S",
+  "desc": "Gelatin desserts, dry mix"
+ },
+ "lemon-chiffon-pie": {
+  "fdc": 2708000,
+  "src": "N",
+  "desc": "Pie, lemon"
+ },
+ "lemon-extract": {
+  "fdc": 173471,
+  "src": "S",
+  "desc": "Vanilla extract"
+ },
+ "millet-flour": {
+  "fdc": 172023,
+  "src": "S",
+  "desc": "Millet flour"
+ },
+ "mincemeat-pie": {
+  "fdc": 175019,
+  "src": "S",
+  "desc": "Pie, mince, prepared from recipe"
+ },
+ "muffin-mix": {
+  "fdc": 172766,
+  "src": "S",
+  "desc": "Muffins, blueberry, dry mix"
+ },
+ "naan": {
+  "fdc": 2707613,
+  "src": "N",
+  "desc": "Bread, naan"
+ },
+ "nut-oils": {
+  "fdc": 171031,
+  "src": "S",
+  "desc": "Oil, almond"
+ },
+ "oat-flour": {
+  "fdc": 2261421,
+  "src": "F",
+  "desc": "Flour, oat, whole grain"
+ },
+ "pancake-mix": {
+  "fdc": 172772,
+  "src": "S",
+  "desc": "Pancakes, plain, dry mix, complete (includes buttermilk)"
+ },
+ "paprika": {
+  "fdc": 171329,
+  "src": "S",
+  "desc": "Spices, paprika"
+ },
+ "peach-pie": {
+  "fdc": 2708002,
+  "src": "N",
+  "desc": "Pie, peach"
+ },
+ "pecan-pie": {
+  "fdc": 2708015,
+  "src": "N",
+  "desc": "Pie, pecan"
+ },
+ "pie-crust-ready-bake": {
+  "fdc": 175065,
+  "src": "S",
+  "desc": "Pie crust, standard-type, frozen, ready-to-bake, unenriched"
+ },
+ "pita-bread": {
+  "fdc": 2707616,
+  "src": "N",
+  "desc": "Bread, pita"
+ },
+ "powdered-sugar": {
+  "fdc": 2710259,
+  "src": "N",
+  "desc": "Sugar, white, confectioner's, powdered"
+ },
+ "puff-pastry": {
+  "fdc": 172790,
+  "src": "S",
+  "desc": "Puff pastry, frozen, ready-to-bake"
+ },
+ "quiche": {
+  "fdc": 2708733,
+  "src": "N",
+  "desc": "Cheese quiche, meatless"
+ },
+ "refrigerated-biscuits": {
+  "fdc": 2707802,
+  "src": "N",
+  "desc": "Biscuit, from refrigerated dough"
+ },
+ "refrigerated-pie-crust": {
+  "fdc": 167932,
+  "src": "S",
+  "desc": "Pie crust, refrigerated, regular, unbaked"
+ },
+ "rye-flour": {
+  "fdc": 2512375,
+  "src": "F",
+  "desc": "Flour, rye"
+ },
+ "seasoning-blends": {
+  "fdc": 172243,
+  "src": "S",
+  "desc": "Seasoning mix, dry, taco, original"
+ },
+ "shortening": {
+  "fdc": 173584,
+  "src": "S",
+  "desc": "Shortening, vegetable, household, composite"
+ },
+ "soft-cookies": {
+  "fdc": 333008,
+  "src": "F",
+  "desc": "Cookies, oatmeal, soft, with raisins"
+ },
+ "sorghum-flour": {
+  "fdc": 2512373,
+  "src": "F",
+  "desc": "Flour, sorghum"
+ },
+ "spelt-flour": {
+  "fdc": 2003587,
+  "src": "F",
+  "desc": "Flour, spelt, whole grain"
+ },
+ "stone-ground-cornmeal": {
+  "fdc": 169697,
+  "src": "S",
+  "desc": "Cornmeal, whole-grain, yellow"
+ },
+ "sugar-substitutes": {
+  "fdc": 2710267,
+  "src": "N",
+  "desc": "Sugar substitute, powder, NFS"
+ },
+ "tamarind-paste": {
+  "fdc": 2709269,
+  "src": "N",
+  "desc": "Tamarind"
+ },
+ "tapioca": {
+  "fdc": 169717,
+  "src": "S",
+  "desc": "Tapioca, pearl, dry"
+ },
+ "teff-flour": {
+  "fdc": 169747,
+  "src": "S",
+  "desc": "Teff, uncooked"
+ },
+ "turmeric": {
+  "fdc": 172231,
+  "src": "S",
+  "desc": "Spices, turmeric, ground"
+ },
+ "unflavored-gelatin": {
+  "fdc": 169599,
+  "src": "S",
+  "desc": "Gelatins, dry powder, unsweetened"
+ },
+ "vanilla-extract": {
+  "fdc": 173471,
+  "src": "S",
+  "desc": "Vanilla extract"
+ },
+ "vegetable-oil": {
+  "fdc": 2710180,
+  "src": "N",
+  "desc": "Vegetable oil, NFS"
+ },
+ "whole-spices": {
+  "fdc": 170931,
+  "src": "S",
+  "desc": "Spices, pepper, black"
+ },
+ "whole-wheat-flour": {
+  "fdc": 790085,
+  "src": "F",
+  "desc": "Flour, whole wheat, unenriched"
+ },
+ "whole-wheat-flour-bulk": {
+  "fdc": 790085,
+  "src": "F",
+  "desc": "Flour, whole wheat, unenriched"
+ },
+ "yeast": {
+  "fdc": 2710005,
+  "src": "N",
+  "desc": "Yeast"
+ },
+ "aioli": {
+  "fdc": 2710204,
+  "src": "N",
+  "desc": "Mayonnaise, regular"
+ },
+ "alfredo-cream-sauces": {
+  "fdc": 2705809,
+  "src": "N",
+  "desc": "Alfredo sauce"
+ },
+ "anchovies": {
+  "fdc": 2706232,
+  "src": "N",
+  "desc": "Fish, anchovy"
+ },
+ "apple-cider-vinegar": {
+  "fdc": 173469,
+  "src": "S",
+  "desc": "Vinegar, cider"
+ },
+ "bacon-grease": {
+  "fdc": 172345,
+  "src": "S",
+  "desc": "Animal fat, bacon grease"
+ },
+ "balsamic-vinegar": {
+  "fdc": 172241,
+  "src": "S",
+  "desc": "Vinegar, balsamic"
+ },
+ "barbecue-sauce": {
+  "fdc": 2709750,
+  "src": "N",
+  "desc": "Barbecue sauce"
+ },
+ "beef-broth": {
+  "fdc": 171538,
+  "src": "S",
+  "desc": "Soup, beef broth or bouillon canned, ready-to-serve"
+ },
+ "black-bean-sauce": {
+  "fdc": 2707404,
+  "src": "N",
+  "desc": "Black bean sauce"
+ },
+ "blue-cheese-dressing": {
+  "fdc": 2710197,
+  "src": "N",
+  "desc": "Blue or roquefort cheese dressing"
+ },
+ "bone-broth": {
+  "fdc": 2707132,
+  "src": "N",
+  "desc": "Soup, broth"
+ },
+ "caesar-dressing": {
+  "fdc": 2710199,
+  "src": "N",
+  "desc": "Caesar dressing"
+ },
+ "canned-cranberry-sauce": {
+  "fdc": 2709280,
+  "src": "N",
+  "desc": "Cranberry sauce"
+ },
+ "chili-sauce": {
+  "fdc": 2709735,
+  "src": "N",
+  "desc": "Tomato chili sauce"
+ },
+ "chutney": {
+  "fdc": 2709309,
+  "src": "N",
+  "desc": "Chutney"
+ },
+ "cocktail-sauce": {
+  "fdc": 2709753,
+  "src": "N",
+  "desc": "Cocktail sauce"
+ },
+ "cooking-wine": {
+  "fdc": 169070,
+  "src": "S",
+  "desc": "Alcoholic beverage, wine, cooking"
+ },
+ "creamy-salad-dressing": {
+  "fdc": 2710212,
+  "src": "N",
+  "desc": "Ranch dressing"
+ },
+ "dry-salad-dressing-mix": null,
+ "duck-fat": {
+  "fdc": 173572,
+  "src": "S",
+  "desc": "Fat, goose"
+ },
+ "gravy-mix": {
+  "fdc": 171565,
+  "src": "S",
+  "desc": "Gravy, brown, dry"
+ },
+ "hoisin-sauce": {
+  "fdc": 2707441,
+  "src": "N",
+  "desc": "Hoisin sauce"
+ },
+ "home-canned-barbecue-sauce": {
+  "fdc": 2709750,
+  "src": "N",
+  "desc": "Barbecue sauce"
+ },
+ "home-canned-salsa": {
+  "fdc": 2709738,
+  "src": "N",
+  "desc": "Salsa, red"
+ },
+ "home-canned-tomato-sauce": {
+  "fdc": 2685579,
+  "src": "F",
+  "desc": "Tomato, sauce, canned, with salt added"
+ },
+ "homemade-broth": {
+  "fdc": 2707132,
+  "src": "N",
+  "desc": "Soup, broth"
+ },
+ "homemade-cranberry-sauce": {
+  "fdc": 2709280,
+  "src": "N",
+  "desc": "Cranberry sauce"
+ },
+ "homemade-salad-dressing": {
+  "fdc": 2710195,
+  "src": "N",
+  "desc": "Salad dressing, NFS, for salads"
+ },
+ "homemade-vinaigrette": {
+  "fdc": 2710203,
+  "src": "N",
+  "desc": "Italian dressing, made with vinegar and oil"
+ },
+ "horseradish": {
+  "fdc": 2710083,
+  "src": "N",
+  "desc": "Horseradish"
+ },
+ "hot-sauce": {
+  "fdc": 2710093,
+  "src": "N",
+  "desc": "Hot pepper sauce"
+ },
+ "italian-dressing": {
+  "fdc": 2710203,
+  "src": "N",
+  "desc": "Italian dressing, made with vinegar and oil"
+ },
+ "jarred-gravy": {
+  "fdc": 2707149,
+  "src": "N",
+  "desc": "Gravy, NFS"
+ },
+ "marinades": {
+  "fdc": 2707445,
+  "src": "N",
+  "desc": "Teriyaki sauce"
+ },
+ "marinara-sauce": {
+  "fdc": 332282,
+  "src": "F",
+  "desc": "Sauce, pasta, spaghetti/marinara, ready-to-serve"
+ },
+ "olives": {
+  "fdc": 2710088,
+  "src": "N",
+  "desc": "Olives, NFS"
+ },
+ "oyster-sauce": {
+  "fdc": 2707150,
+  "src": "N",
+  "desc": "Oyster sauce"
+ },
+ "pesto": {
+  "fdc": 2710175,
+  "src": "N",
+  "desc": "Pesto sauce"
+ },
+ "pickles": {
+  "fdc": 2710097,
+  "src": "N",
+  "desc": "Pickles, NFS"
+ },
+ "pizza-sauce": {
+  "fdc": 172880,
+  "src": "S",
+  "desc": "Sauce, pizza, canned, ready-to-serve"
+ },
+ "ranch-dressing": {
+  "fdc": 2710212,
+  "src": "N",
+  "desc": "Ranch dressing"
+ },
+ "relish": {
+  "fdc": 2710079,
+  "src": "N",
+  "desc": "Relish, pickle"
+ },
+ "reused-frying-oil": {
+  "fdc": 2710180,
+  "src": "N",
+  "desc": "Vegetable oil, NFS"
+ },
+ "salad-dressing": {
+  "fdc": 2710195,
+  "src": "N",
+  "desc": "Salad dressing, NFS, for salads"
+ },
+ "spaghetti-sauce": {
+  "fdc": 2709745,
+  "src": "N",
+  "desc": "Spaghetti sauce"
+ },
+ "taco-spaghetti-seasoning-mixes": {
+  "fdc": 172243,
+  "src": "S",
+  "desc": "Seasoning mix, dry, taco, original"
+ },
+ "taco-sauce": {
+  "fdc": 2709740,
+  "src": "N",
+  "desc": "Taco sauce"
+ },
+ "tahini": {
+  "fdc": 2707587,
+  "src": "N",
+  "desc": "Tahini"
+ },
+ "teriyaki-sauce": {
+  "fdc": 2707445,
+  "src": "N",
+  "desc": "Teriyaki sauce"
+ },
+ "thai-red-curry-paste": null,
+ "tomato-sauce": {
+  "fdc": 170054,
+  "src": "S",
+  "desc": "Tomato products, canned, sauce"
+ },
+ "vegetable-broth": {
+  "fdc": 171583,
+  "src": "S",
+  "desc": "Soup, vegetable broth, ready to serve"
+ },
+ "vinaigrette": {
+  "fdc": 2710203,
+  "src": "N",
+  "desc": "Italian dressing, made with vinegar and oil"
+ },
+ "vinegar": {
+  "fdc": 2709351,
+  "src": "N",
+  "desc": "Vinegar"
+ },
+ "worcestershire-sauce": {
+  "fdc": 2707447,
+  "src": "N",
+  "desc": "Worcestershire sauce"
+ },
+ "almond-butter": {
+  "fdc": 2707533,
+  "src": "N",
+  "desc": "Almond butter"
+ },
+ "almond-oil": {
+  "fdc": 2710181,
+  "src": "N",
+  "desc": "Almond oil"
+ },
+ "almonds": {
+  "fdc": 2707485,
+  "src": "N",
+  "desc": "Almonds, NFS"
+ },
+ "almonds-shell": {
+  "fdc": 2707486,
+  "src": "N",
+  "desc": "Almonds, unroasted"
+ },
+ "animal-crackers": {
+  "fdc": 2707968,
+  "src": "N",
+  "desc": "Cookie, animal"
+ },
+ "applesauce": {
+  "fdc": 2709216,
+  "src": "N",
+  "desc": "Applesauce, regular"
+ },
+ "avocado-oil": {
+  "fdc": 173573,
+  "src": "S",
+  "desc": "Oil, avocado"
+ },
+ "bagged-popcorn": {
+  "fdc": 2708216,
+  "src": "N",
+  "desc": "Popcorn, NFS"
+ },
+ "black-pepper": {
+  "fdc": 170931,
+  "src": "S",
+  "desc": "Spices, pepper, black"
+ },
+ "bottled-nutrition-shakes": {
+  "fdc": 2710725,
+  "src": "N",
+  "desc": "Nutritional drink or shake, ready-to-drink, NFS"
+ },
+ "bouillon": {
+  "fdc": 171562,
+  "src": "S",
+  "desc": "Soup, chicken broth or bouillon, dry"
+ },
+ "bouillon-base": {
+  "fdc": 171562,
+  "src": "S",
+  "desc": "Soup, chicken broth or bouillon, dry"
+ },
+ "bouillon-cubes": {
+  "fdc": 171563,
+  "src": "S",
+  "desc": "Soup, chicken broth cubes, dry"
+ },
+ "breadcrumbs": {
+  "fdc": 174928,
+  "src": "S",
+  "desc": "Bread, crumbs, dry, grated, plain"
+ },
+ "cajun-seasoning": {
+  "fdc": 172243,
+  "src": "S",
+  "desc": "Seasoning mix, dry, taco, original"
+ },
+ "canned-beans": {
+  "fdc": 2707374,
+  "src": "N",
+  "desc": "Pinto beans, from canned, fat added"
+ },
+ "canned-carrots": {
+  "fdc": 2709666,
+  "src": "N",
+  "desc": "Carrots, canned, cooked, no added fat"
+ },
+ "canned-chili": {
+  "fdc": 2706376,
+  "src": "N",
+  "desc": "Chili with meat, canned"
+ },
+ "canned-coconut-cream": {
+  "fdc": 2707571,
+  "src": "N",
+  "desc": "Coconut cream, canned, sweetened"
+ },
+ "canned-coconut-milk": {
+  "fdc": 2707568,
+  "src": "N",
+  "desc": "Coconut milk, used in cooking"
+ },
+ "canned-corn": {
+  "fdc": 2709912,
+  "src": "N",
+  "desc": "Corn, canned, cooked, no added fat"
+ },
+ "canned-food-high-acid": {
+  "fdc": 2709722,
+  "src": "N",
+  "desc": "Tomatoes, canned, cooked"
+ },
+ "canned-food-low-acid": {
+  "fdc": 2709854,
+  "src": "N",
+  "desc": "Green beans, canned, cooked, no added fat"
+ },
+ "canned-fruit": {
+  "fdc": 2709289,
+  "src": "N",
+  "desc": "Fruit cocktail, canned, NFS"
+ },
+ "canned-fruit-cocktail": {
+  "fdc": 2709289,
+  "src": "N",
+  "desc": "Fruit cocktail, canned, NFS"
+ },
+ "canned-juice": {
+  "fdc": 2709320,
+  "src": "N",
+  "desc": "Apple juice, 100%"
+ },
+ "canned-nuts": {
+  "fdc": 2707504,
+  "src": "N",
+  "desc": "Mixed nuts, NFS"
+ },
+ "canned-pasta": {
+  "fdc": 172100,
+  "src": "S",
+  "desc": "Pasta with tomato sauce, no meat, canned"
+ },
+ "canned-peas": {
+  "fdc": 2709961,
+  "src": "N",
+  "desc": "Green peas, canned, cooked, no added fat"
+ },
+ "canned-potatoes": {
+  "fdc": 2709401,
+  "src": "N",
+  "desc": "Potato, canned, no added fat"
+ },
+ "canned-pumpkin": {
+  "fdc": 2709691,
+  "src": "N",
+  "desc": "Pumpkin, canned, cooked"
+ },
+ "canned-salmon": {
+  "fdc": 2706291,
+  "src": "N",
+  "desc": "Fish, salmon, canned"
+ },
+ "canned-seafood": {
+  "fdc": 2706311,
+  "src": "N",
+  "desc": "Fish, tuna, canned"
+ },
+ "canned-soup": {
+  "fdc": 2709148,
+  "src": "N",
+  "desc": "Soup, chicken noodle, canned"
+ },
+ "canned-spinach": {
+  "fdc": 2709617,
+  "src": "N",
+  "desc": "Spinach, canned, cooked, no added fat"
+ },
+ "canned-stew": {
+  "fdc": 2706591,
+  "src": "N",
+  "desc": "Stew, beef, canned"
+ },
+ "canned-tomato-soup": {
+  "fdc": 2709759,
+  "src": "N",
+  "desc": "Soup, tomato, canned"
+ },
+ "canned-tomatoes": {
+  "fdc": 2709722,
+  "src": "N",
+  "desc": "Tomatoes, canned, cooked"
+ },
+ "canned-tuna": {
+  "fdc": 2706311,
+  "src": "N",
+  "desc": "Fish, tuna, canned"
+ },
+ "canola-oil": {
+  "fdc": 2710188,
+  "src": "N",
+  "desc": "Canola oil"
+ },
+ "capers": {
+  "fdc": 172238,
+  "src": "S",
+  "desc": "Capers, canned"
+ },
+ "cashew-butter": {
+  "fdc": 2707536,
+  "src": "N",
+  "desc": "Cashew butter"
+ },
+ "cashews": {
+  "fdc": 2707493,
+  "src": "N",
+  "desc": "Cashews, NFS"
+ },
+ "chia-seeds": {
+  "fdc": 2707590,
+  "src": "N",
+  "desc": "Chia seeds"
+ },
+ "chocolate-syrup": {
+  "fdc": 2710276,
+  "src": "N",
+  "desc": "Chocolate syrup"
+ },
+ "chopped-pecans": {
+  "fdc": 2707524,
+  "src": "N",
+  "desc": "Pecans, unsalted"
+ },
+ "cinnamon": {
+  "fdc": 171320,
+  "src": "S",
+  "desc": "Spices, cinnamon, ground"
+ },
+ "coconut-oil": {
+  "fdc": 2710182,
+  "src": "N",
+  "desc": "Coconut oil"
+ },
+ "corn-syrup": {
+  "fdc": 2710274,
+  "src": "N",
+  "desc": "Corn syrup"
+ },
+ "cracked-black-pepper": {
+  "fdc": 170931,
+  "src": "S",
+  "desc": "Spices, pepper, black"
+ },
+ "crackers": {
+  "fdc": 2708132,
+  "src": "N",
+  "desc": "Crackers, NFS"
+ },
+ "croutons": {
+  "fdc": 2707697,
+  "src": "N",
+  "desc": "Croutons"
+ },
+ "cumin": {
+  "fdc": 170923,
+  "src": "S",
+  "desc": "Spices, cumin seed"
+ },
+ "dried-apricots": {
+  "fdc": 2709197,
+  "src": "N",
+  "desc": "Apricot, dried"
+ },
+ "dried-cranberries": {
+  "fdc": 2709202,
+  "src": "N",
+  "desc": "Cranberries, dried"
+ },
+ "dried-fruit": {
+  "fdc": 2709195,
+  "src": "N",
+  "desc": "Dried, fruit, NFS"
+ },
+ "dried-mango": {
+  "fdc": 2709205,
+  "src": "N",
+  "desc": "Mango, dried"
+ },
+ "dried-mushrooms": {
+  "fdc": 168436,
+  "src": "S",
+  "desc": "Mushrooms, shiitake, dried"
+ },
+ "dry-mustard": {
+  "fdc": 170929,
+  "src": "S",
+  "desc": "Spices, mustard seed, ground"
+ },
+ "evaporated-condensed-milk": {
+  "fdc": 2705399,
+  "src": "N",
+  "desc": "Milk, evaporated, whole"
+ },
+ "evaporated-milk": {
+  "fdc": 2705399,
+  "src": "N",
+  "desc": "Milk, evaporated, whole"
+ },
+ "flaxseed-ground": {
+  "fdc": 2262075,
+  "src": "F",
+  "desc": "Flaxseed, ground"
+ },
+ "flaxseed-whole-seed": {
+  "fdc": 169414,
+  "src": "S",
+  "desc": "Seeds, flaxseed"
+ },
+ "fruit-snacks": {
+  "fdc": 2710367,
+  "src": "N",
+  "desc": "Candy, fruit snacks"
+ },
+ "garlic-powder": {
+  "fdc": 171325,
+  "src": "S",
+  "desc": "Spices, garlic powder"
+ },
+ "graham-cracker-animal-cracker": {
+  "fdc": 2708133,
+  "src": "N",
+  "desc": "Graham crackers"
+ },
+ "graham-crackers": {
+  "fdc": 2708133,
+  "src": "N",
+  "desc": "Graham crackers"
+ },
+ "granola": {
+  "fdc": 2708461,
+  "src": "N",
+  "desc": "Cereal, granola"
+ },
+ "granola-bars": {
+  "fdc": 2708101,
+  "src": "N",
+  "desc": "Cereal or Granola bar, NFS"
+ },
+ "grapeseed-oil": {
+  "fdc": 171028,
+  "src": "S",
+  "desc": "Oil, grapeseed"
+ },
+ "grits": {
+  "fdc": 171654,
+  "src": "S",
+  "desc": "Cereals, corn grits, white, regular and quick, enriched, dry"
+ },
+ "imitation-bacon-bits": {
+  "fdc": 169893,
+  "src": "S",
+  "desc": "Bacon bits, meatless"
+ },
+ "instant-breakfast-drinks": {
+  "fdc": 2710729,
+  "src": "N",
+  "desc": "Nutritional powder mix (Carnation Instant Breakfast)"
+ },
+ "instant-mashed-potatoes": {
+  "fdc": 170041,
+  "src": "S",
+  "desc": "Potatoes, mashed, dehydrated, granules with milk, dry form"
+ },
+ "macadamia-nuts": {
+  "fdc": 2707503,
+  "src": "N",
+  "desc": "Macadamia nuts"
+ },
+ "maple-syrup-plastic-bottle": {
+  "fdc": 169661,
+  "src": "S",
+  "desc": "Syrups, maple"
+ },
+ "marshmallow-creme": {
+  "fdc": 2710287,
+  "src": "N",
+  "desc": "Topping, marshmallow"
+ },
+ "marshmallows": {
+  "fdc": 2710353,
+  "src": "N",
+  "desc": "Candy, marshmallow"
+ },
+ "microwave-popcorn": {
+  "fdc": 2708224,
+  "src": "N",
+  "desc": "Popcorn, microwave, plain"
+ },
+ "molasses": {
+  "fdc": 2710283,
+  "src": "N",
+  "desc": "Molasses"
+ },
+ "natural-peanut-butter": {
+  "fdc": 2707537,
+  "src": "N",
+  "desc": "Peanut butter"
+ },
+ "nutella": {
+  "fdc": 2710289,
+  "src": "N",
+  "desc": "Chocolate hazelnut spread"
+ },
+ "nutmeg": {
+  "fdc": 171326,
+  "src": "S",
+  "desc": "Spices, nutmeg, ground"
+ },
+ "onion-powder": {
+  "fdc": 171327,
+  "src": "S",
+  "desc": "Spices, onion powder"
+ },
+ "pancake-syrup": {
+  "fdc": 2710273,
+  "src": "N",
+  "desc": "Pancake syrup"
+ },
+ "peanuts": {
+  "fdc": 2707512,
+  "src": "N",
+  "desc": "Peanuts, NFS"
+ },
+ "peanuts-shell": {
+  "fdc": 2707516,
+  "src": "N",
+  "desc": "Peanuts, roasted, unsalted"
+ },
+ "pecans": {
+  "fdc": 2707524,
+  "src": "N",
+  "desc": "Pecans, unsalted"
+ },
+ "pecans-shell": {
+  "fdc": 2707524,
+  "src": "N",
+  "desc": "Pecans, unsalted"
+ },
+ "pectin": {
+  "fdc": 168821,
+  "src": "S",
+  "desc": "Pectin, unsweetened, dry mix"
+ },
+ "pickled-beets": {
+  "fdc": 2710071,
+  "src": "N",
+  "desc": "Beets, pickled"
+ },
+ "pine-nuts": {
+  "fdc": 2707526,
+  "src": "N",
+  "desc": "Pine nuts"
+ },
+ "pistachios": {
+  "fdc": 2707527,
+  "src": "N",
+  "desc": "Pistachio nuts, NFS"
+ },
+ "polenta": {
+  "fdc": 168867,
+  "src": "S",
+  "desc": "Cornmeal, degermed, enriched, yellow"
+ },
+ "popcorn-kernels": {
+  "fdc": 2708219,
+  "src": "N",
+  "desc": "Popcorn, air-popped, no butter added"
+ },
+ "pork-rinds": {
+  "fdc": 2705902,
+  "src": "N",
+  "desc": "Pork skin rinds"
+ },
+ "potato-chips": {
+  "fdc": 2709422,
+  "src": "N",
+  "desc": "Potato chips, plain"
+ },
+ "pretzels": {
+  "fdc": 2708247,
+  "src": "N",
+  "desc": "Pretzels, NFS"
+ },
+ "prunes": {
+  "fdc": 2709211,
+  "src": "N",
+  "desc": "Prune, dried"
+ },
+ "pudding-mix": {
+  "fdc": 168784,
+  "src": "S",
+  "desc": "Puddings, vanilla, dry mix, instant"
+ },
+ "pumpkin-seeds": {
+  "fdc": 2707579,
+  "src": "N",
+  "desc": "Pumpkin seeds, NFS"
+ },
+ "pumpkin-seeds-shell": {
+  "fdc": 170188,
+  "src": "S",
+  "desc": "Seeds, pumpkin and squash seeds, whole, roasted, without salt"
+ },
+ "raisins": {
+  "fdc": 2709212,
+  "src": "N",
+  "desc": "Raisins"
+ },
+ "roasted-almonds": {
+  "fdc": 2707489,
+  "src": "N",
+  "desc": "Almonds, unsalted"
+ },
+ "roasted-cashews": {
+  "fdc": 2707497,
+  "src": "N",
+  "desc": "Cashews, unsalted"
+ },
+ "roasted-edamame": {
+  "fdc": 2707433,
+  "src": "N",
+  "desc": "Soy nuts"
+ },
+ "roasted-nuts": {
+  "fdc": 168599,
+  "src": "S",
+  "desc": "Nuts, mixed nuts, dry roasted, with peanuts, with salt added"
+ },
+ "roasted-peanuts": {
+  "fdc": 2707516,
+  "src": "N",
+  "desc": "Peanuts, roasted, unsalted"
+ },
+ "roasted-pumpkin-seeds": {
+  "fdc": 170557,
+  "src": "S",
+  "desc": "Seeds, pumpkin and squash seed kernels, roasted, without salt"
+ },
+ "roasted-pumpkin-seeds-shell": {
+  "fdc": 170188,
+  "src": "S",
+  "desc": "Seeds, pumpkin and squash seeds, whole, roasted, without salt"
+ },
+ "roasted-red-peppers": {
+  "fdc": 2709977,
+  "src": "N",
+  "desc": "Peppers, red, cooked"
+ },
+ "roasted-sunflower-seeds": {
+  "fdc": 325524,
+  "src": "F",
+  "desc": "Seeds, sunflower seed kernels, dry roasted, with salt added"
+ },
+ "salt": {
+  "fdc": 173468,
+  "src": "S",
+  "desc": "Salt, table"
+ },
+ "salted-sunflower-seeds-shell": {
+  "fdc": 2707583,
+  "src": "N",
+  "desc": "Sunflower seeds, plain, salted"
+ },
+ "saltine-crackers": {
+  "fdc": 2708167,
+  "src": "N",
+  "desc": "Crackers, saltine"
+ },
+ "sardines": {
+  "fdc": 2706293,
+  "src": "N",
+  "desc": "Fish, sardines, canned"
+ },
+ "sauerkraut": {
+  "fdc": 2709982,
+  "src": "N",
+  "desc": "Sauerkraut"
+ },
+ "sesame-oil": {
+  "fdc": 2710190,
+  "src": "N",
+  "desc": "Sesame oil"
+ },
+ "sesame-seeds": {
+  "fdc": 2707586,
+  "src": "N",
+  "desc": "Sesame seeds"
+ },
+ "shelf-stable-milk": {
+  "fdc": 2705385,
+  "src": "N",
+  "desc": "Milk, whole"
+ },
+ "spam": {
+  "fdc": 2706211,
+  "src": "N",
+  "desc": "Spam"
+ },
+ "stabilized-peanut-butter": {
+  "fdc": 2707537,
+  "src": "N",
+  "desc": "Peanut butter"
+ },
+ "stuffing-mix": {
+  "fdc": 174930,
+  "src": "S",
+  "desc": "Bread, stuffing, dry mix"
+ },
+ "sun-dried-tomatoes": {
+  "fdc": 2709727,
+  "src": "N",
+  "desc": "Sun-dried tomatoes"
+ },
+ "sunflower-oil": {
+  "fdc": 2710192,
+  "src": "N",
+  "desc": "Sunflower oil"
+ },
+ "sunflower-seeds": {
+  "fdc": 2707585,
+  "src": "N",
+  "desc": "Sunflower seeds, NFS"
+ },
+ "sweetened-condensed-milk": {
+  "fdc": 2705402,
+  "src": "N",
+  "desc": "Milk, condensed, sweetened"
+ },
+ "tapenade": {
+  "fdc": 2710092,
+  "src": "N",
+  "desc": "Olive tapenade"
+ },
+ "toaster-pastries": {
+  "fdc": 175035,
+  "src": "S",
+  "desc": "Toaster pastries, fruit (includes apple, blueberry, cherry, strawberry)"
+ },
+ "tomato-paste": {
+  "fdc": 2685580,
+  "src": "F",
+  "desc": "Tomato, paste, canned, without salt added"
+ },
+ "tuna-pouches": {
+  "fdc": 2706311,
+  "src": "N",
+  "desc": "Fish, tuna, canned"
+ },
+ "ultra-pasteurized-milk": {
+  "fdc": 2705385,
+  "src": "N",
+  "desc": "Milk, whole"
+ },
+ "walnuts": {
+  "fdc": 2707531,
+  "src": "N",
+  "desc": "Walnuts, excluding honey roasted"
+ },
+ "apple-cider": {
+  "fdc": 2709319,
+  "src": "N",
+  "desc": "Apple cider"
+ },
+ "apple-juice": {
+  "fdc": 2709320,
+  "src": "N",
+  "desc": "Apple juice, 100%"
+ },
+ "bottled-water": {
+  "fdc": 2710708,
+  "src": "N",
+  "desc": "Water, bottled, plain"
+ },
+ "canned-nutrition-shakes": {
+  "fdc": 2710725,
+  "src": "N",
+  "desc": "Nutritional drink or shake, ready-to-drink, NFS"
+ },
+ "coconut-water": {
+  "fdc": 2707572,
+  "src": "N",
+  "desc": "Coconut water, unsweetened"
+ },
+ "cranberry-juice": {
+  "fdc": 2709324,
+  "src": "N",
+  "desc": "Cranberry juice, 100%, not a blend"
+ },
+ "cream-liqueur": {
+  "fdc": 2710624,
+  "src": "N",
+  "desc": "Liqueur, cream"
+ },
+ "diet-soda": {
+  "fdc": 2710542,
+  "src": "N",
+  "desc": "Soft drink, cola, diet"
+ },
+ "drink-mixes": {
+  "fdc": 2710613,
+  "src": "N",
+  "desc": "Fruit flavored drink, powdered, not reconstituted"
+ },
+ "fresh-apple-juice": {
+  "fdc": 2709320,
+  "src": "N",
+  "desc": "Apple juice, 100%"
+ },
+ "fresh-carrot-juice": {
+  "fdc": 2709683,
+  "src": "N",
+  "desc": "Carrot juice, 100%"
+ },
+ "fresh-lemon-juice": {
+  "fdc": 2709181,
+  "src": "N",
+  "desc": "Lemon juice, 100%, freshly squeezed"
+ },
+ "fresh-squeezed-orange-juice": {
+  "fdc": 2709187,
+  "src": "N",
+  "desc": "Orange juice, 100%,  freshly squeezed"
+ },
+ "frozen-orange-juice-concentrate": {
+  "fdc": 169923,
+  "src": "S",
+  "desc": "Orange juice, frozen concentrate, unsweetened, undiluted"
+ },
+ "fruit-nectar": {
+  "fdc": 2709340,
+  "src": "N",
+  "desc": "Fruit nectar, NFS"
+ },
+ "fruit-punch": {
+  "fdc": 171914,
+  "src": "S",
+  "desc": "Beverages, fruit punch drink, without added nutrients, canned"
+ },
+ "grape-juice": {
+  "fdc": 2709325,
+  "src": "N",
+  "desc": "Grape juice, 100%"
+ },
+ "home-ground-coffee": {
+  "fdc": 2710480,
+  "src": "N",
+  "desc": "Coffee, instant, not reconstituted"
+ },
+ "homemade-vegetable-juice": {
+  "fdc": 2709810,
+  "src": "N",
+  "desc": "Mixed vegetable juice"
+ },
+ "instant-coffee": {
+  "fdc": 2710480,
+  "src": "N",
+  "desc": "Coffee, instant, not reconstituted"
+ },
+ "instant-tea": {
+  "fdc": 2710510,
+  "src": "N",
+  "desc": "Tea, iced, instant, black, unsweetened, dry"
+ },
+ "juice-boxes": {
+  "fdc": 2709320,
+  "src": "N",
+  "desc": "Apple juice, 100%"
+ },
+ "juice-cartons-fruit-punch": {
+  "fdc": 2709315,
+  "src": "N",
+  "desc": "Fruit juice, NFS"
+ },
+ "lemon-juice": {
+  "fdc": 2709182,
+  "src": "N",
+  "desc": "Lemon juice, 100%, canned or bottled"
+ },
+ "lime-juice": {
+  "fdc": 2709185,
+  "src": "N",
+  "desc": "Lime juice, 100%, canned or bottled"
+ },
+ "loose-leaf-tea": {
+  "fdc": 2710488,
+  "src": "N",
+  "desc": "Tea, hot, leaf, black"
+ },
+ "refrigerated-vegetable-juice": {
+  "fdc": 2709810,
+  "src": "N",
+  "desc": "Mixed vegetable juice"
+ },
+ "shelf-stable-soy-rice-milk": {
+  "fdc": 1999630,
+  "src": "F",
+  "desc": "Soy milk, unsweetened, plain, shelf stable"
+ },
+ "shelf-stable-vegetable-juice": {
+  "fdc": 2709731,
+  "src": "N",
+  "desc": "Tomato and vegetable juice, 100%"
+ },
+ "soda": {
+  "fdc": 2710541,
+  "src": "N",
+  "desc": "Soft drink, cola"
+ },
+ "tea-bags": {
+  "fdc": 2710488,
+  "src": "N",
+  "desc": "Tea, hot, leaf, black"
+ },
+ "tonic-water": {
+  "fdc": 2710538,
+  "src": "N",
+  "desc": "Water, tonic"
+ },
+ "yuzu": {
+  "fdc": 2709168,
+  "src": "N",
+  "desc": "Lemon, raw"
+ },
+ "yuzu-juice": {
+  "fdc": 2709180,
+  "src": "N",
+  "desc": "Lemon juice, 100%, NS as to form"
+ },
+ "french-fries": {
+  "fdc": 2709456,
+  "src": "N",
+  "desc": "Potato, french fries, NFS"
+ },
+ "frozen-berries": {
+  "fdc": 2709272,
+  "src": "N",
+  "desc": "Berries, frozen"
+ },
+ "frozen-breaded-fish": {
+  "fdc": 174195,
+  "src": "S",
+  "desc": "Fish, fish sticks, frozen, prepared"
+ },
+ "frozen-broccoli": {
+  "fdc": 2709646,
+  "src": "N",
+  "desc": "Broccoli, frozen, cooked, no added fat"
+ },
+ "frozen-corn": {
+  "fdc": 2709911,
+  "src": "N",
+  "desc": "Corn, frozen, cooked, no added fat"
+ },
+ "frozen-dough": {
+  "fdc": 172791,
+  "src": "S",
+  "desc": "Phyllo dough"
+ },
+ "frozen-edamame": {
+  "fdc": 168410,
+  "src": "S",
+  "desc": "Edamame, frozen, unprepared"
+ },
+ "frozen-egg-substitute": {
+  "fdc": 173462,
+  "src": "S",
+  "desc": "Egg substitute, liquid or frozen, fat free"
+ },
+ "frozen-fries-hash-browns": {
+  "fdc": 170043,
+  "src": "S",
+  "desc": "Potatoes, hash brown, frozen, plain, unprepared"
+ },
+ "frozen-fruit": {
+  "fdc": 2709292,
+  "src": "N",
+  "desc": "Fruit mixture, frozen"
+ },
+ "frozen-juice-concentrate": {
+  "fdc": 169923,
+  "src": "S",
+  "desc": "Orange juice, frozen concentrate, unsweetened, undiluted"
+ },
+ "frozen-lobster-tails": {
+  "fdc": 174208,
+  "src": "S",
+  "desc": "Crustaceans, lobster, northern, raw"
+ },
+ "frozen-meals": {
+  "fdc": 2707095,
+  "src": "N",
+  "desc": "Frozen dinner, NFS"
+ },
+ "frozen-pancakes": {
+  "fdc": 2708295,
+  "src": "N",
+  "desc": "Pancakes, plain, frozen"
+ },
+ "frozen-pancakes-waffles": {
+  "fdc": 2708313,
+  "src": "N",
+  "desc": "Waffle, plain, frozen"
+ },
+ "frozen-peas": {
+  "fdc": 170016,
+  "src": "S",
+  "desc": "Peas, green, frozen, unprepared (Includes foods for USDA's Food Distribution Program)"
+ },
+ "frozen-polenta": {
+  "fdc": 2708363,
+  "src": "N",
+  "desc": "Grits, NFS"
+ },
+ "frozen-precooked-sausages": {
+  "fdc": 2706190,
+  "src": "N",
+  "desc": "Sausage, NFS"
+ },
+ "frozen-pretzels": {
+  "fdc": 2708277,
+  "src": "N",
+  "desc": "Pretzels, soft, from frozen, NFS"
+ },
+ "frozen-raw-fish": {
+  "fdc": 2706223,
+  "src": "N",
+  "desc": "Fish, raw"
+ },
+ "frozen-raw-sausages": {
+  "fdc": 172934,
+  "src": "S",
+  "desc": "Pork sausage, link/patty, unprepared"
+ },
+ "frozen-shrimp": {
+  "fdc": 175179,
+  "src": "S",
+  "desc": "Crustaceans, shrimp, raw"
+ },
+ "frozen-waffles": {
+  "fdc": 2708313,
+  "src": "N",
+  "desc": "Waffle, plain, frozen"
+ },
+ "hash-browns": {
+  "fdc": 2709477,
+  "src": "N",
+  "desc": "Potato, hash brown, NFS"
+ },
+ "kugel": {
+  "fdc": 2708949,
+  "src": "N",
+  "desc": "Noodle pudding"
+ },
+ "meat-substitutes": {
+  "fdc": 2709163,
+  "src": "N",
+  "desc": "Meat substitute, cereal- and vegetable protein-based, fried"
+ },
+ "popsicles": {
+  "fdc": 2710319,
+  "src": "N",
+  "desc": "Popsicle, NFS"
+ },
+ "sherbet": {
+  "fdc": 2705677,
+  "src": "N",
+  "desc": "Sherbet, all flavors"
+ },
+ "sorbet": {
+  "fdc": 2709314,
+  "src": "N",
+  "desc": "Sorbet"
+ },
+ "sorbet-sherbet": {
+  "fdc": 2705677,
+  "src": "N",
+  "desc": "Sherbet, all flavors"
+ },
+ "tater-tots": {
+  "fdc": 2709511,
+  "src": "N",
+  "desc": "Potato tots, NFS"
+ },
+ "tempeh": {
+  "fdc": 174272,
+  "src": "S",
+  "desc": "Tempeh"
+ },
+ "veggie-hot-dogs-crumbles": {
+  "fdc": 2707470,
+  "src": "N",
+  "desc": "Hot dog, vegetarian"
+ },
+ "baby-cereal": {
+  "fdc": 2708498,
+  "src": "N",
+  "desc": "Baby Toddler cereal, NFS"
+ },
+ "baby-food-dinners": {
+  "fdc": 2705463,
+  "src": "N",
+  "desc": "Baby Toddler food, NFS"
+ },
+ "baby-food-fruit": {
+  "fdc": 2709352,
+  "src": "N",
+  "desc": "Baby Toddler fruit, NFS"
+ },
+ "baby-food-jars-pouches": {
+  "fdc": 2705463,
+  "src": "N",
+  "desc": "Baby Toddler food, NFS"
+ },
+ "baby-food-vegetables": {
+  "fdc": 2710117,
+  "src": "N",
+  "desc": "Baby Toddler vegetable, NFS"
+ },
+ "miso": {
+  "fdc": 2707439,
+  "src": "N",
+  "desc": "Miso"
+ },
+ "rehydrated-textured-soy-protein": {
+  "fdc": 2707451,
+  "src": "N",
+  "desc": "Textured vegetable protein, dry"
+ },
+ "soy-flour": {
+  "fdc": 1104705,
+  "src": "F",
+  "desc": "Flour, soy, defatted"
+ },
+ "textured-soy-protein-dry": {
+  "fdc": 2707451,
+  "src": "N",
+  "desc": "Textured vegetable protein, dry"
+ }
+}

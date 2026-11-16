@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { FOODS, cellsFor, days, isNum, type Dur, hasFreezePage, hasLeftOutPage } from "../lib/data";
+import { FOODS, cellsFor, days, isNum, type Dur } from "../lib/data";
 import { freezeVerdict } from "../lib/content";
 
 /** Compact index for the home widget, search page and calculators. */
@@ -25,7 +25,6 @@ export const GET: APIRoute = () => {
       fv: freezeVerdict(f).tone,
       sl: s.label,
       r: f.rank,
-      v: [hasFreezePage(f) ? 1 : 0, hasLeftOutPage(f) ? 1 : 0],
     };
   });
   return new Response(JSON.stringify(rows), { headers: { "content-type": "application/json" } });

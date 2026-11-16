@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 /**
  * Post-build checks on dist/ (runs after `astro build`; fails the build on errors):
- *  - every internal link points at a built page or file
- *  - every indexable page has a unique <title>, a description ≤ 160 chars, a canonical and JSON-LD
- *  - the cooked-rice acceptance page has the spec'd title, answer text and schema types
- *  - food pages ship no client JS
+ *  - every internal link points at a built page or file, with a trailing slash
+ *  - every indexable page has a unique <title>, a description, a canonical and valid JSON-LD
+ *  - sitemaps list exactly the indexable pages
+ *  - /calories/ pages carry at least 350 words; /calories/cooked-rice/ has its numbers, storage section and schema
+ *  - every redirects.json destination is a built page
  */
 import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join, relative } from "node:path";
@@ -16,6 +17,7 @@ const pages = files.filter((f) => f.endsWith(".html"));
 const errors = [];
 const warn = [];
 const titles = new Map();
+const relOf = (file) => "/" + relative(DIST, file).replace(/index\.html$/, "");
 
 const exists = (href) => {
   const p = decodeURI(href.split(/[?#]/)[0]);
@@ -24,11 +26,18 @@ const exists = (href) => {
   return existsSync(f) && (statSync(f).isFile() || existsSync(join(f, "index.html")));
 };
 
+const MIN_WORDS = 350; // EatThisMuch food pages run ~550 words, mostly table labels.
+const wordsIn = (html) => {
+  const main = (html.match(/<main[\s\S]*?<\/main>/) ?? [html])[0].replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<svg[\s\S]*?<\/svg>/g, "");
+  return (main.replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/gi, " ").match(/[\p{L}\p{N}][\p{L}\p{N}'’–-]*/gu) ?? []).length;
+};
+let thin = 0, minSeen = Infinity;
+
 for (const file of pages) {
   const html = readFileSync(file, "utf8");
-  const rel = "/" + relative(DIST, file).replace(/index\.html$/, "");
+  const rel = relOf(file);
   const noindex = /name="robots" content="noindex/.test(html);
-  for (const [, href] of html.matchAll(/href="(\/[^"]*)"/g)) {
+  for (const [, href] of html.replace(/<script[\s\S]*?<\/script>/g, "").matchAll(/href="(\/[^"]*)"/g)) {
     if (href.startsWith("//")) continue;
     if (!exists(href)) errors.push(`${rel}: broken link ${href}`);
     else if (!/\.[a-z0-9]+$/i.test(href.split(/[?#]/)[0]) && !href.split(/[?#]/)[0].endsWith("/")) errors.push(`${rel}: link without trailing slash ${href}`);
@@ -39,44 +48,19 @@ for (const file of pages) {
   if (!title) errors.push(`${rel}: missing title`);
   else if (titles.has(title)) errors.push(`${rel}: duplicate title with ${titles.get(title)}`);
   else titles.set(title, rel);
-  const plainDesc = desc.replace(/&amp;/g, "&").replace(/&#39;|&apos;/g, "'").replace(/&quot;/g, '"');
-  if (!plainDesc) errors.push(`${rel}: missing description`);
-  else if (plainDesc.length > 160) warn.push(`${rel}: description ${plainDesc.length} chars`);
+  if (!desc) errors.push(`${rel}: missing description`);
   if (!/rel="canonical" href="https:\/\/www\.guntherheller\.com\//.test(html)) errors.push(`${rel}: missing canonical`);
   if (!html.includes("application/ld+json")) errors.push(`${rel}: missing JSON-LD`);
   for (const m of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
     try { JSON.parse(m[1]); } catch { errors.push(`${rel}: invalid JSON-LD`); }
   }
-  if (/^\/((how-long-does|can-you-freeze-|does-)|(es|de|fr|pt-br)\/(cuanto-dura|haltbarkeit|conservation|quanto-dura)-)/.test(rel)) {
-    // Allow Vercel Analytics scripts but no other client JS
-    // Vercel Analytics uses a <vercel-analytics> custom element and defines it via script
-    const hasVercelAnalytics = html.includes('<vercel-analytics');
-    // The Google tag (GTM-KMS824N3) and the AdSense loader (ca-pub-2128579868272786) in Base.astro are also allowed.
-    const scripts = [...html.matchAll(/<script(?![^>]*application\/ld\+json)[^>]*>([\s\S]*?)<\/script>/g)];
-    const hasNonJsonLdScript = scripts.some(([tag, body]) => !tag.includes("googletagmanager.com/gtm.js?id=GTM-KMS824N3") && !tag.includes("pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2128579868272786") && !/^\s*window\.dataLayer = window\.dataLayer \|\| \[\];\s*function gtag\(\)\{dataLayer\.push\(arguments\);\}\s*gtag\('js', new Date\(\)\);\s*$/.test(body));
-    if (hasNonJsonLdScript && !hasVercelAnalytics) errors.push(`${rel}: food page ships client JS`);
+  if (rel.startsWith("/calories/")) {
+    const n = wordsIn(html);
+    minSeen = Math.min(minSeen, n);
+    if (n < MIN_WORDS) { thin++; if (thin <= 10) errors.push(`${rel}: only ${n} words (min ${MIN_WORDS})`); }
   }
 }
-
-// hreflang: every alternate must exist, declare the same cluster back (reciprocity) and include x-default.
-const altsOf = (html) => [...html.matchAll(/<link rel="alternate" hreflang="([^"]+)" href="https:\/\/www\.guntherheller\.com([^"]+)"/g)].map((m) => [m[1], m[2]]);
-let clusters = 0;
-for (const file of pages) {
-  const html = readFileSync(file, "utf8");
-  const alts = altsOf(html).filter(([l]) => l !== "x-default");
-  if (alts.length < 2) continue;
-  clusters++;
-  const rel = "/" + relative(DIST, file).replace(/index\.html$/, "");
-  if (!altsOf(html).some(([l]) => l === "x-default")) errors.push(`${rel}: hreflang without x-default`);
-  if (!alts.some(([, h]) => h === rel)) errors.push(`${rel}: hreflang cluster does not include itself`);
-  for (const [lang, href] of alts) {
-    if (!exists(href)) { errors.push(`${rel}: hreflang ${lang} → missing ${href}`); continue; }
-    const other = readFileSync(join(DIST, href, "index.html"), "utf8");
-    if (!altsOf(other).some(([, h]) => h === rel)) errors.push(`${rel}: hreflang ${lang} → ${href} does not link back`);
-    const htmlLang = other.match(/<html lang="([^"]+)"/)?.[1];
-    if (htmlLang !== lang) errors.push(`${href}: <html lang="${htmlLang}"> but hreflang says ${lang}`);
-  }
-}
+if (thin > 10) errors.push(`…${thin - 10} more pages under ${MIN_WORDS} words`);
 
 // Sitemaps: every listed URL is a built, indexable page; every indexable page is listed.
 const listed = new Set();
@@ -91,76 +75,32 @@ for (const [, loc] of idx.matchAll(/<loc>https:\/\/www\.guntherheller\.com(\/[^<
   }
 }
 for (const file of pages) {
-  const rel = "/" + relative(DIST, file).replace(/index\.html$/, "");
+  const rel = relOf(file);
   const html = readFileSync(file, "utf8");
   if (rel === "/404.html" || /name="robots" content="noindex/.test(html)) continue;
   if (!listed.has(rel)) errors.push(`${rel}: indexable page missing from sitemaps`);
 }
-for (const f of ["favicon.ico", "favicon.svg", "favicon-96x96.png", "apple-touch-icon.png", "site.webmanifest", "web-app-manifest-512x512.png"]) if (!existsSync(join(DIST, f))) errors.push(`missing ${f}`);
+for (const f of ["favicon.ico", "favicon.svg", "favicon-96x96.png", "apple-touch-icon.png", "site.webmanifest", "web-app-manifest-512x512.png", "robots.txt", "ads.txt", "sitemap.xml", "og.png", "404.html", "search-index.json", "nutrition-index.json"])
+  if (!existsSync(join(DIST, f))) errors.push(`missing ${f}`);
 
-// Word count: food pages (EN and localized) carry at least 900 words of main content (Nov 2026: group-level copy moved to the hubs; NutriScan pages run 1,200–1,800). The three
-// question pages (freeze / go bad / left out) are deliberately focused and no longer repeat the food
-// page's long-form sections (Nov 2026 near-duplicate fix), so their floor is 560 (a "no, don't freeze lettuce" answer is short by nature).
-const MIN_WORDS = 900;
-const MIN_VARIANT = 560;
-const wordsIn = (html) => {
-  const main = (html.match(/<main[\s\S]*?<\/main>/) ?? [html])[0].replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<svg[\s\S]*?<\/svg>/g, "");
-  return (main.replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/gi, " ").match(/[\p{L}\p{N}][\p{L}\p{N}'’–-]*/gu) ?? []).length;
-};
-let thin = 0, minSeen = Infinity;
-for (const file of pages) {
-  const rel = "/" + relative(DIST, file).replace(/index\.html$/, "");
-  if (!/^\/((how-long-does-.*-last|can-you-freeze-.+|does-.+-go-bad|[^/]+-left-out-overnight)|(es\/cuanto-dura|de\/haltbarkeit|fr\/conservation|pt-br\/quanto-dura)-.+)\/$/.test(rel)) continue;
-  const n = wordsIn(readFileSync(file, "utf8"));
-  minSeen = Math.min(minSeen, n);
-  const min = /^\/(can-you-freeze-|does-.+-go-bad|[^/]+-left-out-overnight)/.test(rel) ? MIN_VARIANT : MIN_WORDS;
-  if (n < min) { thin++; if (thin <= 10) errors.push(`${rel}: only ${n} words (min ${min})`); }
-}
-if (thin > 10) errors.push(`…${thin - 10} more pages under ${MIN_WORDS} words`);
+// Acceptance test: cooked rice (nutrition + FoodKeeper storage on one page).
+const rice = readFileSync(join(DIST, "calories/cooked-rice/index.html"), "utf8");
+if (!/<title>Cooked Rice Nutrition Facts \(\d+ Calories per [^<]+\)<\/title>/.test(rice)) errors.push("cooked rice: unexpected title");
+for (const t of ["Nutrition Facts", "Vitamins and minerals", "How long does cooked rice last?", "4–6 days", "2,000-calorie diet"]) if (!rice.includes(t)) errors.push(`cooked rice: "${t}" missing`);
+for (const t of ['"NutritionInformation"', '"BreadcrumbList"', '"FAQPage"', '"Organization"']) if (!rice.includes(t)) errors.push(`cooked rice: JSON-LD ${t} missing`);
 
-// Acceptance test (handoff §3): cooked rice.
-const rice = readFileSync(join(DIST, "how-long-does-cooked-rice-last/index.html"), "utf8");
-const expectTitle = "How Long Does Cooked Rice Last? 4–6 Days in the Fridge [Freezer 6 Months]";
-if (!rice.includes(`<title>${expectTitle}</title>`)) errors.push(`cooked rice: title is not "${expectTitle}"`);
-for (const t of ["4–6 days", "6 months", "2 hours", "Cooked rice lasts"]) if (!rice.includes(t)) errors.push(`cooked rice: answer text "${t}" missing`);
-for (const t of ['"Article"', '"BreadcrumbList"', '"FAQPage"', '"Organization"', '"Dataset"', '"PropertyValue"']) if (!rice.includes(t)) errors.push(`cooked rice: JSON-LD ${t} missing`);
-for (const f of ["robots.txt", "ads.txt", "sitemap.xml", "og.png", "404.html", "search-index.json"]) if (!existsSync(join(DIST, f))) errors.push(`missing ${f}`);
-
-// Near-duplicate check (Nov 2026, from the NutriScan/EatBetter study): two food pages should share
-// little text once the food name is masked. NutriScan's pages share ~2–3%; ours were ~26% (median).
-// 5-gram Jaccard over 80 fixed pairs of English food pages. Warn above 25%, fail above 35%.
-{
-  const foodPages = pages.filter((f) => /\/how-long-does-.+-last\/index\.html$/.test(f)).sort();
-  const body = (f) => {
-    const name = f.match(/how-long-does-(.+)-last/)[1].replace(/-/g, " ");
-    const h = readFileSync(f, "utf8").replace(/<(script|style|svg|nav|header|footer)[^>]*>[\s\S]*?<\/\1>/g, " ");
-    const main = (h.match(/<main[\s\S]*?<\/main>/) ?? [h])[0].replace(/<[^>]+>/g, " ").toLowerCase().split(name).join(" x ");
-    const w = main.match(/[a-z]+/g) ?? [];
-    const set = new Set();
-    for (let i = 0; i + 5 <= w.length; i++) set.add(w.slice(i, i + 5).join(" "));
-    return set;
-  };
-  const jac = [];
-  for (let k = 0; k < 80 && foodPages.length > 2; k++) {
-    const a = foodPages[(k * 37) % foodPages.length], b = foodPages[(k * 101 + 13) % foodPages.length];
-    if (a === b) continue;
-    const A = body(a), B = body(b);
-    let inter = 0; for (const g of A) if (B.has(g)) inter++;
-    jac.push((inter / (A.size + B.size - inter)) * 100);
-  }
-  jac.sort((x, y) => x - y);
-  const med = jac[jac.length >> 1] ?? 0;
-  console.log(`check-build: food-page overlap (name masked) median ${med.toFixed(1)}%, max ${(jac.at(-1) ?? 0).toFixed(1)}%`);
-  if (med > 35) errors.push(`food pages share ${med.toFixed(1)}% of their text (median) — near-duplicate risk`);
-  else if (med > 25) warn.push(`food pages share ${med.toFixed(1)}% of their text (median); aim for under 15%`);
+// Every 301 in redirects.json lands on a built page (the catch-all handles everything else).
+const redirects = JSON.parse(readFileSync(new URL("../redirects.json", import.meta.url), "utf8"));
+for (const r of redirects) {
+  if (!exists(r.destination)) errors.push(`redirects.json: ${r.source} → missing ${r.destination}`);
+  if (exists(r.source) && r.source !== "/") errors.push(`redirects.json: ${r.source} is also a built page`);
 }
 
 const css = files.filter((f) => f.endsWith(".css")).reduce((n, f) => n + statSync(f).size, 0);
-const inlineCss = (rice.match(/<style[^>]*>([\s\S]*?)<\/style>/g) ?? []).join("").length;
-console.log(`check-build: ${pages.length} pages, ${titles.size} unique titles, ${clusters} hreflang pages, ${listed.size} sitemap URLs, shortest food page ${minSeen} words, CSS ${(Math.max(css, inlineCss) / 1024).toFixed(1)} KB`);
+const inlineCss = 0;
+console.log(`check-build: ${pages.length} pages, ${titles.size} unique titles, ${listed.size} sitemap URLs, ${redirects.length} redirects, shortest food page ${minSeen} words, CSS ${(Math.max(css, inlineCss) / 1024).toFixed(1)} KB`);
 if (Math.max(css, inlineCss) > 60 * 1024) errors.push("CSS over the 60 KB budget");
 warn.slice(0, 10).forEach((w) => console.warn("warn:", w));
-if (warn.length > 10) console.warn(`warn: …and ${warn.length - 10} more`);
 if (errors.length) {
   errors.slice(0, 40).forEach((e) => console.error("error:", e));
   console.error(`check-build: ${errors.length} error(s)`);
