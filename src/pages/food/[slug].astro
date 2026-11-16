@@ -1,0 +1,77 @@
+---
+/** /food/{category}/ (every food in a category) and /food/{ranking}/ (top 100 foods for a nutrient). */
+import Base from "../../layouts/Base.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import { NCATS, RANKINGS, type NCategory, type Ranking, type NFood, foodsInCat, ranked, nurl, val, fmtN, nutrientDef, defaultServing, per } from "../../lib/nutrition";
+import { ORG, breadcrumbLd } from "../../lib/schema";
+import { abs } from "../../lib/site";
+
+export function getStaticPaths() {
+  return [
+    ...NCATS.map((c) => ({ params: { slug: c.slug }, props: { cat: c } })),
+    ...RANKINGS.map((r) => ({ params: { slug: r.slug }, props: { rank: r } })),
+  ];
+}
+const { cat, rank } = Astro.props as { cat?: NCategory; rank?: Ranking };
+const path = nurl.cat((cat ?? rank)!.slug);
+let h1: string, title: string, description: string, lead: string, rows: NFood[];
+const d = rank ? nutrientDef(rank.k) : null;
+if (cat) {
+  rows = foodsInCat(cat.slug);
+  h1 = `${cat.name} calories and nutrition facts`;
+  title = `${cat.name}: Calories and Nutrition Facts (${cat.count} Foods) | Gunther Heller`;
+  const top = [...rows].sort((a, b) => b.v.kcal - a.v.kcal);
+  description = `Calories, protein, carbs and fat per 100 g for ${cat.count} ${cat.name.toLowerCase()}, from USDA FoodData Central. Highest: ${top[0].name} (${Math.round(top[0].v.kcal)} cal); lowest: ${top.at(-1)!.name} (${Math.round(top.at(-1)!.v.kcal)} cal).`.slice(0, 300);
+  lead = `${cat.count} ${cat.name.toLowerCase()} with calories, protein, carbs and fat per 100 g. Click a food for the full nutrition facts and serving sizes.`;
+} else {
+  rows = ranked(rank!);
+  h1 = rank!.h1;
+  title = `${rank!.title}: Top 100 per 100 g | Gunther Heller`;
+  description = `The 100 foods ${rank!.dir === "high" ? "highest" : "lowest"} in ${d!.name.toLowerCase()} per 100 g, from USDA FoodData Central. #1: ${rows[0].name} (${fmtN(val(rows[0], rank!.k), d!.unit === "kcal" ? " cal" : d!.unit)}). ${rank!.blurb}`.slice(0, 300);
+  lead = `${rank!.blurb} Ranked per 100 g, with the amount in a typical serving.`;
+}
+const crumbs = [{ name: "Home", href: "/" }, { name: "Food", href: "/food/" }, { name: cat ? cat.name : h1 }];
+const ld = {
+  "@context": "https://schema.org",
+  "@graph": [ORG, { "@type": "CollectionPage", name: h1, url: abs(path), description }, breadcrumbLd(crumbs, path),
+    { "@type": "ItemList", numberOfItems: rows.length, itemListElement: rows.slice(0, 100).map((f, i) => ({ "@type": "ListItem", position: i + 1, url: abs(nurl.food(f)), name: f.name })) }],
+};
+const g = (f: NFood, k: string) => fmtN(val(f, k), "g");
+---
+<Base title={title} description={description} path={path} jsonld={ld}>
+  <div class="container-site pt-6">
+    <Breadcrumb items={crumbs} />
+    <h1 class="h1-food mt-4">{h1}</h1>
+    <p class="lead mt-3 max-w-[760px]">{lead}</p>
+    <div class="table-wrap mt-6">
+      <table class="data-table ntable">
+        <caption class="sr-only-x">{h1}</caption>
+        <thead>
+          <tr>
+            {rank && <th scope="col" class="num">#</th>}
+            <th scope="col">Food</th>
+            {rank && rank.k !== "kcal" && <th scope="col" class="num">{d!.name} / 100 g</th>}
+            {rank && rank.k !== "kcal" && <th scope="col" class="num">Per serving</th>}
+            <th scope="col" class="num">Calories</th><th scope="col" class="num">Protein</th><th scope="col" class="num">Carbs</th><th scope="col" class="num">Fat</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((f, i) => {
+            const s = defaultServing(f);
+            return (
+              <tr>
+                {rank && <td class="num text-muted">{i + 1}</td>}
+                <th scope="row" class="!whitespace-normal !text-[15px] !text-ink !font-normal !bg-white"><a href={nurl.food(f)} class="hover:underline">{f.name}</a></th>
+                {rank && rank.k !== "kcal" && <td class="num"><b>{fmtN(val(f, rank.k), d!.unit)}</b></td>}
+                {rank && rank.k !== "kcal" && <td class="num text-muted">{fmtN(per(val(f, rank.k)!, s[1]), d!.unit)} <span class="text-[12px]">in {s[0]}</span></td>}
+                <td class="num">{Math.round(f.v.kcal)}</td><td class="num">{g(f, "203")}</td><td class="num">{g(f, "205")}</td><td class="num">{g(f, "204")}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+    <p class="text-[13px] text-muted mt-4">Values per 100 g from USDA FoodData Central (Foundation Foods, SR Legacy and FNDDS 2021–2023).</p>
+    <p class="mt-6 text-[15px]"><a class="link" href="/food/">All categories and nutrients</a></p>
+  </div>
+</Base>

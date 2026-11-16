@@ -1,7 +1,4 @@
 ---
-import Fig from "../../components/Fig.astro";
-import { figsFor } from "../../figures/cards";
-const pf = figsFor("/tools/left-out-checker/")!;
 import Tool from "../../layouts/Tool.astro";
 import FoodPicker from "../../components/FoodPicker.astro";
 const faq: [string, string][] = [
@@ -23,9 +20,8 @@ const faq: [string, string][] = [
   </Fragment>
   <p slot="empty" class="text-muted text-[19px]">Keep or discard appears here.</p>
   <h2>Why 2 hours?</h2>
-  <Fig cards={pf.at("why")} />
   <p>Bacteria such as <em>Salmonella</em>, <em>Staphylococcus aureus</em> and <em>Bacillus cereus</em> double quickly between 40°F and 140°F (4–60°C) — FSIS calls this the danger zone. Two hours is the limit before numbers or toxins can reach unsafe levels. In hot weather, the limit is one hour.</p>
-  <p>See every food on one page: <a href="/left-out-overnight/">food left out overnight, A–Z</a>.</p>
+  <p>Every food page also lists its storage times: <a href="/food/">browse foods</a>.</p>
 </Tool>
 <script>
   import { picker, foodHref, esc } from "../../scripts/foods";
@@ -50,7 +46,7 @@ const faq: [string, string][] = [
       text = `${name} is not a high-risk perishable food. On the counter: ${esc(r.c.toLowerCase())}. Check it looks and smells normal.`;
     }
     out.innerHTML = `<div class="flex flex-wrap gap-3 items-start">${pill}<p class="text-base">${text.charAt(0).toUpperCase() + text.slice(1)}</p></div>
-      <p class="mt-3 text-sm"><a class="link" href="${r.v[1] ? `/${r.s}-left-out-overnight/` : foodHref(r)}">More on ${name} →</a></p>`;
+      <p class="mt-3 text-sm"><a class="link" href="${foodHref(r)}#leftout">More on ${name} →</a></p>`;
   };
   food.addEventListener("change", run); food.addEventListener("input", run); h.addEventListener("input", run); hot.addEventListener("change", run);
 </script>

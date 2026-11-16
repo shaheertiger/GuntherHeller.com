@@ -1,7 +1,4 @@
 ---
-import Fig from "../../components/Fig.astro";
-import { figsFor } from "../../figures/cards";
-const pf = figsFor("/tools/freezer-time-calculator/")!;
 import Tool from "../../layouts/Tool.astro";
 import FoodPicker from "../../components/FoodPicker.astro";
 const faq: [string, string][] = [
@@ -20,10 +17,8 @@ const faq: [string, string][] = [
   </Fragment>
   <p slot="empty" class="text-muted text-[19px]">Your best-quality date appears here.</p>
   <h2>Quality, not safety</h2>
-  <Fig cards={pf.at("quality")} />
   <p>FSIS is clear that food kept constantly at 0°F (-18°C) is safe indefinitely. FoodKeeper's freezer times tell you how long food keeps its best flavour and texture. After that, it is still safe to eat but may be dry, tough or bland.</p>
   <h2>Getting the most from your freezer</h2>
-  <Fig cards={pf.at("tips")} />
   <ul><li>Wrap tightly and squeeze out air to prevent freezer burn.</li><li>Freeze flat in bags for fast freezing and thawing.</li><li>Label everything with the name and date.</li></ul>
 </Tool>
 <script>
@@ -41,7 +36,7 @@ const faq: [string, string][] = [
     const lo = addDays(start, Math.round(r.zd)), hi = addDays(start, Math.round(r.zx ?? r.zd));
     out.innerHTML = `<div class="big-out">${fmtDate(lo)}</div>
       <p class="text-muted mt-1">Best quality until this date (${esc(r.z)} in the freezer)${hi > lo ? `; still good until about ${fmtDate(hi)}` : ""}. It remains safe after that if kept at 0°F.</p>
-      <p class="mt-3 text-sm"><a class="link" href="/can-you-freeze-${r.s}/">How to freeze and thaw ${esc(r.n.toLowerCase())} →</a></p>`;
+      <p class="mt-3 text-sm"><a class="link" href="/calories/${r.s}/#freeze">How to freeze and thaw ${esc(r.n.toLowerCase())} →</a></p>`;
   };
   food.addEventListener("change", run); food.addEventListener("input", run); day.addEventListener("change", run);
 </script>

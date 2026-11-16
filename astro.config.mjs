@@ -6,7 +6,7 @@ export default defineConfig({
   site: "https://www.guntherheller.com",
   trailingSlash: "always",
   output: "static",
-  build: { format: "directory", inlineStylesheets: "always" },
+  build: { format: "directory", inlineStylesheets: "auto" },
   compressHTML: true,
   prefetch: false,
   devToolbar: { enabled: false },

@@ -22,7 +22,7 @@ jobs:
           cache: npm
       - run: npm ci
       - name: Fetch FoodKeeper from fsis.usda.gov (fails if unreachable)
-        run: npm run data -- --fetch --require-fetch
+        run: node scripts/import-foodkeeper.mjs --fetch --require-fetch
       - name: Build and check the site with the new data
         run: npm run build
       - name: Summarise the change

@@ -2,16 +2,11 @@
 import Logo from "./Logo.astro";
 import Squiggle from "./Squiggle.astro";
 import { SITE } from "../lib/site";
-import { FOODS } from "../lib/data";
-import { type Locale, type Alt, LOCALES, lurl } from "../lib/i18n";
-const { L, alternates } = Astro.props as { L?: Locale; alternates?: Alt[] };
-const NAMES: Record<string, string> = { en: "EN", es: "ES", de: "DE", fr: "FR", "pt-BR": "PT-BR" };
-const langLinks = (alternates && alternates.length > 1 ? alternates : [{ lang: "en", href: "/" }, ...LOCALES.map((x) => ({ lang: x.s.htmlLang, href: lurl.home(x) }))]);
-const current = L?.s.htmlLang ?? "en";
+import { NMETA, NCATS, RANKINGS, nurl } from "../lib/nutrition";
 const cols = [
-  { h: "Guides", links: [["All foods", "/foods/"], ["Can you freeze it?", "/can-you-freeze/"], ["Does it go bad?", "/does-it-go-bad/"], ["Left out overnight", "/left-out-overnight/"], ["Date label decoder", "/tools/date-decoder/"]] },
-  { h: "Tools", links: [["Leftover calculator", "/tools/leftover-calculator/"], ["Freezer time", "/tools/freezer-time-calculator/"], ["Thaw time", "/tools/thaw-time-calculator/"], ["Left-out checker", "/tools/left-out-checker/"]] },
-  { h: "About", links: [["How we verify", "/methodology/"], ["About & contact", "/about/"], ["Privacy", "/privacy/"], ["Terms", "/terms/"]] },
+  { h: "Browse", links: [["All foods", "/food/"], ...NCATS.slice(0, 6).map((c) => [c.name, nurl.cat(c.slug)])] },
+  { h: "Nutrients", links: RANKINGS.slice(0, 7).map((r) => [r.h1.replace(/^Foods high in /, "High ").replace(/^Foods lowest in /, "Low "), nurl.rank(r)]) },
+  { h: "Tools & site", links: [["Storage calculators", "/tools/"], ["Leftover calculator", "/tools/leftover-calculator/"], ["Our data", "/methodology/"], ["About & contact", "/about/"], ["Privacy", "/privacy/"], ["Terms", "/terms/"]] },
 ];
 ---
 <footer class="bg-panel mt-24 pt-12 pb-8">
@@ -20,10 +15,10 @@ const cols = [
       <div>
         <a href="/" class="flex items-center gap-2.5 font-[650] text-[23px]"><Logo /><span>Gunther Heller</span></a>
         <Squiggle />
-        <p class="mt-4 text-sm text-muted max-w-xs">{L ? L.s.ui.disclaimer : `Storage times for ${FOODS.length} foods from USDA FoodKeeper. General guidance, not medical advice.`}</p>
+        <p class="mt-4 text-sm text-muted max-w-xs">Calories and nutrition facts for {NMETA.count.toLocaleString("en-US")} foods from USDA FoodData Central, with USDA FoodKeeper storage times. General information, not medical or dietary advice.</p>
         <p class="mt-3 text-[13px] text-muted"><a class="link" href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
       </div>
-      {!L && cols.map((c) => (
+      {cols.map((c) => (
         <div>
           <h2 class="eyebrow mb-3.5 !text-[11px] !tracking-[.12em] !leading-normal">{c.h}</h2>
           <ul class="list-none m-0 p-0 grid gap-2 text-sm">
@@ -33,9 +28,8 @@ const cols = [
       ))}
     </div>
     <div class="flex flex-wrap justify-between gap-3 border-t border-line mt-10 pt-[18px] text-[13px] text-muted">
-      <span>© {new Date(SITE.verifiedISO).getFullYear()} Gunther Heller. Data: USDA FoodKeeper (public domain).</span>
-      <span class="flex flex-wrap gap-[18px]">{!L && <><a href="/terms/">Terms of Service</a><a href="/privacy/">Privacy Policy</a></>}
-        <nav aria-label={L ? L.s.ui.languages : "Languages"} class="flex gap-2.5">{langLinks.map((a) => a.lang === current ? <span class="text-ink font-medium">{NAMES[a.lang] ?? a.lang}</span> : <a href={a.href} hreflang={a.lang} lang={a.lang}>{NAMES[a.lang] ?? a.lang}</a>)}</nav></span>
+      <span>© {new Date(SITE.verifiedISO).getFullYear()} Gunther Heller. Data: USDA FoodData Central and FoodKeeper (public domain).</span>
+      <span class="flex flex-wrap gap-[18px]"><a href="/terms/">Terms of Service</a><a href="/privacy/">Privacy Policy</a></span>
     </div>
   </div>
 </footer>

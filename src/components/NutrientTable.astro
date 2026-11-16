@@ -1,0 +1,29 @@
+---
+/** One nutrient table. Values are rendered for the default serving; data-v100 lets the serving picker rescale them. */
+import { type NFood, type NDef, val, per, fmtN, pctDV } from "../lib/nutrition";
+interface Props { food: NFood; defs: NDef[]; grams: number; caption: string; id?: string; showMissing?: boolean; indent?: string[] }
+const { food, defs, grams, caption, id, showMissing = false, indent = [] } = Astro.props;
+const rows = defs.map((d) => ({ d, v: val(food, d.k) })).filter((r) => showMissing || r.v != null);
+const anyDV = rows.some((r) => r.d.dv);
+---
+{rows.length > 0 && (
+  <div class="table-wrap" id={id}>
+    <table class="data-table ntable">
+      <caption class="sr-only-x">{caption}</caption>
+      <thead><tr><th scope="col">Nutrient</th><th scope="col" class="num">Value</th>{anyDV && <th scope="col" class="num">%DV</th>}</tr></thead>
+      <tbody>
+        {rows.map(({ d, v }) => {
+          const x = v == null ? null : per(v, grams);
+          const p = pctDV(x, d);
+          return (
+            <tr class:list={[indent.includes(d.k) && "sub"]}>
+              <th scope="row">{d.name}</th>
+              <td class="num" data-v100={v ?? ""} data-unit={d.unit}>{fmtN(x, d.unit)}</td>
+              {anyDV && <td class="num" data-v100={d.dv && v != null ? v : ""} data-dv={d.dv ?? ""}>{p == null ? "" : `${p}%`}</td>}
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+)}

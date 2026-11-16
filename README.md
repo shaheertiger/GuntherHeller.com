@@ -1,112 +1,63 @@
 # guntherheller.com
 
-Programmatic food-storage reference: "how long does {food} last", "can you freeze {food}",
-"does {food} go bad" and "{food} left out overnight" for every food in USDA FoodKeeper.
-Fully static HTML (Astro), deployed on Vercel.
+Calories and nutrition facts for 13,000+ foods (USDA FoodData Central), with USDA FoodKeeper
+storage times on 918 common foods. URL structure and page layout follow EatThisMuch: one page per
+food at `/calories/{food}/`. Fully static HTML (Astro), deployed on Vercel.
 
 ```bash
 npm ci
-npm run data     # rebuild data/foods.json from FoodKeeper + overrides
-npm run dev      # http://localhost:4321
-npm run build    # astro build + scripts/check-build.mjs (fails on broken links, missing schema, etc.)
-npm run og       # re-render the single site-wide OG image (public/og.png)
-npm run figures  # render changed page figures locally into public/img/fig (git-ignored); see below
+npm run data:fetch  # download the USDA FoodData Central datasets into data/source/fdc/ (~230 MB, git-ignored)
+npm run data        # rebuild data/foods.json (FoodKeeper), data/nutrition.json (FDC) and redirects.json
+npm run dev         # http://localhost:4321
+npm run build       # astro build + scripts/check-build.mjs (fails on broken links, duplicate titles, thin pages, bad redirects…)
 ```
 
-## How it fits together
-
-| Path | What it is |
-| --- | --- |
-| `data/source/foodkeeper.json` | USDA FSIS FoodKeeper v128, byte-identical to `fsis.usda.gov/shared/data/EN/foodkeeper.json` (SHA-256 `037df0d3…`). Public domain. `npm run data -- --fetch` tries to refresh it. |
-| `data/overrides.json` | Our layer: search-friendly names and slugs, toggle pairs (cooked ↔ dry rice), sourced patches (milk), custom foods with their own source (breast milk/CDC), hand-written copy by slug, publishing priority. Schema: `data/overrides.schema.json`. |
-| `scripts/import-foodkeeper.mjs` | Normalises FoodKeeper + overrides → `data/foods.json` (663 foods, 15 categories). |
-| `src/lib/data.ts` | Types, URL builders, duration formatting, answer-card cells. |
-| `src/lib/content.ts` | Generated copy per food "kind" (signs of spoilage, freeze steps, storage tips, FAQ, titles, meta descriptions). Overrides win. |
-| `src/pages/[slug].astro` | All root-level food URLs (base page + 3 variants). |
-| `src/components/FoodPage.astro` | Food page template (matches the FoodPage / MobileFood designs). |
-| `src/components/VariantPage.astro` | Can-you-freeze / does-it-go-bad / left-out-overnight pages: own H1, title, numbers and FAQ. |
-| `src/components/HubPage.astro` | Category and subcategory hubs (filter chips + sortable table, ItemList schema). |
-| `src/components/QuestionHub.astro` | A–Z question hubs. |
-| `src/pages/tools/` | Leftover, freezer-time, thaw-time, left-out and date-label tools. |
-| `src/lib/sitemap.ts` | Sitemap index split into foods / questions / hubs; `lastmod` = `SITE.verifiedISO`. |
-| `seo/` | Disavow builder notes and the launch checklist. |
-
-## Figures (generated images)
-
-Every indexable page has a hero image under its H1 and 3–6 figures under the matching H2s, rendered
-from the same data the page prints. Brief: `docs/figures-art-direction.md`; specimen of every card:
-`docs/figures-specimen.png`.
-
-| Path | What it is |
-| --- | --- |
-| `src/figures/system.css` | The design system: type scale, zone colours, grid, card layouts |
-| `src/figures/icons.mjs` | Line icons and food-family silhouettes |
-| `src/figures/html.mjs` | Card spec → HTML (answer, shelf-life, temperature, steps, signs, versus, matrix, callout) |
-| `src/figures/cards.ts` | Which figures each page gets, built only from the page's own helpers and locale strings (`fig` in `data/i18n/*.json`) |
-| `src/components/Fig.astro` | `<figure>` markup: hero eager/high priority, others lazy, 1200 + 720 `srcset` |
-| `scripts/figures.mjs` | Playwright renderer (DSF 2 → WebP q86, 1200×675 and 720×405), skips unchanged figures by hash |
-| `scripts/check-figures.mjs` | Build check: hero under H1, ≥ 3 figures, sentence alt text, every number in a figure is in the page text |
-| `.github/workflows/figures.yml` | Renders changed figures on every push to `main` and uploads them to Vercel Blob |
-
-Storage: ~38,000 figures × 2 sizes ≈ 2.3 GB, too much for git. They live in the Vercel Blob store
-`guntherheller-figures`; `vercel.json` rewrites `/img/fig/*` to it, so URLs stay on this domain
-(image sitemap, `og:image`, `ImageObject`). The workflow needs the repo secret `BLOB_READ_WRITE_TOKEN`.
-`npm run figures -- --check --remote` lists figures the store does not have yet; the build prints
-the same count as a warning.
+`data/nutrition.json` and `redirects.json` are committed, so `npm run build` works without the downloads.
 
 ## URLs
 
 ```
-/how-long-does-{food}-last/   /can-you-freeze-{food}/   /does-{food}-go-bad/   /{food}-left-out-overnight/
-/foods/  /foods/{category}/  /foods/{category}/{sub}/
-/can-you-freeze/  /does-it-go-bad/  /left-out-overnight/
-/tools/  /tools/{tool}/  /methodology/  /about/
+/calories/{food}/            one food: calories, macros, serving picker, Nutrition Facts (%DV), vitamins & minerals,
+                             sugars, fats & fatty acids, amino acids; storage times, freezing, spoilage signs for FoodKeeper foods
+/food/                       browse: categories + nutrient rankings
+/food/{category}/            every food in a category (calories, protein, carbs, fat per 100 g)
+/food/high-{nutrient}-foods/ top 100 foods per 100 g (protein, fiber, potassium, iron, vitamin C…), plus low-calorie / low-carb
+/tools/{tool}/               storage calculators (leftovers, freezer time, thaw time, left-out checker, date decoder)
+/search/  /methodology/  /about/  /privacy/  /terms/
 ```
-Variant pages exist only where they have something to say: can-you-freeze needs a FoodKeeper
-freezer figure; left-out-overnight is only for perishable foods. Currently 2,021 HTML pages.
 
-## Translations (phase 3)
+## Data
 
-| Language | Food URL | Hubs |
-| --- | --- | --- |
-| Spanish | `/es/cuanto-dura-{comida}/` | `/es/alimentos/{categoria}/` |
-| German | `/de/haltbarkeit-{lebensmittel}/` | `/de/lebensmittel/{kategorie}/` |
-| French | `/fr/conservation-{aliment}/` | `/fr/aliments/{categorie}/` |
-| Portuguese (BR) | `/pt-br/quanto-dura-{alimento}/` | `/pt-br/alimentos/{categoria}/` |
+| Path | What it is |
+| --- | --- |
+| `scripts/import-fdc.mjs` | FDC Foundation Foods (2025-04) + SR Legacy (2018-04) + FNDDS 2021–2023 → `data/nutrition.json`: per-100 g nutrients, household portions (most natural first), category, slug, similar foods. Identical names are de-duplicated (Foundation > SR > FNDDS). |
+| `data/storage-fdc.json` | Each FoodKeeper food → the one FDC record that best represents it (2 have none). That record's page takes the storage food's name and slug, so `/how-long-does-milk-last/` maps to `/calories/milk/`. |
+| `data/source/foodkeeper.json`, `scripts/import-foodkeeper.mjs`, `data/overrides.json` | USDA FSIS FoodKeeper v128 + our names/patches → `data/foods.json` (storage times). |
+| `src/lib/nutrition.ts` | Nutrient definitions and FDA Daily Values, serving maths, titles/descriptions, rankings, URL builders. |
+| `src/lib/data.ts`, `src/lib/content.ts` | Storage data and generated storage copy (signs of spoilage, freezing, left-out rule, tips). |
+| `src/components/NutritionPage.astro` | The `/calories/` template. Schema: WebPage, BreadcrumbList, NutritionInformation, FAQPage. |
 
-Each locale also has a home page (`/es/`) and a methodology page. Every food page, home, category
-hub and methodology page carries a reciprocal hreflang cluster (en, es, de, fr, pt-BR, x-default →
-English), and the build fails if a cluster is broken (`scripts/check-build.mjs`).
+## Old URLs (Nov 2026 rebuild)
 
-- `data/i18n/en.json` is the source for all localized copy; `data/i18n/{lang}.json` are the translations.
-- `data/i18n/foods.{lang}.json` holds each food's localized name (`n`), sentence forms (`q` subject,
-  `o` object — German needs the accusative), plural flag (`p`) and URL slug (`s`).
-- `node scripts/check-i18n.mjs` validates keys, `{placeholders}`, Celsius-first temperatures and slug uniqueness.
-- A locale goes live only when both its files exist. Numbers are identical in every language; only words change.
-- Variant pages (can-you-freeze, does-it-go-bad, left-out) and the tools are English-only for now.
-- When FoodKeeper adds a food, add its translations to each `foods.{lang}.json`, or the validator fails.
+`seo/old-urls.json` lists every URL of the previous food-storage site (English and es/de/fr/pt-br).
+`scripts/build-redirects.mjs` turns it into `redirects.json` (Vercel `bulkRedirectsPath`): each storage
+page and its translations 301 to `/calories/{food}/` (question pages land on `#freeze`, `#bad` or `#leftout`),
+old category hubs to the matching `/food/{category}/`. Anything else that does not exist is caught by
+the `/:path*` rewrite to `api/home.js`, which answers 301 → `/`. Vercel applies rewrites only after the
+filesystem, so real pages are never affected.
 
 ## Data sync
 
-This repo's build container cannot reach fsis.usda.gov, so `.github/workflows/foodkeeper-sync.yml`
-does it from GitHub's runners every Monday (or via *Run workflow*): it downloads the live FoodKeeper
-file, rebuilds `data/foods.json`, runs the full build check and opens a PR listing added, removed and
-changed foods. Enable *Settings → Actions → General → Allow GitHub Actions to create pull requests*.
+`.github/workflows/foodkeeper-sync.yml` downloads the live FoodKeeper file every Monday, rebuilds
+`data/foods.json`, runs the build check and opens a PR when it changed. If FoodKeeper adds a food,
+add it to `data/storage-fdc.json` and run `npm run data`.
 
 ## Editorial rules
-- Never invent a duration. No FoodKeeper figure → the page says "Not listed".
-- Any number not from FoodKeeper lives in `overrides.json` with `_why` and a named public source.
-- When you re-verify against a new FoodKeeper release, bump `SITE.verifiedISO` / `verifiedLabel` in
-  `src/lib/site.ts`; that date drives "last verified", JSON-LD `dateModified` and sitemap `lastmod`.
-
-## Performance budget
-Food pages ship zero client JS (the opened/unopened toggle is CSS radio inputs, FAQs are `<details>`).
-CSS ~26 KB, inlined. Lighthouse mobile: 100 / 100 / 100 / 100 on food, home, hub and tool pages.
-Ad slots are fixed-size placeholders (`AdSlot.astro`) so CLS stays 0 when a network is added.
+- Never invent a number. Nutrition comes from FDC; storage from FoodKeeper (or a named source in `overrides.json`).
+- A nutrient USDA did not analyse shows a dash, never a zero.
+- Hand-written food questions (`data/ask.json`) never restate numbers, so they cannot contradict the data.
 
 ## Not done yet
-- Localized variant pages and tools (phase 3 covers food pages, hubs, home and methodology).
-- Foods from the priority list that FoodKeeper does not cover and that need a citable source
-  before publishing: cold brew, beer, protein powder, opened dog food and cat food.
-- Illustrations: hubs and home use paper tiles with stroke icons until the watercolour set exists
-  (food pages now lead with the generated hero figure; the watercolour placeholders remain on cards).
+- Branded and restaurant foods (EatThisMuch's biggest traffic: Jersey Mike's, Texas Roadhouse, Costco…).
+  USDA's Branded Foods dataset covers packaged products (~450k); restaurant menus need another source.
+- Calorie / TDEE / macro calculators and meal plans.

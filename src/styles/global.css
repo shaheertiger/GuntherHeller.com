@@ -178,3 +178,16 @@
   .fig-img figcaption { margin-top: 8px; font-size: 14px; color: var(--color-muted); }
   .fig-hero { margin-top: 18px; }
 }
+
+/* Nutrition pages */
+@layer components {
+  .donut { width: 160px; height: 160px; border-radius: 50%; display: grid; place-items: center; }
+  .donut-hole { width: 112px; height: 112px; border-radius: 50%; background: #fff; display: grid; place-items: center; align-content: center; gap: 4px; }
+  .ntable th[scope="row"] { background: #fff; color: var(--color-ink); font-size: 15px; font-weight: 450; border-bottom: 0; border-top: 1px solid var(--color-line); padding: 9px 16px; white-space: normal; }
+  .ntable tbody tr:first-child th { border-top: 0; }
+  .ntable td { padding: 9px 16px; }
+  .ntable .num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .ntable thead .num { text-align: right; }
+  .ntable tr.sub th[scope="row"] { padding-left: 34px; color: var(--color-muted); }
+  .ntable .kcal-row th, .ntable .kcal-row td { font-size: 20px; font-weight: 650; }
+}

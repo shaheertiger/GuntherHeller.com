@@ -1,8 +1,0 @@
----
-import { type Food } from "../lib/data";
-import { leftOutFor } from "../lib/content";
-import TrafficLight from "./fun/TrafficLight.astro";
-interface Props { food: Food }
-const v = leftOutFor(Astro.props.food);
----
-<TrafficLight tone={v.tone} labels={["Keep", "Check it", "Discard"]} text={v.text} />
