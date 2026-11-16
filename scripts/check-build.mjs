@@ -10,7 +10,8 @@
 import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join, relative } from "node:path";
 
-const DIST = new URL("../dist/", import.meta.url).pathname;
+// With the Vercel adapter, prerendered pages land in dist/client/.
+const DIST = new URL(existsSync(new URL("../dist/client/", import.meta.url)) ? "../dist/client/" : "../dist/", import.meta.url).pathname;
 const walk = (d) => readdirSync(d).flatMap((f) => (statSync(join(d, f)).isDirectory() ? walk(join(d, f)) : [join(d, f)]));
 const files = walk(DIST);
 const pages = files.filter((f) => f.endsWith(".html"));
