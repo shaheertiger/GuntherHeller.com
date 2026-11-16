@@ -5,7 +5,6 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "trailingSlash": true,
-  "bulkRedirectsPath": "redirects.json",
   "headers": [
     {
       "source": "/_astro/(.*)",
@@ -77,7 +76,7 @@
   "rewrites": [
     {
       "source": "/:path*",
-      "destination": "/api/home"
+      "destination": "/api/home?p=:path*"
     }
   ]
 }

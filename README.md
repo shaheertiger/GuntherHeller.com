@@ -7,12 +7,12 @@ food at `/calories/{food}/`. Fully static HTML (Astro), deployed on Vercel.
 ```bash
 npm ci
 npm run data:fetch  # download the USDA FoodData Central datasets into data/source/fdc/ (~230 MB, git-ignored)
-npm run data        # rebuild data/foods.json (FoodKeeper), data/nutrition.json (FDC) and redirects.json
+npm run data        # rebuild data/foods.json (FoodKeeper), data/nutrition.json (FDC) and api/_redirects.js
 npm run dev         # http://localhost:4321
 npm run build       # astro build + scripts/check-build.mjs (fails on broken links, duplicate titles, thin pages, bad redirects…)
 ```
 
-`data/nutrition.json` and `redirects.json` are committed, so `npm run build` works without the downloads.
+`data/nutrition.json` and `api/_redirects.js` are committed, so `npm run build` works without the downloads.
 
 ## URLs
 
@@ -40,10 +40,10 @@ npm run build       # astro build + scripts/check-build.mjs (fails on broken lin
 ## Old URLs (Nov 2026 rebuild)
 
 `seo/old-urls.json` lists every URL of the previous food-storage site (English and es/de/fr/pt-br).
-`scripts/build-redirects.mjs` turns it into `redirects.json` (Vercel `bulkRedirectsPath`): each storage
+`scripts/build-redirects.mjs` turns it into `api/_redirects.js`, the map the catch-all function `api/home.js` uses (Vercel bulk redirects cap at 1,000 on this plan): each storage
 page and its translations 301 to `/calories/{food}/` (question pages land on `#freeze`, `#bad` or `#leftout`),
-old category hubs to the matching `/food/{category}/`. Anything else that does not exist is caught by
-the `/:path*` rewrite to `api/home.js`, which answers 301 → `/`. Vercel applies rewrites only after the
+old category hubs to the matching `/food/{category}/`; any other missing URL gets a 301 to `/`.
+The function is reached through the `/:path*` rewrite in `vercel.json`. Vercel applies rewrites only after the
 filesystem, so real pages are never affected.
 
 ## Data sync
