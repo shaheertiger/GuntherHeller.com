@@ -3,11 +3,15 @@
  * Values are per 100 g; keys are FDC nutrient numbers plus a few derived keys (kcal, o3, o6, ala, dha, epa, dpa).
  */
 import raw from "../../data/nutrition.json";
+import branded from "../../data/branded.json";
+import demandRaw from "../../data/demand.json";
+import chainsRaw from "../../data/chains.json";
 
 export type Portion = [label: string, grams: number];
 export type NFood = {
   id: number;
-  src: "F" | "S" | "N";
+  /** F Foundation Foods, S SR Legacy, N FNDDS, B Branded Foods (store-brand products, scripts/import-branded.mjs) */
+  src: "F" | "S" | "N" | "B";
   desc: string;
   cat: string;
   p: Portion[];
@@ -16,12 +20,116 @@ export type NFood = {
   name: string;
   storage?: string;
   sim: string[];
+  /** Store-brand products only. */
+  brand?: string;
+  store?: string;
+  storeSlug?: string;
+  labelUpdated?: string;
+  liquid?: boolean;
 };
 export type NCategory = { slug: string; name: string; count: number };
 
-export const NMETA = raw.meta as { generated: string; count: number; sources: { tag: string; name: string; url: string }[] };
-export const NFOODS = raw.foods as unknown as NFood[];
-export const NCATS = raw.categories as NCategory[];
+export const NFOODS = [...(raw.foods as unknown as NFood[]), ...(branded.foods as unknown as NFood[])];
+export const NMETA = { ...(raw.meta as { generated: string; sources: { tag: string; name: string; url: string }[] }), count: NFOODS.length };
+export const NCATS = (raw.categories as NCategory[]).map((c) => ({ ...c, count: NFOODS.filter((f) => f.cat === c.slug).length }));
+export const STORES = branded.meta.stores as { slug: string; brand: string; store: string }[];
+
+/* ---------------------------------------------------------------- restaurant chains (data/chains.json) */
+export type Chain = { slug: string; name: string; re: RegExp };
+/** "McDonald's" stays "McDonald's"; "Taco Bell" becomes "Taco Bell's". */
+export const possessive = (name: string) => (/'s$/i.test(name) ? name : `${name}'s`);
+export const CHAINS: Chain[] = chainsRaw.chains.map((c) => ({ slug: c.slug, name: c.name, re: new RegExp(c.match, "i") }));
+const chainCache = new Map<string, Chain | null>();
+/** The restaurant chain a USDA record is from (store-brand products are never chain items). */
+export function chainOf(f: NFood): Chain | null {
+  if (f.src === "B") return null;
+  if (!chainCache.has(f.slug)) chainCache.set(f.slug, CHAINS.find((c) => c.re.test(f.desc)) ?? null);
+  return chainCache.get(f.slug)!;
+}
+
+/* ---------------------------------------------------------------- readable names */
+/**
+ * USDA record names read like database rows ("Chicken, broilers or fryers, breast, meat only, cooked, roasted").
+ * Pages use the words people search for ("Chicken breast (cooked, roasted)"). Slugs are never changed.
+ */
+const DROP_SEG = /^(broilers or fryers|meat only|all grades|separable lean only|separable lean and fat|trimmed to .*fat|year round average|includes .*|ns as to .*|nfs|not further specified|from fast food \/ restaurant|commercial|commercially prepared|regular|unenriched)$/i;
+const PARTS = new Set("breast thigh thighs wing wings drumstick drumsticks leg legs back neck liver gizzard heart ground loin tenderloin tenderloins chop chops ribs rib brisket flank sirloin steak roast shoulder fillet fillets juice sauce soup salad sandwich bread".split(" "));
+const ADJ = new Set("white brown wild whole red green yellow sweet black pinto kidney navy baby plain dark light".split(" "));
+const cap1 = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+function readableName(f: NFood): string {
+  const chain = chainOf(f);
+  let desc = f.desc.replace(/\s*\((?:Includes|Include|formerly)[^)]*\)/gi, "");
+  if (chain) {
+    // FNDDS names the chain in brackets at the end ("McDouble (McDonalds)"); SR Legacy puts it first ("McDONALD'S, BIG MAC").
+    const tail = desc.match(/^(.*?)\s*\(([^)]*)\)\s*$/);
+    const rest = (tail && chain.re.test(tail[2]) ? tail[1] : desc.replace(chain.re, "").replace(/^'?s\b/i, "")).replace(/^[\s,]+|[\s,]+$/g, "").replace(/\(\s*\)/g, "").trim();
+    const [head, ...more] = rest.split(/,\s*/).filter((s) => s && !DROP_SEG.test(s) && !/^(analyzed \d{4}|beverages)$/i.test(s));
+    if (!head) return f.desc;
+    // USDA writes some chain items in capitals ("BIG MAC"); keep acronyms, title-case the rest.
+    // Words in capitals ("McNUGGETS", "DOUBLE QUARTER POUNDER") become title case; short acronyms (BLT, KFC) stay.
+    const fixWord = (w: string) => (/^Mc[A-Z]{3,}/.test(w) ? "Mc" + w.charAt(2) + w.slice(3).toLowerCase() : /^[A-Z'\-]{4,}$/.test(w) ? w.charAt(0) + w.slice(1).toLowerCase() : w);
+    const fixCase = (x: string) => x.split(" ").map(fixWord).join(" ").replace(/\b(With|And|Or|On|Of|In)\b(?!$)/g, (w) => w.toLowerCase());
+    return `${chain.name} ${cap1(fixCase(head))}${more.length ? ` (${more.map(fixCase).join(", ").toLowerCase()})` : ""}`;
+  }
+  let segs = desc.split(/,\s*/).map((s) => s.trim()).filter((s) => s && !DROP_SEG.test(s));
+  const tags: string[] = [];
+  if (/^fast foods?$/i.test(segs[0] ?? "")) { segs = segs.slice(1); tags.push("fast food"); }
+  if (/^restaurant$/i.test(segs[0] ?? "")) { segs = segs.slice(1); if (segs.length > 1 && /^[A-Z][a-z]+$/.test(segs[0])) { tags.push(`${segs[0]} restaurant`); segs = segs.slice(1); } else tags.push("restaurant"); }
+  if (/^school lunch$/i.test(segs[0] ?? "")) { segs = segs.slice(1); tags.push("school lunch"); }
+  if (!segs.length) return f.desc;
+  let head = segs[0];
+  let rest = segs.slice(1);
+  const next = rest[0]?.toLowerCase();
+  if (next && !next.includes(" ") && PARTS.has(next)) { head = `${head} ${next}`; rest = rest.slice(1); }
+  else if (next && !next.includes(" ") && ADJ.has(next) && !/\s/.test(head)) { head = `${cap1(next)} ${head.toLowerCase()}`; rest = rest.slice(1); }
+  const qual = [...rest.map((s) => (/^[A-Z]{2,}/.test(s) ? s : s.toLowerCase())), ...tags];
+  return `${cap1(head)}${qual.length ? ` (${qual.join(", ")})` : ""}`;
+}
+// Curated names (storage foods, store-brand products) stay. Others get a readable name, unless two foods would
+// share it; those keep USDA's full description, which is unique.
+{
+  const proposed = new Map<NFood, string>();
+  const count = new Map<string, number>();
+  const taken = new Set(NFOODS.filter((f) => f.storage || f.src === "B").map((f) => f.name.toLowerCase()));
+  for (const f of NFOODS) {
+    if (f.storage || f.src === "B") continue;
+    const n = readableName(f);
+    proposed.set(f, n);
+    count.set(n.toLowerCase(), (count.get(n.toLowerCase()) ?? 0) + 1);
+  }
+  // A shared name goes to the best source (Foundation > SR Legacy > FNDDS); the others say which source they are.
+  const TAG: Record<string, string> = { F: "USDA Foundation", S: "USDA lab analysis", N: "USDA estimate" };
+  const RANK: Record<string, number> = { F: 0, S: 1, N: 2, B: 3 };
+  const winner = new Map<string, NFood>();
+  for (const [f, n] of proposed) { const k = n.toLowerCase(); const w = winner.get(k); if (!w || RANK[f.src] < RANK[w.src]) winner.set(k, f); }
+  const used = new Set(taken);
+  for (const [f, n] of proposed) {
+    const k = n.toLowerCase();
+    if (taken.has(k)) continue;
+    if (count.get(k) === 1 || winner.get(k) === f) { f.name = n; used.add(k); }
+  }
+  for (const [f, n] of proposed) {
+    const k = n.toLowerCase();
+    if (taken.has(k) || count.get(k) === 1 || winner.get(k) === f) continue;
+    const alt = `${n} (${TAG[f.src]})`;
+    if (!used.has(alt.toLowerCase()) && [...proposed].filter(([g, m]) => m.toLowerCase() === k && g.src === f.src).length === 1) { f.name = alt; used.add(alt.toLowerCase()); }
+  }
+}
+
+/* ---------------------------------------------------------------- search demand → indexing */
+const DEMAND = demandRaw.foods as Record<string, { v: number; phrase: string | null }>;
+export const CHAIN_DEMAND = (demandRaw as { chains?: Record<string, number> }).chains ?? {};
+/** Monthly US searches (competitor-ranking keywords) that this page answers. scripts/build-demand.mjs */
+export const demandOf = (f: { slug: string }) => DEMAND[f.slug]?.v ?? 0;
+/** Generic USDA records need this much monthly search demand to be indexed. */
+export const MIN_DEMAND = 100;
+/**
+ * Indexable food pages: foods people search for, the FoodKeeper storage foods and restaurant menu items (their chain
+ * hub lists them). Every other record keeps its page for visitors and internal links, but noindex and out of the sitemaps.
+ */
+export const isIndexable = (f: NFood) => Boolean(f.storage) || chainOf(f) !== null || (f.src === "B" ? demandOf(f) > 0 : demandOf(f) >= MIN_DEMAND);
+/** Foods ordered by search demand (most searched first), then name. */
+export const byDemand = (a: NFood, b: NFood) => demandOf(b) - demandOf(a) || a.name.localeCompare(b.name);
 
 const bySlug = new Map(NFOODS.map((f) => [f.slug, f]));
 export const nfood = (slug: string) => bySlug.get(slug);
@@ -30,7 +138,7 @@ const byStorage = new Map(NFOODS.filter((f) => f.storage).map((f) => [f.storage!
 /** The nutrition page that carries a FoodKeeper storage food. */
 export const pageForStorage = (storageSlug: string) => byStorage.get(storageSlug);
 
-export const SOURCE_NAME: Record<NFood["src"], string> = { F: "USDA Foundation Foods", S: "USDA SR Legacy", N: "USDA FNDDS 2021–2023" };
+export const SOURCE_NAME: Record<NFood["src"], string> = { F: "USDA Foundation Foods", S: "USDA SR Legacy", N: "USDA FNDDS 2021–2023", B: "USDA Branded Foods (manufacturer label data)" };
 
 /* ---------------------------------------------------------------- URLs (EatThisMuch-style) */
 export const nurl = {
@@ -38,7 +146,18 @@ export const nurl = {
   browse: () => `/food/`,
   cat: (c: string) => `/food/${c}/`,
   rank: (r: { slug: string }) => `/food/${r.slug}/`,
+  restaurants: () => `/restaurants/`,
+  chain: (c: { slug: string }) => `/restaurants/${c.slug}/`,
+  stores: () => `/brands/`,
+  store: (s: { slug: string }) => `/brands/${s.slug}/`,
 };
+/** Menu items of a chain, most searched first. */
+export const chainItems = (c: Chain) => NFOODS.filter((f) => chainOf(f)?.slug === c.slug).sort(byDemand);
+/** Store-brand products of a store brand, most searched first. */
+export const storeItems = (slug: string) => NFOODS.filter((f) => f.storeSlug === slug).sort(byDemand);
+/** Chains and store brands that get a hub page (at least 3 items). */
+export const HUB_CHAINS = CHAINS.filter((c) => chainItems(c).length >= 3);
+export const HUB_STORES = STORES.filter((s) => storeItems(s.slug).length >= 3);
 
 /* ---------------------------------------------------------------- nutrient definitions */
 export type NDef = { k: string; name: string; unit: "g" | "mg" | "µg" | "IU" | "kcal"; dv?: number; short?: string };
@@ -210,18 +329,27 @@ export function subName(f: NFood) {
 export const titleCase = (s: string) =>
   s.replace(/(^|[\s(\-/])([a-z])/g, (_m, p, c) => p + c.toUpperCase()).replace(/\b(And|Or|Of|In|The|With|On|A|To|As|For|From|Without|No)\b(?!$)/g, (w) => w.toLowerCase()).replace(/^./, (c) => c.toUpperCase());
 
+/**
+ * "<Food> Calories and Nutrition Facts (<n> Calories per <serving>)". Searches for these pages are "X calories",
+ * "calories in X" and "X nutrition facts" (about 60% of the demand on EatBetter, CalorieKing and MyNetDiary), so the
+ * title carries both phrases. Long names drop the calorie figure, then their qualifier in brackets.
+ */
 export function pageTitle(f: NFood) {
   const s = defaultServing(f);
   const kcal = Math.round(per(f.v.kcal, s[1]));
-  const base = `${titleCase(f.name)} Nutrition Facts`;
+  const name = titleCase(f.name);
   const extra = ` (${kcal} Calories per ${s[0].replace(/^1 /, "").replace(/\s*\(.*\)$/, "")})`;
-  // Full name always (EatThisMuch does the same); short titles get the calorie figure too.
-  return (base + extra).length <= 72 ? base + extra : base;
+  const full = `${name} Calories and Nutrition Facts`;
+  if ((full + extra).length <= 72) return full + extra;
+  if (full.length <= 72) return full;
+  return `${name} Nutrition Facts`;
 }
+/** H1: the food plus the words people search with. */
+export const pageH1 = (f: NFood) => `${f.name}: calories and nutrition facts`;
 export function pageDescription(f: NFood) {
   const { s, kcal, m } = summary(f);
   const p = fmtN(per(f.v["203"] ?? 0, s[1]), "g"), c = fmtN(per(f.v["205"] ?? 0, s[1]), "g"), fa = fmtN(per(f.v["204"] ?? 0, s[1]), "g");
-  return `${servingLabel(s)} of ${lcName(f)} has ${kcal} calories: ${p} protein, ${c} carbs and ${fa} fat (${m.carbs}% carbs, ${m.fat}% fat, ${m.protein}% protein). Full nutrition facts, vitamins and minerals.`.slice(0, 300);
+  return `${cap(servingLabel(s))} of ${lcName(f)} has ${kcal} calories: ${p} protein, ${c} carbs and ${fa} fat (${m.carbs}% carbs, ${m.fat}% fat, ${m.protein}% protein). Full nutrition facts, vitamins and minerals.`.slice(0, 300);
 }
 
 /* ---------------------------------------------------------------- rankings ("foods high in …") */
@@ -255,7 +383,8 @@ export const RANKINGS: Ranking[] = [
 ];
 const RANK_SKIP = new Set(["baby-foods", "other-foods", "spices-herbs"]);
 export function ranked(r: Ranking, n = 100): NFood[] {
-  const pool = NFOODS.filter((f) => !RANK_SKIP.has(f.cat) && val(f, r.k) != null && (r.dir === "high" || (f.v["255"] ?? 0) < 99 && f.v.kcal > 0));
+  // Rankings compare everyday foods: the ones people search for, not every USDA record or packaged product.
+  const pool = NFOODS.filter((f) => isIndexable(f) && f.src !== "B" && !RANK_SKIP.has(f.cat) && val(f, r.k) != null && (r.dir === "high" || (f.v["255"] ?? 0) < 99 && f.v.kcal > 0));
   const seen = new Set<string>();
   return pool
     .sort((a, b) => (r.dir === "high" ? val(b, r.k)! - val(a, r.k)! : val(a, r.k)! - val(b, r.k)! || a.v.kcal - b.v.kcal))
@@ -264,7 +393,8 @@ export function ranked(r: Ranking, n = 100): NFood[] {
 }
 export const nutrientDef = (k: string): NDef => [...MAIN, ...VITAMINS, ...MINERALS, ...FATS, ...SUGARS, { k: "kcal", name: "Calories", unit: "kcal" as const }].find((d) => d.k === k)!;
 
-export const foodsInCat = (c: string) => NFOODS.filter((f) => f.cat === c).sort((a, b) => (a.storage ? 0 : 1) - (b.storage ? 0 : 1) || a.name.localeCompare(b.name));
+/** A category's foods: indexable ones first, most searched first. */
+export const foodsInCat = (c: string) => NFOODS.filter((f) => f.cat === c).sort((a, b) => (isIndexable(a) ? 0 : 1) - (isIndexable(b) ? 0 : 1) || byDemand(a, b));
 
 /* ---------------------------------------------------------------- interlinking */
 let RANK_POS: Map<string, { r: Ranking; pos: number }[]> | null = null;

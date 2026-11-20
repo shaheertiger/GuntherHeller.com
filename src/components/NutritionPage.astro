@@ -9,7 +9,10 @@ import NutrientTable from "./NutrientTable.astro";
 import {
   type NFood, NFOODS, nfood, ncat, nurl, summary, servingLabel, pageTitle, pageDescription, per, fmtN, val, lcName, cap,
   MAIN, VITAMINS, MINERALS, SUGARS, FATS, AMINOS, OTHER, SOURCE_NAME, macroSplit, rankingsOf, rankingFor, servingLinks, servingUnits, NCATS,
+  isIndexable, pageH1, possessive, chainOf, chainItems, storeItems, HUB_CHAINS, HUB_STORES, STORES,
 } from "../lib/nutrition";
+import Byline from "./Byline.astro";
+import { REVIEWER, personLd, personUrl, reviewedOn } from "../lib/people";
 import { getFood, cellsFor, fmt, isNum, askFor } from "../lib/data";
 import { freezeVerdict, leftOutFor, signsFor, storeTipsFor, methodsFor, quoteFor } from "../lib/content";
 import { ORG, breadcrumbLd } from "../lib/schema";
@@ -25,7 +28,15 @@ const grams = S.s[1];
 const m = macroSplit(food);
 const name = food.name;
 const lname = lcName(food);
-const crumbs = [{ name: "Browse", href: nurl.browse() }, { name: cat.name, href: nurl.cat(cat.slug) }, { name }];
+const chain = chainOf(food);
+const chainHub = chain && HUB_CHAINS.some((c) => c.slug === chain.slug) ? chain : null;
+const store = food.storeSlug ? STORES.find((x) => x.slug === food.storeSlug) : undefined;
+const storeHub = store && HUB_STORES.some((x) => x.slug === store.slug) ? store : undefined;
+const crumbs = chainHub ? [{ name: "Restaurants", href: nurl.restaurants() }, { name: chainHub.name, href: nurl.chain(chainHub) }, { name }]
+  : storeHub ? [{ name: "Store brands", href: nurl.stores() }, { name: storeHub.brand, href: nurl.store(storeHub) }, { name }]
+  : [{ name: "Browse", href: nurl.browse() }, { name: cat.name, href: nurl.cat(cat.slug) }, { name }];
+const indexable = isIndexable(food);
+const reviewed = reviewedOn(nurl.food(food));
 
 // Storage (FoodKeeper) for the foods it covers.
 const sf = food.storage ? getFood(food.storage) : undefined;
@@ -55,18 +66,30 @@ if (sf) {
 }
 faq.push(...ask.slice(0, 6));
 
-const similar = food.sim.map(nfood).filter((x): x is NFood => !!x).slice(0, 8);
-const more = NFOODS.filter((x) => x.cat === food.cat && x.storage && x.slug !== food.slug && !food.sim.includes(x.slug)).slice(0, 6);
+// Siblings: the same chain's menu, the same store brand's products, else USDA's similar records.
+const siblings = chainHub ? chainItems(chainHub) : store ? storeItems(store.slug) : [];
+const similar = siblings.length ? siblings.filter((x) => x.slug !== food.slug).slice(0, 12) : food.sim.map(nfood).filter((x): x is NFood => !!x).slice(0, 8);
+const more = siblings.length ? [] : NFOODS.filter((x) => x.cat === food.cat && x.storage && x.slug !== food.slug && !food.sim.includes(x.slug)).slice(0, 6);
 
 const title = pageTitle(food);
 const description = pageDescription(food);
 const fdcUrl = `https://fdc.nal.usda.gov/food-details/${food.id}/nutrients`;
+const h1 = pageH1(food);
+/** "the Big Mac" for "McDonald's Big Mac": the item without the chain's name. */
+const chainItem = chain ? `${possessive(chain.name)} ${name.startsWith(chain.name) ? name.slice(chain.name.length).trim() : name}` : "";
 const nutr = (k: string, u: string) => fmtN(per(per100(k), grams), u).replace(/^–$/, "0" + u);
 const jsonld = {
   "@context": "https://schema.org",
   "@graph": [
     { ...ORG, "@context": undefined },
-    { "@type": "WebPage", "@id": `${abs(path)}#page`, url: abs(path), name: title, description, isPartOf: { "@type": "WebSite", name: SITE.name, url: `${SITE.url}/` }, publisher: { "@id": ORG["@id"] }, dateModified: "2026-11-16", breadcrumb: breadcrumbLd(crumbs, path) },
+    {
+      "@type": "WebPage", "@id": `${abs(path)}#page`, url: abs(path), name: title, description,
+      isPartOf: { "@type": "WebSite", name: SITE.name, url: `${SITE.url}/` }, publisher: { "@id": ORG["@id"] }, author: { "@id": ORG["@id"] },
+      dateModified: SITE.updatedISO, breadcrumb: breadcrumbLd(crumbs, path),
+      about: { "@type": "Thing", name },
+      ...(reviewed ? { reviewedBy: { "@id": personLd(REVIEWER)["@id"] }, lastReviewed: reviewed } : {}),
+    },
+    ...(reviewed ? [personLd(REVIEWER)] : []),
     {
       "@type": "NutritionInformation",
       "@id": `${abs(path)}#nutrition`,
@@ -93,17 +116,20 @@ const ranks = rankingsOf(food).slice(0, 6);
 const goodLinks = S.good.map((g) => ({ g, r: rankingFor(g.d.k) })).filter((x) => x.r);
 const donut = `conic-gradient(var(--color-counter) 0 ${m.carbs}%, var(--color-primary) ${m.carbs}% ${m.carbs + m.fat}%, var(--color-fridge) ${m.carbs + m.fat}% 100%)`;
 ---
-<Base title={title} description={description} path={path} jsonld={jsonld} ogType="article" ogImage={img ?? undefined}>
+<Base title={title} description={description} path={path} jsonld={jsonld} ogType="article" ogImage={img ?? undefined} noindex={!indexable}>
   <div class="container-site pt-6 max-w-[920px]">
     <Breadcrumb items={crumbs} />
     <div class="flex items-center gap-5 mt-4">
       {img && <img src={img.src600} srcset={`${img.src600} 600w, ${img.src} 1200w`} sizes="120px" width="120" height="80" alt={img.alt} class="rounded-[10px] object-cover w-[120px] h-[80px] shrink-0" fetchpriority="high" />}
       <div>
-        <h1 class="h1-food">{name}</h1>
-        <p class="text-muted mt-1 text-[15px]">{sf ? <>Nutrition shown for USDA “{food.desc}”</> : <>{SOURCE_NAME[food.src]} · FDC ID {food.id}</>}</p>
+        <h1 class="h1-food">{h1}</h1>
+        <p class="text-muted mt-1 text-[15px]">{food.src === "B" ? <>{food.brand}{food.store && food.store !== food.brand ? ` (${food.store})` : ""} · label data via USDA FoodData Central</> : sf || food.name !== food.desc ? <>USDA record: “{food.desc}”</> : <>{SOURCE_NAME[food.src]} · FDC ID {food.id}</>}</p>
       </div>
     </div>
 
+    <Byline path={path} updated={SITE.updatedISO} source={food.src === "B" ? "manufacturer label (USDA Branded Foods)" : "USDA FoodData Central"} />
+    {chain && <p class="text-[14px] mt-3 card px-4 py-3">{food.src === "S" ? <>These are USDA's laboratory values for {chainItem}, analysed on samples bought from the chain (USDA SR Legacy, 2018 or earlier).</> : <>These values for {chainItem} are USDA's estimate in its FNDDS survey database (2021–2023), which models menu items from their ingredients.</>} Recipes and portion sizes change, so {possessive(chain.name)} current nutrition guide may differ.{chainHub && <> See <a class="link" href={nurl.chain(chainHub)}>all {chain.name} items</a>.</>}</p>}
+    {food.src === "B" && <p class="text-[14px] mt-3 card px-4 py-3">Values come from the product's Nutrition Facts label as {food.brand} submitted it to USDA FoodData Central{food.labelUpdated ? ` (last updated ${food.labelUpdated})` : ""}. Recipes change; the label on your package wins.{storeHub && <> See <a class="link" href={nurl.store(storeHub)}>more {storeHub.brand} products</a>.</>}</p>}
     <section class="card mt-6 p-5 md:p-6 grid gap-6 md:grid-cols-[180px_1fr] items-center" aria-labelledby="cal-h">
       <div class="grid place-items-center">
         <div class="donut" style={`background:${donut}`} role="img" aria-label={`${m.carbs}% carbs, ${m.fat}% fat, ${m.protein}% protein`}>
@@ -225,17 +251,17 @@ const donut = `conic-gradient(var(--color-counter) 0 ${m.carbs}%, var(--color-pr
 
       {similar.length > 0 && (
         <section aria-labelledby="sim-h">
-          <h2 id="sim-h" class="text-[28px]">Similar foods</h2>
+          <h2 id="sim-h" class="text-[28px]">{chainHub ? `More ${chainHub.name} items` : store ? `More ${store.brand} products` : "Similar foods"}</h2>
           <ul class="list-none p-0 m-0 mt-4 grid sm:grid-cols-2 gap-x-6">
             {[...similar, ...more].slice(0, 12).map((x) => (
               <li class="border-b border-line"><a href={nurl.food(x)} class="flex justify-between gap-4 py-2.5"><span>{x.name}</span><span class="text-muted text-sm whitespace-nowrap">{Math.round(x.v.kcal)} cal / 100 g</span></a></li>
             ))}
           </ul>
-          <p class="mt-4 text-[15px]"><a class="link" href={nurl.cat(cat.slug)}>All {cat.name.toLowerCase()} ({cat.count})</a></p>
+          <p class="mt-4 text-[15px]">{chainHub ? <a class="link" href={nurl.chain(chainHub)}>{chainHub.name} nutrition facts: all items</a> : storeHub ? <a class="link" href={nurl.store(storeHub)}>All {storeHub.brand} products</a> : <a class="link" href={nurl.cat(cat.slug)}>All {cat.name.toLowerCase()} ({cat.count})</a>}</p>
         </section>
       )}
 
-      <p class="text-[13px] text-muted">Source: <a class="link" href={fdcUrl} rel="nofollow">{SOURCE_NAME[food.src]}, FDC ID {food.id}</a> (USDA Agricultural Research Service, public domain). Values per serving are calculated from the per-100 g data. General information, not medical or dietary advice.</p>
+      <p class="text-[13px] text-muted">Source: <a class="link" href={fdcUrl} rel="nofollow">{SOURCE_NAME[food.src]}, FDC ID {food.id}</a> ({food.src === "B" ? "label data submitted by the brand owner, published by USDA" : "USDA Agricultural Research Service, public domain"}). Editorial standards: <a class="link" href="/editorial-policy/">how we build and check pages</a>, reviewed by <a class="link" href={personUrl(REVIEWER)}>{REVIEWER.name}, {REVIEWER.credentials}</a>. Values per serving are calculated from the per-100 g data. General information, not medical or dietary advice.</p>
     </div>
   </div>
 </Base>

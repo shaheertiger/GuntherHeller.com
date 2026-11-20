@@ -37,6 +37,36 @@ npm run build       # astro build + scripts/check-build.mjs (fails on broken lin
 | `src/lib/data.ts`, `src/lib/content.ts` | Storage data and generated storage copy (signs of spoilage, freezing, left-out rule, tips). |
 | `src/components/NutritionPage.astro` | The `/calories/` template. Schema: WebPage, BreadcrumbList, NutritionInformation, FAQPage. |
 
+## Search demand, indexing and new page types (20 Nov 2026)
+
+Google indexes the foods people search for, not every USDA record. The pipeline:
+
+```bash
+# 1. Put Semrush "Organic Positions" exports of sites that rank (EatBetter, CalorieKing, MyNetDiary) in research/competitors/ (git-ignored)
+node scripts/import-branded.mjs --fetch   # store-brand products that answer a real search → data/branded.json (~440 MB download, git-ignored)
+node scripts/build-demand.mjs             # keyword → food page mapping → data/demand.json, unmatched searches → seo/demand-gaps.md
+npm run build
+```
+
+| File | What it is |
+| --- | --- |
+| `scripts/keywords.mjs` | Shared keyword parsing ("calories in a medium apple" → "medium apple") and food matching. |
+| `data/demand.json` | Monthly US searches each food page answers. `isIndexable()` in `src/lib/nutrition.ts`: storage foods, restaurant items, store-brand products and generic foods with ≥ 100 searches/month are indexable; the rest stay built and linked but `noindex` and out of the sitemaps. |
+| `data/chains.json` | Restaurant chains with USDA-analysed menu items → `/restaurants/` and `/restaurants/{chain}/`. |
+| `data/branded.json` | Store-brand products (USDA Branded Foods, label data) → `/calories/{brand}-{product}/` and `/brands/{store}/`. |
+| `seo/demand-gaps.md` | The most-searched foods with no page yet (mostly chains USDA does not analyse: Jersey Mike's, Texas Roadhouse, Dunkin', Starbucks…). |
+
+Page names: `readableName()` in `src/lib/nutrition.ts` turns USDA record names into the words people search for
+("Chicken, broilers or fryers, breast, meat only, cooked, roasted" → "Chicken breast (cooked, roasted)"). Slugs never change.
+Titles read "{Food} Calories and Nutrition Facts ({n} Calories per {serving})".
+
+### People and review
+`src/lib/people.ts` holds the nutrition reviewer (Karman Meyer, RDN, LDN), shown on `/authors/karman-meyer/`, in every
+byline and as Person structured data. `data/reviewed.json` records reviews: set `site` to the date she finished
+reviewing the whole site, or list individual `pages` (path → date). Only then do pages say "Reviewed by … on {date}"
+and carry `reviewedBy`/`lastReviewed`; `scripts/check-build.mjs` fails the build if a page claims a review that file does not list.
+Trust pages: `/editorial-policy/`, `/contact/`, `/about/`, `/methodology/`.
+
 ## Old URLs (Nov 2026 rebuild)
 
 `seo/old-urls.json` lists every URL of the previous food-storage site (English and es/de/fr/pt-br).
@@ -58,6 +88,6 @@ add it to `data/storage-fdc.json` and run `npm run data`.
 - Hand-written food questions (`data/ask.json`) never restate numbers, so they cannot contradict the data.
 
 ## Not done yet
-- Branded and restaurant foods (EatThisMuch's biggest traffic: Jersey Mike's, Texas Roadhouse, Costco…).
-  USDA's Branded Foods dataset covers packaged products (~450k); restaurant menus need another source.
+- Restaurant chains USDA does not analyse (Jersey Mike's, Texas Roadhouse, Dunkin', Starbucks, Wingstop, Panda Express,
+  Five Guys, Costco food court…): their menus need another source, such as each chain's published nutrition guide. See `seo/demand-gaps.md`.
 - Calorie / TDEE / macro calculators and meal plans.

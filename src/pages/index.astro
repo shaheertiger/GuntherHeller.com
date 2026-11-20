@@ -1,7 +1,9 @@
 ---
 import Base from "../layouts/Base.astro";
 import Squiggle from "../components/Squiggle.astro";
-import { NCATS, NMETA, RANKINGS, nfood, nurl, defaultServing, per, type NFood } from "../lib/nutrition";
+import { NCATS, NMETA, RANKINGS, HUB_CHAINS, HUB_STORES, CHAIN_DEMAND, chainItems, storeItems, nfood, nurl, defaultServing, per, type NFood } from "../lib/nutrition";
+import { REVIEWER, personUrl } from "../lib/people";
+const chains = [...HUB_CHAINS].sort((a, b) => (CHAIN_DEMAND[b.slug] ?? 0) - (CHAIN_DEMAND[a.slug] ?? 0)).slice(0, 12);
 import { ORG } from "../lib/schema";
 import { SITE } from "../lib/site";
 
@@ -15,7 +17,7 @@ const ld = {
   ],
 };
 ---
-<Base title="Calories and Nutrition Facts for 13,000+ Foods | Gunther Heller" description={`Calories, protein, carbs, fat, vitamins and minerals for ${NMETA.count.toLocaleString("en-US")} foods from USDA FoodData Central, with serving sizes and storage times.`} path="/" jsonld={ld}>
+<Base title="Calories and Nutrition Facts for Foods, Restaurants and Store Brands | Gunther Heller" description={`Calories, protein, carbs, fat, vitamins and minerals for ${NMETA.count.toLocaleString("en-US")} foods from USDA FoodData Central, with serving sizes and storage times.`} path="/" jsonld={ld}>
   <section class="container-site pt-10 md:pt-16 max-w-[900px] text-center">
     <h1 class="text-[40px] md:text-[56px]">Calories and nutrition facts</h1>
     <Squiggle />
@@ -37,6 +39,14 @@ const ld = {
     </ul>
   </section>
 
+  <section class="container-site mt-14" aria-labelledby="rest-h">
+    <h2 id="rest-h" class="text-[28px]">Restaurant nutrition</h2>
+    <ul class="list-none p-0 m-0 mt-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      {chains.map((c) => <li><a href={nurl.chain(c)} class="card lift flex justify-between items-center gap-3 px-4 py-3"><span class="font-[550]">{c.name}</span><span class="text-sm text-muted">{chainItems(c).length} items</span></a></li>)}
+    </ul>
+    <p class="mt-4 text-[15px]"><a class="link" href={nurl.restaurants()}>All restaurants</a> · Store brands: {HUB_STORES.map((s, i) => <>{i > 0 && ", "}<a class="link" href={nurl.store(s)}>{s.brand}</a></>)}</p>
+  </section>
+
   <section class="container-site mt-14" aria-labelledby="cat-h">
     <h2 id="cat-h" class="text-[28px]">Browse by category</h2>
     <ul class="list-none p-0 m-0 mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -53,6 +63,6 @@ const ld = {
 
   <section class="container-site mt-14 max-w-[900px]" aria-labelledby="about-h">
     <h2 id="about-h" class="text-[28px]">Where the numbers come from</h2>
-    <p class="mt-3">Nutrition values come from USDA FoodData Central: Foundation Foods, SR Legacy and the FNDDS survey database used for What We Eat in America. Storage times on 918 common foods come from USDA FoodKeeper. Pick a serving size on any food page and every value updates. <a class="link" href="/methodology/">How we use the data</a>.</p>
+    <p class="mt-3">Nutrition values come from USDA FoodData Central: Foundation Foods, SR Legacy and the FNDDS survey database used for What We Eat in America. Storage times on 918 common foods come from USDA FoodKeeper. Pick a serving size on any food page and every value updates. <a class="link" href="/methodology/">How we use the data</a>. Our editorial standards are reviewed by <a class="link" href={personUrl(REVIEWER)}>{REVIEWER.name}, {REVIEWER.credentials}</a>.</p>
   </section>
 </Base>

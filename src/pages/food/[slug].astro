@@ -2,7 +2,9 @@
 /** /food/{category}/ (every food in a category) and /food/{ranking}/ (top 100 foods for a nutrient). */
 import Base from "../../layouts/Base.astro";
 import Breadcrumb from "../../components/Breadcrumb.astro";
-import { NCATS, RANKINGS, type NCategory, type Ranking, type NFood, foodsInCat, ranked, nurl, val, fmtN, nutrientDef, defaultServing, per } from "../../lib/nutrition";
+import { NCATS, RANKINGS, type NCategory, type Ranking, type NFood, foodsInCat, ranked, nurl, val, fmtN, nutrientDef, defaultServing, per, isIndexable } from "../../lib/nutrition";
+import Byline from "../../components/Byline.astro";
+import { SITE } from "../../lib/site";
 import { ORG, breadcrumbLd } from "../../lib/schema";
 import { abs } from "../../lib/site";
 
@@ -16,13 +18,17 @@ const { cat, rank } = Astro.props as { cat?: NCategory; rank?: Ranking };
 const path = nurl.cat((cat ?? rank)!.slug);
 let h1: string, title: string, description: string, lead: string, rows: NFood[];
 const d = rank ? nutrientDef(rank.k) : null;
+let others: NFood[] = [];
 if (cat) {
-  rows = foodsInCat(cat.slug);
+  const all = foodsInCat(cat.slug);
+  rows = all.filter(isIndexable);
+  others = all.filter((f) => !isIndexable(f));
+  if (!rows.length) { rows = all; others = []; }
   h1 = `${cat.name} calories and nutrition facts`;
   title = `${cat.name}: Calories and Nutrition Facts (${cat.count} Foods) | Gunther Heller`;
   const top = [...rows].sort((a, b) => b.v.kcal - a.v.kcal);
   description = `Calories, protein, carbs and fat per 100 g for ${cat.count} ${cat.name.toLowerCase()}, from USDA FoodData Central. Highest: ${top[0].name} (${Math.round(top[0].v.kcal)} cal); lowest: ${top.at(-1)!.name} (${Math.round(top.at(-1)!.v.kcal)} cal).`.slice(0, 300);
-  lead = `${cat.count} ${cat.name.toLowerCase()} with calories, protein, carbs and fat per 100 g. Click a food for the full nutrition facts and serving sizes.`;
+  lead = `The ${rows.length} most looked-up ${cat.name.toLowerCase()}, most searched first, with calories, protein, carbs and fat per 100 g. Click a food for the full nutrition facts and serving sizes.${others.length ? ` ${others.length} more USDA records are listed below the table.` : ""}`;
 } else {
   rows = ranked(rank!);
   h1 = rank!.h1;
@@ -42,6 +48,7 @@ const g = (f: NFood, k: string) => fmtN(val(f, k), "g");
   <div class="container-site pt-6">
     <Breadcrumb items={crumbs} />
     <h1 class="h1-food mt-4">{h1}</h1>
+    <Byline path={path} updated={SITE.updatedISO} />
     <p class="lead mt-3 max-w-[760px]">{lead}</p>
     <div class="table-wrap mt-6">
       <table class="data-table ntable">
@@ -72,6 +79,14 @@ const g = (f: NFood, k: string) => fmtN(val(f, k), "g");
       </table>
     </div>
     <p class="text-[13px] text-muted mt-4">Values per 100 g from USDA FoodData Central (Foundation Foods, SR Legacy and FNDDS 2021–2023).</p>
+    {others.length > 0 && (
+      <details class="mt-8">
+        <summary class="font-[600] cursor-pointer">More {cat!.name.toLowerCase()}: {others.length} other USDA records</summary>
+        <ul class="list-none p-0 m-0 mt-3 columns-1 sm:columns-2 lg:columns-3 gap-6 text-[14px]">
+          {others.map((f) => <li class="break-inside-avoid py-0.5"><a href={nurl.food(f)} class="hover:underline">{f.name}</a> <span class="text-muted">· {Math.round(f.v.kcal)} cal</span></li>)}
+        </ul>
+      </details>
+    )}
     <nav aria-labelledby="more-cats" class="mt-10">
       <h2 id="more-cats" class="text-[22px]">{cat ? "Other food categories" : "Food categories"}</h2>
       <ul class="list-none p-0 m-0 mt-3 flex flex-wrap gap-2">

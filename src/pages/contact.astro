@@ -1,0 +1,14 @@
+---
+import Prose from "../layouts/Prose.astro";
+import { SITE } from "../lib/site";
+---
+<Prose title="Contact Gunther Heller" h1="Contact us" path="/contact/"
+  description="How to reach Gunther Heller: corrections to a nutrition number, data questions, press and partnership requests."
+  lead="We read every message. A person replies within one business day.">
+  <h2>Email</h2>
+  <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+  <h2>Reporting a wrong number</h2>
+  <p>Tell us the page, the number and your source (a label, a USDA record, a chain's nutrition guide). Every food page also has a link that fills this in for you. We check corrections against USDA FoodData Central and FoodKeeper; see our <a href="/editorial-policy/">editorial policy</a>.</p>
+  <h2>Data and partnership questions</h2>
+  <p>Questions about how we use USDA data are answered in our <a href="/methodology/">methodology</a>. For anything else, including press and partnerships, email us at the address above.</p>
+</Prose>
