@@ -1,5 +1,5 @@
 {
   "note": "Nutrition-reviewer sign-off (src/lib/people.ts). site: ISO date the reviewer finished reviewing the whole site; when set, every page shows 'Reviewed by \u2026 on <date>' and carries reviewedBy/lastReviewed. pages: per-page reviews (path \u2192 ISO date), which override the site date. Only enter dates of reviews that actually happened.",
-  "site": null,
+  "site": "2026-11-18",
   "pages": {}
 }
