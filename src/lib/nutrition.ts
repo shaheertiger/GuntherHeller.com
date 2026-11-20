@@ -6,12 +6,14 @@ import raw from "../../data/nutrition.json";
 import branded from "../../data/branded.json";
 import demandRaw from "../../data/demand.json";
 import chainsRaw from "../../data/chains.json";
+import restaurantRaw from "../../data/restaurant-foods.json";
 
-export type Portion = [label: string, grams: number];
+/** [label, grams] — a third element 1 means the weight is unknown (a chain guide gave only "1 donut"); grams is then 100 and v holds per-serving values. */
+export type Portion = [label: string, grams: number, noWeight?: number];
 export type NFood = {
   id: number;
   /** F Foundation Foods, S SR Legacy, N FNDDS, B Branded Foods (store-brand products, scripts/import-branded.mjs) */
-  src: "F" | "S" | "N" | "B";
+  src: "F" | "S" | "N" | "B" | "R";
   desc: string;
   cat: string;
   p: Portion[];
@@ -26,10 +28,17 @@ export type NFood = {
   storeSlug?: string;
   labelUpdated?: string;
   liquid?: boolean;
+  /** Restaurant-guide items (src R): the chain, its guide, and ps = per-serving values only (no weight). */
+  chainSlug?: string;
+  ps?: boolean;
+  source?: { name: string; url: string; date: string };
 };
 export type NCategory = { slug: string; name: string; count: number };
 
-export const NFOODS = [...(raw.foods as unknown as NFood[]), ...(branded.foods as unknown as NFood[])];
+// Restaurant-guide items without a serving weight get a page only when people search for them (the guides list
+// every size and milk option); items with weights are few enough to publish whole.
+const RESTAURANT = (restaurantRaw.foods as unknown as NFood[]).filter((f) => !f.ps || ((demandRaw.foods as Record<string, { v: number }>)[f.slug]?.v ?? 0) > 0);
+export const NFOODS = [...(raw.foods as unknown as NFood[]), ...(branded.foods as unknown as NFood[]), ...RESTAURANT];
 export const NMETA = { ...(raw.meta as { generated: string; sources: { tag: string; name: string; url: string }[] }), count: NFOODS.length };
 export const NCATS = (raw.categories as NCategory[]).map((c) => ({ ...c, count: NFOODS.filter((f) => f.cat === c.slug).length }));
 export const STORES = branded.meta.stores as { slug: string; brand: string; store: string }[];
@@ -37,13 +46,20 @@ export const STORES = branded.meta.stores as { slug: string; brand: string; stor
 /* ---------------------------------------------------------------- restaurant chains (data/chains.json) */
 export type Chain = { slug: string; name: string; re: RegExp };
 /** "McDonald's" stays "McDonald's"; "Taco Bell" becomes "Taco Bell's". */
-export const possessive = (name: string) => (/'s$/i.test(name) ? name : `${name}'s`);
+export const possessive = (name: string) => (/'s$/i.test(name) ? name : /'$/.test(name) ? `${name}s` : /s$/i.test(name) ? `${name}'` : `${name}'s`);
+/** "2026-10-28" → "October 28, 2026"; "2026-11" → "November 2026"; "2026" stays. */
+export const guideDate = (d: string) => {
+  const [y, m, day] = d.split("-").map(Number);
+  if (!m) return String(y);
+  const month = new Date(Date.UTC(y, m - 1, 1)).toLocaleString("en-US", { month: "long", timeZone: "UTC" });
+  return day ? `${month} ${day}, ${y}` : `${month} ${y}`;
+};
 export const CHAINS: Chain[] = chainsRaw.chains.map((c) => ({ slug: c.slug, name: c.name, re: new RegExp(c.match, "i") }));
 const chainCache = new Map<string, Chain | null>();
 /** The restaurant chain a USDA record is from (store-brand products are never chain items). */
 export function chainOf(f: NFood): Chain | null {
   if (f.src === "B") return null;
-  if (!chainCache.has(f.slug)) chainCache.set(f.slug, CHAINS.find((c) => c.re.test(f.desc)) ?? null);
+  if (!chainCache.has(f.slug)) chainCache.set(f.slug, f.chainSlug ? CHAINS.find((c) => c.slug === f.chainSlug) ?? null : CHAINS.find((c) => c.re.test(f.desc)) ?? null);
   return chainCache.get(f.slug)!;
 }
 
@@ -90,9 +106,9 @@ function readableName(f: NFood): string {
 {
   const proposed = new Map<NFood, string>();
   const count = new Map<string, number>();
-  const taken = new Set(NFOODS.filter((f) => f.storage || f.src === "B").map((f) => f.name.toLowerCase()));
+  const taken = new Set(NFOODS.filter((f) => f.storage || f.src === "B" || f.src === "R").map((f) => f.name.toLowerCase()));
   for (const f of NFOODS) {
-    if (f.storage || f.src === "B") continue;
+    if (f.storage || f.src === "B" || f.src === "R") continue;
     const n = readableName(f);
     proposed.set(f, n);
     count.set(n.toLowerCase(), (count.get(n.toLowerCase()) ?? 0) + 1);
@@ -138,7 +154,7 @@ const byStorage = new Map(NFOODS.filter((f) => f.storage).map((f) => [f.storage!
 /** The nutrition page that carries a FoodKeeper storage food. */
 export const pageForStorage = (storageSlug: string) => byStorage.get(storageSlug);
 
-export const SOURCE_NAME: Record<NFood["src"], string> = { F: "USDA Foundation Foods", S: "USDA SR Legacy", N: "USDA FNDDS 2021–2023", B: "USDA Branded Foods (manufacturer label data)" };
+export const SOURCE_NAME: Record<NFood["src"], string> = { F: "USDA Foundation Foods", S: "USDA SR Legacy", N: "USDA FNDDS 2021–2023", B: "USDA Branded Foods (manufacturer label data)", R: "the restaurant's published nutrition guide" };
 
 /* ---------------------------------------------------------------- URLs (EatThisMuch-style) */
 export const nurl = {
@@ -276,7 +292,7 @@ export function defaultServing(f: NFood): Portion {
   return f.p[0] ?? ["100 g", 100];
 }
 /** "1 cup (158 g)" */
-export const servingLabel = (p: Portion) => (/^\d+(\.\d+)?\s*g$/.test(p[0]) ? p[0] : `${p[0]} (${+p[1].toFixed(1)} g)`);
+export const servingLabel = (p: Portion) => (p[2] || /^\d+(\.\d+)?\s*g$/.test(p[0]) ? p[0] : `${p[0]} (${+p[1].toFixed(1)} g)`);
 
 /** Share of calories from carbs / fat / protein (Atwater 4-9-4), rounded to sum ≈ 100. */
 export function macroSplit(f: NFood) {
@@ -306,13 +322,13 @@ export function summary(f: NFood) {
   const what = /^\d/.test(s[0]) ? `${s[0]} of ${lcName(f)}` : `${s[0]} ${lcName(f)}`;
   let text = `${cap(what)} contains ${kcal} calories. The macronutrient breakdown is ${m.carbs}% carbs, ${m.fat}% fat, and ${m.protein}% protein.`;
   if (good.length) text += ` This is a good source of ${good.map((g) => `${g.d.name.replace(/ \(.*\)$/, "").toLowerCase().replace(/^vitamin (\w+)/, "vitamin $1")} (${g.pct}% of your Daily Value)`).join(", ").replace(/, ([^,]*)$/, good.length > 2 ? ", and $1" : " and $1")}.`;
-  else text += ` It has ${Math.round(f.v.kcal)} calories per 100 g.`;
+  else if (!f.ps) text += ` It has ${Math.round(f.v.kcal)} calories per 100 g.`;
   return { s, kcal, m, good, text };
 }
 
 export const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 const KEEP_CASE = /^(?:[A-Z]{2}|Mc|[A-Z][a-z]+'s\b|[A-Z][a-z]+ (?:[A-Z]|&))/;
-export const lcName = (f: NFood) => (KEEP_CASE.test(f.name) ? f.name : f.name.charAt(0).toLowerCase() + f.name.slice(1));
+export const lcName = (f: NFood) => (KEEP_CASE.test(f.name) || f.src === "R" || f.src === "B" || chainOf(f) ? f.name : f.name.charAt(0).toLowerCase() + f.name.slice(1));
 
 /** Head of the USDA description ("Chicken" in "Chicken, breast, raw"), title-cased for breadcrumbs/H1s. */
 export function shortName(f: NFood) {
@@ -384,7 +400,7 @@ export const RANKINGS: Ranking[] = [
 const RANK_SKIP = new Set(["baby-foods", "other-foods", "spices-herbs"]);
 export function ranked(r: Ranking, n = 100): NFood[] {
   // Rankings compare everyday foods: the ones people search for, not every USDA record or packaged product.
-  const pool = NFOODS.filter((f) => isIndexable(f) && f.src !== "B" && !RANK_SKIP.has(f.cat) && val(f, r.k) != null && (r.dir === "high" || (f.v["255"] ?? 0) < 99 && f.v.kcal > 0));
+  const pool = NFOODS.filter((f) => isIndexable(f) && f.src !== "B" && f.src !== "R" && !RANK_SKIP.has(f.cat) && val(f, r.k) != null && (r.dir === "high" || (f.v["255"] ?? 0) < 99 && f.v.kcal > 0));
   const seen = new Set<string>();
   return pool
     .sort((a, b) => (r.dir === "high" ? val(b, r.k)! - val(a, r.k)! : val(a, r.k)! - val(b, r.k)! || a.v.kcal - b.v.kcal))
@@ -394,7 +410,7 @@ export function ranked(r: Ranking, n = 100): NFood[] {
 export const nutrientDef = (k: string): NDef => [...MAIN, ...VITAMINS, ...MINERALS, ...FATS, ...SUGARS, { k: "kcal", name: "Calories", unit: "kcal" as const }].find((d) => d.k === k)!;
 
 /** A category's foods: indexable ones first, most searched first. */
-export const foodsInCat = (c: string) => NFOODS.filter((f) => f.cat === c).sort((a, b) => (isIndexable(a) ? 0 : 1) - (isIndexable(b) ? 0 : 1) || byDemand(a, b));
+export const foodsInCat = (c: string) => NFOODS.filter((f) => f.cat === c && !f.ps).sort((a, b) => (isIndexable(a) ? 0 : 1) - (isIndexable(b) ? 0 : 1) || byDemand(a, b));
 
 /* ---------------------------------------------------------------- interlinking */
 let RANK_POS: Map<string, { r: Ranking; pos: number }[]> | null = null;
@@ -412,6 +428,7 @@ export const rankingFor = (k: string) => RANKINGS.find((r) => r.k === k && r.dir
 /** EatThisMuch-style serving links: 50/100/200 g, ½/1/2 of each household unit, oz and lb.
  *  Each is a link to the same page with ?a={amount}:{unitIndex}; the page reads it and rescales. */
 export function servingUnits(f: NFood): Portion[] {
+  if (f.ps) return [f.p[0]];
   return [...f.p.slice(0, 6), ["g", 1], ["oz", 28.35], ["lb", 453.6]];
 }
 const half = (n: number) => (n === 0.5 ? "½" : String(n));
@@ -423,6 +440,7 @@ export function servingLinks(f: NFood) {
     const label = l === "g" ? `${amt * 1} grams` : l === "oz" || l === "lb" ? `${half(amt)} ${l}` : `${half(amt)} ${l.replace(/^1 /, "")}`;
     out.push({ label, a: `${amt}:${idx}`, kcal: Math.round(per(f.v.kcal, amt * g)) });
   };
+  if (f.ps) { [1, 2, 3].forEach((n) => add(n, 0)); return out; }
   const gi = units.length - 3;
   [50, 100, 200].forEach((n) => add(n, gi));
   units.slice(0, gi).forEach((_, i) => [0.5, 1, 2].forEach((n) => add(n, i)));

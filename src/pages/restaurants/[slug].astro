@@ -1,7 +1,7 @@
 ---
 /** /restaurants/{chain}/ — every menu item USDA has analysed for one chain. */
 import HubList from "../../components/HubList.astro";
-import { HUB_CHAINS, chainItems, nurl, possessive, type Chain } from "../../lib/nutrition";
+import { HUB_CHAINS, chainItems, nurl, possessive, guideDate, type Chain } from "../../lib/nutrition";
 export function getStaticPaths() {
   return HUB_CHAINS.map((chain) => ({ params: { slug: chain.slug }, props: { chain } }));
 }
@@ -9,25 +9,28 @@ const { chain } = Astro.props as { chain: Chain };
 const items = chainItems(chain);
 const path = nurl.chain(chain);
 const lab = items.filter((f) => f.src === "S").length;
-const est = items.length - lab;
+const own = items.filter((f) => f.src === "R");
+const est = items.length - lab - own.length;
+const guide = own[0]?.source;
 const how = [
+  own.length ? `${own.length} ${own.length === 1 ? "item comes" : "items come"} from ${possessive(chain.name)} own nutrition guide (${guide!.name}${guide!.date ? `, ${guideDate(guide!.date)}` : ""})` : "",
   lab ? `${lab} ${lab === 1 ? "item was" : "items were"} bought at ${chain.name} restaurants and analysed in USDA laboratories (USDA SR Legacy, 2018 or earlier)` : "",
-  est ? `${lab ? "the other " : ""}${est} ${est === 1 ? "is a USDA estimate" : "are USDA estimates"} from its FNDDS 2021–2023 survey database` : "",
+  est ? `${lab || own.length ? "the other " : ""}${est} ${est === 1 ? "is a USDA estimate" : "are USDA estimates"} from its FNDDS 2021–2023 survey database` : "",
 ].filter(Boolean).join("; ");
 const sourceNote = `${how.charAt(0).toUpperCase()}${how.slice(1)}. Recipes and portions change over time, so ${possessive(chain.name)} current nutrition guide can differ.`;
 ---
 <HubList
   path={path}
   title={`${chain.name} Nutrition Facts: Calories in ${items.length} Menu Items | Gunther Heller`}
-  description={`${chain.name} calories, protein, carbs, fat and sodium for ${items.length} menu items, from USDA lab analysis. Compare every item side by side and find the lowest-calorie and highest-protein options.`}
+  description={`${chain.name} calories, protein, carbs, fat and sodium for ${items.length} menu items, from ${own.length ? `${possessive(chain.name)} nutrition guide` : "USDA lab analysis"}. Compare every item side by side and find the lowest-calorie and highest-protein options.`}
   h1={`${chain.name} nutrition facts and calories`}
-  lead={`Calories, protein, carbs, fat and sodium for ${items.length} ${chain.name} menu items that USDA has analysed, all on one page. Each item links to its full nutrition label.`}
+  lead={`Calories, protein, carbs, fat and sodium for ${items.length} ${chain.name} menu items ${own.length === items.length ? `from ${possessive(chain.name)} own nutrition guide` : own.length ? `from ${possessive(chain.name)} nutrition guide and USDA` : "that USDA has analysed"}, all on one page. Each item links to its full nutrition label.`}
   crumbs={[{ name: "Home", href: "/" }, { name: "Restaurants", href: nurl.restaurants() }, { name: chain.name }]}
   items={items}
   noun="menu items"
   owner={chain.name}
   sourceNote={sourceNote}
-  source="USDA FoodData Central"
+  source={own.length === items.length ? `${possessive(chain.name)} nutrition guide` : own.length ? `${possessive(chain.name)} nutrition guide and USDA` : "USDA FoodData Central"}
   related={HUB_CHAINS.filter((c) => c.slug !== chain.slug).map((c) => ({ name: `${c.name} nutrition`, href: nurl.chain(c) }))}
   relatedTitle="Other restaurants"
 />

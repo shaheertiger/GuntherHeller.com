@@ -78,7 +78,7 @@ export function core(k) {
 export const NOISE = new Set(("raw cooked ns nfs as to form type made from regular all commercial commercially prepared prepared plain unenriched enriched " +
   "without with salt added no fat broilers or fryers meat only and skin separable lean trimmed grade grades choice select fresh frozen canned " +
   "drained solid liquid water other").split(" "));
-const SRC_RANK = { F: 0, S: 1, N: 2, B: 3 };
+const SRC_RANK = { F: 0, R: 0, S: 1, N: 2, B: 3 };
 
 /**
  * A matcher over foods ({ desc, name, brand?, storage?, src }). best(tokens) returns the food whose words cover
@@ -93,12 +93,17 @@ export function makeMatcher(foods) {
     return t;
   });
   const ntoks = foods.map((f) => new Set([...tok(f.name), ...(f.brand ? tok(f.brand) : [])]));
+  // A branded item (store brand, or a chain's own guide) only answers searches that name the brand:
+  // "calories in a donut" is not a search for one Dunkin' donut.
+  const NEED_STOP = new Set(["s", "the"]);
+  const need = foods.map((f) => (f.src === "B" && f.brand ? tok(f.brand) : f.src === "R" ? tok(f.desc.split(",")[0]) : []).filter((w) => !NEED_STOP.has(w)));
   function best(q, maxExtra = Math.max(3, q.length + 1)) {
     if (!q.length) return null;
     const sets = q.map((w) => index.get(w));
     if (sets.some((s) => !s)) return null;
     sets.sort((a, b) => a.size - b.size);
-    const cand = [...sets[0]].filter((i) => sets.every((s) => s.has(i)));
+    const qset = new Set(q);
+    const cand = [...sets[0]].filter((i) => sets.every((s) => s.has(i)) && need[i].every((w) => qset.has(w)) && q.some((w) => !need[i].includes(w)));
     if (!cand.length) return null;
     const qs = new Set(q);
     const extras = (set) => { let n = 0; for (const w of set) if (!qs.has(w) && !NOISE.has(w)) n++; return n; };

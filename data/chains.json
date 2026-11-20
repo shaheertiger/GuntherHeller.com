@@ -1,24 +1,123 @@
 {
-  "note": "Restaurant chains with lab-analysed menu items in USDA FoodData Central. match is a case-insensitive regex tested against the USDA description. Used by src/lib/chains.ts (hub pages /restaurants/{slug}/) and scripts/build-demand.mjs.",
+  "note": "Restaurant chains with lab-analysed menu items in USDA FoodData Central. match is a case-insensitive regex tested against the USDA description. Used by src/lib/chains.ts (hub pages /restaurants/{slug}/) and scripts/build-demand.mjs. guide: the chain's own nutrition guide in data/restaurants/{guide}.json (scripts/extract-restaurants.py) supplies its items.",
   "chains": [
-    { "slug": "mcdonalds", "name": "McDonald's", "match": "mcdonald|\\bmcdouble\\b|\\bmcchicken\\b|\\bmcnugget" },
-    { "slug": "burger-king", "name": "Burger King", "match": "burger king" },
-    { "slug": "kfc", "name": "KFC", "match": "^kfc\\b" },
-    { "slug": "pizza-hut", "name": "Pizza Hut", "match": "pizza hut" },
-    { "slug": "wendys", "name": "Wendy's", "match": "wendy'?s|wend'ys" },
-    { "slug": "popeyes", "name": "Popeyes", "match": "popeyes" },
-    { "slug": "dennys", "name": "Denny's", "match": "denny's" },
-    { "slug": "taco-bell", "name": "Taco Bell", "match": "taco bell" },
-    { "slug": "subway", "name": "Subway", "match": "^subway\\b" },
-    { "slug": "applebees", "name": "Applebee's", "match": "applebee's" },
-    { "slug": "cracker-barrel", "name": "Cracker Barrel", "match": "cracker barrel" },
-    { "slug": "dominos", "name": "Domino's", "match": "domino's" },
-    { "slug": "tgi-fridays", "name": "TGI Fridays", "match": "t\\.g\\.i\\. friday's" },
-    { "slug": "little-caesars", "name": "Little Caesars", "match": "little caesars" },
-    { "slug": "olive-garden", "name": "Olive Garden", "match": "olive garden" },
-    { "slug": "carrabbas", "name": "Carrabba's Italian Grill", "match": "carrabba's( italian grill)?" },
-    { "slug": "on-the-border", "name": "On The Border", "match": "on the border" },
-    { "slug": "papa-johns", "name": "Papa John's", "match": "papa john's" },
-    { "slug": "chick-fil-a", "name": "Chick-fil-A", "match": "chick-fil-a" }
+    {
+      "slug": "mcdonalds",
+      "name": "McDonald's",
+      "match": "mcdonald|\\bmcdouble\\b|\\bmcchicken\\b|\\bmcnugget"
+    },
+    {
+      "slug": "burger-king",
+      "name": "Burger King",
+      "match": "burger king"
+    },
+    {
+      "slug": "kfc",
+      "name": "KFC",
+      "match": "^kfc\\b"
+    },
+    {
+      "slug": "pizza-hut",
+      "name": "Pizza Hut",
+      "match": "pizza hut"
+    },
+    {
+      "slug": "wendys",
+      "name": "Wendy's",
+      "match": "wendy'?s|wend'ys"
+    },
+    {
+      "slug": "popeyes",
+      "name": "Popeyes",
+      "match": "popeyes"
+    },
+    {
+      "slug": "dennys",
+      "name": "Denny's",
+      "match": "denny's"
+    },
+    {
+      "slug": "taco-bell",
+      "name": "Taco Bell",
+      "match": "taco bell"
+    },
+    {
+      "slug": "subway",
+      "name": "Subway",
+      "match": "^subway\\b"
+    },
+    {
+      "slug": "applebees",
+      "name": "Applebee's",
+      "match": "applebee's"
+    },
+    {
+      "slug": "cracker-barrel",
+      "name": "Cracker Barrel",
+      "match": "cracker barrel"
+    },
+    {
+      "slug": "dominos",
+      "name": "Domino's",
+      "match": "domino's"
+    },
+    {
+      "slug": "tgi-fridays",
+      "name": "TGI Fridays",
+      "match": "t\\.g\\.i\\. friday's"
+    },
+    {
+      "slug": "little-caesars",
+      "name": "Little Caesars",
+      "match": "little caesars"
+    },
+    {
+      "slug": "olive-garden",
+      "name": "Olive Garden",
+      "match": "olive garden"
+    },
+    {
+      "slug": "carrabbas",
+      "name": "Carrabba's Italian Grill",
+      "match": "carrabba's( italian grill)?"
+    },
+    {
+      "slug": "on-the-border",
+      "name": "On The Border",
+      "match": "on the border"
+    },
+    {
+      "slug": "papa-johns",
+      "name": "Papa John's",
+      "match": "papa john's"
+    },
+    {
+      "slug": "chick-fil-a",
+      "name": "Chick-fil-A",
+      "match": "chick-fil-a"
+    },
+    {
+      "slug": "arbys",
+      "name": "Arby's",
+      "match": "arby'?s",
+      "guide": "arbys"
+    },
+    {
+      "slug": "dunkin",
+      "name": "Dunkin'",
+      "match": "dunkin",
+      "guide": "dunkin",
+      "aliases": [
+        "Dunkin' Donuts",
+        "Dunkin Donuts",
+        "Dunkin Doughnuts"
+      ]
+    },
+    {
+      "slug": "five-guys",
+      "name": "Five Guys",
+      "match": "five guys",
+      "guide": "five-guys"
+    }
   ]
 }
