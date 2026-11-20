@@ -1,14 +1,24 @@
-import { NFOODS, NCATS, RANKINGS, nurl } from "./nutrition";
+import { NFOODS, NCATS, RANKINGS, HUB_CHAINS, HUB_STORES, nurl, isIndexable, chainOf, byDemand } from "./nutrition";
 import { TOOLS } from "./tools";
-import { abs } from "./site";
+import { REVIEWER, personUrl } from "./people";
+import { SITE, abs } from "./site";
 
-/** lastmod is the date the data was last rebuilt. */
-const lastmod = "2026-11-16";
+/** lastmod: the date pages last changed in substance (SITE.updatedISO), not the build date. */
+const lastmod = SITE.updatedISO;
 
-const foods = NFOODS.map((f) => nurl.food(f));
+// Only indexable food pages are listed (see isIndexable); the other USDA records are noindex.
+const indexable = NFOODS.filter(isIndexable).sort(byDemand);
+const foods = indexable.filter((f) => f.src !== "B" && !chainOf(f)).map((f) => nurl.food(f));
 const CHUNK = 5000;
 export const SECTIONS: Record<string, () => string[]> = {
-  pages: () => ["/", "/food/", ...NCATS.map((c) => nurl.cat(c.slug)), ...RANKINGS.map((r) => nurl.rank(r)), "/tools/", ...TOOLS.map((t) => `/tools/${t.slug}/`), "/methodology/", "/about/", "/privacy/", "/terms/"],
+  pages: () => [
+    "/", "/food/", ...NCATS.map((c) => nurl.cat(c.slug)), ...RANKINGS.map((r) => nurl.rank(r)),
+    nurl.restaurants(), nurl.stores(),
+    "/tools/", ...TOOLS.map((t) => `/tools/${t.slug}/`),
+    "/methodology/", "/about/", "/editorial-policy/", "/contact/", personUrl(REVIEWER), "/privacy/", "/terms/",
+  ],
+  restaurants: () => [...HUB_CHAINS.map((c) => nurl.chain(c)), ...indexable.filter((f) => chainOf(f)).map((f) => nurl.food(f))],
+  brands: () => [...HUB_STORES.map((s) => nurl.store(s)), ...indexable.filter((f) => f.src === "B").map((f) => nurl.food(f))],
   ...Object.fromEntries(Array.from({ length: Math.ceil(foods.length / CHUNK) }, (_, i) => [`foods-${i + 1}`, () => foods.slice(i * CHUNK, (i + 1) * CHUNK)])),
 };
 

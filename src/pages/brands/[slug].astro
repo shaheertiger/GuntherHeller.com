@@ -1,0 +1,27 @@
+---
+/** /brands/{store}/ — store-brand products people search for, with label nutrition from USDA Branded Foods. */
+import HubList from "../../components/HubList.astro";
+import { HUB_STORES, storeItems, nurl, STORES } from "../../lib/nutrition";
+export function getStaticPaths() {
+  return HUB_STORES.map((store) => ({ params: { slug: store.slug }, props: { store } }));
+}
+const { store } = Astro.props as { store: (typeof STORES)[number] };
+const items = storeItems(store.slug);
+const path = nurl.store(store);
+const where = store.store !== store.brand ? ` (${store.store})` : "";
+---
+<HubList
+  path={path}
+  title={`${store.brand}${where} Nutrition Facts: ${items.length} Products | Gunther Heller`}
+  description={`Calories, protein, carbs, fat and sodium for ${items.length} ${store.brand}${where} products, from their Nutrition Facts labels as published by USDA FoodData Central.`}
+  h1={`${store.brand}${where} nutrition facts`}
+  lead={`Label nutrition for the ${items.length} ${store.brand} products people look up most, side by side. Each product links to its full Nutrition Facts.`}
+  crumbs={[{ name: "Home", href: "/" }, { name: "Store brands", href: nurl.stores() }, { name: store.brand }]}
+  items={items}
+  noun="products"
+  owner={store.brand}
+  sourceNote={`Values are from each product's Nutrition Facts label as the brand owner submitted it to USDA FoodData Central (Branded Foods, April 2025 release). Products are reformulated from time to time; the label on your package is the final word.`}
+  source="manufacturer labels (USDA Branded Foods)"
+  related={HUB_STORES.filter((s) => s.slug !== store.slug).map((s) => ({ name: s.brand, href: nurl.store(s) }))}
+  relatedTitle="Other store brands"
+/>

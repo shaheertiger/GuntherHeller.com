@@ -20,6 +20,15 @@ const ld = { "@context": "https://schema.org", "@type": "WebPage", name: "Where 
   </ul>
   <p>For the 918 foods that also have storage times, we matched each one to the single USDA record that best fits what people mean by it (for example, "cooked rice" uses "Rice, cooked"). The page names the USDA record it uses.</p>
 
+  <h2>Restaurant menu items</h2>
+  <p>Our <a href="/restaurants/">restaurant pages</a> use two kinds of USDA data. Most items were bought at the chain and analysed in USDA laboratories (SR Legacy, released 2018; some analyses are older and say so). Others are USDA's FNDDS 2021–2023 estimates, built from each item's ingredients. Every item page says which one it is. Chains change recipes and portion sizes, so their own current nutrition guides can differ from USDA's figures.</p>
+
+  <h2>Store-brand products</h2>
+  <p>Store-brand pages (<a href="/brands/">Great Value, Kirkland Signature and others</a>) use the Nutrition Facts label each brand owner submitted to USDA FoodData Central (Branded Foods, April 2025 release). USDA publishes those values per 100 g or 100 ml; we convert them back to the serving on the label. We only add a product when people search for its nutrition.</p>
+
+  <h2>Which pages we ask search engines to index</h2>
+  <p>USDA lists many near-identical records (the same cut of meat at six fat trims, for example). We ask search engines to index the foods people actually search for, every food with storage times, and every restaurant and store-brand item. The other records stay on the site for anyone who needs them but are marked noindex, so they do not crowd out the pages people look for.</p>
+
   <h2>Storage times: USDA FoodKeeper</h2>
   <p>Our numbers come from <a href="https://www.foodsafety.gov/keep-food-safe/foodkeeper-app" rel="nofollow noopener">FoodKeeper</a>, the storage database published by the U.S. Department of Agriculture's Food Safety and Inspection Service (FSIS) with Cornell University and the Food Marketing Institute. It is a U.S. government work in the public domain.</p>
   <p>We use FoodKeeper data version <strong>{META.version}</strong> (released {META.modified}). The file we import has SHA-256 <code class="text-sm break-all">{META.sha256}</code>, so anyone can confirm we use the unmodified dataset.</p>

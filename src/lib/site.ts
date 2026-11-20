@@ -5,6 +5,8 @@ export const SITE = {
   email: "hello@guntherheller.com",
   /** Date the numbers were last checked against the FoodKeeper release. Change only when you re-verify. */
   verifiedISO: "2026-11-02",
+  /** Date the pages last changed in substance (names, titles, new data). Shown as "Updated" and used as sitemap lastmod. */
+  updatedISO: "2026-11-20",
   verifiedLabel: "November 2026",
   verifiedShort: "Nov 2026",
   ogImage: "/og.png",

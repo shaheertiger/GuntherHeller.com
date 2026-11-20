@@ -1,0 +1,27 @@
+---
+import Base from "../../layouts/Base.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import Byline from "../../components/Byline.astro";
+import { HUB_STORES, storeItems, nurl } from "../../lib/nutrition";
+import { ORG, breadcrumbLd } from "../../lib/schema";
+import { SITE, abs } from "../../lib/site";
+const path = nurl.stores();
+const stores = [...HUB_STORES].sort((a, b) => storeItems(b.slug).length - storeItems(a.slug).length);
+const total = stores.reduce((n, s) => n + storeItems(s.slug).length, 0);
+const crumbs = [{ name: "Home", href: "/" }, { name: "Store brands" }];
+const description = `Label nutrition facts for ${total} store-brand products people look up most, from ${stores.map((s) => s.brand).slice(0, 4).join(", ")} and more, via USDA FoodData Central.`;
+const ld = { "@context": "https://schema.org", "@graph": [ORG, { "@type": "CollectionPage", name: "Store-brand nutrition facts", url: abs(path), description, dateModified: SITE.updatedISO }, breadcrumbLd(crumbs, path),
+  { "@type": "ItemList", numberOfItems: stores.length, itemListElement: stores.map((s, i) => ({ "@type": "ListItem", position: i + 1, url: abs(nurl.store(s)), name: `${s.brand} nutrition facts` })) }] };
+---
+<Base title="Store-Brand Nutrition Facts: Great Value, Kirkland and More | Gunther Heller" description={description} path={path} jsonld={ld}>
+  <div class="container-site pt-6">
+    <Breadcrumb items={crumbs} />
+    <h1 class="h1-food mt-4">Store-brand nutrition facts</h1>
+    <Byline path={path} updated={SITE.updatedISO} source="manufacturer labels (USDA Branded Foods)" />
+    <p class="lead mt-4 max-w-[760px]">Nutrition Facts for the {total} store-brand products people search for most, taken from each product's label as published by USDA FoodData Central.</p>
+    <ul class="list-none p-0 m-0 mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      {stores.map((s) => <li><a href={nurl.store(s)} class="card lift flex justify-between items-center gap-3 px-4 py-3.5"><span class="font-[550]">{s.brand}{s.store !== s.brand && <span class="text-muted font-normal"> · {s.store}</span>}</span><span class="text-sm text-muted">{storeItems(s.slug).length}</span></a></li>)}
+    </ul>
+    <p class="text-[13px] text-muted mt-6 max-w-[760px]">We add a store-brand product when people search for its nutrition, not every product a store sells. Label values are as the brand owner submitted them to USDA (Branded Foods, April 2025). <a class="link" href="/editorial-policy/">How we choose and check products</a>.</p>
+  </div>
+</Base>

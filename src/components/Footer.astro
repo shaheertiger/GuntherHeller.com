@@ -2,16 +2,18 @@
 import Logo from "./Logo.astro";
 import Squiggle from "./Squiggle.astro";
 import { SITE } from "../lib/site";
-import { NMETA, NCATS, RANKINGS, nurl } from "../lib/nutrition";
+import { NMETA, NCATS, RANKINGS, HUB_CHAINS, nurl } from "../lib/nutrition";
+import { REVIEWER, personUrl } from "../lib/people";
 const cols = [
   { h: "Browse", links: [["All foods", "/food/"], ...NCATS.slice(0, 6).map((c) => [c.name, nurl.cat(c.slug)])] },
   { h: "Nutrients", links: RANKINGS.slice(0, 7).map((r) => [r.h1.replace(/^Foods high in /, "High ").replace(/^Foods lowest in /, "Low "), nurl.rank(r)]) },
-  { h: "Tools & site", links: [["Storage calculators", "/tools/"], ["Leftover calculator", "/tools/leftover-calculator/"], ["Our data", "/methodology/"], ["About & contact", "/about/"], ["Privacy", "/privacy/"], ["Terms", "/terms/"]] },
+  { h: "Restaurants & brands", links: [["All restaurants", "/restaurants/"], ...HUB_CHAINS.slice(0, 5).map((c) => [c.name, nurl.chain(c)]), ["Store brands", "/brands/"]] },
+  { h: "About", links: [["About us", "/about/"], ["Editorial policy", "/editorial-policy/"], [`Our dietitian: ${REVIEWER.name}`, personUrl(REVIEWER)], ["Our data", "/methodology/"], ["Contact", "/contact/"], ["Storage calculators", "/tools/"], ["Privacy", "/privacy/"], ["Terms", "/terms/"]] },
 ];
 ---
 <footer class="bg-panel mt-24 pt-12 pb-8">
   <div class="container-site">
-    <div class="grid gap-8 md:grid-cols-[1.2fr_.6fr_.6fr_.6fr]">
+    <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-[1.2fr_.6fr_.6fr_.6fr_.7fr]">
       <div>
         <a href="/" class="flex items-center gap-2.5 font-[650] text-[23px]"><Logo /><span>Gunther Heller</span></a>
         <Squiggle />
@@ -29,7 +31,7 @@ const cols = [
     </div>
     <div class="flex flex-wrap justify-between gap-3 border-t border-line mt-10 pt-[18px] text-[13px] text-muted">
       <span>© {new Date(SITE.verifiedISO).getFullYear()} Gunther Heller. Data: USDA FoodData Central and FoodKeeper (public domain).</span>
-      <span class="flex flex-wrap gap-[18px]"><a href="/terms/">Terms of Service</a><a href="/privacy/">Privacy Policy</a></span>
+      <span class="flex flex-wrap gap-[18px]"><a href="/editorial-policy/">Editorial policy</a><a href="/contact/">Contact</a><a href="/terms/">Terms of Service</a><a href="/privacy/">Privacy Policy</a></span>
     </div>
   </div>
 </footer>

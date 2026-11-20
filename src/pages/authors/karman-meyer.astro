@@ -1,0 +1,45 @@
+---
+/** Profile of the site's dietitian reviewer (facts in src/lib/people.ts). */
+import Prose from "../../layouts/Prose.astro";
+import { REVIEWER as P, personLd, personUrl, reviewedCount, siteReviewed } from "../../lib/people";
+import { ORG, breadcrumbLd } from "../../lib/schema";
+import { SITE, abs } from "../../lib/site";
+const path = personUrl(P);
+const h1 = `${P.name}, ${P.credentials}`;
+const description = `${P.name}, ${P.honorific}, is a registered dietitian nutritionist and the nutrition reviewer for Gunther Heller. Credentials, experience, books and how she reviews our pages.`;
+const jsonld = {
+  "@context": "https://schema.org",
+  "@graph": [
+    ORG,
+    { "@type": "ProfilePage", "@id": `${abs(path)}#page`, url: abs(path), name: h1, description, dateModified: SITE.updatedISO, mainEntity: { "@id": personLd(P)["@id"] } },
+    { ...personLd(P), worksFor: { "@id": ORG["@id"] } },
+    breadcrumbLd([{ name: "Home", href: "/" }, { name: h1 }], path),
+  ],
+};
+const n = reviewedCount();
+const site = siteReviewed();
+const fmt = (iso: string) => new Date(iso + "T12:00:00Z").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
+---
+<Prose title={`${P.name}, ${P.credentials} – Nutrition Reviewer | Gunther Heller`} h1={h1} path={path} description={description} jsonld={jsonld}
+  lead={`${P.jobTitle} · ${P.role} at Gunther Heller · ${P.location}`}>
+  <p>{P.summary}</p>
+
+  <h2>Credentials</h2>
+  <ul>{P.credentialList.map((c) => <li><strong>{c.name}</strong> ({c.by})</li>)}</ul>
+
+  <h2>Books</h2>
+  <ul>{P.books.map((b) => <li><em>{b}</em></li>)}</ul>
+
+  <h2>Experience</h2>
+  <ul>{P.experience.map((e) => <li><strong>{e.role}</strong>, {e.org} ({e.years})</li>)}</ul>
+
+  <h2>What she does for Gunther Heller</h2>
+  <p>Karman reviews the editorial standards behind every page: which USDA records we use for a food, how servings and % Daily Values are calculated, and how our generated text describes the numbers. When she checks an individual page, that page shows "Reviewed by {P.name}, {P.credentials}" with the date of her review.{site ? ` She completed a review of the site's pages on ${fmt(site)}.` : n > 0 ? ` She has reviewed ${n} page${n === 1 ? "" : "s"} individually so far.` : ""}</p>
+  <p>The numbers themselves come from USDA FoodData Central and USDA FoodKeeper and are never changed by hand. Read our <a href="/editorial-policy/">editorial policy</a> and <a href="/methodology/">data methodology</a>.</p>
+
+  <h2>Disclosure</h2>
+  <p>{P.disclosure}</p>
+
+  <h2>Elsewhere</h2>
+  <ul>{P.sameAs.map((u) => <li><a href={u} rel="noopener me">{u.replace(/^https:\/\/(www\.)?/, "").replace(/\/$/, "")}</a></li>)}</ul>
+</Prose>

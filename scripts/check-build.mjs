@@ -95,9 +95,39 @@ console.log(`check-build: inbound internal links per page — min ${counts[0]}, 
 
 // Acceptance test: cooked rice (nutrition + FoodKeeper storage on one page).
 const rice = readFileSync(join(DIST, "calories/cooked-rice/index.html"), "utf8");
-if (!/<title>Cooked Rice Nutrition Facts \(\d+ Calories per [^<]+\)<\/title>/.test(rice)) errors.push("cooked rice: unexpected title");
+if (!/<title>Cooked Rice Calories and Nutrition Facts \(\d+ Calories per [^<]+\)<\/title>/.test(rice)) errors.push("cooked rice: unexpected title");
 for (const t of ["Nutrition Facts", "Vitamins and minerals", "How long does cooked rice last?", "4–6 days", "2,000-calorie diet"]) if (!rice.includes(t)) errors.push(`cooked rice: "${t}" missing`);
 for (const t of ['"NutritionInformation"', '"BreadcrumbList"', '"FAQPage"', '"Organization"']) if (!rice.includes(t)) errors.push(`cooked rice: JSON-LD ${t} missing`);
+
+// Restaurant and store-brand hubs, the reviewer's profile and the trust pages exist and carry the right schema.
+for (const [p, needles] of [
+  ["restaurants/index.html", ['"CollectionPage"', "/restaurants/mcdonalds/"]],
+  ["restaurants/mcdonalds/index.html", ['"ItemList"', '"FAQPage"', "Big Mac"]],
+  ["brands/index.html", ['"CollectionPage"', "/brands/great-value/"]],
+  ["authors/karman-meyer/index.html", ['"ProfilePage"', '"Person"', '"EducationalOccupationalCredential"']],
+  ["editorial-policy/index.html", ["Dietitian review"]],
+  ["contact/index.html", ["Reporting a wrong number"]],
+]) {
+  if (!existsSync(join(DIST, p))) { errors.push(`missing ${p}`); continue; }
+  const html = readFileSync(join(DIST, p), "utf8");
+  for (const n of needles) if (!html.includes(n)) errors.push(`${p}: "${n}" missing`);
+}
+// "Reviewed by … on <date>" only on pages listed in data/reviewed.json.
+const reviewedData = JSON.parse(readFileSync(new URL("../data/reviewed.json", import.meta.url), "utf8"));
+const reviewed = new Proxy(reviewedData.pages, { get: (t, k) => t[k] ?? reviewedData.site });
+let reviewedSeen = 0;
+for (const file of pages) {
+  const html = readFileSync(file, "utf8");
+  const rel = relOf(file);
+  const claims = /Reviewed by <a/.test(html) || /"reviewedBy"/.test(html);
+  if (claims) reviewedSeen++;
+  if (claims && !reviewed[rel]) errors.push(`${rel}: shows a review that data/reviewed.json does not list`);
+}
+// Indexing: only searched-for foods, storage foods, restaurant and store-brand items are indexable.
+const foodPages = pages.filter((f) => relOf(f).startsWith("/calories/"));
+const indexableFoods = foodPages.filter((f) => !/name="robots" content="noindex/.test(readFileSync(f, "utf8"))).length;
+console.log(`check-build: ${indexableFoods} of ${foodPages.length} food pages indexable, ${reviewedSeen} reviewed pages`);
+if (indexableFoods > 6000) warn.push(`${indexableFoods} indexable food pages: more than the demand data justifies?`);
 
 // Every 301 in data/old-redirects.json lands on a built page (the catch-all handles everything else).
 const redirects = Object.entries(JSON.parse(readFileSync(new URL("../data/old-redirects.json", import.meta.url), "utf8"))).map(([source, destination]) => ({ source, destination }));

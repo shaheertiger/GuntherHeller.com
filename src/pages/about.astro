@@ -3,14 +3,19 @@ import Prose from "../layouts/Prose.astro";
 import { SITE } from "../lib/site";
 import { FOODS } from "../lib/data";
 import { NMETA } from "../lib/nutrition";
+import { REVIEWER, personUrl } from "../lib/people";
 ---
 <Prose title="About Gunther Heller | Calories and Nutrition Facts" h1="About Gunther Heller" path="/about/"
   description="Gunther Heller publishes free calories and nutrition facts for 13,000+ foods from USDA FoodData Central, plus storage times. Who we are and how to contact us."
   lead="Gunther Heller answers two questions about any food: what is in it, and how long does it keep?">
   <h2>What we do</h2>
   <p>We publish calories, macronutrients, vitamins, minerals, fatty acids and amino acids for {NMETA.count.toLocaleString("en-US")} foods, with a serving-size picker on every page. For {FOODS.length} common foods we add counter, fridge and freezer storage times. No sign-ups and no app. The site is funded by display advertising, which we keep out of the way of the answer.</p>
+  <h2>Who is behind it</h2>
+  <p>Gunther Heller is run by a small editorial team that builds the pages from USDA data. Our editorial standards are reviewed by <a href={personUrl(REVIEWER)}>{REVIEWER.name}, {REVIEWER.credentials}</a>, a registered dietitian nutritionist and author of two nutrition books. Read how we work in our <a href="/editorial-policy/">editorial policy</a>.</p>
+  <h2>Restaurants and store brands</h2>
+  <p>Besides everyday foods, we cover <a href="/restaurants/">restaurant menu items</a> that USDA has analysed and the <a href="/brands/">store-brand products</a> people search for most, with their label nutrition.</p>
   <h2>Where the data comes from</h2>
   <p>USDA FoodData Central for nutrition, USDA FoodKeeper and FSIS guidance for storage. Read <a href="/methodology/">how we use the data</a>.</p>
   <h2>Contact</h2>
-  <p>Questions, corrections and partnership requests: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. A person replies within one business day.</p>
+  <p>Questions, corrections and partnership requests: <a href={`mailto:${SITE.email}`}>{SITE.email}</a> or see our <a href="/contact/">contact page</a>. A person replies within one business day.</p>
 </Prose>

@@ -1,0 +1,110 @@
+---
+/**
+ * A chain's menu (/restaurants/{chain}/) or a store brand's products (/brands/{store}/): a sortable-looking table of
+ * every item with calories, protein, carbs and fat per serving, a computed "quick answers" block and an FAQ.
+ */
+import Base from "../layouts/Base.astro";
+import Breadcrumb from "./Breadcrumb.astro";
+import Byline from "./Byline.astro";
+import { type NFood, nurl, defaultServing, per, fmtN, servingLabel } from "../lib/nutrition";
+import { ORG, breadcrumbLd } from "../lib/schema";
+import { SITE, abs } from "../lib/site";
+
+interface Props {
+  path: string;
+  title: string;
+  description: string;
+  h1: string;
+  lead: string;
+  crumbs: { name: string; href?: string }[];
+  items: NFood[];
+  /** What the items are called in sentences: "menu items", "products". */
+  noun: string;
+  owner: string;
+  sourceNote: string;
+  source: string;
+  related: { name: string; href: string }[];
+  relatedTitle: string;
+}
+const { path, title, description, h1, lead, crumbs, items, noun, owner, sourceNote, source, related, relatedTitle } = Astro.props;
+const row = (f: NFood) => {
+  const s = defaultServing(f);
+  const g = s[1];
+  return { f, s, kcal: Math.round(per(f.v.kcal, g)), p: per(f.v["203"] ?? 0, g), c: per(f.v["205"] ?? 0, g), fat: per(f.v["204"] ?? 0, g), na: f.v["307"] != null ? per(f.v["307"], g) : null };
+};
+const rows = items.map(row);
+const short = (f: NFood) => (f.name.startsWith(owner) ? f.name.slice(owner.length).trim() : f.name);
+const lowest = [...rows].sort((a, b) => a.kcal - b.kcal)[0];
+const highest = [...rows].sort((a, b) => b.kcal - a.kcal)[0];
+const protein = [...rows].sort((a, b) => b.p - a.p)[0];
+const proteinPerCal = [...rows].filter((r) => r.kcal >= 50).sort((a, b) => b.p / b.kcal - a.p / a.kcal)[0];
+const faq: [string, string][] = [
+  [`What is the lowest-calorie ${owner} item here?`, `${short(lowest.f)}: ${lowest.kcal} calories in ${servingLabel(lowest.s)}.`],
+  [`Which ${owner} item has the most calories?`, `${short(highest.f)}: ${highest.kcal} calories in ${servingLabel(highest.s)}.`],
+  [`Which ${owner} item has the most protein?`, `${short(protein.f)}: ${fmtN(protein.p, " g")} of protein in ${servingLabel(protein.s)} (${protein.kcal} calories).`],
+];
+if (proteinPerCal && proteinPerCal.f !== protein.f) faq.push([`Which ${owner} item gives the most protein per calorie?`, `${short(proteinPerCal.f)}: ${fmtN(proteinPerCal.p, " g")} of protein for ${proteinPerCal.kcal} calories, about ${Math.round((proteinPerCal.p * 4 * 100) / proteinPerCal.kcal)}% of its calories from protein.`]);
+faq.push([`Where do these ${owner} numbers come from?`, sourceNote]);
+const ld = {
+  "@context": "https://schema.org",
+  "@graph": [
+    ORG,
+    { "@type": "CollectionPage", "@id": `${abs(path)}#page`, name: h1, url: abs(path), description, dateModified: SITE.updatedISO, publisher: { "@id": ORG["@id"] } },
+    breadcrumbLd(crumbs, path),
+    { "@type": "ItemList", numberOfItems: rows.length, itemListElement: rows.map((r, i) => ({ "@type": "ListItem", position: i + 1, url: abs(nurl.food(r.f)), name: r.f.name })) },
+    { "@type": "FAQPage", mainEntity: faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) },
+  ],
+};
+---
+<Base title={title} description={description} path={path} jsonld={ld}>
+  <div class="container-site pt-6">
+    <Breadcrumb items={crumbs} />
+    <h1 class="h1-food mt-4">{h1}</h1>
+    <Byline path={path} updated={SITE.updatedISO} source={source} />
+    <p class="lead mt-4 max-w-[760px]">{lead}</p>
+
+    <section class="card mt-6 p-5 max-w-[760px]" aria-labelledby="quick-h">
+      <h2 id="quick-h" class="text-[20px]">Quick answers</h2>
+      <ul class="prose-list mt-2">
+        <li>Lowest calories: <a class="link" href={nurl.food(lowest.f)}>{short(lowest.f)}</a>, {lowest.kcal} calories per {lowest.s[0].replace(/^1 /, "")}.</li>
+        <li>Highest calories: <a class="link" href={nurl.food(highest.f)}>{short(highest.f)}</a>, {highest.kcal} calories per {highest.s[0].replace(/^1 /, "")}.</li>
+        <li>Most protein: <a class="link" href={nurl.food(protein.f)}>{short(protein.f)}</a>, {fmtN(protein.p, " g")} per {protein.s[0].replace(/^1 /, "")}.</li>
+      </ul>
+    </section>
+
+    <section class="mt-8" aria-labelledby="items-h">
+      <h2 id="items-h" class="text-[28px]">{owner} {noun}: calories, protein, carbs and fat</h2>
+      <p class="text-[14px] text-muted mt-1">Per serving as listed. Click an item for its full nutrition facts, vitamins and minerals.</p>
+      <div class="table-wrap mt-4">
+        <table class="data-table ntable">
+          <caption class="sr-only-x">{h1}</caption>
+          <thead><tr><th scope="col">Item</th><th scope="col">Serving</th><th scope="col" class="num">Calories</th><th scope="col" class="num">Protein</th><th scope="col" class="num">Carbs</th><th scope="col" class="num">Fat</th><th scope="col" class="num">Sodium</th></tr></thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr>
+                <th scope="row" class="!whitespace-normal !text-[15px] !text-ink !font-normal !bg-white"><a href={nurl.food(r.f)} class="hover:underline">{short(r.f)}</a></th>
+                <td class="text-muted text-[14px]">{servingLabel(r.s)}</td>
+                <td class="num"><b>{r.kcal}</b></td><td class="num">{fmtN(r.p, "g")}</td><td class="num">{fmtN(r.c, "g")}</td><td class="num">{fmtN(r.fat, "g")}</td><td class="num">{r.na == null ? "–" : fmtN(r.na, "mg")}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-[13px] text-muted mt-3">{sourceNote}</p>
+    </section>
+
+    <section class="mt-10 max-w-[760px]" aria-labelledby="faq-h">
+      <h2 id="faq-h" class="text-[28px]">Questions about {owner} nutrition</h2>
+      <div class="mt-4 grid gap-2">
+        {faq.map(([q, a], i) => <details class="card px-4 py-3" open={i < 2}><summary class="font-[600]">{q}</summary><p class="mt-2 text-[16px]">{a}</p></details>)}
+      </div>
+    </section>
+
+    <nav aria-labelledby="rel-h" class="mt-10">
+      <h2 id="rel-h" class="text-[22px]">{relatedTitle}</h2>
+      <ul class="list-none p-0 m-0 mt-3 flex flex-wrap gap-2">
+        {related.map((x) => <li><a href={x.href} class="pill bg-tab hover:bg-tint-lilac">{x.name}</a></li>)}
+      </ul>
+    </nav>
+  </div>
+</Base>
