@@ -20,12 +20,13 @@ import { ROOT, loadKeywords, INTENT, ASK, tok, core, makeMatcher } from "./keywo
 const { vol, files } = loadKeywords(process.argv.slice(2));
 
 /** Restaurant chains: a query that is only the chain's name belongs on its hub page, not on one menu item. */
-const chainOnly = new Map(CHAINS.map((c) => [tok(c.name).filter((w) => !ASK.has(w)).join(" "), c.slug]));
+const chainOnly = new Map(CHAINS.flatMap((c) => [c.name, ...(c.aliases ?? [])].map((n) => [[...new Set(tok(n).filter((w) => !ASK.has(w)))].sort().join(" "), c.slug])));
 
 /* ---------------------------------------------------------------- foods (USDA records + imported store-brand products) */
 const FOODS = [
   ...JSON.parse(fs.readFileSync(path.join(ROOT, "data/nutrition.json"), "utf8")).foods,
   ...(fs.existsSync(path.join(ROOT, "data/branded.json")) ? JSON.parse(fs.readFileSync(path.join(ROOT, "data/branded.json"), "utf8")).foods : []),
+  ...(fs.existsSync(path.join(ROOT, "data/restaurant-foods.json")) ? JSON.parse(fs.readFileSync(path.join(ROOT, "data/restaurant-foods.json"), "utf8")).foods : []),
 ];
 const { bestLoose } = makeMatcher(FOODS);
 
@@ -39,7 +40,7 @@ for (const [k, v] of vol) {
   const { t: q, text } = core(k);
   if (!q.length || q.length > 7) continue;
   total += w;
-  const chain = chainOnly.get(q.join(" "));
+  const chain = chainOnly.get([...q].sort().join(" "));
   if (chain) { chainDemand.set(chain, (chainDemand.get(chain) ?? 0) + w); matched += w; continue; }
   const m = bestLoose(q);
   if (!m) { gaps.set(text, (gaps.get(text) ?? 0) + w); continue; }
