@@ -19,6 +19,7 @@
  */
 import { execFileSync } from "node:child_process";
 import { writeFileSync, existsSync, readFileSync } from "node:fs";
+import { builtSlugs } from "../src/lib/built.mjs";
 
 const git = (...a) => execFileSync("git", a, { encoding: "utf8", maxBuffer: 1 << 30 });
 const FILES = ["data/nutrition.json", "data/branded.json", "data/restaurant-foods.json", "data/overrides.json", "data/ask.json", "data/reviewed.json"];
@@ -63,9 +64,10 @@ const PAGES = {
 };
 const pages = Object.fromEntries(Object.entries(PAGES).map(([p, fs]) => [p, filesDay(fs)]));
 
-// Only foods that get a page (data/proven.json).
-const proven = JSON.parse(readFileSync("data/proven.json", "utf8")).foods;
-const sorted = Object.fromEntries(Object.entries(out).filter(([s]) => s in proven).sort(([a], [b]) => a.localeCompare(b)));
+// Only foods that get a page (src/lib/built.mjs).
+const j = (f) => JSON.parse(readFileSync(f, "utf8"));
+const built = builtSlugs({ nutrition: j("data/nutrition.json"), branded: j("data/branded.json"), restaurant: j("data/restaurant-foods.json"), demand: j("data/demand.json"), chains: j("data/chains.json"), proven: j("data/proven.json") });
+const sorted = Object.fromEntries(Object.entries(out).filter(([s]) => built.has(s)).sort(([a], [b]) => a.localeCompare(b)));
 writeFileSync(new URL("../data/lastmod.json", import.meta.url), JSON.stringify({ note: "Built by scripts/build-lastmod.mjs from git history; do not edit by hand.", pages, foods: sorted }) + "\n");
 const days = {};
 for (const v of Object.values(sorted)) days[v.modified] = (days[v.modified] ?? 0) + 1;

@@ -8,7 +8,8 @@ import Breadcrumb from "./Breadcrumb.astro";
 import Byline from "./Byline.astro";
 import { type NFood, nurl, defaultServing, per, fmtN, servingLabel } from "../lib/nutrition";
 import { ORG, breadcrumbLd } from "../lib/schema";
-import { SITE, abs } from "../lib/site";
+import { abs } from "../lib/site";
+import { lastmodOf } from "../lib/lastmod";
 
 interface Props {
   path: string;
@@ -49,7 +50,7 @@ const ld = {
   "@context": "https://schema.org",
   "@graph": [
     ORG,
-    { "@type": "CollectionPage", "@id": `${abs(path)}#page`, name: h1, url: abs(path), description, dateModified: SITE.updatedISO, publisher: { "@id": ORG["@id"] } },
+    { "@type": "CollectionPage", "@id": `${abs(path)}#page`, name: h1, url: abs(path), description, dateModified: lastmodOf(path), publisher: { "@id": ORG["@id"] } },
     breadcrumbLd(crumbs, path),
     { "@type": "ItemList", numberOfItems: rows.length, itemListElement: rows.map((r, i) => ({ "@type": "ListItem", position: i + 1, url: abs(nurl.food(r.f)), name: r.f.name })) },
     { "@type": "FAQPage", mainEntity: faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) },
@@ -60,7 +61,7 @@ const ld = {
   <div class="wrap pt-6">
     <Breadcrumb items={crumbs} />
     <h1 class="h1x mt-4">{h1}</h1>
-    <Byline path={path} updated={SITE.updatedISO} source={source} />
+    <Byline path={path} updated={lastmodOf(path)} source={source} />
     <p class="intro mt-4 max-w-[760px]">{lead}</p>
 
     <section class="tile mt-6 p-5 max-w-[760px]" aria-labelledby="quick-h">

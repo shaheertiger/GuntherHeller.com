@@ -24,11 +24,14 @@ const ld = { "@context": "https://schema.org", "@type": "WebPage", name: "How we
     <li><strong>Comparisons</strong> rank a food among the other foods in its category on this site by calories per 100 g.</li>
   </ul>
 
+  <h2>Restaurant items</h2>
+  <p>Most <a href="/restaurants/">restaurant items</a> are USDA records: either USDA bought the item at the chain and analysed it in a lab (SR Legacy, 2018 or earlier), or it modelled the item from its recipe (FNDDS 2021–2023). The page says which. For chains USDA does not cover (Arby's, Dunkin', Five Guys), we copy the chain's own nutrition guide as printed, name the guide and its date on every item, and keep an item only if its calories agree with its protein, carbohydrate and fat (4, 4 and 9 calories per gram) within 20%. Some guides list values per serving without a weight; those pages show that serving only, with no per-100 g figures.</p>
+
   <h2>When USDA has no number</h2>
   <p>We leave the line out. A nutrient USDA did not measure is not shown as zero, and a section with nothing in it is not shown at all.</p>
 
   <h2>Which foods get a page</h2>
-  <p>We publish {NMETA.count.toLocaleString("en-US")} foods: the ones people actually find this site for in Google Search. We do not publish a page for every USDA record.</p>
+  <p>We publish {NMETA.count.toLocaleString("en-US")} foods: the ones people actually find this site for in Google Search, plus restaurant menu items. We do not publish a page for every USDA record.</p>
 
   <h2>Dates</h2>
   <p>"Updated" on a page, and the date in our sitemap, is the day that food's numbers last changed in our data. Restyling a page does not change it.</p>

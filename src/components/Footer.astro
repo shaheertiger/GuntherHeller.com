@@ -1,7 +1,7 @@
 ---
 import Logo from "./Logo.astro";
 import { SITE } from "../lib/site";
-import { NMETA, NCATS, RANKINGS, nurl } from "../lib/nutrition";
+import { NMETA, NCATS, RANKINGS, HUB_CHAINS, nurl } from "../lib/nutrition";
 import { REVIEWER, personUrl } from "../lib/people";
 const nutrients = RANKINGS.filter((r) => ["high-protein-foods", "high-fiber-foods", "low-calorie-foods", "low-carb-foods", "high-iron-foods"].includes(r.slug));
 ---
@@ -14,6 +14,10 @@ const nutrients = RANKINGS.filter((r) => ["high-protein-foods", "high-fiber-food
     <nav aria-label="Food categories" class="site-foot-row">
       <span class="site-foot-h">Categories</span>
       {NCATS.map((c) => <a href={nurl.cat(c.slug)}>{c.name}</a>)}
+    </nav>
+    <nav aria-label="Restaurants" class="site-foot-row">
+      <span class="site-foot-h">Restaurants</span>
+      <a href={nurl.restaurants()}>All restaurants</a>{HUB_CHAINS.slice(0, 8).map((c) => <a href={nurl.chain(c)}>{c.name}</a>)}
     </nav>
     <nav aria-label="Nutrient lists" class="site-foot-row">
       <span class="site-foot-h">Lists</span>

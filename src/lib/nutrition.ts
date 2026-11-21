@@ -8,6 +8,7 @@ import demandRaw from "../../data/demand.json";
 import chainsRaw from "../../data/chains.json";
 import restaurantRaw from "../../data/restaurant-foods.json";
 import provenRaw from "../../data/proven.json";
+import { builtSlugs } from "./built.mjs";
 
 /** [label, grams] — a third element 1 means the weight is unknown (a chain guide gave only "1 donut"); grams is then 100 and v holds per-serving values. */
 export type Portion = [label: string, grams: number, noWeight?: number];
@@ -41,12 +42,14 @@ export type NCategory = { slug: string; name: string; count: number };
 const RESTAURANT = (restaurantRaw.foods as unknown as NFood[]).filter((f) => !f.ps || ((demandRaw.foods as Record<string, { v: number }>)[f.slug]?.v ?? 0) > 0);
 /** Every record in the data files. Names are worked out over all of them (below), so they stay unique and stable. */
 const ALL_FOODS = [...(raw.foods as unknown as NFood[]), ...(branded.foods as unknown as NFood[]), ...RESTAURANT];
-/**
- * Foods Google has shown this site for (data/proven.json, from Search Console). Only these get a /calories/ page;
- * every other food URL returns 410 Gone (src/lib/gone.mjs).
- */
+/** Foods Google has shown this site for (data/proven.json, from Search Console). */
 export const PROVEN = provenRaw.foods as Record<string, { clicks: number; impressions: number; pages: number }>;
-export const NFOODS = ALL_FOODS.filter((f) => f.slug in PROVEN);
+/**
+ * Foods with a /calories/ page: proven foods plus restaurant menu items (src/lib/built.mjs). Every other food URL
+ * returns 410 Gone (src/lib/gone.mjs).
+ */
+const BUILT: Set<string> = builtSlugs({ nutrition: raw, branded, restaurant: restaurantRaw, demand: demandRaw, chains: chainsRaw, proven: provenRaw } as any);
+export const NFOODS = ALL_FOODS.filter((f) => BUILT.has(f.slug));
 export const NMETA = { ...(raw.meta as { generated: string; sources: { tag: string; name: string; url: string }[] }), count: NFOODS.length };
 const ALL_CATS = (raw.categories as NCategory[]).map((c) => ({ ...c, count: NFOODS.filter((f) => f.cat === c.slug).length }));
 /** Categories whose list page was removed (410, src/lib/gone.mjs): beef and pork (owner's decision, Nov 2026). Their foods keep their pages. */
@@ -152,7 +155,7 @@ export const CHAIN_DEMAND = (demandRaw as { chains?: Record<string, number> }).c
 /** Monthly US searches (competitor-ranking keywords) that this page answers. scripts/build-demand.mjs */
 export const demandOf = (f: { slug: string }) => DEMAND[f.slug]?.v ?? 0;
 /** Every built food page is indexable: the site only builds foods with proven Google impressions (PROVEN). */
-export const isIndexable = (f: NFood) => f.slug in PROVEN;
+export const isIndexable = (f: NFood) => BUILT.has(f.slug);
 /** Foods ordered by search demand (most searched first), then name. */
 export const byDemand = (a: NFood, b: NFood) => demandOf(b) - demandOf(a) || a.name.localeCompare(b.name);
 
@@ -367,13 +370,15 @@ function singular(f: NFood): string | null {
   const n = f.name.toLowerCase();
   return /ies$/.test(n) ? n.replace(/ies$/, "y") : /oes$/.test(n) ? n.replace(/es$/, "") : /[^s]s$/.test(n) ? n.slice(0, -1) : n;
 }
-export type Serving = { label: string; grams: number; ofFood: boolean };
+/** perServing: a chain-guide item with no weight; values in v are for this serving, and there is no 100 g row. */
+export type Serving = { label: string; grams: number; ofFood: boolean; perServing?: boolean };
 /**
  * Servings people actually use: the food's USDA household measures (first ones first, odd ones skipped, at most 3),
  * then 100 g. "1 medium" becomes "1 medium apple" when the food's name is one word; ofFood is false when the label
  * already names the food ("1 egg", "1 medium apple"), so sentences read "1 egg has …" rather than "1 egg of eggs".
  */
 export function servings(f: NFood): Serving[] {
+  if (f.ps) return [{ label: cleanServing(f.p[0]?.[0] ?? "") || "1 serving", grams: 100, ofFood: false, perServing: true }];
   const out: Serving[] = [];
   const one = singular(f);
   const named = (l: string) => WHOLE.test(l) || (one ? new RegExp(`\\b${one}s?\\b`, "i").test(l) : false);
@@ -397,7 +402,9 @@ export function servings(f: NFood): Serving[] {
 export const commonServing = (f: NFood) => servings(f)[0];
 export const kcalIn = (f: NFood, grams: number) => Math.round(per(f.v.kcal, grams));
 /** "1 cup of cooked rice" / "1 egg" / "100 g of salmon". */
-export const servingPhrase = (f: NFood, s: Serving) => (s.ofFood ? `${s.label} of ${lcName(f)}` : s.label);
+export const servingPhrase = (f: NFood, s: Serving) => (s.perServing ? f.name : s.ofFood ? `${s.label} of ${lcName(f)}` : s.label);
+/** "1 cup (158 g)", "100 g", or "1 large" for a per-serving chain item (no weight published). */
+export const servingWithGrams = (s: Serving) => (s.perServing || s.label === "100 g" ? s.label : `${s.label} (${+s.grams.toFixed(1)} g)`);
 
 const TITLE_MAX = 65;
 /**
@@ -407,7 +414,7 @@ const TITLE_MAX = 65;
 export function pageTitle(f: NFood) {
   const name = titleCase(f.name);
   const s = commonServing(f);
-  const tries = [
+  const tries = s.perServing ? [`${name} Calories: ${kcalIn(f, s.grams)} (Nutrition Facts)`, `${name} Calories: ${kcalIn(f, s.grams)}`, `${name} Calories`] : [
     `${name} Calories: ${kcalIn(f, s.grams)} per ${s.label} (Nutrition Facts)`,
     `${name} Calories: ${kcalIn(f, s.grams)} per ${s.label}`,
     `${name} Calories: ${kcalIn(f, 100)} per 100 g`,
@@ -435,7 +442,7 @@ export function similarThree(f: NFood): NFood[] {
 export function pageDescription(f: NFood) {
   const s = commonServing(f);
   const g = (k: string) => fmtN(per(f.v[k] ?? 0, s.grams), " g").replace(/^<0.1 g$/, "under 0.1 g");
-  const hundred = s.grams === 100 ? "" : ` 100 g has ${kcalIn(f, 100)} calories.`;
+  const hundred = s.grams === 100 || s.perServing ? "" : ` 100 g has ${kcalIn(f, 100)} calories.`;
   return `${cap(servingPhrase(f, s))} has ${kcalIn(f, s.grams)} calories, ${g("203")} of protein, ${g("205")} of carbs and ${g("204")} of fat.${hundred} Serving sizes, vitamins and minerals from USDA data.`.slice(0, 300);
 }
 

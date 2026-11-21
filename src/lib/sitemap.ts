@@ -1,4 +1,4 @@
-import { NFOODS, NCATS, RANKINGS, nurl, byDemand } from "./nutrition";
+import { NFOODS, NCATS, RANKINGS, HUB_CHAINS, nurl, byDemand, chainOf } from "./nutrition";
 import { REVIEWER, personUrl } from "./people";
 import { abs } from "./site";
 import { lastmodOf } from "./lastmod";
@@ -7,13 +7,14 @@ import { lastmodOf } from "./lastmod";
  * Sitemaps list every built, indexable page with the date its own content last changed (src/lib/lastmod.ts), never
  * a site-wide date. The index lists each sitemap with the newest date of the pages in it.
  */
-const foods = [...NFOODS].sort(byDemand).map((f) => nurl.food(f));
+const foods = [...NFOODS].filter((f) => !chainOf(f)).sort(byDemand).map((f) => nurl.food(f));
 const CHUNK = 5000;
 export const SECTIONS: Record<string, () => string[]> = {
   pages: () => [
     "/", "/food/", ...NCATS.map((c) => nurl.cat(c.slug)), ...RANKINGS.map((r) => nurl.rank(r)),
     "/methodology/", "/about/", "/editorial-policy/", "/contact/", personUrl(REVIEWER), "/privacy/", "/terms/",
   ],
+  restaurants: () => [nurl.restaurants(), ...HUB_CHAINS.map((c) => nurl.chain(c)), ...[...NFOODS].filter((f) => chainOf(f)).sort(byDemand).map((f) => nurl.food(f))],
   ...Object.fromEntries(Array.from({ length: Math.ceil(foods.length / CHUNK) }, (_, i) => [`foods-${i + 1}`, () => foods.slice(i * CHUNK, (i + 1) * CHUNK)])),
 };
 

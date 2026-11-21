@@ -17,7 +17,8 @@ import Breadcrumb from "./Breadcrumb.astro";
 import Byline from "./Byline.astro";
 import {
   type NFood, ncat, hasCatPage, nurl, per, fmtN, val, lcName, cap, titleCase, MAIN, VITAMINS, MINERALS, OTHER, SOURCE_NAME, possessive, guideDate, chainOf,
-  servings, commonServing, servingPhrase, kcalIn, pageTitle, pageH1, pageDescription, calorieRank, similarThree, pctDV, type NDef,
+  servings, commonServing, servingPhrase, servingWithGrams, kcalIn, pageTitle, pageH1, pageDescription, calorieRank, similarThree, pctDV, type NDef,
+  HUB_CHAINS, chainItems,
 } from "../lib/nutrition";
 import { foodDates } from "../lib/lastmod";
 import { askFor, getFood } from "../lib/data";
@@ -38,7 +39,10 @@ const dates = foodDates(food);
 const plural = food.storage && getFood(food.storage) ? !!getFood(food.storage)!.plural : /[^s]s$/i.test(food.name.split(/[ ,(]/)[0]);
 const Is = plural ? "Are" : "Is", does = plural ? "do" : "does", verbS = (v: string) => (plural ? v : `${v}s`);
 const catPage = hasCatPage(cat.slug);
-const crumbs = [{ name: "Foods", href: nurl.browse() }, ...(catPage ? [{ name: cat.name, href: nurl.cat(cat.slug) }] : []), { name }];
+const chainHub = chain && HUB_CHAINS.some((c) => c.slug === chain.slug) ? chain : null;
+const crumbs = chainHub
+  ? [{ name: "Restaurants", href: nurl.restaurants() }, { name: chainHub.name, href: nurl.chain(chainHub) }, { name }]
+  : [{ name: "Foods", href: nurl.browse() }, ...(catPage ? [{ name: cat.name, href: nurl.cat(cat.slug) }] : []), { name }];
 
 /* ---------------------------------------------------------------- numbers */
 const v100 = (k: string) => val(food, k);
@@ -57,11 +61,12 @@ const zeroCal = food.v.kcal === 0;
 const macros = [["203", "protein"], ["205", "carbs"], ["204", "fat"]].filter(([k]) => has(k) && (!zeroCal || (v100(k) ?? 0) > 0));
 const andList = (xs: string[]) => xs.join(", ").replace(/, ([^,]*)$/, " and $1");
 const nonzero = macros.filter(([k]) => per(v100(k)!, g0) > 0), zero = macros.filter(([k]) => per(v100(k)!, g0) === 0);
-const lead = `${cap(servingPhrase(food, s0))}${s0.label === "100 g" ? "" : ` (${+g0.toFixed(1)} g)`} has ${kcal0} calories${nonzero.length ? `, with ${andList(nonzero.map(([k, w]) => `${amt(k, g0, " g")} of ${w}`))}` : ""}${zero.length ? `${nonzero.length ? "," : ""} and no ${zero.map(([, w]) => w).join(" or ").replace(/ or ([^ ]*) or /, ", $1 or ")}` : ""}.`;
+const lead = `${cap(servingPhrase(food, s0))}${s0.label === "100 g" || s0.perServing ? "" : ` (${+g0.toFixed(1)} g)`} has ${kcal0} calories${nonzero.length ? `, with ${andList(nonzero.map(([k, w]) => `${amt(k, g0, " g")} of ${w}`))}` : ""}${zero.length ? `${nonzero.length ? "," : ""} and no ${zero.map(([, w]) => w).join(" or ").replace(/ or ([^ ]*) or /, ", $1 or ")}` : ""}.`;
 const rows = S.map((s) => ({ s, kcal: kcalIn(food, s.grams), cells: macros.map(([k]) => amt(k, s.grams, " g")) }))
   // A row with only zeros says nothing (water, plain tea): keep it only if calories or a macro is above zero.
   .filter((r) => zeroCal || r.kcal > 0 || r.cells.some((c) => !/^0 g$/.test(c)));
-const pickUnits = [...S.filter((s) => s.label !== "100 g").map((s) => [s.label, s.grams] as const), ["g", 1] as const, ["oz", 28.35] as const];
+// A per-serving chain item has no weight: the picker only multiplies servings.
+const pickUnits = s0.perServing ? [[s0.label, 100] as const] : [...S.filter((s) => s.label !== "100 g").map((s) => [s.label, s.grams] as const), ["g", 1] as const, ["oz", 28.35] as const];
 
 /* ---------------------------------------------------------------- 2. label */
 const LABEL_INDENT = new Set(["606", "605", "291", "269", "net"]);
@@ -70,10 +75,16 @@ const dvCell = (d: NDef, grams: number) => { const p = pctDV(per(v100(d.k) ?? 0,
 
 /* ---------------------------------------------------------------- 3. compare */
 const rank = calorieRank(food);
-const sims = similarThree(food);
 const catLower = cat.name.toLowerCase();
-const ord = (n: number) => `${n}${n % 100 >= 11 && n % 100 <= 13 ? "th" : ["th", "st", "nd", "rd"][n % 10] ?? "th"}`;
-const compareText = rank.of > 1
+function ord(n: number) { return `${n}${n % 100 >= 11 && n % 100 <= 13 ? "th" : ["th", "st", "nd", "rd"][n % 10] ?? "th"}`; }
+// Restaurant items compare with the rest of the chain's menu, per serving.
+const menu = chainHub ? chainItems(chainHub).map((x) => ({ x, kcal: kcalIn(x, commonServing(x).grams) })).sort((a, b) => b.kcal - a.kcal || a.x.name.localeCompare(b.x.name)) : [];
+const menuPos = menu.findIndex((m) => m.x === food) + 1;
+const menuSims = chainHub ? menu.filter((m) => m.x !== food && m.x.id !== food.id).sort((a, b) => Math.abs(a.kcal - kcal0) - Math.abs(b.kcal - kcal0)).slice(0, 3).map((m) => m.x) : [];
+const sims = chainHub ? menuSims : similarThree(food);
+const compareText = chainHub && menu.length > 1
+  ? `At ${kcal0} calories per serving, the ${name} ${menuPos === 1 ? "is the highest-calorie" : menuPos === menu.length ? "is the lowest-calorie" : `ranks ${ord(menuPos)} of ${menu.length}`} of the ${menu.length} ${chainHub.name} items on this site${menuPos === 1 || menuPos === menu.length ? "" : ", counting from the highest-calorie"}.`
+  : rank.of > 1
   ? `At ${Math.round(food.v.kcal)} calories per 100 g, ${lname} ${rank.pos === 1 ? `${plural ? "are" : "is"} the most calorie-dense of the ${rank.of} ${catLower} foods on this site` : rank.pos === rank.of ? `${plural ? "are" : "is"} the least calorie-dense of the ${rank.of} ${catLower} foods on this site` : `${verbS("rank")} ${ord(rank.pos)} of the ${rank.of} ${catLower} foods on this site, counting from the most calorie-dense`}.`
   : `${cap(lname)} ${plural ? "have" : "has"} ${Math.round(food.v.kcal)} calories per 100 g.`;
 
@@ -94,7 +105,7 @@ if (has("203")) {
 if (has("205")) {
   const c = per(v100("205")!, g0), fib = has("291") ? per(v100("291")!, g0) : null, sug = has("269") ? per(v100("269")!, g0) : null;
   const parts = [fib != null && fib > 0 ? `${fmtN(fib, " g")} of fiber` : "", sug != null && sug > 0 ? `${fmtN(sug, " g")} of sugar` : ""].filter(Boolean);
-  q.push([`How many carbs are in ${lname}?`, c === 0 ? `${cap(sp)} has no carbohydrates.` : `${cap(sp)} has ${fmtN(c, " g")} of carbohydrates${parts.length ? `, including ${parts.join(" and ")}` : ""}${fib != null ? `; that leaves ${fmtN(Math.max(0, c - (fib ?? 0)), " g")} of net carbs` : ""}. 100 g has ${fmtN(v100("205"), " g")}.`]);
+  q.push([`How many carbs are in ${lname}?`, c === 0 ? `${cap(sp)} has no carbohydrates.` : `${cap(sp)} has ${fmtN(c, " g")} of carbohydrates${parts.length ? `, including ${parts.join(" and ")}` : ""}${fib != null ? `; that leaves ${fmtN(Math.max(0, c - (fib ?? 0)), " g")} of net carbs` : ""}.${s0.perServing ? "" : ` 100 g has ${fmtN(v100("205"), " g")}.`}`]);
   if (fib != null) {
     const net = Math.max(0, c - fib);
     const carbShare = kcal0 > 0 ? (c * 4) / kcal0 : 1;
@@ -164,16 +175,16 @@ const jsonld = {
           <caption class="vh">Calories, protein, carbs and fat in common servings of {lname}</caption>
           <thead><tr><th scope="col">Serving</th><th scope="col" class="num">Calories</th>{macros.map(([, w]) => <th scope="col" class="num">{cap(w)}</th>)}</tr></thead>
           <tbody>
-            {rows.map((r) => <tr><th scope="row">{r.s.label}{r.s.label !== "100 g" && <span class="text-muted"> ({+r.s.grams.toFixed(1)} g)</span>}</th><td class="num"><b>{r.kcal}</b></td>{r.cells.map((c) => <td class="num">{c}</td>)}</tr>)}
+            {rows.map((r) => <tr><th scope="row">{r.s.label}{r.s.label !== "100 g" && !r.s.perServing && <span class="text-muted"> ({+r.s.grams.toFixed(1)} g)</span>}</th><td class="num"><b>{r.kcal}</b></td>{r.cells.map((c) => <td class="num">{c}</td>)}</tr>)}
           </tbody>
         </table>
       </div>
-      <form class="serving mt-4" data-serving onsubmit="return false">
+      <form class="serving mt-4" data-serving data-per-serving={s0.perServing ? "1" : undefined} onsubmit="return false">
         <label>Amount <input type="number" inputmode="decimal" min="0" step="any" value="1" name="amt" /></label>
         <label>Unit
-          <select name="unit">{pickUnits.map(([l, g], i) => <option value={g} selected={i === 0}>{l === "g" || l === "oz" ? l : `${l} (${+g.toFixed(1)} g)`}</option>)}</select>
+          <select name="unit">{pickUnits.map(([l, g], i) => <option value={g} selected={i === 0}>{l === "g" || l === "oz" || s0.perServing ? l : `${l} (${+g.toFixed(1)} g)`}</option>)}</select>
         </label>
-        <p class="serving-out">= <b data-kcal data-v100={food.v.kcal}>{kcal0}</b> calories · label below shows <span data-serving-label>{s0.label === "100 g" ? "100 g" : `${s0.label} (${+g0.toFixed(1)} g)`}</span></p>
+        <p class="serving-out">= <b data-kcal data-v100={food.v.kcal}>{kcal0}</b> calories · label below shows <span data-serving-label>{servingWithGrams(s0)}</span></p>
       </form>
     </section>
 
@@ -181,7 +192,7 @@ const jsonld = {
       <section class="block-sec" aria-labelledby="facts-h">
         <h2 id="facts-h">{cap(name)} nutrition facts</h2>
         <div class="nf-label mt-3">
-          <p class="nf-serving">Serving size <span data-serving-label>{s0.label === "100 g" ? "100 g" : `${s0.label} (${+g0.toFixed(1)} g)`}</span></p>
+          <p class="nf-serving">Serving size <span data-serving-label>{servingWithGrams(s0)}</span></p>
           <p class="nf-kcal"><span>Calories</span><b data-kcal data-v100={food.v.kcal}>{kcal0}</b></p>
           <table class="nf-rows">
             <caption class="vh">Nutrition facts for {lname}</caption>
@@ -203,11 +214,11 @@ const jsonld = {
 
     <section class="block-sec" aria-labelledby="cmp-h">
       <h2 id="cmp-h">How {does} {lname} compare?</h2>
-      <p class="mt-3">{compareText}{catPage && <> <a class="alink" href={nurl.cat(cat.slug)}>See all {catLower}</a>.</>}</p>
+      <p class="mt-3">{compareText}{chainHub ? <> <a class="alink" href={nurl.chain(chainHub)}>All {chainHub.name} items</a>.</> : catPage && <> <a class="alink" href={nurl.cat(cat.slug)}>See all {catLower}</a>.</>}</p>
       {sims.length > 0 && (
         <ul class="cmp-list">
           {sims.map((x) => { const sx = commonServing(x); return (
-            <li><a href={nurl.food(x)}>{x.name}</a><span>{Math.round(x.v.kcal)} cal per 100 g{sx.label !== "100 g" && ` · ${kcalIn(x, sx.grams)} per ${sx.label}`}</span></li>
+            <li><a href={nurl.food(x)}>{x.name}</a><span>{sx.perServing ? `${kcalIn(x, sx.grams)} cal per ${sx.label}` : <>{Math.round(x.v.kcal)} cal per 100 g{sx.label !== "100 g" && ` · ${kcalIn(x, sx.grams)} per ${sx.label}`}</>}</span></li>
           ); })}
         </ul>
       )}
@@ -216,7 +227,7 @@ const jsonld = {
     {micros.length > 0 && (
       <section class="block-sec" aria-labelledby="vit-h">
         <h2 id="vit-h">What vitamins and minerals are in {lname}?</h2>
-        <p class="mt-2 text-[15px] text-muted">For <span data-serving-label>{s0.label === "100 g" ? "100 g" : `${s0.label} (${+g0.toFixed(1)} g)`}</span>. Nutrients USDA did not measure for this food are left out.</p>
+        <p class="mt-2 text-[15px] text-muted">For <span data-serving-label>{servingWithGrams(s0)}</span>. Nutrients USDA did not measure for this food are left out.</p>
         <div class="tscroll mt-3">
           <table class="dtable ntab">
             <caption class="vh">Vitamins and minerals in {lname}</caption>
@@ -243,7 +254,7 @@ const jsonld = {
           ? <li><a class="alink" href={food.source.url} rel="nofollow noopener">{food.source.name}</a>{food.source.date ? `, ${guideDate(food.source.date)}` : ""}: {possessive(chain?.name ?? "the chain")} own nutrition guide, values per serving as published.</li>
           : food.src === "B"
           ? <li><a class="alink" href={fdcUrl} rel="nofollow">USDA FoodData Central, FDC ID {food.id}</a>: the Nutrition Facts label {food.brand} submitted to USDA (Branded Foods), record “{food.desc}”{food.labelUpdated ? `, label dated ${guideDate(food.labelUpdated)}` : ""}. Other brands' recipes differ; the label on your jar wins.</li>
-          : <li><a class="alink" href={fdcUrl} rel="nofollow">USDA FoodData Central, FDC ID {food.id}</a>: {SOURCE_NAME[food.src]}, record “{food.desc}”. Values per serving are worked out from USDA's per-100 g values and its household measures.</li>}
+          : <li><a class="alink" href={fdcUrl} rel="nofollow">USDA FoodData Central, FDC ID {food.id}</a>: {SOURCE_NAME[food.src]}, record “{food.desc}”. Values per serving are worked out from USDA's per-100 g values and its household measures.{chain && ` USDA bought and analysed this item (or modelled it from its recipe); ${possessive(chain.name)} current nutrition guide may differ.`}</li>}
         <li>Daily Values: FDA, 21 CFR 101.9 (2,000-calorie diet).</li>
       </ul>
       <p class="mt-3">Spotted a wrong number? <a class="alink" href={reportHref(path)}>Report a correction</a> and we'll check it against the source. <a class="alink" href="/methodology/">How we build these pages</a>.</p>
@@ -268,7 +279,7 @@ const jsonld = {
     const update = () => {
       const g = (parseFloat(amt.value) || 0) * parseFloat(unit.value);
       const opt = unit.options[unit.selectedIndex].text.replace(/\s*\([\d.]+ g\)$/, "");
-      const label = opt === "g" ? `${+g.toFixed(1)} g` : `${amt.value} × ${opt} (${+g.toFixed(1)} g)`;
+      const label = opt === "g" ? `${+g.toFixed(1)} g` : form.dataset.perServing ? `${amt.value} × ${opt}` : `${amt.value} × ${opt} (${+g.toFixed(1)} g)`;
       document.querySelectorAll<HTMLElement>("[data-serving-label]").forEach((el) => (el.textContent = label));
       document.querySelectorAll<HTMLElement>("[data-v100]").forEach((el) => {
         const v = el.dataset.v100;

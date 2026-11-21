@@ -27,6 +27,7 @@
 import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join, relative } from "node:path";
 import { makeResolver, GONE_FOOD_PAGES, GONE_PREFIXES, GONE_FILES } from "../src/lib/gone.mjs";
+import { builtSlugs } from "../src/lib/built.mjs";
 
 const ROOT = new URL("../", import.meta.url);
 const json = (p) => JSON.parse(readFileSync(new URL(p, ROOT), "utf8"));
@@ -101,10 +102,15 @@ for (const rel of calPages) {
   const table = main.match(/<table class="dtable serv-table">([\s\S]*?)<\/table>/)?.[1];
   if (!table) { err(`${rel}: no serving table`); continue; }
   const rows = [...table.matchAll(/<tr><th scope="row">([\s\S]*?)<\/th><td class="num"><b>(\d+)<\/b><\/td>/g)].map((m) => ({ label: text(m[1]), kcal: +m[2] }));
+  if (f.ps) {
+    // A chain-guide item with values per serving only (no weight): one row, the guide's serving, no 100 g row.
+    if (rows.length !== 1 || rows[0].label === "100 g" || rows[0].kcal !== Math.round(f.v.kcal)) err(`${rel}: per-serving item should show one serving row with ${Math.round(f.v.kcal)} kcal`);
+    if (/\b100 g\b/.test(text(main))) err(`${rel}: per-serving item mentions 100 g`);
+  }
   const hundred = rows.find((r) => r.label === "100 g");
-  if (!hundred) err(`${rel}: no 100 g row`);
+  if (f.ps) {} else if (!hundred) err(`${rel}: no 100 g row`);
   else if (hundred.kcal !== Math.round(f.v.kcal)) err(`${rel}: 100 g shows ${hundred.kcal} kcal, data has ${f.v.kcal}`);
-  const real = rows.filter((r) => r.label !== "100 g");
+  const real = rows.filter((r) => r.label !== "100 g" && !f.ps);
   for (const r of real) {
     const g = +r.label.match(/\(([\d.]+) g\)$/)?.[1];
     if (!g) { err(`${rel}: serving "${r.label}" has no weight`); continue; }
@@ -112,7 +118,7 @@ for (const rel of calPages) {
     if (!portion) err(`${rel}: serving "${r.label}" is not a USDA measure for this food`);
     if (Math.abs(r.kcal - (f.v.kcal * g) / 100) > 0.5) err(`${rel}: "${r.label}" shows ${r.kcal} kcal, data gives ${((f.v.kcal * g) / 100).toFixed(1)}`);
   }
-  if (!real.length) { if (hasHouseholdServing(f)) err(`${rel}: data has a household serving but the page shows 100 g only`); else onlyHundred.push(slug); }
+  if (!real.length && !f.ps) { if (hasHouseholdServing(f)) err(`${rel}: data has a household serving but the page shows 100 g only`); else onlyHundred.push(slug); }
 
   // No empty sections, no rows of zeros or dashes.
   for (const m of main.matchAll(/<section[^>]*>([\s\S]*?)<\/section>/g)) {
@@ -176,7 +182,7 @@ for (const [, loc, mod] of idx.matchAll(/<sitemap><loc>https:\/\/www\.guntherhel
 }
 if ((idx.match(/<sitemap>/g) ?? []).length !== (idx.match(/<lastmod>/g) ?? []).length) err("sitemap.xml: an entry has no lastmod");
 for (const [rel, html] of htmlOf) if (rel !== "/404.html" && !isNoindex(html) && !listed.has(rel)) err(`${rel}: indexable page missing from sitemaps`);
-for (const p of ["/", "/food/", "/about/", "/methodology/", "/editorial-policy/", "/contact/", "/authors/karman-meyer/"]) if (!listed.has(p)) err(`sitemaps: ${p} missing`);
+for (const p of ["/", "/food/", "/restaurants/", "/about/", "/methodology/", "/editorial-policy/", "/contact/", "/authors/karman-meyer/"]) if (!listed.has(p)) err(`sitemaps: ${p} missing`);
 const distinct = new Set(listed.values());
 if (distinct.size < 2) err(`sitemaps: every URL has the same lastmod (${[...distinct][0]})`);
 let orphans = 0;
@@ -187,12 +193,15 @@ for (const f of ["favicon.ico", "favicon.svg", "favicon-96x96.png", "apple-touch
 
 /* ---------------------------------------------------------------- URLs from main, old redirects */
 const MAP = json("data/old-redirects.json");
-// The live set exactly as the on-demand route builds it (proven foods + every /food/ page not removed)...
+// The live set as the on-demand route builds it (proven foods + every /food/ page not removed). The route does not
+// know restaurant items; that is safe as long as no old redirect points at one (checked below).
 const proven = new Set(Object.keys(json("data/proven.json").foods).map((s) => `/calories/${s}/`));
 const live = { has: (p) => (p.startsWith("/calories/") ? proven.has(p) : !GONE_FOOD_PAGES.includes(p)) };
-// ...must agree with what was built.
-for (const p of proven) if (!htmlOf.has(p)) err(`${p}: in data/proven.json but not built`);
-for (const p of calPages) if (!proven.has(p)) err(`${p}: built but not in data/proven.json`);
+// Built food pages = src/lib/built.mjs, exactly.
+const BUILT = new Set([...builtSlugs({ nutrition: json("data/nutrition.json"), branded: json("data/branded.json"), restaurant: json("data/restaurant-foods.json"), demand: json("data/demand.json"), chains: json("data/chains.json"), proven: json("data/proven.json") })].map((s) => `/calories/${s}/`));
+for (const p of BUILT) if (!htmlOf.has(p)) err(`${p}: should have a page (src/lib/built.mjs) but was not built`);
+for (const p of calPages) if (!BUILT.has(p)) err(`${p}: built but src/lib/built.mjs does not give it a page`);
+for (const [src, dest] of Object.entries(json("data/old-redirects.json"))) { const d = dest.split("#")[0]; if (d.startsWith("/calories/") && BUILT.has(d) && !proven.has(d)) err(`data/old-redirects.json: ${src} points at ${d}, which the on-demand route does not know is live`); }
 for (const p of GONE_FOOD_PAGES) if (htmlOf.has(p)) err(`${p}: listed as removed in src/lib/gone.mjs but still built`);
 const resolve = makeResolver(MAP, live);
 const builtPath = (p) => htmlOf.has(p) || (p !== "/" && existsSync(join(DIST, p)) && statSync(join(DIST, p)).isFile());

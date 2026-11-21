@@ -4,7 +4,7 @@
  *
  *   - an old URL in data/old-redirects.json whose page still exists → 301 there (unchanged)
  *   - an old URL whose destination page was removed                 → 410 (one hop, instead of 301 → 410)
- *   - a removed page: /calories/*, /tools/*, /restaurants/*, /brands/*,
+ *   - a removed page: /calories/* (no page), /tools/*, /brands/*,
  *     /food/{category}/ pages with no foods left, removed sitemaps     → 410 Gone
  *   - anything else                                                  → 301 to the home page (unchanged)
  *
@@ -13,14 +13,14 @@
  * @param {Record<string, string>} map   data/old-redirects.json
  * @param {Set<string>} live             paths that are still built: /calories/{proven slug}/ and the kept /food/ pages
  */
-export const GONE_PREFIXES = ["/calories/", "/tools/", "/restaurants/", "/brands/"];
+export const GONE_PREFIXES = ["/calories/", "/tools/", "/brands/"];
 /**
- * /food/ category pages removed: alcohol and fast-food restaurants (none of their foods has proven impressions), beef
- * and pork (owner's decision: they competed with /calories/beef/ and /calories/pork/).
+ * /food/ category pages removed: alcohol (none of its foods has a page), beef and pork (owner's decision: they
+ * competed with /calories/beef/ and /calories/pork/).
  */
-export const GONE_FOOD_PAGES = ["/food/alcohol/", "/food/fast-food-restaurants/", "/food/beef/", "/food/pork/"];
+export const GONE_FOOD_PAGES = ["/food/alcohol/", "/food/beef/", "/food/pork/"];
 /** Sitemaps of removed sections. */
-export const GONE_FILES = ["/sitemap-restaurants.xml", "/sitemap-brands.xml"];
+export const GONE_FILES = ["/sitemap-brands.xml"];
 
 export function makeResolver(map, live) {
   const isLive = (dest) => {

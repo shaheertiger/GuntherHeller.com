@@ -1,13 +1,14 @@
 ---
 import Base from "../layouts/Base.astro";
 import Squiggle from "../components/Squiggle.astro";
-import { NCATS, NMETA, RANKINGS, NFOODS, PROVEN, nurl, commonServing, kcalIn, type NFood } from "../lib/nutrition";
+import { NCATS, NMETA, RANKINGS, NFOODS, PROVEN, HUB_CHAINS, CHAIN_DEMAND, chainItems, nurl, commonServing, kcalIn, type NFood } from "../lib/nutrition";
 import { REVIEWER, personUrl } from "../lib/people";
 import { ORG } from "../lib/schema";
 import { SITE } from "../lib/site";
 
 /** The foods people find this site for most (Search Console impressions, data/proven.json). */
-const popular: NFood[] = [...NFOODS].sort((a, b) => PROVEN[b.slug].impressions - PROVEN[a.slug].impressions).slice(0, 24);
+const popular: NFood[] = NFOODS.filter((f) => f.slug in PROVEN).sort((a, b) => PROVEN[b.slug].impressions - PROVEN[a.slug].impressions).slice(0, 24);
+const chains = [...HUB_CHAINS].sort((a, b) => (CHAIN_DEMAND[b.slug] ?? 0) - (CHAIN_DEMAND[a.slug] ?? 0)).slice(0, 12);
 const ld = {
   "@context": "https://schema.org",
   "@graph": [
@@ -36,6 +37,14 @@ const ld = {
         return <li><a href={nurl.food(f)} class="tile hoverup flex justify-between items-center gap-3 px-4 py-3"><span class="font-[550]">{f.name}</span><span class="text-sm text-muted text-right">{kcalIn(f, s.grams)} cal<br /><span class="text-[12px]">{s.label}</span></span></a></li>;
       })}
     </ul>
+  </section>
+
+  <section class="wrap mt-14" aria-labelledby="rest-h">
+    <h2 id="rest-h" class="text-[28px]">Restaurant menus</h2>
+    <ul class="list-none p-0 m-0 mt-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      {chains.map((c) => <li><a href={nurl.chain(c)} class="tile hoverup flex justify-between items-center gap-3 px-4 py-3"><span class="font-[550]">{c.name}</span><span class="text-sm text-muted">{chainItems(c).length} items</span></a></li>)}
+    </ul>
+    <p class="mt-4 text-[15px]"><a class="alink" href={nurl.restaurants()}>All restaurants</a></p>
   </section>
 
   <section class="wrap mt-14" aria-labelledby="cat-h">
