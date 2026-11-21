@@ -11,7 +11,7 @@ interface Props { slug: string; title: string; description: string; h1: string; 
 const { slug, title, description, h1, lead, faq } = Astro.props;
 const path = `/tools/${slug}/`;
 const crumbs = [{ name: "Home", href: "/" }, { name: "Tools", href: "/tools/" }, { name: h1 }];
-const ld = { "@context": "https://schema.org", "@graph": [ORG, { "@type": "WebApplication", name: h1, url: abs(path), applicationCategory: "UtilitiesApplication", operatingSystem: "Any", offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, description }, breadcrumbLd(crumbs, path), faqLd(faq)] };
+const ld = { "@context": "https://schema.org", "@graph": [ORG, { "@type": "WebPage", "@id": `${abs(path)}#page`, name: h1, url: abs(path), description, publisher: { "@id": ORG["@id"] } }, breadcrumbLd(crumbs, path), faqLd(faq)] };
 ---
 <Base title={title} description={description} path={path} jsonld={ld}>
   <div class="container-site pt-4 md:pt-6">
