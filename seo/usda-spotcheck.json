@@ -1,0 +1,56 @@
+{
+ "fetched": "2026-11-21",
+ "source": "https://fdc.nal.usda.gov/portal-data/external/{fdcId}",
+ "foods": {
+  "eggs": {
+   "fdcId": 2707152,
+   "description": "Egg, whole, raw",
+   "per100g": {
+    "kcal": 143,
+    "protein": 12.4,
+    "carbs": 0.96,
+    "fat": 9.96
+   }
+  },
+  "cooked-rice": {
+   "fdcId": 2708402,
+   "description": "Rice, cooked, NFS",
+   "per100g": {
+    "kcal": 129,
+    "protein": 2.67,
+    "carbs": 27.99,
+    "fat": 0.28
+   }
+  },
+  "cod": {
+   "fdcId": 2684444,
+   "description": "Fish, cod, Atlantic, wild caught, raw",
+   "per100g": {
+    "kcal": 70,
+    "protein": 16.1,
+    "carbs": 0,
+    "fat": 0.67
+   }
+  },
+  "barley": {
+   "fdcId": 170284,
+   "description": "Barley, pearled, raw",
+   "per100g": {
+    "kcal": 352,
+    "protein": 9.91,
+    "carbs": 77.7,
+    "fat": 1.16
+   }
+  },
+  "thai-red-curry-paste": {
+   "fdcId": 2608324,
+   "description": "AUTHENTIC HOT RED CURRY PASTE, HOT RED CURRY",
+   "per100g": {
+    "kcal": 100,
+    "protein": 0,
+    "carbs": 20,
+    "fat": 0
+   }
+  }
+ }
+}

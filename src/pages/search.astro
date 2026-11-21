@@ -3,15 +3,15 @@ import Base from "../layouts/Base.astro";
 import { NMETA } from "../lib/nutrition";
 ---
 <Base title="Search Foods | Gunther Heller" description={`Search calories and nutrition facts for ${NMETA.count.toLocaleString("en-US")} foods.`} path="/search/" noindex>
-  <div class="container-site pt-8 max-w-[760px]">
-    <h1 class="h1-food">Search foods</h1>
+  <div class="wrap pt-8 max-w-[760px]">
+    <h1 class="h1x">Search foods</h1>
     <form action="/search/" method="get" class="mt-6 flex gap-2" role="search">
-      <label for="q" class="sr-only-x">Food</label>
+      <label for="q" class="vh">Food</label>
       <input id="q" name="q" type="search" autocomplete="off" placeholder="e.g. chicken breast" class="flex-1 h-11 border border-line rounded-lg px-3 text-base outline-none focus:border-primary-soft" />
-      <button class="btn-primary">Search</button>
+      <button class="btn">Search</button>
     </form>
     <ul class="list-none p-0 mt-6" data-results aria-live="polite"></ul>
-    <p class="mt-6 text-sm">Or <a class="link" href="/food/">browse all foods by category</a>.</p>
+    <p class="mt-6 text-sm">Or <a class="alink" href="/food/">browse all foods by category</a>.</p>
   </div>
 </Base>
 <script>

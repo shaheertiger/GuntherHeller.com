@@ -7,9 +7,9 @@ const rows = defs.map((d) => ({ d, v: val(food, d.k) })).filter((r) => showMissi
 const anyDV = rows.some((r) => r.d.dv);
 ---
 {rows.length > 0 && (
-  <div class="table-wrap" id={id}>
-    <table class="data-table ntable">
-      <caption class="sr-only-x">{caption}</caption>
+  <div class="tscroll" id={id}>
+    <table class="dtable ntab">
+      <caption class="vh">{caption}</caption>
       <thead><tr><th scope="col">Nutrient</th><th scope="col" class="num">Value</th>{anyDV && <th scope="col" class="num">%DV</th>}</tr></thead>
       <tbody>
         {rows.map(({ d, v }) => {

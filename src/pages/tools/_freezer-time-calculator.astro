@@ -31,12 +31,12 @@ const faq: [string, string][] = [
   const run = () => {
     const r = resolve();
     if (!r || !day.value) return;
-    if (r.zd == null) { out.innerHTML = `<p>Freezing ${esc(r.n.toLowerCase())}: <strong>${esc(r.z)}</strong>. <a class="link" href="${foodHref(r)}">Why →</a></p>`; return; }
+    if (r.zd == null) { out.innerHTML = `<p>Freezing ${esc(r.n.toLowerCase())}: <strong>${esc(r.z)}</strong>. <a class="alink" href="${foodHref(r)}">Why →</a></p>`; return; }
     const start = new Date(day.value + "T12:00:00");
     const lo = addDays(start, Math.round(r.zd)), hi = addDays(start, Math.round(r.zx ?? r.zd));
     out.innerHTML = `<div class="big-out">${fmtDate(lo)}</div>
       <p class="text-muted mt-1">Best quality until this date (${esc(r.z)} in the freezer)${hi > lo ? `; still good until about ${fmtDate(hi)}` : ""}. It remains safe after that if kept at 0°F.</p>
-      <p class="mt-3 text-sm"><a class="link" href="/calories/${r.s}/#freeze">How to freeze and thaw ${esc(r.n.toLowerCase())} →</a></p>`;
+      <p class="mt-3 text-sm"><a class="alink" href="/calories/${r.s}/#freeze">How to freeze and thaw ${esc(r.n.toLowerCase())} →</a></p>`;
   };
   food.addEventListener("change", run); food.addEventListener("input", run); day.addEventListener("change", run);
 </script>

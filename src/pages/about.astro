@@ -1,21 +1,20 @@
 ---
 import Prose from "../layouts/Prose.astro";
 import { SITE } from "../lib/site";
-import { FOODS } from "../lib/data";
 import { NMETA } from "../lib/nutrition";
 import { REVIEWER, personUrl } from "../lib/people";
 ---
-<Prose title="About Gunther Heller | Calories and Nutrition Facts" h1="About Gunther Heller" path="/about/"
-  description="Gunther Heller publishes free calories and nutrition facts for 13,000+ foods from USDA FoodData Central, plus storage times. Who we are and how to contact us."
-  lead="Gunther Heller answers two questions about any food: what is in it, and how long does it keep?">
-  <h2>What we do</h2>
-  <p>We publish calories, macronutrients, vitamins, minerals, fatty acids and amino acids for {NMETA.count.toLocaleString("en-US")} foods, with a serving-size picker on every page. For {FOODS.length} common foods we add counter, fridge and freezer storage times. No sign-ups and no app. The site is funded by display advertising, which we keep out of the way of the answer.</p>
-  <h2>Who is behind it</h2>
-  <p>Gunther Heller is run by a small editorial team that builds the pages from USDA data. Our editorial standards are reviewed by <a href={personUrl(REVIEWER)}>{REVIEWER.name}, {REVIEWER.credentials}</a>, a registered dietitian nutritionist and author of two nutrition books. Read how we work in our <a href="/editorial-policy/">editorial policy</a>.</p>
-  <h2>Restaurants and store brands</h2>
-  <p>Besides everyday foods, we cover <a href="/restaurants/">restaurant menu items</a> that USDA has analysed and the <a href="/brands/">store-brand products</a> people search for most, with their label nutrition.</p>
-  <h2>Where the data comes from</h2>
-  <p>USDA FoodData Central for nutrition, USDA FoodKeeper and FSIS guidance for storage. Read <a href="/methodology/">how we use the data</a>.</p>
-  <h2>Contact</h2>
-  <p>Questions, corrections and partnership requests: <a href={`mailto:${SITE.email}`}>{SITE.email}</a> or see our <a href="/contact/">contact page</a>. A person replies within one business day.</p>
+<Prose title="About Gunther Heller: Calorie Counts From USDA Data" h1="About this site" path="/about/"
+  description={`Gunther Heller is a free calorie and nutrition lookup for ${NMETA.count} everyday foods, built from USDA FoodData Central. Who runs it, what it covers and what it does not.`}
+  lead="Gunther Heller does one job: it tells you how many calories, and how much protein, carbohydrate and fat, are in a food, for the serving you are about to eat.">
+  <h2>What you will find here</h2>
+  <p>One page per food, {NMETA.count.toLocaleString("en-US")} foods in all. Each page leads with the calories in a normal serving (a cup, a slice, one egg) and in 100 g, then shows the full nutrition label, how the food compares with similar foods, and the vitamins and minerals USDA measured. There is nothing to sign up for.</p>
+  <h2>What you will not find</h2>
+  <p>Diet plans, recipes, product reviews or medical advice. We also no longer cover how long food keeps; where diagxcar.com has a storage guide for a food, the food page links to it.</p>
+  <h2>The people involved</h2>
+  <p>A small editorial team writes the software that turns USDA's tables into these pages and answers your emails. {REVIEWER.name}, {REVIEWER.credentials}, a registered dietitian nutritionist, reviews the rules we follow: which USDA record stands for a food, how servings and Daily Values are worked out, and how we word what the numbers mean. <a href={personUrl(REVIEWER)}>More about {REVIEWER.name}</a>.</p>
+  <h2>Money</h2>
+  <p>Ads pay for the site. They never decide which foods we cover or what the numbers say.</p>
+  <h2>Getting in touch</h2>
+  <p>Write to <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. The <a href="/contact/">contact page</a> explains what to include when you report a number.</p>
 </Prose>

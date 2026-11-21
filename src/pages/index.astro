@@ -1,14 +1,13 @@
 ---
 import Base from "../layouts/Base.astro";
 import Squiggle from "../components/Squiggle.astro";
-import { NCATS, NMETA, RANKINGS, HUB_CHAINS, HUB_STORES, CHAIN_DEMAND, chainItems, storeItems, nfood, nurl, defaultServing, per, type NFood } from "../lib/nutrition";
+import { NCATS, NMETA, RANKINGS, NFOODS, PROVEN, nurl, commonServing, kcalIn, type NFood } from "../lib/nutrition";
 import { REVIEWER, personUrl } from "../lib/people";
-const chains = [...HUB_CHAINS].sort((a, b) => (CHAIN_DEMAND[b.slug] ?? 0) - (CHAIN_DEMAND[a.slug] ?? 0)).slice(0, 12);
 import { ORG } from "../lib/schema";
 import { SITE } from "../lib/site";
 
-const POPULAR = ["eggs", "bananas", "cooked-rice", "avocado", "apples", "salmon", "milk", "bread", "peanut-butter", "greek-yogurt", "oatmeal", "potatoes", "broccoli", "bacon", "cheddar-cheese", "strawberries", "ground-beef", "sweet-potatoes", "almonds", "tofu", "hummus", "pizza", "cottage-cheese", "blueberries"];
-const popular = POPULAR.map(nfood).filter((f): f is NFood => !!f);
+/** The foods people find this site for most (Search Console impressions, data/proven.json). */
+const popular: NFood[] = [...NFOODS].sort((a, b) => PROVEN[b.slug].impressions - PROVEN[a.slug].impressions).slice(0, 24);
 const ld = {
   "@context": "https://schema.org",
   "@graph": [
@@ -17,52 +16,44 @@ const ld = {
   ],
 };
 ---
-<Base title="Calories and Nutrition Facts for Foods, Restaurants and Store Brands | Gunther Heller" description={`Calories, protein, carbs, fat, vitamins and minerals for ${NMETA.count.toLocaleString("en-US")} foods from USDA FoodData Central, with serving sizes and storage times.`} path="/" jsonld={ld}>
-  <section class="container-site pt-10 md:pt-16 max-w-[900px] text-center">
-    <h1 class="text-[40px] md:text-[56px]">Calories and nutrition facts</h1>
+<Base title="Gunther Heller: How Many Calories Are in Your Food?" description={`Calories per serving and per 100 g, protein, carbs, fat, vitamins and minerals for ${NMETA.count.toLocaleString("en-US")} everyday foods, straight from USDA FoodData Central.`} path="/" jsonld={ld}>
+  <section class="wrap pt-10 md:pt-16 max-w-[900px] text-center">
+    <h1 class="text-[40px] md:text-[56px]">How many calories are in it?</h1>
     <Squiggle />
-    <p class="lead mt-4">Look up calories, protein, carbs, fat, vitamins and minerals for {NMETA.count.toLocaleString("en-US")} foods. Every number comes from USDA FoodData Central.</p>
+    <p class="intro mt-4">Type a food. You get its calories for the servings people actually eat, then protein, carbs, fat, vitamins and minerals. {NMETA.count.toLocaleString("en-US")} foods, all from USDA FoodData Central.</p>
     <form action="/search/" method="get" role="search" class="mt-7 flex gap-2 max-w-[620px] mx-auto">
-      <label for="home-q" class="sr-only-x">Search foods</label>
-      <input id="home-q" name="q" type="search" autocomplete="off" placeholder="Search a food, e.g. chicken breast" class="flex-1 h-12 border border-line rounded-lg px-4 text-base outline-none focus:border-primary-soft" />
-      <button class="btn-primary">Search</button>
+      <label for="home-q" class="vh">Search foods</label>
+      <input id="home-q" name="q" type="search" autocomplete="off" placeholder="Try: eggs, cooked rice, avocado" class="flex-1 h-12 border border-line rounded-lg px-4 text-base outline-none focus:border-primary-soft" />
+      <button class="btn">Search</button>
     </form>
   </section>
 
-  <section class="container-site mt-14" aria-labelledby="pop-h">
-    <h2 id="pop-h" class="text-[28px]">Popular foods</h2>
+  <section class="wrap mt-14" aria-labelledby="pop-h">
+    <h2 id="pop-h" class="text-[28px]">Most looked-up foods</h2>
     <ul class="list-none p-0 m-0 mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
       {popular.map((f) => {
-        const s = defaultServing(f);
-        return <li><a href={nurl.food(f)} class="card lift flex justify-between items-center gap-3 px-4 py-3"><span class="font-[550]">{f.name}</span><span class="text-sm text-muted text-right">{Math.round(per(f.v.kcal, s[1]))} cal<br /><span class="text-[12px]">{s[0]}</span></span></a></li>;
+        const s = commonServing(f);
+        return <li><a href={nurl.food(f)} class="tile hoverup flex justify-between items-center gap-3 px-4 py-3"><span class="font-[550]">{f.name}</span><span class="text-sm text-muted text-right">{kcalIn(f, s.grams)} cal<br /><span class="text-[12px]">{s.label}</span></span></a></li>;
       })}
     </ul>
   </section>
 
-  <section class="container-site mt-14" aria-labelledby="rest-h">
-    <h2 id="rest-h" class="text-[28px]">Restaurant nutrition</h2>
-    <ul class="list-none p-0 m-0 mt-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
-      {chains.map((c) => <li><a href={nurl.chain(c)} class="card lift flex justify-between items-center gap-3 px-4 py-3"><span class="font-[550]">{c.name}</span><span class="text-sm text-muted">{chainItems(c).length} items</span></a></li>)}
-    </ul>
-    <p class="mt-4 text-[15px]"><a class="link" href={nurl.restaurants()}>All restaurants</a> · Store brands: {HUB_STORES.map((s, i) => <>{i > 0 && ", "}<a class="link" href={nurl.store(s)}>{s.brand}</a></>)}</p>
-  </section>
-
-  <section class="container-site mt-14" aria-labelledby="cat-h">
+  <section class="wrap mt-14" aria-labelledby="cat-h">
     <h2 id="cat-h" class="text-[28px]">Browse by category</h2>
     <ul class="list-none p-0 m-0 mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-      {NCATS.map((c) => <li><a href={nurl.cat(c.slug)} class="card lift flex justify-between items-center gap-3 px-4 py-3"><span class="font-[550]">{c.name}</span><span class="text-sm text-muted">{c.count}</span></a></li>)}
+      {NCATS.map((c) => <li><a href={nurl.cat(c.slug)} class="tile hoverup flex justify-between items-center gap-3 px-4 py-3"><span class="font-[550]">{c.name}</span><span class="text-sm text-muted">{c.count}</span></a></li>)}
     </ul>
   </section>
 
-  <section class="container-site mt-14" aria-labelledby="nut-h">
+  <section class="wrap mt-14" aria-labelledby="nut-h">
     <h2 id="nut-h" class="text-[28px]">Foods by nutrient</h2>
     <ul class="list-none p-0 m-0 mt-4 flex flex-wrap gap-2">
-      {RANKINGS.map((r) => <li><a href={nurl.rank(r)} class="pill bg-tab hover:bg-tint-lilac">{r.h1}</a></li>)}
+      {RANKINGS.map((r) => <li><a href={nurl.rank(r)} class="chip bg-tab hover:bg-tint-lilac">{r.h1}</a></li>)}
     </ul>
   </section>
 
-  <section class="container-site mt-14 max-w-[900px]" aria-labelledby="about-h">
+  <section class="wrap mt-14 max-w-[900px]" aria-labelledby="about-h">
     <h2 id="about-h" class="text-[28px]">Where the numbers come from</h2>
-    <p class="mt-3">Nutrition values come from USDA FoodData Central: Foundation Foods, SR Legacy and the FNDDS survey database used for What We Eat in America. Storage times on 918 common foods come from USDA FoodKeeper. Pick a serving size on any food page and every value updates. <a class="link" href="/methodology/">How we use the data</a>. Our editorial standards are reviewed by <a class="link" href={personUrl(REVIEWER)}>{REVIEWER.name}, {REVIEWER.credentials}</a>.</p>
+    <p class="mt-3">Nutrition values come from USDA FoodData Central: Foundation Foods, SR Legacy and the FNDDS survey database used for What We Eat in America. Change the amount on any food page and the label recalculates. <a class="alink" href="/methodology/">How we use the data</a>. Our editorial standards are reviewed by <a class="alink" href={personUrl(REVIEWER)}>{REVIEWER.name}, {REVIEWER.credentials}</a>.</p>
   </section>
 </Base>

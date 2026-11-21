@@ -1,42 +1,26 @@
 ---
 import Prose from "../layouts/Prose.astro";
 import { REVIEWER, personUrl } from "../lib/people";
-import { NMETA } from "../lib/nutrition";
 import { SITE } from "../lib/site";
 ---
-<Prose title="Editorial Policy: How We Build and Check Our Pages | Gunther Heller" h1="Editorial policy" path="/editorial-policy/"
-  description="How Gunther Heller builds its nutrition pages: USDA data only, no invented numbers, a registered dietitian reviewing our standards, clear corrections and advertising rules."
-  lead="Every nutrition number on Gunther Heller comes from a public USDA dataset or, for restaurant chains USDA does not analyse, from the chain's own published nutrition guide. This page explains how we turn that data into pages, who checks the work and what we will never do.">
-  <h2>Our sources</h2>
-  <ul>
-    <li><strong>Nutrition facts</strong> for generic and restaurant foods: USDA FoodData Central (Foundation Foods, SR Legacy, FNDDS 2021–2023).</li>
-    <li><strong>Restaurants USDA does not analyse</strong> (Arby's, Dunkin', Five Guys): the chain's own published nutrition guide, copied as printed and checked for internal consistency.</li>
-    <li><strong>Store-brand products</strong>: the Nutrition Facts label each brand owner submits to USDA FoodData Central (Branded Foods).</li>
-    <li><strong>Storage times</strong>: USDA FoodKeeper and FSIS guidance.</li>
-  </ul>
-  <p>Every food page names the USDA record it uses and links to it, so you can check any number yourself. See the <a href="/methodology/">data methodology</a> for the details.</p>
-
-  <h2>How pages are written</h2>
-  <p>Our {NMETA.count.toLocaleString("en-US")} food pages are built by software from the USDA data: the tables, serving maths, rankings and the short sentences that describe them (“1 cup of … contains … calories”) are generated from the numbers, so text and numbers cannot disagree. Hand-written parts (food names, storage tips, our own questions and answers) never restate a number from memory.</p>
-  <p>We publish a page for search engines only when people actually look for that food. Other USDA records stay available to visitors but are marked noindex. We add restaurant and store-brand items the same way: when people search for their nutrition.</p>
-
+<Prose title="Editorial Policy | Gunther Heller" h1="Editorial policy" path="/editorial-policy/"
+  description="The rules behind Gunther Heller's calorie pages: USDA numbers only, generated text that cannot drift from the data, a dietitian reviewing our standards, and how ads are kept apart."
+  lead="These are the rules every calorie page on Gunther Heller follows.">
+  <h2>1. Numbers come from USDA, unchanged</h2>
+  <p>Each figure is taken from USDA FoodData Central and scaled to a serving by arithmetic. Nobody types a number in by hand, and we do not round beyond what is shown on the page.</p>
+  <h2>2. Sentences are generated from the numbers</h2>
+  <p>Lines such as "1 cup of cooked rice has 204 calories" are written by software from the same values as the tables, so the text and the label always agree. Food names and page wording are written by people.</p>
+  <h2>3. Gaps stay gaps</h2>
+  <p>If USDA did not measure a nutrient, the page does not show it. We never estimate a missing value.</p>
   <h2>Dietitian review</h2>
-  <p>Our editorial standards are reviewed by <a href={personUrl(REVIEWER)}>{REVIEWER.name}, {REVIEWER.credentials}</a>, a registered dietitian nutritionist. She checks how we choose USDA records, calculate servings and % Daily Values, and phrase what the numbers mean. Pages she has reviewed individually show "Reviewed by" with the date of her review; we never show that line on a page she has not checked.</p>
-
-  <h2>What we will never do</h2>
+  <p>{REVIEWER.name}, {REVIEWER.credentials}, reviews these rules and how we phrase what the numbers mean, for example what counts as "high in protein". <a href={personUrl(REVIEWER)}>Her background</a>. A page shows "Reviewed by" only with the date of a review that took place.</p>
+  <h2>Ads</h2>
+  <p>Google AdSense places the ads. Advertisers have no say over which foods are listed, how they rank or what a page says, and we take no payment to cover a food or a brand.</p>
+  <h2>What we do not do</h2>
   <ul>
-    <li>Invent, estimate or round a number in a way the source does not support. A nutrient USDA did not measure shows a dash, not a zero.</li>
-    <li>Claim we tested, tasted or lab-analysed a food. The analyses are USDA's or the manufacturer's, and we say which.</li>
-    <li>Give medical advice. Our pages are general information; talk to a doctor or registered dietitian about your own diet.</li>
-    <li>Let advertisers or brands influence which foods appear, how they rank or what we say about them.</li>
+    <li>Give medical or diet advice. For your own diet, ask a doctor or a registered dietitian.</li>
+    <li>Say we tested or analysed a food ourselves. The lab work is USDA's.</li>
   </ul>
-
-  <h2>Advertising</h2>
-  <p>Gunther Heller is free and funded by display advertising (Google AdSense). Ads are placed by the ad network, are labelled as ads and never change our data or rankings. We do not accept payment for coverage.</p>
-
-  <h2>Corrections</h2>
-  <p>If a number looks wrong, email <a href={`mailto:${SITE.email}`}>{SITE.email}</a> with the page and your source. We check it against USDA within a few days. If we got it wrong, we fix the page and update its date. If the error is in USDA's data, we report it to USDA and note it on the page.</p>
-
-  <h2>Contact</h2>
-  <p>See <a href="/contact/">contact</a> or <a href="/about/">about us</a>.</p>
+  <h2>Fixing errors</h2>
+  <p>Send the page and your source to <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. See <a href="/methodology/">how we count</a> for what we check.</p>
 </Prose>

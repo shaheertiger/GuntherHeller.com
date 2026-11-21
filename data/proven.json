@@ -1,0 +1,2767 @@
+{
+ "note": "Foods with Google impressions in a Search Console Performance export (top 1,000 pages). Built by scripts/build-proven.mjs; only these foods get a /calories/ page.",
+ "source": "Search Console Performance export, web search, 2026-11-01..2026-11-21; 1000 pages, zero-click pages included down to 89 impressions",
+ "unmapped": [
+  {
+   "path": "/de/lebensmittel/fisch-meeresfruchte/",
+   "impressions": 14
+  },
+  {
+   "path": "/nl/",
+   "impressions": 8
+  },
+  {
+   "path": "/de/lebensmittel/fleisch/",
+   "impressions": 8
+  },
+  {
+   "path": "/es/alimentos/aves/",
+   "impressions": 6
+  },
+  {
+   "path": "/foods/dairy-eggs/",
+   "impressions": 2
+  },
+  {
+   "path": "/ja/himochi-tibon-suteki/",
+   "impressions": 1
+  }
+ ],
+ "foods": {
+  "mashed-potatoes": {
+   "clicks": 3,
+   "impressions": 1776,
+   "pages": 8
+  },
+  "chicken-nuggets": {
+   "clicks": 4,
+   "impressions": 1234,
+   "pages": 8
+  },
+  "nutella": {
+   "clicks": 1,
+   "impressions": 1224,
+   "pages": 7
+  },
+  "chia-seeds": {
+   "clicks": 4,
+   "impressions": 1189,
+   "pages": 7
+  },
+  "puff-pastry": {
+   "clicks": 5,
+   "impressions": 1023,
+   "pages": 6
+  },
+  "hot-dogs": {
+   "clicks": 2,
+   "impressions": 1011,
+   "pages": 5
+  },
+  "cooked-pasta": {
+   "clicks": 2,
+   "impressions": 952,
+   "pages": 2
+  },
+  "soup": {
+   "clicks": 1,
+   "impressions": 939,
+   "pages": 3
+  },
+  "almonds": {
+   "clicks": 0,
+   "impressions": 889,
+   "pages": 3
+  },
+  "liver": {
+   "clicks": 4,
+   "impressions": 840,
+   "pages": 5
+  },
+  "ground-beef": {
+   "clicks": 1,
+   "impressions": 815,
+   "pages": 2
+  },
+  "powdered-milk": {
+   "clicks": 3,
+   "impressions": 808,
+   "pages": 4
+  },
+  "salami": {
+   "clicks": 0,
+   "impressions": 791,
+   "pages": 5
+  },
+  "apple-cider-vinegar": {
+   "clicks": 0,
+   "impressions": 789,
+   "pages": 5
+  },
+  "lentils": {
+   "clicks": 0,
+   "impressions": 779,
+   "pages": 4
+  },
+  "cooked-rice": {
+   "clicks": 0,
+   "impressions": 762,
+   "pages": 2
+  },
+  "chicken-broth": {
+   "clicks": 5,
+   "impressions": 746,
+   "pages": 4
+  },
+  "spinach": {
+   "clicks": 3,
+   "impressions": 711,
+   "pages": 5
+  },
+  "pork-rinds": {
+   "clicks": 1,
+   "impressions": 690,
+   "pages": 3
+  },
+  "aioli": {
+   "clicks": 3,
+   "impressions": 682,
+   "pages": 3
+  },
+  "cut-fruit": {
+   "clicks": 2,
+   "impressions": 667,
+   "pages": 3
+  },
+  "carrots": {
+   "clicks": 0,
+   "impressions": 666,
+   "pages": 3
+  },
+  "pickled-herring": {
+   "clicks": 9,
+   "impressions": 663,
+   "pages": 5
+  },
+  "donuts": {
+   "clicks": 0,
+   "impressions": 658,
+   "pages": 3
+  },
+  "shrimp": {
+   "clicks": 0,
+   "impressions": 653,
+   "pages": 3
+  },
+  "kale": {
+   "clicks": 2,
+   "impressions": 640,
+   "pages": 2
+  },
+  "pumpkin-seeds": {
+   "clicks": 1,
+   "impressions": 625,
+   "pages": 4
+  },
+  "lasagna": {
+   "clicks": 2,
+   "impressions": 620,
+   "pages": 3
+  },
+  "pudding": {
+   "clicks": 1,
+   "impressions": 616,
+   "pages": 4
+  },
+  "sesame-seeds": {
+   "clicks": 3,
+   "impressions": 611,
+   "pages": 4
+  },
+  "kielbasa-smoked-sausage": {
+   "clicks": 1,
+   "impressions": 605,
+   "pages": 4
+  },
+  "potatoes": {
+   "clicks": 1,
+   "impressions": 586,
+   "pages": 4
+  },
+  "beets": {
+   "clicks": 2,
+   "impressions": 571,
+   "pages": 2
+  },
+  "bread": {
+   "clicks": 3,
+   "impressions": 568,
+   "pages": 3
+  },
+  "lactose-free-milk": {
+   "clicks": 4,
+   "impressions": 548,
+   "pages": 5
+  },
+  "raw-sausage": {
+   "clicks": 3,
+   "impressions": 544,
+   "pages": 2
+  },
+  "sweet-potatoes": {
+   "clicks": 2,
+   "impressions": 543,
+   "pages": 4
+  },
+  "cabbage": {
+   "clicks": 1,
+   "impressions": 521,
+   "pages": 2
+  },
+  "refrigerated-biscuits": {
+   "clicks": 1,
+   "impressions": 521,
+   "pages": 4
+  },
+  "bagels": {
+   "clicks": 1,
+   "impressions": 518,
+   "pages": 1
+  },
+  "powdered-sugar": {
+   "clicks": 2,
+   "impressions": 503,
+   "pages": 3
+  },
+  "hummus": {
+   "clicks": 1,
+   "impressions": 494,
+   "pages": 3
+  },
+  "kiwi": {
+   "clicks": 2,
+   "impressions": 493,
+   "pages": 4
+  },
+  "whipping-cream": {
+   "clicks": 0,
+   "impressions": 492,
+   "pages": 2
+  },
+  "pepperoni": {
+   "clicks": 1,
+   "impressions": 491,
+   "pages": 3
+  },
+  "refrigerated-pie-crust": {
+   "clicks": 1,
+   "impressions": 485,
+   "pages": 4
+  },
+  "rotisserie-chicken": {
+   "clicks": 2,
+   "impressions": 483,
+   "pages": 3
+  },
+  "pomegranate": {
+   "clicks": 2,
+   "impressions": 480,
+   "pages": 4
+  },
+  "fresh-apple-juice": {
+   "clicks": 1,
+   "impressions": 478,
+   "pages": 2
+  },
+  "flaxseed-ground": {
+   "clicks": 6,
+   "impressions": 473,
+   "pages": 3
+  },
+  "roasted-pumpkin-seeds": {
+   "clicks": 1,
+   "impressions": 473,
+   "pages": 3
+  },
+  "evaporated-condensed-milk": {
+   "clicks": 3,
+   "impressions": 470,
+   "pages": 3
+  },
+  "sour-cream": {
+   "clicks": 2,
+   "impressions": 463,
+   "pages": 3
+  },
+  "salmon": {
+   "clicks": 0,
+   "impressions": 462,
+   "pages": 2
+  },
+  "brown-sugar": {
+   "clicks": 4,
+   "impressions": 460,
+   "pages": 2
+  },
+  "fried-chicken": {
+   "clicks": 3,
+   "impressions": 457,
+   "pages": 2
+  },
+  "goose": {
+   "clicks": 1,
+   "impressions": 455,
+   "pages": 2
+  },
+  "apple-pie": {
+   "clicks": 0,
+   "impressions": 451,
+   "pages": 2
+  },
+  "brussels-sprouts": {
+   "clicks": 0,
+   "impressions": 447,
+   "pages": 3
+  },
+  "shredded-coconut": {
+   "clicks": 2,
+   "impressions": 447,
+   "pages": 4
+  },
+  "cinnamon-rolls-tube": {
+   "clicks": 0,
+   "impressions": 446,
+   "pages": 2
+  },
+  "arugula": {
+   "clicks": 2,
+   "impressions": 445,
+   "pages": 3
+  },
+  "bacon": {
+   "clicks": 2,
+   "impressions": 445,
+   "pages": 3
+  },
+  "refried-beans": {
+   "clicks": 2,
+   "impressions": 443,
+   "pages": 4
+  },
+  "tomato-sauce": {
+   "clicks": 1,
+   "impressions": 436,
+   "pages": 3
+  },
+  "duck": {
+   "clicks": 7,
+   "impressions": 434,
+   "pages": 4
+  },
+  "quark": {
+   "clicks": 3,
+   "impressions": 433,
+   "pages": 3
+  },
+  "almond-milk": {
+   "clicks": 2,
+   "impressions": 432,
+   "pages": 3
+  },
+  "jam-jelly": {
+   "clicks": 1,
+   "impressions": 432,
+   "pages": 4
+  },
+  "pineapple": {
+   "clicks": 2,
+   "impressions": 429,
+   "pages": 3
+  },
+  "chicken-salad": {
+   "clicks": 2,
+   "impressions": 428,
+   "pages": 3
+  },
+  "cooked-chorizo": {
+   "clicks": 2,
+   "impressions": 422,
+   "pages": 3
+  },
+  "eggnog": {
+   "clicks": 3,
+   "impressions": 421,
+   "pages": 4
+  },
+  "pork-chops": {
+   "clicks": 1,
+   "impressions": 421,
+   "pages": 3
+  },
+  "peanuts": {
+   "clicks": 1,
+   "impressions": 413,
+   "pages": 3
+  },
+  "walnuts": {
+   "clicks": 1,
+   "impressions": 409,
+   "pages": 2
+  },
+  "avocado": {
+   "clicks": 1,
+   "impressions": 407,
+   "pages": 3
+  },
+  "corned-beef": {
+   "clicks": 5,
+   "impressions": 402,
+   "pages": 6
+  },
+  "egg-whites": {
+   "clicks": 0,
+   "impressions": 400,
+   "pages": 1
+  },
+  "pork-ribs": {
+   "clicks": 3,
+   "impressions": 390,
+   "pages": 4
+  },
+  "guacamole": {
+   "clicks": 2,
+   "impressions": 389,
+   "pages": 2
+  },
+  "bagged-salad": {
+   "clicks": 1,
+   "impressions": 380,
+   "pages": 4
+  },
+  "cooked-quinoa": {
+   "clicks": 1,
+   "impressions": 380,
+   "pages": 3
+  },
+  "cornstarch": {
+   "clicks": 1,
+   "impressions": 380,
+   "pages": 3
+  },
+  "millet": {
+   "clicks": 5,
+   "impressions": 378,
+   "pages": 3
+  },
+  "horseradish": {
+   "clicks": 4,
+   "impressions": 368,
+   "pages": 4
+  },
+  "soda": {
+   "clicks": 1,
+   "impressions": 366,
+   "pages": 3
+  },
+  "mincemeat-pie": {
+   "clicks": 3,
+   "impressions": 365,
+   "pages": 2
+  },
+  "steak": {
+   "clicks": 1,
+   "impressions": 362,
+   "pages": 2
+  },
+  "coconut-water": {
+   "clicks": 2,
+   "impressions": 361,
+   "pages": 3
+  },
+  "baking-soda": {
+   "clicks": 2,
+   "impressions": 359,
+   "pages": 4
+  },
+  "sugar": {
+   "clicks": 0,
+   "impressions": 359,
+   "pages": 2
+  },
+  "raw-egg-whites-yolks": {
+   "clicks": 1,
+   "impressions": 354,
+   "pages": 3
+  },
+  "celery": {
+   "clicks": 2,
+   "impressions": 351,
+   "pages": 4
+  },
+  "frozen-fries-hash-browns": {
+   "clicks": 0,
+   "impressions": 348,
+   "pages": 3
+  },
+  "barley": {
+   "clicks": 4,
+   "impressions": 347,
+   "pages": 3
+  },
+  "beef-broth": {
+   "clicks": 5,
+   "impressions": 347,
+   "pages": 4
+  },
+  "tofu": {
+   "clicks": 1,
+   "impressions": 344,
+   "pages": 2
+  },
+  "cottage-cheese": {
+   "clicks": 3,
+   "impressions": 342,
+   "pages": 4
+  },
+  "chili": {
+   "clicks": 2,
+   "impressions": 341,
+   "pages": 3
+  },
+  "fresh-clams-mussels": {
+   "clicks": 2,
+   "impressions": 339,
+   "pages": 4
+  },
+  "grapes": {
+   "clicks": 1,
+   "impressions": 336,
+   "pages": 3
+  },
+  "mushrooms": {
+   "clicks": 2,
+   "impressions": 334,
+   "pages": 2
+  },
+  "canadian-bacon-whole": {
+   "clicks": 1,
+   "impressions": 333,
+   "pages": 2
+  },
+  "beef-stew-meat": {
+   "clicks": 0,
+   "impressions": 332,
+   "pages": 1
+  },
+  "coleslaw": {
+   "clicks": 1,
+   "impressions": 332,
+   "pages": 3
+  },
+  "canola-oil": {
+   "clicks": 1,
+   "impressions": 331,
+   "pages": 3
+  },
+  "ice-cream": {
+   "clicks": 1,
+   "impressions": 322,
+   "pages": 3
+  },
+  "chitterlings": {
+   "clicks": 2,
+   "impressions": 321,
+   "pages": 3
+  },
+  "fresh-pasta": {
+   "clicks": 4,
+   "impressions": 320,
+   "pages": 4
+  },
+  "olives": {
+   "clicks": 1,
+   "impressions": 319,
+   "pages": 2
+  },
+  "sun-dried-tomatoes": {
+   "clicks": 1,
+   "impressions": 319,
+   "pages": 3
+  },
+  "cake-mix": {
+   "clicks": 0,
+   "impressions": 318,
+   "pages": 2
+  },
+  "bulgur": {
+   "clicks": 3,
+   "impressions": 316,
+   "pages": 2
+  },
+  "lettuce": {
+   "clicks": 2,
+   "impressions": 314,
+   "pages": 3
+  },
+  "heavy-cream": {
+   "clicks": 0,
+   "impressions": 310,
+   "pages": 1
+  },
+  "cornmeal": {
+   "clicks": 3,
+   "impressions": 309,
+   "pages": 4
+  },
+  "blueberries": {
+   "clicks": 0,
+   "impressions": 302,
+   "pages": 2
+  },
+  "raisins": {
+   "clicks": 1,
+   "impressions": 302,
+   "pages": 2
+  },
+  "thai-red-curry-paste": {
+   "clicks": 4,
+   "impressions": 302,
+   "pages": 2
+  },
+  "whole-wheat-bread": {
+   "clicks": 0,
+   "impressions": 302,
+   "pages": 1
+  },
+  "beef-tongue": {
+   "clicks": 6,
+   "impressions": 301,
+   "pages": 2
+  },
+  "asparagus": {
+   "clicks": 1,
+   "impressions": 297,
+   "pages": 2
+  },
+  "canned-corn": {
+   "clicks": 2,
+   "impressions": 294,
+   "pages": 4
+  },
+  "polenta": {
+   "clicks": 1,
+   "impressions": 292,
+   "pages": 2
+  },
+  "curry": {
+   "clicks": 2,
+   "impressions": 291,
+   "pages": 3
+  },
+  "pesto": {
+   "clicks": 0,
+   "impressions": 291,
+   "pages": 2
+  },
+  "sauerkraut": {
+   "clicks": 3,
+   "impressions": 289,
+   "pages": 1
+  },
+  "gravy-mix": {
+   "clicks": 3,
+   "impressions": 288,
+   "pages": 3
+  },
+  "apples": {
+   "clicks": 1,
+   "impressions": 287,
+   "pages": 2
+  },
+  "rice": {
+   "clicks": 0,
+   "impressions": 286,
+   "pages": 2
+  },
+  "smoked-salmon": {
+   "clicks": 2,
+   "impressions": 286,
+   "pages": 3
+  },
+  "edamame": {
+   "clicks": 3,
+   "impressions": 284,
+   "pages": 3
+  },
+  "imitation-crab": {
+   "clicks": 1,
+   "impressions": 284,
+   "pages": 2
+  },
+  "instant-mashed-potatoes": {
+   "clicks": 0,
+   "impressions": 284,
+   "pages": 2
+  },
+  "chicken-thighs": {
+   "clicks": 3,
+   "impressions": 282,
+   "pages": 2
+  },
+  "hamburgers": {
+   "clicks": 1,
+   "impressions": 281,
+   "pages": 2
+  },
+  "cheesecake": {
+   "clicks": 1,
+   "impressions": 279,
+   "pages": 2
+  },
+  "cake": {
+   "clicks": 0,
+   "impressions": 278,
+   "pages": 2
+  },
+  "leeks": {
+   "clicks": 2,
+   "impressions": 275,
+   "pages": 3
+  },
+  "pork-tenderloin": {
+   "clicks": 0,
+   "impressions": 273,
+   "pages": 2
+  },
+  "breadcrumbs": {
+   "clicks": 0,
+   "impressions": 272,
+   "pages": 2
+  },
+  "natural-peanut-butter": {
+   "clicks": 1,
+   "impressions": 272,
+   "pages": 2
+  },
+  "pretzels": {
+   "clicks": 1,
+   "impressions": 272,
+   "pages": 2
+  },
+  "margarine": {
+   "clicks": 2,
+   "impressions": 270,
+   "pages": 2
+  },
+  "rutabagas": {
+   "clicks": 5,
+   "impressions": 266,
+   "pages": 3
+  },
+  "bananas": {
+   "clicks": 0,
+   "impressions": 262,
+   "pages": 2
+  },
+  "pine-nuts": {
+   "clicks": 1,
+   "impressions": 261,
+   "pages": 2
+  },
+  "corn-cob": {
+   "clicks": 1,
+   "impressions": 258,
+   "pages": 1
+  },
+  "sardines": {
+   "clicks": 0,
+   "impressions": 257,
+   "pages": 2
+  },
+  "vegetable-broth": {
+   "clicks": 1,
+   "impressions": 254,
+   "pages": 2
+  },
+  "jarred-gravy": {
+   "clicks": 1,
+   "impressions": 252,
+   "pages": 2
+  },
+  "bologna": {
+   "clicks": 1,
+   "impressions": 251,
+   "pages": 2
+  },
+  "capers": {
+   "clicks": 0,
+   "impressions": 251,
+   "pages": 2
+  },
+  "rabbit": {
+   "clicks": 8,
+   "impressions": 251,
+   "pages": 3
+  },
+  "scrambled-eggs": {
+   "clicks": 0,
+   "impressions": 251,
+   "pages": 2
+  },
+  "bottled-water": {
+   "clicks": 0,
+   "impressions": 248,
+   "pages": 1
+  },
+  "kefir": {
+   "clicks": 1,
+   "impressions": 248,
+   "pages": 2
+  },
+  "frozen-shrimp": {
+   "clicks": 0,
+   "impressions": 239,
+   "pages": 1
+  },
+  "tangerines": {
+   "clicks": 1,
+   "impressions": 234,
+   "pages": 2
+  },
+  "pizza": {
+   "clicks": 0,
+   "impressions": 233,
+   "pages": 2
+  },
+  "ketchup": {
+   "clicks": 1,
+   "impressions": 231,
+   "pages": 3
+  },
+  "egg-salad": {
+   "clicks": 0,
+   "impressions": 230,
+   "pages": 1
+  },
+  "alfredo-cream-sauces": {
+   "clicks": 1,
+   "impressions": 226,
+   "pages": 2
+  },
+  "canned-whipped-cream": {
+   "clicks": 4,
+   "impressions": 221,
+   "pages": 3
+  },
+  "fresh-squeezed-orange-juice": {
+   "clicks": 0,
+   "impressions": 221,
+   "pages": 2
+  },
+  "baby-carrots": {
+   "clicks": 0,
+   "impressions": 218,
+   "pages": 1
+  },
+  "homemade-vegetable-soup": {
+   "clicks": 2,
+   "impressions": 218,
+   "pages": 2
+  },
+  "pate": {
+   "clicks": 2,
+   "impressions": 218,
+   "pages": 1
+  },
+  "pumpkin-pie": {
+   "clicks": 1,
+   "impressions": 217,
+   "pages": 2
+  },
+  "roasted-red-peppers": {
+   "clicks": 2,
+   "impressions": 216,
+   "pages": 3
+  },
+  "rosemary": {
+   "clicks": 1,
+   "impressions": 215,
+   "pages": 2
+  },
+  "juice-boxes": {
+   "clicks": 0,
+   "impressions": 213,
+   "pages": 2
+  },
+  "cocoa-powder": {
+   "clicks": 0,
+   "impressions": 211,
+   "pages": 2
+  },
+  "potato-salad": {
+   "clicks": 0,
+   "impressions": 211,
+   "pages": 2
+  },
+  "nacho-cheese": {
+   "clicks": 2,
+   "impressions": 208,
+   "pages": 3
+  },
+  "reused-frying-oil": {
+   "clicks": 0,
+   "impressions": 208,
+   "pages": 1
+  },
+  "kohlrabi": {
+   "clicks": 0,
+   "impressions": 206,
+   "pages": 1
+  },
+  "liquid-coffee-creamer": {
+   "clicks": 1,
+   "impressions": 206,
+   "pages": 2
+  },
+  "cherry-tomatoes": {
+   "clicks": 2,
+   "impressions": 205,
+   "pages": 3
+  },
+  "clementines": {
+   "clicks": 1,
+   "impressions": 205,
+   "pages": 2
+  },
+  "strawberries": {
+   "clicks": 1,
+   "impressions": 205,
+   "pages": 2
+  },
+  "muffins": {
+   "clicks": 2,
+   "impressions": 203,
+   "pages": 2
+  },
+  "saltine-crackers": {
+   "clicks": 1,
+   "impressions": 203,
+   "pages": 2
+  },
+  "danish-pastries": {
+   "clicks": 3,
+   "impressions": 201,
+   "pages": 3
+  },
+  "yogurt": {
+   "clicks": 0,
+   "impressions": 201,
+   "pages": 2
+  },
+  "boiled-peanuts": {
+   "clicks": 1,
+   "impressions": 200,
+   "pages": 3
+  },
+  "bok-choy": {
+   "clicks": 2,
+   "impressions": 200,
+   "pages": 3
+  },
+  "croutons": {
+   "clicks": 0,
+   "impressions": 200,
+   "pages": 1
+  },
+  "guava": {
+   "clicks": 3,
+   "impressions": 194,
+   "pages": 3
+  },
+  "shelf-stable-milk": {
+   "clicks": 0,
+   "impressions": 194,
+   "pages": 2
+  },
+  "swiss-chard": {
+   "clicks": 4,
+   "impressions": 194,
+   "pages": 3
+  },
+  "applesauce": {
+   "clicks": 2,
+   "impressions": 190,
+   "pages": 2
+  },
+  "parmesan-cheese": {
+   "clicks": 0,
+   "impressions": 189,
+   "pages": 1
+  },
+  "homemade-salad-dressing": {
+   "clicks": 1,
+   "impressions": 188,
+   "pages": 2
+  },
+  "cucumbers": {
+   "clicks": 1,
+   "impressions": 186,
+   "pages": 2
+  },
+  "eggplant": {
+   "clicks": 1,
+   "impressions": 186,
+   "pages": 2
+  },
+  "meatloaf": {
+   "clicks": 0,
+   "impressions": 185,
+   "pages": 1
+  },
+  "dinner-rolls": {
+   "clicks": 1,
+   "impressions": 183,
+   "pages": 2
+  },
+  "jell-o": {
+   "clicks": 1,
+   "impressions": 183,
+   "pages": 1
+  },
+  "macadamia-nuts": {
+   "clicks": 0,
+   "impressions": 183,
+   "pages": 1
+  },
+  "homemade-whipped-cream": {
+   "clicks": 2,
+   "impressions": 182,
+   "pages": 2
+  },
+  "tahini": {
+   "clicks": 1,
+   "impressions": 182,
+   "pages": 2
+  },
+  "cooked-vegetables": {
+   "clicks": 1,
+   "impressions": 179,
+   "pages": 1
+  },
+  "naan": {
+   "clicks": 1,
+   "impressions": 178,
+   "pages": 1
+  },
+  "burritos": {
+   "clicks": 1,
+   "impressions": 177,
+   "pages": 1
+  },
+  "milk": {
+   "clicks": 0,
+   "impressions": 177,
+   "pages": 1
+  },
+  "fresh-salsa": {
+   "clicks": 1,
+   "impressions": 173,
+   "pages": 2
+  },
+  "almond-butter": {
+   "clicks": 2,
+   "impressions": 172,
+   "pages": 2
+  },
+  "sunflower-seeds": {
+   "clicks": 0,
+   "impressions": 172,
+   "pages": 1
+  },
+  "frozen-raw-sausages": {
+   "clicks": 2,
+   "impressions": 171,
+   "pages": 2
+  },
+  "collard-greens": {
+   "clicks": 1,
+   "impressions": 170,
+   "pages": 1
+  },
+  "oysters": {
+   "clicks": 1,
+   "impressions": 168,
+   "pages": 2
+  },
+  "turkey-bacon": {
+   "clicks": 2,
+   "impressions": 167,
+   "pages": 2
+  },
+  "canned-beans": {
+   "clicks": 2,
+   "impressions": 165,
+   "pages": 1
+  },
+  "meat-gravy": {
+   "clicks": 2,
+   "impressions": 165,
+   "pages": 2
+  },
+  "oatmeal": {
+   "clicks": 1,
+   "impressions": 162,
+   "pages": 2
+  },
+  "coconut-oil": {
+   "clicks": 2,
+   "impressions": 161,
+   "pages": 2
+  },
+  "hard-boiled-eggs": {
+   "clicks": 0,
+   "impressions": 161,
+   "pages": 1
+  },
+  "kimchi": {
+   "clicks": 0,
+   "impressions": 161,
+   "pages": 1
+  },
+  "buckwheat": {
+   "clicks": 2,
+   "impressions": 160,
+   "pages": 3
+  },
+  "brown-rice": {
+   "clicks": 2,
+   "impressions": 158,
+   "pages": 1
+  },
+  "grated-parmesan": {
+   "clicks": 0,
+   "impressions": 158,
+   "pages": 1
+  },
+  "canned-food-high-acid": {
+   "clicks": 1,
+   "impressions": 157,
+   "pages": 2
+  },
+  "canned-ham-shelf-stable": {
+   "clicks": 1,
+   "impressions": 157,
+   "pages": 2
+  },
+  "iceberg-lettuce": {
+   "clicks": 0,
+   "impressions": 157,
+   "pages": 1
+  },
+  "frozen-breaded-fish": {
+   "clicks": 2,
+   "impressions": 155,
+   "pages": 2
+  },
+  "shortening": {
+   "clicks": 2,
+   "impressions": 153,
+   "pages": 3
+  },
+  "apple-cider": {
+   "clicks": 1,
+   "impressions": 150,
+   "pages": 2
+  },
+  "grapefruit": {
+   "clicks": 0,
+   "impressions": 150,
+   "pages": 1
+  },
+  "canned-tuna": {
+   "clicks": 1,
+   "impressions": 149,
+   "pages": 2
+  },
+  "crackers": {
+   "clicks": 1,
+   "impressions": 149,
+   "pages": 2
+  },
+  "leftovers-meat": {
+   "clicks": 1,
+   "impressions": 149,
+   "pages": 1
+  },
+  "cereal": {
+   "clicks": 0,
+   "impressions": 148,
+   "pages": 1
+  },
+  "almond-oil": {
+   "clicks": 5,
+   "impressions": 146,
+   "pages": 2
+  },
+  "chicken-liver-pate": {
+   "clicks": 1,
+   "impressions": 146,
+   "pages": 2
+  },
+  "flaxseed-whole-seed": {
+   "clicks": 0,
+   "impressions": 146,
+   "pages": 1
+  },
+  "cooked-oatmeal": {
+   "clicks": 0,
+   "impressions": 143,
+   "pages": 1
+  },
+  "oats": {
+   "clicks": 2,
+   "impressions": 143,
+   "pages": 3
+  },
+  "okra": {
+   "clicks": 4,
+   "impressions": 143,
+   "pages": 2
+  },
+  "prosciutto": {
+   "clicks": 2,
+   "impressions": 143,
+   "pages": 1
+  },
+  "artichokes": {
+   "clicks": 2,
+   "impressions": 142,
+   "pages": 3
+  },
+  "pistachios": {
+   "clicks": 0,
+   "impressions": 142,
+   "pages": 1
+  },
+  "sesame-oil": {
+   "clicks": 2,
+   "impressions": 142,
+   "pages": 3
+  },
+  "shredded-cheese": {
+   "clicks": 0,
+   "impressions": 142,
+   "pages": 1
+  },
+  "miso": {
+   "clicks": 2,
+   "impressions": 141,
+   "pages": 2
+  },
+  "stuffing-mix": {
+   "clicks": 2,
+   "impressions": 141,
+   "pages": 3
+  },
+  "fruit-punch": {
+   "clicks": 1,
+   "impressions": 140,
+   "pages": 1
+  },
+  "chutney": {
+   "clicks": 1,
+   "impressions": 139,
+   "pages": 2
+  },
+  "tamarind": {
+   "clicks": 0,
+   "impressions": 139,
+   "pages": 1
+  },
+  "pastrami": {
+   "clicks": 2,
+   "impressions": 138,
+   "pages": 2
+  },
+  "relish": {
+   "clicks": 1,
+   "impressions": 138,
+   "pages": 2
+  },
+  "cassava-yuca": {
+   "clicks": 2,
+   "impressions": 137,
+   "pages": 3
+  },
+  "canned-food-low-acid": {
+   "clicks": 1,
+   "impressions": 136,
+   "pages": 2
+  },
+  "flour": {
+   "clicks": 0,
+   "impressions": 135,
+   "pages": 1
+  },
+  "ginger-root": {
+   "clicks": 0,
+   "impressions": 135,
+   "pages": 1
+  },
+  "buttermilk": {
+   "clicks": 0,
+   "impressions": 134,
+   "pages": 1
+  },
+  "corn-tortillas": {
+   "clicks": 1,
+   "impressions": 134,
+   "pages": 1
+  },
+  "dried-mushrooms": {
+   "clicks": 1,
+   "impressions": 134,
+   "pages": 2
+  },
+  "mung-bean-sprouts": {
+   "clicks": 1,
+   "impressions": 134,
+   "pages": 2
+  },
+  "pancake-mix": {
+   "clicks": 1,
+   "impressions": 134,
+   "pages": 2
+  },
+  "quiche": {
+   "clicks": 0,
+   "impressions": 134,
+   "pages": 1
+  },
+  "roasted-peanuts": {
+   "clicks": 0,
+   "impressions": 134,
+   "pages": 1
+  },
+  "soy-milk": {
+   "clicks": 0,
+   "impressions": 134,
+   "pages": 1
+  },
+  "raw-chicken": {
+   "clicks": 0,
+   "impressions": 133,
+   "pages": 1
+  },
+  "frozen-vegetables": {
+   "clicks": 1,
+   "impressions": 132,
+   "pages": 2
+  },
+  "frozen-raw-fish": {
+   "clicks": 0,
+   "impressions": 131,
+   "pages": 1
+  },
+  "pecan-pie": {
+   "clicks": 4,
+   "impressions": 131,
+   "pages": 3
+  },
+  "radishes": {
+   "clicks": 0,
+   "impressions": 131,
+   "pages": 1
+  },
+  "mayonnaise": {
+   "clicks": 0,
+   "impressions": 130,
+   "pages": 1
+  },
+  "deli-meat": {
+   "clicks": 1,
+   "impressions": 129,
+   "pages": 2
+  },
+  "hot-dog-buns": {
+   "clicks": 1,
+   "impressions": 129,
+   "pages": 1
+  },
+  "cranberries": {
+   "clicks": 0,
+   "impressions": 128,
+   "pages": 1
+  },
+  "beef-stew": {
+   "clicks": 0,
+   "impressions": 127,
+   "pages": 1
+  },
+  "deli-turkey": {
+   "clicks": 0,
+   "impressions": 127,
+   "pages": 1
+  },
+  "flour-tortillas": {
+   "clicks": 0,
+   "impressions": 127,
+   "pages": 1
+  },
+  "tomato-paste": {
+   "clicks": 1,
+   "impressions": 127,
+   "pages": 1
+  },
+  "breakfast-sausage": {
+   "clicks": 0,
+   "impressions": 126,
+   "pages": 1
+  },
+  "clams": {
+   "clicks": 1,
+   "impressions": 125,
+   "pages": 2
+  },
+  "quinoa": {
+   "clicks": 0,
+   "impressions": 125,
+   "pages": 1
+  },
+  "tuna-pouches": {
+   "clicks": 0,
+   "impressions": 125,
+   "pages": 1
+  },
+  "chinese-takeout": {
+   "clicks": 1,
+   "impressions": 124,
+   "pages": 1
+  },
+  "canned-chili": {
+   "clicks": 0,
+   "impressions": 123,
+   "pages": 1
+  },
+  "chicken-wings": {
+   "clicks": 0,
+   "impressions": 123,
+   "pages": 1
+  },
+  "cooked-shrimp": {
+   "clicks": 0,
+   "impressions": 123,
+   "pages": 1
+  },
+  "fried-rice": {
+   "clicks": 0,
+   "impressions": 122,
+   "pages": 1
+  },
+  "tempeh": {
+   "clicks": 1,
+   "impressions": 122,
+   "pages": 1
+  },
+  "turnips": {
+   "clicks": 1,
+   "impressions": 122,
+   "pages": 1
+  },
+  "pecans": {
+   "clicks": 0,
+   "impressions": 121,
+   "pages": 1
+  },
+  "roasted-edamame": {
+   "clicks": 3,
+   "impressions": 119,
+   "pages": 2
+  },
+  "roasted-sunflower-seeds": {
+   "clicks": 0,
+   "impressions": 119,
+   "pages": 1
+  },
+  "fresh-lemon-juice": {
+   "clicks": 0,
+   "impressions": 118,
+   "pages": 1
+  },
+  "cooked-salmon": {
+   "clicks": 0,
+   "impressions": 117,
+   "pages": 1
+  },
+  "sorghum": {
+   "clicks": 2,
+   "impressions": 116,
+   "pages": 2
+  },
+  "frozen-edamame": {
+   "clicks": 1,
+   "impressions": 115,
+   "pages": 2
+  },
+  "vegan-cheese": {
+   "clicks": 4,
+   "impressions": 115,
+   "pages": 4
+  },
+  "fresh-coconut": {
+   "clicks": 0,
+   "impressions": 114,
+   "pages": 1
+  },
+  "potato-chips": {
+   "clicks": 0,
+   "impressions": 114,
+   "pages": 1
+  },
+  "jasmine-rice": {
+   "clicks": 0,
+   "impressions": 112,
+   "pages": 1
+  },
+  "passion-fruit": {
+   "clicks": 0,
+   "impressions": 112,
+   "pages": 1
+  },
+  "jicama": {
+   "clicks": 1,
+   "impressions": 111,
+   "pages": 1
+  },
+  "round-roast": {
+   "clicks": 0,
+   "impressions": 111,
+   "pages": 1
+  },
+  "tuna-salad": {
+   "clicks": 2,
+   "impressions": 111,
+   "pages": 2
+  },
+  "crayfish": {
+   "clicks": 0,
+   "impressions": 110,
+   "pages": 1
+  },
+  "frozen-polenta": {
+   "clicks": 0,
+   "impressions": 110,
+   "pages": 1
+  },
+  "pork-roll": {
+   "clicks": 0,
+   "impressions": 110,
+   "pages": 1
+  },
+  "red-onions": {
+   "clicks": 1,
+   "impressions": 110,
+   "pages": 1
+  },
+  "anchovies": {
+   "clicks": 0,
+   "impressions": 109,
+   "pages": 1
+  },
+  "deli-ham": {
+   "clicks": 0,
+   "impressions": 109,
+   "pages": 1
+  },
+  "french-onion-dip": {
+   "clicks": 0,
+   "impressions": 109,
+   "pages": 1
+  },
+  "marshmallows": {
+   "clicks": 0,
+   "impressions": 109,
+   "pages": 1
+  },
+  "butternut-squash": {
+   "clicks": 1,
+   "impressions": 108,
+   "pages": 2
+  },
+  "canned-peas": {
+   "clicks": 0,
+   "impressions": 108,
+   "pages": 1
+  },
+  "french-fries": {
+   "clicks": 1,
+   "impressions": 108,
+   "pages": 1
+  },
+  "ground-ginger": {
+   "clicks": 0,
+   "impressions": 107,
+   "pages": 1
+  },
+  "prunes": {
+   "clicks": 1,
+   "impressions": 107,
+   "pages": 1
+  },
+  "uncured-cooked-ham": {
+   "clicks": 1,
+   "impressions": 107,
+   "pages": 1
+  },
+  "cupcakes": {
+   "clicks": 0,
+   "impressions": 106,
+   "pages": 1
+  },
+  "canned-salmon": {
+   "clicks": 1,
+   "impressions": 105,
+   "pages": 1
+  },
+  "hash-browns": {
+   "clicks": 0,
+   "impressions": 105,
+   "pages": 1
+  },
+  "almond-extract": {
+   "clicks": 0,
+   "impressions": 104,
+   "pages": 1
+  },
+  "squid": {
+   "clicks": 2,
+   "impressions": 103,
+   "pages": 2
+  },
+  "blackberries": {
+   "clicks": 0,
+   "impressions": 102,
+   "pages": 1
+  },
+  "duck-fat": {
+   "clicks": 2,
+   "impressions": 102,
+   "pages": 2
+  },
+  "green-onions": {
+   "clicks": 0,
+   "impressions": 102,
+   "pages": 1
+  },
+  "oregano": {
+   "clicks": 0,
+   "impressions": 102,
+   "pages": 1
+  },
+  "blue-cheese-dressing": {
+   "clicks": 1,
+   "impressions": 101,
+   "pages": 1
+  },
+  "ghee": {
+   "clicks": 0,
+   "impressions": 101,
+   "pages": 1
+  },
+  "pickles": {
+   "clicks": 0,
+   "impressions": 101,
+   "pages": 1
+  },
+  "salt": {
+   "clicks": 0,
+   "impressions": 101,
+   "pages": 1
+  },
+  "cooked-beans": {
+   "clicks": 0,
+   "impressions": 100,
+   "pages": 1
+  },
+  "plantains": {
+   "clicks": 0,
+   "impressions": 100,
+   "pages": 1
+  },
+  "cashews": {
+   "clicks": 1,
+   "impressions": 99,
+   "pages": 2
+  },
+  "ricotta": {
+   "clicks": 0,
+   "impressions": 99,
+   "pages": 1
+  },
+  "spelt-flour": {
+   "clicks": 3,
+   "impressions": 99,
+   "pages": 3
+  },
+  "bratwurst": {
+   "clicks": 1,
+   "impressions": 98,
+   "pages": 2
+  },
+  "fresh-cherries": {
+   "clicks": 0,
+   "impressions": 98,
+   "pages": 1
+  },
+  "taco-spaghetti-seasoning-mixes": {
+   "clicks": 0,
+   "impressions": 98,
+   "pages": 1
+  },
+  "cream-cheese": {
+   "clicks": 0,
+   "impressions": 97,
+   "pages": 1
+  },
+  "eggs": {
+   "clicks": 0,
+   "impressions": 97,
+   "pages": 1
+  },
+  "half-half": {
+   "clicks": 0,
+   "impressions": 97,
+   "pages": 1
+  },
+  "powdered-coffee-creamer": {
+   "clicks": 0,
+   "impressions": 97,
+   "pages": 1
+  },
+  "bone-pork-chops": {
+   "clicks": 1,
+   "impressions": 96,
+   "pages": 1
+  },
+  "cheese-slices-processed": {
+   "clicks": 0,
+   "impressions": 96,
+   "pages": 1
+  },
+  "graham-crackers": {
+   "clicks": 0,
+   "impressions": 96,
+   "pages": 1
+  },
+  "cilantro": {
+   "clicks": 0,
+   "impressions": 95,
+   "pages": 1
+  },
+  "coconut-milk": {
+   "clicks": 2,
+   "impressions": 95,
+   "pages": 2
+  },
+  "broccoli": {
+   "clicks": 0,
+   "impressions": 94,
+   "pages": 1
+  },
+  "tapioca": {
+   "clicks": 2,
+   "impressions": 94,
+   "pages": 2
+  },
+  "baby-food-jars-pouches": {
+   "clicks": 0,
+   "impressions": 93,
+   "pages": 1
+  },
+  "instant-coffee": {
+   "clicks": 0,
+   "impressions": 93,
+   "pages": 1
+  },
+  "light-cream": {
+   "clicks": 0,
+   "impressions": 93,
+   "pages": 1
+  },
+  "omelette": {
+   "clicks": 0,
+   "impressions": 93,
+   "pages": 1
+  },
+  "veggie-hot-dogs-crumbles": {
+   "clicks": 0,
+   "impressions": 93,
+   "pages": 1
+  },
+  "dried-cranberries": {
+   "clicks": 1,
+   "impressions": 92,
+   "pages": 1
+  },
+  "lemongrass": {
+   "clicks": 2,
+   "impressions": 92,
+   "pages": 2
+  },
+  "nutmeg": {
+   "clicks": 4,
+   "impressions": 92,
+   "pages": 2
+  },
+  "pancake-syrup": {
+   "clicks": 0,
+   "impressions": 92,
+   "pages": 1
+  },
+  "pickled-beets": {
+   "clicks": 2,
+   "impressions": 92,
+   "pages": 2
+  },
+  "garlic": {
+   "clicks": 0,
+   "impressions": 91,
+   "pages": 1
+  },
+  "dates": {
+   "clicks": 1,
+   "impressions": 90,
+   "pages": 1
+  },
+  "frozen-meals": {
+   "clicks": 0,
+   "impressions": 90,
+   "pages": 1
+  },
+  "molasses": {
+   "clicks": 0,
+   "impressions": 90,
+   "pages": 1
+  },
+  "tonic-water": {
+   "clicks": 0,
+   "impressions": 90,
+   "pages": 1
+  },
+  "green-beans": {
+   "clicks": 0,
+   "impressions": 89,
+   "pages": 1
+  },
+  "amaranth": {
+   "clicks": 3,
+   "impressions": 87,
+   "pages": 2
+  },
+  "dried-beans": {
+   "clicks": 3,
+   "impressions": 86,
+   "pages": 2
+  },
+  "spaghetti-squash": {
+   "clicks": 1,
+   "impressions": 86,
+   "pages": 1
+  },
+  "star-fruit": {
+   "clicks": 2,
+   "impressions": 85,
+   "pages": 2
+  },
+  "deli-roast-beef": {
+   "clicks": 1,
+   "impressions": 84,
+   "pages": 1
+  },
+  "fruitcake": {
+   "clicks": 3,
+   "impressions": 84,
+   "pages": 2
+  },
+  "parsley": {
+   "clicks": 2,
+   "impressions": 84,
+   "pages": 1
+  },
+  "scallops": {
+   "clicks": 5,
+   "impressions": 82,
+   "pages": 4
+  },
+  "grits": {
+   "clicks": 2,
+   "impressions": 81,
+   "pages": 2
+  },
+  "rehydrated-textured-soy-protein": {
+   "clicks": 2,
+   "impressions": 81,
+   "pages": 2
+  },
+  "brisket-chuck-roast": {
+   "clicks": 2,
+   "impressions": 79,
+   "pages": 2
+  },
+  "cinnamon": {
+   "clicks": 1,
+   "impressions": 79,
+   "pages": 1
+  },
+  "turkey-legs": {
+   "clicks": 2,
+   "impressions": 78,
+   "pages": 2
+  },
+  "roasted-vegetables": {
+   "clicks": 2,
+   "impressions": 77,
+   "pages": 2
+  },
+  "bean-sprouts": {
+   "clicks": 2,
+   "impressions": 76,
+   "pages": 1
+  },
+  "chives": {
+   "clicks": 1,
+   "impressions": 76,
+   "pages": 1
+  },
+  "italian-sausage": {
+   "clicks": 1,
+   "impressions": 75,
+   "pages": 1
+  },
+  "textured-soy-protein-dry": {
+   "clicks": 1,
+   "impressions": 75,
+   "pages": 1
+  },
+  "eclairs": {
+   "clicks": 3,
+   "impressions": 74,
+   "pages": 2
+  },
+  "english-muffins": {
+   "clicks": 1,
+   "impressions": 74,
+   "pages": 1
+  },
+  "red-potatoes": {
+   "clicks": 1,
+   "impressions": 74,
+   "pages": 1
+  },
+  "frosting": {
+   "clicks": 1,
+   "impressions": 72,
+   "pages": 1
+  },
+  "string-cheese": {
+   "clicks": 2,
+   "impressions": 72,
+   "pages": 1
+  },
+  "country-ham": {
+   "clicks": 1,
+   "impressions": 70,
+   "pages": 1
+  },
+  "frozen-pizza": {
+   "clicks": 1,
+   "impressions": 69,
+   "pages": 1
+  },
+  "tuna-steaks": {
+   "clicks": 1,
+   "impressions": 69,
+   "pages": 1
+  },
+  "cranberry-juice": {
+   "clicks": 1,
+   "impressions": 66,
+   "pages": 1
+  },
+  "turmeric": {
+   "clicks": 1,
+   "impressions": 66,
+   "pages": 1
+  },
+  "raspberries": {
+   "clicks": 2,
+   "impressions": 65,
+   "pages": 2
+  },
+  "tater-tots": {
+   "clicks": 1,
+   "impressions": 65,
+   "pages": 1
+  },
+  "ground-pork": {
+   "clicks": 1,
+   "impressions": 64,
+   "pages": 1
+  },
+  "meatballs": {
+   "clicks": 1,
+   "impressions": 64,
+   "pages": 1
+  },
+  "vacuum-packed-ham": {
+   "clicks": 1,
+   "impressions": 64,
+   "pages": 1
+  },
+  "canned-coconut-cream": {
+   "clicks": 1,
+   "impressions": 63,
+   "pages": 1
+  },
+  "fruit-snacks": {
+   "clicks": 1,
+   "impressions": 63,
+   "pages": 1
+  },
+  "bouillon": {
+   "clicks": 1,
+   "impressions": 62,
+   "pages": 1
+  },
+  "cooked-fish": {
+   "clicks": 1,
+   "impressions": 62,
+   "pages": 1
+  },
+  "canadian-bacon": {
+   "clicks": 1,
+   "impressions": 59,
+   "pages": 1
+  },
+  "live-clams-mussels-oysters": {
+   "clicks": 1,
+   "impressions": 59,
+   "pages": 1
+  },
+  "fresh-carrot-juice": {
+   "clicks": 2,
+   "impressions": 56,
+   "pages": 1
+  },
+  "mango": {
+   "clicks": 3,
+   "impressions": 56,
+   "pages": 3
+  },
+  "cookie-dough": {
+   "clicks": 1,
+   "impressions": 55,
+   "pages": 1
+  },
+  "flank-steak": {
+   "clicks": 1,
+   "impressions": 55,
+   "pages": 1
+  },
+  "oat-flour": {
+   "clicks": 1,
+   "impressions": 55,
+   "pages": 1
+  },
+  "cooked-crab": {
+   "clicks": 1,
+   "impressions": 54,
+   "pages": 1
+  },
+  "marshmallow-creme": {
+   "clicks": 2,
+   "impressions": 54,
+   "pages": 2
+  },
+  "pheasant": {
+   "clicks": 2,
+   "impressions": 54,
+   "pages": 2
+  },
+  "frozen-pancakes-waffles": {
+   "clicks": 1,
+   "impressions": 53,
+   "pages": 1
+  },
+  "italian-dressing": {
+   "clicks": 1,
+   "impressions": 52,
+   "pages": 1
+  },
+  "taro": {
+   "clicks": 1,
+   "impressions": 51,
+   "pages": 1
+  },
+  "coconut-flour": {
+   "clicks": 2,
+   "impressions": 50,
+   "pages": 2
+  },
+  "cod": {
+   "clicks": 1,
+   "impressions": 50,
+   "pages": 1
+  },
+  "cooked-lobster-tails": {
+   "clicks": 2,
+   "impressions": 50,
+   "pages": 2
+  },
+  "frozen-dough": {
+   "clicks": 1,
+   "impressions": 50,
+   "pages": 1
+  },
+  "fresh-ham-shank": {
+   "clicks": 1,
+   "impressions": 49,
+   "pages": 1
+  },
+  "chicken-gravy": {
+   "clicks": 1,
+   "impressions": 47,
+   "pages": 1
+  },
+  "cooked-turkey": {
+   "clicks": 1,
+   "impressions": 47,
+   "pages": 1
+  },
+  "drink-mixes": {
+   "clicks": 1,
+   "impressions": 47,
+   "pages": 1
+  },
+  "shucked-oysters-clams-mussels": {
+   "clicks": 1,
+   "impressions": 47,
+   "pages": 1
+  },
+  "cashew-butter": {
+   "clicks": 1,
+   "impressions": 45,
+   "pages": 1
+  },
+  "dried-apricots": {
+   "clicks": 2,
+   "impressions": 45,
+   "pages": 1
+  },
+  "nut-oils": {
+   "clicks": 1,
+   "impressions": 45,
+   "pages": 1
+  },
+  "pectin": {
+   "clicks": 2,
+   "impressions": 44,
+   "pages": 2
+  },
+  "grape-juice": {
+   "clicks": 1,
+   "impressions": 43,
+   "pages": 1
+  },
+  "deli-chicken": {
+   "clicks": 1,
+   "impressions": 41,
+   "pages": 1
+  },
+  "split-peas": {
+   "clicks": 1,
+   "impressions": 41,
+   "pages": 1
+  },
+  "frittata": {
+   "clicks": 1,
+   "impressions": 40,
+   "pages": 1
+  },
+  "beef-short-ribs": {
+   "clicks": 1,
+   "impressions": 39,
+   "pages": 1
+  },
+  "egg-dishes": {
+   "clicks": 1,
+   "impressions": 39,
+   "pages": 1
+  },
+  "canned-tomato-soup": {
+   "clicks": 1,
+   "impressions": 37,
+   "pages": 1
+  },
+  "sunflower-oil": {
+   "clicks": 1,
+   "impressions": 37,
+   "pages": 1
+  },
+  "spaghetti-sauce": {
+   "clicks": 2,
+   "impressions": 36,
+   "pages": 1
+  },
+  "live-lobster": {
+   "clicks": 2,
+   "impressions": 35,
+   "pages": 2
+  },
+  "buckwheat-flour": {
+   "clicks": 2,
+   "impressions": 34,
+   "pages": 2
+  },
+  "sour-cream-dip": {
+   "clicks": 1,
+   "impressions": 34,
+   "pages": 1
+  },
+  "stuffed-chicken-breasts": {
+   "clicks": 1,
+   "impressions": 34,
+   "pages": 1
+  },
+  "amaranth-flour": {
+   "clicks": 1,
+   "impressions": 33,
+   "pages": 1
+  },
+  "roasted-almonds": {
+   "clicks": 1,
+   "impressions": 33,
+   "pages": 1
+  },
+  "fresh-pork-butt-roll": {
+   "clicks": 1,
+   "impressions": 32,
+   "pages": 1
+  },
+  "popsicles": {
+   "clicks": 1,
+   "impressions": 31,
+   "pages": 1
+  },
+  "vinaigrette": {
+   "clicks": 1,
+   "impressions": 31,
+   "pages": 1
+  },
+  "wild-rice": {
+   "clicks": 1,
+   "impressions": 31,
+   "pages": 1
+  },
+  "melon": {
+   "clicks": 1,
+   "impressions": 30,
+   "pages": 1
+  },
+  "plums": {
+   "clicks": 1,
+   "impressions": 30,
+   "pages": 1
+  },
+  "bouillon-base": {
+   "clicks": 1,
+   "impressions": 29,
+   "pages": 1
+  },
+  "celery-root": {
+   "clicks": 1,
+   "impressions": 29,
+   "pages": 1
+  },
+  "cinnamon-rolls": {
+   "clicks": 1,
+   "impressions": 29,
+   "pages": 1
+  },
+  "ground-turkey": {
+   "clicks": 1,
+   "impressions": 29,
+   "pages": 1
+  },
+  "whole-beef-tenderloin": {
+   "clicks": 1,
+   "impressions": 29,
+   "pages": 1
+  },
+  "lamb-chops": {
+   "clicks": 2,
+   "impressions": 28,
+   "pages": 1
+  },
+  "lime-juice": {
+   "clicks": 1,
+   "impressions": 28,
+   "pages": 1
+  },
+  "meat-substitutes": {
+   "clicks": 1,
+   "impressions": 28,
+   "pages": 1
+  },
+  "canned-seafood": {
+   "clicks": 1,
+   "impressions": 27,
+   "pages": 1
+  },
+  "haddock": {
+   "clicks": 1,
+   "impressions": 27,
+   "pages": 1
+  },
+  "homemade-salsa": {
+   "clicks": 1,
+   "impressions": 27,
+   "pages": 1
+  },
+  "microwave-popcorn": {
+   "clicks": 1,
+   "impressions": 27,
+   "pages": 1
+  },
+  "hot-smoked-fish-vacuum-pack": {
+   "clicks": 1,
+   "impressions": 26,
+   "pages": 1
+  },
+  "peaches-plums-pears": {
+   "clicks": 1,
+   "impressions": 26,
+   "pages": 1
+  },
+  "whole-wheat-flour-bulk": {
+   "clicks": 1,
+   "impressions": 26,
+   "pages": 1
+  },
+  "yuzu": {
+   "clicks": 1,
+   "impressions": 26,
+   "pages": 1
+  },
+  "avocado-oil": {
+   "clicks": 2,
+   "impressions": 25,
+   "pages": 2
+  },
+  "canned-fruit": {
+   "clicks": 1,
+   "impressions": 25,
+   "pages": 1
+  },
+  "frozen-fruit": {
+   "clicks": 1,
+   "impressions": 24,
+   "pages": 1
+  },
+  "hot-smoked-fish-air-pack": {
+   "clicks": 1,
+   "impressions": 24,
+   "pages": 1
+  },
+  "tamarind-paste": {
+   "clicks": 1,
+   "impressions": 23,
+   "pages": 1
+  },
+  "boneless-turkey-breast": {
+   "clicks": 1,
+   "impressions": 21,
+   "pages": 1
+  },
+  "pie-crust-ready-bake": {
+   "clicks": 1,
+   "impressions": 21,
+   "pages": 1
+  },
+  "stone-ground-cornmeal": {
+   "clicks": 1,
+   "impressions": 21,
+   "pages": 1
+  },
+  "tapenade": {
+   "clicks": 1,
+   "impressions": 21,
+   "pages": 1
+  },
+  "bone-pork-loin-roast": {
+   "clicks": 1,
+   "impressions": 20,
+   "pages": 1
+  },
+  "canned-carrots": {
+   "clicks": 1,
+   "impressions": 20,
+   "pages": 1
+  },
+  "cool-whip": {
+   "clicks": 1,
+   "impressions": 20,
+   "pages": 1
+  },
+  "oyster-sauce": {
+   "clicks": 1,
+   "impressions": 20,
+   "pages": 1
+  },
+  "soft-cookies": {
+   "clicks": 1,
+   "impressions": 20,
+   "pages": 1
+  },
+  "bell-peppers": {
+   "clicks": 1,
+   "impressions": 19,
+   "pages": 1
+  },
+  "homemade-muffins": {
+   "clicks": 1,
+   "impressions": 19,
+   "pages": 1
+  },
+  "butterscotch-pie": {
+   "clicks": 1,
+   "impressions": 18,
+   "pages": 1
+  },
+  "chocolate-syrup": {
+   "clicks": 1,
+   "impressions": 18,
+   "pages": 1
+  },
+  "frozen-whole-lobster": {
+   "clicks": 1,
+   "impressions": 17,
+   "pages": 1
+  },
+  "homemade-kugel": {
+   "clicks": 1,
+   "impressions": 17,
+   "pages": 1
+  },
+  "sorbet": {
+   "clicks": 1,
+   "impressions": 17,
+   "pages": 1
+  },
+  "egg-noodles": {
+   "clicks": 1,
+   "impressions": 16,
+   "pages": 1
+  },
+  "ground-lamb": {
+   "clicks": 2,
+   "impressions": 16,
+   "pages": 2
+  },
+  "mustard-greens": {
+   "clicks": 1,
+   "impressions": 16,
+   "pages": 1
+  },
+  "pumpkins": {
+   "clicks": 1,
+   "impressions": 16,
+   "pages": 1
+  },
+  "baby-food-vegetables": {
+   "clicks": 1,
+   "impressions": 15,
+   "pages": 1
+  },
+  "frozen-broccoli": {
+   "clicks": 1,
+   "impressions": 15,
+   "pages": 1
+  },
+  "maple-syrup": {
+   "clicks": 1,
+   "impressions": 15,
+   "pages": 1
+  },
+  "marinades": {
+   "clicks": 1,
+   "impressions": 15,
+   "pages": 1
+  },
+  "marinated-vegetables-oil": {
+   "clicks": 3,
+   "impressions": 15,
+   "pages": 1
+  },
+  "mustard": {
+   "clicks": 1,
+   "impressions": 15,
+   "pages": 1
+  },
+  "lamb-shanks": {
+   "clicks": 2,
+   "impressions": 14,
+   "pages": 2
+  },
+  "roast-beef": {
+   "clicks": 1,
+   "impressions": 14,
+   "pages": 1
+  },
+  "broccoli-rabe": {
+   "clicks": 2,
+   "impressions": 12,
+   "pages": 1
+  },
+  "canned-pasta": {
+   "clicks": 1,
+   "impressions": 12,
+   "pages": 1
+  },
+  "cornish-hens": {
+   "clicks": 2,
+   "impressions": 12,
+   "pages": 2
+  },
+  "turkey-thighs": {
+   "clicks": 1,
+   "impressions": 12,
+   "pages": 1
+  },
+  "vacuum-sealed-mung-beans": {
+   "clicks": 1,
+   "impressions": 11,
+   "pages": 1
+  },
+  "worcestershire-sauce": {
+   "clicks": 1,
+   "impressions": 11,
+   "pages": 1
+  },
+  "yuzu-juice": {
+   "clicks": 2,
+   "impressions": 11,
+   "pages": 1
+  },
+  "cooked-ham": {
+   "clicks": 1,
+   "impressions": 10,
+   "pages": 1
+  },
+  "cooking-spray": {
+   "clicks": 2,
+   "impressions": 10,
+   "pages": 2
+  },
+  "dry-pasta": {
+   "clicks": 1,
+   "impressions": 10,
+   "pages": 1
+  },
+  "flatbread": {
+   "clicks": 1,
+   "impressions": 10,
+   "pages": 1
+  },
+  "onion-powder": {
+   "clicks": 1,
+   "impressions": 10,
+   "pages": 1
+  },
+  "pita-bread": {
+   "clicks": 1,
+   "impressions": 10,
+   "pages": 1
+  },
+  "prepared-baby-formula": {
+   "clicks": 1,
+   "impressions": 10,
+   "pages": 1
+  },
+  "rice-milk": {
+   "clicks": 1,
+   "impressions": 10,
+   "pages": 1
+  },
+  "animal-crackers": {
+   "clicks": 1,
+   "impressions": 9,
+   "pages": 1
+  },
+  "dried-mung-beans": {
+   "clicks": 1,
+   "impressions": 9,
+   "pages": 1
+  },
+  "leaf-lettuce": {
+   "clicks": 1,
+   "impressions": 9,
+   "pages": 1
+  },
+  "sea-trout": {
+   "clicks": 1,
+   "impressions": 9,
+   "pages": 1
+  },
+  "tomatoes": {
+   "clicks": 1,
+   "impressions": 9,
+   "pages": 1
+  },
+  "unflavored-gelatin": {
+   "clicks": 1,
+   "impressions": 9,
+   "pages": 1
+  },
+  "corn-syrup": {
+   "clicks": 1,
+   "impressions": 8,
+   "pages": 1
+  },
+  "quail": {
+   "clicks": 1,
+   "impressions": 8,
+   "pages": 1
+  },
+  "whole-cooked-ham-bone": {
+   "clicks": 1,
+   "impressions": 8,
+   "pages": 1
+  },
+  "frozen-lobster-tails": {
+   "clicks": 1,
+   "impressions": 7,
+   "pages": 1
+  },
+  "baby-food-fruit": {
+   "clicks": 1,
+   "impressions": 6,
+   "pages": 1
+  },
+  "bone-turkey-breast": {
+   "clicks": 1,
+   "impressions": 6,
+   "pages": 1
+  },
+  "flounder": {
+   "clicks": 1,
+   "impressions": 6,
+   "pages": 1
+  },
+  "fresh-whole-ham-bone": {
+   "clicks": 1,
+   "impressions": 6,
+   "pages": 1
+  },
+  "rockfish": {
+   "clicks": 1,
+   "impressions": 6,
+   "pages": 1
+  },
+  "sorbet-sherbet": {
+   "clicks": 1,
+   "impressions": 6,
+   "pages": 1
+  },
+  "spiral-ham": {
+   "clicks": 1,
+   "impressions": 6,
+   "pages": 1
+  },
+  "canned-nuts": {
+   "clicks": 1,
+   "impressions": 5,
+   "pages": 1
+  },
+  "gooseberries": {
+   "clicks": 1,
+   "impressions": 5,
+   "pages": 1
+  },
+  "cooked-potatoes": {
+   "clicks": 1,
+   "impressions": 4,
+   "pages": 1
+  },
+  "canned-stew": {
+   "clicks": 1,
+   "impressions": 3,
+   "pages": 1
+  },
+  "chili-powder": {
+   "clicks": 1,
+   "impressions": 3,
+   "pages": 1
+  },
+  "instant-tea": {
+   "clicks": 1,
+   "impressions": 3,
+   "pages": 1
+  },
+  "king-crab-legs": {
+   "clicks": 1,
+   "impressions": 3,
+   "pages": 1
+  },
+  "lamb-leg-steaks": {
+   "clicks": 1,
+   "impressions": 3,
+   "pages": 1
+  },
+  "prepared-meals": {
+   "clicks": 1,
+   "impressions": 3,
+   "pages": 1
+  },
+  "ranch-dressing": {
+   "clicks": 1,
+   "impressions": 3,
+   "pages": 1
+  },
+  "bamboo-shoots": {
+   "clicks": 1,
+   "impressions": 2,
+   "pages": 1
+  },
+  "cajun-seasoning": {
+   "clicks": 1,
+   "impressions": 2,
+   "pages": 1
+  },
+  "cooked-shellfish": {
+   "clicks": 1,
+   "impressions": 2,
+   "pages": 1
+  },
+  "bone-veal-loin-roast": {
+   "clicks": 1,
+   "impressions": 1,
+   "pages": 1
+  },
+  "goat-stew-meat": {
+   "clicks": 1,
+   "impressions": 1,
+   "pages": 1
+  },
+  "ground-goat": {
+   "clicks": 1,
+   "impressions": 1,
+   "pages": 1
+  },
+  "instant-breakfast-drinks": {
+   "clicks": 1,
+   "impressions": 1,
+   "pages": 1
+  }
+ }
+}

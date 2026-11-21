@@ -1,24 +1,46 @@
 #!/usr/bin/env node
 /**
- * Post-build checks on dist/ (runs after `astro build`; fails the build on errors):
- *  - every internal link points at a built page or file, with a trailing slash
+ * Post-build checks on dist/ (runs after `astro build`; fails the build on errors).
+ *
+ * Site-wide
+ *  - every internal link points at a built page or file, with a trailing slash; no indexable page is an orphan
  *  - every indexable page has a unique <title>, a description, a canonical and valid JSON-LD
- *  - sitemaps list exactly the indexable pages
- *  - /calories/ pages carry at least 350 words; /calories/cooked-rice/ has its numbers, storage section and schema
- *  - every data/old-redirects.json destination is a built page
+ *
+ * /calories/ pages
+ *  - no title, H1 or H2 mentions shelf life ("last", "expire", "go bad", "fridge", "shelf life"); no storage section
+ *  - calories for at least one real serving and for 100 g, equal to the data (data/*.json); a food may show 100 g
+ *    only when USDA lists no household measure for it
+ *  - no empty sections and no table row with only zeros or dashes
+ *  - Article (datePublished/dateModified = data/lastmod.json), BreadcrumbList and FAQPage; no stray
+ *    NutritionInformation (only valid inside Recipe or MenuItem)
+ *  - 5 pages match USDA FoodData Central (seo/usda-spotcheck.json, fetched by scripts/usda-spotcheck.mjs)
+ *
+ * Sitemaps
+ *  - list every /calories/ page, the hubs and trust pages, and nothing noindex; every URL has a lastmod; the
+ *    lastmods are not all one date; each index entry's lastmod is the newest date in that sitemap
+ *
+ * URLs
+ *  - every URL that existed on main (seo/urls-main.txt) is still built, or returns 410 by the rules in
+ *    src/lib/gone.mjs (a deliberate removal). None returns a new 404 or 301.
+ *  - every old redirect (data/old-redirects.json) still 301s to a built page, or 410s because its page was removed
  */
 import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
 import { join, relative } from "node:path";
+import { makeResolver, GONE_FOOD_PAGES, GONE_PREFIXES, GONE_FILES } from "../src/lib/gone.mjs";
 
+const ROOT = new URL("../", import.meta.url);
+const json = (p) => JSON.parse(readFileSync(new URL(p, ROOT), "utf8"));
 // With the Vercel adapter, prerendered pages land in dist/client/.
-const DIST = new URL(existsSync(new URL("../dist/client/", import.meta.url)) ? "../dist/client/" : "../dist/", import.meta.url).pathname;
+const DIST = new URL(existsSync(new URL("dist/client/", ROOT)) ? "dist/client/" : "dist/", ROOT).pathname;
 const walk = (d) => readdirSync(d).flatMap((f) => (statSync(join(d, f)).isDirectory() ? walk(join(d, f)) : [join(d, f)]));
 const files = walk(DIST);
 const pages = files.filter((f) => f.endsWith(".html"));
 const errors = [];
-const warn = [];
+const err = (m) => errors.push(m);
 const titles = new Map();
 const relOf = (file) => "/" + relative(DIST, file).replace(/index\.html$/, "");
+const htmlOf = new Map(pages.map((f) => [relOf(f), readFileSync(f, "utf8")]));
+const isNoindex = (html) => /name="robots" content="noindex/.test(html);
 
 const exists = (href) => {
   const p = decodeURI(href.split(/[?#]/)[0]);
@@ -26,121 +48,182 @@ const exists = (href) => {
   const f = join(DIST, p);
   return existsSync(f) && (statSync(f).isFile() || existsSync(join(f, "index.html")));
 };
+const text = (h) => h.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<svg[\s\S]*?<\/svg>/g, " ").replace(/<[^>]+>/g, " ").replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&#39;|&#x27;/g, "'").replace(/&[a-z#0-9]+;/gi, " ").replace(/\s+/g, " ").trim();
+const wordsIn = (html) => (text((html.match(/<main[\s\S]*?<\/main>/) ?? [html])[0]).match(/[\p{L}\p{N}][\p{L}\p{N}'’–-]*/gu) ?? []).length;
 
-const MIN_WORDS = 350; // EatThisMuch food pages run ~550 words, mostly table labels.
-const wordsIn = (html) => {
-  const main = (html.match(/<main[\s\S]*?<\/main>/) ?? [html])[0].replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<svg[\s\S]*?<\/svg>/g, "");
-  return (main.replace(/<[^>]+>/g, " ").replace(/&[a-z#0-9]+;/gi, " ").match(/[\p{L}\p{N}][\p{L}\p{N}'’–-]*/gu) ?? []).length;
-};
-let thin = 0, minSeen = Infinity;
-const inbound = new Map(); // page → number of other pages linking to it (orphan check)
-
-for (const file of pages) {
-  const html = readFileSync(file, "utf8");
-  const rel = relOf(file);
-  const noindex = /name="robots" content="noindex/.test(html);
+/* ---------------------------------------------------------------- site-wide */
+const inbound = new Map();
+for (const [rel, html] of htmlOf) {
   for (const [, href] of html.replace(/<script[\s\S]*?<\/script>/g, "").matchAll(/href="(\/[^"]*)"/g)) {
     if (href.startsWith("//")) continue;
     const target = href.split(/[?#]/)[0];
     if (target !== rel) inbound.set(target, (inbound.get(target) ?? 0) + 1);
-    if (!exists(href)) errors.push(`${rel}: broken link ${href}`);
-    else if (!/\.[a-z0-9]+$/i.test(href.split(/[?#]/)[0]) && !href.split(/[?#]/)[0].endsWith("/")) errors.push(`${rel}: link without trailing slash ${href}`);
+    if (!exists(href)) err(`${rel}: broken link ${href}`);
+    else if (!/\.[a-z0-9]+$/i.test(target) && !target.endsWith("/")) err(`${rel}: link without trailing slash ${href}`);
   }
-  if (noindex || rel === "/404.html") continue;
+  if (isNoindex(html) || rel === "/404.html") continue;
   const title = html.match(/<title>(.*?)<\/title>/)?.[1];
-  const desc = html.match(/name="description" content="([^"]*)"/)?.[1] ?? "";
-  if (!title) errors.push(`${rel}: missing title`);
-  else if (titles.has(title)) errors.push(`${rel}: duplicate title with ${titles.get(title)}`);
+  if (!title) err(`${rel}: missing title`);
+  else if (titles.has(title)) err(`${rel}: duplicate title with ${titles.get(title)}`);
   else titles.set(title, rel);
-  if (!desc) errors.push(`${rel}: missing description`);
-  if (!/rel="canonical" href="https:\/\/www\.guntherheller\.com\//.test(html)) errors.push(`${rel}: missing canonical`);
-  if (!html.includes("application/ld+json")) errors.push(`${rel}: missing JSON-LD`);
-  for (const m of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) {
-    try { JSON.parse(m[1]); } catch { errors.push(`${rel}: invalid JSON-LD`); }
+  if (!html.match(/name="description" content="([^"]*)"/)?.[1]) err(`${rel}: missing description`);
+  if (!/rel="canonical" href="https:\/\/www\.guntherheller\.com\//.test(html)) err(`${rel}: missing canonical`);
+  if (!html.includes("application/ld+json")) err(`${rel}: missing JSON-LD`);
+  for (const m of html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)) { try { JSON.parse(m[1]); } catch { err(`${rel}: invalid JSON-LD`); } }
+}
+
+/* ---------------------------------------------------------------- /calories/ pages */
+const FOODS = new Map(["data/nutrition.json", "data/branded.json", "data/restaurant-foods.json"].flatMap((p) => json(p).foods).map((f) => [f.slug, f]));
+const LASTMOD = json("data/lastmod.json");
+const BANNED = /\blasts?\b|expire|go(es)? bad|fridge|shelf[- ]life/i;
+// Same rules as servings() in src/lib/nutrition.ts: a household measure counts if it has a weight, starts with a
+// number and is not one nobody uses at home.
+const ODD_SERVING = /school|linear inch|guide amount|as purchased|recipe|batch|\bpan\b/i;
+const hasHouseholdServing = (f) => f.p.some(([l, g, nw]) => !nw && g && !ODD_SERVING.test(l) && /^[\d½¼¾⅓⅔.\/]+\s/.test(l.replace(/\s*\(.*\)\s*/g, " ").replace(/,.*$/, "").trim()) && !/\bg$/.test(l.replace(/\s*\(.*\)\s*/g, " ").replace(/,.*$/, "").trim()));
+const ZEROISH = /^(0|0\.0+)?\s*(g|mg|µg|kcal|%)?$|^[–—-]$|^<?0(\.0+)?\s*(g|mg|µg)$/;
+const calPages = [...htmlOf.keys()].filter((p) => /^\/calories\/[^/]+\/$/.test(p));
+let onlyHundred = [], words = [];
+for (const rel of calPages) {
+  const html = htmlOf.get(rel);
+  const slug = rel.split("/")[2];
+  const f = FOODS.get(slug);
+  if (!f) { err(`${rel}: no data entry for ${slug}`); continue; }
+  if (isNoindex(html)) err(`${rel}: /calories/ page is noindex`);
+  words.push(wordsIn(html));
+  const main = (html.match(/<main[\s\S]*?<\/main>/) ?? [html])[0];
+
+  // Headings stay on topic.
+  const heads = [["title", html.match(/<title>(.*?)<\/title>/)?.[1] ?? ""], ...[...main.matchAll(/<(h1|h2)[^>]*>([\s\S]*?)<\/\1>/g)].map((m) => [m[1], text(m[2])])];
+  for (const [tag, t] of heads) if (BANNED.test(t)) err(`${rel}: ${tag} mentions shelf life: "${t}"`);
+  if (/id="storage"|FoodKeeper/.test(main)) err(`${rel}: still carries storage content`);
+
+  // Calories by serving, from the data.
+  const table = main.match(/<table class="dtable serv-table">([\s\S]*?)<\/table>/)?.[1];
+  if (!table) { err(`${rel}: no serving table`); continue; }
+  const rows = [...table.matchAll(/<tr><th scope="row">([\s\S]*?)<\/th><td class="num"><b>(\d+)<\/b><\/td>/g)].map((m) => ({ label: text(m[1]), kcal: +m[2] }));
+  const hundred = rows.find((r) => r.label === "100 g");
+  if (!hundred) err(`${rel}: no 100 g row`);
+  else if (hundred.kcal !== Math.round(f.v.kcal)) err(`${rel}: 100 g shows ${hundred.kcal} kcal, data has ${f.v.kcal}`);
+  const real = rows.filter((r) => r.label !== "100 g");
+  for (const r of real) {
+    const g = +r.label.match(/\(([\d.]+) g\)$/)?.[1];
+    if (!g) { err(`${rel}: serving "${r.label}" has no weight`); continue; }
+    const portion = f.p.find(([, w]) => Math.abs(w - g) < 0.051);
+    if (!portion) err(`${rel}: serving "${r.label}" is not a USDA measure for this food`);
+    if (Math.abs(r.kcal - (f.v.kcal * g) / 100) > 0.5) err(`${rel}: "${r.label}" shows ${r.kcal} kcal, data gives ${((f.v.kcal * g) / 100).toFixed(1)}`);
   }
-  if (rel.startsWith("/calories/")) {
-    const n = wordsIn(html);
-    minSeen = Math.min(minSeen, n);
-    if (n < MIN_WORDS) { thin++; if (thin <= 10) errors.push(`${rel}: only ${n} words (min ${MIN_WORDS})`); }
+  if (!real.length) { if (hasHouseholdServing(f)) err(`${rel}: data has a household serving but the page shows 100 g only`); else onlyHundred.push(slug); }
+
+  // No empty sections, no rows of zeros or dashes.
+  for (const m of main.matchAll(/<section[^>]*>([\s\S]*?)<\/section>/g)) {
+    const body = m[1].replace(/<h2[\s\S]*?<\/h2>/, "");
+    if (!/<(tr|li|p)\b/.test(body) || !text(body)) err(`${rel}: empty section ${m[0].match(/aria-labelledby="([^"]+)"/)?.[1] ?? ""}`);
+  }
+  // A zero-calorie food's serving rows are allowed to read 0: that is the answer to the page's question.
+  for (const m of (f.v.kcal === 0 ? main.replace(/<table class="dtable serv-table">[\s\S]*?<\/table>/, "") : main).matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/g)) {
+    const cells = [...m[1].matchAll(/<td[^>]*>([\s\S]*?)<\/td>/g)].map((c) => text(c[1]));
+    if (cells.length && cells.every((c) => ZEROISH.test(c))) err(`${rel}: row with only zeros or dashes: ${text(m[1]).slice(0, 60)}`);
+  }
+
+  // Structured data.
+  const graph = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)].flatMap((m) => { try { const j = JSON.parse(m[1]); return j["@graph"] ?? [j]; } catch { return []; } });
+  const art = graph.find((x) => x["@type"] === "Article");
+  const d = LASTMOD.foods[slug];
+  if (!art) err(`${rel}: no Article JSON-LD`);
+  else if (!d || art.datePublished !== d.published || art.dateModified !== d.modified) err(`${rel}: Article dates ${art.datePublished}/${art.dateModified} differ from data/lastmod.json`);
+  for (const t of ["BreadcrumbList", "FAQPage"]) if (!graph.some((x) => x["@type"] === t)) err(`${rel}: no ${t} JSON-LD`);
+  if (graph.some((x) => x["@type"] === "NutritionInformation")) err(`${rel}: top-level NutritionInformation (only valid inside Recipe/MenuItem)`);
+}
+words.sort((a, b) => a - b);
+for (const rel of calPages) if (wordsIn(htmlOf.get(rel)) < 120) err(`${rel}: under 120 words: broken page?`);
+
+// USDA spot-check: the page's 100 g row against FoodData Central itself.
+const SPOT = json("seo/usda-spotcheck.json");
+const fmtN = (x) => { if (x === 0) return "0"; const a = Math.abs(x); const n = a >= 10 ? Math.round(x).toString() : a >= 0.1 ? (+x.toFixed(1)).toString() : (+x.toFixed(2)).toString(); return n === "0" ? "<0.1" : n; };
+for (const [slug, s] of Object.entries(SPOT.foods)) {
+  const html = htmlOf.get(`/calories/${slug}/`);
+  if (!html) { err(`spot-check: /calories/${slug}/ not built`); continue; }
+  const row = html.match(/<tr><th scope="row">100 g<\/th>([\s\S]*?)<\/tr>/)?.[1];
+  const head = html.match(/<table class="dtable serv-table">[\s\S]*?<thead>([\s\S]*?)<\/thead>/)?.[1] ?? "";
+  if (!row) { err(`spot-check ${slug}: no 100 g row`); continue; }
+  const cols = [...head.matchAll(/<th[^>]*>([\s\S]*?)<\/th>/g)].map((m) => text(m[1]).toLowerCase()).slice(1);
+  const vals = [...row.matchAll(/<td[^>]*>([\s\S]*?)<\/td>/g)].map((m) => text(m[1]));
+  const got = Object.fromEntries(cols.map((c, i) => [c, vals[i]]));
+  if (Math.abs(+got.calories - s.per100g.kcal) > 1) err(`spot-check ${slug}: ${got.calories} kcal per 100 g, USDA FDC ${s.fdcId} has ${s.per100g.kcal}`);
+  for (const k of ["protein", "carbs", "fat"]) {
+    if (s.per100g[k] == null) continue;
+    const want = `${fmtN(s.per100g[k])} g`;
+    if (got[k] !== want) err(`spot-check ${slug}: ${k} ${got[k]} per 100 g, USDA FDC ${s.fdcId} has ${want}`);
   }
 }
-if (thin > 10) errors.push(`…${thin - 10} more pages under ${MIN_WORDS} words`);
 
-// Sitemaps: every listed URL is a built, indexable page; every indexable page is listed.
-const listed = new Set();
+/* ---------------------------------------------------------------- sitemaps */
+const listed = new Map(); // path → lastmod
 const idx = readFileSync(join(DIST, "sitemap.xml"), "utf8");
-for (const [, loc] of idx.matchAll(/<loc>https:\/\/www\.guntherheller\.com(\/[^<]+)<\/loc>/g)) {
+for (const [, loc, mod] of idx.matchAll(/<sitemap><loc>https:\/\/www\.guntherheller\.com(\/[^<]+)<\/loc><lastmod>([^<]+)<\/lastmod><\/sitemap>/g)) {
   const xml = readFileSync(join(DIST, loc), "utf8");
-  const n = (xml.match(/<url>/g) ?? []).length;
-  if (n > 50000 || xml.length > 50 * 1024 * 1024) errors.push(`${loc}: over sitemap limits`);
-  for (const [, p] of xml.matchAll(/<loc>https:\/\/www\.guntherheller\.com([^<]+)<\/loc>/g)) {
-    listed.add(p);
-    if (!exists(p)) errors.push(`${loc}: lists missing page ${p}`);
+  if ((xml.match(/<url>/g) ?? []).length > 50000) err(`${loc}: over sitemap limits`);
+  let newest = "";
+  for (const m of xml.matchAll(/<url><loc>https:\/\/www\.guntherheller\.com([^<]+)<\/loc>(?:<lastmod>([^<]+)<\/lastmod>)?<\/url>/g)) {
+    const [, p, lm] = m;
+    if (!lm) err(`${loc}: ${p} has no lastmod`);
+    listed.set(p, lm);
+    if (lm > newest) newest = lm;
+    if (!exists(p)) err(`${loc}: lists missing page ${p}`);
+    else if (htmlOf.has(p) && isNoindex(htmlOf.get(p))) err(`${loc}: lists noindex page ${p}`);
   }
+  if (mod !== newest) err(`sitemap.xml: ${loc} lastmod ${mod}, newest page in it is ${newest}`);
 }
-for (const file of pages) {
-  const rel = relOf(file);
-  const html = readFileSync(file, "utf8");
-  if (rel === "/404.html" || /name="robots" content="noindex/.test(html)) continue;
-  if (!listed.has(rel)) errors.push(`${rel}: indexable page missing from sitemaps`);
-}
-for (const f of ["favicon.ico", "favicon.svg", "favicon-96x96.png", "apple-touch-icon.png", "site.webmanifest", "web-app-manifest-512x512.png", "robots.txt", "ads.txt", "sitemap.xml", "og.png", "404.html", "search-index.json", "nutrition-index.json"])
-  if (!existsSync(join(DIST, f))) errors.push(`missing ${f}`);
-
-// Interlinking: every indexable page is linked from at least one other page (no orphans).
+if ((idx.match(/<sitemap>/g) ?? []).length !== (idx.match(/<lastmod>/g) ?? []).length) err("sitemap.xml: an entry has no lastmod");
+for (const [rel, html] of htmlOf) if (rel !== "/404.html" && !isNoindex(html) && !listed.has(rel)) err(`${rel}: indexable page missing from sitemaps`);
+for (const p of ["/", "/food/", "/about/", "/methodology/", "/editorial-policy/", "/contact/", "/authors/karman-meyer/"]) if (!listed.has(p)) err(`sitemaps: ${p} missing`);
+const distinct = new Set(listed.values());
+if (distinct.size < 2) err(`sitemaps: every URL has the same lastmod (${[...distinct][0]})`);
 let orphans = 0;
-for (const p of listed) if (p !== "/" && !inbound.get(p)) { orphans++; if (orphans <= 10) errors.push(`${p}: orphan page (no internal links point to it)`); }
-const counts = [...listed].map((p) => inbound.get(p) ?? 0).sort((a, b) => a - b);
-console.log(`check-build: inbound internal links per page — min ${counts[0]}, median ${counts[counts.length >> 1]}, max ${counts.at(-1)}`);
+for (const p of listed.keys()) if (p !== "/" && !inbound.get(p)) { orphans++; if (orphans <= 10) err(`${p}: orphan page (no internal links point to it)`); }
 
-// Acceptance test: cooked rice (nutrition + FoodKeeper storage on one page).
-const rice = readFileSync(join(DIST, "calories/cooked-rice/index.html"), "utf8");
-if (!/<title>Cooked Rice Calories and Nutrition Facts \(\d+ Calories per [^<]+\)<\/title>/.test(rice)) errors.push("cooked rice: unexpected title");
-for (const t of ["Nutrition Facts", "Vitamins and minerals", "How long does cooked rice last?", "4–6 days", "2,000-calorie diet"]) if (!rice.includes(t)) errors.push(`cooked rice: "${t}" missing`);
-for (const t of ['"NutritionInformation"', '"BreadcrumbList"', '"FAQPage"', '"Organization"']) if (!rice.includes(t)) errors.push(`cooked rice: JSON-LD ${t} missing`);
+for (const f of ["favicon.ico", "favicon.svg", "favicon-96x96.png", "apple-touch-icon.png", "site.webmanifest", "web-app-manifest-512x512.png", "robots.txt", "ads.txt", "sitemap.xml", "og.png", "404.html", "nutrition-index.json"])
+  if (!existsSync(join(DIST, f))) err(`missing ${f}`);
 
-// Restaurant and store-brand hubs, the reviewer's profile and the trust pages exist and carry the right schema.
-for (const [p, needles] of [
-  ["restaurants/index.html", ['"CollectionPage"', "/restaurants/mcdonalds/"]],
-  ["restaurants/mcdonalds/index.html", ['"ItemList"', '"FAQPage"', "Big Mac"]],
-  ["brands/index.html", ['"CollectionPage"', "/brands/great-value/"]],
-  ["authors/karman-meyer/index.html", ['"ProfilePage"', '"Person"', '"EducationalOccupationalCredential"']],
-  ["editorial-policy/index.html", ["Dietitian review"]],
-  ["contact/index.html", ["Reporting a wrong number"]],
-]) {
-  if (!existsSync(join(DIST, p))) { errors.push(`missing ${p}`); continue; }
-  const html = readFileSync(join(DIST, p), "utf8");
-  for (const n of needles) if (!html.includes(n)) errors.push(`${p}: "${n}" missing`);
+/* ---------------------------------------------------------------- URLs from main, old redirects */
+const MAP = json("data/old-redirects.json");
+// The live set exactly as the on-demand route builds it (proven foods + every /food/ page not removed)...
+const proven = new Set(Object.keys(json("data/proven.json").foods).map((s) => `/calories/${s}/`));
+const live = { has: (p) => (p.startsWith("/calories/") ? proven.has(p) : !GONE_FOOD_PAGES.includes(p)) };
+// ...must agree with what was built.
+for (const p of proven) if (!htmlOf.has(p)) err(`${p}: in data/proven.json but not built`);
+for (const p of calPages) if (!proven.has(p)) err(`${p}: built but not in data/proven.json`);
+for (const p of GONE_FOOD_PAGES) if (htmlOf.has(p)) err(`${p}: listed as removed in src/lib/gone.mjs but still built`);
+const resolve = makeResolver(MAP, live);
+const builtPath = (p) => htmlOf.has(p) || (p !== "/" && existsSync(join(DIST, p)) && statSync(join(DIST, p)).isFile());
+const mainUrls = readFileSync(new URL("seo/urls-main.txt", ROOT), "utf8").trim().split("\n");
+const removed = {};
+for (const p of mainUrls) {
+  if (builtPath(p)) continue;
+  const r = resolve(p);
+  if (r.status !== 410) { err(`${p}: existed on main, now returns ${r.status}${r.location ? ` → ${r.location}` : ""}`); continue; }
+  const k = GONE_FILES.includes(p) ? "removed sitemaps" : GONE_FOOD_PAGES.includes(p) ? "/food/ categories with no foods left" : GONE_PREFIXES.find((x) => p.startsWith(x)) + "*";
+  removed[k] = (removed[k] ?? 0) + 1;
 }
-// "Reviewed by … on <date>" only on pages listed in data/reviewed.json.
-const reviewedData = JSON.parse(readFileSync(new URL("../data/reviewed.json", import.meta.url), "utf8"));
-const reviewed = new Proxy(reviewedData.pages, { get: (t, k) => t[k] ?? reviewedData.site });
-let reviewedSeen = 0;
-for (const file of pages) {
-  const html = readFileSync(file, "utf8");
-  const rel = relOf(file);
-  const claims = /Reviewed by <a/.test(html) || /"reviewedBy"/.test(html);
-  if (claims) reviewedSeen++;
-  if (claims && !reviewed[rel]) errors.push(`${rel}: shows a review that data/reviewed.json does not list`);
-}
-// Indexing: only searched-for foods, storage foods, restaurant and store-brand items are indexable.
-const foodPages = pages.filter((f) => relOf(f).startsWith("/calories/"));
-const indexableFoods = foodPages.filter((f) => !/name="robots" content="noindex/.test(readFileSync(f, "utf8"))).length;
-console.log(`check-build: ${indexableFoods} of ${foodPages.length} food pages indexable, ${reviewedSeen} reviewed pages`);
-if (indexableFoods > 6000) warn.push(`${indexableFoods} indexable food pages: more than the demand data justifies?`);
-
-// Every 301 in data/old-redirects.json lands on a built page (the catch-all handles everything else).
-const redirects = Object.entries(JSON.parse(readFileSync(new URL("../data/old-redirects.json", import.meta.url), "utf8"))).map(([source, destination]) => ({ source, destination }));
-for (const r of redirects) {
-  if (!exists(r.destination)) errors.push(`data/old-redirects.json: ${r.source} → missing ${r.destination}`);
-  if (exists(r.source) && r.source !== "/") errors.push(`data/old-redirects.json: ${r.source} is also a built page`);
+let r301 = 0, r410 = 0;
+for (const [src, dest] of Object.entries(MAP)) {
+  if (builtPath(src) && src !== "/") err(`data/old-redirects.json: ${src} is also a built page`);
+  const r = resolve(src);
+  if (r.status === 301) { r301++; if (!builtPath(dest.split("#")[0])) err(`data/old-redirects.json: ${src} 301s to missing ${dest}`); }
+  else { r410++; if (builtPath(dest.split("#")[0])) err(`data/old-redirects.json: ${src} returns 410 but ${dest} is built`); }
 }
 
+/* ---------------------------------------------------------------- report */
 const css = files.filter((f) => f.endsWith(".css")).reduce((n, f) => n + statSync(f).size, 0);
-const inlineCss = 0;
-console.log(`check-build: ${pages.length} pages, ${titles.size} unique titles, ${listed.size} sitemap URLs, ${redirects.length} redirects, shortest food page ${minSeen} words, CSS ${(Math.max(css, inlineCss) / 1024).toFixed(1)} KB`);
-if (Math.max(css, inlineCss) > 60 * 1024) errors.push("CSS over the 60 KB budget");
-warn.slice(0, 10).forEach((w) => console.warn("warn:", w));
+if (css > 60 * 1024) err("CSS over the 60 KB budget");
+const reviewedData = json("data/reviewed.json");
+for (const [rel, html] of htmlOf) if ((/Reviewed by <a/.test(html) || /"reviewedBy"/.test(html)) && !(reviewedData.pages[rel] ?? reviewedData.site)) err(`${rel}: shows a review that data/reviewed.json does not list`);
+
+console.log(`check-build: ${pages.length} pages, ${titles.size} unique titles, ${listed.size} sitemap URLs (${distinct.size} distinct lastmod dates), ${calPages.length} calorie pages (words min ${words[0]}, median ${words[words.length >> 1]})`);
+console.log(`check-build: ${onlyHundred.length} calorie pages show 100 g only because USDA lists no household measure${onlyHundred.length ? `: ${onlyHundred.join(", ")}` : ""}`);
+console.log(`check-build: of ${mainUrls.length} URLs on main, ${mainUrls.filter(builtPath).length} still built; 410 Gone: ${JSON.stringify(removed)}`);
+console.log(`check-build: old redirects: ${r301} still 301, ${r410} now 410 (their page was removed)`);
+console.log(`check-build: USDA spot-check (${Object.keys(SPOT.foods).join(", ")}) against FDC data fetched ${SPOT.fetched}`);
 if (errors.length) {
   errors.slice(0, 40).forEach((e) => console.error("error:", e));
   console.error(`check-build: ${errors.length} error(s)`);

@@ -7,6 +7,7 @@ import branded from "../../data/branded.json";
 import demandRaw from "../../data/demand.json";
 import chainsRaw from "../../data/chains.json";
 import restaurantRaw from "../../data/restaurant-foods.json";
+import provenRaw from "../../data/proven.json";
 
 /** [label, grams] — a third element 1 means the weight is unknown (a chain guide gave only "1 donut"); grams is then 100 and v holds per-serving values. */
 export type Portion = [label: string, grams: number, noWeight?: number];
@@ -38,9 +39,16 @@ export type NCategory = { slug: string; name: string; count: number };
 // Restaurant-guide items without a serving weight get a page only when people search for them (the guides list
 // every size and milk option); items with weights are few enough to publish whole.
 const RESTAURANT = (restaurantRaw.foods as unknown as NFood[]).filter((f) => !f.ps || ((demandRaw.foods as Record<string, { v: number }>)[f.slug]?.v ?? 0) > 0);
-export const NFOODS = [...(raw.foods as unknown as NFood[]), ...(branded.foods as unknown as NFood[]), ...RESTAURANT];
+/** Every record in the data files. Names are worked out over all of them (below), so they stay unique and stable. */
+const ALL_FOODS = [...(raw.foods as unknown as NFood[]), ...(branded.foods as unknown as NFood[]), ...RESTAURANT];
+/**
+ * Foods Google has shown this site for (data/proven.json, from Search Console). Only these get a /calories/ page;
+ * every other food URL returns 410 Gone (src/lib/gone.mjs).
+ */
+export const PROVEN = provenRaw.foods as Record<string, { clicks: number; impressions: number; pages: number }>;
+export const NFOODS = ALL_FOODS.filter((f) => f.slug in PROVEN);
 export const NMETA = { ...(raw.meta as { generated: string; sources: { tag: string; name: string; url: string }[] }), count: NFOODS.length };
-export const NCATS = (raw.categories as NCategory[]).map((c) => ({ ...c, count: NFOODS.filter((f) => f.cat === c.slug).length }));
+export const NCATS = (raw.categories as NCategory[]).map((c) => ({ ...c, count: NFOODS.filter((f) => f.cat === c.slug).length })).filter((c) => c.count > 0);
 export const STORES = branded.meta.stores as { slug: string; brand: string; store: string }[];
 
 /* ---------------------------------------------------------------- restaurant chains (data/chains.json) */
@@ -106,8 +114,8 @@ function readableName(f: NFood): string {
 {
   const proposed = new Map<NFood, string>();
   const count = new Map<string, number>();
-  const taken = new Set(NFOODS.filter((f) => f.storage || f.src === "B" || f.src === "R").map((f) => f.name.toLowerCase()));
-  for (const f of NFOODS) {
+  const taken = new Set(ALL_FOODS.filter((f) => f.storage || f.src === "B" || f.src === "R").map((f) => f.name.toLowerCase()));
+  for (const f of ALL_FOODS) {
     if (f.storage || f.src === "B" || f.src === "R") continue;
     const n = readableName(f);
     proposed.set(f, n);
@@ -137,13 +145,8 @@ const DEMAND = demandRaw.foods as Record<string, { v: number; phrase: string | n
 export const CHAIN_DEMAND = (demandRaw as { chains?: Record<string, number> }).chains ?? {};
 /** Monthly US searches (competitor-ranking keywords) that this page answers. scripts/build-demand.mjs */
 export const demandOf = (f: { slug: string }) => DEMAND[f.slug]?.v ?? 0;
-/** Generic USDA records need this much monthly search demand to be indexed. */
-export const MIN_DEMAND = 100;
-/**
- * Indexable food pages: foods people search for, the FoodKeeper storage foods and restaurant menu items (their chain
- * hub lists them). Every other record keeps its page for visitors and internal links, but noindex and out of the sitemaps.
- */
-export const isIndexable = (f: NFood) => Boolean(f.storage) || chainOf(f) !== null || (f.src === "B" ? demandOf(f) > 0 : demandOf(f) >= MIN_DEMAND);
+/** Every built food page is indexable: the site only builds foods with proven Google impressions (PROVEN). */
+export const isIndexable = (f: NFood) => f.slug in PROVEN;
 /** Foods ordered by search demand (most searched first), then name. */
 export const byDemand = (a: NFood, b: NFood) => demandOf(b) - demandOf(a) || a.name.localeCompare(b.name);
 
@@ -345,27 +348,89 @@ export function subName(f: NFood) {
 export const titleCase = (s: string) =>
   s.replace(/(^|[\s(\-/])([a-z])/g, (_m, p, c) => p + c.toUpperCase()).replace(/\b(And|Or|Of|In|The|With|On|A|To|As|For|From|Without|No)\b(?!$)/g, (w) => w.toLowerCase()).replace(/^./, (c) => c.toUpperCase());
 
+/* ---------------------------------------------------------------- calorie page: servings, title, H1 */
+/** Household measures nobody types into a search box ("1 individual school container", "1 linear inch"). */
+const ODD_SERVING = /school|linear inch|guide amount|as purchased|recipe|batch|\bpan\b/i;
+/** Whole items people count ("1 medium", "1 fruit", "1 egg") come before cups and slices. */
+const WHOLE = /\b(small|medium|large|extra large|jumbo|fruit|whole|each|item)\b/i;
+/** "1 cup, cooked" → "1 cup"; "1 medium slice (yield after cooking)" → "1 medium slice". */
+const cleanServing = (label: string) => label.replace(/\s*\(.*\)\s*/g, " ").replace(/,.*$/, "").replace(/\s+/g, " ").trim();
+/** "Apples" → "apple", "Eggs" → "egg", "Cherries" → "cherry", "Tomatoes" → "tomato"; null for multi-word names. */
+function singular(f: NFood): string | null {
+  if (/\s|,|\(/.test(f.name)) return null;
+  const n = f.name.toLowerCase();
+  return /ies$/.test(n) ? n.replace(/ies$/, "y") : /oes$/.test(n) ? n.replace(/es$/, "") : /[^s]s$/.test(n) ? n.slice(0, -1) : n;
+}
+export type Serving = { label: string; grams: number; ofFood: boolean };
 /**
- * "<Food> Calories and Nutrition Facts (<n> Calories per <serving>)". Searches for these pages are "X calories",
- * "calories in X" and "X nutrition facts" (about 60% of the demand on EatBetter, CalorieKing and MyNetDiary), so the
- * title carries both phrases. Long names drop the calorie figure, then their qualifier in brackets.
+ * Servings people actually use: the food's USDA household measures (first ones first, odd ones skipped, at most 3),
+ * then 100 g. "1 medium" becomes "1 medium apple" when the food's name is one word; ofFood is false when the label
+ * already names the food ("1 egg", "1 medium apple"), so sentences read "1 egg has …" rather than "1 egg of eggs".
+ */
+export function servings(f: NFood): Serving[] {
+  const out: Serving[] = [];
+  const one = singular(f);
+  const named = (l: string) => WHOLE.test(l) || (one ? new RegExp(`\\b${one}s?\\b`, "i").test(l) : false);
+  const ordered = [...f.p].sort((a, b) => Number(named(b[0])) - Number(named(a[0])));
+  for (const [l, g, noWeight] of ordered) {
+    if (noWeight || ODD_SERVING.test(l) || !g) continue;
+    let label = cleanServing(l);
+    if (!/^[\d½¼¾⅓⅔.\/]+\s/.test(label) || /\bg$/.test(label)) continue;
+    let ofFood = true;
+    if (one && /^[\d½¼¾.\/]+ (small|medium|large|extra large|jumbo)$/.test(label)) { label = `${label} ${one}`; ofFood = false; }
+    else if (one && /^1 (fruit|whole|each|item)$/.test(label)) { label = `1 ${one}`; ofFood = false; }
+    else if (one && new RegExp(`\\b${one}s?\\b`, "i").test(label)) ofFood = false;
+    if (out.some((x) => x.label === label)) continue;
+    out.push({ label, grams: g, ofFood });
+    if (out.length === 3) break;
+  }
+  out.push({ label: "100 g", grams: 100, ofFood: true });
+  return out;
+}
+/** The serving a page leads with: the first household measure, else 100 g. */
+export const commonServing = (f: NFood) => servings(f)[0];
+export const kcalIn = (f: NFood, grams: number) => Math.round(per(f.v.kcal, grams));
+/** "1 cup of cooked rice" / "1 egg" / "100 g of salmon". */
+export const servingPhrase = (f: NFood, s: Serving) => (s.ofFood ? `${s.label} of ${lcName(f)}` : s.label);
+
+const TITLE_MAX = 65;
+/**
+ * "{Food} Calories: {N} per {serving} (Nutrition Facts)", at most 65 characters. Long names drop "(Nutrition
+ * Facts)", then fall back to 100 g, then to "{Food} Calories and Nutrition Facts".
  */
 export function pageTitle(f: NFood) {
-  const s = defaultServing(f);
-  const kcal = Math.round(per(f.v.kcal, s[1]));
   const name = titleCase(f.name);
-  const extra = ` (${kcal} Calories per ${s[0].replace(/^1 /, "").replace(/\s*\(.*\)$/, "")})`;
-  const full = `${name} Calories and Nutrition Facts`;
-  if ((full + extra).length <= 72) return full + extra;
-  if (full.length <= 72) return full;
-  return `${name} Nutrition Facts`;
+  const s = commonServing(f);
+  const tries = [
+    `${name} Calories: ${kcalIn(f, s.grams)} per ${s.label} (Nutrition Facts)`,
+    `${name} Calories: ${kcalIn(f, s.grams)} per ${s.label}`,
+    `${name} Calories: ${kcalIn(f, 100)} per 100 g`,
+    `${name} Calories and Nutrition Facts`,
+    `${name} Calories`,
+  ];
+  return tries.find((t) => t.length <= TITLE_MAX) ?? tries.at(-1)!;
 }
-/** H1: the food plus the words people search with. */
-export const pageH1 = (f: NFood) => `${f.name}: calories and nutrition facts`;
+/** H1: the question people type. */
+export const pageH1 = (f: NFood) => `How many calories are in ${lcName(f)}?`;
+
+/** Where a food sits in its category by calories per 100 g (1 = most). */
+export function calorieRank(f: NFood) {
+  const list = NFOODS.filter((x) => x.cat === f.cat).sort((a, b) => b.v.kcal - a.v.kcal || a.name.localeCompare(b.name));
+  return { pos: list.indexOf(f) + 1, of: list.length };
+}
+/** 3 comparable foods: USDA's similar records that have a page, else the category's foods closest in calories. */
+export function similarThree(f: NFood): NFood[] {
+  // Foods that use the same USDA record have the same numbers: comparing with them says nothing.
+  const other = (x: NFood) => x !== f && x.id !== f.id;
+  const out = f.sim.map(nfood).filter((x): x is NFood => !!x && other(x));
+  const near = NFOODS.filter((x) => x.cat === f.cat && other(x) && !out.includes(x)).sort((a, b) => Math.abs(a.v.kcal - f.v.kcal) - Math.abs(b.v.kcal - f.v.kcal));
+  return [...out, ...near].slice(0, 3);
+}
 export function pageDescription(f: NFood) {
-  const { s, kcal, m } = summary(f);
-  const p = fmtN(per(f.v["203"] ?? 0, s[1]), "g"), c = fmtN(per(f.v["205"] ?? 0, s[1]), "g"), fa = fmtN(per(f.v["204"] ?? 0, s[1]), "g");
-  return `${cap(servingLabel(s))} of ${lcName(f)} has ${kcal} calories: ${p} protein, ${c} carbs and ${fa} fat (${m.carbs}% carbs, ${m.fat}% fat, ${m.protein}% protein). Full nutrition facts, vitamins and minerals.`.slice(0, 300);
+  const s = commonServing(f);
+  const g = (k: string) => fmtN(per(f.v[k] ?? 0, s.grams), " g").replace(/^<0.1 g$/, "under 0.1 g");
+  const hundred = s.grams === 100 ? "" : ` 100 g has ${kcalIn(f, 100)} calories.`;
+  return `${cap(servingPhrase(f, s))} has ${kcalIn(f, s.grams)} calories, ${g("203")} of protein, ${g("205")} of carbs and ${g("204")} of fat.${hundred} Serving sizes, vitamins and minerals from USDA data.`.slice(0, 300);
 }
 
 /* ---------------------------------------------------------------- rankings ("foods high in …") */
