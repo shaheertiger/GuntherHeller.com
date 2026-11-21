@@ -16,7 +16,7 @@ import Base from "../layouts/Base.astro";
 import Breadcrumb from "./Breadcrumb.astro";
 import Byline from "./Byline.astro";
 import {
-  type NFood, ncat, nurl, per, fmtN, val, lcName, cap, titleCase, MAIN, VITAMINS, MINERALS, OTHER, SOURCE_NAME, possessive, guideDate, chainOf,
+  type NFood, ncat, hasCatPage, nurl, per, fmtN, val, lcName, cap, titleCase, MAIN, VITAMINS, MINERALS, OTHER, SOURCE_NAME, possessive, guideDate, chainOf,
   servings, commonServing, servingPhrase, kcalIn, pageTitle, pageH1, pageDescription, calorieRank, similarThree, pctDV, type NDef,
 } from "../lib/nutrition";
 import { foodDates } from "../lib/lastmod";
@@ -37,7 +37,8 @@ const dates = foodDates(food);
 /** "eggs" are plural, "cooked rice" is not: FoodKeeper's flag where we have it, else the name's last word. */
 const plural = food.storage && getFood(food.storage) ? !!getFood(food.storage)!.plural : /[^s]s$/i.test(food.name.split(/[ ,(]/)[0]);
 const Is = plural ? "Are" : "Is", does = plural ? "do" : "does", verbS = (v: string) => (plural ? v : `${v}s`);
-const crumbs = [{ name: "Foods", href: nurl.browse() }, { name: cat.name, href: nurl.cat(cat.slug) }, { name }];
+const catPage = hasCatPage(cat.slug);
+const crumbs = [{ name: "Foods", href: nurl.browse() }, ...(catPage ? [{ name: cat.name, href: nurl.cat(cat.slug) }] : []), { name }];
 
 /* ---------------------------------------------------------------- numbers */
 const v100 = (k: string) => val(food, k);
@@ -202,7 +203,7 @@ const jsonld = {
 
     <section class="block-sec" aria-labelledby="cmp-h">
       <h2 id="cmp-h">How {does} {lname} compare?</h2>
-      <p class="mt-3">{compareText} <a class="alink" href={nurl.cat(cat.slug)}>See all {catLower}</a>.</p>
+      <p class="mt-3">{compareText}{catPage && <> <a class="alink" href={nurl.cat(cat.slug)}>See all {catLower}</a>.</>}</p>
       {sims.length > 0 && (
         <ul class="cmp-list">
           {sims.map((x) => { const sx = commonServing(x); return (

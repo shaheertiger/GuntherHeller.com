@@ -131,22 +131,24 @@ permissions, then re-run. Until then, please check these by hand in the UI:
   unlikely to carry much.
 - Every URL the site doesn't know (not a page, not in the map) also 301s to the home page; Google usually treats that
   as a soft 404.
-- After this PR: 3,947 still 301 (their food has a page), 2,614 return 410 because their page was removed (one hop,
-  instead of 301 → 410), and 2 new ones point the Thai red curry paste URLs at its new page.
+- After this PR: 3,943 still 301 (their page still exists), 2,618 return 410 because their page was removed (one hop,
+  instead of 301 → 410; this includes the 4 `/foods/meat/…` URLs that pointed at `/food/beef/`), and 2 new ones point
+  the Thai red curry paste URLs at its new page.
 
 ## 7. Page types (before = main, after = this PR)
 
 | Page type | Before: pages | indexable | in sitemap | After: pages | indexable | in sitemap |
 |---|---:|---:|---:|---:|---:|---:|
 | /calories/ food pages | 13,650 | 3,161 | 3,161 | 547 | 547 | 547 |
-| /food/ categories and nutrient lists | 45 | 45 | 45 | 43 | 43 | 43 |
+| /food/ categories and nutrient lists | 45 | 45 | 45 | 41 | 41 | 41 |
+| (removed: `/food/alcohol/`, `/food/fast-food-restaurants/` (no foods left), `/food/beef/`, `/food/pork/` (owner's call)) | | | | | | |
 | /food/ hub | 1 | 1 | 1 | 1 | 1 | 1 |
 | /restaurants/ (hub + 22 chains) | 23 | 23 | 23 | 0 | 0 | 0 |
 | /brands/ (hub + 7 store brands) | 8 | 8 | 8 | 0 | 0 | 0 |
 | /tools/ (hub + 5 shelf-life tools) | 6 | 6 | 6 | 0 | 0 | 0 |
 | Home | 1 | 1 | 1 | 1 | 1 | 1 |
 | Trust pages, reviewer, search | 8 | 7 | 7 | 8 | 7 | 7 |
-| **Total** | **13,742** | **3,252** | **3,252** | **600** | **599** | **599** |
+| **Total** | **13,742** | **3,252** | **3,252** | **598** | **597** | **597** |
 
 Sitemap lastmod values: before 1 (every URL `2026-11-20`); after 2 distinct dates, each from the page's own data.
 

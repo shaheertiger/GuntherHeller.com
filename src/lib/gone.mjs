@@ -14,8 +14,11 @@
  * @param {Set<string>} live             paths that are still built: /calories/{proven slug}/ and the kept /food/ pages
  */
 export const GONE_PREFIXES = ["/calories/", "/tools/", "/restaurants/", "/brands/"];
-/** /food/ categories removed because none of their foods has proven Google impressions. */
-export const GONE_FOOD_PAGES = ["/food/alcohol/", "/food/fast-food-restaurants/"];
+/**
+ * /food/ category pages removed: alcohol and fast-food restaurants (none of their foods has proven impressions), beef
+ * and pork (owner's decision: they competed with /calories/beef/ and /calories/pork/).
+ */
+export const GONE_FOOD_PAGES = ["/food/alcohol/", "/food/fast-food-restaurants/", "/food/beef/", "/food/pork/"];
 /** Sitemaps of removed sections. */
 export const GONE_FILES = ["/sitemap-restaurants.xml", "/sitemap-brands.xml"];
 

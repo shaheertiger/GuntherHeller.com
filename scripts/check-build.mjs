@@ -202,7 +202,7 @@ for (const p of mainUrls) {
   if (builtPath(p)) continue;
   const r = resolve(p);
   if (r.status !== 410) { err(`${p}: existed on main, now returns ${r.status}${r.location ? ` → ${r.location}` : ""}`); continue; }
-  const k = GONE_FILES.includes(p) ? "removed sitemaps" : GONE_FOOD_PAGES.includes(p) ? "/food/ categories with no foods left" : GONE_PREFIXES.find((x) => p.startsWith(x)) + "*";
+  const k = GONE_FILES.includes(p) ? "removed sitemaps" : GONE_FOOD_PAGES.includes(p) ? "removed /food/ categories" : GONE_PREFIXES.find((x) => p.startsWith(x)) + "*";
   removed[k] = (removed[k] ?? 0) + 1;
 }
 let r301 = 0, r410 = 0;

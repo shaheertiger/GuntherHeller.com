@@ -48,7 +48,13 @@ const ALL_FOODS = [...(raw.foods as unknown as NFood[]), ...(branded.foods as un
 export const PROVEN = provenRaw.foods as Record<string, { clicks: number; impressions: number; pages: number }>;
 export const NFOODS = ALL_FOODS.filter((f) => f.slug in PROVEN);
 export const NMETA = { ...(raw.meta as { generated: string; sources: { tag: string; name: string; url: string }[] }), count: NFOODS.length };
-export const NCATS = (raw.categories as NCategory[]).map((c) => ({ ...c, count: NFOODS.filter((f) => f.cat === c.slug).length })).filter((c) => c.count > 0);
+const ALL_CATS = (raw.categories as NCategory[]).map((c) => ({ ...c, count: NFOODS.filter((f) => f.cat === c.slug).length }));
+/** Categories whose list page was removed (410, src/lib/gone.mjs): beef and pork (owner's decision, Nov 2026). Their foods keep their pages. */
+const NO_CAT_PAGE = new Set(["beef", "pork"]);
+/** Categories with a /food/{slug}/ list page: at least one food, and not removed. */
+export const NCATS = ALL_CATS.filter((c) => c.count > 0 && !NO_CAT_PAGE.has(c.slug));
+/** Whether a category has a list page to link to. */
+export const hasCatPage = (slug: string) => NCATS.some((c) => c.slug === slug);
 export const STORES = branded.meta.stores as { slug: string; brand: string; store: string }[];
 
 /* ---------------------------------------------------------------- restaurant chains (data/chains.json) */
@@ -152,7 +158,7 @@ export const byDemand = (a: NFood, b: NFood) => demandOf(b) - demandOf(a) || a.n
 
 const bySlug = new Map(NFOODS.map((f) => [f.slug, f]));
 export const nfood = (slug: string) => bySlug.get(slug);
-export const ncat = (slug: string) => NCATS.find((c) => c.slug === slug)!;
+export const ncat = (slug: string) => ALL_CATS.find((c) => c.slug === slug)!;
 const byStorage = new Map(NFOODS.filter((f) => f.storage).map((f) => [f.storage!, f]));
 /** The nutrition page that carries a FoodKeeper storage food. */
 export const pageForStorage = (storageSlug: string) => byStorage.get(storageSlug);
