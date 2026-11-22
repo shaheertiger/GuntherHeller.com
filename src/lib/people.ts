@@ -81,4 +81,6 @@ const REVIEWED = reviewedRaw as { site: string | null; pages: Record<string, str
 /** The date the reviewer checked this page: its own review, else the site-wide review, else null. */
 export const reviewedOn = (path: string): string | null => REVIEWED.pages[path] ?? REVIEWED.site ?? null;
 export const siteReviewed = () => REVIEWED.site;
+/** This page's own review date only (no site-wide fallback). The 10 deep calorie pages use this. */
+export const reviewedPageOn = (path: string): string | null => REVIEWED.pages[path] ?? null;
 export const reviewedCount = () => Object.keys(REVIEWED.pages).length;

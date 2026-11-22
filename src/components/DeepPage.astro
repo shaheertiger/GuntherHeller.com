@@ -1,0 +1,259 @@
+---
+/**
+ * The 10 most-searched calorie pages (data/deep-pages.json): the answer first, then a TL;DR table, then every
+ * searched variant as its own H2 answered in its first sentence. Same URL as before.
+ *
+ * Numbers: every value comes from a USDA (or chain-guide) record in data/, scaled by that record's own household
+ * measure, and is printed next to the FDC ID it comes from. Nothing is estimated; a value the record lacks is left
+ * out. The config names records and measure labels only; an unknown one fails the build here.
+ */
+import Base from "../layouts/Base.astro";
+import Breadcrumb from "./Breadcrumb.astro";
+import {
+  type NFood, ncat, hasCatPage, nurl, nfood, record, per, fmtN, val, cap, MAIN, VITAMINS, MINERALS, SOURCE_NAME, possessive, chainOf,
+  calorieRank, pctDV, kcalIn, commonServing, HUB_CHAINS, chainItems, NFOODS, type NDef,
+} from "../lib/nutrition";
+import { foodDates } from "../lib/lastmod";
+import { ORG, breadcrumbLd } from "../lib/schema";
+import { SITE, abs, reportHref } from "../lib/site";
+import { REVIEWER, personUrl, reviewedPageOn } from "../lib/people";
+import DEEP from "../../data/deep-pages.json";
+import DIAGXCAR from "../../data/diagxcar.json";
+import { existsSync } from "node:fs";
+
+type Row = [slug: string, measure: string, label: string];
+type Cfg = { query: string; name: string; lc: string; titleServing: string; h1: string; noun: string; lead: Row; qualifier?: string; sizes: { h2: string; rows: Row[] }; compare: { h2: string; rows: Row[] }[] };
+interface Props { food: NFood }
+const { food } = Astro.props;
+const cfg = (DEEP.pages as Record<string, Cfg>)[food.slug];
+const path = nurl.food(food);
+const dates = foodDates(food);
+
+/* ---------------------------------------------------------------- records and measures (fail loudly) */
+const rec = (slug: string) => { const r = record(slug); if (!r) throw new Error(`data/deep-pages.json (${food.slug}): no record "${slug}"`); return r; };
+const grams = (r: NFood, measure: string) => {
+  if (measure === "100 g") return 100;
+  const p = r.p.find(([l]) => l === measure);
+  if (!p || p[2]) throw new Error(`data/deep-pages.json (${food.slug}): record ${r.slug} has no weighed measure "${measure}"`);
+  return p[1];
+};
+type Cell = { r: NFood; g: number; label: string; kcal: number };
+const cell = ([slug, measure, label]: Row): Cell => { const r = rec(slug); const g = grams(r, measure); return { r, g, label, kcal: kcalIn(r, g) }; };
+const L = cell(cfg.lead);
+const lr = L.r;
+const nut = (r: NFood, k: string, g: number) => (val(r, k) == null ? null : per(val(r, k)!, g));
+const gstr = (x: number) => fmtN(x, " g");
+const fdcUrl = (r: NFood) => (r.src === "R" && r.source ? r.source.url : `https://fdc.nal.usda.gov/food-details/${r.id}/nutrients`);
+const fdcName = (r: NFood) => (r.src === "R" && r.source ? `${r.source.name}${r.source.date ? `, ${r.source.date}` : ""}` : `USDA FDC ${r.id}`);
+const used = new Map<string, NFood>();
+const cite = (...rs: NFood[]) => { rs.forEach((r) => used.set(r.slug, r)); return [...new Map(rs.map((r) => [r.slug, r])).values()]; };
+const andList = (xs: string[]) => (xs.length < 2 ? xs.join("") : `${xs.slice(0, -1).join(", ")} and ${xs.at(-1)}`);
+
+/* ---------------------------------------------------------------- 1–2. the answer */
+const mac = (r: NFood, g: number) => {
+  const parts: string[] = [], none: string[] = [];
+  for (const [k, w] of [["205", "carbs"], ["203", "protein"], ["204", "fat"]] as const) {
+    const x = nut(r, k, g);
+    if (x == null) continue;
+    if (x === 0) none.push(w); else parts.push(`${gstr(x)} ${w}`);
+  }
+  return [...parts, ...(none.length ? [`no ${none.join(" or ")}`] : [])];
+};
+const lead = `${cap(cfg.lead[2])} (${+L.g.toFixed(1)} g) has ${L.kcal} calories, ${andList(mac(lr, L.g))}.`;
+cite(lr);
+
+/* ---------------------------------------------------------------- 3. TL;DR table: every common serving + 100 g */
+const sizeCells = cfg.sizes.rows.map(cell);
+const tldr = [...sizeCells, { r: lr, g: 100, label: "100 g", kcal: kcalIn(lr, 100) }];
+sizeCells.forEach((c) => cite(c.r));
+const cols = (["205", "203", "204"] as const).filter((k) => tldr.some((c) => nut(c.r, k, c.g) != null));
+const COL = { "205": "Carbs", "203": "Protein", "204": "Fat" } as const;
+
+/* ---------------------------------------------------------------- 4. one H2 per searched variant */
+type Sec = { id: string; h2: string; answer: string; rows?: Cell[]; cites: NFood[]; faq: boolean };
+const secs: Sec[] = [];
+// per size
+// First sentence answers with the lead serving; the rest of the sizes follow in one list.
+const others = sizeCells.filter((c) => !(c.r === lr && c.g === L.g));
+const sizeSentence = `${cap(cfg.lead[2])} (${+L.g.toFixed(1)} g) has ${L.kcal} calories.${others.length ? ` ${others.map((c) => `${c.label} (${+c.g.toFixed(1)} g): ${c.kcal} calories`).join("; ")}.` : ""}`;
+secs.push({ id: "sizes", h2: cfg.sizes.h2, answer: sizeSentence, rows: sizeCells, cites: cite(...sizeCells.map((c) => c.r)), faq: true });
+// per 100 g
+// Per 100 g is searched for foods, not for menu items (the TL;DR table still has the 100 g row).
+if (!chainOf(food)) secs.push({ id: "per-100g", h2: `${cap(cfg.lc)} calories per 100 g`, answer: `100 g of ${cfg.lc} has ${kcalIn(lr, 100)} calories, ${andList(mac(lr, 100))}.`, cites: cite(lr), faq: false });
+// protein, carbs, net carbs, sugar, fiber: only where the record has a value above zero
+const per100 = (k: string) => nut(lr, k, 100);
+const P = nut(lr, "203", L.g), C = nut(lr, "205", L.g), FIB = nut(lr, "291", L.g), SUG = nut(lr, "269", L.g);
+const dvOf = (k: string, x: number) => pctDV(x, MAIN.find((d) => d.k === k));
+if (P != null && P > 0) secs.push({ id: "protein", h2: `How much protein is in ${cfg.noun}?`, answer: `${cap(cfg.lead[2])} has ${gstr(P)} of protein${dvOf("203", P) != null ? ` (${dvOf("203", P)}% of the Daily Value)` : ""}; 100 g has ${gstr(per100("203")!)}.`, cites: cite(lr), faq: true });
+if (C != null && C > 0) secs.push({ id: "carbs", h2: `How many carbs are in ${cfg.noun}?`, answer: `${cap(cfg.lead[2])} has ${gstr(C)} of carbohydrates; 100 g has ${gstr(per100("205")!)}.`, cites: cite(lr), faq: true });
+// Sugar, fiber and net carbs get their own question only when there is a real amount (0.5 g or more per serving).
+const MEANINGFUL = 0.5;
+if (C != null && C > 0 && FIB != null && FIB >= MEANINGFUL) secs.push({ id: "net-carbs", h2: `How many net carbs are in ${cfg.noun}?`, answer: `${cap(cfg.lead[2])} has ${gstr(Math.max(0, C - FIB))} of net carbs: ${gstr(C)} of carbohydrates minus ${gstr(FIB)} of fiber.`, cites: cite(lr), faq: true });
+if (SUG != null && SUG >= MEANINGFUL) secs.push({ id: "sugar", h2: `How much sugar is in ${cfg.noun}?`, answer: `${cap(cfg.lead[2])} has ${gstr(SUG)} of sugar; 100 g has ${gstr(per100("269")!)}.`, cites: cite(lr), faq: true });
+if (FIB != null && FIB >= MEANINGFUL) secs.push({ id: "fiber", h2: `How much fiber is in ${cfg.noun}?`, answer: `${cap(cfg.lead[2])} has ${gstr(FIB)} of fiber${dvOf("291", FIB) != null ? ` (${dvOf("291", FIB)}% of the Daily Value)` : ""}; 100 g has ${gstr(per100("291")!)}.`, cites: cite(lr), faq: true });
+// cooked vs raw, skin, varieties, versus other foods
+cfg.compare.forEach((cmp, i) => {
+  const cells = cmp.rows.map(cell);
+  const per100g = cmp.rows.every(([, m]) => m === "100 g");
+  const answer = per100g
+    ? `Per 100 g: ${cells.map((c) => `${c.label}, ${c.kcal} calories`).join("; ")}.`
+    : `${cells.map((c) => `${c.label} (${+c.g.toFixed(1)} g): ${c.kcal} calories`).join("; ")}.`;
+  secs.push({ id: `compare-${i + 1}`, h2: cmp.h2, answer, rows: cells, cites: cite(...cells.map((c) => c.r)), faq: /\?$/.test(cmp.h2) || /\bvs\b/.test(cmp.h2) });
+});
+
+/* ---------------------------------------------------------------- nutrition label and micronutrients (lead record, lead serving) */
+const shows = (k: string) => { const x = nut(lr, k, L.g); return x != null && x > 0 && fmtN(x, "") !== "0"; };
+const LABEL_INDENT = new Set(["606", "605", "291", "269", "net"]);
+const label = MAIN.filter((d) => shows(d.k));
+const inLabel = new Set(label.map((d) => d.k));
+const seen = new Set<string>();
+const micros = [...VITAMINS, ...MINERALS].filter((d) => d.unit !== "IU" && !inLabel.has(d.k) && !seen.has(d.k) && seen.add(d.k) && shows(d.k));
+const dvCell = (d: NDef) => { const p = pctDV(nut(lr, d.k, L.g) ?? 0, d); return p == null ? "" : `${p}%`; };
+
+/* ---------------------------------------------------------------- 5. how it compares (computed) */
+const chain = chainOf(food);
+const chainHub = chain && HUB_CHAINS.some((c) => c.slug === chain.slug) ? chain : null;
+const cat = ncat(food.cat);
+const ord = (n: number) => `${n}${n % 100 >= 11 && n % 100 <= 13 ? "th" : ["th", "st", "nd", "rd"][n % 10] ?? "th"}`;
+let compareText: string, sims: NFood[];
+if (chainHub) {
+  const menu = chainItems(chainHub).map((x) => ({ x, kcal: x === food ? L.kcal : kcalIn(x, commonServing(x).grams) })).sort((a, b) => b.kcal - a.kcal || a.x.name.localeCompare(b.x.name));
+  const pos = menu.findIndex((m) => m.x === food) + 1;
+  compareText = `At ${L.kcal} calories, ${cfg.lead[2]} ranks ${ord(pos)} of the ${menu.length} ${chainHub.name} items on this site, counting from the highest-calorie.`;
+  sims = menu.filter((m) => m.x !== food).sort((a, b) => Math.abs(a.kcal - L.kcal) - Math.abs(b.kcal - L.kcal)).slice(0, 3).map((m) => m.x);
+} else {
+  const list = NFOODS.filter((x) => x.cat === food.cat).map((x) => ({ x, k: x === food ? lr.v.kcal : x.v.kcal })).sort((a, b) => b.k - a.k);
+  const pos = list.findIndex((m) => m.x === food) + 1;
+  compareText = `At ${kcalIn(lr, 100)} calories per 100 g, ${cfg.lc} ranks ${ord(pos)} of the ${list.length} ${cat.name.toLowerCase()} foods on this site, counting from the most calorie-dense.`;
+  sims = list.filter((m) => m.x !== food && m.x.id !== lr.id && m.x.id !== food.id).sort((a, b) => Math.abs(a.k - lr.v.kcal) - Math.abs(b.k - lr.v.kcal)).slice(0, 3).map((m) => m.x);
+}
+const linkable = (r: NFood) => (nfood(r.slug) && r.slug !== food.slug ? nurl.food(r) : null);
+
+/* ---------------------------------------------------------------- 7. reviewer: only a per-page review not older than the content */
+const checked = reviewedPageOn(path);
+const showChecked = checked && checked >= dates.modified ? checked : null;
+const fmtDate = (iso: string) => new Date(iso + "T12:00:00Z").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
+
+/* ---------------------------------------------------------------- head */
+const titleTries = [
+  `${cfg.name} Calories: ${L.kcal} in ${cfg.titleServing}${cfg.qualifier === "" ? "" : ` ${cfg.qualifier ?? "(Nutrition Facts)"}`}`,
+  `${cfg.name} Calories: ${L.kcal} in ${cfg.titleServing}`,
+];
+if (titleTries[1].length > 65) throw new Error(`data/deep-pages.json (${food.slug}): title over 65 characters: ${titleTries[1]}`);
+const title = titleTries.find((t) => t.length <= 65) ?? titleTries.at(-1)!;
+const description = `${lead} Calories for every size, per 100 g, protein, carbs, sugar and fiber, from USDA FoodData Central.`.slice(0, 300);
+const crumbs = chainHub
+  ? [{ name: "Restaurants", href: nurl.restaurants() }, { name: chainHub.name, href: nurl.chain(chainHub) }, { name: food.name }]
+  : [{ name: "Foods", href: nurl.browse() }, ...(hasCatPage(cat.slug) ? [{ name: cat.name, href: nurl.cat(cat.slug) }] : []), { name: food.name }];
+const dx = food.storage && (DIAGXCAR.slugs as string[]).includes(food.storage) ? `https://diagxcar.com/food/${food.storage}/` : null;
+const img = food.storage && existsSync(`public/images/foods/${food.storage}.webp`) ? { src: `/images/foods/${food.storage}.webp`, src600: `/images/foods/${food.storage}-600.webp`, w: 1200, h: 800, alt: food.name } : null;
+const faq = secs.filter((s) => s.faq);
+const jsonld = {
+  "@context": "https://schema.org",
+  "@graph": [
+    { ...ORG, "@context": undefined },
+    {
+      "@type": "Article", "@id": `${abs(path)}#article`, headline: cfg.h1, name: title, description, url: abs(path), mainEntityOfPage: abs(path),
+      datePublished: dates.published, dateModified: dates.modified, author: { "@id": ORG["@id"] }, publisher: { "@id": ORG["@id"] },
+      about: { "@type": "Thing", name: food.name }, isBasedOn: [...used.values()].map(fdcUrl), ...(img ? { image: abs(img.src) } : {}),
+    },
+    breadcrumbLd(crumbs, path),
+    { "@type": "FAQPage", "@id": `${abs(path)}#faq`, mainEntity: faq.map((s) => ({ "@type": "Question", name: s.h2, acceptedAnswer: { "@type": "Answer", text: s.answer } })) },
+  ],
+};
+---
+<Base title={title} description={description} path={path} jsonld={jsonld} ogType="article" ogImage={img ?? undefined}>
+  <article class="wrap pt-6 max-w-[880px]" data-deep>
+    <Breadcrumb items={crumbs} />
+    <header class="food-head mt-4">
+      {img && <img src={img.src600} srcset={`${img.src600} 600w, ${img.src} 1200w`} sizes="112px" width="112" height="75" alt={img.alt} class="food-thumb" fetchpriority="high" />}
+      <div>
+        <h1 class="h1x">{cfg.h1}</h1>
+        <p class="food-answer">{lead} <span class="cite">Source: <a href={fdcUrl(lr)} rel="nofollow">{fdcName(lr)}</a></span></p>
+      </div>
+    </header>
+    <p class="byline text-[13px] text-muted mt-3 flex flex-wrap gap-x-2 gap-y-1">
+      <span>By the <a class="alink" href="/editorial-policy/">Gunther Heller editorial team</a></span>
+      {showChecked && <><span aria-hidden="true">·</span><span data-reviewed={showChecked}>Checked by <a class="alink" href={personUrl(REVIEWER)}>{REVIEWER.name}, {REVIEWER.credentials}</a> on {fmtDate(showChecked)}</span></>}
+      <span aria-hidden="true">·</span>
+      <span>Updated <time datetime={dates.modified}>{fmtDate(dates.modified)}</time></span>
+    </p>
+
+    <section class="block-sec" aria-labelledby="tldr-h">
+      <h2 id="tldr-h">TL;DR: {cfg.lc} calories by serving</h2>
+      <div class="tscroll mt-3">
+        <table class="dtable serv-table">
+          <caption class="vh">Calories and macros for every common serving</caption>
+          <thead><tr><th scope="col">Serving</th><th scope="col" class="num">Calories</th>{cols.map((k) => <th scope="col" class="num">{COL[k]}</th>)}<th scope="col">Source</th></tr></thead>
+          <tbody>
+            {tldr.map((c) => <tr data-fdc={c.r.id} data-slug={c.r.slug} data-g={c.g}><th scope="row">{c.label}{c.label !== "100 g" && <span class="text-muted"> ({+c.g.toFixed(1)} g)</span>}</th><td class="num"><b>{c.kcal}</b></td>{cols.map((k) => { const x = nut(c.r, k, c.g); return <td class="num">{x == null ? "" : gstr(x)}</td>; })}<td class="src"><a href={fdcUrl(c.r)} rel="nofollow">{fdcName(c.r)}</a></td></tr>)}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    {secs.map((s) => (
+      <section class="block-sec" aria-labelledby={`${s.id}-h`}>
+        <h2 id={`${s.id}-h`}>{s.h2}</h2>
+        <p class="mt-3">{s.answer} <span class="cite">Source: {s.cites.map((r, i) => <>{i > 0 && ", "}<a href={fdcUrl(r)} rel="nofollow">{fdcName(r)}</a></>)}</span></p>
+        {s.rows && s.rows.length > 1 && s.id !== "sizes" && (
+          <ul class="cmp-list">
+            {s.rows.map((c) => { const href = linkable(c.r); return <li>{href ? <a href={href}>{c.label}</a> : <span class="text-ink font-[550]">{c.label}</span>}<span>{c.kcal} cal{c.label.endsWith("100 g") || s.rows!.every((x) => x.g === 100) ? " per 100 g" : ` in ${+c.g.toFixed(1)} g`} · {fdcName(c.r)}</span></li>; })}
+          </ul>
+        )}
+      </section>
+    ))}
+
+    {label.length > 0 && (
+      <section class="block-sec" aria-labelledby="facts-h">
+        <h2 id="facts-h">{cap(cfg.lc)} nutrition facts</h2>
+        <div class="nf-label mt-3">
+          <p class="nf-serving">Serving size {cfg.lead[2].replace(/^an? /, "1 ")} ({+L.g.toFixed(1)} g)</p>
+          <p class="nf-kcal"><span>Calories</span><b>{L.kcal}</b></p>
+          <table class="nf-rows">
+            <caption class="vh">Nutrition facts</caption>
+            <thead><tr><th scope="col">Nutrient</th><th scope="col" class="num">Amount</th><th scope="col" class="num">% Daily Value</th></tr></thead>
+            <tbody>{label.map((d) => <tr class:list={[LABEL_INDENT.has(d.k) && "sub"]}><th scope="row">{d.name}</th><td class="num">{fmtN(nut(lr, d.k, L.g), d.unit)}</td><td class="num">{dvCell(d)}</td></tr>)}</tbody>
+          </table>
+          <p class="nf-note">Source: <a href={fdcUrl(lr)} rel="nofollow">{fdcName(lr)}</a>. % Daily Value is based on a 2,000-calorie diet (FDA).</p>
+        </div>
+      </section>
+    )}
+
+    {micros.length > 0 && (
+      <section class="block-sec" aria-labelledby="vit-h">
+        <h2 id="vit-h">What vitamins and minerals are in {cfg.noun}?</h2>
+        <p class="mt-3">{cap(cfg.lead[2])} has {andList([...micros].filter((d) => d.dv).sort((x, y) => (nut(lr, y.k, L.g)! / y.dv!) - (nut(lr, x.k, L.g)! / x.dv!)).slice(0, 3).map((d) => `${fmtN(nut(lr, d.k, L.g), d.unit === "µg" ? " µg" : ` ${d.unit}`)} of ${d.name.replace(/ \(.*\)$/, "").replace(/^Vitamin/, "vitamin").replace(/^[A-Z](?=[a-z])/, (c) => c.toLowerCase())} (${dvCell(d)} DV)`))}. <span class="cite">Source: <a href={fdcUrl(lr)} rel="nofollow">{fdcName(lr)}</a></span></p>
+        <div class="tscroll mt-3">
+          <table class="dtable ntab">
+            <caption class="vh">Vitamins and minerals</caption>
+            <thead><tr><th scope="col">Nutrient</th><th scope="col" class="num">Amount</th><th scope="col" class="num">% Daily Value</th></tr></thead>
+            <tbody>{micros.map((d) => <tr><th scope="row">{d.name}</th><td class="num">{fmtN(nut(lr, d.k, L.g), d.unit)}</td><td class="num">{dvCell(d)}</td></tr>)}</tbody>
+          </table>
+        </div>
+      </section>
+    )}
+
+    <section class="block-sec" aria-labelledby="cmp-h">
+      <h2 id="cmp-h">How it compares</h2>
+      <p class="mt-3">{compareText}</p>
+      {sims.length > 0 && (
+        <ul class="cmp-list">
+          {sims.map((x) => { const sx = commonServing(x); return <li><a href={nurl.food(x)}>{x.name}</a><span>{sx.perServing ? `${kcalIn(x, sx.grams)} cal per ${sx.label}` : `${Math.round(x.v.kcal)} cal per 100 g${sx.label !== "100 g" ? ` · ${kcalIn(x, sx.grams)} per ${sx.label}` : ""}`}</span></li>; })}
+        </ul>
+      )}
+    </section>
+
+    <section class="block-sec sources" aria-labelledby="src-h">
+      <h2 id="src-h">Sources</h2>
+      <ul>
+        {[...used.values()].map((r) => <li><a class="alink" href={fdcUrl(r)} rel="nofollow">{fdcName(r)}</a>: {r.src === "R" ? `${possessive(chainOf(r)?.name ?? "the chain")} nutrition guide` : SOURCE_NAME[r.src]}, record “{r.desc}”.</li>)}
+        <li>Daily Values: FDA, 21 CFR 101.9 (2,000-calorie diet).</li>
+      </ul>
+      {chain && <p class="mt-3">These are USDA's figures for {chain.name} items (bought at the chain and analysed, or modelled from the recipe). Recipes and portions change, so {possessive(chain.name)} current nutrition guide may differ.</p>}
+      <p class="mt-3">Spotted a wrong number? <a class="alink" href={reportHref(path)}>Report a correction</a>. <a class="alink" href="/methodology/">How we count</a>.</p>
+      {dx && <p class="mt-3">How long it keeps: <a href={dx}>diagxcar.com</a>.</p>}
+      <p class="mt-3 text-[13px] text-muted">General information, not medical or dietary advice.</p>
+    </section>
+  </article>
+</Base>

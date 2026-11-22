@@ -2,16 +2,16 @@
 import Logo from "./Logo.astro";
 import { NMETA } from "../lib/nutrition";
 const nav = [
-  { href: "/food/", label: "Browse foods" },
+  { href: "/food/", label: "All foods" },
   { href: "/restaurants/", label: "Restaurants" },
-  { href: "/brands/", label: "Store brands" },
   { href: "/food/high-protein-foods/", label: "High protein" },
-  { href: "/methodology/", label: "Our data" },
+  { href: "/food/low-calorie-foods/", label: "Low calorie" },
+  { href: "/methodology/", label: "How we count" },
 ];
 const here = Astro.url.pathname;
 ---
 <header class="sticky top-0 z-40 bg-white border-b border-line">
-  <div class="container-site h-16 flex items-center gap-2">
+  <div class="wrap h-16 flex items-center gap-2">
     <a href="/" class="flex items-center gap-2.5 font-[650] text-[17px] mr-4 hover:text-ink">
       <Logo /><span>Gunther Heller</span>
     </a>
@@ -22,7 +22,7 @@ const here = Astro.url.pathname;
     </nav>
     <div class="flex-1"></div>
     <form action="/search/" method="get" role="search" class="hidden sm:block">
-      <label for="site-q" class="sr-only-x">Search foods</label>
+      <label for="site-q" class="vh">Search foods</label>
       <input id="site-q" name="q" type="search" placeholder={`Search ${NMETA.count.toLocaleString("en-US")} foods…`} autocomplete="off"
         class="text-sm h-9 w-[260px] max-w-full border border-line rounded-lg px-3 outline-none focus:border-primary-soft" />
     </form>

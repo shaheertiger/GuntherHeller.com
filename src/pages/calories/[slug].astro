@@ -1,10 +1,12 @@
 ---
 /** /calories/{slug}/ — one page per food (USDA FoodData Central), EatThisMuch-style. */
 import NutritionPage from "../../components/NutritionPage.astro";
+import DeepPage from "../../components/DeepPage.astro";
+import DEEP from "../../../data/deep-pages.json";
 import { NFOODS, type NFood } from "../../lib/nutrition";
 export function getStaticPaths() {
   return NFOODS.map((food) => ({ params: { slug: food.slug }, props: { food } }));
 }
 const { food } = Astro.props as { food: NFood };
 ---
-<NutritionPage food={food} />
+{food.slug in DEEP.pages ? <DeepPage food={food} /> : <NutritionPage food={food} />}

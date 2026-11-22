@@ -1,9 +1,10 @@
 ---
+import { lastmodOf } from "../lib/lastmod";
 import Prose from "../layouts/Prose.astro";
 import { SITE } from "../lib/site";
 ---
 <Prose title="Privacy Policy | Gunther Heller" h1="Privacy policy" path="/privacy/" description="How Gunther Heller handles data: no accounts, no sign-ups, and what advertising partners may collect.">
-  <p>Last updated {SITE.verifiedLabel}.</p>
+  <p>This page last changed on <time datetime={lastmodOf("/privacy/")}>{new Date(lastmodOf("/privacy/") + "T12:00:00Z").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" })}</time>.</p>
   <h2>What we collect</h2>
   <p>We do not offer accounts, so we do not collect names, passwords or payment details. Our host keeps standard server logs (IP address, browser, pages requested) for security and to keep the site running.</p>
   <h2>Analytics</h2>

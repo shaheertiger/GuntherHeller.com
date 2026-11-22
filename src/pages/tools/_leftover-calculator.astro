@@ -35,14 +35,14 @@ const faq: [string, string][] = [
   const run = () => {
     const r = resolve();
     if (!r || !day.value) return;
-    if (r.fd == null) { out.innerHTML = `<p>FoodKeeper gives ${esc(r.n.toLowerCase())} “${esc(r.f)}” in the fridge. <a class="link" href="${foodHref(r)}">See the full guide →</a></p>`; return; }
+    if (r.fd == null) { out.innerHTML = `<p>FoodKeeper gives ${esc(r.n.toLowerCase())} “${esc(r.f)}” in the fridge. <a class="alink" href="${foodHref(r)}">See the full guide →</a></p>`; return; }
     const start = new Date(day.value + "T12:00:00");
     const lo = addDays(start, Math.floor(r.fd)), hi = addDays(start, Math.floor(r.fx ?? r.fd));
     const past = hi < new Date();
     out.innerHTML = `<div class="big-out">${fmtDate(lo)}</div>
       <p class="text-muted mt-1">Eat ${esc(r.n.toLowerCase())} by this day (${esc(r.f)} in the fridge)${hi > lo ? `; outer limit ${fmtDate(hi)}` : ""}.</p>
-      ${past ? `<p class="mt-2"><span class="pill pill-no">Past the window — discard</span></p>` : ""}
-      <p class="mt-3 text-sm"><a class="link" href="${foodHref(r)}">How long does ${esc(r.n.toLowerCase())} last? Full guide →</a></p>`;
+      ${past ? `<p class="mt-2"><span class="chip chip-no">Past the window — discard</span></p>` : ""}
+      <p class="mt-3 text-sm"><a class="alink" href="${foodHref(r)}">How long does ${esc(r.n.toLowerCase())} last? Full guide →</a></p>`;
   };
   food.addEventListener("change", run); food.addEventListener("input", run); day.addEventListener("change", run);
 </script>

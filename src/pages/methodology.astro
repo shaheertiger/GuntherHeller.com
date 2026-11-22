@@ -1,61 +1,41 @@
 ---
 import Prose from "../layouts/Prose.astro";
-import { META } from "../lib/data";
 import { NMETA } from "../lib/nutrition";
 import { SITE, abs } from "../lib/site";
+import { lastmodOf } from "../lib/lastmod";
 const path = "/methodology/";
-const ld = { "@context": "https://schema.org", "@type": "WebPage", name: "Where our nutrition and storage data comes from", url: abs(path), dateModified: SITE.verifiedISO, publisher: { "@type": "Organization", name: SITE.name, url: SITE.url } };
+const ld = { "@context": "https://schema.org", "@type": "WebPage", name: "How we count calories and nutrients", url: abs(path), dateModified: lastmodOf(path), publisher: { "@type": "Organization", name: SITE.name, url: SITE.url } };
 ---
-<Prose title="Our Data: USDA FoodData Central and FoodKeeper | Gunther Heller" h1="Where our numbers come from" path={path} jsonld={ld}
-  description="Gunther Heller's nutrition facts come from USDA FoodData Central and its storage times from USDA FoodKeeper. How we process both and how to report a wrong number."
-  lead="Every number on this site comes from a public U.S. government dataset. This page explains which ones and how we use them.">
-  <h2>Nutrition facts: USDA FoodData Central</h2>
-  <p>Calories, macronutrients, vitamins, minerals, fatty acids and amino acids come from <a href="https://fdc.nal.usda.gov/" rel="nofollow noopener">FoodData Central</a>, published by the USDA Agricultural Research Service. We use three of its datasets ({NMETA.count.toLocaleString("en-US")} foods in total): <strong>Foundation Foods</strong> (April 2025), <strong>SR Legacy</strong> (April 2018) and <strong>FNDDS 2021–2023</strong>, the survey database behind What We Eat in America. All three are public domain. Every food page links to its FoodData Central record.</p>
+<Prose title="How We Count: USDA FoodData Central, Servings and Daily Values | Gunther Heller" h1="How we count" path={path} jsonld={ld}
+  description="Where Gunther Heller's calorie and nutrient numbers come from (USDA FoodData Central), how servings and % Daily Values are calculated, and which foods get a page."
+  lead="The short version: USDA measures the food, we do the arithmetic, and every page links to the USDA record so you can check it.">
+  <h2>The source</h2>
+  <p>All numbers come from <a href="https://fdc.nal.usda.gov/" rel="nofollow noopener">USDA FoodData Central</a>, run by the Agricultural Research Service. We use three of its public-domain datasets: Foundation Foods (April 2025), SR Legacy (April 2018) and FNDDS 2021–2023, the database behind the What We Eat in America survey. The source box at the bottom of each food page names the dataset and the FDC ID.</p>
+
+  <h2>Choosing one record per food</h2>
+  <p>USDA often has several records for what people think of as one food. For each food we keep the record that matches what most people mean (for "cooked rice", plain white rice, cooked) and show its USDA description on the page.</p>
+
+  <h2>The arithmetic</h2>
   <ul>
-    <li><strong>Per serving.</strong> USDA reports values per 100 g. We multiply by the gram weight of each household serving USDA lists for that food (cup, slice, medium, tablespoon…). The serving picker on each page does the same sum in your browser.</li>
-    <li><strong>Calories.</strong> We use USDA's energy value in kilocalories. A few Foundation Foods records report only Atwater energy or kilojoules; we use those, converted where needed.</li>
-    <li><strong>% Daily Value</strong> uses the FDA Daily Values for adults and children 4 and over (2,000-calorie diet).</li>
-    <li><strong>Macro split</strong> is the share of calories from carbohydrate, fat and protein at 4, 9 and 4 calories per gram.</li>
-    <li><strong>Missing values</strong> show a dash. USDA did not analyse every nutrient in every food; a dash is not a zero.</li>
+    <li><strong>Servings.</strong> USDA gives every value per 100 g and lists gram weights for household measures. A serving is the per-100 g value times the weight, divided by 100. We skip measures nobody uses at home (school-lunch containers, "linear inches").</li>
+    <li><strong>Calories</strong> are USDA's energy value in kcal, rounded to the nearest whole calorie.</li>
+    <li><strong>% Daily Value</strong> uses the FDA's Daily Values for a 2,000-calorie diet (21 CFR 101.9). "High in protein" on a page means 20% of the Daily Value or more per serving, and "good source" means 10–19%, the FDA's own thresholds.</li>
+    <li><strong>Net carbs</strong> are total carbohydrate minus fiber. Keto answers assume a 20–50 g daily allowance.</li>
+    <li><strong>Comparisons</strong> rank a food among the other foods in its category on this site by calories per 100 g.</li>
   </ul>
-  <p>For the 918 foods that also have storage times, we matched each one to the single USDA record that best fits what people mean by it (for example, "cooked rice" uses "Rice, cooked"). The page names the USDA record it uses.</p>
 
-  <h2>Restaurant menu items</h2>
-  <p>Our <a href="/restaurants/">restaurant pages</a> use two kinds of USDA data. Most items were bought at the chain and analysed in USDA laboratories (SR Legacy, released 2018; some analyses are older and say so). Others are USDA's FNDDS 2021–2023 estimates, built from each item's ingredients. Every item page says which one it is. Chains change recipes and portion sizes, so their own current nutrition guides can differ from USDA's figures.</p>
+  <h2>Restaurant items</h2>
+  <p>Most <a href="/restaurants/">restaurant items</a> are USDA records: either USDA bought the item at the chain and analysed it in a lab (SR Legacy, 2018 or earlier), or it modelled the item from its recipe (FNDDS 2021–2023). The page says which. For chains USDA does not cover (Arby's, Dunkin', Five Guys), we copy the chain's own nutrition guide as printed, name the guide and its date on every item, and keep an item only if its calories agree with its protein, carbohydrate and fat (4, 4 and 9 calories per gram) within 20%. Some guides list values per serving without a weight; those pages show that serving only, with no per-100 g figures.</p>
 
-  <p>USDA does not analyse every chain. For chains it does not cover (Arby's, Dunkin', Five Guys), we use the chain's own published nutrition guide and say so on every item. We copy the values exactly as printed, and keep an item only if its calories agree with its protein, carbohydrate and fat (4, 4 and 9 calories per gram) within 20%, so a value misread from the guide never reaches the site. Some guides give values per serving without a weight; those pages show per-serving values only.</p>
+  <h2>When USDA has no number</h2>
+  <p>We leave the line out. A nutrient USDA did not measure is not shown as zero, and a section with nothing in it is not shown at all.</p>
 
-  <h2>Store-brand products</h2>
-  <p>Store-brand pages (<a href="/brands/">Great Value, Kirkland Signature and others</a>) use the Nutrition Facts label each brand owner submitted to USDA FoodData Central (Branded Foods, April 2025 release). USDA publishes those values per 100 g or 100 ml; we convert them back to the serving on the label. We only add a product when people search for its nutrition.</p>
+  <h2>Which foods get a page</h2>
+  <p>We publish {NMETA.count.toLocaleString("en-US")} foods: the ones people actually find this site for in Google Search, plus restaurant menu items. We do not publish a page for every USDA record.</p>
 
-  <h2>Which pages we ask search engines to index</h2>
-  <p>USDA lists many near-identical records (the same cut of meat at six fat trims, for example). We ask search engines to index the foods people actually search for, every food with storage times, and every restaurant and store-brand item. The other records stay on the site for anyone who needs them but are marked noindex, so they do not crowd out the pages people look for.</p>
+  <h2>Dates</h2>
+  <p>"Updated" on a page, and the date in our sitemap, is the day that food's numbers last changed in our data. Restyling a page does not change it.</p>
 
-  <h2>Storage times: USDA FoodKeeper</h2>
-  <p>Our numbers come from <a href="https://www.foodsafety.gov/keep-food-safe/foodkeeper-app" rel="nofollow noopener">FoodKeeper</a>, the storage database published by the U.S. Department of Agriculture's Food Safety and Inspection Service (FSIS) with Cornell University and the Food Marketing Institute. It is a U.S. government work in the public domain.</p>
-  <p>We use FoodKeeper data version <strong>{META.version}</strong> (released {META.modified}). The file we import has SHA-256 <code class="text-sm break-all">{META.sha256}</code>, so anyone can confirm we use the unmodified dataset.</p>
-  <p>A small number of foods FoodKeeper does not cover, such as breast milk, use another named public source (for breast milk, the CDC). Those pages name that source in place of FoodKeeper.</p>
-
-  <h2>How we turn the data into a page</h2>
-  <ol>
-    <li><strong>Import.</strong> A script reads every FoodKeeper product and keeps its pantry, refrigerator and freezer times, the separate "after opening" and "after thawing" times, and FSIS's storage tips.</li>
-    <li><strong>Name.</strong> We rename products to the words people search for (FoodKeeper's "Cheese — hard such as cheddar, swiss" becomes "Hard cheese"). The numbers are not touched.</li>
-    <li><strong>Apply the 2-hour rule.</strong> FoodKeeper rarely gives a room-temperature time for perishable food. Where it does not, we show FSIS's general rule: discard perishable food after 2 hours at room temperature, or 1 hour above 90°F (32°C).</li>
-    <li><strong>Write around the numbers.</strong> Signs of spoilage, freezing steps and storage tips follow FSIS guidance for each type of food. We never invent a duration: if FoodKeeper has no figure, the page says "Not listed".</li>
-  </ol>
-
-  <h2>What the numbers mean</h2>
-  <ul>
-    <li><strong>Fridge times</strong> assume 40°F (4°C) or colder. Use a fridge thermometer; many fridges run warmer.</li>
-    <li><strong>Freezer times</strong> are for quality. Food kept at 0°F (-18°C) stays safe indefinitely; after the stated time, texture and flavour decline.</li>
-    <li><strong>Pantry times</strong> start on the day you buy the product unless the page says otherwise.</li>
-    <li><strong>Ranges</strong> such as "4–6 days" mean the low end is the safer target.</li>
-  </ul>
-  <p>If food smells, looks or feels wrong, discard it, whatever the number says. This site is general guidance, not medical advice.</p>
-
-  <h2>"Last verified"</h2>
-  <p>Each page shows the month we last checked its numbers against the current FoodKeeper release. Our last full check was <strong>{SITE.verifiedLabel}</strong>. The dates in our sitemap change only when the underlying data changes, not when we restyle a page.</p>
-
-  <h2>Corrections</h2>
-  <p>Spotted a wrong number? Email us with your source and we check it against FoodData Central, FoodKeeper and FSIS within a few days. If we were wrong, we fix the page and update its verified date. You can also email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+  <h2>Mistakes</h2>
+  <p>Use the "Report a correction" link on any food page, or email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. We compare your source with the USDA record. If our page is wrong we fix it; if USDA's record looks wrong we tell USDA and add a note to the page.</p>
 </Prose>

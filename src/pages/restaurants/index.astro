@@ -4,25 +4,26 @@ import Breadcrumb from "../../components/Breadcrumb.astro";
 import Byline from "../../components/Byline.astro";
 import { HUB_CHAINS, chainItems, nurl, CHAIN_DEMAND } from "../../lib/nutrition";
 import { ORG, breadcrumbLd } from "../../lib/schema";
-import { SITE, abs } from "../../lib/site";
+import { abs } from "../../lib/site";
+import { lastmodOf } from "../../lib/lastmod";
 const path = nurl.restaurants();
 const chains = [...HUB_CHAINS].sort((a, b) => (CHAIN_DEMAND[b.slug] ?? 0) - (CHAIN_DEMAND[a.slug] ?? 0) || a.name.localeCompare(b.name));
 const total = chains.reduce((n, c) => n + chainItems(c).length, 0);
 const crumbs = [{ name: "Home", href: "/" }, { name: "Restaurants" }];
 const description = `Calories and nutrition facts for ${total} menu items from ${chains.length} restaurant chains, including McDonald's, Taco Bell, Chick-fil-A, Burger King and Wendy's, from USDA FoodData Central.`;
-const ld = { "@context": "https://schema.org", "@graph": [ORG, { "@type": "CollectionPage", name: "Restaurant nutrition facts", url: abs(path), description, dateModified: SITE.updatedISO }, breadcrumbLd(crumbs, path),
+const ld = { "@context": "https://schema.org", "@graph": [ORG, { "@type": "CollectionPage", name: "Restaurant nutrition facts", url: abs(path), description, dateModified: lastmodOf(path) }, breadcrumbLd(crumbs, path),
   { "@type": "ItemList", numberOfItems: chains.length, itemListElement: chains.map((c, i) => ({ "@type": "ListItem", position: i + 1, url: abs(nurl.chain(c)), name: `${c.name} nutrition facts` })) }] };
 ---
 <Base title="Restaurant Nutrition Facts and Calories by Chain | Gunther Heller" description={description} path={path} jsonld={ld}>
-  <div class="container-site pt-6">
+  <div class="wrap pt-6">
     <Breadcrumb items={crumbs} />
-    <h1 class="h1-food mt-4">Restaurant nutrition facts</h1>
-    <Byline path={path} updated={SITE.updatedISO} />
-    <p class="lead mt-4 max-w-[760px]">Calories, protein, carbs, fat and sodium for {total} fast-food and restaurant menu items that USDA has analysed. Pick a chain to compare its whole menu.</p>
+    <h1 class="h1x mt-4">Restaurant nutrition facts</h1>
+    <Byline path={path} updated={lastmodOf(path)} />
+    <p class="intro mt-4 max-w-[760px]">Calories, protein, carbs, fat and sodium for {total} fast-food and restaurant menu items, from USDA lab analyses or the chain's own nutrition guide. Pick a chain to compare its whole menu.</p>
     <ul class="list-none p-0 m-0 mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-      {chains.map((c) => <li><a href={nurl.chain(c)} class="card lift flex justify-between items-center gap-3 px-4 py-3.5"><span class="font-[550]">{c.name}</span><span class="text-sm text-muted">{chainItems(c).length} items</span></a></li>)}
+      {chains.map((c) => <li><a href={nurl.chain(c)} class="tile hoverup flex justify-between items-center gap-3 px-4 py-3.5"><span class="font-[550]">{c.name}</span><span class="text-sm text-muted">{chainItems(c).length} items</span></a></li>)}
     </ul>
-    <p class="text-[13px] text-muted mt-6 max-w-[760px]">Values come from USDA FoodData Central: laboratory analyses of items bought at each chain (SR Legacy, 2018 or earlier) and USDA's FNDDS 2021–2023 survey estimates. Chains change recipes and portions, so their current nutrition guides can differ. <a class="link" href="/methodology/">How we use the data</a>.</p>
-    <p class="mt-6 text-[15px]"><a class="link" href={nurl.cat("fast-food-restaurants")}>All fast food and restaurant foods</a> · <a class="link" href={nurl.stores()}>Store-brand products</a></p>
+    <p class="text-[13px] text-muted mt-6 max-w-[760px]">Values come from USDA FoodData Central (laboratory analyses of items bought at each chain, SR Legacy, 2018 or earlier, and USDA's FNDDS 2021–2023 estimates) or, for chains USDA does not cover, from the chain's own published nutrition guide. Chains change recipes and portions, so their current nutrition guides can differ. <a class="alink" href="/methodology/">How we use the data</a>.</p>
+    <p class="mt-6 text-[15px]"><a class="alink" href={nurl.cat("fast-food-restaurants")}>All fast food and restaurant foods</a></p>
   </div>
 </Base>

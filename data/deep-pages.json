@@ -1,0 +1,823 @@
+{
+ "note": "The 10 most-searched calorie pages (data/demand.json), built as full answers by src/components/DeepPage.astro. This file holds no numbers: it names USDA records, wording (lc = the food in running text, titleServing = the serving in the <title>) (slugs in data/nutrition.json) and the exact USDA household-measure labels to show; every value is computed from those records at build time, and an unknown record or measure fails the build. Wording without keyword-difficulty data (Semrush exports not available, Nov 2026): 'query' is data/demand.json's phrase.",
+ "pages": {
+  "mcdonalds-french-fries": {
+   "query": "medium fry mcdonalds",
+   "name": "McDonald's Fries",
+   "h1": "How many calories are in McDonald's fries?",
+   "noun": "medium McDonald's fries",
+   "lead": [
+    "mcdonalds-french-fries",
+    "1 medium serving",
+    "a medium order of McDonald's fries"
+   ],
+   "qualifier": "(by Size)",
+   "sizes": {
+    "h2": "How many calories are in small, medium and large McDonald's fries?",
+    "rows": [
+     [
+      "mcdonalds-french-fries",
+      "1 kids serving",
+      "Kids fries"
+     ],
+     [
+      "mcdonalds-french-fries",
+      "1 small serving",
+      "Small fries"
+     ],
+     [
+      "mcdonalds-french-fries",
+      "1 medium serving",
+      "Medium fries"
+     ],
+     [
+      "mcdonalds-french-fries",
+      "1 large serving",
+      "Large fries"
+     ]
+    ]
+   },
+   "compare": [
+    {
+     "h2": "McDonald's fries vs Burger King and Wendy's fries",
+     "rows": [
+      [
+       "mcdonalds-french-fries",
+       "1 medium serving",
+       "Medium McDonald's fries"
+      ],
+      [
+       "burger-king-french-fries",
+       "1 medium serving",
+       "Medium Burger King fries"
+      ],
+      [
+       "wendys-french-fries",
+       "1 medium Serving",
+       "Medium Wendy's fries"
+      ]
+     ]
+    }
+   ],
+   "lc": "McDonald's fries",
+   "titleServing": "a Medium Fry"
+  },
+  "bananas": {
+   "query": "banana",
+   "name": "Banana",
+   "h1": "How many calories are in a banana?",
+   "noun": "a banana",
+   "lead": [
+    "bananas-raw",
+    "1 medium (7\" to 7-7/8\" long)",
+    "a medium banana"
+   ],
+   "sizes": {
+    "h2": "How many calories are in a small, medium and large banana?",
+    "rows": [
+     [
+      "bananas-raw",
+      "1 extra small (less than 6\" long)",
+      "Extra small banana (under 6 in)"
+     ],
+     [
+      "bananas-raw",
+      "1 small (6\" to 6-7/8\" long)",
+      "Small banana (6–6⅞ in)"
+     ],
+     [
+      "bananas-raw",
+      "1 medium (7\" to 7-7/8\" long)",
+      "Medium banana (7–7⅞ in)"
+     ],
+     [
+      "bananas-raw",
+      "1 large (8\" to 8-7/8\" long)",
+      "Large banana (8–8⅞ in)"
+     ],
+     [
+      "bananas-raw",
+      "1 extra large (9\" or longer)",
+      "Extra large banana (9 in or longer)"
+     ],
+     [
+      "bananas-raw",
+      "1 cup, sliced",
+      "1 cup, sliced"
+     ],
+     [
+      "bananas-raw",
+      "1 cup, mashed",
+      "1 cup, mashed"
+     ]
+    ]
+   },
+   "compare": [
+    {
+     "h2": "Ripe, overripe, baked and dried banana calories",
+     "rows": [
+      [
+       "bananas-raw",
+       "100 g",
+       "Raw banana"
+      ],
+      [
+       "bananas-ripe-and-slightly-ripe-raw",
+       "100 g",
+       "Ripe banana (USDA Foundation sample)"
+      ],
+      [
+       "bananas-overripe-raw",
+       "100 g",
+       "Overripe banana"
+      ],
+      [
+       "banana-baked",
+       "100 g",
+       "Baked banana"
+      ],
+      [
+       "bananas-dehydrated-or-banana-powder",
+       "100 g",
+       "Dried banana or banana powder"
+      ]
+     ]
+    },
+    {
+     "h2": "Banana vs apple and orange calories",
+     "rows": [
+      [
+       "bananas-raw",
+       "1 medium (7\" to 7-7/8\" long)",
+       "Medium banana"
+      ],
+      [
+       "apples-raw-with-skin",
+       "1 medium (3\" dia)",
+       "Medium apple"
+      ],
+      [
+       "oranges-raw-all-commercial-varieties",
+       "1 fruit (2-5/8\" dia)",
+       "Orange"
+      ]
+     ]
+    }
+   ],
+   "lc": "banana",
+   "titleServing": "a Medium Banana"
+  },
+  "eggs": {
+   "query": "egg",
+   "name": "Egg",
+   "h1": "How many calories are in an egg?",
+   "noun": "an egg",
+   "lead": [
+    "egg-whole-raw-fresh",
+    "1 large",
+    "a large egg"
+   ],
+   "sizes": {
+    "h2": "How many calories are in a small, medium, large and jumbo egg?",
+    "rows": [
+     [
+      "egg-whole-raw-fresh",
+      "1 small",
+      "Small egg"
+     ],
+     [
+      "egg-whole-raw-fresh",
+      "1 medium",
+      "Medium egg"
+     ],
+     [
+      "egg-whole-raw-fresh",
+      "1 large",
+      "Large egg"
+     ],
+     [
+      "egg-whole-raw-fresh",
+      "1 extra large",
+      "Extra large egg"
+     ],
+     [
+      "egg-whole-raw-fresh",
+      "1 jumbo",
+      "Jumbo egg"
+     ],
+     [
+      "egg-whole-raw-fresh",
+      "1 cup (4.86 large eggs)",
+      "1 cup of beaten egg"
+     ]
+    ]
+   },
+   "compare": [
+    {
+     "h2": "How many calories are in a boiled, fried, scrambled or poached egg?",
+     "rows": [
+      [
+       "egg-whole-raw-fresh",
+       "1 large",
+       "Raw large egg"
+      ],
+      [
+       "egg-whole-cooked-hard-boiled",
+       "1 large",
+       "Hard-boiled large egg"
+      ],
+      [
+       "egg-whole-cooked-poached",
+       "1 large",
+       "Poached large egg"
+      ],
+      [
+       "egg-whole-cooked-fried",
+       "1 large",
+       "Fried large egg"
+      ],
+      [
+       "egg-whole-cooked-scrambled",
+       "1 large",
+       "Scrambled large egg"
+      ]
+     ]
+    },
+    {
+     "h2": "Calories in an egg white vs an egg yolk",
+     "rows": [
+      [
+       "egg-whole-raw-fresh",
+       "1 large",
+       "Whole large egg"
+      ],
+      [
+       "egg-white-raw-fresh",
+       "1 large",
+       "White of a large egg"
+      ],
+      [
+       "egg-yolk-raw-fresh",
+       "1 large",
+       "Yolk of a large egg"
+      ]
+     ]
+    }
+   ],
+   "lc": "egg",
+   "titleServing": "a Large Egg"
+  },
+  "avocado": {
+   "query": "avocado",
+   "name": "Avocado",
+   "h1": "How many calories are in an avocado?",
+   "noun": "an avocado",
+   "lead": [
+    "avocado",
+    "1 fruit",
+    "an avocado"
+   ],
+   "sizes": {
+    "h2": "How many calories are in an avocado, a slice and a cup?",
+    "rows": [
+     [
+      "avocado",
+      "1 slice",
+      "1 slice"
+     ],
+     [
+      "avocado",
+      "1 fruit",
+      "1 avocado"
+     ],
+     [
+      "avocado",
+      "1 cup",
+      "1 cup"
+     ],
+     [
+      "avocado",
+      "1 cup, mashed or pureed",
+      "1 cup, mashed"
+     ]
+    ]
+   },
+   "compare": [
+    {
+     "h2": "Hass (California) vs Florida avocado calories",
+     "rows": [
+      [
+       "avocado",
+       "1 fruit",
+       "Avocado (USDA average)"
+      ],
+      [
+       "avocados-raw-california",
+       "1 fruit, without skin and seed",
+       "Hass (California) avocado"
+      ],
+      [
+       "avocados-raw-florida",
+       "1 fruit without skin and seeds",
+       "Florida avocado"
+      ]
+     ]
+    }
+   ],
+   "lc": "avocado",
+   "titleServing": "One Avocado"
+  },
+  "ground-beef": {
+   "query": "ground beef",
+   "name": "Ground Beef",
+   "h1": "How many calories are in ground beef?",
+   "noun": "ground beef",
+   "lead": [
+    "beef-ground-80-percent-lean-meat-20-percent-fat-crumbles-cooked-pan",
+    "3 oz",
+    "3 oz of cooked 80/20 ground beef"
+   ],
+   "qualifier": "(80/20, 90/10)",
+   "sizes": {
+    "h2": "How many calories are in 3 oz of cooked ground beef?",
+    "rows": [
+     [
+      "beef-ground-80-percent-lean-meat-20-percent-fat-crumbles-cooked-pan",
+      "3 oz",
+      "80/20, cooked (crumbles), 3 oz"
+     ],
+     [
+      "beef-ground-85-percent-lean-meat-15-percent-fat-crumbles-cooked-pan",
+      "3 oz",
+      "85/15, cooked (crumbles), 3 oz"
+     ],
+     [
+      "beef-ground-90-percent-lean-meat-10-percent-fat-crumbles-cooked-pan",
+      "3 oz",
+      "90/10, cooked (crumbles), 3 oz"
+     ],
+     [
+      "beef-ground-93-percent-lean-meat-7-percent-fat-crumbles-cooked-pan",
+      "3 oz",
+      "93/7, cooked (crumbles), 3 oz"
+     ],
+     [
+      "beef-ground-80-percent-lean-meat-20-percent-fat-patty-cooked-broiled",
+      "3 oz",
+      "80/20, broiled patty, 3 oz"
+     ]
+    ]
+   },
+   "compare": [
+    {
+     "h2": "How many calories are in 4 oz of raw ground beef?",
+     "rows": [
+      [
+       "beef-ground-70-percent-lean-meat-30-percent-fat-raw",
+       "4 oz",
+       "70/30, raw, 4 oz"
+      ],
+      [
+       "beef-ground-75-percent-lean-meat-25-percent-fat-raw",
+       "4 oz",
+       "75/25, raw, 4 oz"
+      ],
+      [
+       "beef-ground-85-percent-lean-meat-15-percent-fat-raw",
+       "4 oz",
+       "85/15, raw, 4 oz"
+      ],
+      [
+       "beef-ground-93-percent-lean-meat-7-percent-fat-raw",
+       "4 oz",
+       "93/7, raw, 4 oz"
+      ]
+     ]
+    },
+    {
+     "h2": "80/20 vs 90/10 ground beef calories, raw and cooked",
+     "rows": [
+      [
+       "beef-ground-80-percent-lean-meat-20-percent-fat-raw",
+       "100 g",
+       "80/20, raw"
+      ],
+      [
+       "beef-ground-80-percent-lean-meat-20-percent-fat-crumbles-cooked-pan",
+       "100 g",
+       "80/20, cooked (crumbles)"
+      ],
+      [
+       "beef-ground-90-percent-lean-meat-10-percent-fat-raw",
+       "100 g",
+       "90/10, raw"
+      ],
+      [
+       "beef-ground-90-percent-lean-meat-10-percent-fat-crumbles-cooked-pan",
+       "100 g",
+       "90/10, cooked (crumbles)"
+      ]
+     ]
+    }
+   ],
+   "lc": "ground beef",
+   "titleServing": "3 oz Cooked"
+  },
+  "sweet-potatoes": {
+   "query": "sweet potato",
+   "name": "Sweet Potato",
+   "h1": "How many calories are in a sweet potato?",
+   "noun": "a sweet potato",
+   "lead": [
+    "sweet-potato-raw-unprepared",
+    "1 sweetpotato, 5\" long",
+    "a 5-inch sweet potato"
+   ],
+   "sizes": {
+    "h2": "How many calories are in a small, medium and large sweet potato?",
+    "rows": [
+     [
+      "sweet-potato-raw-unprepared",
+      "1 sweetpotato, 5\" long",
+      "Raw sweet potato, 5 in long"
+     ],
+     [
+      "sweet-potato-raw-unprepared",
+      "1 cup, cubes",
+      "Raw, 1 cup cubes"
+     ],
+     [
+      "sweet-potato-cooked-baked-in-skin-flesh-without-salt",
+      "1 small",
+      "Baked, small"
+     ],
+     [
+      "sweet-potato-cooked-baked-in-skin-flesh-without-salt",
+      "1 medium (2\" dia, 5\" long, raw)",
+      "Baked, medium (5 in long raw)"
+     ],
+     [
+      "sweet-potato-cooked-baked-in-skin-flesh-without-salt",
+      "1 large",
+      "Baked, large"
+     ],
+     [
+      "sweet-potato-cooked-baked-in-skin-flesh-without-salt",
+      "1 cup",
+      "Baked, 1 cup"
+     ]
+    ]
+   },
+   "compare": [
+    {
+     "h2": "Baked vs boiled vs raw sweet potato calories",
+     "rows": [
+      [
+       "sweet-potato-raw-unprepared",
+       "100 g",
+       "Raw, with skin"
+      ],
+      [
+       "sweet-potatoes",
+       "100 g",
+       "Raw, peeled (USDA Foundation sample)"
+      ],
+      [
+       "sweet-potato-cooked-baked-in-skin-flesh-without-salt",
+       "100 g",
+       "Baked in skin (flesh eaten)"
+      ],
+      [
+       "sweet-potato-cooked-boiled-without-skin",
+       "100 g",
+       "Boiled, peeled"
+      ]
+     ]
+    },
+    {
+     "h2": "Sweet potato vs potato calories",
+     "rows": [
+      [
+       "sweet-potato-raw-unprepared",
+       "1 sweetpotato, 5\" long",
+       "Raw sweet potato, 5 in long"
+      ],
+      [
+       "potatoes",
+       "1 Potato medium (2-1/4\" to 3-1/4\" dia)",
+       "Raw white potato, medium"
+      ],
+      [
+       "sweet-potato-cooked-baked-in-skin-flesh-without-salt",
+       "1 medium (2\" dia, 5\" long, raw)",
+       "Baked sweet potato, medium"
+      ],
+      [
+       "potatoes-baked-flesh-and-skin-without-salt",
+       "1 potato medium",
+       "Baked white potato, medium"
+      ]
+     ]
+    }
+   ],
+   "lc": "sweet potato",
+   "titleServing": "a Medium Sweet Potato"
+  },
+  "apples": {
+   "query": "apple",
+   "name": "Apple",
+   "h1": "How many calories are in an apple?",
+   "noun": "an apple",
+   "lead": [
+    "apples-raw-with-skin",
+    "1 medium (3\" dia)",
+    "a medium apple"
+   ],
+   "sizes": {
+    "h2": "How many calories are in a small, medium and large apple?",
+    "rows": [
+     [
+      "apples-raw-with-skin",
+      "1 extra small (2-1/2\" dia)",
+      "Extra small apple (2½ in)"
+     ],
+     [
+      "apples-raw-with-skin",
+      "1 small (2-3/4\" dia)",
+      "Small apple (2¾ in)"
+     ],
+     [
+      "apples-raw-with-skin",
+      "1 medium (3\" dia)",
+      "Medium apple (3 in)"
+     ],
+     [
+      "apples-raw-with-skin",
+      "1 large (3-1/4\" dia)",
+      "Large apple (3¼ in)"
+     ],
+     [
+      "apples-raw-with-skin",
+      "1 cup slices",
+      "1 cup, sliced"
+     ],
+     [
+      "apples-raw-with-skin",
+      "1 cup, quartered or chopped",
+      "1 cup, chopped"
+     ]
+    ]
+   },
+   "compare": [
+    {
+     "h2": "Apple calories with and without the skin",
+     "rows": [
+      [
+       "apples-raw-with-skin",
+       "1 medium (3\" dia)",
+       "Medium apple, with skin"
+      ],
+      [
+       "apples-raw-without-skin",
+       "1 medium (3\" dia)",
+       "Medium apple, peeled"
+      ]
+     ]
+    },
+    {
+     "h2": "Gala, Fuji, Granny Smith and Red Delicious apple calories",
+     "rows": [
+      [
+       "apples-raw-gala-with-skin",
+       "1 medium",
+       "Gala, medium"
+      ],
+      [
+       "apples-raw-fuji-with-skin",
+       "1 medium",
+       "Fuji, medium"
+      ],
+      [
+       "apples-raw-granny-smith-with-skin",
+       "1 medium",
+       "Granny Smith, medium"
+      ],
+      [
+       "apples-raw-red-delicious-with-skin",
+       "1 medium",
+       "Red Delicious, medium"
+      ],
+      [
+       "apples-honeycrisp-with-skin-raw",
+       "100 g",
+       "Honeycrisp, 100 g"
+      ]
+     ]
+    },
+    {
+     "h2": "Apple vs banana and pear calories",
+     "rows": [
+      [
+       "apples-raw-with-skin",
+       "1 medium (3\" dia)",
+       "Medium apple"
+      ],
+      [
+       "bananas-raw",
+       "1 medium (7\" to 7-7/8\" long)",
+       "Medium banana"
+      ],
+      [
+       "pears-raw",
+       "1 medium",
+       "Medium pear"
+      ]
+     ]
+    }
+   ],
+   "lc": "apple",
+   "titleServing": "a Medium Apple"
+  },
+  "chick-fil-a-chicken-sandwich": {
+   "query": "chick fil sandwich",
+   "name": "Chick-fil-A Chicken Sandwich",
+   "h1": "How many calories are in a Chick-fil-A chicken sandwich?",
+   "noun": "a Chick-fil-A chicken sandwich",
+   "lead": [
+    "chick-fil-a-chicken-sandwich",
+    "1 sandwich",
+    "a Chick-fil-A chicken sandwich"
+   ],
+   "qualifier": "",
+   "sizes": {
+    "h2": "How many calories are in a Chick-fil-A chicken sandwich?",
+    "rows": [
+     [
+      "chick-fil-a-chicken-sandwich",
+      "1 sandwich",
+      "1 sandwich"
+     ]
+    ]
+   },
+   "compare": [
+    {
+     "h2": "Chick-fil-A sandwich vs McChicken and Burger King chicken sandwich",
+     "rows": [
+      [
+       "chick-fil-a-chicken-sandwich",
+       "1 sandwich",
+       "Chick-fil-A chicken sandwich"
+      ],
+      [
+       "mcdonalds-mcchicken-sandwich",
+       "1 sandwich",
+       "McDonald's McChicken"
+      ],
+      [
+       "burger-king-original-chicken-sandwich",
+       "1 sandwich",
+       "Burger King Original Chicken Sandwich"
+      ]
+     ]
+    }
+   ],
+   "lc": "Chick-fil-A chicken sandwich",
+   "titleServing": "One Sandwich"
+  },
+  "strawberries": {
+   "query": "strawberries",
+   "name": "Strawberries",
+   "h1": "How many calories are in strawberries?",
+   "noun": "a cup of strawberries",
+   "lead": [
+    "strawberries",
+    "1 cup",
+    "1 cup of strawberries"
+   ],
+   "sizes": {
+    "h2": "How many calories are in one strawberry and in a cup?",
+    "rows": [
+     [
+      "strawberries",
+      "1 fruit",
+      "1 strawberry"
+     ],
+     [
+      "strawberries",
+      "1 cup",
+      "1 cup"
+     ]
+    ]
+   },
+   "compare": [
+    {
+     "h2": "Fresh vs frozen strawberry calories",
+     "rows": [
+      [
+       "strawberries",
+       "1 cup",
+       "Fresh, 1 cup"
+      ],
+      [
+       "strawberries-frozen-unsweetened",
+       "1 cup, unthawed",
+       "Frozen, unsweetened, 1 cup"
+      ],
+      [
+       "strawberries-frozen-sweetened-sliced",
+       "1 cup, thawed",
+       "Frozen, sweetened, sliced, 1 cup"
+      ]
+     ]
+    },
+    {
+     "h2": "Strawberries vs blueberries and raspberries calories",
+     "rows": [
+      [
+       "strawberries",
+       "1 cup",
+       "Strawberries, 1 cup"
+      ],
+      [
+       "blueberries",
+       "1 cup",
+       "Blueberries, 1 cup"
+      ],
+      [
+       "raspberries",
+       "1 cup",
+       "Raspberries, 1 cup"
+      ]
+     ]
+    }
+   ],
+   "lc": "strawberries",
+   "titleServing": "1 Cup"
+  },
+  "hard-boiled-eggs": {
+   "query": "boiled egg",
+   "name": "Boiled Egg",
+   "h1": "How many calories are in a boiled egg?",
+   "noun": "a boiled egg",
+   "lead": [
+    "egg-whole-cooked-hard-boiled",
+    "1 large",
+    "a large hard-boiled egg"
+   ],
+   "sizes": {
+    "h2": "How many calories are in a large boiled egg, a cup and a tablespoon?",
+    "rows": [
+     [
+      "egg-whole-cooked-hard-boiled",
+      "1 large",
+      "1 large egg"
+     ],
+     [
+      "egg-whole-cooked-hard-boiled",
+      "1 cup, chopped",
+      "1 cup, chopped"
+     ],
+     [
+      "egg-whole-cooked-hard-boiled",
+      "1 tbsp",
+      "1 tablespoon, chopped"
+     ]
+    ]
+   },
+   "compare": [
+    {
+     "h2": "Boiled egg vs fried, scrambled and poached egg calories",
+     "rows": [
+      [
+       "egg-whole-cooked-hard-boiled",
+       "1 large",
+       "Hard-boiled"
+      ],
+      [
+       "egg-whole-cooked-poached",
+       "1 large",
+       "Poached"
+      ],
+      [
+       "egg-whole-cooked-fried",
+       "1 large",
+       "Fried"
+      ],
+      [
+       "egg-whole-cooked-scrambled",
+       "1 large",
+       "Scrambled"
+      ],
+      [
+       "egg-whole-raw-fresh",
+       "1 large",
+       "Raw"
+      ]
+     ]
+    }
+   ],
+   "lc": "boiled egg",
+   "titleServing": "a Large Egg"
+  }
+ }
+}

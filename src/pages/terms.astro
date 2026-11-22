@@ -1,11 +1,12 @@
 ---
+import { lastmodOf } from "../lib/lastmod";
 import Prose from "../layouts/Prose.astro";
 import { SITE } from "../lib/site";
 ---
-<Prose title="Terms of Service | Gunther Heller" h1="Terms of service" path="/terms/" description="Terms for using Gunther Heller's food storage guidance.">
-  <p>Last updated {SITE.verifiedLabel}.</p>
-  <h2>General guidance only</h2>
-  <p>Storage times on this site are general guidance based on public food-safety data. They are not medical advice. When in doubt, throw it out; if food smells, looks or feels wrong, do not eat it.</p>
+<Prose title="Terms of Service | Gunther Heller" h1="Terms of service" path="/terms/" description="Terms for using Gunther Heller's calorie and nutrition pages: general information from USDA data, not medical advice.">
+  <p>This page last changed on <time datetime={lastmodOf("/terms/")}>{new Date(lastmodOf("/terms/") + "T12:00:00Z").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" })}</time>.</p>
+  <h2>Information, not advice</h2>
+  <p>Calorie and nutrient figures here describe average foods as USDA measured them. Your food can differ by brand, recipe and portion. Nothing on this site is medical or dietary advice; for that, see a doctor or a registered dietitian.</p>
   <h2>Using our content</h2>
   <p>The underlying USDA data is public domain. Our page text, layouts and compilations are ours: link to a page rather than copying it.</p>
   <h2>Contact</h2>

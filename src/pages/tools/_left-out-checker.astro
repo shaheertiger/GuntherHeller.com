@@ -39,14 +39,14 @@ const faq: [string, string][] = [
     let pill: string, text: string;
     if (r.p) {
       const bad = hours > limit;
-      pill = bad ? `<span class="pill pill-no">Discard</span>` : `<span class="pill pill-yes">Refrigerate now</span>`;
+      pill = bad ? `<span class="chip chip-no">Discard</span>` : `<span class="chip chip-yes">Refrigerate now</span>`;
       text = bad ? `${hours} hours is over the ${limit}-hour limit for ${name}. Throw it out; reheating will not make it safe.` : `${name} is within the ${limit}-hour limit. Get it into the fridge now; it then keeps ${esc(r.f.toLowerCase())}.`;
     } else {
-      pill = `<span class="pill pill-yes">Usually fine</span>`;
+      pill = `<span class="chip chip-yes">Usually fine</span>`;
       text = `${name} is not a high-risk perishable food. On the counter: ${esc(r.c.toLowerCase())}. Check it looks and smells normal.`;
     }
     out.innerHTML = `<div class="flex flex-wrap gap-3 items-start">${pill}<p class="text-base">${text.charAt(0).toUpperCase() + text.slice(1)}</p></div>
-      <p class="mt-3 text-sm"><a class="link" href="${foodHref(r)}#leftout">More on ${name} →</a></p>`;
+      <p class="mt-3 text-sm"><a class="alink" href="${foodHref(r)}#leftout">More on ${name} →</a></p>`;
   };
   food.addEventListener("change", run); food.addEventListener("input", run); h.addEventListener("input", run); hot.addEventListener("change", run);
 </script>

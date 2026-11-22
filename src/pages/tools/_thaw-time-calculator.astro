@@ -39,8 +39,8 @@ const faq: [string, string][] = [
     const water = 0.5 * w;
     const after = what.value === "roast" ? "3–5 days" : what.value === "small" && false ? "3–5 days" : "1–2 days";
     out.innerHTML = `<div class="grid sm:grid-cols-2 gap-4">
-      <div><div class="eyebrow"><span class="dot bg-fridge"></span>In the fridge</div><div class="big-out mt-2">${hrs(fridge)}</div><p class="text-sm text-muted mt-1">Then keeps ${after} in the fridge.</p></div>
-      <div><div class="eyebrow"><span class="dot bg-freezer"></span>In cold water</div><div class="big-out mt-2">${hrs(water)}</div><p class="text-sm text-muted mt-1">Change the water every 30 min; cook right away.</p></div>
+      <div><div class="kicker"><span class="swatch bg-fridge"></span>In the fridge</div><div class="big-out mt-2">${hrs(fridge)}</div><p class="text-sm text-muted mt-1">Then keeps ${after} in the fridge.</p></div>
+      <div><div class="kicker"><span class="swatch bg-freezer"></span>In cold water</div><div class="big-out mt-2">${hrs(water)}</div><p class="text-sm text-muted mt-1">Change the water every 30 min; cook right away.</p></div>
     </div>`;
   };
   what.addEventListener("change", run); lb.addEventListener("input", run); run();

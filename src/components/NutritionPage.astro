@@ -1,269 +1,267 @@
 ---
 /**
- * /calories/{slug}/ — one food: calories, macro split, serving picker, Nutrition Facts (%DV),
- * vitamins & minerals, sugars, fats & fatty acids, amino acids; storage times when FoodKeeper covers it.
+ * /calories/{slug}/: how many calories one food has, and its nutrition facts. Nothing else.
+ *
+ *   H1 "How many calories are in {food}?" + one sentence with the number for the common serving and the macros
+ *   1. calories by serving size (common servings + 100 g), with an amount/unit picker that rescales section 2
+ *   2. the nutrition facts label (rows with no value or a zero value are left out)
+ *   3. how it compares: rank in its category by calories per 100 g, and 3 similar foods
+ *   4. vitamins and minerals (only those with a value)
+ *   5. 3–5 questions answered from this food's own numbers
+ *   6. sources (USDA FoodData Central with the FDC ID), a correction link, and one link to diagxcar.com for storage
+ *
+ * Every number comes from data/ (nutrition.json and friends). Nothing is estimated: a missing value is left out.
  */
 import Base from "../layouts/Base.astro";
 import Breadcrumb from "./Breadcrumb.astro";
-import NutrientTable from "./NutrientTable.astro";
-import {
-  type NFood, NFOODS, nfood, ncat, nurl, summary, servingLabel, pageTitle, pageDescription, per, fmtN, val, lcName, cap,
-  MAIN, VITAMINS, MINERALS, SUGARS, FATS, AMINOS, OTHER, SOURCE_NAME, macroSplit, rankingsOf, rankingFor, servingLinks, servingUnits, NCATS,
-  isIndexable, pageH1, possessive, guideDate, chainOf, chainItems, storeItems, HUB_CHAINS, HUB_STORES, STORES,
-} from "../lib/nutrition";
 import Byline from "./Byline.astro";
-import { REVIEWER, personLd, personUrl, reviewedOn } from "../lib/people";
-import { getFood, cellsFor, fmt, isNum, askFor } from "../lib/data";
-import { freezeVerdict, leftOutFor, signsFor, storeTipsFor, methodsFor, quoteFor } from "../lib/content";
+import {
+  type NFood, ncat, hasCatPage, nurl, per, fmtN, val, lcName, cap, titleCase, MAIN, VITAMINS, MINERALS, OTHER, SOURCE_NAME, possessive, guideDate, chainOf,
+  servings, commonServing, servingPhrase, servingWithGrams, kcalIn, pageTitle, pageH1, pageDescription, calorieRank, similarThree, pctDV, type NDef,
+  HUB_CHAINS, chainItems,
+} from "../lib/nutrition";
+import { foodDates } from "../lib/lastmod";
+import { askFor, getFood } from "../lib/data";
 import { ORG, breadcrumbLd } from "../lib/schema";
-import { SITE, abs } from "../lib/site";
+import { SITE, abs, reportHref } from "../lib/site";
+import DIAGXCAR from "../../data/diagxcar.json";
 import { existsSync } from "node:fs";
 
 interface Props { food: NFood }
 const { food } = Astro.props;
 const path = nurl.food(food);
 const cat = ncat(food.cat);
-const S = summary(food);
-const grams = S.s[1];
-const m = macroSplit(food);
 const name = food.name;
 const lname = lcName(food);
 const chain = chainOf(food);
+const dates = foodDates(food);
+/** "eggs" are plural, "cooked rice" is not: FoodKeeper's flag where we have it, else the name's last word. */
+const plural = food.storage && getFood(food.storage) ? !!getFood(food.storage)!.plural : /[^s]s$/i.test(food.name.split(/[ ,(]/)[0]);
+const Is = plural ? "Are" : "Is", does = plural ? "do" : "does", verbS = (v: string) => (plural ? v : `${v}s`);
+const catPage = hasCatPage(cat.slug);
 const chainHub = chain && HUB_CHAINS.some((c) => c.slug === chain.slug) ? chain : null;
-const store = food.storeSlug ? STORES.find((x) => x.slug === food.storeSlug) : undefined;
-const storeHub = store && HUB_STORES.some((x) => x.slug === store.slug) ? store : undefined;
-const crumbs = chainHub ? [{ name: "Restaurants", href: nurl.restaurants() }, { name: chainHub.name, href: nurl.chain(chainHub) }, { name }]
-  : storeHub ? [{ name: "Store brands", href: nurl.stores() }, { name: storeHub.brand, href: nurl.store(storeHub) }, { name }]
-  : [{ name: "Browse", href: nurl.browse() }, { name: cat.name, href: nurl.cat(cat.slug) }, { name }];
-const indexable = isIndexable(food);
-const reviewed = reviewedOn(nurl.food(food));
+const crumbs = chainHub
+  ? [{ name: "Restaurants", href: nurl.restaurants() }, { name: chainHub.name, href: nurl.chain(chainHub) }, { name }]
+  : [{ name: "Foods", href: nurl.browse() }, ...(catPage ? [{ name: cat.name, href: nurl.cat(cat.slug) }] : []), { name }];
 
-// Storage (FoodKeeper) for the foods it covers.
-const sf = food.storage ? getFood(food.storage) : undefined;
-const methods = sf ? methodsFor(sf) : [];
-const freeze = sf ? freezeVerdict(sf) : null;
-const leftOut = sf ? leftOutFor(sf) : null;
-const signs = sf ? signsFor(sf).slice(0, 4) : [];
-const tips = sf ? storeTipsFor(sf).slice(0, 4) : [];
-const ask = sf ? askFor(sf) : [];
-const pl = !!sf?.plural;
-const Is = pl ? "Are" : "Is", Does = pl ? "do" : "does";
+/* ---------------------------------------------------------------- numbers */
+const v100 = (k: string) => val(food, k);
+const S = servings(food);
+const s0 = commonServing(food);
+const g0 = s0.grams;
+const amt = (k: string, grams: number, unit: string) => fmtN(per(v100(k) ?? 0, grams), unit);
+const kcal0 = kcalIn(food, g0);
+const has = (k: string) => v100(k) != null;
+/** A value is shown only when the data has it and it does not round to zero for the common serving. */
+const shows = (k: string, grams = g0) => { const x = v100(k); return x != null && x > 0 && fmtN(per(x, grams), "") !== "0"; };
 
-// Data-driven questions (each answer is computed from this food's numbers).
-const per100 = (k: string) => val(food, k) ?? 0;
-const netCarbsServing = per(Math.max(0, per100("205") - per100("291")), grams);
-const keto = netCarbsServing <= 5 && m.carbs <= 10 ? "yes" : netCarbsServing <= 10 ? "in small amounts" : "no";
-const faq: [string, string][] = [
-  [`How many calories are in ${lname}?`, `${cap(servingLabel(S.s))} of ${lname} has ${S.kcal} calories.${food.ps ? "" : ` 100 g has ${Math.round(food.v.kcal)} calories.`}`],
-  [`How much protein is in ${lname}?`, `${cap(servingLabel(S.s))} has ${fmtN(per(per100("203"), grams), "g")} of protein, which is ${m.protein}% of its calories.`],
-  [`${Is} ${lname} keto-friendly?`, keto === "yes" ? `Yes. ${cap(servingLabel(S.s))} has ${fmtN(netCarbsServing, "g")} of net carbs, low enough for most keto plans (usually 20–50 g of net carbs a day).` : keto === "in small amounts" ? `In small amounts. ${cap(servingLabel(S.s))} has ${fmtN(netCarbsServing, "g")} of net carbs, so it takes a real share of a 20–50 g daily keto budget.` : `Not really. ${cap(servingLabel(S.s))} has ${fmtN(netCarbsServing, "g")} of net carbs, a large part of a 20–50 g daily keto budget.`],
-];
-if (sf) {
-  const s0 = sf.states[0];
-  const fr = cellsFor(sf, s0, 0).fridge.value;
-  if (s0.fridge) faq.push([`How long ${Does} ${lname} last in the fridge?`, `${fr} at 40°F (4°C) or below, according to USDA FoodKeeper.`]);
-  if (freeze) faq.push([`Can you freeze ${lname}?`, `${freeze.label}. ${freeze.detail}`]);
+/* ---------------------------------------------------------------- 1. lead + serving table */
+// A zero-calorie food (water, salt) keeps its serving rows: "0 calories" is the answer. Its all-zero macro columns go.
+const zeroCal = food.v.kcal === 0;
+const macros = [["203", "protein"], ["205", "carbs"], ["204", "fat"]].filter(([k]) => has(k) && (!zeroCal || (v100(k) ?? 0) > 0));
+const andList = (xs: string[]) => xs.join(", ").replace(/, ([^,]*)$/, " and $1");
+const nonzero = macros.filter(([k]) => per(v100(k)!, g0) > 0), zero = macros.filter(([k]) => per(v100(k)!, g0) === 0);
+const lead = `${cap(servingPhrase(food, s0))}${s0.label === "100 g" || s0.perServing ? "" : ` (${+g0.toFixed(1)} g)`} has ${kcal0} calories${nonzero.length ? `, with ${andList(nonzero.map(([k, w]) => `${amt(k, g0, " g")} of ${w}`))}` : ""}${zero.length ? `${nonzero.length ? "," : ""} and no ${zero.map(([, w]) => w).join(" or ").replace(/ or ([^ ]*) or /, ", $1 or ")}` : ""}.`;
+const rows = S.map((s) => ({ s, kcal: kcalIn(food, s.grams), cells: macros.map(([k]) => amt(k, s.grams, " g")) }))
+  // A row with only zeros says nothing (water, plain tea): keep it only if calories or a macro is above zero.
+  .filter((r) => zeroCal || r.kcal > 0 || r.cells.some((c) => !/^0 g$/.test(c)));
+// A per-serving chain item has no weight: the picker only multiplies servings.
+const pickUnits = s0.perServing ? [[s0.label, 100] as const] : [...S.filter((s) => s.label !== "100 g").map((s) => [s.label, s.grams] as const), ["g", 1] as const, ["oz", 28.35] as const];
+
+/* ---------------------------------------------------------------- 2. label */
+const LABEL_INDENT = new Set(["606", "605", "291", "269", "net"]);
+const label = [...MAIN, ...OTHER.filter((d) => d.k === "262" || d.k === "221")].filter((d) => shows(d.k));
+const dvCell = (d: NDef, grams: number) => { const p = pctDV(per(v100(d.k) ?? 0, grams), d); return p == null ? "" : `${p}%`; };
+
+/* ---------------------------------------------------------------- 3. compare */
+const rank = calorieRank(food);
+const catLower = cat.name.toLowerCase();
+function ord(n: number) { return `${n}${n % 100 >= 11 && n % 100 <= 13 ? "th" : ["th", "st", "nd", "rd"][n % 10] ?? "th"}`; }
+// Restaurant items compare with the rest of the chain's menu, per serving.
+const menu = chainHub ? chainItems(chainHub).map((x) => ({ x, kcal: kcalIn(x, commonServing(x).grams) })).sort((a, b) => b.kcal - a.kcal || a.x.name.localeCompare(b.x.name)) : [];
+const menuPos = menu.findIndex((m) => m.x === food) + 1;
+const menuSims = chainHub ? menu.filter((m) => m.x !== food && m.x.id !== food.id).sort((a, b) => Math.abs(a.kcal - kcal0) - Math.abs(b.kcal - kcal0)).slice(0, 3).map((m) => m.x) : [];
+const sims = chainHub ? menuSims : similarThree(food);
+const compareText = chainHub && menu.length > 1
+  ? `At ${kcal0} calories per serving, the ${name} ${menuPos === 1 ? "is the highest-calorie" : menuPos === menu.length ? "is the lowest-calorie" : `ranks ${ord(menuPos)} of ${menu.length}`} of the ${menu.length} ${chainHub.name} items on this site${menuPos === 1 || menuPos === menu.length ? "" : ", counting from the highest-calorie"}.`
+  : rank.of > 1
+  ? `At ${Math.round(food.v.kcal)} calories per 100 g, ${lname} ${rank.pos === 1 ? `${plural ? "are" : "is"} the most calorie-dense of the ${rank.of} ${catLower} foods on this site` : rank.pos === rank.of ? `${plural ? "are" : "is"} the least calorie-dense of the ${rank.of} ${catLower} foods on this site` : `${verbS("rank")} ${ord(rank.pos)} of the ${rank.of} ${catLower} foods on this site, counting from the most calorie-dense`}.`
+  : `${cap(lname)} ${plural ? "have" : "has"} ${Math.round(food.v.kcal)} calories per 100 g.`;
+
+/* ---------------------------------------------------------------- 4. vitamins and minerals */
+const inLabel = new Set(label.map((d) => d.k));
+const seen = new Set<string>();
+const micros = [...VITAMINS, ...MINERALS].filter((d) => d.unit !== "IU" && !inLabel.has(d.k) && !seen.has(d.k) && seen.add(d.k) && shows(d.k));
+
+/* ---------------------------------------------------------------- 5. questions (answers computed from the numbers) */
+const sp = servingPhrase(food, s0);
+const q: [string, string][] = [];
+if (has("203")) {
+  const pg = per(v100("203")!, g0), pct = pctDV(pg, MAIN.find((d) => d.k === "203"));
+  const share = kcal0 > 0 ? Math.round(((pg * 4) / kcal0) * 100) : null;
+  const verdict = pct == null ? "" : pct >= 20 ? `Yes. That is ${pct}% of the Daily Value, which the FDA counts as high (20% or more).` : pct >= 10 ? `It is a good source: ${pct}% of the Daily Value (the FDA's bar for "good source" is 10–19%).` : `No. That is ${pct}% of the Daily Value, under the FDA's 10% bar for a good source.`;
+  q.push([`${Is} ${lname} high in protein?`, pg === 0 ? `No. ${cap(sp)} has no protein.` : `${cap(sp)} has ${fmtN(pg, " g")} of protein${share != null && share > 0 && share <= 100 ? `, about ${share}% of its calories` : ""}. ${verdict}`.trim()]);
 }
-faq.push(...ask.slice(0, 6));
+if (has("205")) {
+  const c = per(v100("205")!, g0), fib = has("291") ? per(v100("291")!, g0) : null, sug = has("269") ? per(v100("269")!, g0) : null;
+  const parts = [fib != null && fib > 0 ? `${fmtN(fib, " g")} of fiber` : "", sug != null && sug > 0 ? `${fmtN(sug, " g")} of sugar` : ""].filter(Boolean);
+  q.push([`How many carbs are in ${lname}?`, c === 0 ? `${cap(sp)} has no carbohydrates.` : `${cap(sp)} has ${fmtN(c, " g")} of carbohydrates${parts.length ? `, including ${parts.join(" and ")}` : ""}${fib != null ? `; that leaves ${fmtN(Math.max(0, c - (fib ?? 0)), " g")} of net carbs` : ""}.${s0.perServing ? "" : ` 100 g has ${fmtN(v100("205"), " g")}.`}`]);
+  if (fib != null) {
+    const net = Math.max(0, c - fib);
+    const carbShare = kcal0 > 0 ? (c * 4) / kcal0 : 1;
+    q.push([`${Is} ${lname} keto-friendly?`, net <= 5 && carbShare <= 0.1 ? `In most keto plans, yes: ${sp} has ${fmtN(net, " g")} of net carbs, and keto diets usually allow 20–50 g a day.` : net <= 10 ? `In small amounts: ${sp} has ${fmtN(net, " g")} of net carbs, a real share of the 20–50 g a day that keto diets usually allow.` : `Not really: ${sp} has ${fmtN(net, " g")} of net carbs, a large part of the 20–50 g a day that keto diets usually allow.`]);
+  }
+}
+if (has("204")) {
+  const f = per(v100("204")!, g0), sat = has("606") ? per(v100("606")!, g0) : null;
+  const pct = pctDV(f, MAIN.find((d) => d.k === "204"));
+  q.push([`How much fat is in ${lname}?`, f === 0 ? `${cap(sp)} has no fat.` : `${cap(sp)} has ${fmtN(f, " g")} of fat${pct != null ? ` (${pct}% of the Daily Value)` : ""}${sat != null && sat > 0 ? `, of which ${fmtN(sat, " g")} is saturated` : ""}.`]);
+}
+// Hand-written questions, only the ones about nutrition (data/ask.json is mostly storage and safety, which is diagxcar's topic).
+const NUTRITION_Q = /calor|protein|carb|sugar|fat\b|fiber|fibre|keto|vitamin|mineral|sodium|healthy|nutrition|diet/i;
+const handWritten = food.storage ? askFor({ slug: food.storage }).filter(([qq]) => NUTRITION_Q.test(qq) && !/last|expire|go bad|fridge|shelf|freez|spoil|store/i.test(qq)) : [];
+const faq = [...q, ...handWritten].slice(0, 5);
 
-// Siblings: the same chain's menu, the same store brand's products, else USDA's similar records.
-const siblings = chainHub ? chainItems(chainHub) : store ? storeItems(store.slug) : [];
-const similar = siblings.length ? siblings.filter((x) => x.slug !== food.slug).slice(0, 12) : food.sim.map(nfood).filter((x): x is NFood => !!x).slice(0, 8);
-const more = siblings.length ? [] : NFOODS.filter((x) => x.cat === food.cat && x.storage && x.slug !== food.slug && !food.sim.includes(x.slug)).slice(0, 6);
+/* ---------------------------------------------------------------- 6. sources */
+const fdcUrl = `https://fdc.nal.usda.gov/food-details/${food.id}/nutrients`;
+const dx = food.storage && (DIAGXCAR.slugs as string[]).includes(food.storage) ? `https://diagxcar.com/food/${food.storage}/` : null;
 
+/* ---------------------------------------------------------------- page */
 const title = pageTitle(food);
 const description = pageDescription(food);
-const fdcUrl = `https://fdc.nal.usda.gov/food-details/${food.id}/nutrients`;
 const h1 = pageH1(food);
-/** "the Big Mac" for "McDonald's Big Mac": the item without the chain's name. */
-const chainItem = chain ? `${possessive(chain.name)} ${name.startsWith(chain.name) ? name.slice(chain.name.length).trim() : name}` : "";
-const nutr = (k: string, u: string) => fmtN(per(per100(k), grams), u).replace(/^–$/, "0" + u);
+const img = food.storage && existsSync(`public/images/foods/${food.storage}.webp`) ? { src: `/images/foods/${food.storage}.webp`, src600: `/images/foods/${food.storage}-600.webp`, w: 1200, h: 800, alt: name } : null;
 const jsonld = {
   "@context": "https://schema.org",
   "@graph": [
     { ...ORG, "@context": undefined },
     {
-      "@type": "WebPage", "@id": `${abs(path)}#page`, url: abs(path), name: title, description,
-      isPartOf: { "@type": "WebSite", name: SITE.name, url: `${SITE.url}/` }, publisher: { "@id": ORG["@id"] }, author: { "@id": ORG["@id"] },
-      dateModified: SITE.updatedISO, breadcrumb: breadcrumbLd(crumbs, path),
+      "@type": "Article",
+      "@id": `${abs(path)}#article`,
+      headline: h1,
+      name: title,
+      description,
+      url: abs(path),
+      mainEntityOfPage: abs(path),
+      datePublished: dates.published,
+      dateModified: dates.modified,
+      author: { "@id": ORG["@id"] },
+      publisher: { "@id": ORG["@id"] },
       about: { "@type": "Thing", name },
-      ...(reviewed ? { reviewedBy: { "@id": personLd(REVIEWER)["@id"] }, lastReviewed: reviewed } : {}),
+      isBasedOn: food.src === "R" && food.source ? food.source.url : fdcUrl,
+      ...(img ? { image: abs(img.src) } : {}),
     },
-    ...(reviewed ? [personLd(REVIEWER)] : []),
-    {
-      "@type": "NutritionInformation",
-      "@id": `${abs(path)}#nutrition`,
-      name: `${name} nutrition facts`,
-      servingSize: servingLabel(S.s),
-      calories: `${S.kcal} calories`,
-      fatContent: nutr("204", " g"),
-      saturatedFatContent: nutr("606", " g"),
-      transFatContent: nutr("605", " g"),
-      cholesterolContent: nutr("601", " mg"),
-      sodiumContent: nutr("307", " mg"),
-      carbohydrateContent: nutr("205", " g"),
-      fiberContent: nutr("291", " g"),
-      sugarContent: nutr("269", " g"),
-      proteinContent: nutr("203", " g"),
-    },
-    { "@type": "FAQPage", "@id": `${abs(path)}#faq`, mainEntity: faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) },
+    breadcrumbLd(crumbs, path),
+    { "@type": "FAQPage", "@id": `${abs(path)}#faq`, mainEntity: faq.map(([qq, a]) => ({ "@type": "Question", name: qq, acceptedAnswer: { "@type": "Answer", text: a } })) },
   ],
 };
-const img = sf && existsSync(`public/images/foods/${sf.slug}.webp`) ? { src: `/images/foods/${sf.slug}.webp`, src600: `/images/foods/${sf.slug}-600.webp`, w: 1200, h: 800, alt: `${name}` } : null;
-const units = servingUnits(food);
-const sLinks = servingLinks(food);
-const ranks = rankingsOf(food).slice(0, 6);
-const goodLinks = S.good.map((g) => ({ g, r: rankingFor(g.d.k) })).filter((x) => x.r);
-const donut = `conic-gradient(var(--color-counter) 0 ${m.carbs}%, var(--color-primary) ${m.carbs}% ${m.carbs + m.fat}%, var(--color-fridge) ${m.carbs + m.fat}% 100%)`;
 ---
-<Base title={title} description={description} path={path} jsonld={jsonld} ogType="article" ogImage={img ?? undefined} noindex={!indexable}>
-  <div class="container-site pt-6 max-w-[920px]">
+<Base title={title} description={description} path={path} jsonld={jsonld} ogType="article" ogImage={img ?? undefined}>
+  <article class="wrap pt-6 max-w-[880px]">
     <Breadcrumb items={crumbs} />
-    <div class="flex items-center gap-5 mt-4">
-      {img && <img src={img.src600} srcset={`${img.src600} 600w, ${img.src} 1200w`} sizes="120px" width="120" height="80" alt={img.alt} class="rounded-[10px] object-cover w-[120px] h-[80px] shrink-0" fetchpriority="high" />}
+    <header class="food-head mt-4">
+      {img && <img src={img.src600} srcset={`${img.src600} 600w, ${img.src} 1200w`} sizes="112px" width="112" height="75" alt={img.alt} class="food-thumb" fetchpriority="high" />}
       <div>
-        <h1 class="h1-food">{h1}</h1>
-        <p class="text-muted mt-1 text-[15px]">{food.src === "R" ? <>From {possessive(chain?.name ?? "the chain")} own nutrition guide{food.source?.date ? ` (${guideDate(food.source.date)})` : ""}</> : food.src === "B" ? <>{food.brand}{food.store && food.store !== food.brand ? ` (${food.store})` : ""} · label data via USDA FoodData Central</> : sf || food.name !== food.desc ? <>USDA record: “{food.desc}”</> : <>{SOURCE_NAME[food.src]} · FDC ID {food.id}</>}</p>
+        <h1 class="h1x">{h1}</h1>
+        <p class="food-answer">{lead}</p>
       </div>
-    </div>
+    </header>
+    <Byline path={path} updated={dates.modified} source={food.src === "R" ? `${possessive(chain?.name ?? "the chain")} nutrition guide` : `USDA FoodData Central, FDC ID ${food.id}`} />
 
-    <Byline path={path} updated={SITE.updatedISO} source={food.src === "B" ? "manufacturer label (USDA Branded Foods)" : food.src === "R" ? `${possessive(chain?.name ?? "the chain")} nutrition guide` : "USDA FoodData Central"} />
-    {chain && <p class="text-[14px] mt-3 card px-4 py-3">{food.src === "R" ? <>These values for {chainItem} come from {possessive(chain.name)} own published nutrition guide (<a class="link" href={food.source!.url} rel="nofollow noopener">{food.source!.name}</a>{food.source!.date ? `, ${guideDate(food.source!.date)}` : ""}){food.ps ? "; it gives values per serving only, not per weight" : ""}.</> : food.src === "S" ? <>These are USDA's laboratory values for {chainItem}, analysed on samples bought from the chain (USDA SR Legacy, 2018 or earlier).</> : <>These values for {chainItem} are USDA's estimate in its FNDDS survey database (2021–2023), which models menu items from their ingredients.</>} Recipes and portion sizes change, so {possessive(chain.name)} current nutrition guide may differ.{chainHub && <> See <a class="link" href={nurl.chain(chainHub)}>all {chain.name} items</a>.</>}</p>}
-    {food.src === "B" && <p class="text-[14px] mt-3 card px-4 py-3">Values come from the product's Nutrition Facts label as {food.brand} submitted it to USDA FoodData Central{food.labelUpdated ? ` (last updated ${food.labelUpdated})` : ""}. Recipes change; the label on your package wins.{storeHub && <> See <a class="link" href={nurl.store(storeHub)}>more {storeHub.brand} products</a>.</>}</p>}
-    <section class="card mt-6 p-5 md:p-6 grid gap-6 md:grid-cols-[180px_1fr] items-center" aria-labelledby="cal-h">
-      <div class="grid place-items-center">
-        <div class="donut" style={`background:${donut}`} role="img" aria-label={`${m.carbs}% carbs, ${m.fat}% fat, ${m.protein}% protein`}>
-          <div class="donut-hole"><span class="text-[30px] font-[650] leading-none" data-kcal data-v100={food.v.kcal}>{S.kcal}</span><span class="text-[13px] text-muted">calories</span></div>
-        </div>
-      </div>
-      <div>
-        <h2 id="cal-h" class="sr-only-x">Calories in {lname}</h2>
-        <ul class="list-none p-0 m-0 flex flex-wrap gap-x-6 gap-y-2 text-[15px]">
-          <li><span class="dot" style="background:var(--color-counter)"></span> Carbs <b>{m.carbs}%</b> · <span data-v100={per100("205")} data-unit="g">{fmtN(per(per100("205"), grams), "g")}</span></li>
-          <li><span class="dot" style="background:var(--color-primary)"></span> Fat <b>{m.fat}%</b> · <span data-v100={per100("204")} data-unit="g">{fmtN(per(per100("204"), grams), "g")}</span></li>
-          <li><span class="dot" style="background:var(--color-fridge)"></span> Protein <b>{m.protein}%</b> · <span data-v100={per100("203")} data-unit="g">{fmtN(per(per100("203"), grams), "g")}</span></li>
-        </ul>
-        <p class="mt-3 text-[16px]">{S.text}</p>
-        {(ranks.length > 0 || goodLinks.length > 0) && (
-          <p class="mt-3 text-[14px] text-muted">
-            {ranks.length > 0 ? <>Ranks {ranks.map((x, i) => <>{i > 0 && ", "}<b>#{x.pos}</b> in <a class="link" href={nurl.rank(x.r)}>{x.r.h1.replace(/^F/, "f")}</a></>)}.</>
-              : <>See {goodLinks.map((x, i) => <>{i > 0 && ", "}<a class="link" href={nurl.rank(x.r!)}>{x.r!.h1.replace(/^F/, "f")}</a></>)}.</>}
-          </p>
-        )}
-      </div>
-    </section>
-
-    <form class="serving mt-5 flex flex-wrap items-end gap-3" data-serving onsubmit="return false">
-      <label class="grid text-[13px] text-muted">Amount
-        <input type="number" inputmode="decimal" min="0" step="any" value="1" name="amt" class="h-10 w-24 border border-line rounded-lg px-3 text-ink text-base" />
-      </label>
-      <label class="grid text-[13px] text-muted">Unit
-        <select name="unit" class="h-10 border border-line rounded-lg px-2 text-ink text-base max-w-[340px]">
-          {units.map(([l, g, nw], i) => <option value={g} selected={i === 0}>{nw || l === "g" || l === "oz" || l === "lb" ? l : `${l} (${g} g)`}</option>)}
-        </select>
-      </label>
-      <p class="text-[13px] text-muted pb-2">Serving: <span data-serving-label>{servingLabel(S.s)}</span></p>
-    </form>
-    <nav aria-label={`Serving sizes of ${lname}`} class="mt-3">
-      <h2 class="sr-only-x">Calories by serving size</h2>
-      <ul class="list-none p-0 m-0 flex flex-wrap gap-1.5 text-[13px]">
-        {sLinks.map((x) => <li><a href={`${path}?a=${x.a}`} class="pill bg-tab hover:bg-tint-lilac !text-[13px] !py-1 !px-2.5" data-a={x.a}>{x.label} · {x.kcal} cal</a></li>)}
-      </ul>
-    </nav>
-
-    <section class="mt-8" aria-labelledby="facts-h">
-      <h2 id="facts-h" class="text-[28px]">Nutrition Facts</h2>
-      <p class="text-[14px] text-muted mt-1">For <span data-serving-label>{servingLabel(S.s)}</span> of {lname}. %DV is based on a 2,000-calorie diet.</p>
-      <div class="mt-4 table-wrap">
-        <table class="data-table ntable">
-          <caption class="sr-only-x">Calories</caption>
-          <tbody><tr class="kcal-row"><th scope="row">Calories</th><td class="num" data-v100={food.v.kcal} data-unit="kcal">{S.kcal}</td><td class="num"></td></tr></tbody>
+    <section class="block-sec" aria-labelledby="serv-h">
+      <h2 id="serv-h">Calories in {lname} by serving size</h2>
+      <div class="tscroll mt-3">
+        <table class="dtable serv-table">
+          <caption class="vh">Calories, protein, carbs and fat in common servings of {lname}</caption>
+          <thead><tr><th scope="col">Serving</th><th scope="col" class="num">Calories</th>{macros.map(([, w]) => <th scope="col" class="num">{cap(w)}</th>)}</tr></thead>
+          <tbody>
+            {rows.map((r) => <tr><th scope="row">{r.s.label}{r.s.label !== "100 g" && !r.s.perServing && <span class="text-muted"> ({+r.s.grams.toFixed(1)} g)</span>}</th><td class="num"><b>{r.kcal}</b></td>{r.cells.map((c) => <td class="num">{c}</td>)}</tr>)}
+          </tbody>
         </table>
       </div>
-      <div class="mt-2"><NutrientTable food={food} defs={MAIN} grams={grams} caption="Nutrition facts" showMissing indent={["606", "605", "net", "291", "269"]} /></div>
+      <form class="serving mt-4" data-serving data-per-serving={s0.perServing ? "1" : undefined} onsubmit="return false">
+        <label>Amount <input type="number" inputmode="decimal" min="0" step="any" value="1" name="amt" /></label>
+        <label>Unit
+          <select name="unit">{pickUnits.map(([l, g], i) => <option value={g} selected={i === 0}>{l === "g" || l === "oz" || s0.perServing ? l : `${l} (${+g.toFixed(1)} g)`}</option>)}</select>
+        </label>
+        <p class="serving-out">= <b data-kcal data-v100={food.v.kcal}>{kcal0}</b> calories · label below shows <span data-serving-label>{servingWithGrams(s0)}</span></p>
+      </form>
     </section>
 
-    <div class="mt-10 grid gap-10 grid-cols-[minmax(0,1fr)]">
-      <section aria-labelledby="vit-h">
-        <h2 id="vit-h" class="text-[28px]">Vitamins and minerals</h2>
-        <div class="mt-4 grid gap-4 grid-cols-[minmax(0,1fr)] md:grid-cols-2 items-start">
-          <NutrientTable food={food} defs={VITAMINS} grams={grams} caption="Vitamins" />
-          <NutrientTable food={food} defs={MINERALS} grams={grams} caption="Minerals" />
+    {label.length > 0 && (
+      <section class="block-sec" aria-labelledby="facts-h">
+        <h2 id="facts-h">{cap(name)} nutrition facts</h2>
+        <div class="nf-label mt-3">
+          <p class="nf-serving">Serving size <span data-serving-label>{servingWithGrams(s0)}</span></p>
+          <p class="nf-kcal"><span>Calories</span><b data-kcal data-v100={food.v.kcal}>{kcal0}</b></p>
+          <table class="nf-rows">
+            <caption class="vh">Nutrition facts for {lname}</caption>
+            <thead><tr><th scope="col">Nutrient</th><th scope="col" class="num">Amount</th><th scope="col" class="num">% Daily Value</th></tr></thead>
+            <tbody>
+              {label.map((d) => (
+                <tr class:list={[LABEL_INDENT.has(d.k) && "sub"]}>
+                  <th scope="row">{d.name}</th>
+                  <td class="num" data-v100={v100(d.k)} data-unit={d.unit}>{amt(d.k, g0, d.unit)}</td>
+                  <td class="num" data-v100={d.dv ? v100(d.k) : ""} data-dv={d.dv ?? ""}>{dvCell(d, g0)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="nf-note">% Daily Value: how much a nutrient in one serving adds to a daily diet of 2,000 calories (FDA).</p>
         </div>
       </section>
-      {SUGARS.some((d) => val(food, d.k) != null) && (
-        <section aria-labelledby="sug-h">
-          <h2 id="sug-h" class="text-[28px]">Sugars and starch</h2>
-          <div class="mt-4 max-w-[560px]"><NutrientTable food={food} defs={SUGARS} grams={grams} caption="Sugars" /></div>
-        </section>
-      )}
-      <section aria-labelledby="fat-h">
-        <h2 id="fat-h" class="text-[28px]">Fats and fatty acids</h2>
-        <div class="mt-4 max-w-[560px]"><NutrientTable food={food} defs={FATS} grams={grams} caption="Fats" indent={["606", "645", "646", "605", "ala", "epa", "dpa", "dha"]} /></div>
-      </section>
-      {AMINOS.some((d) => val(food, d.k) != null) && (
-        <section aria-labelledby="amino-h">
-          <h2 id="amino-h" class="text-[28px]">Amino acids</h2>
-          <div class="mt-4 max-w-[560px]"><NutrientTable food={food} defs={AMINOS} grams={grams} caption="Amino acids" /></div>
-        </section>
-      )}
-      {OTHER.some((d) => val(food, d.k) != null) && (
-        <section aria-labelledby="oth-h">
-          <h2 id="oth-h" class="text-[28px]">Water, caffeine and alcohol</h2>
-          <div class="mt-4 max-w-[560px]"><NutrientTable food={food} defs={OTHER} grams={grams} caption="Other" /></div>
-        </section>
-      )}
+    )}
 
-      {sf && (
-        <section aria-labelledby="storage-h" id="storage">
-          <h2 id="storage-h" class="text-[28px]">How long {Does} {lname} last?</h2>
-          <p class="mt-3">{quoteFor(sf)}</p>
-          <div class="table-wrap mt-4">
-            <table class="data-table">
-              <caption class="sr-only-x">Storage times for {lname}</caption>
-              <thead><tr><th scope="col">Where</th><th scope="col">How long</th><th scope="col">Temperature</th><th scope="col">Note</th></tr></thead>
-              <tbody>{methods.map((r) => <tr><th scope="row">{r.method}</th><td><b>{r.duration}</b></td><td>{r.temp}</td><td class="text-muted">{r.note}</td></tr>)}</tbody>
-            </table>
-          </div>
-          <div class="grid gap-4 md:grid-cols-2 mt-5">
-            {freeze && <div class="card p-4" id="freeze"><h3 class="text-[18px]">Can you freeze {lname}?</h3><p class="mt-2"><span class:list={["pill", `pill-${freeze.tone === "yes" ? "yes" : freeze.tone === "no" ? "no" : "caution"}`]}>{freeze.label}</span></p><p class="mt-2 text-[15px]">{freeze.detail}</p></div>}
-            {leftOut && <div class="card p-4" id="leftout"><h3 class="text-[18px]">Left out overnight?</h3><p class="mt-2"><span class:list={["pill", leftOut.tone === "keep" ? "pill-yes" : leftOut.tone === "discard" ? "pill-no" : "pill-caution"]}>{leftOut.label}</span></p><p class="mt-2 text-[15px]">{leftOut.text}</p></div>}
-          </div>
-          <h3 class="text-[20px] mt-6" id="bad">How to tell if {lname} {pl ? "have" : "has"} gone bad</h3>
-          <ul class="prose-list">{signs.map((s) => <li><b>{s.title}:</b> {s.text}</li>)}</ul>
-          <h3 class="text-[20px] mt-6">How to store {lname}</h3>
-          <ul class="prose-list">{tips.map((t) => <li>{t}</li>)}</ul>
-          <p class="text-[13px] text-muted mt-3">Storage times: <a class="link" href="https://www.foodsafety.gov/keep-food-safe/foodkeeper-app" rel="nofollow">USDA FoodKeeper</a>. Freezer times are for quality; food kept at 0°F (-18°C) stays safe.</p>
-        </section>
+    <section class="block-sec" aria-labelledby="cmp-h">
+      <h2 id="cmp-h">How {does} {lname} compare?</h2>
+      <p class="mt-3">{compareText}{chainHub ? <> <a class="alink" href={nurl.chain(chainHub)}>All {chainHub.name} items</a>.</> : catPage && <> <a class="alink" href={nurl.cat(cat.slug)}>See all {catLower}</a>.</>}</p>
+      {sims.length > 0 && (
+        <ul class="cmp-list">
+          {sims.map((x) => { const sx = commonServing(x); return (
+            <li><a href={nurl.food(x)}>{x.name}</a><span>{sx.perServing ? `${kcalIn(x, sx.grams)} cal per ${sx.label}` : <>{Math.round(x.v.kcal)} cal per 100 g{sx.label !== "100 g" && ` · ${kcalIn(x, sx.grams)} per ${sx.label}`}</>}</span></li>
+          ); })}
+        </ul>
       )}
+    </section>
 
-      <section aria-labelledby="faq-h">
-        <h2 id="faq-h" class="text-[28px]">Questions about {lname}</h2>
-        <div class="mt-4 grid gap-2">
-          {faq.map(([q, a], i) => (
-            <details class="card px-4 py-3" open={i < 2}>
-              <summary class="font-[600]">{q}</summary>
-              <p class="mt-2 text-[16px]">{a}</p>
-            </details>
-          ))}
+    {micros.length > 0 && (
+      <section class="block-sec" aria-labelledby="vit-h">
+        <h2 id="vit-h">What vitamins and minerals are in {lname}?</h2>
+        <p class="mt-2 text-[15px] text-muted">For <span data-serving-label>{servingWithGrams(s0)}</span>. Nutrients USDA did not measure for this food are left out.</p>
+        <div class="tscroll mt-3">
+          <table class="dtable ntab">
+            <caption class="vh">Vitamins and minerals in {lname}</caption>
+            <thead><tr><th scope="col">Nutrient</th><th scope="col" class="num">Amount</th><th scope="col" class="num">% Daily Value</th></tr></thead>
+            <tbody>{micros.map((d) => <tr><th scope="row">{d.name}</th><td class="num" data-v100={v100(d.k)} data-unit={d.unit}>{amt(d.k, g0, d.unit)}</td><td class="num" data-v100={d.dv ? v100(d.k) : ""} data-dv={d.dv ?? ""}>{dvCell(d, g0)}</td></tr>)}</tbody>
+          </table>
         </div>
       </section>
+    )}
 
-      {similar.length > 0 && (
-        <section aria-labelledby="sim-h">
-          <h2 id="sim-h" class="text-[28px]">{chainHub ? `More ${chainHub.name} items` : store ? `More ${store.brand} products` : "Similar foods"}</h2>
-          <ul class="list-none p-0 m-0 mt-4 grid sm:grid-cols-2 gap-x-6">
-            {[...similar, ...more].slice(0, 12).map((x) => (
-              <li class="border-b border-line"><a href={nurl.food(x)} class="flex justify-between gap-4 py-2.5"><span>{x.name}</span><span class="text-muted text-sm whitespace-nowrap">{x.ps ? `${Math.round(x.v.kcal)} cal per ${x.p[0][0].replace(/^1 /, "")}` : `${Math.round(x.v.kcal)} cal / 100 g`}</span></a></li>
-            ))}
-          </ul>
-          <p class="mt-4 text-[15px]">{chainHub ? <a class="link" href={nurl.chain(chainHub)}>{chainHub.name} nutrition facts: all items</a> : storeHub ? <a class="link" href={nurl.store(storeHub)}>All {storeHub.brand} products</a> : <a class="link" href={nurl.cat(cat.slug)}>All {cat.name.toLowerCase()} ({cat.count})</a>}</p>
-        </section>
-      )}
+    {faq.length > 0 && (
+      <section class="block-sec" aria-labelledby="faq-h">
+        <h2 id="faq-h">Questions about {lname}</h2>
+        <div class="qa-list">
+          {faq.map(([qq, a]) => <div class="qa"><h3>{qq}</h3><p>{a}</p></div>)}
+        </div>
+      </section>
+    )}
 
-      <p class="text-[13px] text-muted">Source: {food.src === "R" ? <a class="link" href={food.source!.url} rel="nofollow noopener">{food.source!.name}{food.source!.date ? ` (${guideDate(food.source!.date)})` : ""}</a> : <a class="link" href={fdcUrl} rel="nofollow">{SOURCE_NAME[food.src]}, FDC ID {food.id}</a>} ({food.src === "R" ? "values as published by the restaurant" : food.src === "B" ? "label data submitted by the brand owner, published by USDA" : "USDA Agricultural Research Service, public domain"}). Editorial standards: <a class="link" href="/editorial-policy/">how we build and check pages</a>, reviewed by <a class="link" href={personUrl(REVIEWER)}>{REVIEWER.name}, {REVIEWER.credentials}</a>.{food.ps ? " Values are per serving as the restaurant lists them." : " Values per serving are calculated from the per-100 g data."} General information, not medical or dietary advice.</p>
-    </div>
-  </div>
+    <section class="block-sec sources" aria-labelledby="src-h">
+      <h2 id="src-h">Sources</h2>
+      <ul>
+        {food.src === "R" && food.source
+          ? <li><a class="alink" href={food.source.url} rel="nofollow noopener">{food.source.name}</a>{food.source.date ? `, ${guideDate(food.source.date)}` : ""}: {possessive(chain?.name ?? "the chain")} own nutrition guide, values per serving as published.</li>
+          : food.src === "B"
+          ? <li><a class="alink" href={fdcUrl} rel="nofollow">USDA FoodData Central, FDC ID {food.id}</a>: the Nutrition Facts label {food.brand} submitted to USDA (Branded Foods), record “{food.desc}”{food.labelUpdated ? `, label dated ${guideDate(food.labelUpdated)}` : ""}. Other brands' recipes differ; the label on your jar wins.</li>
+          : <li><a class="alink" href={fdcUrl} rel="nofollow">USDA FoodData Central, FDC ID {food.id}</a>: {SOURCE_NAME[food.src]}, record “{food.desc}”. Values per serving are worked out from USDA's per-100 g values and its household measures.{chain && ` USDA bought and analysed this item (or modelled it from its recipe); ${possessive(chain.name)} current nutrition guide may differ.`}</li>}
+        <li>Daily Values: FDA, 21 CFR 101.9 (2,000-calorie diet).</li>
+      </ul>
+      <p class="mt-3">Spotted a wrong number? <a class="alink" href={reportHref(path)}>Report a correction</a> and we'll check it against the source. <a class="alink" href="/methodology/">How we build these pages</a>.</p>
+      {dx && <p class="mt-3">How long {lname} {plural ? "keep" : "keeps"}: <a href={dx}>diagxcar.com</a>.</p>}
+      <p class="mt-3 text-[13px] text-muted">General information, not medical or dietary advice.</p>
+    </section>
+  </article>
 </Base>
 
 <script>
@@ -280,8 +278,8 @@ const donut = `conic-gradient(var(--color-counter) 0 ${m.carbs}%, var(--color-pr
     };
     const update = () => {
       const g = (parseFloat(amt.value) || 0) * parseFloat(unit.value);
-      const opt = unit.options[unit.selectedIndex].text.replace(/\s*\([\d.]+ g\)$/, "").replace(/^1 /, "");
-      const label = opt === "g" ? `${+g.toFixed(1)} g` : `${amt.value} ${opt} (${+g.toFixed(1)} g)`;
+      const opt = unit.options[unit.selectedIndex].text.replace(/\s*\([\d.]+ g\)$/, "");
+      const label = opt === "g" ? `${+g.toFixed(1)} g` : form.dataset.perServing ? `${amt.value} × ${opt}` : `${amt.value} × ${opt} (${+g.toFixed(1)} g)`;
       document.querySelectorAll<HTMLElement>("[data-serving-label]").forEach((el) => (el.textContent = label));
       document.querySelectorAll<HTMLElement>("[data-v100]").forEach((el) => {
         const v = el.dataset.v100;
@@ -294,15 +292,5 @@ const donut = `conic-gradient(var(--color-counter) 0 ${m.carbs}%, var(--color-pr
     };
     amt.addEventListener("input", update);
     unit.addEventListener("change", update);
-    const apply = (a: string | null) => {
-      const m = a?.match(/^([\d.]+):(\d+)$/);
-      if (!m || +m[2] >= unit.options.length) return;
-      amt.value = String(+m[1]);
-      unit.selectedIndex = +m[2];
-      update();
-    };
-    apply(new URLSearchParams(location.search).get("a"));
-    document.querySelectorAll<HTMLAnchorElement>("a[data-a]").forEach((el) =>
-      el.addEventListener("click", (e) => { e.preventDefault(); history.replaceState(null, "", el.href); apply(el.dataset.a!); form.scrollIntoView({ behavior: "smooth", block: "start" }); }));
   }
 </script>
