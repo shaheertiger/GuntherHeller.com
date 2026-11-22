@@ -160,6 +160,9 @@ export const isIndexable = (f: NFood) => BUILT.has(f.slug);
 export const byDemand = (a: NFood, b: NFood) => demandOf(b) - demandOf(a) || a.name.localeCompare(b.name);
 
 const bySlug = new Map(NFOODS.map((f) => [f.slug, f]));
+const recBySlug = new Map(ALL_FOODS.map((f) => [f.slug, f]));
+/** Any USDA/chain record in the data files, with or without a page (deep pages cite related records). */
+export const record = (slug: string) => recBySlug.get(slug);
 export const nfood = (slug: string) => bySlug.get(slug);
 export const ncat = (slug: string) => ALL_CATS.find((c) => c.slug === slug)!;
 const byStorage = new Map(NFOODS.filter((f) => f.storage).map((f) => [f.storage!, f]));

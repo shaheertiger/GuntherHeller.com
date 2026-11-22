@@ -6,14 +6,16 @@
 import { REVIEWER, personUrl, reviewedOn } from "../lib/people";
 interface Props { path: string; updated: string; source?: string }
 const { path, updated, source = "USDA FoodData Central" } = Astro.props;
-const reviewed = reviewedOn(path);
+// A review older than the page's content does not cover it: show it only when it is on or after the content date.
+const r = reviewedOn(path);
+const reviewed = r && r >= updated ? r : null;
 const fmt = (iso: string) => new Date(iso + "T12:00:00Z").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
 ---
 <p class="byline text-[13px] text-muted mt-3 flex flex-wrap gap-x-2 gap-y-1">
   <span>By the <a class="alink" href="/editorial-policy/">Gunther Heller editorial team</a></span>
   <span aria-hidden="true">·</span>
   {reviewed
-    ? <span>Reviewed by <a class="alink" href={personUrl(REVIEWER)}>{REVIEWER.name}, {REVIEWER.credentials}</a> on {fmt(reviewed)}</span>
+    ? <span data-reviewed={reviewed}>Reviewed by <a class="alink" href={personUrl(REVIEWER)}>{REVIEWER.name}, {REVIEWER.credentials}</a> on {fmt(reviewed)}</span>
     : <span>Editorial standards reviewed by <a class="alink" href={personUrl(REVIEWER)}>{REVIEWER.name}, {REVIEWER.credentials}</a></span>}
   <span aria-hidden="true">·</span>
   <span>Data: {source}</span>

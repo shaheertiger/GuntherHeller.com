@@ -76,6 +76,8 @@ for (const [rel, html] of htmlOf) {
 /* ---------------------------------------------------------------- /calories/ pages */
 const FOODS = new Map(["data/nutrition.json", "data/branded.json", "data/restaurant-foods.json"].flatMap((p) => json(p).foods).map((f) => [f.slug, f]));
 const LASTMOD = json("data/lastmod.json");
+const DEEP = json("data/deep-pages.json");
+const deepSeen = [];
 const BANNED = /\blasts?\b|expire|go(es)? bad|fridge|shelf[- ]life/i;
 // Same rules as servings() in src/lib/nutrition.ts: a household measure counts if it has a weight, starts with a
 // number and is not one nobody uses at home.
@@ -101,7 +103,13 @@ for (const rel of calPages) {
   // Calories by serving, from the data.
   const table = main.match(/<table class="dtable serv-table">([\s\S]*?)<\/table>/)?.[1];
   if (!table) { err(`${rel}: no serving table`); continue; }
-  const rows = [...table.matchAll(/<tr><th scope="row">([\s\S]*?)<\/th><td class="num"><b>(\d+)<\/b><\/td>/g)].map((m) => ({ label: text(m[1]), kcal: +m[2] }));
+  // A row may name its own record (data-slug, data-g): deep pages show several USDA records side by side. Each row
+  // is checked against the record it names; rows without one belong to the page's own record.
+  const rows = [...table.matchAll(/<tr([^>]*)><th scope="row">([\s\S]*?)<\/th><td class="num"><b>(\d+)<\/b><\/td>/g)].map((m) => {
+    const rs = m[1].match(/data-slug="([^"]+)"/)?.[1], g = m[1].match(/data-g="([\d.]+)"/)?.[1];
+    return { label: text(m[2]), kcal: +m[3], rec: rs ? FOODS.get(rs) : f, g: g ? +g : null, named: !!rs };
+  });
+  for (const r of rows) if (!r.rec) err(`${rel}: serving "${r.label}" names an unknown record`);
   if (f.ps) {
     // A chain-guide item with values per serving only (no weight): one row, the guide's serving, no 100 g row.
     if (rows.length !== 1 || rows[0].label === "100 g" || rows[0].kcal !== Math.round(f.v.kcal)) err(`${rel}: per-serving item should show one serving row with ${Math.round(f.v.kcal)} kcal`);
@@ -109,16 +117,29 @@ for (const rel of calPages) {
   }
   const hundred = rows.find((r) => r.label === "100 g");
   if (f.ps) {} else if (!hundred) err(`${rel}: no 100 g row`);
-  else if (hundred.kcal !== Math.round(f.v.kcal)) err(`${rel}: 100 g shows ${hundred.kcal} kcal, data has ${f.v.kcal}`);
-  const real = rows.filter((r) => r.label !== "100 g" && !f.ps);
+  else if (hundred.rec && hundred.kcal !== Math.round(hundred.rec.v.kcal)) err(`${rel}: 100 g shows ${hundred.kcal} kcal, data (${hundred.rec.slug}) has ${hundred.rec.v.kcal}`);
+  const real = rows.filter((r) => r.label !== "100 g" && !f.ps && r.rec);
   for (const r of real) {
-    const g = +r.label.match(/\(([\d.]+) g\)$/)?.[1];
+    const g = r.g ?? +r.label.match(/\(([\d.]+) g\)$/)?.[1];
     if (!g) { err(`${rel}: serving "${r.label}" has no weight`); continue; }
-    const portion = f.p.find(([, w]) => Math.abs(w - g) < 0.051);
-    if (!portion) err(`${rel}: serving "${r.label}" is not a USDA measure for this food`);
-    if (Math.abs(r.kcal - (f.v.kcal * g) / 100) > 0.5) err(`${rel}: "${r.label}" shows ${r.kcal} kcal, data gives ${((f.v.kcal * g) / 100).toFixed(1)}`);
+    if (g !== 100 || !r.named) {
+      const portion = r.rec.p.find(([, w, nw]) => !nw && Math.abs(w - g) < 0.051);
+      if (!portion) err(`${rel}: serving "${r.label}" (${g} g) is not a USDA measure of ${r.rec.slug}`);
+    }
+    if (Math.abs(r.kcal - (r.rec.v.kcal * g) / 100) > 0.5) err(`${rel}: "${r.label}" shows ${r.kcal} kcal, ${r.rec.slug} gives ${((r.rec.v.kcal * g) / 100).toFixed(1)}`);
   }
   if (!real.length && !f.ps) { if (hasHouseholdServing(f)) err(`${rel}: data has a household serving but the page shows 100 g only`); else onlyHundred.push(slug); }
+
+  // The 10 deep pages: the first sentence is the answer (a number and "calories"), and they may run to 2,000 words;
+  // every other calorie page stays under 1,000.
+  const deep = slug in DEEP.pages;
+  const n = wordsIn(html);
+  if (n > (deep ? 2000 : 1000)) err(`${rel}: ${n} words, over the ${deep ? 2000 : 1000}-word limit`);
+  if (deep) {
+    deepSeen.push(slug);
+    const first = text(main.match(/<p class="food-answer">([\s\S]*?)<\/p>/)?.[1] ?? "").split(/(?<=\.)\s/)[0];
+    if (!/\d/.test(first) || !/\bcalories\b/.test(first)) err(`${rel}: first sentence does not give the calories: "${first}"`);
+  }
 
   // No empty sections, no rows of zeros or dashes.
   for (const m of main.matchAll(/<section[^>]*>([\s\S]*?)<\/section>/g)) {
@@ -149,7 +170,7 @@ const fmtN = (x) => { if (x === 0) return "0"; const a = Math.abs(x); const n = 
 for (const [slug, s] of Object.entries(SPOT.foods)) {
   const html = htmlOf.get(`/calories/${slug}/`);
   if (!html) { err(`spot-check: /calories/${slug}/ not built`); continue; }
-  const row = html.match(/<tr><th scope="row">100 g<\/th>([\s\S]*?)<\/tr>/)?.[1];
+  const row = html.match(/<tr[^>]*><th scope="row">100 g<\/th>([\s\S]*?)<\/tr>/)?.[1];
   const head = html.match(/<table class="dtable serv-table">[\s\S]*?<thead>([\s\S]*?)<\/thead>/)?.[1] ?? "";
   if (!row) { err(`spot-check ${slug}: no 100 g row`); continue; }
   const cols = [...head.matchAll(/<th[^>]*>([\s\S]*?)<\/th>/g)].map((m) => text(m[1]).toLowerCase()).slice(1);
@@ -226,7 +247,14 @@ for (const [src, dest] of Object.entries(MAP)) {
 const css = files.filter((f) => f.endsWith(".css")).reduce((n, f) => n + statSync(f).size, 0);
 if (css > 60 * 1024) err("CSS over the 60 KB budget");
 const reviewedData = json("data/reviewed.json");
-for (const [rel, html] of htmlOf) if ((/Reviewed by <a/.test(html) || /"reviewedBy"/.test(html)) && !(reviewedData.pages[rel] ?? reviewedData.site)) err(`${rel}: shows a review that data/reviewed.json does not list`);
+for (const [rel, html] of htmlOf) if ((/(Reviewed|Checked) by <a/.test(html) || /"reviewedBy"/.test(html)) && !(reviewedData.pages[rel] ?? reviewedData.site)) err(`${rel}: shows a review that data/reviewed.json does not list`);
+// A review date shown on a page must not be earlier than the page's content date ("Updated").
+for (const [rel, html] of htmlOf) {
+  const shown = html.match(/data-reviewed="([\d-]+)"/)?.[1], updated = html.match(/Updated <time datetime="([\d-]+)"/)?.[1];
+  if (shown && updated && shown < updated) err(`${rel}: review date ${shown} is earlier than its content date ${updated}`);
+  if (/Checked by <a/.test(html) && !reviewedData.pages[rel]) err(`${rel}: "Checked by" without a per-page review in data/reviewed.json`);
+}
+for (const s of Object.keys(DEEP.pages)) if (!deepSeen.includes(s)) err(`data/deep-pages.json: /calories/${s}/ was not built as a deep page`);
 
 console.log(`check-build: ${pages.length} pages, ${titles.size} unique titles, ${listed.size} sitemap URLs (${distinct.size} distinct lastmod dates), ${calPages.length} calorie pages (words min ${words[0]}, median ${words[words.length >> 1]})`);
 console.log(`check-build: ${onlyHundred.length} calorie pages show 100 g only because USDA lists no household measure${onlyHundred.length ? `: ${onlyHundred.join(", ")}` : ""}`);

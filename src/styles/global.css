@@ -237,3 +237,10 @@
   .site-foot-h { font-weight: 650; color: var(--color-ink); min-width: 84px; }
   .site-foot-legal { margin-top: 26px; font-size: 13px; color: var(--color-muted); }
 }
+
+/* Deep calorie pages: the source sits next to the number it backs. */
+@layer components {
+  .cite { font-size: 13px; color: var(--color-muted); white-space: nowrap; }
+  .cite a, .serv-table .src a { color: var(--color-muted); text-decoration: underline; text-underline-offset: 2px; }
+  .serv-table .src { font-size: 13px; white-space: nowrap; }
+}

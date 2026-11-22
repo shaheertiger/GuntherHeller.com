@@ -1,15 +1,15 @@
 {
- "fetched": "2026-11-21",
+ "fetched": "2026-11-22",
  "source": "https://fdc.nal.usda.gov/portal-data/external/{fdcId}",
  "foods": {
   "eggs": {
-   "fdcId": 2707152,
-   "description": "Egg, whole, raw",
+   "fdcId": 171287,
+   "description": "Egg, whole, raw, fresh",
    "per100g": {
     "kcal": 143,
-    "protein": 12.4,
-    "carbs": 0.96,
-    "fat": 9.96
+    "protein": 12.6,
+    "carbs": 0.72,
+    "fat": 9.51
    }
   },
   "cooked-rice": {

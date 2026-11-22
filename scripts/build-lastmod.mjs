@@ -12,6 +12,7 @@
  *   - data/nutrition.json, data/branded.json, data/restaurant-foods.json  (the numbers; keyed by slug)
  *   - data/overrides.json content[storage slug], data/ask.json[storage slug]
  *   - data/reviewed.json pages["/calories/{slug}/"]                  (a page's own review; the site-wide date is not per page)
+ *   - data/deep-pages.json pages[slug]                               (which records and servings a deep page shows)
  * Other pages: the last commit that changed their source file (uncommitted edits count as today).
  * Hubs (/food/…, home) are not listed here: their lastmod is the newest date of the foods they list (src/lib/lastmod.ts).
  *
@@ -22,7 +23,7 @@ import { writeFileSync, existsSync, readFileSync } from "node:fs";
 import { builtSlugs } from "../src/lib/built.mjs";
 
 const git = (...a) => execFileSync("git", a, { encoding: "utf8", maxBuffer: 1 << 30 });
-const FILES = ["data/nutrition.json", "data/branded.json", "data/restaurant-foods.json", "data/overrides.json", "data/ask.json", "data/reviewed.json"];
+const FILES = ["data/nutrition.json", "data/branded.json", "data/restaurant-foods.json", "data/overrides.json", "data/ask.json", "data/reviewed.json", "data/deep-pages.json"];
 const commits = git("log", "--reverse", "--format=%H %aI", "--", ...FILES).trim().split("\n").map((l) => {
   const [h, iso] = l.split(" ");
   return { h, day: new Date(iso).toISOString().slice(0, 10) };
@@ -37,8 +38,9 @@ function apply(day, read) {
   const over = read("data/overrides.json")?.content ?? {};
   const ask = read("data/ask.json") ?? {};
   const rev = read("data/reviewed.json")?.pages ?? {};
+  const deep = read("data/deep-pages.json")?.pages ?? {};
   for (const f of nut) {
-    const key = JSON.stringify([f, f.storage ? over[f.storage] ?? null : null, f.storage ? ask[f.storage] ?? null : null, rev[`/calories/${f.slug}/`] ?? null]);
+    const key = JSON.stringify([f, f.storage ? over[f.storage] ?? null : null, f.storage ? ask[f.storage] ?? null : null, rev[`/calories/${f.slug}/`] ?? null, deep[f.slug] ?? null]);
     const o = (out[f.slug] ??= { published: day, modified: day });
     if (prev.has(f.slug) && prev.get(f.slug) !== key) o.modified = day;
     prev.set(f.slug, key);

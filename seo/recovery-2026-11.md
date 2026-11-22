@@ -139,18 +139,18 @@ permissions, then re-run. Until then, please check these by hand in the UI:
 
 | Page type | Before: pages | indexable | in sitemap | After: pages | indexable | in sitemap |
 |---|---:|---:|---:|---:|---:|---:|
-| /calories/ food pages | 13,650 | 3,161 | 3,161 | 547 | 547 | 547 |
-| /food/ categories and nutrient lists | 45 | 45 | 45 | 41 | 41 | 41 |
-| (removed: `/food/alcohol/`, `/food/fast-food-restaurants/` (no foods left), `/food/beef/`, `/food/pork/` (owner's call)) | | | | | | |
+| /calories/ food pages (547 proven + 528 restaurant items) | 13,650 | 3,161 | 3,161 | 1,075 | 1,075 | 1,075 |
+| /food/ categories and nutrient lists | 45 | 45 | 45 | 42 | 42 | 42 |
+| (removed: `/food/alcohol/` (no foods left), `/food/beef/`, `/food/pork/` (owner's call)) | | | | | | |
 | /food/ hub | 1 | 1 | 1 | 1 | 1 | 1 |
-| /restaurants/ (hub + 22 chains) | 23 | 23 | 23 | 0 | 0 | 0 |
+| /restaurants/ (hub + 22 chains; brought back by the owner, 22 Nov) | 23 | 23 | 23 | 23 | 23 | 23 |
 | /brands/ (hub + 7 store brands) | 8 | 8 | 8 | 0 | 0 | 0 |
 | /tools/ (hub + 5 shelf-life tools) | 6 | 6 | 6 | 0 | 0 | 0 |
 | Home | 1 | 1 | 1 | 1 | 1 | 1 |
 | Trust pages, reviewer, search | 8 | 7 | 7 | 8 | 7 | 7 |
-| **Total** | **13,742** | **3,252** | **3,252** | **598** | **597** | **597** |
+| **Total** | **13,742** | **3,252** | **3,252** | **1,150** | **1,149** | **1,149** |
 
-Sitemap lastmod values: before 1 (every URL `2026-11-20`); after 2 distinct dates, each from the page's own data.
+Sitemap lastmod values: before 1 (every URL `2026-11-20`); after 4 distinct dates, each from the page's own data.
 
 ## Why it was hit (ranked by how well the evidence fits)
 

@@ -6,12 +6,12 @@
  *
  *   node scripts/usda-spotcheck.mjs        (needs network; re-run when you re-import USDA data)
  *
- * One food per dataset: FNDDS (eggs, cooked rice), Foundation Foods (cod), SR Legacy (barley), Branded (Thai red
+ * One food per dataset: SR Legacy (eggs, the deep page's lead record; barley), FNDDS (cooked rice), Foundation Foods (cod), Branded (Thai red
  * curry paste). Uses FDC's public food-details endpoint, which needs no API key.
  */
 import { writeFileSync } from "node:fs";
 
-const FOODS = { eggs: 2707152, "cooked-rice": 2708402, cod: 2684444, barley: 170284, "thai-red-curry-paste": 2608324 };
+const FOODS = { eggs: 171287, "cooked-rice": 2708402, cod: 2684444, barley: 170284, "thai-red-curry-paste": 2608324 };
 // Energy in the same order as scripts/import-fdc.mjs: kcal (208), else Atwater specific (958), else Atwater general
 // (957). FDC's web endpoint rounds energy to whole kcal, so check-build allows ±1 kcal.
 const ENERGY = ["208", "958", "957"];
