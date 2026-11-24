@@ -1,0 +1,17 @@
+---
+/**
+ * Numbered source list. The numbers match the superscript citations in the text, so every figure can be traced to
+ * the USDA record (FDC ID) or chain guide it comes from.
+ */
+interface Props { items: { name: string; url: string; note?: string }[]; reportHref: string }
+const { items, reportHref } = Astro.props;
+---
+<section class="block-sec sources art-sources" aria-labelledby="src-h">
+  <h2 id="src-h">Sources</h2>
+  <p class="text-muted">Gunther Heller uses USDA FoodData Central records, restaurants' own nutrition guides and FDA rules to support every number on this page. Read our <a class="alink" href="/editorial-policy/">editorial guidelines</a> and <a class="alink" href="/methodology/">how we count</a>.</p>
+  <ol>
+    {items.map((s, i) => <li id={`src-${i + 1}`}><a class="alink" href={s.url} rel="nofollow noopener">{s.name}</a>{s.note && <span>{s.note}</span>}</li>)}
+  </ol>
+  <p>Spotted a wrong number? <a class="alink" href={reportHref}>Report a correction</a> and we'll check it against the source.</p>
+  <p class="text-[13px] text-muted">General information, not medical or dietary advice.</p>
+</section>

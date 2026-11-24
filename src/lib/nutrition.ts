@@ -427,7 +427,7 @@ export function pageTitle(f: NFood) {
   return tries.find((t) => t.length <= TITLE_MAX) ?? tries.at(-1)!;
 }
 /** H1: the question people type. */
-export const pageH1 = (f: NFood) => `How many calories are in ${lcName(f)}?`;
+export const pageH1 = (f: NFood) => `How Many Calories Are in ${titleCase(f.name)}?`;
 
 /** Where a food sits in its category by calories per 100 g (1 = most). */
 export function calorieRank(f: NFood) {

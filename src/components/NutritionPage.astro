@@ -13,8 +13,11 @@
  * Every number comes from data/ (nutrition.json and friends). Nothing is estimated: a missing value is left out.
  */
 import Base from "../layouts/Base.astro";
-import Breadcrumb from "./Breadcrumb.astro";
 import Byline from "./Byline.astro";
+import Toc from "./article/Toc.astro";
+import Contributor from "./article/Contributor.astro";
+import Helpful from "./article/Helpful.astro";
+import Sources from "./article/Sources.astro";
 import {
   type NFood, ncat, hasCatPage, nurl, per, fmtN, val, lcName, cap, titleCase, MAIN, VITAMINS, MINERALS, OTHER, SOURCE_NAME, possessive, guideDate, chainOf,
   servings, commonServing, servingPhrase, servingWithGrams, kcalIn, pageTitle, pageH1, pageDescription, calorieRank, similarThree, pctDV, type NDef,
@@ -22,7 +25,8 @@ import {
 } from "../lib/nutrition";
 import { foodDates } from "../lib/lastmod";
 import { askFor, getFood } from "../lib/data";
-import { ORG, breadcrumbLd } from "../lib/schema";
+import { ORG_ARTICLE, breadcrumbLd, articleLd } from "../lib/schema";
+import { REVIEWER, personUrl, personLd, reviewedOn } from "../lib/people";
 import { SITE, abs, reportHref } from "../lib/site";
 import DIAGXCAR from "../../data/diagxcar.json";
 import { existsSync } from "node:fs";
@@ -131,45 +135,59 @@ const title = pageTitle(food);
 const description = pageDescription(food);
 const h1 = pageH1(food);
 const img = food.storage && existsSync(`public/images/foods/${food.storage}.webp`) ? { src: `/images/foods/${food.storage}.webp`, src600: `/images/foods/${food.storage}-600.webp`, w: 1200, h: 800, alt: name } : null;
+/* ---------------------------------------------------------------- numbered sources (match the superscripts) */
+const srcs = [
+  food.src === "R" && food.source
+    ? { name: `${food.source.name}${food.source.date ? `, ${guideDate(food.source.date)}` : ""}`, url: food.source.url, note: `: ${possessive(chain?.name ?? "the chain")} own nutrition guide, values per serving as published.` }
+    : food.src === "B"
+    ? { name: `USDA FoodData Central, FDC ID ${food.id}`, url: fdcUrl, note: `: the Nutrition Facts label ${food.brand} submitted to USDA (Branded Foods), record “${food.desc}”${food.labelUpdated ? `, label dated ${guideDate(food.labelUpdated)}` : ""}. Other brands' recipes differ; the label on your jar wins.` }
+    : { name: `USDA FoodData Central, FDC ID ${food.id}`, url: fdcUrl, note: `: ${SOURCE_NAME[food.src]}, record “${food.desc}”. Values per serving are worked out from USDA's per-100 g values and its household measures.${chain ? ` USDA bought and analysed this item (or modelled it from its recipe); ${possessive(chain.name)} current nutrition guide may differ.` : ""}` },
+  { name: "FDA: Daily Value on the Nutrition Facts label (21 CFR 101.9, 2,000-calorie diet)", url: "https://www.fda.gov/food/nutrition-facts-label/daily-value-nutrition-and-supplement-facts-labels" },
+];
+const r = reviewedOn(path);
+const reviewed = r && r >= dates.modified ? r : null;
+const dek = chain
+  ? `Calories, protein, carbs and fat in the ${name}, with the full nutrition facts label.`
+  : `Calories, protein, carbs and fat in every common serving of ${lname}, plus the full nutrition facts label.`;
+const toc: [string, string][] = [
+  ["serv-h", "Calories by Serving"],
+  ...(label.length ? [["facts-h", "Nutrition Facts"] as [string, string]] : []),
+  ["cmp-h", "How It Compares"],
+  ...(micros.length ? [["vit-h", "Vitamins and Minerals"] as [string, string]] : []),
+  ...(faq.length ? [["faq-h", "Frequently Asked Questions"] as [string, string]] : []),
+];
 const jsonld = {
   "@context": "https://schema.org",
   "@graph": [
-    { ...ORG, "@context": undefined },
-    {
-      "@type": "Article",
-      "@id": `${abs(path)}#article`,
-      headline: h1,
-      name: title,
-      description,
-      url: abs(path),
-      mainEntityOfPage: abs(path),
-      datePublished: dates.published,
-      dateModified: dates.modified,
-      author: { "@id": ORG["@id"] },
-      publisher: { "@id": ORG["@id"] },
-      about: { "@type": "Thing", name },
-      isBasedOn: food.src === "R" && food.source ? food.source.url : fdcUrl,
-      ...(img ? { image: abs(img.src) } : {}),
-    },
-    breadcrumbLd(crumbs, path),
+    { ...ORG_ARTICLE, "@context": undefined },
+    articleLd({
+      path, headline: h1, title, description, published: dates.published, modified: dates.modified, about: name, section: chainHub ? chainHub.name : cat.name,
+      isBasedOn: food.src === "R" && food.source ? food.source.url : fdcUrl, image: img, sources: srcs,
+      contributor: reviewed ? { name: REVIEWER.name, url: abs(personUrl(REVIEWER)), id: personLd(REVIEWER)["@id"] } : null,
+    }),
+    { ...breadcrumbLd(crumbs, path), "@id": `${abs(path)}#breadcrumb` },
     { "@type": "FAQPage", "@id": `${abs(path)}#faq`, mainEntity: faq.map(([qq, a]) => ({ "@type": "Question", name: qq, acceptedAnswer: { "@type": "Answer", text: a } })) },
   ],
 };
 ---
-<Base title={title} description={description} path={path} jsonld={jsonld} ogType="article" ogImage={img ?? undefined}>
-  <article class="wrap pt-6 max-w-[880px]">
-    <Breadcrumb items={crumbs} />
-    <header class="food-head mt-4">
-      {img && <img src={img.src600} srcset={`${img.src600} 600w, ${img.src} 1200w`} sizes="112px" width="112" height="75" alt={img.alt} class="food-thumb" fetchpriority="high" />}
-      <div>
-        <h1 class="h1x">{h1}</h1>
-        <p class="food-answer">{lead}</p>
-      </div>
+<Base title={title} description={description} path={path} jsonld={jsonld} ogType="article" ogImage={img ?? undefined} article={{ published: dates.published, modified: dates.modified, section: chainHub ? chainHub.name : cat.name }}>
+  <article class="wrap pt-8 max-w-[780px]">
+    <header>
+      <h1 class="h1x">{h1}</h1>
+      <p class="art-dek">{dek}</p>
+      <Byline path={path} updated={dates.modified} published={dates.published} source={food.src === "R" ? `${possessive(chain?.name ?? "the chain")} nutrition guide` : `USDA FoodData Central, FDC ID ${food.id}`} />
     </header>
-    <Byline path={path} updated={dates.modified} source={food.src === "R" ? `${possessive(chain?.name ?? "the chain")} nutrition guide` : `USDA FoodData Central, FDC ID ${food.id}`} />
+    <Toc items={toc} />
+    {img && (
+      <figure class="art-fig">
+        <img src={img.src600} srcset={`${img.src600} 600w, ${img.src} 1200w`} sizes="(min-width: 780px) 732px, 100vw" width={img.w} height={img.h} alt={`Illustration of ${lname}`} fetchpriority="high" />
+        <figcaption>Illustration: {SITE.name}</figcaption>
+      </figure>
+    )}
+    <p class="food-answer">{lead}<sup class="cn"><a href={srcs[0].url} rel="nofollow noopener" title={srcs[0].name}>1</a></sup></p>
 
     <section class="block-sec" aria-labelledby="serv-h">
-      <h2 id="serv-h">Calories in {lname} by serving size</h2>
+      <h2 id="serv-h">Calories in {titleCase(name)} by Serving Size</h2>
       <div class="tscroll mt-3">
         <table class="dtable serv-table">
           <caption class="vh">Calories, protein, carbs and fat in common servings of {lname}</caption>
@@ -190,7 +208,7 @@ const jsonld = {
 
     {label.length > 0 && (
       <section class="block-sec" aria-labelledby="facts-h">
-        <h2 id="facts-h">{cap(name)} nutrition facts</h2>
+        <h2 id="facts-h">{titleCase(name)} Nutrition Facts</h2>
         <div class="nf-label mt-3">
           <p class="nf-serving">Serving size <span data-serving-label>{servingWithGrams(s0)}</span></p>
           <p class="nf-kcal"><span>Calories</span><b data-kcal data-v100={food.v.kcal}>{kcal0}</b></p>
@@ -207,13 +225,13 @@ const jsonld = {
               ))}
             </tbody>
           </table>
-          <p class="nf-note">% Daily Value: how much a nutrient in one serving adds to a daily diet of 2,000 calories (FDA).</p>
+          <p class="nf-note">% Daily Value: how much a nutrient in one serving adds to a daily diet of 2,000 calories (FDA).<sup class="cn"><a href={srcs[1].url} rel="nofollow noopener">2</a></sup></p>
         </div>
       </section>
     )}
 
     <section class="block-sec" aria-labelledby="cmp-h">
-      <h2 id="cmp-h">How {does} {lname} compare?</h2>
+      <h2 id="cmp-h">How {does === "do" ? "Do" : "Does"} {titleCase(name)} Compare?</h2>
       <p class="mt-3">{compareText}{chainHub ? <> <a class="alink" href={nurl.chain(chainHub)}>All {chainHub.name} items</a>.</> : catPage && <> <a class="alink" href={nurl.cat(cat.slug)}>See all {catLower}</a>.</>}</p>
       {sims.length > 0 && (
         <ul class="cmp-list">
@@ -226,7 +244,7 @@ const jsonld = {
 
     {micros.length > 0 && (
       <section class="block-sec" aria-labelledby="vit-h">
-        <h2 id="vit-h">What vitamins and minerals are in {lname}?</h2>
+        <h2 id="vit-h">What Vitamins and Minerals Are in {titleCase(name)}?</h2>
         <p class="mt-2 text-[15px] text-muted">For <span data-serving-label>{servingWithGrams(s0)}</span>. Nutrients USDA did not measure for this food are left out.</p>
         <div class="tscroll mt-3">
           <table class="dtable ntab">
@@ -240,27 +258,18 @@ const jsonld = {
 
     {faq.length > 0 && (
       <section class="block-sec" aria-labelledby="faq-h">
-        <h2 id="faq-h">Questions about {lname}</h2>
-        <div class="qa-list">
-          {faq.map(([qq, a]) => <div class="qa"><h3>{qq}</h3><p>{a}</p></div>)}
+        <h2 id="faq-h">Frequently Asked Questions</h2>
+        <div class="faq-acc mt-4">
+          {faq.map(([qq, a]) => <details open><summary><h3>{qq}</h3></summary><p>{a}</p></details>)}
         </div>
       </section>
     )}
 
-    <section class="block-sec sources" aria-labelledby="src-h">
-      <h2 id="src-h">Sources</h2>
-      <ul>
-        {food.src === "R" && food.source
-          ? <li><a class="alink" href={food.source.url} rel="nofollow noopener">{food.source.name}</a>{food.source.date ? `, ${guideDate(food.source.date)}` : ""}: {possessive(chain?.name ?? "the chain")} own nutrition guide, values per serving as published.</li>
-          : food.src === "B"
-          ? <li><a class="alink" href={fdcUrl} rel="nofollow">USDA FoodData Central, FDC ID {food.id}</a>: the Nutrition Facts label {food.brand} submitted to USDA (Branded Foods), record “{food.desc}”{food.labelUpdated ? `, label dated ${guideDate(food.labelUpdated)}` : ""}. Other brands' recipes differ; the label on your jar wins.</li>
-          : <li><a class="alink" href={fdcUrl} rel="nofollow">USDA FoodData Central, FDC ID {food.id}</a>: {SOURCE_NAME[food.src]}, record “{food.desc}”. Values per serving are worked out from USDA's per-100 g values and its household measures.{chain && ` USDA bought and analysed this item (or modelled it from its recipe); ${possessive(chain.name)} current nutrition guide may differ.`}</li>}
-        <li>Daily Values: FDA, 21 CFR 101.9 (2,000-calorie diet).</li>
-      </ul>
-      <p class="mt-3">Spotted a wrong number? <a class="alink" href={reportHref(path)}>Report a correction</a> and we'll check it against the source. <a class="alink" href="/methodology/">How we build these pages</a>.</p>
-      {dx && <p class="mt-3">How long {lname} {plural ? "keep" : "keeps"}: <a href={dx}>diagxcar.com</a>.</p>}
-      <p class="mt-3 text-[13px] text-muted">General information, not medical or dietary advice.</p>
-    </section>
+    <Contributor path={path} updated={dates.modified} />
+    {dx && <p class="mt-6">How long {lname} {plural ? "keep" : "keeps"}: <a class="alink" href={dx}>diagxcar.com</a>.</p>}
+    <nav aria-label="Breadcrumb" class="art-chips">{crumbs.filter((c) => c.href).map((c) => <a href={c.href}>{c.name}</a>)}</nav>
+    <Helpful id={`fb-${food.slug}`} reportHref={reportHref(path)} />
+    <Sources items={srcs} reportHref={reportHref(path)} />
   </article>
 </Base>
 

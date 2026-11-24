@@ -1,0 +1,14 @@
+---
+/**
+ * "In This Article": a short jump list under the byline (short labels, one per H2), as on magazine-style articles.
+ * Folded on phones (<details>), open on wider screens. No client JS.
+ */
+interface Props { items: [id: string, label: string][] }
+const { items } = Astro.props;
+---
+<nav class="art-toc" aria-label="In this article">
+  <details open>
+    <summary>In This Article</summary>
+    <ul>{items.map(([id, label]) => <li><a href={`#${id}`}>{label}</a></li>)}</ul>
+  </details>
+</nav>

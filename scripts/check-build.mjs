@@ -130,11 +130,9 @@ for (const rel of calPages) {
   }
   if (!real.length && !f.ps) { if (hasHouseholdServing(f)) err(`${rel}: data has a household serving but the page shows 100 g only`); else onlyHundred.push(slug); }
 
-  // The 10 deep pages: the first sentence is the answer (a number and "calories"), and they may run to 2,000 words;
-  // every other calorie page stays under 1,000.
+  // The 10 deep pages: the first sentence is the answer (a number and "calories"). No word cap (owner, 24 Nov 2026).
   const deep = slug in DEEP.pages;
   const n = wordsIn(html);
-  if (n > (deep ? 2000 : 1000)) err(`${rel}: ${n} words, over the ${deep ? 2000 : 1000}-word limit`);
   if (deep) {
     deepSeen.push(slug);
     const first = text(main.match(/<p class="food-answer">([\s\S]*?)<\/p>/)?.[1] ?? "").split(/(?<=\.)\s/)[0];
