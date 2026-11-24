@@ -42,5 +42,5 @@ const fmt = (iso: string) => new Date(iso + "T12:00:00Z").toLocaleDateString("en
   <p>{P.disclosure}</p>
 
   <h2>Elsewhere</h2>
-  <ul>{P.sameAs.map((u) => <li><a href={u} rel="noopener me">{u.replace(/^https:\/\/(www\.)?/, "").replace(/\/$/, "")}</a></li>)}</ul>
+  <ul>{P.sameAs.map((u) => <li><a href={u} rel="nofollow noopener me">{u.replace(/^https:\/\/(www\.)?/, "").replace(/\/$/, "")}</a></li>)}</ul>
 </Prose>

@@ -266,7 +266,7 @@ const jsonld = {
     )}
 
     <Contributor path={path} updated={dates.modified} />
-    {dx && <p class="mt-6">How long {lname} {plural ? "keep" : "keeps"}: <a class="alink" href={dx}>diagxcar.com</a>.</p>}
+    {dx && <p class="mt-6">How long {lname} {plural ? "keep" : "keeps"}: <a class="alink" href={dx} rel="nofollow noopener">diagxcar.com</a>.</p>}
     <nav aria-label="Breadcrumb" class="art-chips">{crumbs.filter((c) => c.href).map((c) => <a href={c.href}>{c.name}</a>)}</nav>
     <Helpful id={`fb-${food.slug}`} reportHref={reportHref(path)} />
     <Sources items={srcs} reportHref={reportHref(path)} />

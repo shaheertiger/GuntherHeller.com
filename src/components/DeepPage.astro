@@ -139,12 +139,7 @@ const showChecked = checked && checked >= dates.modified ? checked : null;
 const fmtDate = (iso: string) => new Date(iso + "T12:00:00Z").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
 
 /* ---------------------------------------------------------------- head */
-const titleTries = [
-  `${cfg.name} Calories: ${L.kcal} in ${cfg.titleServing}${cfg.qualifier === "" ? "" : ` ${cfg.qualifier ?? "(Nutrition Facts)"}`}`,
-  `${cfg.name} Calories: ${L.kcal} in ${cfg.titleServing}`,
-];
-if (titleTries[1].length > 65) throw new Error(`data/deep-pages.json (${food.slug}): title over 65 characters: ${titleTries[1]}`);
-const title = titleTries.find((t) => t.length <= 65) ?? titleTries.at(-1)!;
+// <title> = the H1 question, word for word (set below, once the H1 is title-cased).
 const description = `${lead} Calories for every size, per 100 g, protein, carbs, sugar and fiber, from USDA FoodData Central.`.slice(0, 300);
 const crumbs = chainHub
   ? [{ name: "Restaurants", href: nurl.restaurants() }, { name: chainHub.name, href: nurl.chain(chainHub) }, { name: food.name }]
@@ -164,6 +159,7 @@ const nDV = srcs.length;
 /** H1 in title case, like the reference article ("How Many Calories Are in an Egg?"). */
 const tc = (t: string) => titleCase(t).replace(/\b(An|Vs|Per)\b(?!$)/g, (w) => w.toLowerCase());
 const h1 = tc(cfg.h1);
+const title = h1;
 const dek = `Calories for every size and serving of ${cfg.lc}, with protein, carbs, sugar, fiber and the full nutrition facts label.`;
 const toc: [string, string][] = [["tldr-h", "Calories at a Glance"], ...secs.map((x) => [`${x.id}-h`, tc(x.h2).replace(/\?$/, "")] as [string, string]), ...(label.length ? [["facts-h", "Nutrition Facts"] as [string, string]] : []), ["cmp-h", "How It Compares"]];
 const jsonld = {
@@ -264,7 +260,7 @@ const jsonld = {
 
     <Contributor path={path} updated={dates.modified} />
     {chain && <p class="mt-6">These are USDA's figures for {chain.name} items (bought at the chain and analysed, or modelled from the recipe). Recipes and portions change, so {possessive(chain.name)} current nutrition guide may differ.</p>}
-    {dx && <p class="mt-6">How long it keeps: <a class="alink" href={dx}>diagxcar.com</a>.</p>}
+    {dx && <p class="mt-6">How long it keeps: <a class="alink" href={dx} rel="nofollow noopener">diagxcar.com</a>.</p>}
     <nav aria-label="Breadcrumb" class="art-chips">{crumbs.filter((c) => c.href).map((c) => <a href={c.href}>{c.name}</a>)}</nav>
     <Helpful id={`fb-${food.slug}`} reportHref={reportHref(path)} />
     <Sources items={srcs} reportHref={reportHref(path)} />

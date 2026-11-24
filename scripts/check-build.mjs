@@ -64,6 +64,8 @@ for (const [rel, html] of htmlOf) {
   }
   if (isNoindex(html) || rel === "/404.html") continue;
   const title = html.match(/<title>(.*?)<\/title>/)?.[1];
+  // Every outgoing link is nofollow (owner decision, 24 Nov 2026): any <a> to another host needs rel="nofollow …".
+  for (const m of html.matchAll(/<a\b[^>]*href="https?:\/\/([^/"]+)[^"]*"[^>]*>/g)) if (!/(^|\.)guntherheller\.com$/.test(m[1]) && !/\brel="[^"]*\bnofollow\b/.test(m[0])) err(`${rel}: outgoing link without nofollow: ${m[0].slice(0, 120)}`);
   if (!title) err(`${rel}: missing title`);
   else if (titles.has(title)) err(`${rel}: duplicate title with ${titles.get(title)}`);
   else titles.set(title, rel);
