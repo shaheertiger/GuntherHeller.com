@@ -1,0 +1,19 @@
+---
+/**
+ * End-of-article reviewer credit ("Additional reporting by …" on magazine pages): name, credentials, one-line bio,
+ * profile link. Shown only when data/reviewed.json has a review on or after the page's content date.
+ */
+import { REVIEWER, personUrl, reviewedOn } from "../../lib/people";
+interface Props { path: string; updated: string }
+const { path, updated } = Astro.props;
+const r = reviewedOn(path);
+const reviewed = r && r >= updated ? r : null;
+const fmt = (iso: string) => new Date(iso + "T12:00:00Z").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
+const bio = REVIEWER.summary.split(/(?<=\.)\s/)[0];
+---
+{reviewed && (
+  <div class="art-contrib">
+    <p><span class="text-muted">Reviewed by</span> <a href={personUrl(REVIEWER)} class="alink font-semibold">{REVIEWER.name}, {REVIEWER.credentials}</a> <span class="text-muted">on {fmt(reviewed)}</span></p>
+    <p class="text-[14px] text-muted">{bio} <a href={personUrl(REVIEWER)} class="alink">Learn more</a> · <a href="/editorial-policy/" class="alink">Editorial guidelines</a></p>
+  </div>
+)}

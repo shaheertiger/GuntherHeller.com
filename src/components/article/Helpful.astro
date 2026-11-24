@@ -1,0 +1,17 @@
+---
+/**
+ * "Was this page helpful?": two radio buttons and CSS (no client JS, nothing is collected). "Yes" thanks the reader;
+ * "No" points them at the correction form, which is where a useful answer goes.
+ */
+interface Props { id: string; reportHref: string }
+const { id, reportHref } = Astro.props;
+---
+<div class="art-helpful">
+  <p class="art-helpful-q" id={`${id}-q`}>Was this page helpful?</p>
+  <div class="art-helpful-row" role="radiogroup" aria-labelledby={`${id}-q`}>
+    <input type="radio" class="vh" name={id} id={`${id}-y`} value="yes" /><label for={`${id}-y`}>Yes</label>
+    <input type="radio" class="vh" name={id} id={`${id}-n`} value="no" /><label for={`${id}-n`}>No</label>
+    <p class="art-helpful-yes" aria-live="polite">Thanks for your feedback!</p>
+    <p class="art-helpful-no" aria-live="polite"><a href={reportHref} class="alink">Tell us why</a>.</p>
+  </div>
+</div>

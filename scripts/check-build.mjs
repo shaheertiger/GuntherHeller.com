@@ -64,6 +64,8 @@ for (const [rel, html] of htmlOf) {
   }
   if (isNoindex(html) || rel === "/404.html") continue;
   const title = html.match(/<title>(.*?)<\/title>/)?.[1];
+  // Every outgoing link is nofollow (owner decision, 24 Nov 2026): any <a> to another host needs rel="nofollow …".
+  for (const m of html.matchAll(/<a\b[^>]*href="https?:\/\/([^/"]+)[^"]*"[^>]*>/g)) if (!/(^|\.)guntherheller\.com$/.test(m[1]) && !/\brel="[^"]*\bnofollow\b/.test(m[0])) err(`${rel}: outgoing link without nofollow: ${m[0].slice(0, 120)}`);
   if (!title) err(`${rel}: missing title`);
   else if (titles.has(title)) err(`${rel}: duplicate title with ${titles.get(title)}`);
   else titles.set(title, rel);
@@ -130,11 +132,9 @@ for (const rel of calPages) {
   }
   if (!real.length && !f.ps) { if (hasHouseholdServing(f)) err(`${rel}: data has a household serving but the page shows 100 g only`); else onlyHundred.push(slug); }
 
-  // The 10 deep pages: the first sentence is the answer (a number and "calories"), and they may run to 2,000 words;
-  // every other calorie page stays under 1,000.
+  // The 10 deep pages: the first sentence is the answer (a number and "calories"). No word cap (owner, 24 Nov 2026).
   const deep = slug in DEEP.pages;
   const n = wordsIn(html);
-  if (n > (deep ? 2000 : 1000)) err(`${rel}: ${n} words, over the ${deep ? 2000 : 1000}-word limit`);
   if (deep) {
     deepSeen.push(slug);
     const first = text(main.match(/<p class="food-answer">([\s\S]*?)<\/p>/)?.[1] ?? "").split(/(?<=\.)\s/)[0];

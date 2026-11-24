@@ -8,15 +8,19 @@
  * out. The config names records and measure labels only; an unknown one fails the build here.
  */
 import Base from "../layouts/Base.astro";
-import Breadcrumb from "./Breadcrumb.astro";
+import Byline from "./Byline.astro";
+import Toc from "./article/Toc.astro";
+import Contributor from "./article/Contributor.astro";
+import Helpful from "./article/Helpful.astro";
+import Sources from "./article/Sources.astro";
 import {
-  type NFood, ncat, hasCatPage, nurl, nfood, record, per, fmtN, val, cap, MAIN, VITAMINS, MINERALS, SOURCE_NAME, possessive, chainOf,
+  type NFood, ncat, hasCatPage, nurl, nfood, record, per, fmtN, val, cap, MAIN, VITAMINS, MINERALS, SOURCE_NAME, possessive, chainOf, titleCase,
   calorieRank, pctDV, kcalIn, commonServing, HUB_CHAINS, chainItems, NFOODS, type NDef,
 } from "../lib/nutrition";
 import { foodDates } from "../lib/lastmod";
-import { ORG, breadcrumbLd } from "../lib/schema";
+import { ORG_ARTICLE, breadcrumbLd, articleLd } from "../lib/schema";
 import { SITE, abs, reportHref } from "../lib/site";
-import { REVIEWER, personUrl, reviewedPageOn } from "../lib/people";
+import { REVIEWER, personUrl, personLd, reviewedPageOn } from "../lib/people";
 import DEEP from "../../data/deep-pages.json";
 import DIAGXCAR from "../../data/diagxcar.json";
 import { existsSync } from "node:fs";
@@ -135,12 +139,7 @@ const showChecked = checked && checked >= dates.modified ? checked : null;
 const fmtDate = (iso: string) => new Date(iso + "T12:00:00Z").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
 
 /* ---------------------------------------------------------------- head */
-const titleTries = [
-  `${cfg.name} Calories: ${L.kcal} in ${cfg.titleServing}${cfg.qualifier === "" ? "" : ` ${cfg.qualifier ?? "(Nutrition Facts)"}`}`,
-  `${cfg.name} Calories: ${L.kcal} in ${cfg.titleServing}`,
-];
-if (titleTries[1].length > 65) throw new Error(`data/deep-pages.json (${food.slug}): title over 65 characters: ${titleTries[1]}`);
-const title = titleTries.find((t) => t.length <= 65) ?? titleTries.at(-1)!;
+// <title> = the H1 question, word for word (set below, once the H1 is title-cased).
 const description = `${lead} Calories for every size, per 100 g, protein, carbs, sugar and fiber, from USDA FoodData Central.`.slice(0, 300);
 const crumbs = chainHub
   ? [{ name: "Restaurants", href: nurl.restaurants() }, { name: chainHub.name, href: nurl.chain(chainHub) }, { name: food.name }]
@@ -148,39 +147,54 @@ const crumbs = chainHub
 const dx = food.storage && (DIAGXCAR.slugs as string[]).includes(food.storage) ? `https://diagxcar.com/food/${food.storage}/` : null;
 const img = food.storage && existsSync(`public/images/foods/${food.storage}.webp`) ? { src: `/images/foods/${food.storage}.webp`, src600: `/images/foods/${food.storage}-600.webp`, w: 1200, h: 800, alt: food.name } : null;
 const faq = secs.filter((s) => s.faq);
+/* ---------------------------------------------------------------- numbered sources (match the superscripts) */
+const usedList = [...used.values()];
+const DV_SRC = { name: "FDA: Daily Value on the Nutrition Facts label (21 CFR 101.9, 2,000-calorie diet)", url: "https://www.fda.gov/food/nutrition-facts-label/daily-value-nutrition-and-supplement-facts-labels" };
+const srcs = [
+  ...usedList.map((r) => ({ name: fdcName(r), url: fdcUrl(r), note: `: ${r.src === "R" ? `${possessive(chainOf(r)?.name ?? "the chain")} nutrition guide` : SOURCE_NAME[r.src]}, record “${r.desc}”.` })),
+  DV_SRC,
+];
+const nOf = (r: NFood) => usedList.findIndex((x) => x.slug === r.slug) + 1;
+const nDV = srcs.length;
+/** H1 in title case, like the reference article ("How Many Calories Are in an Egg?"). */
+const tc = (t: string) => titleCase(t).replace(/\b(An|Vs|Per)\b(?!$)/g, (w) => w.toLowerCase());
+const h1 = tc(cfg.h1);
+const title = h1;
+const dek = `Calories for every size and serving of ${cfg.lc}, with protein, carbs, sugar, fiber and the full nutrition facts label.`;
+const toc: [string, string][] = [["tldr-h", "Calories at a Glance"], ...secs.map((x) => [`${x.id}-h`, tc(x.h2).replace(/\?$/, "")] as [string, string]), ...(label.length ? [["facts-h", "Nutrition Facts"] as [string, string]] : []), ["cmp-h", "How It Compares"]];
 const jsonld = {
   "@context": "https://schema.org",
   "@graph": [
-    { ...ORG, "@context": undefined },
-    {
-      "@type": "Article", "@id": `${abs(path)}#article`, headline: cfg.h1, name: title, description, url: abs(path), mainEntityOfPage: abs(path),
-      datePublished: dates.published, dateModified: dates.modified, author: { "@id": ORG["@id"] }, publisher: { "@id": ORG["@id"] },
-      about: { "@type": "Thing", name: food.name }, isBasedOn: [...used.values()].map(fdcUrl), ...(img ? { image: abs(img.src) } : {}),
-    },
-    breadcrumbLd(crumbs, path),
+    { ...ORG_ARTICLE, "@context": undefined },
+    articleLd({
+      path, headline: h1, title, description, published: dates.published, modified: dates.modified, about: food.name, section: chainHub ? chainHub.name : cat.name,
+      isBasedOn: usedList.map(fdcUrl), image: img, sources: srcs,
+      contributor: showChecked ? { name: REVIEWER.name, url: abs(personUrl(REVIEWER)), id: personLd(REVIEWER)["@id"] } : null,
+    }),
+    { ...breadcrumbLd(crumbs, path), "@id": `${abs(path)}#breadcrumb` },
     { "@type": "FAQPage", "@id": `${abs(path)}#faq`, mainEntity: faq.map((s) => ({ "@type": "Question", name: s.h2, acceptedAnswer: { "@type": "Answer", text: s.answer } })) },
   ],
 };
 ---
-<Base title={title} description={description} path={path} jsonld={jsonld} ogType="article" ogImage={img ?? undefined}>
-  <article class="wrap pt-6 max-w-[880px]" data-deep>
-    <Breadcrumb items={crumbs} />
-    <header class="food-head mt-4">
-      {img && <img src={img.src600} srcset={`${img.src600} 600w, ${img.src} 1200w`} sizes="112px" width="112" height="75" alt={img.alt} class="food-thumb" fetchpriority="high" />}
-      <div>
-        <h1 class="h1x">{cfg.h1}</h1>
-        <p class="food-answer">{lead} <span class="cite">Source: <a href={fdcUrl(lr)} rel="nofollow">{fdcName(lr)}</a></span></p>
-      </div>
+<Base title={title} description={description} path={path} jsonld={jsonld} ogType="article" ogImage={img ?? undefined} article={{ published: dates.published, modified: dates.modified, section: chainHub ? chainHub.name : cat.name }}>
+  <article class="wrap pt-8 max-w-[780px]" data-deep>
+    <header>
+      <h1 class="h1x">{h1}</h1>
+      <p class="art-dek">{dek}</p>
+      <Byline path={path} updated={dates.modified} published={dates.published} />
     </header>
-    <p class="byline text-[13px] text-muted mt-3 flex flex-wrap gap-x-2 gap-y-1">
-      <span>By the <a class="alink" href="/editorial-policy/">Gunther Heller editorial team</a></span>
-      {showChecked && <><span aria-hidden="true">·</span><span data-reviewed={showChecked}>Checked by <a class="alink" href={personUrl(REVIEWER)}>{REVIEWER.name}, {REVIEWER.credentials}</a> on {fmtDate(showChecked)}</span></>}
-      <span aria-hidden="true">·</span>
-      <span>Updated <time datetime={dates.modified}>{fmtDate(dates.modified)}</time></span>
-    </p>
+    <Toc items={toc} />
+    {img && (
+      <figure class="art-fig">
+        <img src={img.src600} srcset={`${img.src600} 600w, ${img.src} 1200w`} sizes="(min-width: 780px) 732px, 100vw" width={img.w} height={img.h} alt={`Illustration of ${cfg.lc}`} fetchpriority="high" />
+        <figcaption>Illustration: {SITE.name}</figcaption>
+      </figure>
+    )}
+    <p class="food-answer">{lead}<sup class="cn">{[lr].map((r, i) => <>{i > 0 && ","}<a href={fdcUrl(r)} rel="nofollow noopener" title={fdcName(r)}>{nOf(r)}</a></>)}</sup></p>
+
 
     <section class="block-sec" aria-labelledby="tldr-h">
-      <h2 id="tldr-h">TL;DR: {cfg.lc} calories by serving</h2>
+      <h2 id="tldr-h">{titleCase(cfg.lc)} Calories at a Glance</h2>
       <div class="tscroll mt-3">
         <table class="dtable serv-table">
           <caption class="vh">Calories and macros for every common serving</caption>
@@ -194,8 +208,8 @@ const jsonld = {
 
     {secs.map((s) => (
       <section class="block-sec" aria-labelledby={`${s.id}-h`}>
-        <h2 id={`${s.id}-h`}>{s.h2}</h2>
-        <p class="mt-3">{s.answer} <span class="cite">Source: {s.cites.map((r, i) => <>{i > 0 && ", "}<a href={fdcUrl(r)} rel="nofollow">{fdcName(r)}</a></>)}</span></p>
+        <h2 id={`${s.id}-h`}>{tc(s.h2)}</h2>
+        <p class="mt-3">{s.answer}<sup class="cn">{s.cites.map((r, i) => <>{i > 0 && ","}<a href={fdcUrl(r)} rel="nofollow noopener" title={fdcName(r)}>{nOf(r)}</a></>)}</sup></p>
         {s.rows && s.rows.length > 1 && s.id !== "sizes" && (
           <ul class="cmp-list">
             {s.rows.map((c) => { const href = linkable(c.r); return <li>{href ? <a href={href}>{c.label}</a> : <span class="text-ink font-[550]">{c.label}</span>}<span>{c.kcal} cal{c.label.endsWith("100 g") || s.rows!.every((x) => x.g === 100) ? " per 100 g" : ` in ${+c.g.toFixed(1)} g`} · {fdcName(c.r)}</span></li>; })}
@@ -206,7 +220,7 @@ const jsonld = {
 
     {label.length > 0 && (
       <section class="block-sec" aria-labelledby="facts-h">
-        <h2 id="facts-h">{cap(cfg.lc)} nutrition facts</h2>
+        <h2 id="facts-h">{titleCase(cfg.lc)} Nutrition Facts</h2>
         <div class="nf-label mt-3">
           <p class="nf-serving">Serving size {cfg.lead[2].replace(/^an? /, "1 ")} ({+L.g.toFixed(1)} g)</p>
           <p class="nf-kcal"><span>Calories</span><b>{L.kcal}</b></p>
@@ -215,15 +229,15 @@ const jsonld = {
             <thead><tr><th scope="col">Nutrient</th><th scope="col" class="num">Amount</th><th scope="col" class="num">% Daily Value</th></tr></thead>
             <tbody>{label.map((d) => <tr class:list={[LABEL_INDENT.has(d.k) && "sub"]}><th scope="row">{d.name}</th><td class="num">{fmtN(nut(lr, d.k, L.g), d.unit)}</td><td class="num">{dvCell(d)}</td></tr>)}</tbody>
           </table>
-          <p class="nf-note">Source: <a href={fdcUrl(lr)} rel="nofollow">{fdcName(lr)}</a>. % Daily Value is based on a 2,000-calorie diet (FDA).</p>
+          <p class="nf-note">Source: {fdcName(lr)}.<sup class="cn">{[lr].map((r, i) => <>{i > 0 && ","}<a href={fdcUrl(r)} rel="nofollow noopener" title={fdcName(r)}>{nOf(r)}</a></>)}</sup> % Daily Value is based on a 2,000-calorie diet (FDA).<sup class="cn"><a href={DV_SRC.url} rel="nofollow noopener">{nDV}</a></sup></p>
         </div>
       </section>
     )}
 
     {micros.length > 0 && (
       <section class="block-sec" aria-labelledby="vit-h">
-        <h2 id="vit-h">What vitamins and minerals are in {cfg.noun}?</h2>
-        <p class="mt-3">{cap(cfg.lead[2])} has {andList([...micros].filter((d) => d.dv).sort((x, y) => (nut(lr, y.k, L.g)! / y.dv!) - (nut(lr, x.k, L.g)! / x.dv!)).slice(0, 3).map((d) => `${fmtN(nut(lr, d.k, L.g), d.unit === "µg" ? " µg" : ` ${d.unit}`)} of ${d.name.replace(/ \(.*\)$/, "").replace(/^Vitamin/, "vitamin").replace(/^[A-Z](?=[a-z])/, (c) => c.toLowerCase())} (${dvCell(d)} DV)`))}. <span class="cite">Source: <a href={fdcUrl(lr)} rel="nofollow">{fdcName(lr)}</a></span></p>
+        <h2 id="vit-h">What Vitamins and Minerals Are in {titleCase(cfg.noun)}?</h2>
+        <p class="mt-3">{cap(cfg.lead[2])} has {andList([...micros].filter((d) => d.dv).sort((x, y) => (nut(lr, y.k, L.g)! / y.dv!) - (nut(lr, x.k, L.g)! / x.dv!)).slice(0, 3).map((d) => `${fmtN(nut(lr, d.k, L.g), d.unit === "µg" ? " µg" : ` ${d.unit}`)} of ${d.name.replace(/ \(.*\)$/, "").replace(/^Vitamin/, "vitamin").replace(/^[A-Z](?=[a-z])/, (c) => c.toLowerCase())} (${dvCell(d)} DV)`))}.<sup class="cn">{[lr].map((r, i) => <>{i > 0 && ","}<a href={fdcUrl(r)} rel="nofollow noopener" title={fdcName(r)}>{nOf(r)}</a></>)}</sup></p>
         <div class="tscroll mt-3">
           <table class="dtable ntab">
             <caption class="vh">Vitamins and minerals</caption>
@@ -235,7 +249,7 @@ const jsonld = {
     )}
 
     <section class="block-sec" aria-labelledby="cmp-h">
-      <h2 id="cmp-h">How it compares</h2>
+      <h2 id="cmp-h">How Does It Compare?</h2>
       <p class="mt-3">{compareText}</p>
       {sims.length > 0 && (
         <ul class="cmp-list">
@@ -244,16 +258,11 @@ const jsonld = {
       )}
     </section>
 
-    <section class="block-sec sources" aria-labelledby="src-h">
-      <h2 id="src-h">Sources</h2>
-      <ul>
-        {[...used.values()].map((r) => <li><a class="alink" href={fdcUrl(r)} rel="nofollow">{fdcName(r)}</a>: {r.src === "R" ? `${possessive(chainOf(r)?.name ?? "the chain")} nutrition guide` : SOURCE_NAME[r.src]}, record “{r.desc}”.</li>)}
-        <li>Daily Values: FDA, 21 CFR 101.9 (2,000-calorie diet).</li>
-      </ul>
-      {chain && <p class="mt-3">These are USDA's figures for {chain.name} items (bought at the chain and analysed, or modelled from the recipe). Recipes and portions change, so {possessive(chain.name)} current nutrition guide may differ.</p>}
-      <p class="mt-3">Spotted a wrong number? <a class="alink" href={reportHref(path)}>Report a correction</a>. <a class="alink" href="/methodology/">How we count</a>.</p>
-      {dx && <p class="mt-3">How long it keeps: <a href={dx}>diagxcar.com</a>.</p>}
-      <p class="mt-3 text-[13px] text-muted">General information, not medical or dietary advice.</p>
-    </section>
+    <Contributor path={path} updated={dates.modified} />
+    {chain && <p class="mt-6">These are USDA's figures for {chain.name} items (bought at the chain and analysed, or modelled from the recipe). Recipes and portions change, so {possessive(chain.name)} current nutrition guide may differ.</p>}
+    {dx && <p class="mt-6">How long it keeps: <a class="alink" href={dx} rel="nofollow noopener">diagxcar.com</a>.</p>}
+    <nav aria-label="Breadcrumb" class="art-chips">{crumbs.filter((c) => c.href).map((c) => <a href={c.href}>{c.name}</a>)}</nav>
+    <Helpful id={`fb-${food.slug}`} reportHref={reportHref(path)} />
+    <Sources items={srcs} reportHref={reportHref(path)} />
   </article>
 </Base>

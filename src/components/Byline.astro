@@ -1,24 +1,29 @@
 ---
 /**
- * Who stands behind a page: the editorial team, the dietitian reviewer (linked to her profile) and, when she has
- * checked this page, the date of that review (data/reviewed.json).
+ * Article byline, magazine style: "By {team} · Reviewed by {reviewer}" then "Published on / Updated on {date}".
+ * A review shows only when it is on or after the page's content date (data/reviewed.json); otherwise the line names
+ * who reviewed the editorial standards. "Published on" while the content is unchanged since it went up.
  */
 import { REVIEWER, personUrl, reviewedOn } from "../lib/people";
-interface Props { path: string; updated: string; source?: string }
-const { path, updated, source = "USDA FoodData Central" } = Astro.props;
-// A review older than the page's content does not cover it: show it only when it is on or after the content date.
+interface Props { path: string; updated: string; published?: string; source?: string }
+const { path, updated, published, source } = Astro.props;
 const r = reviewedOn(path);
 const reviewed = r && r >= updated ? r : null;
 const fmt = (iso: string) => new Date(iso + "T12:00:00Z").toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
+const isNew = published && published >= updated;
 ---
-<p class="byline text-[13px] text-muted mt-3 flex flex-wrap gap-x-2 gap-y-1">
-  <span>By the <a class="alink" href="/editorial-policy/">Gunther Heller editorial team</a></span>
-  <span aria-hidden="true">·</span>
-  {reviewed
-    ? <span data-reviewed={reviewed}>Reviewed by <a class="alink" href={personUrl(REVIEWER)}>{REVIEWER.name}, {REVIEWER.credentials}</a> on {fmt(reviewed)}</span>
-    : <span>Editorial standards reviewed by <a class="alink" href={personUrl(REVIEWER)}>{REVIEWER.name}, {REVIEWER.credentials}</a></span>}
-  <span aria-hidden="true">·</span>
-  <span>Data: {source}</span>
-  <span aria-hidden="true">·</span>
-  <span>Updated <time datetime={updated}>{fmt(updated)}</time></span>
-</p>
+<div class="byline art-byline">
+  <p>
+    <span>By <a class="alink font-semibold" href="/editorial-policy/">Gunther Heller Editorial Team</a></span>
+    <span aria-hidden="true">·</span>
+    {reviewed
+      ? <span data-reviewed={reviewed}>Reviewed by <a class="alink" href={personUrl(REVIEWER)}>{REVIEWER.name}, {REVIEWER.credentials}</a> on {fmt(reviewed)}</span>
+      : <span>Editorial standards reviewed by <a class="alink" href={personUrl(REVIEWER)}>{REVIEWER.name}, {REVIEWER.credentials}</a></span>}
+  </p>
+  <p>
+    <span>{isNew ? "Published on" : "Updated on"} <time datetime={updated}>{fmt(updated)}</time></span>
+    {source && <><span aria-hidden="true">·</span><span>Data: {source}</span></>}
+    <span aria-hidden="true">·</span>
+    <a class="alink" href="/editorial-policy/">Editorial guidelines</a>
+  </p>
+</div>

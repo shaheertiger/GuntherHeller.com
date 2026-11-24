@@ -414,20 +414,13 @@ const TITLE_MAX = 65;
  * "{Food} Calories: {N} per {serving} (Nutrition Facts)", at most 65 characters. Long names drop "(Nutrition
  * Facts)", then fall back to 100 g, then to "{Food} Calories and Nutrition Facts".
  */
+/** <title> = the H1 question, word for word ("How Many Calories Are in Cooked Rice?"), as magazine articles do.
+ *  The number goes in the first sentence and the meta description, not the title. */
 export function pageTitle(f: NFood) {
-  const name = titleCase(f.name);
-  const s = commonServing(f);
-  const tries = s.perServing ? [`${name} Calories: ${kcalIn(f, s.grams)} (Nutrition Facts)`, `${name} Calories: ${kcalIn(f, s.grams)}`, `${name} Calories`] : [
-    `${name} Calories: ${kcalIn(f, s.grams)} per ${s.label} (Nutrition Facts)`,
-    `${name} Calories: ${kcalIn(f, s.grams)} per ${s.label}`,
-    `${name} Calories: ${kcalIn(f, 100)} per 100 g`,
-    `${name} Calories and Nutrition Facts`,
-    `${name} Calories`,
-  ];
-  return tries.find((t) => t.length <= TITLE_MAX) ?? tries.at(-1)!;
+  return pageH1(f);
 }
 /** H1: the question people type. */
-export const pageH1 = (f: NFood) => `How many calories are in ${lcName(f)}?`;
+export const pageH1 = (f: NFood) => `How Many Calories Are in ${titleCase(f.name)}?`;
 
 /** Where a food sits in its category by calories per 100 g (1 = most). */
 export function calorieRank(f: NFood) {
